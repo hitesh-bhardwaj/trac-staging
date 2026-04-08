@@ -23,23 +23,596 @@ const defaults = {
 export function initAnimations() {
     // Basic fade animations
     initFadeAnimations();
-
-    // Section-specific animations
     initHeroAnimations();
     initSectionAnimations();
     initParallaxAnimations();
     initTextAnimations();
-    initHorizontalScroll();
+    initFooterParallax();
     initStackingCards();
     initTestimonialsSlider();
     initOurNetworkAnimation();
     initOurNetworkPointers();
+    initWhyTracCircles();
+    initWhyTracScrollStory();
     initCtaLineAnimation();
 
     // Refresh ScrollTrigger after all animations are set up
     ScrollTrigger.refresh();
 
     console.log('[Trac] Animations initialized');
+}
+
+/**
+ * Parallax footer reveal:
+ * footer is fixed at bottom; CTA scrolls over it; we reveal footer via clip-path.
+ */
+function initFooterParallax() {
+    const footer = document.querySelector('[data-parallax-footer]');
+    const page = document.getElementById('page');
+    if (!footer || !page) return;
+
+    // Only enable on desktop.
+    if (window.innerWidth <= 768) {
+        document.documentElement.style.setProperty('--parallax-footer-height', '0px');
+        return;
+    }
+
+    const cta = document.querySelector('.cta-section');
+    if (!cta) return;
+
+    const setFooterHeight = () => {
+        const h = footer.offsetHeight || 0;
+        document.documentElement.style.setProperty('--parallax-footer-height', `${h}px`);
+    };
+
+    setFooterHeight();
+    window.addEventListener('resize', () => {
+        setFooterHeight();
+        ScrollTrigger.refresh();
+    });
+
+    const footerInner = footer.querySelector('.footer-container') || footer;
+
+    gsap.set(footer, {
+        clipPath: 'inset(100% 0% 0% 0%)',
+        webkitClipPath: 'inset(100% 0% 0% 0%)',
+    });
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: cta,
+            start: 'bottom 92%',
+            end: 'bottom 10%',
+            scrub: true,
+        },
+    })
+        .to(
+            footer,
+            {
+                clipPath: 'inset(0% 0% 0% 0%)',
+                webkitClipPath: 'inset(0% 0% 0% 0%)',
+                ease: 'none',
+            },
+            0,
+        )
+}
+
+/**
+ * Why TrAC circles intro (outer -> inner, bouncy)
+ */
+function initWhyTracCircles() {
+    const section = document.querySelector('.why-trac-section');
+    if (!section) return;
+
+    const circleWrap = section.querySelector('.why-circles');
+    if (!circleWrap) return;
+
+    const circles = Array.from(circleWrap.querySelectorAll('img'));
+    if (!circles.length) return;
+
+    // Markup order is inner -> middle -> outer, so reverse it.
+    const ordered = [...circles].reverse();
+
+    gsap.set(circles, {
+        opacity: 0,
+        scale: 0.88,
+        transformOrigin: '50% 50%',
+    });
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            // Trigger a bit later so circles don't appear too early.
+            start: 'top 70%',
+            once: true,
+        },
+    }).to(ordered, {
+        opacity: 1,
+        scale: 1,
+        duration: 1.0,
+        // Less "springy" than before, but still bouncy.
+        ease: 'elastic.out(1, 0.35)',
+        stagger: 0.18,
+    });
+}
+
+/**
+ * Why TrAC unified scroll: one ScrollTrigger drives horizontal movement + svg draw.
+ * This avoids drift/conflict between separate scrubbed animations.
+ */
+function initWhyTracScrollStory() {
+    const section =
+        document.querySelector('.why-trac-section[data-horizontal-scroll]') ||
+        document.querySelector('[data-horizontal-scroll]');
+    if (!section) return;
+
+    if (window.innerWidth <= 768) return;
+
+    const track = section.querySelector('.why-trac-track');
+    if (!track) return;
+
+    // Reserve a little "hold" at the beginning: section pins/settles, then motion starts.
+    const HOLD = 0.14;
+
+    const masterTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            // Start when the sticky section pins. We'll use HOLD to create the pause.
+            start: 'top top',
+            end: 'bottom bottom',
+            // Lower scrub smoothing so the draw responds faster to the scroll.
+            scrub: 0.25,
+        },
+    });
+
+    // Initial pause segment: nothing changes, but scrolling advances the timeline.
+    masterTl.to({}, { duration: HOLD });
+
+    masterTl.to(
+        track,
+        {
+            x: () => -(track.scrollWidth - window.innerWidth),
+            ease: 'none',
+            duration: 1 - HOLD,
+        },
+        HOLD,
+    );
+
+    // Draw the long straight progress line as horizontal motion begins.
+    // The stroke draws from transparent -> black -> primary, and stays perfectly in sync with the horizontal travel.
+    const progressSvg = section.querySelector('[data-why-progress-line]');
+    const progressBase = progressSvg?.querySelector('line');
+    if (progressSvg && progressBase && typeof progressBase.getTotalLength === 'function') {
+        // Clean up old clone if any.
+        progressSvg.querySelectorAll('[data-why-progress-draw]').forEach((n) => n.remove());
+
+        const baseLen = progressBase.getTotalLength();
+        // Base is fully transparent (we "fill" the line with the draw overlay).
+        progressBase.style.stroke = 'rgba(17, 17, 17, 0)';
+        progressBase.style.strokeLinecap = 'round';
+        // Let the dash scale with the SVG so it always fills end-to-end.
+        progressBase.style.vectorEffect = '';
+
+        const drawLine = progressBase.cloneNode(true);
+        drawLine.setAttribute('data-why-progress-draw', 'true');
+        // Keep a constant primary color all the way to the end.
+        drawLine.style.stroke = '#10417F';
+        drawLine.style.strokeOpacity = '1';
+        drawLine.style.strokeWidth = '2';
+        drawLine.style.strokeLinecap = 'round';
+        drawLine.style.vectorEffect = '';
+        progressBase.insertAdjacentElement('afterend', drawLine);
+
+        gsap.set(drawLine, {
+            strokeDasharray: baseLen,
+            strokeDashoffset: baseLen,
+            strokeOpacity: 1,
+        });
+
+        // Delay progress line a bit so connector SVG can finish first.
+        const progressAt = HOLD + 0.15;
+        const progressDur = Math.max(0.12, 1 - progressAt);
+        masterTl.to(
+            drawLine,
+            {
+                strokeDashoffset: 0,
+                duration: progressDur,
+                ease: 'none',
+            },
+            progressAt,
+        );
+    }
+
+    // Add the svg + dots + card reveals into the same timeline.
+    // SVG should begin during the HOLD (before horizontal movement), but cards should reveal with movement.
+    initWhyTracStory(masterTl, 0, HOLD);
+}
+
+/**
+ * Why TrAC scroll storytelling:
+ * dots fade -> connection draws -> cards reveal as you scroll
+ */
+function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) {
+    const section = document.querySelector('.why-trac-section');
+    if (!section) return;
+
+    // Only enable on desktop (horizontal scroll is disabled on mobile anyway).
+    if (window.innerWidth <= 768) return;
+
+    // Prefer explicit marker; fall back to the first svg in the connector wrapper.
+    const svg =
+        section.querySelector('[data-why-connect]') ||
+        section.querySelector('.why-lines svg');
+    if (!svg) return;
+
+    // Clean up any previous clones (e.g. if init runs twice).
+    svg.querySelectorAll('[data-why-draw]').forEach((el) => el.remove());
+
+    // Dots may be authored as <circle> or as filled <path>.
+    const dots = Array.from(svg.querySelectorAll('circle, path[fill]')).filter(
+        (el) => {
+            const fill = (el.getAttribute('fill') || '').trim().toLowerCase();
+            // Keep only brand-colored dots; ignore "none" and other fills.
+            return fill === '#10417f';
+        },
+    );
+
+    // Lines can be <path>, <line>, <polyline> etc. Keep only stroked ones.
+    // Only original base lines (not any draw clones we create).
+    const baseLines = Array.from(
+        svg.querySelectorAll(
+            'path[stroke]:not([data-why-draw]), line[stroke]:not([data-why-draw]), polyline[stroke]:not([data-why-draw])',
+        ),
+    );
+
+    if (!dots.length || !baseLines.length) return;
+
+    const cards = Array.from(section.querySelectorAll('.why-card'));
+    const cardImages = cards.map((card) => card.querySelector('.why-card-image'));
+    const cardImageImgs = cardImages
+        .map((wrap) => wrap?.querySelector('img'))
+        .filter(Boolean);
+    const cardContent = cards.map((card) => card.querySelector('.why-card-content'));
+
+    const getDotCenterX = (el) => {
+        // <circle>
+        if (el.tagName.toLowerCase() === 'circle') {
+            const cx = parseFloat(el.getAttribute('cx') || '0');
+            return Number.isFinite(cx) ? cx : 0;
+        }
+        // Filled <path> dot
+        if (typeof el.getBBox === 'function') {
+            const b = el.getBBox();
+            return b.x + b.width / 2;
+        }
+        return 0;
+    };
+
+    const orderedDots = [...dots].sort((a, b) => getDotCenterX(a) - getDotCenterX(b));
+
+    orderedDots.forEach((dot) => {
+        gsap.set(dot, {
+            opacity: 0,
+            // Keep dots locked in place: only fade opacity (no scale transform).
+            scale: 1,
+            transformOrigin: '50% 50%',
+        });
+    });
+
+    // Prepare metadata to sequence: 2 lines from left first, then the others.
+    const lineMeta = baseLines
+        .map((el) => {
+            if (typeof el.getTotalLength !== 'function') return null;
+            const length = el.getTotalLength();
+            const p0 = el.getPointAtLength(0);
+            const p1 = el.getPointAtLength(length);
+            const minX = Math.min(p0.x, p1.x);
+            const maxX = Math.max(p0.x, p1.x);
+
+            // Identify straight segments (helps later if you add the straight line).
+            let isStraight = el.tagName.toLowerCase() === 'line';
+            if (!isStraight && typeof el.getBBox === 'function') {
+                const b = el.getBBox();
+                const w = Math.max(b.width, 1);
+                const h = b.height;
+                isStraight = h / w < 0.06;
+            }
+
+            return { el, length, p0, p1, minX, maxX, isStraight };
+        })
+        .filter(Boolean);
+
+    if (!lineMeta.length) return;
+
+    const globalMinX = Math.min(...lineMeta.map((m) => m.minX));
+    const phase1 = lineMeta
+        .filter((m) => m.minX - globalMinX < 20)
+        .sort((a, b) => a.maxX - b.maxX)
+        .slice(0, 2)
+        .map((m) => m.el);
+
+    const phase1Set = new Set(phase1);
+    const straightCandidate = lineMeta.find((m) => m.isStraight)?.el || null;
+
+    const phase2 = lineMeta
+        .map((m) => m.el)
+        .filter((el) => !phase1Set.has(el) && el !== straightCandidate);
+
+    const straightLine = straightCandidate && !phase1Set.has(straightCandidate) ? straightCandidate : null;
+
+    // Style + create "draw overlay" lines.
+    const drawLines = baseLines
+        .map((path) => {
+            if (typeof path.getTotalLength !== 'function') return null;
+
+            // Keep connector base invisible so the draw feels like it fills on transparency.
+            path.style.stroke = 'rgba(17, 17, 17, 0)';
+            path.style.strokeWidth = '1.25';
+            path.style.strokeLinecap = 'round';
+            path.style.strokeLinejoin = 'round';
+            path.style.vectorEffect = 'non-scaling-stroke';
+
+            // Clone for the actual drawing stroke (brand color).
+            const clone = path.cloneNode(true);
+            clone.setAttribute('data-why-draw', 'true');
+            clone.style.stroke = '#10417F';
+            // We'll fade the stroke in as it draws so it feels like it fills from transparent -> primary.
+            clone.style.strokeOpacity = '0';
+            clone.style.strokeWidth = '3';
+            clone.style.strokeLinecap = 'round';
+            clone.style.strokeLinejoin = 'round';
+            clone.style.vectorEffect = 'non-scaling-stroke';
+
+            // Put the drawing stroke on top of the base stroke.
+            path.insertAdjacentElement('afterend', clone);
+            return clone;
+        })
+        .filter(Boolean);
+
+    const toDrawClone = new Map();
+    drawLines.forEach((clone, i) => {
+        // drawLines are created in the same order as baseLines.
+        const base = baseLines[i];
+        if (base) toDrawClone.set(base, clone);
+    });
+
+    drawLines.forEach((path) => {
+        if (typeof path.getTotalLength !== 'function') return;
+        const length = path.getTotalLength();
+
+        // Ensure the draw direction is left -> right, regardless of SVG authoring.
+        const p0 = path.getPointAtLength(0);
+        const p1 = path.getPointAtLength(length);
+        const drawsLeftToRight = p0.x <= p1.x;
+        const initialOffset = drawsLeftToRight ? length : -length;
+
+        gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: initialOffset,
+        });
+    });
+
+    const getDotPos = (el) => {
+        if (el.tagName.toLowerCase() === 'circle') {
+            return {
+                x: parseFloat(el.getAttribute('cx') || '0') || 0,
+                y: parseFloat(el.getAttribute('cy') || '0') || 0,
+            };
+        }
+        if (typeof el.getBBox === 'function') {
+            const b = el.getBBox();
+            return { x: b.x + b.width / 2, y: b.y + b.height / 2 };
+        }
+        return { x: 0, y: 0 };
+    };
+
+    // Approx: for a dot point, find where along a path it is "reached" (fraction 0..1)
+    // by sampling points along its length. Works well for monotonic-ish connectors.
+    const approxFractionForPoint = (path, point, samples = 180) => {
+        if (typeof path.getTotalLength !== 'function') return null;
+        const len = path.getTotalLength();
+        let best = { i: 0, d2: Number.POSITIVE_INFINITY };
+        for (let i = 0; i <= samples; i++) {
+            const p = path.getPointAtLength((len * i) / samples);
+            const dx = p.x - point.x;
+            const dy = p.y - point.y;
+            const d2 = dx * dx + dy * dy;
+            if (d2 < best.d2) best = { i, d2 };
+        }
+        return { frac: best.i / samples, d2: best.d2 };
+    };
+
+    // Hide cards initially; they'll reveal in sequence as scroll progresses.
+    gsap.set(cards, { opacity: 0, y: 28 });
+    // Keep wrapper opaque so the line isn't visible behind during the image reveal.
+    gsap.set(cardImages, { opacity: 1, scale: 1 });
+    // Reveal the actual bitmap with a small fade-up.
+    gsap.set(cardImageImgs, { opacity: 0, y: 10 });
+    gsap.set(cardContent, { opacity: 0, y: 18 });
+
+    const tl =
+        masterTl ||
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 0.8,
+            },
+        });
+
+    const drawPhase = (baseEls, at, duration, stagger) => {
+        const clones = baseEls.map((b) => toDrawClone.get(b)).filter(Boolean);
+        if (!clones.length) return;
+
+        tl.to(
+            clones,
+            {
+                strokeDashoffset: 0,
+                strokeOpacity: 1,
+                duration,
+                ease: 'none',
+                stagger,
+            },
+            drawOffset + at,
+        );
+    };
+
+    // 2) Draw the first 2 lines that start from the left.
+    // Simultaneous (no stagger) per your reference.
+    // Start draw immediately (during HOLD) so it begins before horizontal motion.
+    const phase1At = 0.0;
+    // Fill a little faster: finish the main draw sooner in the scroll.
+    const phase1Dur = 0.18;
+    drawPhase(phase1, phase1At, phase1Dur, 0);
+
+    // 3) Then draw the remaining curved connections.
+    const phase2At = 0.10;
+    const phase2Dur = 0.20;
+    drawPhase(phase2, phase2At, phase2Dur, 0.03);
+
+    // 4) If/when you add the straight line, fill it from transparent -> primary as you scroll.
+    if (straightLine) {
+        const straightClone = toDrawClone.get(straightLine);
+        if (straightClone) {
+            // "Black line" that fills into primary.
+            gsap.set(straightClone, { opacity: 0, stroke: '#111111', strokeOpacity: 0 });
+            const straightAt = phase2At + phase2Dur + 0.06;
+            tl.to(
+                straightClone,
+                {
+                    opacity: 1,
+                    stroke: '#10417F',
+                    strokeDashoffset: 0,
+                    strokeOpacity: 1,
+                    duration: 0.18,
+                    ease: 'none',
+                },
+                drawOffset + straightAt,
+            );
+        }
+    }
+
+    // 1) Dots fade in only when the drawing reaches them.
+    // Map dots to the earliest reach time across all drawing phases.
+    const phasesForDots = [
+        { els: phase1, at: phase1At, dur: phase1Dur },
+        { els: phase2, at: phase2At, dur: phase2Dur },
+        // Straight line handled separately below if present.
+    ];
+
+    orderedDots.forEach((dot, idx) => {
+        const pos = getDotPos(dot);
+        let bestTime = null;
+
+        phasesForDots.forEach((ph) => {
+            ph.els.forEach((baseEl) => {
+                const clone = toDrawClone.get(baseEl);
+                if (!clone) return;
+                const r = approxFractionForPoint(clone, pos);
+                if (!r) return;
+
+                // Require the dot to be reasonably close to the path.
+                // (SVG units: threshold tuned for this connector size.)
+                const within = r.d2 <= 26 * 26;
+                if (!within) return;
+
+                const t = ph.at + r.frac * ph.dur;
+                if (bestTime === null || t < bestTime) bestTime = t;
+            });
+        });
+
+        // Fallback: if we didn't match a path (rare), fade it late instead of early.
+        if (bestTime === null) bestTime = 0.18;
+
+        // Fade dots in slightly before the draw reaches them.
+        const DOT_LEAD = 0.03;
+        let dotTime = Math.max(0, bestTime - DOT_LEAD);
+        // Delay the last/right-most dot so it appears after the svg connectors are done.
+        if (idx === orderedDots.length - 1) {
+            dotTime += 0.17;
+        }
+
+        tl.to(
+            dot,
+            {
+                opacity: 1,
+                duration: 0.06,
+                ease: 'power2.out',
+            },
+            drawOffset + dotTime,
+        );
+    });
+
+    // 3) Reveal each card as the horizontal story progresses.
+    // Reveal cards based on their actual horizontal position so timing matches the scroll.
+    // This fixes "images not loading at correct time" when slide widths change.
+    const track = section.querySelector('.why-trac-track');
+    const scrollDistance = track ? track.scrollWidth - window.innerWidth : 0;
+    const motionDur = Math.max(0.001, 1 - contentOffset);
+    const REVEAL_LAG = 0.04; // reveal a little late
+
+    const cardTimes = cards.map((card) => {
+        const slide = card.closest('.why-trac-slide');
+        const left = slide ? slide.offsetLeft : card.offsetLeft;
+        // Slightly later than center for a calmer pace.
+        const p =
+            scrollDistance > 0 ? (left - window.innerWidth * 0.6) / scrollDistance : 0;
+        const clamped = Math.max(0, Math.min(1, p));
+        return contentOffset + clamped * motionDur;
+    });
+
+    cards.forEach((card, index) => {
+        // Keep reveals inside the horizontal-motion window so they don't extend the timeline
+        // (which would make the progress line look like it "stops" early).
+        const CARD_DUR = 0.16; // content ends around t+0.16
+        const maxT = contentOffset + motionDur - CARD_DUR;
+        const rawT = Math.max(
+            contentOffset,
+            (cardTimes[index] ?? contentOffset) + REVEAL_LAG,
+        );
+        const t = Math.min(maxT, rawT);
+        const image = cardImages[index];
+        const content = cardContent[index];
+
+        tl.to(
+            card,
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.18,
+                ease: 'power2.out',
+            },
+            t,
+        );
+
+        const imageImg = image?.querySelector('img');
+        if (imageImg) {
+            tl.to(
+                imageImg,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.08,
+                    ease: 'power2.out',
+                },
+                t + 0.02,
+            );
+        }
+
+        if (content) {
+            tl.to(
+                content,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.22,
+                    ease: 'power2.out',
+                },
+                t + 0.02,
+            );
+        }
+    });
 }
 
 /**
@@ -568,41 +1141,44 @@ function initTextAnimations() {
 /**
  * Horizontal scroll section for "Why Businesses Choose TrAC"
  */
-function initHorizontalScroll() {
-    const section = document.querySelector('[data-horizontal-scroll]');
-    if (!section) return;
+// function initHorizontalScroll() {
+//     const section = document.querySelector('[data-horizontal-scroll]');
+//     if (!section) return;
 
-    // Only enable on desktop (above 768px)
-    if (window.innerWidth <= 768) {
-        console.log('[Trac] Horizontal scroll disabled on mobile');
-        return;
-    }
+//     // Only enable on desktop (above 768px)
+//     if (window.innerWidth <= 768) {
+//         console.log('[Trac] Horizontal scroll disabled on mobile');
+//         return;
+//     }
 
-    const track = section.querySelector('.why-trac-track');
-    const slides = section.querySelectorAll('.why-trac-slide');
+//     const track = section.querySelector('.why-trac-track');
+//     const slides = section.querySelectorAll('.why-trac-slide');
 
-    if (!track || slides.length === 0) return;
+//     if (!track || slides.length === 0) return;
 
-    // Calculate total scroll width
-    const totalWidth = track.scrollWidth;
-    const viewportWidth = window.innerWidth;
-    const scrollDistance = totalWidth - viewportWidth;
+//     // Calculate total scroll width
+//     const totalWidth = track.scrollWidth;
+//     const viewportWidth = window.innerWidth;
+//     const scrollDistance = totalWidth - viewportWidth;
 
-    // Create horizontal scroll animation - just translate, no other animations
-    gsap.to(track, {
-        x: -scrollDistance,
-        ease: 'power1.inOut',
-        scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: true,
-            // markers:true
-        },
-    });
+//     // Create horizontal scroll animation - just translate, no other animations
+//     gsap.to(track, {
+//         x: -scrollDistance,
+//         // Keep it linear so the SVG draw (also scrubbed) stays in sync.
+//         ease: 'none',
+//         scrollTrigger: {
+//             trigger: section,
+//             // Match the storytelling trigger so the draw + horizontal movement stay aligned.
+//             start: 'top 70%',
+//             end: 'bottom bottom',
+//             // Slight smoothing so it doesn't feel twitchy/fast.
+//             scrub: 0.8,
+//             // markers:true
+//         },
+//     });
 
-    console.log('[Trac] Horizontal scroll initialized');
-}
+//     console.log('[Trac] Horizontal scroll initialized');
+// }
 
 /**
  * Stacking cards animation for services section
@@ -944,8 +1520,7 @@ export function createHorizontalScroll(container, items) {
             start: 'top top',
             end: () => `+=${containerWidth - viewportWidth}`,
             scrub: 1,
-            pin: true,
-            anticipatePin: 1,
+            // Prefer CSS `position: sticky` sections instead of ScrollTrigger pinning.
         },
     });
 }
