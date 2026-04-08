@@ -822,21 +822,45 @@ function initOurNetworkPointers() {
         pointerCards.forEach((card) => card.classList.remove('is-active'));
     };
 
+    const isOuterNode = (circle) =>
+        circle.getAttribute('r') === '11.5' &&
+        circle.getAttribute('fill') === '#EFF4FC' &&
+        circle.getAttribute('stroke') === '#001837';
+
+    const isInnerNode = (circle) =>
+        circle.getAttribute('r') === '7' &&
+        circle.getAttribute('fill') === '#F0741C';
+
+    // group only valid node circles by same cx/cy
     const nodeMap = new Map();
 
     allCircles.forEach((circle) => {
+        if (!isOuterNode(circle) && !isInnerNode(circle)) return;
+
         const cx = circle.getAttribute('cx');
         const cy = circle.getAttribute('cy');
         const key = `${cx}-${cy}`;
 
         if (!nodeMap.has(key)) {
-            nodeMap.set(key, []);
+            nodeMap.set(key, {
+                outer: null,
+                inner: null,
+                circles: [],
+            });
         }
 
-        nodeMap.get(key).push(circle);
+        const group = nodeMap.get(key);
+
+        if (isOuterNode(circle)) group.outer = circle;
+        if (isInnerNode(circle)) group.inner = circle;
+
+        group.circles.push(circle);
     });
 
-    const nodeGroups = Array.from(nodeMap.values());
+    // keep only true node pairs, or at least a single valid node if only one exists
+    const nodeGroups = Array.from(nodeMap.values()).filter(
+        (group) => group.outer || group.inner
+    );
 
     nodeGroups.forEach((group, index) => {
         const pointerCard = section.querySelector(`.pointer-${index + 1}`);
@@ -851,35 +875,38 @@ function initOurNetworkPointers() {
             pointerCard.classList.remove('is-active');
         };
 
-        group.forEach((circle) => {
-            const r = circle.getAttribute('r');
-            const fill = circle.getAttribute('fill');
-            const stroke = circle.getAttribute('stroke');
-
-            const isOuter =
-                r === '11.5' &&
-                fill === '#EFF4FC' &&
-                stroke === '#001837';
-
-            const isInner =
-                r === '7' &&
-                fill === '#F0741C';
-
-            if (!isOuter && !isInner) return;
-
+        group.circles.forEach((circle) => {
             circle.addEventListener('mouseenter', showPointer);
             circle.addEventListener('mouseleave', hidePointer);
-            circle.addEventListener('click', showPointer);
+            circle.addEventListener('focus', showPointer);
+            circle.addEventListener('blur', hidePointer);
+            circle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showPointer();
+            });
 
             circle.setAttribute('tabindex', '0');
             circle.setAttribute('role', 'button');
-            circle.setAttribute('aria-label', `Show network pointer ${index + 1}`);
+            circle.setAttribute(
+                'aria-label',
+                `Show network pointer ${index + 1}`
+            );
+            circle.style.cursor = 'pointer';
         });
     });
 
     section.addEventListener('mouseleave', hideAllPointers);
 
-    console.log('[Trac] Our Network pointers initialized');
+    document.addEventListener('click', (e) => {
+        if (!section.contains(e.target)) {
+            hideAllPointers();
+        }
+    });
+
+    console.log('[Trac] Our Network pointers initialized', {
+        groups: nodeGroups.length,
+        cards: pointerCards.length,
+    });
 }
 /**
  * Create scroll-triggered counter animation

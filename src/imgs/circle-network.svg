@@ -10,8 +10,8 @@
 <circle cx="353" cy="12" r="7" fill="#F0741C"/>
 <circle cx="533" cy="114" r="11.5" fill="#EFF4FC" stroke="#001837"/>
 <circle cx="533" cy="114" r="7" fill="#F0741C"/>
-<circle cx="605.609" cy="320.61" r="11.5" transform="rotate(33.1654 605.609 320.61)" fill="#EFF4FC" stroke="#001837"/>
-<circle cx="605.608" cy="320.61" r="7" transform="rotate(33.1654 605.608 320.61)" fill="#F0741C"/>
-<circle cx="484.609" cy="552.61" r="11.5" transform="rotate(33.1654 484.609 552.61)" fill="#EFF4FC" stroke="#001837"/>
-<circle cx="484.608" cy="552.61" r="7" transform="rotate(33.1654 484.608 552.61)" fill="#F0741C"/>
+<circle cx="605.609" cy="320.61" r="11.5" fill="#EFF4FC" stroke="#001837"/>
+<circle cx="605.608" cy="320.61" r="7" fill="#F0741C"/>
+<circle cx="484.609" cy="552.61" r="11.5"  fill="#EFF4FC" stroke="#001837"/>
+<circle cx="484.608" cy="552.61" r="7" fill="#F0741C"/>
 </svg>

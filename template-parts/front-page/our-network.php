@@ -220,9 +220,9 @@ $network_circle_lines_svg_path_line =
                 <p>Kenya PoP</p>
             </div>
 
-            <div class="pointer-card pointer-6 absolute left-[82%] top-[10%] z-50 flex h-fit min-w-[10vw] w-fit max-w-[15vw] flex-col rounded-[1.2vw] border border-black/10 bg-white/20 p-[1vw] text-start opacity-0 invisible pointer-events-none backdrop-blur-md md:w-[25vw] sm:w-[40vw]">
+            <div class="pointer-card pointer-6 absolute left-[86%] top-[28%] z-50 flex h-fit min-w-[10vw] w-fit max-w-[15vw] flex-col rounded-[1.2vw] border border-black/10 bg-white/20 p-[1vw] text-start opacity-0 invisible pointer-events-none backdrop-blur-md md:w-[25vw] sm:w-[40vw]">
                 <h3 class="font-heading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
-                   Nairobi
+                    Mombasa
                 </h3>
                 <p>Kenya PoP</p>
             </div>
@@ -234,11 +234,11 @@ $network_circle_lines_svg_path_line =
                 <p>Kenya PoP</p>
             </div>
 
-            <div class="pointer-card pointer-8 absolute left-[87%] top-[29%] z-50 flex h-fit min-w-[10vw] w-fit max-w-[15vw] flex-col rounded-[1.2vw] border border-black/10 bg-white/20 p-[1vw] text-start opacity-0 invisible pointer-events-none backdrop-blur-md md:w-[25vw] sm:w-[40vw]">
+            <div class="pointer-card pointer-8 absolute left-[83%] top-[56%] z-50 flex h-fit min-w-[10vw] w-fit max-w-[15vw] flex-col rounded-[1.2vw] border border-black/10 bg-white/20 p-[1vw] text-start opacity-0 invisible pointer-events-none backdrop-blur-md md:w-[25vw] sm:w-[40vw]">
                 <h3 class="font-heading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
-                    Mombasa
+                    Dar Es Salaam
                 </h3>
-                <p>Kenya PoP</p>
+                <p>Tanzania PoP</p>
             </div>
 
             <div class="pointer-card pointer-9 absolute left-[83%] top-[56%] z-50 flex h-fit min-w-[10vw] w-fit max-w-[15vw] flex-col rounded-[1.2vw] border border-black/10 bg-white/20 p-[1vw] text-start opacity-0 invisible pointer-events-none backdrop-blur-md md:w-[25vw] sm:w-[40vw]">
