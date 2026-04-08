@@ -317,10 +317,7 @@ function initClientLogos() {
 
         const pickRandomCards = () => {
             const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
-            const changeCount = Math.min(
-                cards.length,
-                4 + Math.floor(Math.random() * 2),
-            );
+            const changeCount = Math.min(cards.length, 5);
 
             return shuffledCards.slice(0, changeCount);
         };

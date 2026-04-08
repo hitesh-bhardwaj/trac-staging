@@ -28,7 +28,7 @@ if (!defined('ABSPATH')) {
                                 <span class="btn-line"></span>
                                 <span class="btn-text">Learn More</span>
                                 <span class="btn-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
                                         <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
                                         <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
@@ -60,7 +60,7 @@ if (!defined('ABSPATH')) {
                                 <span class="btn-line"></span>
                                 <span class="btn-text">Learn More</span>
                                 <span class="btn-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
                                         <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
                                         <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
@@ -92,7 +92,7 @@ if (!defined('ABSPATH')) {
                                 <span class="btn-line"></span>
                                 <span class="btn-text">Learn More</span>
                                 <span class="btn-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
                                         <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
                                         <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
@@ -124,7 +124,7 @@ if (!defined('ABSPATH')) {
                                 <span class="btn-line"></span>
                                 <span class="btn-text">Learn More</span>
                                 <span class="btn-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
                                         <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
                                         <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>

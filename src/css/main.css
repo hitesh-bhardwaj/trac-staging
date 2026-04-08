@@ -244,6 +244,10 @@
         min-height: 3.385vw; /* 65px at 1920 */
         position: relative;
         overflow: visible;
+        /* Shared button animation tuning (line + text gap + dots move/fade) */
+        --btn-line-w: clamp(18px, 1.4vw, 26px);
+        --btn-line-gap: clamp(10px, 0.8vw, 14px);
+        --btn-icon-shift: 6px;
     }
 
     .btn-primary {
@@ -257,12 +261,12 @@
     }
 
     .btn-outline {
-        @apply bg-transparent text-brand-primary relative;
+        @apply bg-white text-brand-primary relative;
         border: 0.057vw solid #10417f; /* 1.1px at 1920 */
     }
 
     .btn-outline:hover {
-        @apply bg-transparent;
+        @apply bg-white;
     }
 
     .btn-text {
@@ -272,17 +276,26 @@
     }
 
     .btn-line {
-        @apply h-px bg-white absolute;
-        left: 1.6vw;
-        width: 1.8vw;
+        @apply absolute;
+        top: 50%;
+        left: clamp(16px, 1.6vw, 22px);
+        width: var(--btn-line-w);
+        height: 1px;
         opacity: 1;
-        transform: scaleX(0);
+        background-color: currentColor;
+        transform: translateY(-50%) scaleX(0);
         transform-origin: left center;
         transition: transform 0.24s ease;
     }
 
+    .btn:hover .btn-line,
     .group:hover .btn-line {
-        transform: scaleX(1);
+        transform: translateY(-50%) scaleX(1);
+    }
+
+    .btn:hover .btn-text,
+    .group:hover .btn-text {
+        transform: translateX(calc(var(--btn-line-w) + var(--btn-line-gap)));
     }
 
     .btn-lg {
@@ -305,11 +318,12 @@
             gap: 12px;
             border-radius: 45px;
             min-height: 58px;
+            --btn-line-w: 24px;
+            --btn-line-gap: 12px;
         }
 
         .btn-line {
             left: 18px;
-            width: 24px;
         }
     }
 
@@ -321,11 +335,12 @@
             gap: 10px;
             border-radius: 40px;
             min-height: 52px;
+            --btn-line-w: 20px;
+            --btn-line-gap: 10px;
         }
 
         .btn-line {
             left: 16px;
-            width: 20px;
         }
     }
 
@@ -335,8 +350,17 @@
         transform: translateX(0);
         opacity: 1;
         transition:
-            transform 0.2s ease,
-            opacity 0.16s ease;
+            transform 0.08s ease-out,
+            opacity 0.03s linear 0.06s;
+    }
+
+    .btn:hover .btn-icon,
+    .group:hover .btn-icon {
+        transform: translateX(var(--btn-icon-shift));
+        opacity: 0;
+        transition:
+            transform 0.08s ease-out,
+            opacity 0.02s linear 0.05s;
     }
 
     .btn-primary .btn-icon {
@@ -662,20 +686,7 @@
 }
 
 .btn:hover .btn-icon .dot {
-    transform: scale(1.2);
-}
-
-.btn:hover .btn-icon .dot:nth-child(1) {
-    transform: translate(-2px, -2px);
-}
-.btn:hover .btn-icon .dot:nth-child(2) {
-    transform: translate(2px, -2px);
-}
-.btn:hover .btn-icon .dot:nth-child(3) {
-    transform: translate(-2px, 2px);
-}
-.btn:hover .btn-icon .dot:nth-child(4) {
-    transform: translate(2px, 2px);
+    transform: none;
 }
 
 #globe-container {
