@@ -1223,23 +1223,27 @@
     pointer-events: none;
 }
 
-.cta-bg-pattern .cta-svg {
+.cta-bg-pattern [data-cta-svg] {
     width: 100%;
     height: 100%;
     display: block;
 }
 
-.cta-bg-pattern .cta-svg path[stroke] {
+.cta-bg-pattern [data-cta-svg] path[stroke] {
     stroke-width: 1.25px;
     vector-effect: non-scaling-stroke;
 }
 
-.cta-bg-pattern .cta-svg [data-cta-travel] {
-    opacity: 0;
-    filter: drop-shadow(0 0 6px rgba(16, 65, 127, 0.35));
+.cta-bg-pattern [data-cta-svg] path[data-cta-travel] {
+    stroke-width: 1px;
 }
 
-.cta-bg-pattern .cta-svg path[fill^='url('] {
+.cta-bg-pattern [data-cta-svg] [data-cta-travel] {
+    opacity: 0;
+    filter: drop-shadow(0 0 8px rgba(16, 65, 127, 0.42));
+}
+
+.cta-bg-pattern [data-cta-svg] path[fill^='url('] {
     opacity: 0;
 }
 

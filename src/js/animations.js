@@ -77,17 +77,19 @@ function initCtaLineAnimation() {
 
         gradient.setAttribute('id', gradientId);
         gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+        // Align gradient with each path direction (top -> bottom on these arcs).
         gradient.setAttribute('x1', String(start.x));
         gradient.setAttribute('y1', String(start.y));
         gradient.setAttribute('x2', String(end.x));
         gradient.setAttribute('y2', String(end.y));
 
         [
-            { offset: '0%', color: '#10417F', opacity: '0' },
-            { offset: '35%', color: '#10417F', opacity: '0.2' },
-            { offset: '50%', color: '#10417F', opacity: '1' },
-            { offset: '70%', color: '#5e96db', opacity: '0.75' },
-            { offset: '100%', color: '#ffffff', opacity: '0' },
+            [
+    { offset: '0%', color: '#FFFFFF', opacity: '0' },
+    { offset: '58%', color: '#FFFFFF', opacity: '0' },
+    { offset: '82%', color: '#10417F', opacity: '0.45' },
+    { offset: '100%', color: '#10417F', opacity: '1' },
+]
         ].forEach(({ offset, color, opacity }) => {
             const stop = document.createElementNS(
                 'http://www.w3.org/2000/svg',
@@ -105,7 +107,7 @@ function initCtaLineAnimation() {
         clone.removeAttribute('fill');
         clone.setAttribute('fill', 'none');
         clone.setAttribute('stroke', `url(#${gradientId})`);
-        clone.setAttribute('stroke-width', '2');
+        clone.setAttribute('stroke-width', '1.25');
         clone.setAttribute('stroke-linecap', 'round');
         clone.setAttribute('stroke-linejoin', 'round');
         clone.setAttribute('data-cta-travel', '');
@@ -118,8 +120,10 @@ function initCtaLineAnimation() {
 
         gsap.set(clone, {
             opacity: 0,
-            strokeDasharray: `${Math.max(length * 0.12, 56)} ${length}`,
-            strokeDashoffset: length * 1.1,
+            // One moving dash that travels from start -> end.
+            // Keep it shorter than before so the highlight feels tighter.
+            strokeDasharray: `${Math.max(length * 0.04, 20)} ${length}`,
+            strokeDashoffset: 0,
         });
 
         return { clone, length };
@@ -130,44 +134,38 @@ function initCtaLineAnimation() {
     const runTravelPulse = (entry) => {
         const { clone, length } = entry;
         const segmentLength = gsap.utils.random(
-            Math.max(length * 0.1, 48),
-            Math.max(length * 0.18, 110),
+            Math.max(length * 0.03, 18),
+            Math.max(length * 0.055, 38),
         );
 
         gsap.set(clone, {
             opacity: 0,
-            strokeDasharray: `${segmentLength} ${length + segmentLength}`,
-            strokeDashoffset: length + segmentLength,
+            strokeDasharray: `${segmentLength} ${length}`,
+            strokeDashoffset: 0,
         });
 
-        gsap
-            .timeline({
-                delay: gsap.utils.random(0.2, 2.2),
-                onComplete: () => runTravelPulse(entry),
-            })
-            .to(clone, {
-                opacity: 1,
-                duration: 0.2,
-                ease: 'power1.out',
-            })
-            .to(
+        const tl = gsap.timeline();
+
+        // Start visible at the path start, then travel start -> end.
+        // (Fade-in was making it feel like it "appears" mid-path.)
+        tl.set(clone, { opacity: 1 }, 0).to(
                 clone,
                 {
-                    strokeDashoffset: -segmentLength,
-                    duration: gsap.utils.random(2.8, 5),
+                    // Travel start -> end
+                    strokeDashoffset: -(length + segmentLength),
+                    duration: gsap.utils.random(3.2, 4.8),
                     ease: 'none',
                 },
                 0,
-            )
-            .to(
-                clone,
-                {
-                    opacity: 0,
-                    duration: 0.35,
-                    ease: 'power1.in',
-                },
-                `>${-0.25}`,
             );
+
+        tl.to(
+            clone,
+            { opacity: 0, duration: 0.32, ease: 'power1.inOut' },
+            `>${-0.28}`,
+        );
+
+        return tl;
     };
 
     const tl = gsap.timeline({
@@ -183,16 +181,56 @@ function initCtaLineAnimation() {
         duration: 1.6,
         stagger: {
             each: 0.03,
-            from: 'center',
+            from: 'start',
         },
         ease: 'power2.out',
     })
         .call(() => {
-            travelEntries.forEach((entry) => {
-                gsap.delayedCall(gsap.utils.random(0.1, 1.5), () => {
-                    runTravelPulse(entry);
+            const maxConcurrent = Math.min(5, travelEntries.length);
+            const active = new Set();
+
+            const pickNextEntry = () => {
+                const available = travelEntries.filter(
+                    (entry) => !active.has(entry),
+                );
+                if (!available.length) {
+                    return null;
+                }
+                return available[Math.floor(Math.random() * available.length)];
+            };
+
+            const startPulse = (entry) => {
+                if (!entry || active.has(entry)) {
+                    return;
+                }
+
+                active.add(entry);
+
+                runTravelPulse(entry).eventCallback('onComplete', () => {
+                    active.delete(entry);
+                    // Keep ~5 running, but start replacement slightly staggered.
+                    gsap.delayedCall(gsap.utils.random(0.05, 0.55), () => {
+                        startPulse(pickNextEntry() || entry);
+                    });
                 });
-            });
+            };
+
+            const fillToMax = () => {
+                const needed = maxConcurrent - active.size;
+                for (let i = 0; i < needed; i += 1) {
+                    gsap.delayedCall(gsap.utils.random(0.0, 0.9), () => {
+                        startPulse(pickNextEntry());
+                    });
+                }
+            };
+
+            // Start a small number of pulses with random offsets,
+            // keeping concurrency capped so they don't all move at once.
+            fillToMax();
+
+            // Safety: if something ends early, top back up.
+            gsap.delayedCall(1.5, fillToMax);
+            gsap.delayedCall(3.5, fillToMax);
         });
 }
 
