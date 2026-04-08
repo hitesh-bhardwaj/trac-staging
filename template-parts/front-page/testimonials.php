@@ -4,19 +4,10 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <section class="testimonials-section relative overflow-hidden bg-[#eef3fc]" data-section="testimonials">
-    <div class="testimonials-bg pointer-events-none absolute inset-0 h-full w-full">
-        <img
-            src="<?php echo esc_url(
-                get_template_directory_uri() . '/src/imgs/testimonial-bg.png',
-            ); ?>"
-            alt=""
-            class="h-full w-full object-cover object-center"
-            loading="lazy"
-        >
-    </div>
+   
 
-    <div class="testimonials-container relative z-10 w-full px-[5.21vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
-        <div class="testimonials-header mb-[2.604vw] md:mb-10 sm:mb-8">
+    <div class="testimonials-container w-full flex flex-col items-end px-[5.21vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+        <div class="testimonials-header mb-[2.604vw] md:mb-10 sm:mb-8 w-full">
             <div
                 class="testimonials-label mb-[1.563vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-4"
                 data-animate="fade-up"
@@ -36,7 +27,7 @@ if (!defined('ABSPATH')) {
             </h2>
         </div>
 
-        <div class="testimonials-controls mb-[2.083vw] flex items-center justify-between md:mb-8 sm:mb-6">
+        <div class="testimonials-controls mb-[2.083vw] flex items-center justify-between md:mb-8 sm:mb-6 w-full relative z-10">
             <div
                 class="slide-counter flex items-center gap-[0.833vw] md:gap-3"
                 data-animate="fade-up"
@@ -89,7 +80,7 @@ if (!defined('ABSPATH')) {
         </div>
 
         <div
-            class="testimonials-slider relative flex w-full justify-end min-h-[28vw] md:min-h-[360px] sm:min-h-[300px]"
+            class="testimonials-slider flex w-fit justify-end min-h-[28vw] md:min-h-[360px] sm:min-h-[300px] relative z-10"
             data-animate="fade-up"
             data-delay="0.3"
         >
@@ -144,4 +135,6 @@ if (!defined('ABSPATH')) {
             </div>
         </div>
     </div>
+                <canvas id="network-canvas" class="absolute inset-0 h-full w-full"></canvas>
+
 </section>

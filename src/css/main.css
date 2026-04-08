@@ -789,6 +789,44 @@
 .testimonial-card {
     will-change: transform, opacity;
 }
+
+.who-we-are-track {
+    isolation: isolate;
+}
+
+.who-we-are-slide {
+    will-change: transform, opacity;
+}
+
+.who-we-are-dot {
+    width: 0.625vw;
+    height: 0.625vw;
+    border-radius: 9999px;
+    background: #d5d8dd;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.who-we-are-dot.is-active {
+    background: var(--color-brand-primary);
+    transform: scale(1.08);
+}
+
+@media (max-width: 1024px) {
+    .who-we-are-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 640px) {
+    .who-we-are-copy br {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .why-trac-section {
         height: auto;

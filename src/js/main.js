@@ -1,13 +1,14 @@
 /**
  * Trac Theme - Main JavaScript Entry
  *
- * Initializes GSAP, Three.js, and integrates with Lenis smooth scroll
+ * Initializes GSAP, Three.js, canvas network, and integrates with Lenis smooth scroll
  */
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initAnimations } from './animations.js';
 import { initGlobe } from './globe.js';
+import { initNetworkCanvas } from './network-canvas.js';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -18,6 +19,8 @@ gsap.registerPlugin(ScrollTrigger);
 const app = {
     lenis: null,
     isLoaded: false,
+    globe: null,
+    networkCanvas: null,
     prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)')
         .matches,
 };
@@ -105,7 +108,11 @@ function initHeader() {
         }
 
         // Scrolling down - hide header immediately
-        if (currentScroll > lastScroll && currentScroll > scrollThreshold && scrollDelta > 0.5) {
+        if (
+            currentScroll > lastScroll &&
+            currentScroll > scrollThreshold &&
+            scrollDelta > 0.5
+        ) {
             header.classList.add('is-hidden');
         }
 
@@ -417,6 +424,21 @@ function init() {
         const globeContainer = document.getElementById('globe-container');
         if (globeContainer && !app.prefersReducedMotion) {
             app.globe = initGlobe(globeContainer);
+        }
+
+        // Initialize network canvas
+        const networkCanvas = document.getElementById('network-canvas');
+        if (networkCanvas && !app.prefersReducedMotion) {
+            app.networkCanvas = initNetworkCanvas(networkCanvas, {
+                starCount: 100,
+                linkDistance: 150,
+                maxVelocity: 25,
+                minRadius: 1,
+                maxRadius: 2,
+                starColor: '#ffffff',
+                lineColor: '#ffffff',
+                interactive: true,
+            });
         }
 
         // Initialize interactive elements
