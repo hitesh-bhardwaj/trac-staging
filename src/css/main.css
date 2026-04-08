@@ -786,11 +786,8 @@
     display: none;
 }
 
-
-
 .testimonial-card {
     will-change: transform, opacity;
-
 }
 @media (max-width: 768px) {
     .why-trac-section {
@@ -955,8 +952,6 @@
     pointer-events: none;
 }
 
-
-
 .slide-counter,
 .faq-question,
 .faq-question-text,
@@ -988,7 +983,7 @@
 }
 
 .testimonial-card::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     border-radius: 2vw;
@@ -999,7 +994,7 @@
 
 .testimonial-card.is-behind::after {
     background: rgba(0, 0, 0, 0.12);
-     border-radius: 2vw;
+    border-radius: 2vw;
 }
 
 @media (max-width: 1024px) {
@@ -1091,6 +1086,8 @@
 .faq-item {
     position: relative;
     background: #fff;
+    padding-left: 4.5vw;
+    padding-right: 4.5vw;
     transition:
         padding 0.3s ease,
         margin 0.3s ease;
@@ -1099,18 +1096,12 @@
 .faq-item[data-open] {
     border: 1px solid var(--color-brand-primary);
     border-radius: 0.75rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
 }
 @media (max-width: 1024px) {
     .faq-item[data-open] {
         border-radius: 20px;
         padding-left: 24px;
         padding-right: 24px;
-        margin-left: -24px;
-        margin-right: -24px;
     }
 }
 
@@ -1140,8 +1131,8 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
 }
 
 .faq-bar {
@@ -1154,21 +1145,25 @@
         background-color 0.3s ease;
 }
 
+.faq-item[data-open] .faq-bar {
+    transform: rotate(180deg);
+}
+
 .faq-bar-h {
-    width: 14px;
+    width: 16px;
     height: 2px;
 }
 
 .faq-bar-v {
     width: 2px;
-    height: 14px;
+    height: 16px;
     transform: rotate(0deg);
     opacity: 1;
 }
 
 .faq-item[data-open] .faq-bar-v {
     transform: rotate(90deg);
-    opacity: 0;
+    /* opacity: 0; */
 }
 
 .faq-answer {
@@ -1201,22 +1196,22 @@
 
 /* Underline Multi */
 .under-multi {
-  text-decoration: none;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0, 0)),
-    linear-gradient(#10417F,#10417F);
-  background-size:
-    100% 0px,
-    0% 1px;
-  background-position:
-    100% 100%,
-    0 100%;
-  background-repeat: no-repeat, no-repeat;
-  transition: background-size 0.3s ease-out;
+    text-decoration: none;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0, 0)),
+        linear-gradient(#10417f, #10417f);
+    background-size:
+        100% 0px,
+        0% 1px;
+    background-position:
+        100% 100%,
+        0 100%;
+    background-repeat: no-repeat, no-repeat;
+    transition: background-size 0.3s ease-out;
 }
 
 .under-multi-parent:hover .under-multi {
-  background-size: 100% 1px;
+    background-size: 100% 1px;
 }
 
 /* CTA Section */

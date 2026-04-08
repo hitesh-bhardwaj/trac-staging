@@ -30,7 +30,7 @@ export function initAnimations() {
     initParallaxAnimations();
     initTextAnimations();
     initHorizontalScroll();
-    // initStackingCards();
+    initStackingCards();
     initTestimonialsSlider();
     initOurNetworkAnimation();
     initCtaLineAnimation();
@@ -568,125 +568,37 @@ function initHorizontalScroll() {
 /**
  * Stacking cards animation for services section
  */
-// function initStackingCards() {
-//     const section = document.querySelector('[data-stacking-cards]');
-//     if (!section) return;
+function initStackingCards() {
+    const wrapper = document.querySelector('[data-stacking-cards]');
+    if (!wrapper) return;
 
-//     const cards = section.querySelectorAll('.service-card');
-//     if (cards.length === 0) return;
+    const cards = Array.from(wrapper.querySelectorAll('.service-card'));
 
-//     // Get card height for calculations
-//     const cardHeight = cards[0].offsetHeight;
-//     const stackOffset = 20; // Offset between stacked cards (in pixels)
-//     const totalCards = cards.length;
+    if (cards.length === 0) return;
 
-//     // Set initial state for cards
-//     cards.forEach((card, index) => {
-//         // Set z-index so later cards stack on top
-//         card.style.zIndex = index + 1;
+    // Animate each card (except the last one) as the next card comes up
+    cards.forEach((card, index) => {
+        // Skip the last card (nothing comes after it)
+        if (index === cards.length - 1) return;
 
-//         // Position cards for stacking effect
-//         if (index > 0) {
-//             gsap.set(card, {
-//                 y: cardHeight + 50, // Start below viewport
-//                 opacity: 1,
-//             });
-//         }
-//     });
+        const nextCard = cards[index + 1];
 
-//     // Create ScrollTrigger for pinning the section
-//     const scrollDistance = cardHeight * (totalCards - 1) + totalCards * 100;
+        // Create scroll trigger for this card
+        gsap.to(card, {
+            scale: 0.9,
+            filter: 'blur(4px)',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: nextCard,
+                start: 'top 80%',
+                end: 'top 30%',
+                scrub: 0.25,
+            },
+        });
+    });
 
-//     ScrollTrigger.create({
-//         trigger: section,
-//         start: 'top top+=100',
-//         end: `+=${scrollDistance}`,
-//         pin: true,
-//         pinSpacing: true,
-//         anticipatePin: 1,
-//         onUpdate: (self) => {
-//             const progress = self.progress;
-//             const segmentSize = 1 / totalCards;
-
-//             cards.forEach((card, index) => {
-//                 if (index === 0) return; // First card stays in place
-
-//                 const cardStartProgress = (index - 1) * segmentSize;
-//                 const cardEndProgress = index * segmentSize;
-
-//                 if (
-//                     progress >= cardStartProgress &&
-//                     progress <= cardEndProgress
-//                 ) {
-//                     // Card is animating into view
-//                     const cardProgress =
-//                         (progress - cardStartProgress) / segmentSize;
-
-//                     // Animate card moving up
-//                     gsap.to(card, {
-//                         y:
-//                             (1 - cardProgress) * (cardHeight + 50) +
-//                             index * stackOffset,
-//                         duration: 0,
-//                         overwrite: true,
-//                     });
-
-//                     // Blur previous cards
-//                     for (let i = 0; i < index; i++) {
-//                         const blurAmount = cardProgress * 3; // Max 3px blur
-//                         const scaleAmount = 1 - cardProgress * 0.02; // Slight scale down
-//                         gsap.to(cards[i], {
-//                             filter: `blur(${blurAmount}px)`,
-//                             scale: scaleAmount,
-//                             y: i * stackOffset,
-//                             duration: 0,
-//                             overwrite: true,
-//                         });
-//                     }
-//                 } else if (progress > cardEndProgress) {
-//                     // Card has fully entered
-//                     gsap.to(card, {
-//                         y: index * stackOffset,
-//                         duration: 0,
-//                         overwrite: true,
-//                     });
-
-//                     // Previous cards stay blurred
-//                     for (let i = 0; i < index; i++) {
-//                         gsap.to(cards[i], {
-//                             filter: 'blur(3px)',
-//                             scale: 0.98,
-//                             y: i * stackOffset,
-//                             duration: 0,
-//                             overwrite: true,
-//                         });
-//                     }
-//                 } else {
-//                     // Card hasn't started animating yet
-//                     gsap.to(card, {
-//                         y: cardHeight + 50,
-//                         duration: 0,
-//                         overwrite: true,
-//                     });
-//                 }
-//             });
-
-//             // Unblur the top card
-//             const currentTopCard = Math.min(
-//                 Math.floor(progress * totalCards),
-//                 totalCards - 1,
-//             );
-//             gsap.to(cards[currentTopCard], {
-//                 filter: 'blur(0px)',
-//                 scale: 1,
-//                 duration: 0,
-//                 overwrite: true,
-//             });
-//         },
-//     });
-
-//     console.log('[Trac] Stacking cards animation initialized');
-// }
+    console.log('[Trac] Stacking cards animation initialized');
+}
 
 /**
  * Testimonials slider with navigation
@@ -696,7 +608,7 @@ function initTestimonialsSlider() {
     if (!section) return;
 
     const track = section.querySelector('.testimonials-track');
-    const cards = section.querySelectorAll('.testimonial-card');
+    const cards = Array.from(section.querySelectorAll('.testimonial-card'));
     const prevBtn = section.querySelector('.arrow-prev');
     const nextBtn = section.querySelector('.arrow-next');
     const currentSlide = section.querySelector('.current-slide');
@@ -706,6 +618,7 @@ function initTestimonialsSlider() {
 
     let currentIndex = 0;
     const totalCards = cards.length;
+    let isAnimating = false;
 
     // Update total slides display
     if (totalSlides) {
@@ -722,51 +635,80 @@ function initTestimonialsSlider() {
         }
     }
 
-    // Scroll to specific card
-    function scrollToCard(index) {
+    // Initialize cards - hide all except first
+    cards.forEach((card, index) => {
+        if (index === 0) {
+            gsap.set(card, { x: '0%', scale: 1, filter: 'brightness(1)', zIndex: 2 });
+        } else {
+            gsap.set(card, { x: '0%', scale: 0.9, filter: 'brightness(0.6)', zIndex: 1 });
+        }
+    });
+
+    // Animate to specific card
+    function goToCard(index, direction = 'next') {
+        if (isAnimating) return;
+
+        // Wrap around
         if (index < 0) index = totalCards - 1;
         if (index >= totalCards) index = 0;
 
-        currentIndex = index;
-        const card = cards[index];
+        if (index === currentIndex) return;
 
-        track.scrollTo({
-            left: card.offsetLeft - track.offsetLeft,
-            behavior: 'smooth',
+        isAnimating = true;
+
+        const currentCard = cards[currentIndex];
+        const nextCard = cards[index];
+
+        // Determine slide direction
+        const slideFrom = direction === 'next' ? '100%' : '-100%';
+
+        // Set next card starting position before animating
+        gsap.set(nextCard, {
+            x: slideFrom,
+            scale: 1,
+            filter: 'brightness(1)',
+            zIndex: 2
         });
 
+        // Animate out current card - scale down and dim with brightness (stays in place)
+        gsap.to(currentCard, {
+            scale: 0.9,
+            filter: 'brightness(0.6)',
+            duration: 0.5,
+            ease: 'power2.inOut',
+            zIndex: 1,
+            onComplete: () => {
+                // Reset current card position after it's hidden
+                gsap.set(currentCard, { x: '0%' });
+            }
+        });
+
+        // Animate in next card - slide from left or right
+        gsap.to(nextCard, {
+            x: '0%',
+            duration: 0.6,
+            ease: 'power2.out',
+            onComplete: () => {
+                isAnimating = false;
+            },
+        });
+
+        currentIndex = index;
         updateCounter();
     }
 
     // Navigation button handlers
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
-            scrollToCard(currentIndex - 1);
+            goToCard(currentIndex - 1, 'prev');
         });
     }
 
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
-            scrollToCard(currentIndex + 1);
+            goToCard(currentIndex + 1, 'next');
         });
     }
-
-    // Update counter on scroll
-    track.addEventListener('scroll', () => {
-        const scrollLeft = track.scrollLeft;
-        const cardWidth =
-            cards[0].offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
-
-        const newIndex = Math.round(scrollLeft / cardWidth);
-        if (
-            newIndex !== currentIndex &&
-            newIndex >= 0 &&
-            newIndex < totalCards
-        ) {
-            currentIndex = newIndex;
-            updateCounter();
-        }
-    });
 
     // Initialize counter
     updateCounter();

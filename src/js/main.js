@@ -80,24 +80,46 @@ function initHeader() {
 
     let lastScroll = 0;
     const scrollThreshold = 100;
+    let scrollTimeout = null;
 
-    // Header scroll behavior
+    // Header scroll behavior with scroll-stop detection
     const updateHeader = () => {
         const currentScroll = window.scrollY;
+        const scrollDelta = Math.abs(currentScroll - lastScroll);
 
-        // Add/remove scrolled class
+        // Add/remove scrolled class (updates immediately)
         if (currentScroll > 50) {
             header.classList.add('is-scrolled');
         } else {
             header.classList.remove('is-scrolled');
         }
 
-        // Hide/show on scroll direction
-        if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
-            header.classList.add('is-hidden');
-        } else {
+        // Scrolling up - show header immediately
+        if (currentScroll < lastScroll && scrollDelta > 0.5) {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
             header.classList.remove('is-hidden');
+            lastScroll = currentScroll;
+            return;
         }
+
+        // Scrolling down - hide header immediately
+        if (currentScroll > lastScroll && currentScroll > scrollThreshold && scrollDelta > 0.5) {
+            header.classList.add('is-hidden');
+        }
+
+        // Always set/reset timeout to show header after scroll stops
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+
+        scrollTimeout = setTimeout(() => {
+            if (header.classList.contains('is-hidden')) {
+                header.classList.remove('is-hidden');
+                console.log('[Header] Showing header after scroll stop');
+            }
+        }, 300);
 
         lastScroll = currentScroll;
     };
