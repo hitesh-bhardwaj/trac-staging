@@ -116,7 +116,7 @@ function trac_enqueue_assets()
             wp_enqueue_script(
                 'trac-main',
                 TRAC_URI . '/dist/' . $main_entry['file'],
-                [],
+                ['lenis-init'], // Wait for Lenis to load first
                 TRAC_VERSION,
                 true,
             );
