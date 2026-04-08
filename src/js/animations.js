@@ -27,7 +27,7 @@ export function initAnimations() {
     initSectionAnimations();
     initParallaxAnimations();
     initTextAnimations();
-    initFooterParallax();
+    // initFooterParallax();
     initStackingCards();
     initTestimonialsSlider();
     initOurNetworkAnimation();
@@ -127,7 +127,7 @@ function initWhyTracCircles() {
             once: true,
         },
     }).to(ordered, {
-        opacity: 1,
+        opacity: 0.5,
         scale: 1,
         duration: 1.0,
         // Less "springy" than before, but still bouncy.
@@ -198,7 +198,7 @@ function initWhyTracScrollStory() {
         // Keep a constant primary color all the way to the end.
         drawLine.style.stroke = '#10417F';
         drawLine.style.strokeOpacity = '1';
-        drawLine.style.strokeWidth = '2';
+        drawLine.style.strokeWidth = '1.5';
         drawLine.style.strokeLinecap = 'round';
         drawLine.style.vectorEffect = '';
         progressBase.insertAdjacentElement('afterend', drawLine);
@@ -358,7 +358,7 @@ function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) 
             clone.style.stroke = '#10417F';
             // We'll fade the stroke in as it draws so it feels like it fills from transparent -> primary.
             clone.style.strokeOpacity = '0';
-            clone.style.strokeWidth = '3';
+            clone.style.strokeWidth = '2';
             clone.style.strokeLinecap = 'round';
             clone.style.strokeLinejoin = 'round';
             clone.style.vectorEffect = 'non-scaling-stroke';
@@ -437,7 +437,7 @@ function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) 
                 trigger: section,
                 start: 'top top',
                 end: 'bottom bottom',
-                scrub: 0.8,
+                scrub: 0.25,
             },
         });
 
@@ -593,10 +593,10 @@ function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) 
                 {
                     opacity: 1,
                     y: 0,
-                    duration: 0.08,
+                    duration: 0.01,
                     ease: 'power2.out',
                 },
-                t + 0.02,
+                t + 0,
             );
         }
 

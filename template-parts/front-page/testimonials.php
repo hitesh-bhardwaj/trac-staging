@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <section class="testimonials-section relative overflow-hidden bg-[#eef3fc]" data-section="testimonials">
-   
+
 
     <div class="testimonials-container w-full flex flex-col items-end px-[5.21vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="testimonials-header mb-[2.604vw] md:mb-10 sm:mb-8 w-full">
@@ -87,13 +87,13 @@ if (!defined('ABSPATH')) {
             <div class="testimonials-track relative h-[30vw] w-[44vw] overflow-visible md:h-[360px] md:w-[72vw] sm:h-[300px] sm:w-full">
                 <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-white p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[24px] sm:p-6">
                     <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-text-primary md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                        We have been working with TransAfrica Communications for 5 years now and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
+                        Throughout the course of 4 years of working together, we have been constantly impressed by TransAfrica Communications’ ability to provide requested services in a timely manner and ensure that any bumps along the way are sorted out with the at most priority in the shortest time possible.
                     </p>
                     <div class="testimonial-author">
                         <img
                             src="<?php echo esc_url(
                                 get_template_directory_uri() .
-                                    '/src/imgs/testimonial-logo-1.png',
+                                    '/src/imgs/client-partners.png',
                             ); ?>"
                             alt="Partners In Health"
                             class="h-[2.552vw] w-auto md:h-10 sm:h-8"
@@ -103,13 +103,13 @@ if (!defined('ABSPATH')) {
 
                 <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-white p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[24px] sm:p-6">
                     <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-text-primary md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                        TrAC has transformed our business operations with their reliable connectivity solutions. Their 24/7 support team is always responsive and their technical expertise is unmatched in the region. We highly recommend their services to any organization looking for premium internet solutions.
+                        TransAfrica Communications (TrAC) has been providing to us Multiprotocol Label Switching (MPLS private network) and Internet services which are highly efficient, scalable and secure. In our interactions, we have found TrAC staff to be highly professional and rich with experience in project implementation skills and the ability to handle diverse environments.
                     </p>
                     <div class="testimonial-author">
                         <img
                             src="<?php echo esc_url(
                                 get_template_directory_uri() .
-                                    '/src/imgs/testimonial-logo-1.png',
+                                    '/src/imgs/client-urwego.png',
                             ); ?>"
                             alt="Client logo"
                             class="h-[2.552vw] w-auto md:h-10 sm:h-8"
@@ -119,13 +119,13 @@ if (!defined('ABSPATH')) {
 
                 <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-white p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[24px] sm:p-6">
                     <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-text-primary md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                        Since partnering with TrAC, our hotel guests have consistently praised the internet quality. The dedicated connection ensures our business operations run smoothly while guests enjoy seamless streaming and video calls. A game-changer for the hospitality industry.
+                        We have been working with TransAfrica Communications for 5 years now and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
                     </p>
                     <div class="testimonial-author">
                         <img
                             src="<?php echo esc_url(
                                 get_template_directory_uri() .
-                                    '/src/imgs/testimonial-logo-1.png',
+                                    '/src/imgs/client-smart.png',
                             ); ?>"
                             alt="Client logo"
                             class="h-[2.552vw] w-auto md:h-10 sm:h-8"

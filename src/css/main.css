@@ -924,18 +924,21 @@
 }
 
 [data-parallax-footer] {
+    width: 100%;
+    max-height: 65vh;
+    height: 100vh;
+    overflow: hidden;
+    clip-path: inset(0% 0% 0% 0%);
+    -webkit-clip-path: inset(0% 0% 0% 0%);
+    will-change: clip-path;
+}
+
+[data-footer-clippath] {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 1;
-    width: 100%;
-    max-height: 100vh;
-    overflow: hidden;
-    /* Hidden until revealed by ScrollTrigger */
-    clip-path: inset(100% 0% 0% 0%);
-    -webkit-clip-path: inset(100% 0% 0% 0%);
-    will-change: clip-path;
 }
 
 @media (max-width: 768px) {

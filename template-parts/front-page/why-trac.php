@@ -9,24 +9,24 @@ if (!defined('ABSPATH')) {
             <!-- Straight progress line (SVG so we can draw it on scroll) -->
             <svg class="why-progress-line w-[270vw] mt-[-0.2%] absolute top-[50%] left-[96%] h-[2px]" viewBox="0 0 1000 2" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" data-why-progress-line aria-hidden="true" focusable="false">
                 <!-- Base is transparent; JS draws an overlay stroke on scroll -->
-                <line x1="0" y1="1" x2="1000" y2="1" stroke="transparent" stroke-width="2" />
+                <line x1="0" y1="1" x2="1000" y2="1" stroke="transparent" stroke-width="1.5" />
             </svg>
             <div class="why-trac-slide why-trac-slide-title w-screen h-screen flex-shrink-0 flex items-center justify-center relative">
                 <div class="why-circles absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[37.188vw] h-[36.771vw] md:w-[80vw] md:h-[80vw]">
                     <img src="<?php echo esc_url(
                         get_template_directory_uri() .
                             '/src/imgs/circle-bg-why-trac.svg',
-                    ); ?>" alt="" class="absolute inset-[10.5%] w-[79%] h-[79%]" loading="lazy">
+                    ); ?>" alt="" class="absolute inset-[10.5%] opacity-50 w-[79%] h-[79%]" loading="lazy">
                     <img src="<?php echo esc_url(
                         get_template_directory_uri() .
                             '/src/imgs/circle-bg-why-trac.svg',
-                    ); ?>" alt="" class="absolute inset-[5%] w-[90%] h-[90%]" loading="lazy">
+                    ); ?>" alt="" class="absolute inset-[5%] opacity-50 w-[90%] h-[90%]" loading="lazy">
                     <img src="<?php echo esc_url(
                         get_template_directory_uri() .
                             '/src/imgs/circle-bg-why-trac.svg',
-                    ); ?>" alt="" class="absolute inset-0 w-full h-full" loading="lazy">
+                    ); ?>" alt="" class="absolute inset-0 opacity-50 w-full h-full" loading="lazy">
                 </div>
-               
+
 
                 <div class="why-title-content relative z-10 text-center pt-[2vw]">
                     <div class="why-label flex items-center justify-center gap-[0.729vw] mb-[5.604vw] md:gap-3 md:mb-8">
@@ -60,7 +60,7 @@ if (!defined('ABSPATH')) {
 </defs>
 </svg>
 </div>
-        
+
             </div>
 
             <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5.21vw] md:flex-col md:gap-8 md:px-[4vw]">
@@ -106,10 +106,10 @@ if (!defined('ABSPATH')) {
                 </div>
 
 </div>
-           
+
 
             <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5.21vw] md:flex-col md:gap-8 md:px-[4vw]">
-                
+
 
                 <div class="why-card flex flex-col gap-[0.729vw] w-[23.438vw] md:w-full md:max-w-md">
                     <div class="why-card-image bg-transparent h-[28.646vw] rounded-[1.25vw] overflow-hidden md:h-64 md:rounded-2xl">
@@ -141,7 +141,7 @@ if (!defined('ABSPATH')) {
 
 
             <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5.21vw] md:flex-col md:gap-8 md:px-[4vw]">
-               
+
 
                 <div class="why-card flex flex-col gap-[0.729vw] w-[23.438vw] md:w-full md:max-w-md">
                     <div class="why-card-image bg-transparent h-[28.646vw] rounded-[1.25vw] overflow-hidden md:h-64 md:rounded-2xl">
