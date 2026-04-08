@@ -6,7 +6,7 @@
  */
 ?>
 
-    <footer id="site-footer" class="site-footer bg-white">
+    <footer id="site-footer" class="site-footer " data-parallax-footer>
         <div class="footer-container w-full px-[5.21vw] pt-[5.469vw] pb-[2vw] md:px-[4vw] md:pt-20 md:pb-16 sm:px-[6vw] sm:pt-16 sm:pb-12 ">
             <!-- Footer Top -->
             <div class="footer-top grid grid-cols-[1fr_auto_auto]  mb-[5vw] md:grid-cols-1 md:gap-12 md:mb-16 sm:mb-12">

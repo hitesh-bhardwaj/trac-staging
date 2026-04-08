@@ -750,6 +750,39 @@
     opacity: 0.6;
 }
 
+/* Why TrAC connector (title slide) */
+.why-lines [data-why-connect] path,
+.why-lines [data-why-connect] line,
+.why-lines [data-why-connect] polyline {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.why-lines [data-why-connect] path:not([data-why-draw]),
+.why-lines [data-why-connect] line:not([data-why-draw]),
+.why-lines [data-why-connect] polyline:not([data-why-draw]) {
+    /* Keep connector base invisible so the draw feels like it fills on transparency */
+    stroke: rgba(17, 17, 17, 0);
+    stroke-width: 1.25;
+}
+
+.why-lines [data-why-connect] path[data-why-draw],
+.why-lines [data-why-connect] line[data-why-draw],
+.why-lines [data-why-connect] polyline[data-why-draw] {
+    stroke: #10417f;
+    stroke-width: 3;
+}
+
+.why-lines [data-why-connect] circle {
+    transform-origin: 50% 50%;
+}
+
+.why-lines [data-why-connect] path[fill] {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
 .why-main-title,
 .why-card-title,
 .why-card-desc,
@@ -881,6 +914,42 @@
 
 .site-main {
     padding-top: 0;
+}
+
+/* Parallax footer (CTA passes over a fixed footer) */
+#page {
+    position: relative;
+    z-index: 2;
+    margin-bottom: var(--parallax-footer-height, 0px);
+}
+
+[data-parallax-footer] {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+    /* Hidden until revealed by ScrollTrigger */
+    clip-path: inset(100% 0% 0% 0%);
+    -webkit-clip-path: inset(100% 0% 0% 0%);
+    will-change: clip-path;
+}
+
+@media (max-width: 768px) {
+    #page {
+        margin-bottom: 0px;
+    }
+
+    [data-parallax-footer] {
+        position: static;
+        clip-path: none;
+        -webkit-clip-path: none;
+        max-height: none;
+        overflow: visible;
+    }
 }
 
 .about-section,
