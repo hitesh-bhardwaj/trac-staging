@@ -33,6 +33,7 @@ export function initAnimations() {
     initStackingCards();
     initTestimonialsSlider();
     initOurNetworkAnimation();
+    initOurNetworkPointers();
     initCtaLineAnimation();
 
     // Refresh ScrollTrigger after all animations are set up
@@ -779,29 +780,107 @@ function initOurNetworkAnimation() {
         });
     });
 
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: section,
-            start: 'top 70%',
-            once: true,
+   const tl = gsap.timeline({
+    delay: 1,
+    scrollTrigger: {
+        trigger: section,
+        start: 'top 70%',
+        once: true,
+    },
+});
+
+linePaths.forEach((path, index) => {
+    tl.to(
+        path,
+        {
+            strokeDashoffset: 0,
+            duration: 0.5,
+            ease: 'power2.out',
         },
-    });
-
-    linePaths.forEach((path, index) => {
-        tl.to(
-            path,
-            {
-                strokeDashoffset: 0,
-                duration: 0.5,
-                ease: 'power2.out',
-            },
-            index === 0 ? 0 : '>-0.3'
-        );
-    });
-
+        index === 0 ? 0 : '>-0.3'
+    );
+});
     console.log('[Trac] Our Network line animation initialized');
 }
 
+function initOurNetworkPointers() {
+    const section = document.querySelector('.our-network-section');
+    if (!section) return;
+
+    const circleLayer = section.querySelector('[data-network-draw="circle"]');
+    const dottedLayer = section.querySelector('[data-network-draw="dotted"]');
+
+    const allCircles = [
+        ...(circleLayer ? Array.from(circleLayer.querySelectorAll('circle')) : []),
+        ...(dottedLayer ? Array.from(dottedLayer.querySelectorAll('circle')) : []),
+    ];
+
+    const pointerCards = Array.from(section.querySelectorAll('.pointer-card'));
+    if (!allCircles.length || !pointerCards.length) return;
+
+    const hideAllPointers = () => {
+        pointerCards.forEach((card) => card.classList.remove('is-active'));
+    };
+
+    const nodeMap = new Map();
+
+    allCircles.forEach((circle) => {
+        const cx = circle.getAttribute('cx');
+        const cy = circle.getAttribute('cy');
+        const key = `${cx}-${cy}`;
+
+        if (!nodeMap.has(key)) {
+            nodeMap.set(key, []);
+        }
+
+        nodeMap.get(key).push(circle);
+    });
+
+    const nodeGroups = Array.from(nodeMap.values());
+
+    nodeGroups.forEach((group, index) => {
+        const pointerCard = section.querySelector(`.pointer-${index + 1}`);
+        if (!pointerCard) return;
+
+        const showPointer = () => {
+            hideAllPointers();
+            pointerCard.classList.add('is-active');
+        };
+
+        const hidePointer = () => {
+            pointerCard.classList.remove('is-active');
+        };
+
+        group.forEach((circle) => {
+            const r = circle.getAttribute('r');
+            const fill = circle.getAttribute('fill');
+            const stroke = circle.getAttribute('stroke');
+
+            const isOuter =
+                r === '11.5' &&
+                fill === '#EFF4FC' &&
+                stroke === '#001837';
+
+            const isInner =
+                r === '7' &&
+                fill === '#F0741C';
+
+            if (!isOuter && !isInner) return;
+
+            circle.addEventListener('mouseenter', showPointer);
+            circle.addEventListener('mouseleave', hidePointer);
+            circle.addEventListener('click', showPointer);
+
+            circle.setAttribute('tabindex', '0');
+            circle.setAttribute('role', 'button');
+            circle.setAttribute('aria-label', `Show network pointer ${index + 1}`);
+        });
+    });
+
+    section.addEventListener('mouseleave', hideAllPointers);
+
+    console.log('[Trac] Our Network pointers initialized');
+}
 /**
  * Create scroll-triggered counter animation
  */
