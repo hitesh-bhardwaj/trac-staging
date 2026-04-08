@@ -346,6 +346,12 @@ let camera = null;
 let controls = null;
 let animationId = null;
 
+// Mouse interaction state
+let mouseX = 0;
+let mouseY = 0;
+let targetRotationX = 0;
+let targetRotationY = 0;
+
 /**
  * Create animated arcs with staggered timing
  */
@@ -365,6 +371,9 @@ export function initGlobe(container, options = {}) {
     }
 
     const config = { ...GLOBE_CONFIG, ...options };
+
+    // Find the hero section for mouse tracking (or use window as fallback)
+    const heroSection = container.closest('[data-section="hero"]') || container.closest('section') || document.documentElement;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -394,8 +403,8 @@ export function initGlobe(container, options = {}) {
     controls.enableZoom = false;
     controls.enablePan = false;
     controls.rotateSpeed = 0.5;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.5;
+    controls.autoRotate = false; // Disabled for mouse interaction
+    controls.autoRotateSpeed = 0;
 
     // Lighting setup - creates the glow effect
     const ambientLight = new THREE.AmbientLight(config.ambientLight, 1.8);
@@ -484,8 +493,14 @@ export function initGlobe(container, options = {}) {
     globeMaterial.opacity = 1.0;
 
     // Set initial rotation to focus on Africa
-    globe.rotation.y = -Math.PI * (config.initialPosition.lng / 180);
-    globe.rotation.x = Math.PI * (config.initialPosition.lat / 180);
+    const initialRotY = -Math.PI * (config.initialPosition.lng / 180);
+    const initialRotX = Math.PI * (config.initialPosition.lat / 180);
+    globe.rotation.y = initialRotY;
+    globe.rotation.x = initialRotX;
+
+    // Set initial target rotation (will be overridden by mouse movement)
+    targetRotationY = initialRotY;
+    targetRotationX = initialRotX;
 
     scene.add(globe);
 
@@ -494,6 +509,13 @@ export function initGlobe(container, options = {}) {
 
     // Event listeners
     window.addEventListener('resize', () => onWindowResize(container));
+    // Track mouse on entire hero section so text/buttons don't block interaction
+    heroSection.addEventListener('mousemove', (event) =>
+        onMouseMove(event, container),
+    );
+
+    // Store hero section reference for cleanup
+    container._heroSection = heroSection;
 
     // Start animation loop
     animate();
@@ -534,12 +556,36 @@ function onWindowResize(container) {
 }
 
 /**
+ * Mouse move handler for interactive globe rotation
+ */
+function onMouseMove(event, container) {
+    const rect = container.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Calculate mouse position relative to globe container center (-1 to 1)
+    // Using clientX/Y directly since event might be from parent element
+    mouseX = (event.clientX - centerX) / (rect.width / 2);
+    mouseY = (event.clientY - centerY) / (rect.height / 2);
+
+    // Set target rotation based on mouse position
+    // Multiply by a factor to control rotation sensitivity
+    targetRotationY = mouseX * 0.3; // Horizontal rotation
+    targetRotationX = mouseY * 0.15; // Vertical rotation (less sensitive)
+}
+
+/**
  * Animation loop
  */
 function animate() {
     animationId = requestAnimationFrame(animate);
 
     if (!globe || !renderer || !scene || !camera || !controls) return;
+
+    // Smooth rotation based on mouse position
+    const lerpFactor = 0.05; // Smoothness factor (lower = smoother)
+    globe.rotation.y += (targetRotationY - globe.rotation.y) * lerpFactor;
+    globe.rotation.x += (targetRotationX - globe.rotation.x) * lerpFactor;
 
     // Update OrbitControls
     controls.update();
@@ -556,6 +602,17 @@ function destroyGlobe(container) {
         animationId = null;
     }
 
+    // Remove mouse event listener from hero section
+    if (container && container._heroSection) {
+        // Clone and replace to remove all event listeners
+        const heroSection = container._heroSection;
+        const newHeroSection = heroSection.cloneNode(true);
+        if (heroSection.parentNode) {
+            heroSection.parentNode.replaceChild(newHeroSection, heroSection);
+        }
+        delete container._heroSection;
+    }
+
     if (controls) {
         controls.dispose();
     }
@@ -568,7 +625,7 @@ function destroyGlobe(container) {
     }
 
     // Remove gradient overlay
-    const gradient = container.querySelector('.globe-gradient-overlay');
+    const gradient = container?.querySelector('.globe-gradient-overlay');
     if (gradient) {
         gradient.remove();
     }
@@ -582,6 +639,12 @@ function destroyGlobe(container) {
     scene = null;
     camera = null;
     controls = null;
+
+    // Reset mouse state
+    mouseX = 0;
+    mouseY = 0;
+    targetRotationX = 0;
+    targetRotationY = 0;
 
     console.log('[Trac Globe] Destroyed');
 }

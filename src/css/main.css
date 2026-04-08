@@ -272,7 +272,7 @@
     .btn-text {
         @apply pb-1;
         transform: translateX(0);
-        transition: transform 0.24s ease;
+        transition: transform 0.4s ease;
     }
 
     .btn-line {
@@ -285,7 +285,7 @@
         background-color: currentColor;
         transform: translateY(-50%) scaleX(0);
         transform-origin: left center;
-        transition: transform 0.24s ease;
+        transition: transform 0.4s ease;
     }
 
     .btn:hover .btn-line,
@@ -674,7 +674,7 @@
 
 .btn-icon .dot {
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
 .btn-primary .dot {
@@ -1438,7 +1438,7 @@
 }
 
 .loader-spinner {
-    @apply w-12 h-12 border-4 border-neutral-800 border-t-brand-primary rounded-full;
+    @apply w-12 h-12 rounded-full;
     animation: spin 1s linear infinite;
 }
 
@@ -1488,5 +1488,135 @@
 
     main {
         padding-top: 0;
+    }
+}
+
+/* ========================================
+   Page Loader
+   ======================================== */
+
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+.page-loader.is-loaded {
+    pointer-events: none;
+}
+
+.loader-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.loader-logo {
+    width: 120px;
+    height: auto;
+    animation: logoFloat 2s ease-in-out infinite;
+}
+
+.loader-logo img {
+    width: 100%;
+    height: auto;
+}
+
+.loader-spinner {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.spinner-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top-color: #10417f;
+    border-radius: 50%;
+    animation: spinnerRotate 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+.spinner-ring:nth-child(2) {
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    border-top-color: #E85D24;
+    animation-delay: 0.2s;
+    animation-duration: 1.2s;
+}
+
+.spinner-ring:nth-child(3) {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    border-top-color: #10417f;
+    animation-delay: 0.4s;
+    animation-duration: 1s;
+    opacity: 0.5;
+}
+
+.loader-text {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: #10417f;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: textPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes spinnerRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .loader-logo {
+        width: 80px;
+    }
+
+    .loader-spinner {
+        width: 60px;
+        height: 60px;
+    }
+
+    .loader-text {
+        font-size: 0.875rem;
     }
 }
