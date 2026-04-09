@@ -4,10 +4,10 @@ if (!defined('ABSPATH')) {
 }
 
 // Get CTA section settings
-$cta_title = get_field('cta_title') ?: 'Ready to Partner with TrAC?';
+$cta_title = get_field('cta_title') ?: 'Ready to Get on TrAC?';
 $cta_subtitle =
     get_field('cta_subtitle') ?:
-    'Let us know what you are building. We will align on delivery, operations, and long-term success.';
+    "Stop paying for internet you're not getting. Join businesses across Africa that trust TrAC.";
 $cta_button_text = get_field('cta_button_text') ?: 'Get Connected';
 $cta_button_link = get_field('cta_button_link') ?: '#get-connected';
 ?>

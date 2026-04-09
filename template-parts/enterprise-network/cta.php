@@ -15,7 +15,7 @@ $cta_button_link = get_field('cta_button_link') ?: '#get-connected';
 ?>
 
 <section class="cta-section relative bg-[#eef3fc] overflow-hidden" data-section="cta">
-    <div class="cta-bg-pattern absolute inset-0 w-full h-full top-[-12%]">
+    <div class="cta-bg-pattern absolute inset-0 w-full h-full top-[-15%]">
         <svg width="1796" height="670" viewBox="0 0 1796 670" fill="none" xmlns="http://www.w3.org/2000/svg" data-cta-svg>
             <path d="M1795.73 0C1795.73 0 1480.02 188.227 1307.73 346C1181.94 461.193 1013.73 669 1013.73 669" stroke="#D9D9D9"/>
             <path d="M1717.73 0C1717.73 0 1410.38 179.912 1252.23 346C1143.94 459.731 1003.69 669 1003.69 669" stroke="#D9D9D9"/>
@@ -117,7 +117,7 @@ $cta_button_link = get_field('cta_button_link') ?: '#get-connected';
                     <?php echo esc_html($cta_subtitle); ?>
                 </p>
 
-                <div class="cta-button-wrapper mt-[12vw]" data-animate="fade-up" data-delay="0.2">
+                <div class="cta-button-wrapper mt-[5vw]" data-animate="fade-up" data-delay="0.2">
                     <a href="<?php echo esc_url($cta_button_link); ?>" class="btn btn-primary group magnetic inline-flex">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
