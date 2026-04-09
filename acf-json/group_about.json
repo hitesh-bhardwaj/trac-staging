@@ -1,0 +1,90 @@
+{
+    "key": "group_about_section",
+    "title": "About Section",
+    "fields": [
+        {
+            "key": "field_about_label",
+            "label": "Section Label",
+            "name": "about_label",
+            "type": "text",
+            "default_value": "Why TrAC",
+            "required": 1
+        },
+        {
+            "key": "field_about_image",
+            "label": "Featured Image",
+            "name": "about_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1,
+            "instructions": "Upload the lion wireframe or other visual"
+        },
+        {
+            "key": "field_about_title",
+            "label": "Section Title",
+            "name": "about_title",
+            "type": "textarea",
+            "default_value": "TrAC is Rwanda's homegrown ISP, built on long-term commitment and technical excellence.",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_about_list_item_1",
+            "label": "Feature 1",
+            "name": "about_list_item_1",
+            "type": "text",
+            "default_value": "Fibre-first infrastructure",
+            "required": 1
+        },
+        {
+            "key": "field_about_list_item_2",
+            "label": "Feature 2",
+            "name": "about_list_item_2",
+            "type": "text",
+            "default_value": "Redundant international routes",
+            "required": 1
+        },
+        {
+            "key": "field_about_list_item_3",
+            "label": "Feature 3",
+            "name": "about_list_item_3",
+            "type": "text",
+            "default_value": "24/7 network monitoring",
+            "required": 1
+        },
+        {
+            "key": "field_about_list_item_4",
+            "label": "Feature 4",
+            "name": "about_list_item_4",
+            "type": "text",
+            "default_value": "Local support with fast response",
+            "required": 1
+        },
+        {
+            "key": "field_about_subtitle",
+            "label": "Bottom Subtitle",
+            "name": "about_subtitle",
+            "type": "textarea",
+            "default_value": "We design our network with protection in mind so you can stay online, connected, and secure.",
+            "rows": 2,
+            "required": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

@@ -658,12 +658,10 @@ function initCtaLineAnimation() {
         gradient.setAttribute('y2', String(end.y));
 
         [
-            [
-    { offset: '0%', color: '#FFFFFF', opacity: '0' },
-    { offset: '58%', color: '#FFFFFF', opacity: '0' },
-    { offset: '82%', color: '#10417F', opacity: '0.45' },
-    { offset: '100%', color: '#10417F', opacity: '1' },
-]
+            { offset: '0%', color: '#FFFFFF', opacity: '0' },
+            { offset: '58%', color: '#FFFFFF', opacity: '0' },
+            { offset: '82%', color: '#10417F', opacity: '0.45' },
+            { offset: '100%', color: '#10417F', opacity: '1' },
         ].forEach(({ offset, color, opacity }) => {
             const stop = document.createElementNS(
                 'http://www.w3.org/2000/svg',

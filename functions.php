@@ -196,6 +196,13 @@ function trac_clean_head()
 add_action('init', 'trac_clean_head');
 
 /**
+ * Custom Post Types
+ */
+if (file_exists(TRAC_DIR . '/inc/post-types.php')) {
+    require_once TRAC_DIR . '/inc/post-types.php';
+}
+
+/**
  * ACF Fields Registration
  */
 if (file_exists(TRAC_DIR . '/inc/acf-fields.php')) {

@@ -1,0 +1,143 @@
+{
+    "key": "group_faq_section",
+    "title": "FAQ Section Settings",
+    "fields": [
+        {
+            "key": "field_faq_section_label",
+            "label": "Section Label",
+            "name": "faq_section_label",
+            "type": "text",
+            "default_value": "FAQs",
+            "required": 0,
+            "instructions": "Small label text above the title"
+        },
+        {
+            "key": "field_faq_section_title",
+            "label": "Section Title",
+            "name": "faq_section_title",
+            "type": "text",
+            "default_value": "Frequently Asked Questions",
+            "required": 0,
+            "instructions": "Main section heading"
+        },
+        {
+            "key": "field_faq_display_mode",
+            "label": "Display Mode",
+            "name": "faq_display_mode",
+            "type": "select",
+            "instructions": "How to select which FAQs to display",
+            "required": 1,
+            "choices": {
+                "all": "Show All FAQs",
+                "category": "Show by Category",
+                "specific": "Select Specific FAQs",
+                "latest": "Show Latest FAQs"
+            },
+            "default_value": "latest",
+            "allow_null": 0,
+            "ui": 1,
+            "return_format": "value"
+        },
+        {
+            "key": "field_faq_categories",
+            "label": "FAQ Categories",
+            "name": "faq_categories",
+            "type": "taxonomy",
+            "instructions": "Select which categories to display",
+            "required": 0,
+            "taxonomy": "faq_category",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_faq_display_mode",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_faq_specific_items",
+            "label": "Select FAQs",
+            "name": "faq_specific_items",
+            "type": "relationship",
+            "instructions": "Choose specific FAQs to display",
+            "required": 0,
+            "post_type": ["faq"],
+            "filters": ["search", "taxonomy"],
+            "elements": ["featured_image"],
+            "min": 0,
+            "max": 20,
+            "return_format": "id",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_faq_display_mode",
+                        "operator": "==",
+                        "value": "specific"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_faq_limit",
+            "label": "Number to Display",
+            "name": "faq_limit",
+            "type": "number",
+            "instructions": "How many FAQs to show (0 = unlimited)",
+            "required": 0,
+            "default_value": 5,
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_faq_display_mode",
+                        "operator": "!=",
+                        "value": "specific"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_faq_open_first",
+            "label": "Open First Item",
+            "name": "faq_open_first",
+            "type": "true_false",
+            "instructions": "Automatically open the first FAQ item",
+            "default_value": 1,
+            "ui": 1,
+            "message": "Open first FAQ by default"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "default"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

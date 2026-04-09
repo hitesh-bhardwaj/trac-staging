@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 get_header();
 ?>
 
-<main id="main-content" class="site-main">
+<main id="main-content" class="site-main" data-barba="container" data-barba-namespace="home">
     <?php if (function_exists('have_rows') && have_rows('page_sections')): ?>
         <?php trac_render_sections('page_sections'); ?>
     <?php else: ?>

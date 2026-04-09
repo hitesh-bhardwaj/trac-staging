@@ -1,0 +1,165 @@
+{
+    "key": "group_services_section",
+    "title": "Services Section",
+    "fields": [
+        {
+            "key": "field_services_label",
+            "label": "Section Label",
+            "name": "services_label",
+            "type": "text",
+            "default_value": "What We Offer",
+            "required": 1
+        },
+        {
+            "key": "field_services_title",
+            "label": "Section Title",
+            "name": "services_title",
+            "type": "text",
+            "default_value": "Get Connected. Glitch Free",
+            "required": 1
+        },
+        {
+            "key": "field_service_1_title",
+            "label": "Service 1 - Title",
+            "name": "service_1_title",
+            "type": "text",
+            "default_value": "Home",
+            "required": 1
+        },
+        {
+            "key": "field_service_1_description",
+            "label": "Service 1 - Description",
+            "name": "service_1_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_service_1_link",
+            "label": "Service 1 - Link URL",
+            "name": "service_1_link",
+            "type": "url",
+            "default_value": "/home-internet",
+            "required": 1
+        },
+        {
+            "key": "field_service_1_image",
+            "label": "Service 1 - Image",
+            "name": "service_1_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_service_2_title",
+            "label": "Service 2 - Title",
+            "name": "service_2_title",
+            "type": "text",
+            "default_value": "Business",
+            "required": 1
+        },
+        {
+            "key": "field_service_2_description",
+            "label": "Service 2 - Description",
+            "name": "service_2_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_service_2_link",
+            "label": "Service 2 - Link URL",
+            "name": "service_2_link",
+            "type": "url",
+            "default_value": "/business-internet",
+            "required": 1
+        },
+        {
+            "key": "field_service_2_image",
+            "label": "Service 2 - Image",
+            "name": "service_2_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_service_3_title",
+            "label": "Service 3 - Title",
+            "name": "service_3_title",
+            "type": "text",
+            "default_value": "Enterprise",
+            "required": 1
+        },
+        {
+            "key": "field_service_3_description",
+            "label": "Service 3 - Description",
+            "name": "service_3_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_service_3_link",
+            "label": "Service 3 - Link URL",
+            "name": "service_3_link",
+            "type": "url",
+            "default_value": "/enterprise-connectivity",
+            "required": 1
+        },
+        {
+            "key": "field_service_3_image",
+            "label": "Service 3 - Image",
+            "name": "service_3_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_service_4_title",
+            "label": "Service 4 - Title",
+            "name": "service_4_title",
+            "type": "text",
+            "default_value": "Hosting & Data Centre",
+            "required": 1
+        },
+        {
+            "key": "field_service_4_description",
+            "label": "Service 4 - Description",
+            "name": "service_4_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_service_4_link",
+            "label": "Service 4 - Link URL",
+            "name": "service_4_link",
+            "type": "url",
+            "default_value": "/data-centre",
+            "required": 1
+        },
+        {
+            "key": "field_service_4_image",
+            "label": "Service 4 - Image",
+            "name": "service_4_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

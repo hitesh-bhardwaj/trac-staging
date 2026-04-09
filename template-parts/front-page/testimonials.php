@@ -14,7 +14,9 @@ if (!defined('ABSPATH')) {
             >
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-primary md:h-1 md:w-6 sm:w-5"></span>
                 <span class="label-text font-body text-[1.25vw] text-text-primary md:text-xl sm:text-lg">
-                    Testimonials
+                    <?php echo esc_html(
+                        get_field('testimonials_label') ?: 'Testimonials',
+                    ); ?>
                 </span>
             </div>
 
@@ -23,7 +25,9 @@ if (!defined('ABSPATH')) {
                 data-animate="fade-up"
                 data-delay="0.1"
             >
-                What Our Clients Say
+                <?php echo esc_html(
+                    get_field('testimonials_title') ?: 'What Our Clients Say',
+                ); ?>
             </h2>
         </div>
 
@@ -85,53 +89,115 @@ if (!defined('ABSPATH')) {
             data-delay="0.3"
         >
             <div class="testimonials-track relative h-[30vw] w-[44vw] overflow-visible md:h-[360px] md:w-[72vw] sm:h-[300px] sm:w-full">
-                <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-white p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[24px] sm:p-6">
-                    <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-text-primary md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                        Throughout the course of 4 years of working together, we have been constantly impressed by TransAfrica Communications’ ability to provide requested services in a timely manner and ensure that any bumps along the way are sorted out with the at most priority in the shortest time possible.
-                    </p>
-                    <div class="testimonial-author">
-                        <img
-                            src="<?php echo esc_url(
-                                get_template_directory_uri() .
-                                    '/src/imgs/client-partners.png',
-                            ); ?>"
-                            alt="Partners In Health"
-                            class="h-[2.552vw] w-auto md:h-10 sm:h-8"
-                        >
-                    </div>
-                </div>
+                <?php
+                // Get testimonials limit from ACF
+                $limit = get_field('testimonials_limit') ?: 3;
 
-                <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-white p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[24px] sm:p-6">
-                    <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-text-primary md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                        TransAfrica Communications (TrAC) has been providing to us Multiprotocol Label Switching (MPLS private network) and Internet services which are highly efficient, scalable and secure. In our interactions, we have found TrAC staff to be highly professional and rich with experience in project implementation skills and the ability to handle diverse environments.
-                    </p>
-                    <div class="testimonial-author">
-                        <img
-                            src="<?php echo esc_url(
-                                get_template_directory_uri() .
-                                    '/src/imgs/client-urwego.png',
-                            ); ?>"
-                            alt="Client logo"
-                            class="h-[2.552vw] w-auto md:h-10 sm:h-8"
-                        >
-                    </div>
-                </div>
+                // Query testimonial posts
+                $testimonials_query = new WP_Query([
+                    'post_type' => 'testimonial',
+                    'posts_per_page' => $limit,
+                    'post_status' => 'publish',
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'meta_query' => [
+                        'relation' => 'OR',
+                        [
+                            'key' => 'testimonial_featured',
+                            'value' => '1',
+                            'compare' => '=',
+                        ],
+                        [
+                            'key' => 'testimonial_featured',
+                            'compare' => 'NOT EXISTS',
+                        ],
+                    ],
+                ]);
 
-                <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-white p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[24px] sm:p-6">
-                    <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-text-primary md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                        We have been working with TransAfrica Communications for 5 years now and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
-                    </p>
-                    <div class="testimonial-author">
-                        <img
-                            src="<?php echo esc_url(
+                if ($testimonials_query->have_posts()):
+                    while ($testimonials_query->have_posts()):
+                        $testimonials_query->the_post();
+
+                        $quote = get_field('testimonial_quote');
+                        $author = get_field('testimonial_author');
+                        $role = get_field('testimonial_role');
+                        $company = get_field('testimonial_company');
+                        $logo = get_field('testimonial_company_logo');
+
+                        // Fallback logo if none provided
+                        if (!$logo) {
+                            $logo =
                                 get_template_directory_uri() .
-                                    '/src/imgs/client-smart.png',
-                            ); ?>"
-                            alt="Client logo"
-                            class="h-[2.552vw] w-auto md:h-10 sm:h-8"
-                        >
+                                '/src/imgs/testimonial-logo-1.png';
+                        }
+                        ?>
+                        <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-white p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[24px] sm:p-6">
+                            <?php if ($quote): ?>
+                                <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-text-primary md:mb-6 md:text-lg sm:mb-5 sm:text-base">
+                                    <?php echo esc_html($quote); ?>
+                                </p>
+                            <?php endif; ?>
+
+                            <div class="testimonial-author">
+                                <?php if ($logo): ?>
+                                    <img
+                                        src="<?php echo esc_url($logo); ?>"
+                                        alt="<?php echo esc_attr(
+                                            $company ?: 'Client logo',
+                                        ); ?>"
+                                        class="h-[2.552vw] w-auto md:h-10 sm:h-8"
+                                    >
+                                <?php endif; ?>
+
+                                <?php if ($author || $role): ?>
+                                    <div class="author-details mt-4">
+                                        <?php if ($author): ?>
+                                            <p class="author-name font-heading text-[1.042vw] font-semibold text-text-primary md:text-base">
+                                                <?php echo esc_html($author); ?>
+                                            </p>
+                                        <?php endif; ?>
+
+                                        <?php if ($role || $company): ?>
+                                            <p class="author-role font-body text-[0.938vw] text-text-muted md:text-sm">
+                                                <?php
+                                                if ($role && $company) {
+                                                    echo esc_html(
+                                                        $role . ', ' . $company,
+                                                    );
+                                                } elseif ($role) {
+                                                    echo esc_html($role);
+                                                } elseif ($company) {
+                                                    echo esc_html($company);
+                                                }
+                                                ?>
+                                            </p>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else:
+                    ?>
+                    <!-- Fallback: Show default testimonial if no posts exist -->
+                    <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-white p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[24px] sm:p-6">
+                        <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-text-primary md:mb-6 md:text-lg sm:mb-5 sm:text-base">
+                            We have been working with TransAfrica Communications for 5 years now and they have proven to be undoubtedly a reliable Internet Service Provider.
+                        </p>
+                        <div class="testimonial-author">
+                            <img
+                                src="<?php echo esc_url(
+                                    get_template_directory_uri() .
+                                        '/src/imgs/testimonial-logo-1.png',
+                                ); ?>"
+                                alt="Client logo"
+                                class="h-[2.552vw] w-auto md:h-10 sm:h-8"
+                            >
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

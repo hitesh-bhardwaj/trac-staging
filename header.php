@@ -19,7 +19,22 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<div id="page" class="site" data-scroll-container>
+<!-- Page Loader -->
+<div class="page-loader">
+    <div class="loader-inner">
+        <div class="loader-logo">
+            <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" alt="Trac Logo">
+        </div>
+        <div class="loader-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+        </div>
+        <p class="loader-text">Loading...</p>
+    </div>
+</div>
+
+<div id="page" class="site" data-scroll-container data-barba="wrapper">
     <a class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-brand-primary focus:text-white focus:px-4 focus:py-2 focus:rounded" href="#main-content">
         <?php esc_html_e('Skip to content', 'trac'); ?>
     </a>
@@ -100,14 +115,17 @@
                 <a href="<?php echo esc_url(
                     get_field('header_cta_link', 'option') ?: '#',
                 ); ?>" class="btn btn-primary md:hidden">
-                    <span class="btn-line"></span>
-                    <span class="btn-text">
+                    <!-- <span class="btn-line"></span> -->
+                     <span>
+                        Cloud Login
+                     </span>
+                    <!-- <span class="btn-text">
                         <?php echo esc_html(
                             get_field('header_cta_text', 'option') ?:
                             'Cloud Login',
                         ); ?>
-                    </span>
-                    <span class="btn-icon" aria-hidden="true">
+                    </span> -->
+                    <!-- <span class="btn-icon" aria-hidden="true">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
                             <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
@@ -116,7 +134,7 @@
                             <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
                             <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
                         </svg>
-                    </span>
+                    </span> -->
                 </a>
 
                 <!-- Mobile Menu Toggle -->

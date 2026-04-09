@@ -8,22 +8,36 @@ if (!defined('ABSPATH')) {
         <div class="hero-grid flex justify-between gap-[2.604vw] items-start md:grid-cols-1 md:gap-8">
             <div class="hero-text w-[70%] md:max-w-full md:pt-8 sm:pt-4">
                 <h1 class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4" data-animate="fade-up">
-                    <span class="block hero-title-line">Rwanda’s Connectivity</span>
-                    <span class="block hero-title-line">Backbone</span>
+                    <span class="block hero-title-line"><?php echo esc_html(
+                        get_field('hero_title_line_1') ?: "Rwanda's Connectivity",
+                    ); ?></span>
+                    <span class="block hero-title-line"><?php echo esc_html(
+                        get_field('hero_title_line_2') ?: 'Backbone',
+                    ); ?></span>
                 </h1>
 
                 <p class="hero-subtitle-1 font-body font-normal text-text-body w-[70%] mb-[3.125vw] md:max-w-full md:mb-8 sm:mb-6" data-animate="fade-up" data-delay="0.1">
-                    Built for Speed. Designed for Growth.
+                    <?php echo esc_html(
+                        get_field('hero_subtitle_1') ?:
+                            'Built for Speed. Designed for Growth.',
+                    ); ?>
                 </p>
                 <p class="hero-subtitle font-body font-medium text-text-body w-[60%] mb-[3.125vw] md:max-w-full md:mb-8 sm:mb-6" data-animate="fade-up" data-delay="0.1">
-                    Rooted in Rwanda and expanding across East Africa, TrAC delivers reliable, fibre-first connectivity for homes, businesses, and the communities shaping the region's future.
+                    <?php echo esc_html(
+                        get_field('hero_subtitle_2') ?:
+                            "Rooted in Rwanda and expanding across East Africa, TrAC delivers reliable, fibre-first connectivity for homes, businesses, and the communities shaping the region's future.",
+                    ); ?>
                 </p>
 
                 <div class="hero-cta flex flex-wrap gap-[1.042vw] md:gap-4 sm:flex-col sm:gap-3" data-animate="fade-up" data-delay="0.2">
-                
-                <a href="#get-connected" class="btn btn-primary group magnetic">
+
+                <a href="<?php echo esc_url(
+                    get_field('hero_primary_button_link') ?: '#get-connected',
+                ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
-                        <span class="btn-text">Get on TrAC</span>
+                        <span class="btn-text"><?php echo esc_html(
+                            get_field('hero_primary_button_text') ?: 'Get on TrAC',
+                        ); ?></span>
                         <span class="btn-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
@@ -36,9 +50,14 @@ if (!defined('ABSPATH')) {
                         </span>
                     </a>
 
-                    <a href="#products" class="btn btn-outline group magnetic">
+                    <a href="<?php echo esc_url(
+                        get_field('hero_secondary_button_link') ?: '#products',
+                    ); ?>" class="btn btn-outline group magnetic">
                         <span class="btn-line"></span>
-                        <span class="btn-text">Explore Solutions</span>
+                        <span class="btn-text"><?php echo esc_html(
+                            get_field('hero_secondary_button_text') ?:
+                                'Explore Solutions',
+                        ); ?></span>
                         <span class="btn-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>

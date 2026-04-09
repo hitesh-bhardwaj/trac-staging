@@ -1,0 +1,90 @@
+{
+    "key": "group_hero_section",
+    "title": "Hero Section",
+    "fields": [
+        {
+            "key": "field_hero_title_line_1",
+            "label": "Title Line 1",
+            "name": "hero_title_line_1",
+            "type": "text",
+            "default_value": "Rwanda's Connectivity",
+            "placeholder": "First line of the hero title",
+            "required": 1
+        },
+        {
+            "key": "field_hero_title_line_2",
+            "label": "Title Line 2",
+            "name": "hero_title_line_2",
+            "type": "text",
+            "default_value": "Backbone",
+            "placeholder": "Second line of the hero title",
+            "required": 1
+        },
+        {
+            "key": "field_hero_subtitle_1",
+            "label": "Subtitle 1 (Tagline)",
+            "name": "hero_subtitle_1",
+            "type": "text",
+            "default_value": "Built for Speed. Designed for Growth.",
+            "placeholder": "Short tagline",
+            "required": 1
+        },
+        {
+            "key": "field_hero_subtitle_2",
+            "label": "Subtitle 2 (Description)",
+            "name": "hero_subtitle_2",
+            "type": "textarea",
+            "default_value": "Rooted in Rwanda and expanding across East Africa, TrAC delivers reliable, fibre-first connectivity for homes, businesses, and the communities shaping the region's future.",
+            "placeholder": "Longer description text",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_hero_primary_button_text",
+            "label": "Primary Button Text",
+            "name": "hero_primary_button_text",
+            "type": "text",
+            "default_value": "Get on TrAC",
+            "required": 1
+        },
+        {
+            "key": "field_hero_primary_button_link",
+            "label": "Primary Button Link",
+            "name": "hero_primary_button_link",
+            "type": "url",
+            "default_value": "#get-connected",
+            "required": 1
+        },
+        {
+            "key": "field_hero_secondary_button_text",
+            "label": "Secondary Button Text",
+            "name": "hero_secondary_button_text",
+            "type": "text",
+            "default_value": "Explore Solutions",
+            "required": 1
+        },
+        {
+            "key": "field_hero_secondary_button_link",
+            "label": "Secondary Button Link",
+            "name": "hero_secondary_button_link",
+            "type": "url",
+            "default_value": "#products",
+            "required": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

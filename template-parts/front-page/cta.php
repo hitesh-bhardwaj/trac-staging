@@ -2,6 +2,14 @@
 if (!defined('ABSPATH')) {
     exit();
 }
+
+// Get CTA section settings
+$cta_title = get_field('cta_title') ?: 'Ready to Get on TrAC?';
+$cta_subtitle =
+    get_field('cta_subtitle') ?:
+    "Stop paying for internet you're not getting. Join businesses across Africa that trust TrAC.";
+$cta_button_text = get_field('cta_button_text') ?: 'Get Connected';
+$cta_button_link = get_field('cta_button_link') ?: '#get-connected';
 ?>
 
 <section class="cta-section relative bg-[#eef3fc] overflow-hidden" data-section="cta">
@@ -100,17 +108,19 @@ if (!defined('ABSPATH')) {
         <div class="cta-content text-center max-w-[51vw] mx-auto mt-[5vw] md:max-w-full space-y-[15vw]">
             <div>
                 <h2 class="cta-title font-heading text-[3.438vw] leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.563vw] md:text-4xl md:mb-4 sm:text-3xl sm:mb-3" data-animate="fade-up">
-                    Ready to Get on TrAC?
+                    <?php echo esc_html($cta_title); ?>
                 </h2>
 
                 <p class="cta-subtitle font-body text-[1.25vw] leading-[1.5] text-[#1e1e1e] mb-[4.167vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-animate="fade-up" data-delay="0.1">
-                    Stop paying for internet you're not getting. Join businesses across Africa that trust TrAC.
+                    <?php echo esc_html($cta_subtitle); ?>
                 </p>
 
                 <div class="cta-button-wrapper mt-[12vw]" data-animate="fade-up" data-delay="0.2">
-                    <a href="#get-connected" class="btn btn-primary group magnetic inline-flex">
+                    <a href="<?php echo esc_url($cta_button_link); ?>" class="btn btn-primary group magnetic inline-flex">
                         <span class="btn-line"></span>
-                        <span class="btn-text">Get Connected</span>
+                        <span class="btn-text"><?php echo esc_html(
+                            $cta_button_text,
+                        ); ?></span>
                         <span class="btn-icon" aria-hidden="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>

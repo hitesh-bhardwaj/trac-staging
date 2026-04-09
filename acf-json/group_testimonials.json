@@ -1,0 +1,50 @@
+{
+    "key": "group_testimonials_section",
+    "title": "Testimonials Section Settings",
+    "fields": [
+        {
+            "key": "field_testimonials_label",
+            "label": "Section Label",
+            "name": "testimonials_label",
+            "type": "text",
+            "default_value": "Testimonials",
+            "required": 1,
+            "instructions": "Small label text above the title"
+        },
+        {
+            "key": "field_testimonials_title",
+            "label": "Section Title",
+            "name": "testimonials_title",
+            "type": "text",
+            "default_value": "What Our Clients Say",
+            "required": 1,
+            "instructions": "Main section heading"
+        },
+        {
+            "key": "field_testimonials_limit",
+            "label": "Number to Display",
+            "name": "testimonials_limit",
+            "type": "number",
+            "default_value": 3,
+            "min": 1,
+            "max": 10,
+            "required": 1,
+            "instructions": "How many testimonials to show in the slider (max 10)"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 3,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

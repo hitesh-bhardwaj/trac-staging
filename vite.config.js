@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-    base: '/wp-content/themes/trac/dist/',
+    base: '/wp-content/themes/trac-staging/dist/',
 
     resolve: {
         alias: {

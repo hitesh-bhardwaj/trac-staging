@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initAnimations } from './animations.js';
 import { initGlobe } from './globe.js';
 import { initNetworkCanvas } from './network-canvas.js';
+import { initBarba, initPageLoader } from './barba.js';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -169,31 +170,47 @@ function initHeader() {
 }
 
 /**
- * Initialize page loader
+ * Initialize all page-specific components
+ * Called on initial load and after Barba transitions
  */
-function initLoader() {
-    const loader = document.querySelector('.site-loader');
+function initializePageComponents() {
+    // Initialize FAQ accordion
+    initFaqs();
 
-    if (loader) {
-        window.addEventListener('load', () => {
-            gsap.to(loader, {
-                opacity: 0,
-                duration: 0.6,
-                onComplete: () => {
-                    loader.classList.add('is-loaded');
-                    app.isLoaded = true;
-                    document.dispatchEvent(new CustomEvent('trac:loaded'));
-                },
-            });
-        });
-    } else {
-        // No loader, mark as loaded immediately
-        window.addEventListener('load', () => {
-            app.isLoaded = true;
-            document.dispatchEvent(new CustomEvent('trac:loaded'));
-        });
+    // Initialize rotating client logos
+    initClientLogos();
+
+    // Initialize animations (GSAP ScrollTrigger)
+    if (!app.prefersReducedMotion) {
+        initAnimations();
     }
+
+    // Initialize Three.js globe
+    const globeContainer = document.getElementById('globe-container');
+    if (globeContainer && !app.prefersReducedMotion) {
+        // Clean up existing globe if it exists
+        if (app.globe && app.globe.destroy) {
+            app.globe.destroy();
+            app.globe = null;
+        }
+
+        // Clear container before re-initializing
+        while (globeContainer.firstChild) {
+            globeContainer.removeChild(globeContainer.firstChild);
+        }
+
+        app.globe = initGlobe(globeContainer);
+    }
+
+    // Initialize interactive elements
+    initSmoothAnchors();
+    initLazyImages();
+
+    console.log('[Trac] Page components initialized');
 }
+
+// Expose for Barba to call after transitions
+window.reinitializePageComponents = initializePageComponents;
 
 /**
  * Initialize smooth scroll to anchors
@@ -404,29 +421,15 @@ function init() {
     // Initialize header
     initHeader();
 
-    // Initialize FAQ accordion
-    initFaqs();
+    // Initialize page loader
+    initPageLoader();
 
-    // Initialize rotating client logos
-    initClientLogos();
-
-    // Initialize loader
-    initLoader();
+    // Initialize Barba.js for page transitions
+    initBarba(app);
 
     // Initialize on page load
     document.addEventListener('trac:loaded', () => {
-        // Initialize animations (GSAP ScrollTrigger)
-        if (!app.prefersReducedMotion) {
-            initAnimations();
-        }
-
-        // Initialize Three.js globe
-        const globeContainer = document.getElementById('globe-container');
-        if (globeContainer && !app.prefersReducedMotion) {
-            app.globe = initGlobe(globeContainer);
-        }
-
-        // Initialize network canvas
+        // Initialize network canvas (not in initializePageComponents)
         const networkCanvas = document.getElementById('network-canvas');
         if (networkCanvas && !app.prefersReducedMotion) {
             app.networkCanvas = initNetworkCanvas(networkCanvas, {
@@ -441,10 +444,8 @@ function init() {
             });
         }
 
-        // Initialize interactive elements
-        initSmoothAnchors();
-        initLazyImages();
-
+        // Call initializePageComponents which handles everything else
+        initializePageComponents();
         console.log('[Trac] All systems initialized');
     });
 }
