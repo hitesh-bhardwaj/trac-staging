@@ -22,6 +22,7 @@ const app = {
     isLoaded: false,
     globe: null,
     networkCanvas: null,
+    networkCanvases: [],
     prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)')
         .matches,
 };
@@ -177,6 +178,9 @@ function initializePageComponents() {
     // Initialize FAQ accordion
     initFaqs();
 
+    // Partners page partner-network tabs
+    initPartnerNetworkTabs();
+
     // Initialize rotating client logos
     initClientLogos();
 
@@ -207,6 +211,52 @@ function initializePageComponents() {
     initLazyImages();
 
     console.log('[Trac] Page components initialized');
+}
+
+/**
+ * Partners: partner-network tab filtering
+ */
+function initPartnerNetworkTabs() {
+    const sections = Array.from(document.querySelectorAll('[data-partner-network]'));
+    if (!sections.length) return;
+
+    sections.forEach((section) => {
+        const tabs = Array.from(section.querySelectorAll('[data-partner-tab]'));
+        const cards = Array.from(section.querySelectorAll('[data-partner-logo]'));
+        if (!tabs.length || !cards.length) return;
+
+        const setActive = (value) => {
+            tabs.forEach((tab) => {
+                const isActive = tab.dataset.partnerTab === value;
+                tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+
+                // Active pill styling
+                tab.classList.toggle('bg-brand-primary', isActive);
+                tab.classList.toggle('text-white', isActive);
+                tab.classList.toggle('border-brand-primary', isActive);
+
+                // Inactive pill styling
+                tab.classList.toggle('bg-transparent', !isActive);
+                tab.classList.toggle('text-text-primary', !isActive);
+                tab.classList.toggle('border-brand-primary/50', !isActive);
+            });
+
+            cards.forEach((card) => {
+                const category = card.dataset.partnerCategory || '';
+                const visible = value === 'all' || category === value;
+                card.classList.toggle('hidden', !visible);
+            });
+        };
+
+        // Default to "all"
+        setActive('all');
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                setActive(tab.dataset.partnerTab || 'all');
+            });
+        });
+    });
 }
 
 // Expose for Barba to call after transitions
@@ -430,17 +480,31 @@ function init() {
     // Initialize on page load
     document.addEventListener('trac:loaded', () => {
         // Initialize network canvas (not in initializePageComponents)
-        const networkCanvas = document.getElementById('network-canvas');
-        if (networkCanvas && !app.prefersReducedMotion) {
-            app.networkCanvas = initNetworkCanvas(networkCanvas, {
-                starCount: 100,
-                linkDistance: 150,
-                maxVelocity: 25,
-                minRadius: 1,
-                maxRadius: 2,
-                starColor: '#ffffff',
-                lineColor: '#ffffff',
-                interactive: true,
+        const canvases = Array.from(
+            document.querySelectorAll('#network-canvas, [data-network-canvas]'),
+        );
+
+        if (canvases.length && !app.prefersReducedMotion) {
+            canvases.forEach((canvas) => {
+                if (canvas.dataset.networkCanvasInit === 'true') return;
+                canvas.dataset.networkCanvasInit = 'true';
+
+                const instance = initNetworkCanvas(canvas, {
+                    starCount: 100,
+                    linkDistance: 150,
+                    maxVelocity: 25,
+                    minRadius: 1,
+                    maxRadius: 2,
+                    starColor: '#ffffff',
+                    lineColor: '#ffffff',
+                    interactive: true,
+                });
+
+                app.networkCanvases.push(instance);
+                // Back-compat: keep the first instance on app.networkCanvas
+                if (!app.networkCanvas) {
+                    app.networkCanvas = instance;
+                }
             });
         }
 

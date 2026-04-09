@@ -28,6 +28,8 @@ export function initAnimations() {
     initParallaxAnimations();
     initTextAnimations();
     // initFooterParallax();
+    initPartnersProgramCards();
+    initPartnerVoicesSlider();
     initStackingCards();
     initTestimonialsSlider();
     initOurNetworkAnimation();
@@ -40,6 +42,192 @@ export function initAnimations() {
     ScrollTrigger.refresh();
 
     console.log('[Trac] Animations initialized');
+}
+
+/**
+ * Partners page: Partner Program card slide-in (right -> center), staggered.
+ * Uses ScrollTrigger directly (not the generic [data-animate] system).
+ */
+function initPartnersProgramCards() {
+    const section = document.querySelector('.partners-program');
+    if (!section) return;
+    if (section.dataset.partnersProgramCardsInit === 'true') return;
+
+    const cards = Array.from(
+        section.querySelectorAll('[data-partners-program-card]'),
+    );
+    if (!cards.length) return;
+
+    section.dataset.partnersProgramCardsInit = 'true';
+
+    // Start offset (from right). Keep it subtle so it lands at center cleanly.
+    const dist = window.innerWidth <= 768 ? 40 : 160;
+    gsap.set(cards, { x: dist, opacity: 0, willChange: 'transform,opacity' });
+
+    // Animate each card on its own scroll trigger (no explicit delays).
+    cards.forEach((card) => {
+        gsap.to(card, {
+            x: 0,
+            opacity: 1,
+            duration: 0.85,
+            ease: 'power3.out',
+            overwrite: 'auto',
+            clearProps: 'willChange',
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 80%',
+                once: true,
+            },
+        });
+    });
+}
+
+/**
+ * Partners page: "Partner Voices" looping slider (7 slides).
+ * Custom logic (no external slider lib), transitions powered by GSAP.
+ */
+function initPartnerVoicesSlider() {
+    const section = document.querySelector('[data-partner-voices]');
+    if (!section) return;
+    if (section.dataset.partnerVoicesInit === 'true') return;
+
+    const track = section.querySelector('[data-partner-voices-track]');
+    const prevBtn = section.querySelector('[data-partner-voices-prev]');
+    const nextBtn = section.querySelector('[data-partner-voices-next]');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const viewport =
+        section.querySelector('[data-partner-voices-viewport]') ||
+        section.querySelector('.partner-voices-viewport') ||
+        track.parentElement;
+
+    const getGapPx = () => {
+        const styles = window.getComputedStyle(track);
+        const gap =
+            parseFloat(styles.columnGap || styles.gap || '0') ||
+            parseFloat(styles.gap || '0') ||
+            0;
+        return Number.isFinite(gap) ? gap : 0;
+    };
+
+    const slides = Array.from(track.querySelectorAll('[data-partner-voices-slide]'));
+    if (slides.length < 2) return;
+
+    let stepPx = 0;
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    const computeStep = () => {
+        const any = slides[0];
+        if (!any) return 0;
+        const w = any.getBoundingClientRect().width;
+        return w + getGapPx();
+    };
+
+    const computeBaseOffset = () => {
+        if (!viewport) return 0;
+        const any = slides[0];
+        if (!any) return 0;
+
+        const vw = viewport.getBoundingClientRect().width;
+        const sw = any.getBoundingClientRect().width;
+        return Math.max(0, (vw - sw) / 2);
+    };
+
+    const updateButtons = () => {
+        prevBtn.disabled = currentIndex <= 0;
+        nextBtn.disabled = currentIndex >= slides.length - 1;
+    };
+
+    const setActiveVisual = () => {
+        if (!slides.length) return;
+
+        slides.forEach((slide, idx) => {
+            const isActive = idx === currentIndex;
+            slide.classList.toggle('is-active', isActive);
+
+            // Keep border consistent, but emphasize active slightly.
+            slide.classList.toggle('border-brand-primary', isActive);
+            slide.classList.toggle('border-brand-primary/40', !isActive);
+
+            gsap.to(slide, {
+                scale: isActive ? 1 : 0.96,
+                opacity: isActive ? 1 : 0.72,
+                duration: 0.35,
+                ease: 'power2.out',
+                overwrite: true,
+            });
+        });
+
+        updateButtons();
+    };
+
+    const jumpTo = (index) => {
+        const baseOffset = computeBaseOffset();
+        gsap.set(track, { x: baseOffset - index * stepPx });
+        currentIndex = index;
+        setActiveVisual();
+    };
+
+    const goTo = (index) => {
+        if (isAnimating) return;
+        const maxIndex = slides.length - 1;
+        const nextIndex = Math.max(0, Math.min(maxIndex, index));
+        if (nextIndex === currentIndex) return;
+
+        isAnimating = true;
+        const baseOffset = computeBaseOffset();
+
+        gsap.to(track, {
+            x: baseOffset - nextIndex * stepPx,
+            duration: 0.6,
+            ease: 'power2.inOut',
+            onComplete: () => {
+                currentIndex = nextIndex;
+
+                setActiveVisual();
+                isAnimating = false;
+            },
+        });
+    };
+
+    const refreshLayout = () => {
+        stepPx = computeStep();
+        if (!stepPx) return;
+        const baseOffset = computeBaseOffset();
+        gsap.set(track, { x: baseOffset - currentIndex * stepPx });
+        setActiveVisual();
+    };
+
+    // Initial setup
+    section.dataset.partnerVoicesInit = 'true';
+    gsap.set(track, { x: 0, willChange: 'transform' });
+
+    // Start hidden and reveal on scroll (animation.js requirement).
+    gsap.set(track, { opacity: 0, y: 12 });
+
+    ScrollTrigger.create({
+        trigger: section,
+        start: 'top 80%',
+        once: true,
+        onEnter: () => {
+            refreshLayout();
+            jumpTo(0);
+            gsap.to(track, {
+                opacity: 1,
+                y: 0,
+                duration: 0.55,
+                ease: 'power2.out',
+            });
+        },
+    });
+
+    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+
+    window.addEventListener('resize', () => {
+        gsap.delayedCall(0.05, refreshLayout);
+    });
 }
 
 /**
@@ -861,6 +1049,7 @@ function getInitialState(type) {
 function initHeroAnimations() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
+    if (hero.hasAttribute('data-hero-static')) return;
 
     const heroTitle = hero.querySelector('.hero-title');
     const heroSubtitle = hero.querySelector('.hero-subtitle');

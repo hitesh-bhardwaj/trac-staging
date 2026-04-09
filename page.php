@@ -7,7 +7,16 @@
 
 get_header(); ?>
 
-<main id="main-content" class="site-main">
+<?php
+$page_namespace = get_post_field('post_name', get_queried_object_id());
+if (!$page_namespace) {
+    $page_namespace = 'page';
+}
+?>
+
+<main id="main-content" class="site-main" data-barba="container" data-barba-namespace="<?php echo esc_attr(
+    $page_namespace,
+); ?>">
     <?php // Check if page has ACF Flexible Content sections
 
 if (function_exists('have_rows') && have_rows('page_sections')) {

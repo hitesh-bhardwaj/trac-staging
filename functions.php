@@ -52,6 +52,70 @@ function trac_setup()
 add_action('after_setup_theme', 'trac_setup');
 
 /**
+ * Ensure key utility pages exist in local/staging environments.
+ * This prevents 404s when templates are added but the WP Page doesn't exist yet.
+ */
+function trac_ensure_enterprise_network_page()
+{
+    // Only allow an admin to auto-create pages to avoid unexpected writes for visitors.
+    if (!is_user_logged_in() || !current_user_can('manage_options')) {
+        return;
+    }
+
+    $slug = 'enterprise-network';
+    $existing = get_page_by_path($slug, OBJECT, 'page');
+    if ($existing instanceof WP_Post) {
+        return;
+    }
+
+    $page_id = wp_insert_post([
+        'post_type' => 'page',
+        'post_status' => 'publish',
+        'post_title' => 'Enterprise Network',
+        'post_name' => $slug,
+    ]);
+
+    if (!is_wp_error($page_id) && $page_id) {
+        // Needed when permalinks are enabled and this slug hasn't existed before.
+        flush_rewrite_rules(false);
+    }
+}
+add_action('init', 'trac_ensure_enterprise_network_page');
+
+/**
+ * Ensure Partners page exists (so /partners doesn't 404 on staging/local).
+ */
+function trac_ensure_partners_page()
+{
+    // Only allow an admin to auto-create pages to avoid unexpected writes for visitors.
+    if (!is_user_logged_in() || !current_user_can('manage_options')) {
+        return;
+    }
+
+    $slug = 'partners';
+    $existing = get_page_by_path($slug, OBJECT, 'page');
+    if ($existing instanceof WP_Post) {
+        return;
+    }
+
+    $page_id = wp_insert_post([
+        'post_type' => 'page',
+        'post_status' => 'publish',
+        'post_title' => 'Partners',
+        'post_name' => $slug,
+    ]);
+
+    if (!is_wp_error($page_id) && $page_id) {
+        // Force the Partners template for clarity (slug-based template also works).
+        update_post_meta($page_id, '_wp_page_template', 'page-partners.php');
+
+        // Needed when permalinks are enabled and this slug hasn't existed before.
+        flush_rewrite_rules(false);
+    }
+}
+add_action('init', 'trac_ensure_partners_page');
+
+/**
  * Enqueue Styles and Scripts
  */
 function trac_enqueue_assets()

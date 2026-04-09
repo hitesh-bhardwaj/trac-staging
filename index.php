@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-<main id="main-content" class="site-main">
+<main id="main-content" class="site-main" data-barba="container" data-barba-namespace="index">
     <?php if (have_posts()): ?>
         <?php while (have_posts()):
             the_post(); ?>

@@ -114,27 +114,11 @@
                 <!-- Cloud Login CTA Button - Desktop -->
                 <a href="<?php echo esc_url(
                     get_field('header_cta_link', 'option') ?: '#',
-                ); ?>" class="btn btn-primary md:hidden">
+                ); ?>" class="btn btn-primary md:hidden hover:bg-white hover:text-brand-primary transition-colors durtaion-500 ease-in-out border border-brand-primary">
                     <!-- <span class="btn-line"></span> -->
                      <span>
                         Cloud Login
                      </span>
-                    <!-- <span class="btn-text">
-                        <?php echo esc_html(
-                            get_field('header_cta_text', 'option') ?:
-                            'Cloud Login',
-                        ); ?>
-                    </span> -->
-                    <!-- <span class="btn-icon" aria-hidden="true">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                            <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                            <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                            <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                            <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                            <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        </svg>
-                    </span> -->
                 </a>
 
                 <!-- Mobile Menu Toggle -->
