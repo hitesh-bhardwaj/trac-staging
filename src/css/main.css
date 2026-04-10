@@ -2800,16 +2800,17 @@
 .community-hub-cards {
     position: relative;
     display: flex;
+    gap: 2vw;
     justify-content: space-between;
     z-index: 1;
     min-height: 35vw;
 }
 
 .community-hub-card {
-    width: 16.25vw;
-    min-width: 260px;
+    width: 16vw;
+    /* min-width: 260px; */
     height: 21.198vw;
-    min-height: 340px;
+    /* min-height: 340px; */
     padding: 2.865vw 1.458vw 1.823vw;
     border: 1.5px solid #10417f;
     border-radius: 1.25vw;

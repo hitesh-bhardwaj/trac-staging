@@ -56,7 +56,7 @@ $who_we_are_stats = [
 ];
 ?>
 
-<section class="who-we-are-section relative overflow-hidden bg-white py-[7%]" data-section="who-we-are">
+<section class="who-we-are-section relative overflow-hidden bg-white pb-[7%] pt-[5%]" data-section="who-we-are">
     <div class="who-we-are-container w-full flex flex-col items-center space-y-[7vw] px-[5.21vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="who-we-are-intro  w-full flex justify-between items-start">
             <div class="who-we-are-label flex items-center gap-[0.833vw] md:gap-3" data-animate="fade-up">
@@ -129,11 +129,11 @@ $who_we_are_stats = [
             </div>
         </div>
 
-        <p class="hero-subtitle-1 text-center font-body text-[1.875vw] leading-[1.35] text-text-primary md:text-[28px] sm:text-[20px]">
+        <p data-animate="fade-up" class="hero-subtitle-1 text-center font-body text-[1.875vw] leading-[1.35] text-text-primary md:text-[28px] sm:text-[20px]">
             We’re a leading provider of telecommunications in Africa
         </p>
 
-        <div class="counter flex w-full justify-center" data-counter-section>
+        <div data-animate="fade-up" class="counter flex w-full justify-center" data-counter-section>
             <div class="counter-grid grid w-full max-w-[72vw] grid-cols-3 gap-[3.646vw] md:max-w-full md:grid-cols-1 md:gap-10">
                 <?php foreach ($who_we_are_stats as $index => $stat): ?>
                     <article
@@ -201,7 +201,7 @@ $who_we_are_stats = [
                             <?php endif; ?>
                         </div>
 
-                        <p class="counter-label whitespace-pre-line font-body text-[1.2vw] leading-[1] text-text-primary md:text-[24px] sm:text-[18px]">
+                        <p data-animate="fade-up" class="counter-label whitespace-pre-line font-body text-[1.2vw] leading-[1] text-text-primary md:text-[24px] sm:text-[18px]">
                             <?php echo esc_html($stat["label"]); ?>
                         </p>
                     </article>

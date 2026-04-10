@@ -1,7 +1,12 @@
 <?php
 if (!defined('ABSPATH')) {
     exit();
-} ?>
+} 
+
+$team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
+
+?>
+
 
 <section class="testimonials-section relative overflow-hidden bg-[#eef3fc]" data-section="testimonials">
 
@@ -45,7 +50,7 @@ if (!defined('ABSPATH')) {
                     03
                 </span>
             </div>
-
+<!-- 
             <div
                 class="slide-arrows flex items-center gap-[0.521vw] md:gap-2"
                 data-animate="fade-up"
@@ -80,7 +85,36 @@ if (!defined('ABSPATH')) {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>
                 </button>
-            </div>
+            </div> -->
+            <div data-animate="fade-up" class=" w-fit rounded-full flex items-center md:mt-10 sm:mt-8 border border-brand-primary px-[1vw] gap-[1vw] ">
+            <button
+                type="button"
+                class="team-slider-nav arrow-prev team-slider-prev"
+                aria-label="Previous team member"
+            >
+                <span class="team-slider-nav-icon">
+                    <img
+                        src="<?php echo esc_url($team_arrow_svg); ?>"
+                        alt=""
+                        aria-hidden="true"
+                    >
+                </span>
+            </button>
+
+            <button
+                type="button"
+                class="team-slider-nav team-slider-next arrow-next"
+                aria-label="Next team member"
+            >
+                <span class="team-slider-nav-icon team-slider-nav-icon--next">
+                    <img
+                        src="<?php echo esc_url($team_arrow_svg); ?>"
+                        alt=""
+                        aria-hidden="true"
+                    >
+                </span>
+            </button>
+        </div>
         </div>
 
         <div

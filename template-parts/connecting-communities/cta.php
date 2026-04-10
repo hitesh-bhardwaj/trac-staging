@@ -1,0 +1,146 @@
+<?php
+if (!defined('ABSPATH')) {
+    exit();
+}
+
+// Get CTA section settings
+$cta_title = get_field('cta_title') ?: 'Building the Future, Together';
+$cta_subtitle =
+    get_field('cta_subtitle') ?:
+    "Connectivity is where it starts but the impact goes much further.";
+$cta_para =
+    get_field('cta_para') ?:
+    "Connectivity is where it starts but the impact goes much further. Through this partnership, TrAC is helping create a foundation where communities can access services, grow businesses, and unlock new opportunities. As the network expands, so does the potential for inclusive growth across East Africa.";
+$cta_button_text = get_field('cta_button_text') ?: 'Get Connected';
+$cta_button_link = get_field('cta_button_link') ?: '#get-connected';
+?>
+
+<section class="cta-section relative bg-[#eef3fc] overflow-hidden" data-section="cta">
+    <div class="cta-bg-pattern absolute inset-0 w-full h-full top-[-14%]">
+        <svg width="1796" height="670" viewBox="0 0 1796 670" fill="none" xmlns="http://www.w3.org/2000/svg" data-cta-svg>
+            <path d="M1795.73 0C1795.73 0 1480.02 188.227 1307.73 346C1181.94 461.193 1013.73 669 1013.73 669" stroke="#D9D9D9"/>
+            <path d="M1717.73 0C1717.73 0 1410.38 179.912 1252.23 346C1143.94 459.731 1003.69 669 1003.69 669" stroke="#D9D9D9"/>
+            <path d="M156.252 0C156.252 0 459.316 171.086 600.752 346C692.224 459.123 802.339 669 802.339 669" stroke="#D9D9D9"/>
+            <path d="M1639.73 0C1639.73 0 1336.67 171.086 1195.23 346C1103.76 459.123 993.643 669 993.643 669" stroke="#D9D9D9"/>
+            <path d="M234.252 0C234.252 0 528.338 168.55 651.752 346C730.802 459.662 812.382 669 812.382 669" stroke="#D9D9D9"/>
+            <path d="M1561.73 0C1561.73 0 1267.64 168.55 1144.23 346C1065.18 459.662 983.6 669 983.6 669" stroke="#D9D9D9"/>
+            <path d="M312.252 0C312.252 0 588.918 172.198 695.252 346C765.456 460.747 822.426 669 822.426 669" stroke="#D9D9D9"/>
+            <path d="M1483.73 0C1483.73 0 1207.06 172.198 1100.73 346C1030.53 460.747 973.557 669 973.557 669" stroke="#D9D9D9"/>
+            <path d="M390.252 0C390.252 0 640.394 176.728 730.252 346C791.861 462.057 832.469 669 832.469 669" stroke="#D9D9D9"/>
+            <path d="M1405.73 0C1405.73 0 1155.59 176.728 1065.73 346C1004.12 462.057 963.513 669 963.513 669" stroke="#D9D9D9"/>
+            <path d="M468.252 0C468.252 0 691.965 180.314 765.752 346C817.781 462.828 842.513 669 842.513 669" stroke="#D9D9D9"/>
+            <path d="M1327.73 0C1327.73 0 1104.02 180.314 1030.23 346C978.202 462.828 953.47 669 953.47 669" stroke="#D9D9D9"/>
+            <path d="M546.252 0C546.252 0 737.958 188.098 797.252 346C842.078 465.374 852.556 669 852.556 669" stroke="#D9D9D9"/>
+            <path d="M1249.73 0C1249.73 0 1058.02 188.098 998.73 346C953.904 465.374 943.426 669 943.426 669" stroke="#D9D9D9"/>
+            <path d="M624.252 0C624.252 0 778.459 208.391 825.752 346C869.572 473.505 862.6 669 862.6 669" stroke="#D9D9D9"/>
+            <path d="M1171.73 0C1171.73 0 1017.52 208.391 970.23 346C926.41 473.505 933.383 669 933.383 669" stroke="#D9D9D9"/>
+            <path d="M702.252 0C702.252 0 811.652 211.21 845.252 346C877.19 474.126 872.643 669 872.643 669" stroke="#D9D9D9"/>
+            <path d="M1093.73 0C1093.73 0 984.33 211.21 950.73 346C918.792 474.126 923.339 669 923.339 669" stroke="#D9D9D9"/>
+            <path d="M780.252 0C780.252 0 843.513 209.476 863.752 346C882.332 471.328 882.687 669 882.687 669" stroke="#D9D9D9"/>
+            <path d="M1015.73 0C1015.73 0 952.47 209.476 932.23 346C913.651 471.328 913.296 669 913.296 669" stroke="#D9D9D9"/>
+            <path d="M858.252 0C858.252 0 875.332 210.728 882.131 346C888.466 472.048 892.73 669 892.73 669" stroke="#D9D9D9"/>
+            <path d="M937.73 0C937.73 0 920.65 210.728 913.852 346C907.517 472.048 903.252 669 903.252 669" stroke="#D9D9D9"/>
+            <path d="M78.252 0C78.252 0 385.606 179.912 543.752 346C652.045 459.731 792.295 669 792.295 669" stroke="#D9D9D9"/>
+            <path d="M0.251953 0C0.251953 0 315.96 188.227 488.252 346C614.045 461.193 782.252 669 782.252 669" stroke="#D9D9D9"/>
+            <path d="M1439.29 185.36C1439.47 185.58 1439.43 185.911 1439.2 186.083C1422.45 198.591 1405.7 211.424 1389.19 224.476C1388.98 224.644 1388.67 224.613 1388.49 224.406C1388.31 224.19 1388.35 223.867 1388.57 223.691C1405.08 210.632 1421.84 197.794 1438.6 185.281C1438.82 185.123 1439.12 185.157 1439.29 185.36Z" fill="url(#paint0_linear_329_19266)"/>
+            <path d="M1371.33 127.007C1371.51 127.227 1371.47 127.551 1371.24 127.721C1354.86 140.019 1338.19 152.96 1321.55 166.429C1321.33 166.603 1321.02 166.57 1320.84 166.355C1320.67 166.141 1320.7 165.826 1320.92 165.652C1337.57 152.173 1354.26 139.226 1370.64 126.922C1370.86 126.76 1371.16 126.798 1371.33 127.007Z" fill="url(#paint1_linear_329_19266)"/>
+            <path d="M1293.73 88.3702C1293.92 88.5793 1293.9 88.9028 1293.68 89.0859C1285.89 95.7453 1277.89 102.692 1269.76 109.897C1262.12 116.664 1254.36 123.658 1246.54 130.852C1246.33 131.04 1246.02 131.025 1245.83 130.819C1245.65 130.615 1245.66 130.301 1245.86 130.116C1253.69 122.917 1261.45 115.918 1269.1 109.148C1277.24 101.939 1285.24 94.988 1293.03 88.3249C1293.24 88.1488 1293.55 88.169 1293.73 88.3702Z" fill="url(#paint2_linear_329_19266)"/>
+            <path d="M1199.33 52.9491C1199.54 53.1328 1199.56 53.4545 1199.37 53.6625C1186.85 67.4332 1172.72 83.4028 1157.83 101.003C1157.65 101.215 1157.33 101.24 1157.12 101.059C1156.91 100.88 1156.89 100.566 1157.06 100.357C1171.97 82.7473 1186.1 66.7686 1198.63 52.99C1198.82 52.7895 1199.12 52.7721 1199.33 52.9491Z" fill="url(#paint3_linear_329_19266)"/>
+            <path d="M1076.34 34.6538C1076.59 34.7781 1076.69 35.0747 1076.56 35.3199C1076.56 35.3226 1076.56 35.3254 1076.56 35.3281C1069.06 50.5588 1059.66 69.9988 1049.33 92.1367C1049.21 92.3932 1048.9 92.5005 1048.65 92.3718C1048.41 92.2493 1048.31 91.9579 1048.42 91.7141C1058.76 69.5688 1068.17 50.1223 1075.66 34.8867C1075.66 34.8839 1075.67 34.881 1075.67 34.8781C1075.79 34.6277 1076.1 34.5268 1076.34 34.6538Z" fill="url(#paint4_linear_329_19266)"/>
+            <path d="M936.338 17.4689C936.612 17.4915 936.816 17.7314 936.795 18.0057C936.412 22.8506 935.961 28.5809 935.454 35.0791C934.468 47.7103 933.27 63.2436 931.939 80.817C931.919 81.0937 931.676 81.3018 931.4 81.279C931.126 81.2565 930.921 81.0157 930.942 80.7415C932.273 63.167 933.471 47.6329 934.457 35.001C934.964 28.5024 935.416 22.772 935.799 17.9269C935.821 17.6514 936.063 17.4462 936.338 17.4689Z" fill="url(#paint5_linear_329_19266)"/>
+            <path d="M784.094 13.0016C784.362 12.9158 784.647 13.0669 784.727 13.3367C786.373 18.9459 788.476 26.1649 790.933 34.7259C794.101 45.7665 797.858 59.0392 801.988 73.968C802.06 74.2266 801.915 74.4966 801.659 74.5786C801.389 74.6653 801.1 74.5084 801.024 74.2346C796.894 59.3095 793.138 46.0402 789.971 35.0022C787.515 26.4432 785.412 19.2261 783.766 13.6185C783.69 13.358 783.835 13.0845 784.094 13.0016Z" fill="url(#paint6_linear_329_19266)"/>
+            <path d="M635.627 15.6964C635.852 15.5388 636.161 15.5911 636.32 15.8141C639.996 20.9521 644.439 27.2084 649.495 34.4246C656.15 43.9223 663.87 55.0817 672.315 67.5353C672.468 67.7612 672.412 68.0689 672.188 68.2256C671.96 68.386 671.644 68.3272 671.487 68.0961C663.046 55.6472 655.329 44.492 648.677 34.9979C643.623 27.7846 639.181 21.5314 635.507 16.396C635.346 16.17 635.4 15.856 635.627 15.6964Z" fill="url(#paint7_linear_329_19266)"/>
+            <path d="M484.944 13.914C485.126 13.7161 485.431 13.6967 485.635 13.8709C490.958 18.4067 497.38 23.9479 504.69 30.3876C513.008 37.7159 522.475 46.2071 532.785 55.6975C532.988 55.8843 533.002 56.2006 532.815 56.4038C532.628 56.6078 532.311 56.6206 532.107 56.4332C521.804 46.9482 512.342 38.4617 504.028 31.1376C496.724 24.702 490.306 19.1638 484.988 14.6314C484.772 14.4478 484.753 14.1225 484.944 13.914Z" fill="url(#paint8_linear_329_19266)"/>
+            <path d="M339.763 17.8862C339.917 17.658 340.226 17.5968 340.455 17.7495C345.538 21.1405 351.222 24.9697 357.426 29.209C367.733 36.252 379.476 44.4241 392.294 53.5863C392.514 53.7435 392.57 54.0476 392.419 54.272C392.262 54.5059 391.942 54.5632 391.712 54.3993C378.901 45.2416 367.163 37.0737 356.861 30.0342C350.661 25.7973 344.98 21.9701 339.9 18.5813C339.67 18.4275 339.608 18.1159 339.763 17.8862Z" fill="url(#paint9_linear_329_19266)"/>
+            <path d="M182.879 15.5594C183.026 15.3352 183.322 15.2662 183.552 15.4037C190.07 19.298 197.63 23.8606 206.077 29.0391C215.44 34.7788 225.894 41.2743 237.233 48.4497C237.469 48.599 237.538 48.9129 237.385 49.1465C237.235 49.3751 236.929 49.4409 236.698 49.2948C225.364 42.1221 214.914 35.6291 205.554 29.8916C197.111 24.7153 189.555 20.1543 183.04 16.2618C182.796 16.1161 182.723 15.7971 182.879 15.5594Z" fill="url(#paint10_linear_329_19266)"/>
+            <path d="M93.2316 57.6671C93.3783 57.431 93.6885 57.3594 93.923 57.5086C110.161 67.8398 127.967 79.2951 146.885 91.6553C147.113 91.8038 147.181 92.1071 147.037 92.3378C146.889 92.5762 146.574 92.6457 146.339 92.4922C127.423 80.1344 109.622 68.6806 93.3868 58.3516C93.1558 58.2046 93.0871 57.8996 93.2316 57.6671Z" fill="url(#paint11_linear_329_19266)"/>
+            <defs>
+                <linearGradient id="paint0_linear_329_19266" x1="1388.75" y1="224" x2="1432.49" y2="178.5" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint1_linear_329_19266" x1="1320.25" y1="167" x2="1365.08" y2="119.726" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint2_linear_329_19266" x1="1246.75" y1="131" x2="1278.79" y2="79.0764" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint3_linear_329_19266" x1="1157.25" y1="101" x2="1170.68" y2="46.0217" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint4_linear_329_19266" x1="1049.75" y1="91.5" x2="1031.82" y2="56.5279" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint5_linear_329_19266" x1="931.752" y1="80.5" x2="923.467" y2="78.7016" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint6_linear_329_19266" x1="802.614" y1="75.1336" x2="775.885" y2="71.8353" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint7_linear_329_19266" x1="673.592" y1="68.8576" x2="623.007" y2="54.1492" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint8_linear_329_19266" x1="534.457" y1="57.0501" x2="475.819" y2="29.8294" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint9_linear_329_19266" x1="394.117" y1="54.9376" x2="336.21" y2="20.7446" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint10_linear_329_19266" x1="238.933" y1="49.5904" x2="183.217" y2="12.623" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint11_linear_329_19266" x1="148.752" y1="93" x2="91.752" y2="57" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#10417F"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <div class="cta-container relative z-10 w-full px-[5.21vw] py-[10.417vw] md:px-[4vw] md:py-32 sm:px-[6vw] sm:py-24">
+        <div class="cta-content text-center max-w-[51vw] mx-auto  md:max-w-full space-y-[15vw]">
+            <div>
+                <h2 class="cta-title font-heading text-[3.438vw] leading-[1.12] tracking-[0.01em] text-[#111] mb-[2.5vw] md:text-4xl md:mb-4 sm:text-3xl sm:mb-3" data-animate="fade-up">
+                    <?php echo esc_html($cta_title); ?>
+                </h2>
+
+                <p class="cta-subtitle font-body text-[1.25vw] leading-[1.5] text-[#1e1e1e] mb-[1.563vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-animate="fade-up" data-delay="0.1">
+                    <?php echo esc_html($cta_subtitle); ?>
+                </p>
+                <p class="cta-subtitle font-body text-[1.25vw] leading-[1.5] text-[#1e1e1e] mb-[4.167vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-animate="fade-up" data-delay="0.1">
+                    <?php echo esc_html($cta_para); ?>
+                </p>
+
+                <div class="cta-button-wrapper mt-[8vw]" data-animate="fade-up" data-delay="0.2">
+                    <a href="<?php echo esc_url($cta_button_link); ?>" class="btn btn-primary group magnetic inline-flex">
+                        <span class="btn-line"></span>
+                        <span class="btn-text"><?php echo esc_html(
+                            $cta_button_text,
+                        ); ?></span>
+                        <span class="btn-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                                <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                                <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                                <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                                <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                                <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

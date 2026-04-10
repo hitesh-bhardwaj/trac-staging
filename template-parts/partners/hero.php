@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 ?>
 
 <section class="hero relative min-h-screen bg-white overflow-hidden" data-section="hero" data-hero-static>
-    <div class="hero-container w-full px-[5.21vw] pt-[8vw] pb-[5.21vw] relative z-10 md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
+    <div class="hero-container w-full px-[5.21vw] pt-[12vw] pb-[5.21vw] relative z-10 md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
         <div class="flex items-center justify-center min-h-[calc(100vh-10vw)] md:min-h-[calc(100vh-120px)]">
             <div class="hero-text w-full max-w-[80rem] text-center">
                 <h1 class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4" data-animate="fade-up">
@@ -45,7 +45,7 @@ if (!defined('ABSPATH')) {
                     </a>
                 </div>
 
-                <div class="enterprise-hero-images w-full mx-auto mt-10 md:mt-10 sm:mt-8 flex items-end justify-center h-full gap-[1.25vw]">
+                <div class="enterprise-hero-images w-full mx-auto mt-16 md:mt-10 sm:mt-8 flex items-end justify-center h-full gap-[1.25vw]">
                     <div class="rounded-[2vw] overflow-hidden h-[32vw] w-[95vw]" data-animate="fade-up" data-delay="0.25">
                         <img src="<?php echo esc_url(
                             get_template_directory_uri() .

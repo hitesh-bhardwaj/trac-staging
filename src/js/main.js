@@ -170,36 +170,74 @@ function initHeader() {
     }
 }
 
+function destroyNetworkCanvases() {
+    if (!app.networkInstances || !app.networkInstances.length) return;
+
+    app.networkInstances.forEach((instance) => {
+        if (!instance) return;
+
+        if (typeof instance.destroy === 'function') {
+            instance.destroy();
+        } else if (typeof instance.dispose === 'function') {
+            instance.dispose();
+        }
+    });
+
+    app.networkInstances = [];
+    console.log('[Trac] Network canvases destroyed');
+}
+
+function initNetworkCanvases() {
+    destroyNetworkCanvases();
+
+    if (app.prefersReducedMotion) return;
+
+    const networkCanvases = document.querySelectorAll('.network-canvas-el');
+    if (!networkCanvases.length) return;
+
+    app.networkInstances = [];
+
+    networkCanvases.forEach((canvas) => {
+        const instance = initNetworkCanvas(canvas, {
+            starCount: 80,
+            linkDistance: 150,
+            maxVelocity: 20,
+            minRadius: 1,
+            maxRadius: 2,
+            starColor: '#97ACC8',
+            lineColor: '#97ACC8',
+            interactive: true,
+        });
+
+        if (instance) {
+            app.networkInstances.push(instance);
+        }
+    });
+
+    console.log('[Trac] Network canvases initialized', app.networkInstances.length);
+}
+
 /**
  * Initialize all page-specific components
  * Called on initial load and after Barba transitions
  */
 function initializePageComponents() {
-    // Initialize FAQ accordion
     initFaqs();
-
-    // Partners page partner-network tabs
     initPartnerNetworkTabs();
     initCollaborationsAccordion();
-
-    // Initialize rotating client logos
     initClientLogos();
 
-    // Initialize animations (GSAP ScrollTrigger)
     if (!app.prefersReducedMotion) {
         initAnimations();
     }
 
-    // Initialize Three.js globe
     const globeContainer = document.getElementById('globe-container');
     if (globeContainer && !app.prefersReducedMotion) {
-        // Clean up existing globe if it exists
         if (app.globe && app.globe.destroy) {
             app.globe.destroy();
             app.globe = null;
         }
 
-        // Clear container before re-initializing
         while (globeContainer.firstChild) {
             globeContainer.removeChild(globeContainer.firstChild);
         }
@@ -207,7 +245,8 @@ function initializePageComponents() {
         app.globe = initGlobe(globeContainer);
     }
 
-    // Initialize interactive elements
+    initNetworkCanvases();
+
     initSmoothAnchors();
     initLazyImages();
 
@@ -576,27 +615,6 @@ function init() {
     // Initialize on page load
     // Initialize on page load
 document.addEventListener('trac:loaded', () => {
-    // Select all canvas elements by class instead of ID
-    const networkCanvases = document.querySelectorAll('.network-canvas-el');
-    
-    if (networkCanvases.length && !app.prefersReducedMotion) {
-        app.networkInstances = []; // Store instances if you need to destroy them later
-
-        networkCanvases.forEach((canvas) => {
-            const instance = initNetworkCanvas(canvas, {
-                starCount: 80,       // Reduced slightly for performance with multiple canvases
-                linkDistance: 150,
-                maxVelocity: 20,
-                minRadius: 1,
-                maxRadius: 2,
-                starColor: '#97ACC8', // Use your brand color or #ffffff
-                lineColor: '#97ACC8',
-                interactive: true,
-            });
-            app.networkInstances.push(instance);
-        });
-    }
-
     initializePageComponents();
     console.log('[Trac] All systems initialized');
 });

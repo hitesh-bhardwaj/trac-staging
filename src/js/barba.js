@@ -50,6 +50,19 @@ export function initBarba(app) {
                     if (app.lenis) {
                         app.lenis.stop();
                     }
+                    if (app.networkInstances && app.networkInstances.length) {
+                        app.networkInstances.forEach((instance) => {
+                            if (!instance) return;
+
+                            if (typeof instance.destroy === 'function') {
+                                instance.destroy();
+                            } else if (typeof instance.dispose === 'function') {
+                                instance.dispose();
+                            }
+                        });
+
+                        app.networkInstances = [];
+                    }
 
                     // Fade out current page content
                     await gsap.to(data.current.container, {
@@ -101,17 +114,21 @@ export function initBarba(app) {
 
                 // After everything is done
                 async after(data) {
-                    // Re-initialize Lenis
                     if (app.lenis) {
                         app.lenis.start();
                     }
 
-                    // Re-initialize all animations and components
+                    await new Promise((resolve) =>
+                        requestAnimationFrame(resolve),
+                    );
+                    await new Promise((resolve) =>
+                        requestAnimationFrame(resolve),
+                    );
+
                     if (window.reinitializePageComponents) {
                         window.reinitializePageComponents();
                     }
 
-                    // Refresh ScrollTrigger
                     ScrollTrigger.refresh();
 
                     console.log('[Barba] Transition complete');

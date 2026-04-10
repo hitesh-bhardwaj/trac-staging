@@ -75,7 +75,7 @@ $fallback_faqs = [
 <section class="faqs-section relative bg-white overflow-hidden" data-section="faqs">
     <div class="px-[5.21vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
 
-        <div class="faqs-header text-center mb-[4.844vw] md:mb-12 sm:mb-8">
+        <div class="faqs-header text-center mb-14 md:mb-12 sm:mb-8">
             <div class="faqs-label flex items-center justify-center gap-[0.729vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
                 <span class="label-line w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1 sm:w-5"></span>
                 <span class="label-text font-body text-[1.25vw] text-text-primary md:text-xl sm:text-lg"><?php echo esc_html(

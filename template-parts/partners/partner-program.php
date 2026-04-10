@@ -43,16 +43,16 @@ $cards = [
 
 <section class="partners-program relative bg-white py-[7vw] md:py-20 sm:py-16" data-section="partners-program">
     <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
-        <div class="max-w-[92rem] mx-auto">
+        <div class="max-w-[92rem] mx-auto ">
             <div class="text-center max-w-[56rem] mx-auto">
-                <div class="flex items-center justify-center gap-3 mb-8 md:mb-6" data-animate="fade-up">
+                <div class="flex items-center justify-center gap-3 mb-14 md:mb-6" data-animate="fade-up">
                     <span class="w-6 h-1 bg-brand-primary"></span>
                     <span class="font-body text-base text-[#111]"><?php echo esc_html(
                         $label,
                     ); ?></span>
                 </div>
 
-                <h2 class="font-heading text-[3.438vw] font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[1.5vw] md:text-4xl md:mb-6 sm:text-3xl" data-animate="fade-up" data-delay="0.1">
+                <h2 class="font-heading text-[3.438vw] font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.5vw] md:text-4xl md:mb-6 sm:text-3xl" data-animate="fade-up" data-delay="0.1">
                     <?php echo esc_html($title); ?>
                 </h2>
 
@@ -64,19 +64,19 @@ $cards = [
                 </p>
             </div>
 
-		            <div class="mt-[5vw] md:mt-12 space-y-[2.6vw] md:space-y-8 mx-auto flex flex-col items-center">
+		            <div class="mt-[8vw] md:mt-12 space-y-[2.6vw] md:space-y-8 mx-auto flex flex-col items-end">
 		                <?php foreach ($cards as $card): ?>
 		                    <div class="<?php echo esc_attr(
-		                        'w-full flex justify-center ' . $card['offsetClass'],
+		                        'w-fit flex justify-center program-cards ' . $card['offsetClass'],
 		                    ); ?>">
-		                        <div class="bg-[#eef3fc] w-[80%] mx-auto rounded-[2vw] md:rounded-3xl overflow-hidden grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:grid-cols-1 items-stretch" data-partners-program-card>
-		                            <div class="relative w-full h-full min-h-[16vw] md:min-h-[240px]">
+		                        <div class="bg-[#eef3fc] w-full mx-auto rounded-[1.2vw] md:rounded-3xl overflow-hidden flex justify-between items-stretch" data-partners-program-card>
+		                            <div class="relative w-[27vw] h-full min-h-[16vw] md:min-h-[240px]">
 		                                <img src="<?php echo esc_url(
 		                                    $card['image'],
 		                                ); ?>" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-	                            </div>
+	                                </div>
 
-                            <div class="p-[3vw] md:p-8 sm:p-6 flex flex-col">
+                            <div class="p-[3vw] md:p-8 sm:p-6 flex flex-col w-[40vw]">
                                 <h3 class="font-body text-text-primary text-[1.823vw] md:text-2xl sm:text-xl mb-5 font-normal">
                                     <?php echo esc_html($card['title']); ?>
                                 </h3>

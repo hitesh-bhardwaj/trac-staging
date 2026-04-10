@@ -68,50 +68,73 @@ function initCommunityHubCards() {
     ).matches;
 
     if (prefersReducedMotion) {
-        gsap.set(cards, { clearProps: 'all' });
+        gsap.set(cards, { clearProps: 'transform' });
         return;
     }
 
-    const cardMap = {
-        outerLeft: cards[0],
-        innerLeft: cards[1],
-        center: cards[2],
-        innerRight: cards[3],
-        outerRight: cards[4],
-    };
+    const [outerLeft, innerLeft, center, innerRight, outerRight] = cards;
 
-    gsap.set(cardMap.outerLeft, { x: 0, y: 0 });
-    gsap.set(cardMap.innerLeft, { x: 0, y: 0 });
-    gsap.set(cardMap.center, { x: 0, y: 0 });
-    gsap.set(cardMap.innerRight, { x: 0, y: 0 });
-    gsap.set(cardMap.outerRight, { x: 0, y: 0 });
+    ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars?.id === 'community-hub-cards') {
+            trigger.kill();
+        }
+    });
 
-    const timeline = gsap.timeline({
+    gsap.killTweensOf(cards);
+
+    gsap.set(outerLeft, {
+        x: 0,
+        y: '80%',
+    });
+
+    gsap.set(innerLeft, {
+        x: 0,
+        y: '40%',
+    });
+
+    gsap.set(center, {
+        x: 0,
+        y: 0,
+    });
+
+    gsap.set(innerRight, {
+        x: 0,
+        y: '40%',
+    });
+
+    gsap.set(outerRight, {
+        x: 0,
+        y: '80%',
+    });
+
+    const tl = gsap.timeline({
         scrollTrigger: {
+            id: 'community-hub-cards',
             trigger: section,
-            start: '60% 80%',
-            end: 'center 20%',
-            // markers: true,
-            scrub: 0.25,
+            start: 'top 80%',
+            end: 'bottom 50%',
+            scrub: 0.35,
+            invalidateOnRefresh: true,
         },
     });
 
-    timeline.from(
-        [cardMap.innerLeft, cardMap.innerRight],
+    tl.to(
+        [innerLeft, innerRight],
         {
-            y: '20%',
-            duration: 0.42,
+            y: 0,
+            duration: 1,
             ease: 'none',
-        });
-
-    timeline.from(
-        [cardMap.outerLeft, cardMap.outerRight],
+        },
+        0
+    ).to(
+        [outerLeft, outerRight],
         {
-            y: '40%',
-            duration: 0.42,
+            y: 0,
+            duration: 1,
             ease: 'none',
-            delay: -0.42,
-        });
+        },
+        0
+    );
 }
 
 function initImpactGallery() {
@@ -257,37 +280,46 @@ function initImpactGallery() {
 function initPartnersProgramCards() {
     const section = document.querySelector('.partners-program');
     if (!section) return;
-    if (section.dataset.partnersProgramCardsInit === 'true') return;
 
-    const cards = Array.from(
-        section.querySelectorAll('[data-partners-program-card]'),
-    );
-    if (!cards.length) return;
+    const wrappers = Array.from(section.querySelectorAll('.program-cards'));
+    if (!wrappers.length) return;
 
-    section.dataset.partnersProgramCardsInit = 'true';
+    const setInitialWidths = () => {
+        wrappers.forEach((wrapper) => {
+            gsap.set(wrapper, { clearProps: 'width' });
 
-    // Start offset (from right). Keep it subtle so it lands at center cleanly.
-    const dist = window.innerWidth <= 768 ? 40 : 160;
-    gsap.set(cards, { x: dist, opacity: 0, willChange: 'transform,opacity' });
+            const currentWidth = wrapper.offsetWidth;
 
-    // Animate each card on its own scroll trigger (no explicit delays).
-    cards.forEach((card) => {
-        gsap.to(card, {
-            x: 0,
-            opacity: 1,
-            duration: 0.85,
-            ease: 'power3.out',
-            overwrite: 'auto',
-            clearProps: 'willChange',
+            gsap.set(wrapper, {
+                width: currentWidth,
+            });
+        });
+    };
+
+    setInitialWidths();
+
+    wrappers.forEach((wrapper, index) => {
+        gsap.to(wrapper, {
+            width: () => {
+                const parent = wrapper.parentElement;
+                return parent ? parent.clientWidth : section.clientWidth;
+            },
+            ease: 'power1.out',
             scrollTrigger: {
-                trigger: card,
-                start: 'top 80%',
-                once: true,
+                trigger: wrapper,
+                start: `top bottom`,
+                end: `bottom top`,
+                scrub: true,
+                // markers:true,
+                invalidateOnRefresh: true,
             },
         });
     });
-}
 
+    ScrollTrigger.addEventListener('refreshInit', setInitialWidths);
+
+    console.log('[Trac] Partners program cards initialized');
+}
 /**
  * Partners page: "Partner Voices" looping slider (7 slides).
  * Custom logic (no external slider lib), transitions powered by GSAP.
