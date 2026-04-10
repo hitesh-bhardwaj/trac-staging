@@ -80,7 +80,7 @@
                     </li>
                     <li class="menu-item">
                         <a href="<?php echo esc_url(
-                            home_url('/communities'),
+                            home_url('/connecting-communities'),
                         ); ?>" class="nav-link">
                             Communities
                         </a>
