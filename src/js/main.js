@@ -574,38 +574,32 @@ function init() {
     initBarba(app);
 
     // Initialize on page load
-    document.addEventListener('trac:loaded', () => {
-        // Initialize network canvases (not in initializePageComponents)
-        const networkCanvases = Array.from(
-            document.querySelectorAll('#network-canvas, [data-community-hub-canvas]')
-        );
+    // Initialize on page load
+document.addEventListener('trac:loaded', () => {
+    // Select all canvas elements by class instead of ID
+    const networkCanvases = document.querySelectorAll('.network-canvas-el');
+    
+    if (networkCanvases.length && !app.prefersReducedMotion) {
+        app.networkInstances = []; // Store instances if you need to destroy them later
 
-        if (networkCanvases.length && !app.prefersReducedMotion) {
-            app.networkCanvas = networkCanvases
-                .map((canvas) => {
-                    const isCommunityHub = canvas.hasAttribute(
-                        'data-community-hub-canvas'
-                    );
+        networkCanvases.forEach((canvas) => {
+            const instance = initNetworkCanvas(canvas, {
+                starCount: 80,       // Reduced slightly for performance with multiple canvases
+                linkDistance: 150,
+                maxVelocity: 20,
+                minRadius: 1,
+                maxRadius: 2,
+                starColor: '#97ACC8', // Use your brand color or #ffffff
+                lineColor: '#97ACC8',
+                interactive: true,
+            });
+            app.networkInstances.push(instance);
+        });
+    }
 
-                    return initNetworkCanvas(canvas, {
-                        starCount: isCommunityHub ? 14 : 100,
-                        linkDistance: isCommunityHub ? 240 : 150,
-                        maxVelocity: isCommunityHub ? 6 : 25,
-                        minRadius: isCommunityHub ? 5 : 1,
-                        maxRadius: isCommunityHub ? 7 : 2,
-                        starColor: isCommunityHub ? '#9CB2CF' : '#ffffff',
-                        lineColor: isCommunityHub ? '#D8E1EF' : '#ffffff',
-                        interactive: !isCommunityHub,
-                        activeAreaStart: isCommunityHub ? 0.22 : 0.4,
-                    });
-                })
-                .filter(Boolean);
-        }
-
-        // Call initializePageComponents which handles everything else
-        initializePageComponents();
-        console.log('[Trac] All systems initialized');
-    });
+    initializePageComponents();
+    console.log('[Trac] All systems initialized');
+});
 }
 
 // Start when DOM is ready

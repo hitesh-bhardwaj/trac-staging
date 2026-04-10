@@ -783,6 +783,39 @@
     transform-origin: center;
 }
 
+/* Why TrAC connector (title slide) */
+.why-lines [data-why-connect] path,
+.why-lines [data-why-connect] line,
+.why-lines [data-why-connect] polyline {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.why-lines [data-why-connect] path:not([data-why-draw]),
+.why-lines [data-why-connect] line:not([data-why-draw]),
+.why-lines [data-why-connect] polyline:not([data-why-draw]) {
+    /* Keep connector base invisible so the draw feels like it fills on transparency */
+    stroke: rgba(17, 17, 17, 0);
+    stroke-width: 1.25;
+}
+
+.why-lines [data-why-connect] path[data-why-draw],
+.why-lines [data-why-connect] line[data-why-draw],
+.why-lines [data-why-connect] polyline[data-why-draw] {
+    stroke: #10417f;
+    stroke-width: 3;
+}
+
+.why-lines [data-why-connect] circle {
+    transform-origin: 50% 50%;
+}
+
+.why-lines [data-why-connect] path[fill] {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
 .why-main-title,
 .why-card-title,
 .why-card-desc,
@@ -860,6 +893,558 @@
     }
 }
 
+
+.who-we-are-track {
+    isolation: isolate;
+}
+
+.who-we-are-slide {
+    will-change: transform, opacity;
+}
+
+.who-we-are-dot {
+    width: 0.625vw;
+    height: 0.625vw;
+    border-radius: 9999px;
+    background: #d5d8dd;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.who-we-are-dot.is-active {
+    background: var(--color-brand-primary);
+    transform: scale(1.08);
+}
+
+.counter-item {
+    padding: 0 1.823vw;
+}
+
+.counter-item.has-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -1.823vw;
+    width: 1px;
+    height: 12.292vw;
+    background: rgba(16, 65, 127, 0.8);
+    transform: translateY(-50%);
+}
+
+.counter-value {
+    display: flex; /* Ensure it's a flex container */
+    align-items: flex-start;
+    font-family: var(--font-heading);
+    font-size: 5.729vw;
+    /* Changed from 0.9 to 1 to prevent clipping */
+    line-height: 1; 
+    font-weight: 400;
+}
+
+.counter-digit-window {
+    position: relative;
+    display: inline-flex;
+    /* Force height to exactly 1em (the size of one digit) */
+    height: 1em; 
+    overflow: hidden;
+}
+
+.counter-digit-reel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    will-change: transform;
+}
+
+.counter-digit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* This must match the window height exactly */
+    height: 1em; 
+    /* Ensures consistent width for numbers like '1' vs '8' */
+}
+
+.counter-suffix {
+    color: var(--color-brand-primary);
+    /* GSAP autoAlpha handles visibility, but we set a base style */
+}
+
+.counter-suffix-top {
+    /* Slightly adjusted margin for better alignment with the top of the numbers */
+    margin-top: 0.2vw; 
+    font-family: var(--font-body);
+    font-size: 1.25vw;
+    line-height: 1;
+}
+
+.counter-suffix-bottom {
+    align-self: flex-end;
+    /* Adjusted margin to sit on the baseline */
+    margin-bottom: 1.2vw; 
+    font-family: var(--font-body);
+    font-size: 1.5vw;
+    line-height: 1;
+}
+
+.counter-label {
+    max-width: 16vw;
+    line-height: 1.4;
+    /* margin-top: 1vw;  Added a small gap between number and text */
+}
+
+
+
+.what-we-do-section {
+    height: 240vh;
+    overflow: clip;
+}
+
+.what-we-do-card-container {
+    width: max-content;
+    will-change: transform;
+}
+
+.what-we-do-card {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    will-change: transform, opacity;
+}
+
+.vision-mission-card {
+    box-shadow: 0 18px 60px rgba(16, 65, 127, 0.04);
+}
+
+.trac-story-section {
+    height: 500vh;
+    overflow: clip;
+}
+
+.trac-story-year {
+    z-index: 0;
+}
+
+.trac-story-year-value {
+    font-family: var(--font-heading);
+    font-size: 24vw;
+    line-height: 1;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.82);
+    letter-spacing: -0.06em;
+}
+
+.trac-story-year-window {
+    display: inline-flex;
+    height: 0.8em;
+    overflow: hidden;
+}
+
+.trac-story-year-reel {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+}
+
+.trac-story-year-digit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0.95em;
+    min-width: 0.58em;
+}
+
+
+/* about page team slider */
+
+
+.team-slider-active-card {
+    position: relative;
+    width: 26vw;
+    height: 41vw;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 2vw;
+    border: 1px solid #10417f;
+    background: #EEF3FC;
+}
+
+.team-slider-active-image {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.team-slider-active-slide-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.team-slider-active-slide {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+}
+
+.team-slider-active-slide img,
+.team-slider-active-image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.team-slider-active-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 2.2vw 1.8vw 1.8vw;
+    background: linear-gradient(
+        180deg,
+        rgba(132, 140, 156, 0) 0%,
+        rgba(118, 122, 131, 0.72) 44%,
+        rgba(104, 107, 114, 0.96) 100%
+    );
+    text-align: center;
+    color: #ffffff;
+    will-change: transform, opacity;
+}
+
+.team-slider-active-content h3 {
+    font-family: var(--font-heading, inherit);
+    font-size: 2.1vw;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.team-slider-active-content p {
+    margin-top: 0.9vw;
+    font-size: 1.15vw;
+    line-height: 1.35;
+    opacity: 0.95;
+}
+
+.team-slider-linkedin {
+    position: absolute;
+    top: 1.4vw;
+    right: 1.4vw;
+    z-index: 4;
+    display: flex;
+    width: 3.2vw;
+    height: 3.2vw;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #0a66c2;
+    color: #fff;
+    font-size: 1.7vw;
+    font-weight: 700;
+    text-decoration: none;
+    will-change: transform, opacity;
+}
+
+.team-slider-rail-wrap {
+    flex: 1;
+    overflow: hidden;
+    padding-bottom: 0;
+    min-width: 0;
+}
+
+.team-slider-rail {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.6vw;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+}
+
+.team-slider-thumb {
+    position: relative;
+    width: 10.4vw;
+    height: 21.2vw;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 1.2vw;
+    background: #EEF3FC;
+    padding: 0;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.team-slider-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+.team-slider-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.95vw;
+    height: 2.95vw;
+    background: transparent;
+    color: #10417f;
+    line-height: 1;
+    transition:
+        opacity 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.team-slider-nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+.team-slider-nav-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.team-slider-nav-icon--next {
+    transform: rotate(180deg);
+}
+
+.team-slider-nav[disabled] {
+    opacity: 1;
+}
+
+.team-slider-nav[disabled] .team-slider-nav-icon {
+    opacity: 0.28;
+}
+
+@media (max-width: 991px) {
+    .team-slider-nav {
+        width: 92px;
+        height: 44px;
+    }
+
+    .team-slider-nav-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.team-slider-rail-wrap {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    padding-bottom: 0;
+    min-width: 0;
+}
+
+.team-slider-rail {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.6vw;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+}
+
+.team-slider-rail-clone {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+}
+
+@media (max-width: 991px) {
+    .team-slider-stage {
+        min-height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .team-slider-active-card {
+        width: 100%;
+        max-width: 420px;
+        height: 560px;
+        border-radius: 24px;
+    }
+
+    .team-slider-linkedin {
+        top: 16px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+    }
+
+    .team-slider-active-content {
+        padding: 24px 20px 18px;
+    }
+
+    .team-slider-active-content h3 {
+        font-size: 36px;
+    }
+
+    .team-slider-active-content p {
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    .team-slider-thumb {
+        width: 132px;
+        height: 260px;
+        border-radius: 16px;
+    }
+
+    .team-slider-rail {
+        gap: 14px;
+    }
+
+    .team-slider-nav {
+        width: 92px;
+        height: 44px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 639px) {
+    .team-slider-active-card {
+        height: 460px;
+    }
+
+    .team-slider-active-content h3 {
+        font-size: 28px;
+    }
+
+    .team-slider-active-content p {
+        font-size: 16px;
+    }
+
+    .team-slider-thumb {
+        width: 110px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .who-we-are-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .counter-item {
+        padding: 0 16px;
+    }
+
+    .counter-item.has-divider::after {
+        top: auto;
+        right: auto;
+        bottom: -20px;
+        left: 50%;
+        width: 120px;
+        height: 1px;
+        transform: translateX(-50%);
+    }
+
+    .counter-value {
+        font-size: 92px;
+    }
+
+    .counter-suffix-top {
+        margin-top: 8px;
+        font-size: 24px;
+    }
+
+    .counter-suffix-bottom {
+        margin-bottom: 10px;
+        font-size: 28px;
+    }
+
+    .counter-label {
+        max-width: none;
+    }
+
+    .what-we-do-section {
+        height: 260vh;
+    }
+
+    .trac-story-year-value {
+        font-size: 30vw;
+    }
+}
+
+@media (max-width: 640px) {
+    .who-we-are-copy br {
+        display: none;
+    }
+
+    .counter-value {
+        font-size: 64px;
+    }
+
+    .counter-suffix-top {
+        font-size: 18px;
+    }
+
+    .counter-suffix-bottom {
+        margin-bottom: 6px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .what-we-do-section {
+        height: auto;
+    }
+
+    .trac-story-section {
+        height: auto;
+    }
+
+    .trac-story-sticky {
+        position: relative;
+        min-height: auto;
+    }
+
+    .trac-story-year {
+        position: absolute;
+        top: 200px;
+        bottom: auto;
+    }
+
+    .trac-story-year-value {
+        font-size: 34vw;
+    }
+
+    .what-we-do-sticky {
+        position: relative;
+        min-height: auto;
+    }
+
+    .what-we-do-card-container {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     .why-trac-section {
         height: auto;
@@ -914,6 +1499,45 @@
 
 .site-main {
     padding-top: 0;
+}
+
+/* Parallax footer (CTA passes over a fixed footer) */
+#page {
+    position: relative;
+    z-index: 2;
+    margin-bottom: var(--parallax-footer-height, 0px);
+}
+
+[data-parallax-footer] {
+    width: 100%;
+    max-height: 65vh;
+    height: 100vh;
+    overflow: hidden;
+    clip-path: inset(0% 0% 0% 0%);
+    -webkit-clip-path: inset(0% 0% 0% 0%);
+    will-change: clip-path;
+}
+
+[data-footer-clippath] {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    #page {
+        margin-bottom: 0px;
+    }
+
+    [data-parallax-footer] {
+        position: static;
+        clip-path: none;
+        -webkit-clip-path: none;
+        max-height: none;
+        overflow: visible;
+    }
 }
 
 /* Parallax footer (CTA passes over a fixed footer) */

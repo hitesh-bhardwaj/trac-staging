@@ -359,7 +359,37 @@ function trac_body_classes($classes)
 add_filter('body_class', 'trac_body_classes');
 
 /**
- * Disable Gutenberg for specific page templates
+ * Create core pages once when missing.
+ */
+function trac_maybe_create_core_pages()
+{
+    $option_key = 'trac_core_pages_created';
+
+    if (get_option($option_key)) {
+        return;
+    }
+
+    $about_page = get_page_by_path('about-us');
+
+    if (!$about_page) {
+        wp_insert_post([
+            'post_title' => 'About Us',
+            'post_name' => 'about-us',
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'post_excerpt' =>
+                'Learn more about Trac, our approach, and the values behind our network solutions.',
+            'post_content' =>
+                "Trac delivers connectivity solutions designed around reliability, scale, and long-term partnership.\n\nUpdate this content from the WordPress editor any time.",
+        ]);
+    }
+
+    update_option($option_key, 1);
+}
+add_action('init', 'trac_maybe_create_core_pages');
+
+/**
+ * Disable Gutenberg for pages using ACF sections
  */
 function trac_disable_gutenberg($use_block_editor, $post)
 {

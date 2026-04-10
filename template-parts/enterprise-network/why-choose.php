@@ -70,5 +70,6 @@ if (!defined('ABSPATH')) {
 	            </div>
         </div>
     </div>
-    <canvas id="network-canvas" class="absolute inset-0 h-full w-full pointer-events-none z-0"></canvas>
+                                  <canvas class="network-canvas-el absolute inset-0 h-full w-full"></canvas>
+
 </section>

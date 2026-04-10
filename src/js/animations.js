@@ -6,6 +6,7 @@
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { initTeamSlider } from './team-slider';
 gsap.registerPlugin(ScrollTrigger);
 
 /**
@@ -30,8 +31,13 @@ export function initAnimations() {
     // initFooterParallax();
     initPartnersProgramCards();
     initPartnerVoicesSlider();
+    initTeamSlider();
     initStackingCards();
     initTestimonialsSlider();
+    initWhoWeAreSlider();
+    initWhoWeAreCounters();
+    initWhatWeDoScroll();
+    initTracStoryTimeline();
     initOurNetworkAnimation();
     initOurNetworkPointers();
     initWhyTracCircles();
@@ -39,6 +45,7 @@ export function initAnimations() {
     initCtaLineAnimation();
     initCommunityHubCards();
     initImpactGallery();
+    initParallaxImgSlider();
 
     // Refresh ScrollTrigger after all animations are set up
     ScrollTrigger.refresh();
@@ -440,7 +447,10 @@ function initFooterParallax() {
 
     // Only enable on desktop.
     if (window.innerWidth <= 768) {
-        document.documentElement.style.setProperty('--parallax-footer-height', '0px');
+        document.documentElement.style.setProperty(
+            '--parallax-footer-height',
+            '0px',
+        );
         return;
     }
 
@@ -449,7 +459,10 @@ function initFooterParallax() {
 
     const setFooterHeight = () => {
         const h = footer.offsetHeight || 0;
-        document.documentElement.style.setProperty('--parallax-footer-height', `${h}px`);
+        document.documentElement.style.setProperty(
+            '--parallax-footer-height',
+            `${h}px`,
+        );
     };
 
     setFooterHeight();
@@ -472,16 +485,15 @@ function initFooterParallax() {
             end: 'bottom 10%',
             scrub: true,
         },
-    })
-        .to(
-            footer,
-            {
-                clipPath: 'inset(0% 0% 0% 0%)',
-                webkitClipPath: 'inset(0% 0% 0% 0%)',
-                ease: 'none',
-            },
-            0,
-        )
+    }).to(
+        footer,
+        {
+            clipPath: 'inset(0% 0% 0% 0%)',
+            webkitClipPath: 'inset(0% 0% 0% 0%)',
+            ease: 'none',
+        },
+        0,
+    );
 }
 
 /**
@@ -569,9 +581,15 @@ function initWhyTracScrollStory() {
     // The stroke draws from transparent -> black -> primary, and stays perfectly in sync with the horizontal travel.
     const progressSvg = section.querySelector('[data-why-progress-line]');
     const progressBase = progressSvg?.querySelector('line');
-    if (progressSvg && progressBase && typeof progressBase.getTotalLength === 'function') {
+    if (
+        progressSvg &&
+        progressBase &&
+        typeof progressBase.getTotalLength === 'function'
+    ) {
         // Clean up old clone if any.
-        progressSvg.querySelectorAll('[data-why-progress-draw]').forEach((n) => n.remove());
+        progressSvg
+            .querySelectorAll('[data-why-progress-draw]')
+            .forEach((n) => n.remove());
 
         const baseLen = progressBase.getTotalLength();
         // Base is fully transparent (we "fill" the line with the draw overlay).
@@ -619,7 +637,11 @@ function initWhyTracScrollStory() {
  * Why TrAC scroll storytelling:
  * dots fade -> connection draws -> cards reveal as you scroll
  */
-function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) {
+function initWhyTracStory(
+    masterTl,
+    drawOffset = 0,
+    contentOffset = drawOffset,
+) {
     const section = document.querySelector('.why-trac-section');
     if (!section) return;
 
@@ -655,11 +677,15 @@ function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) 
     if (!dots.length || !baseLines.length) return;
 
     const cards = Array.from(section.querySelectorAll('.why-card'));
-    const cardImages = cards.map((card) => card.querySelector('.why-card-image'));
+    const cardImages = cards.map((card) =>
+        card.querySelector('.why-card-image'),
+    );
     const cardImageImgs = cardImages
         .map((wrap) => wrap?.querySelector('img'))
         .filter(Boolean);
-    const cardContent = cards.map((card) => card.querySelector('.why-card-content'));
+    const cardContent = cards.map((card) =>
+        card.querySelector('.why-card-content'),
+    );
 
     const getDotCenterX = (el) => {
         // <circle>
@@ -675,7 +701,9 @@ function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) 
         return 0;
     };
 
-    const orderedDots = [...dots].sort((a, b) => getDotCenterX(a) - getDotCenterX(b));
+    const orderedDots = [...dots].sort(
+        (a, b) => getDotCenterX(a) - getDotCenterX(b),
+    );
 
     orderedDots.forEach((dot) => {
         gsap.set(dot, {
@@ -725,7 +753,10 @@ function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) 
         .map((m) => m.el)
         .filter((el) => !phase1Set.has(el) && el !== straightCandidate);
 
-    const straightLine = straightCandidate && !phase1Set.has(straightCandidate) ? straightCandidate : null;
+    const straightLine =
+        straightCandidate && !phase1Set.has(straightCandidate)
+            ? straightCandidate
+            : null;
 
     // Style + create "draw overlay" lines.
     const drawLines = baseLines
@@ -854,8 +885,8 @@ function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) 
     drawPhase(phase1, phase1At, phase1Dur, 0);
 
     // 3) Then draw the remaining curved connections.
-    const phase2At = 0.10;
-    const phase2Dur = 0.20;
+    const phase2At = 0.1;
+    const phase2Dur = 0.2;
     drawPhase(phase2, phase2At, phase2Dur, 0.03);
 
     // 4) If/when you add the straight line, fill it from transparent -> primary as you scroll.
@@ -863,7 +894,11 @@ function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) 
         const straightClone = toDrawClone.get(straightLine);
         if (straightClone) {
             // "Black line" that fills into primary.
-            gsap.set(straightClone, { opacity: 0, stroke: '#111111', strokeOpacity: 0 });
+            gsap.set(straightClone, {
+                opacity: 0,
+                stroke: '#111111',
+                strokeOpacity: 0,
+            });
             const straightAt = phase2At + phase2Dur + 0.06;
             tl.to(
                 straightClone,
@@ -944,7 +979,9 @@ function initWhyTracStory(masterTl, drawOffset = 0, contentOffset = drawOffset) 
         const left = slide ? slide.offsetLeft : card.offsetLeft;
         // Slightly later than center for a calmer pace.
         const p =
-            scrollDistance > 0 ? (left - window.innerWidth * 0.6) / scrollDistance : 0;
+            scrollDistance > 0
+                ? (left - window.innerWidth * 0.6) / scrollDistance
+                : 0;
         const clamped = Math.max(0, Math.min(1, p));
         return contentOffset + clamped * motionDur;
     });
@@ -1108,15 +1145,15 @@ function initCtaLineAnimation() {
         // Start visible at the path start, then travel start -> end.
         // (Fade-in was making it feel like it "appears" mid-path.)
         tl.set(clone, { opacity: 1 }, 0).to(
-                clone,
-                {
-                    // Travel start -> end
-                    strokeDashoffset: -(length + segmentLength),
-                    duration: gsap.utils.random(3.2, 4.8),
-                    ease: 'none',
-                },
-                0,
-            );
+            clone,
+            {
+                // Travel start -> end
+                strokeDashoffset: -(length + segmentLength),
+                duration: gsap.utils.random(3.2, 4.8),
+                ease: 'none',
+            },
+            0,
+        );
 
         tl.to(
             clone,
@@ -1143,54 +1180,53 @@ function initCtaLineAnimation() {
             from: 'start',
         },
         ease: 'power2.out',
-    })
-        .call(() => {
-            const maxConcurrent = Math.min(5, travelEntries.length);
-            const active = new Set();
+    }).call(() => {
+        const maxConcurrent = Math.min(5, travelEntries.length);
+        const active = new Set();
 
-            const pickNextEntry = () => {
-                const available = travelEntries.filter(
-                    (entry) => !active.has(entry),
-                );
-                if (!available.length) {
-                    return null;
-                }
-                return available[Math.floor(Math.random() * available.length)];
-            };
+        const pickNextEntry = () => {
+            const available = travelEntries.filter(
+                (entry) => !active.has(entry),
+            );
+            if (!available.length) {
+                return null;
+            }
+            return available[Math.floor(Math.random() * available.length)];
+        };
 
-            const startPulse = (entry) => {
-                if (!entry || active.has(entry)) {
-                    return;
-                }
+        const startPulse = (entry) => {
+            if (!entry || active.has(entry)) {
+                return;
+            }
 
-                active.add(entry);
+            active.add(entry);
 
-                runTravelPulse(entry).eventCallback('onComplete', () => {
-                    active.delete(entry);
-                    // Keep ~5 running, but start replacement slightly staggered.
-                    gsap.delayedCall(gsap.utils.random(0.05, 0.55), () => {
-                        startPulse(pickNextEntry() || entry);
-                    });
+            runTravelPulse(entry).eventCallback('onComplete', () => {
+                active.delete(entry);
+                // Keep ~5 running, but start replacement slightly staggered.
+                gsap.delayedCall(gsap.utils.random(0.05, 0.55), () => {
+                    startPulse(pickNextEntry() || entry);
                 });
-            };
+            });
+        };
 
-            const fillToMax = () => {
-                const needed = maxConcurrent - active.size;
-                for (let i = 0; i < needed; i += 1) {
-                    gsap.delayedCall(gsap.utils.random(0.0, 0.9), () => {
-                        startPulse(pickNextEntry());
-                    });
-                }
-            };
+        const fillToMax = () => {
+            const needed = maxConcurrent - active.size;
+            for (let i = 0; i < needed; i += 1) {
+                gsap.delayedCall(gsap.utils.random(0.0, 0.9), () => {
+                    startPulse(pickNextEntry());
+                });
+            }
+        };
 
-            // Start a small number of pulses with random offsets,
-            // keeping concurrency capped so they don't all move at once.
-            fillToMax();
+        // Start a small number of pulses with random offsets,
+        // keeping concurrency capped so they don't all move at once.
+        fillToMax();
 
-            // Safety: if something ends early, top back up.
-            gsap.delayedCall(1.5, fillToMax);
-            gsap.delayedCall(3.5, fillToMax);
-        });
+        // Safety: if something ends early, top back up.
+        gsap.delayedCall(1.5, fillToMax);
+        gsap.delayedCall(3.5, fillToMax);
+    });
 }
 
 /**
@@ -1455,6 +1491,369 @@ function initParallaxAnimations() {
     });
 }
 
+function initTeamSlider() {
+    const section = document.querySelector('[data-team-slider]');
+    if (!section) return;
+
+    const prevBtn = section.querySelector('[data-team-slider-prev]');
+    const nextBtn = section.querySelector('[data-team-slider-next]');
+
+    const activeImageWrap = section.querySelector('.team-slider-active-image');
+    const activeName = section.querySelector('[data-team-slider-active-name]');
+    const activeRole = section.querySelector('[data-team-slider-active-role]');
+    const activeLinkedin = section.querySelector('[data-team-slider-linkedin]');
+
+    const railWrap = section.querySelector('.team-slider-rail-wrap');
+    const rail = section.querySelector('[data-team-slider-rail]');
+
+    const initialThumbs = Array.from(
+        section.querySelectorAll('[data-team-slider-thumb]')
+    );
+
+    if (
+        !prevBtn ||
+        !nextBtn ||
+        !activeImageWrap ||
+        !activeName ||
+        !activeRole ||
+        !activeLinkedin ||
+        !railWrap ||
+        !rail ||
+        !initialThumbs.length
+    ) {
+        console.log('[Trac] Team slider missing elements');
+        return;
+    }
+
+    const members = initialThumbs.map((thumb) => ({
+        name: thumb.dataset.name || '',
+        role: thumb.dataset.role || '',
+        image: thumb.dataset.image || '',
+        linkedin: thumb.dataset.linkedin || '#',
+    }));
+
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    const mod = (n, m) => ((n % m) + m) % m;
+
+    const createActiveSlideMarkup = (member) => {
+        return `
+            <div class="team-slider-active-slide">
+                <img
+                    src="${member.image}"
+                    alt="${member.name}"
+                    draggable="false"
+                />
+            </div>
+        `;
+    };
+
+    const createThumbMarkup = (memberIndex) => {
+        const member = members[memberIndex];
+        return `
+            <button
+                type="button"
+                class="team-slider-thumb"
+                data-team-slider-thumb-live
+                data-team-index="${memberIndex}"
+                data-name="${member.name}"
+                data-role="${member.role}"
+                data-image="${member.image}"
+                data-linkedin="${member.linkedin}"
+                aria-label="${member.name}"
+            >
+                <img
+                    src="${member.image}"
+                    alt="${member.name}"
+                    draggable="false"
+                />
+            </button>
+        `;
+    };
+
+    const getThumbIndexesForState = (baseIndex) => {
+        const arr = [];
+        for (let i = 1; i < members.length; i += 1) {
+            arr.push(mod(baseIndex + i, members.length));
+        }
+        return arr;
+    };
+
+    const setActiveContent = (member) => {
+        activeName.textContent = member.name;
+        activeRole.textContent = member.role;
+        activeLinkedin.href = member.linkedin || '#';
+    };
+
+    const renderActiveStatic = () => {
+        const member = members[currentIndex];
+        activeImageWrap.innerHTML = createActiveSlideMarkup(member);
+        setActiveContent(member);
+    };
+
+    const bindThumbClicks = () => {
+        const liveThumbs = Array.from(
+            rail.querySelectorAll('[data-team-slider-thumb-live]')
+        );
+
+        liveThumbs.forEach((thumb) => {
+            thumb.addEventListener('click', () => {
+                const targetIndex = Number(thumb.dataset.teamIndex);
+                if (Number.isNaN(targetIndex) || targetIndex === currentIndex) return;
+
+                const forwardDistance = mod(targetIndex - currentIndex, members.length);
+                const backwardDistance = mod(currentIndex - targetIndex, members.length);
+
+                goToIndex(
+                    targetIndex,
+                    forwardDistance <= backwardDistance ? 1 : -1
+                );
+            });
+        });
+    };
+
+    const renderThumbsStatic = (baseIndex = currentIndex) => {
+        const indexes = getThumbIndexesForState(baseIndex);
+        rail.innerHTML = indexes.map(createThumbMarkup).join('');
+        gsap.set(rail, { x: 0 });
+        bindThumbClicks();
+    };
+
+    const getThumbStep = () => {
+        const firstThumb = rail.querySelector('.team-slider-thumb');
+        if (!firstThumb) return 0;
+        const gap = parseFloat(getComputedStyle(rail).gap || '0') || 0;
+        return firstThumb.offsetWidth + gap;
+    };
+
+    const animateFrame = (nextIndex, direction) => {
+        const currentMember = members[currentIndex];
+        const nextMember = members[nextIndex];
+
+        const outgoingLayer = document.createElement('div');
+        outgoingLayer.className = 'team-slider-active-slide-layer';
+
+        const incomingLayer = document.createElement('div');
+        incomingLayer.className = 'team-slider-active-slide-layer';
+
+        outgoingLayer.innerHTML = createActiveSlideMarkup(currentMember);
+        incomingLayer.innerHTML = createActiveSlideMarkup(nextMember);
+
+        activeImageWrap.innerHTML = '';
+        activeImageWrap.appendChild(outgoingLayer);
+        activeImageWrap.appendChild(incomingLayer);
+
+        const outgoingSlide = outgoingLayer.querySelector('.team-slider-active-slide');
+        const incomingSlide = incomingLayer.querySelector('.team-slider-active-slide');
+
+        gsap.set(outgoingSlide, { xPercent: 0 });
+        gsap.set(incomingSlide, { xPercent: direction > 0 ? 100 : -100 });
+
+        gsap.to(outgoingSlide, {
+            xPercent: direction > 0 ? -100 : 100,
+            duration: 0.72,
+            ease: 'power3.inOut',
+            overwrite: true,
+        });
+
+        gsap.to(incomingSlide, {
+            xPercent: 0,
+            duration: 0.72,
+            ease: 'power3.inOut',
+            overwrite: true,
+        });
+
+       gsap.to([activeName, activeRole], {
+    autoAlpha: 0,
+    y: 12,
+    duration: 0.18,
+    ease: 'power2.out',
+    overwrite: true,
+    onComplete: () => {
+        activeName.textContent = nextMember.name;
+        activeRole.textContent = nextMember.role;
+
+        gsap.to([activeName, activeRole], {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.26,
+            ease: 'power2.out',
+            overwrite: true,
+        });
+    },
+});
+
+gsap.to(activeLinkedin, {
+    autoAlpha: 0,
+    duration: 0.18,
+    ease: 'power2.out',
+    overwrite: true,
+    onComplete: () => {
+        activeLinkedin.href = nextMember.linkedin || '#';
+
+        gsap.to(activeLinkedin, {
+            autoAlpha: 1,
+            duration: 0.22,
+            ease: 'power2.out',
+            overwrite: true,
+        });
+    },
+});
+    };
+
+    const animateThumbs = (nextIndex, direction) => {
+        const step = getThumbStep();
+        if (!step) {
+            currentIndex = nextIndex;
+            renderThumbsStatic(currentIndex);
+            return Promise.resolve();
+        }
+
+        return new Promise((resolve) => {
+            const currentIndexes = getThumbIndexesForState(currentIndex);
+            const nextIndexes = getThumbIndexesForState(nextIndex);
+
+            const currentTrack = document.createElement('div');
+            currentTrack.className = 'team-slider-rail team-slider-rail-clone';
+            currentTrack.style.position = 'absolute';
+            currentTrack.style.left = '0';
+            currentTrack.style.top = '0';
+            currentTrack.style.height = '100%';
+            currentTrack.style.width = 'max-content';
+            currentTrack.style.pointerEvents = 'none';
+            currentTrack.style.gap = getComputedStyle(rail).gap;
+            currentTrack.style.display = 'flex';
+            currentTrack.style.alignItems = 'flex-end';
+            currentTrack.innerHTML = currentIndexes.map(createThumbMarkup).join('');
+
+            const nextTrack = document.createElement('div');
+            nextTrack.className = 'team-slider-rail team-slider-rail-clone';
+            nextTrack.style.position = 'absolute';
+            nextTrack.style.left = '0';
+            nextTrack.style.top = '0';
+            nextTrack.style.height = '100%';
+            nextTrack.style.width = 'max-content';
+            nextTrack.style.pointerEvents = 'none';
+            nextTrack.style.gap = getComputedStyle(rail).gap;
+            nextTrack.style.display = 'flex';
+            nextTrack.style.alignItems = 'flex-end';
+            nextTrack.innerHTML = nextIndexes.map(createThumbMarkup).join('');
+
+            rail.style.visibility = 'hidden';
+            railWrap.style.position = 'relative';
+
+            railWrap.appendChild(currentTrack);
+            railWrap.appendChild(nextTrack);
+
+            if (direction > 0) {
+                gsap.set(currentTrack, { x: 0 });
+                gsap.set(nextTrack, { x: step });
+
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        currentTrack.remove();
+                        nextTrack.remove();
+                        currentIndex = nextIndex;
+                        renderThumbsStatic(currentIndex);
+                        rail.style.visibility = '';
+                        resolve();
+                    },
+                });
+
+                tl.to(
+                    currentTrack,
+                    {
+                        x: -step,
+                        duration: 0.72,
+                        ease: 'power3.inOut',
+                    },
+                    0
+                ).to(
+                    nextTrack,
+                    {
+                        x: 0,
+                        duration: 0.72,
+                        ease: 'power3.inOut',
+                    },
+                    0
+                );
+            } else {
+                gsap.set(currentTrack, { x: 0 });
+                gsap.set(nextTrack, { x: -step });
+
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        currentTrack.remove();
+                        nextTrack.remove();
+                        currentIndex = nextIndex;
+                        renderThumbsStatic(currentIndex);
+                        rail.style.visibility = '';
+                        resolve();
+                    },
+                });
+
+                tl.to(
+                    currentTrack,
+                    {
+                        x: step,
+                        duration: 0.72,
+                        ease: 'power3.inOut',
+                    },
+                    0
+                ).to(
+                    nextTrack,
+                    {
+                        x: 0,
+                        duration: 0.72,
+                        ease: 'power3.inOut',
+                    },
+                    0
+                );
+            }
+        });
+    };
+
+    const goToIndex = async (targetIndex, direction = 1) => {
+        if (isAnimating || members.length <= 1) return;
+
+        const nextIndex = mod(targetIndex, members.length);
+        if (nextIndex === currentIndex) return;
+
+        isAnimating = true;
+
+        animateFrame(nextIndex, direction);
+        await animateThumbs(nextIndex, direction);
+
+        renderActiveStatic();
+        isAnimating = false;
+    };
+
+    prevBtn.addEventListener('click', () => {
+        goToIndex(currentIndex - 1, -1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        goToIndex(currentIndex + 1, 1);
+    });
+
+    const handleResize = () => {
+        renderActiveStatic();
+        renderThumbsStatic(currentIndex);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    renderActiveStatic();
+    renderThumbsStatic(currentIndex);
+
+    section._teamSliderCleanup = () => {
+        window.removeEventListener('resize', handleResize);
+    };
+
+    console.log('[Trac] Team slider initialized');
+}
+
 /**
  * Text animations (split text, reveal, etc.)
  */
@@ -1615,18 +2014,16 @@ function initTestimonialsSlider() {
     const currentSlide = section.querySelector('.current-slide');
     const totalSlides = section.querySelector('.total-slides');
 
-    if (!track || cards.length === 0) return;
+    if (!track || !cards.length) return;
 
     let currentIndex = 0;
-    const totalCards = cards.length;
     let isAnimating = false;
+    const totalCards = cards.length;
 
-    // Update total slides display
     if (totalSlides) {
         totalSlides.textContent = String(totalCards).padStart(2, '0');
     }
 
-    // Update current slide display
     function updateCounter() {
         if (currentSlide) {
             currentSlide.textContent = String(currentIndex + 1).padStart(
@@ -1636,85 +2033,572 @@ function initTestimonialsSlider() {
         }
     }
 
-    // Initialize cards - hide all except first
-    cards.forEach((card, index) => {
-        if (index === 0) {
-            gsap.set(card, { x: '0%', scale: 1, filter: 'brightness(1)', zIndex: 2 });
-        } else {
-            gsap.set(card, { x: '0%', scale: 0.9, filter: 'brightness(0.6)', zIndex: 1 });
-        }
-    });
+    function updateButtons() {
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = currentIndex === totalCards - 1;
+    }
 
-    // Animate to specific card
-    function goToCard(index, direction = 'next') {
-        if (isAnimating) return;
+    function getSlideDistance() {
+        return track.offsetWidth * 0.92;
+    }
 
-        // Wrap around
-        if (index < 0) index = totalCards - 1;
-        if (index >= totalCards) index = 0;
+    function resetCard(card) {
+        gsap.set(card, {
+            x: 20,
+            scale: 1,
+            autoAlpha: 0,
+            filter: 'brightness(1)',
+            zIndex: 1,
+            pointerEvents: 'none',
+        });
+    }
 
-        if (index === currentIndex) return;
+    function setFrontCard(card) {
+        gsap.set(card, {
+            x: 20,
+            scale: 1,
+            autoAlpha: 1,
+            filter: 'brightness(1)',
+            zIndex: 3,
+            pointerEvents: 'auto',
+        });
+    }
+
+    function setBackCard(card) {
+        gsap.set(card, {
+            // x: -36,,
+            scale: 0.93,
+            autoAlpha: 1,
+            filter: 'brightness(0.78)',
+            zIndex: 2,
+            pointerEvents: 'none',
+        });
+    }
+
+    cards.forEach(resetCard);
+    setFrontCard(cards[0]);
+
+    function goNext() {
+        if (isAnimating || currentIndex >= totalCards - 1) return;
 
         isAnimating = true;
 
         const currentCard = cards[currentIndex];
-        const nextCard = cards[index];
+        const nextCard = cards[currentIndex + 1];
+        const distance = getSlideDistance();
 
-        // Determine slide direction
-        const slideFrom = direction === 'next' ? '100%' : '-100%';
-
-        // Set next card starting position before animating
-        gsap.set(nextCard, {
-            x: slideFrom,
-            scale: 1,
-            filter: 'brightness(1)',
-            zIndex: 2
-        });
-
-        // Animate out current card - scale down and dim with brightness (stays in place)
-        gsap.to(currentCard, {
-            scale: 0.9,
-            filter: 'brightness(0.6)',
-            duration: 0.5,
-            ease: 'power2.inOut',
-            zIndex: 1,
-            onComplete: () => {
-                // Reset current card position after it's hidden
-                gsap.set(currentCard, { x: '0%' });
+        cards.forEach((card, index) => {
+            if (index !== currentIndex && index !== currentIndex + 1) {
+                resetCard(card);
             }
         });
 
-        // Animate in next card - slide from left or right
-        gsap.to(nextCard, {
-            x: '0%',
-            duration: 0.6,
-            ease: 'power2.out',
+        gsap.killTweensOf([currentCard, nextCard]);
+
+        gsap.set(currentCard, {
+            x: 0,
+            scale: 1,
+            autoAlpha: 1,
+            filter: 'brightness(1)',
+            zIndex: 3,
+            pointerEvents: 'none',
+        });
+
+        gsap.set(nextCard, {
+            x: distance,
+            scale: 1,
+            autoAlpha: 1,
+            filter: 'brightness(1)',
+            zIndex: 4,
+            pointerEvents: 'auto',
+        });
+
+        const tl = gsap.timeline({
+            defaults: {
+                duration: 0.85,
+                ease: 'power3.inOut',
+                overwrite: 'auto',
+            },
             onComplete: () => {
+                setBackCard(currentCard);
+                setFrontCard(nextCard);
+                currentIndex += 1;
+                updateCounter();
+                updateButtons();
                 isAnimating = false;
             },
         });
 
-        currentIndex = index;
-        updateCounter();
+        tl.to(
+            currentCard,
+            {
+                // x: -36,
+                scale: 0.93,
+                filter: 'brightness(0.78)',
+            },
+            0,
+        ).to(
+            nextCard,
+            {
+                x: 20,
+            },
+            0,
+        );
     }
 
-    // Navigation button handlers
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            goToCard(currentIndex - 1, 'prev');
+    function goPrev() {
+        if (isAnimating || currentIndex <= 0) return;
+
+        isAnimating = true;
+
+        const currentCard = cards[currentIndex];
+        const previousCard = cards[currentIndex - 1];
+        const distance = getSlideDistance();
+
+        cards.forEach((card, index) => {
+            if (index !== currentIndex && index !== currentIndex - 1) {
+                resetCard(card);
+            }
         });
-    }
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            goToCard(currentIndex + 1, 'next');
+        gsap.killTweensOf([currentCard, previousCard]);
+
+        // current moves out to right
+        gsap.set(currentCard, {
+            x: 20,
+            scale: 1,
+            autoAlpha: 1,
+            filter: 'brightness(1)',
+            zIndex: 4,
+            pointerEvents: 'none',
         });
+
+        // previous comes forward from its stacked back state
+        gsap.set(previousCard, {
+            // x: -36,
+            scale: 0.93,
+            autoAlpha: 1,
+            filter: 'brightness(0.78)',
+            zIndex: 3,
+            pointerEvents: 'auto',
+        });
+
+        const tl = gsap.timeline({
+            defaults: {
+                duration: 0.85,
+                ease: 'power3.inOut',
+                overwrite: 'auto',
+            },
+            onComplete: () => {
+                resetCard(currentCard);
+                setFrontCard(previousCard);
+                currentIndex -= 1;
+                updateCounter();
+                updateButtons();
+                isAnimating = false;
+            },
+        });
+
+        tl.to(
+            currentCard,
+            {
+                x: distance,
+            },
+            0,
+        ).to(
+            previousCard,
+            {
+                x: 0,
+                scale: 1,
+                filter: 'brightness(1)',
+            },
+            0,
+        );
     }
 
-    // Initialize counter
+    nextBtn?.addEventListener('click', goNext);
+    prevBtn?.addEventListener('click', goPrev);
+
+    window.addEventListener('resize', () => {
+        cards.forEach(resetCard);
+
+        if (currentIndex > 0) {
+            setBackCard(cards[currentIndex - 1]);
+        }
+
+        setFrontCard(cards[currentIndex]);
+        updateButtons();
+    });
+
     updateCounter();
+    updateButtons();
 
-    console.log('[Trac] Testimonials slider initialized');
+    console.log('[Trac] Testimonials stacking slider initialized');
+}
+
+/**
+ * About page "Who We Are" slider
+ */
+function initWhoWeAreSlider() {
+    const section = document.querySelector('.who-we-are-section');
+    if (!section) return;
+
+    const slides = Array.from(section.querySelectorAll('.who-we-are-slide'));
+    const dots = Array.from(section.querySelectorAll('[data-who-we-are-dot]'));
+
+    if (slides.length === 0) return;
+
+    let currentIndex = 0;
+    let isAnimating = false;
+    let autoPlay = null;
+
+    const updateDots = () => {
+        dots.forEach((dot, index) => {
+            const isActive = index === currentIndex;
+            dot.classList.toggle('is-active', isActive);
+            dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+    };
+
+    const setInitialState = () => {
+        slides.forEach((slide, index) => {
+            const isActive = index === 0;
+
+            slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+
+            gsap.set(slide, {
+                autoAlpha: isActive ? 1 : 0,
+                zIndex: isActive ? 2 : 1,
+            });
+        });
+
+        updateDots();
+    };
+
+    const goToSlide = (nextIndex) => {
+        if (isAnimating || nextIndex === currentIndex) return;
+
+        if (nextIndex < 0) {
+            nextIndex = slides.length - 1;
+        }
+
+        if (nextIndex >= slides.length) {
+            nextIndex = 0;
+        }
+
+        const currentSlide = slides[currentIndex];
+        const nextSlide = slides[nextIndex];
+
+        isAnimating = true;
+
+        slides.forEach((slide, index) => {
+            slide.setAttribute(
+                'aria-hidden',
+                index === nextIndex ? 'false' : 'true',
+            );
+        });
+
+        gsap.set(nextSlide, {
+            autoAlpha: 0,
+            zIndex: 3,
+        });
+
+        const tl = gsap.timeline({
+            defaults: {
+                duration: 0.7,
+                ease: 'power2.out',
+            },
+            onComplete: () => {
+                gsap.set(currentSlide, {
+                    autoAlpha: 0,
+                    zIndex: 1,
+                });
+
+                gsap.set(nextSlide, {
+                    autoAlpha: 1,
+                    zIndex: 2,
+                });
+
+                currentIndex = nextIndex;
+                updateDots();
+                isAnimating = false;
+            },
+        });
+
+        tl.to(currentSlide, { autoAlpha: 0 }, 0).to(
+            nextSlide,
+            { autoAlpha: 1 },
+            0,
+        );
+    };
+
+    const startAutoplay = () => {
+        if (autoPlay) return;
+
+        autoPlay = window.setInterval(() => {
+            goToSlide(currentIndex + 1);
+        }, 5000);
+    };
+
+    const stopAutoplay = () => {
+        if (!autoPlay) return;
+        window.clearInterval(autoPlay);
+        autoPlay = null;
+    };
+
+    dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+            const nextIndex = Number(dot.dataset.whoWeAreDot);
+            stopAutoplay();
+            goToSlide(nextIndex);
+            startAutoplay();
+        });
+    });
+
+    section.addEventListener('mouseenter', stopAutoplay);
+    section.addEventListener('mouseleave', startAutoplay);
+
+    setInitialState();
+
+    ScrollTrigger.create({
+        trigger: section,
+        start: 'top 75%',
+        once: true,
+        onEnter: () => {
+            startAutoplay();
+        },
+    });
+
+    console.log('[Trac] Who we are slider initialized');
+}
+
+function initWhoWeAreCounters() {
+    const counterSection = document.querySelector('[data-counter-section]');
+    if (!counterSection) return;
+
+    const reels = Array.from(
+        counterSection.querySelectorAll('[data-digit-reel]'),
+    );
+    const fades = Array.from(
+        counterSection.querySelectorAll('[data-counter-fade]'),
+    );
+
+    if (!reels.length) return;
+
+    reels.forEach((reel) => {
+        gsap.set(reel, { y: 0 });
+    });
+
+    gsap.set(fades, { autoAlpha: 0 });
+
+    ScrollTrigger.create({
+        trigger: counterSection,
+        start: 'top 82%',
+        once: true,
+        onEnter: () => {
+            const tl = gsap.timeline();
+
+            reels.forEach((reel, index) => {
+                const digits = reel.querySelectorAll('.counter-digit');
+                if (!digits.length) return;
+
+                // Use getBoundingClientRect for sub-pixel precision
+                const digitHeight = digits[0].getBoundingClientRect().height;
+
+                const targetDigit = Number(reel.dataset.targetDigit || 0);
+                const loopCount = Number(reel.dataset.reelLoops || 3);
+
+                // The PHP logic generates: (loops * 10) + (digits 0 to target)
+                // To land perfectly, we calculate the total items to slide up
+                const finalIndex = loopCount * 10 + targetDigit;
+
+                tl.to(
+                    reel,
+                    {
+                        y: -(digitHeight * finalIndex),
+                        duration: 3,
+                        ease: 'power3.inOut',
+                    },
+                    index * 0.12, // Staggering the start of each reel
+                );
+            });
+
+            if (fades.length) {
+                tl.to(
+                    fades,
+                    {
+                        autoAlpha: 1,
+                        duration: 0.45,
+                        delay: 2,
+                        stagger: 0.08,
+                        ease: 'power2.out',
+                    },
+                    0.45,
+                );
+            }
+        },
+    });
+
+    console.log('[Trac] Who we are counters initialized');
+}
+
+function initWhatWeDoScroll() {
+    const section = document.querySelector('[data-what-we-do-scroll]');
+    if (!section) return;
+
+    const sticky = section.querySelector('.what-we-do-sticky');
+    const track = section.querySelector('[data-what-we-do-track]');
+    const cards = Array.from(section.querySelectorAll('.what-we-do-card'));
+
+    if (!sticky || !track || cards.length === 0) return;
+
+    if (window.innerWidth <= 768) {
+        gsap.set(track, { xPercent: 75 });
+        return;
+    }
+
+    gsap.set(track, { xPercent: 75 });
+
+    gsap.to(track, {
+        xPercent: -25,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 70%',
+            end: 'bottom bottom',
+            scrub: true,
+            // markers:true,
+            invalidateOnRefresh: true,
+        },
+    });
+    cards.forEach((card, index) => {
+        gsap.fromTo(
+            card,
+            {
+                // autoAlpha: 0.45,
+                opacity: 0,
+                yPercent: 100,
+            },
+            {
+                // autoAlpha: 1,
+                opacity: 1,
+                yPercent: 0,
+                duration: 0.7,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: section,
+                    start: `top+=${index * 12}% 70%`,
+                    end:"bottom bottom",
+                    // markers: true,
+
+                    // once: true,
+                    scrub: true,
+                },
+            },
+        );
+    });
+
+    console.log('[Trac] What we do scroll initialized');
+}
+
+function initTracStoryTimeline() {
+    const section = document.querySelector('.trac-story-section');
+    if (!section) return;
+
+    const reels = Array.from(section.querySelectorAll('[data-story-year-reel]'));
+    if (!reels.length) return;
+
+    if (window.innerWidth <= 768) {
+        reels.forEach((reel) => {
+            gsap.set(reel, { y: 0 });
+        });
+        return;
+    }
+
+    const storyYears = ['2026', '2025', '2024', '2023', '2020'];
+    const yearCount = storyYears.length;
+
+    ScrollTrigger.getAll().forEach((trigger) => {
+        if (
+            trigger.vars?.id === 'trac-story-main' ||
+            String(trigger.vars?.id || '').startsWith('trac-story-year-')
+        ) {
+            trigger.kill();
+        }
+    });
+
+    reels.forEach((reel) => {
+        gsap.set(reel, { y: 0 });
+    });
+
+    const digitHeights = reels.map((reel) => {
+        const digit = reel.querySelector('.trac-story-year-digit');
+        return digit ? digit.getBoundingClientRect().height : 0;
+    });
+
+    const totalScroll = window.innerHeight * yearCount;
+    const segmentDuration = 1; // 1 timeline unit = 1 year block
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            id: 'trac-story-main',
+            trigger: section,
+            start: 'top 80%',
+            end: `+=${totalScroll}`,
+            scrub: true,
+            invalidateOnRefresh: true,
+            // markers: {
+            //     startColor: '#0f62fe',
+            //     endColor: '#0f62fe',
+            //     fontSize: '12px',
+            //     indent: 20,
+            // },
+        },
+        defaults: {
+            ease: 'none',
+        },
+    });
+
+    // Year 1 stays for first 100vh
+    tl.set(reels, { y: 0 }, 0);
+
+    // Each next year gets exactly one segment
+    for (let stage = 1; stage < yearCount; stage += 1) {
+        tl.to(
+            reels,
+            {
+                y: (index) => -(digitHeights[index] * stage),
+                duration: segmentDuration,
+                ease: 'power1.inOut',
+                stagger: {
+                    each: 0.1,
+                },
+            },
+            stage
+        );
+    }
+
+    // Create markers for each 100vh block
+    storyYears.forEach((year, index) => {
+        ScrollTrigger.create({
+            id: `trac-story-year-${year}`,
+            trigger: section,
+            start: () => `top+=${window.innerHeight * index} bottom`,
+            end: () => `top+=${window.innerHeight * (index + 1)} top`,
+            // markers: {
+            //     startColor: '#16a34a',
+            //     endColor: '#ef4444',
+            //     fontSize: '11px',
+            //     indent: 120 + index * 16,
+            // },
+            onEnter: () => console.log(`[Trac Story] Enter ${year}`),
+            onEnterBack: () => console.log(`[Trac Story] Enter back ${year}`),
+        });
+    });
+
+    ScrollTrigger.refresh();
+
+    console.log('[Trac] TrAC story timeline initialized');
 }
 
 /**
@@ -1742,26 +2626,26 @@ function initOurNetworkAnimation() {
         });
     });
 
-   const tl = gsap.timeline({
-    delay: 1,
-    scrollTrigger: {
-        trigger: section,
-        start: 'top 70%',
-        once: true,
-    },
-});
-
-linePaths.forEach((path, index) => {
-    tl.to(
-        path,
-        {
-            strokeDashoffset: 0,
-            duration: 0.5,
-            ease: 'power2.out',
+    const tl = gsap.timeline({
+        delay: 1,
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 70%',
+            once: true,
         },
-        index === 0 ? 0 : '>-0.3'
-    );
-});
+    });
+
+    linePaths.forEach((path, index) => {
+        tl.to(
+            path,
+            {
+                strokeDashoffset: 0,
+                duration: 0.5,
+                ease: 'power2.out',
+            },
+            index === 0 ? 0 : '>-0.3',
+        );
+    });
     console.log('[Trac] Our Network line animation initialized');
 }
 
@@ -1773,8 +2657,12 @@ function initOurNetworkPointers() {
     const dottedLayer = section.querySelector('[data-network-draw="dotted"]');
 
     const allCircles = [
-        ...(circleLayer ? Array.from(circleLayer.querySelectorAll('circle')) : []),
-        ...(dottedLayer ? Array.from(dottedLayer.querySelectorAll('circle')) : []),
+        ...(circleLayer
+            ? Array.from(circleLayer.querySelectorAll('circle'))
+            : []),
+        ...(dottedLayer
+            ? Array.from(dottedLayer.querySelectorAll('circle'))
+            : []),
     ];
 
     const pointerCards = Array.from(section.querySelectorAll('.pointer-card'));
@@ -1821,7 +2709,7 @@ function initOurNetworkPointers() {
 
     // keep only true node pairs, or at least a single valid node if only one exists
     const nodeGroups = Array.from(nodeMap.values()).filter(
-        (group) => group.outer || group.inner
+        (group) => group.outer || group.inner,
     );
 
     nodeGroups.forEach((group, index) => {
@@ -1851,7 +2739,7 @@ function initOurNetworkPointers() {
             circle.setAttribute('role', 'button');
             circle.setAttribute(
                 'aria-label',
-                `Show network pointer ${index + 1}`
+                `Show network pointer ${index + 1}`,
             );
             circle.style.cursor = 'pointer';
         });
@@ -1869,6 +2757,93 @@ function initOurNetworkPointers() {
         groups: nodeGroups.length,
         cards: pointerCards.length,
     });
+}
+
+function initParallaxImgSlider() {
+    const outer = document.querySelector('[data-parallax-slider]');
+    if (!outer) return;
+
+    const track = outer.querySelector('[data-parallax-slider-track]');
+    if (!track) return;
+
+    const updateHeight = () => {
+        const travel = track.scrollWidth - window.innerWidth;
+        outer.style.height = `${Math.max(travel + window.innerHeight, window.innerHeight)}px`;
+    };
+
+    updateHeight();
+
+    const resizeObserver = new ResizeObserver(updateHeight);
+    resizeObserver.observe(track);
+    window.addEventListener('resize', updateHeight);
+
+    const ctx = gsap.context(() => {
+        const horizontalTween = gsap.to(track, {
+            x: () => -(track.scrollWidth - window.innerWidth),
+            ease: 'none',
+            scrollTrigger: {
+                trigger: outer,
+                start: 'top top',
+                end: () => `+=${track.scrollWidth - window.innerWidth}`,
+                scrub: 1,
+                invalidateOnRefresh: true,
+            },
+        });
+
+        const slideWrappers = gsap.utils.toArray('[data-parallax-slide]');
+
+        gsap.fromTo(
+            slideWrappers,
+            {
+                clipPath: 'inset(0 100% 0 0)',
+            },
+            {
+                clipPath: 'inset(0 0% 0 0)',
+                ease: 'power3.inOut',
+                duration: 0.6,
+                stagger: 0.08,
+                scrollTrigger: {
+                    trigger: outer,
+                    start: '5% bottom',
+                    toggleActions: 'play none none none',
+                },
+            }
+        );
+
+        const slides = gsap.utils.toArray('.parallax-img');
+
+        slides.forEach((el) => {
+            gsap.fromTo(
+                el,
+                {
+                    xPercent: -25,
+                    scale: 1.25,
+                },
+                {
+                    xPercent: 25,
+                    scale: 1.25,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: el,
+                        containerAnimation: horizontalTween,
+                        start: 'left right',
+                        end: 'right left',
+                        scrub: true,
+                    },
+                }
+            );
+        });
+    }, outer);
+
+    ScrollTrigger.refresh();
+
+    outer._parallaxSliderCleanup = () => {
+        ctx.revert();
+        resizeObserver.disconnect();
+        window.removeEventListener('resize', updateHeight);
+    };
+
+    console.log('[Trac] Parallax image slider initialized');
 }
 /**
  * Create scroll-triggered counter animation
@@ -1911,6 +2886,8 @@ export function createHorizontalScroll(container, items) {
     });
 }
 
+
+
 /**
  * Refresh all ScrollTriggers (call after dynamic content loads)
  */
@@ -1920,3 +2897,5 @@ export function refreshAnimations() {
 
 // Export individual animation creators for use in components
 export { gsap, ScrollTrigger };
+
+
