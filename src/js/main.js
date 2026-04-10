@@ -180,6 +180,7 @@ function initializePageComponents() {
 
     // Partners page partner-network tabs
     initPartnerNetworkTabs();
+    initCollaborationsAccordion();
 
     // Initialize rotating client logos
     initClientLogos();
@@ -394,6 +395,101 @@ function initFaqs() {
 }
 
 /**
+ * Initialize communities collaborations accordion
+ */
+function initCollaborationsAccordion() {
+    const accordions = Array.from(
+        document.querySelectorAll('[data-collab-accordion]')
+    );
+
+    if (!accordions.length) {
+        return;
+    }
+
+    accordions.forEach((accordion) => {
+        const items = Array.from(
+            accordion.querySelectorAll('[data-collab-item]')
+        );
+
+        const closeItem = (item) => {
+            const trigger = item.querySelector('[data-collab-trigger]');
+            const panel = item.querySelector('[data-collab-panel]');
+
+            if (!trigger || !panel) {
+                return;
+            }
+
+            item.removeAttribute('data-open');
+            trigger.setAttribute('aria-expanded', 'false');
+            panel.setAttribute('aria-hidden', 'true');
+            panel.style.display = 'block';
+            panel.style.maxHeight = '0px';
+        };
+
+        const openItem = (item) => {
+            const trigger = item.querySelector('[data-collab-trigger]');
+            const panel = item.querySelector('[data-collab-panel]');
+
+            if (!trigger || !panel) {
+                return;
+            }
+
+            item.setAttribute('data-open', '');
+            trigger.setAttribute('aria-expanded', 'true');
+            panel.setAttribute('aria-hidden', 'false');
+            panel.style.display = 'block';
+            requestAnimationFrame(() => {
+                panel.style.maxHeight = `${panel.scrollHeight}px`;
+            });
+        };
+
+        items.forEach((item) => {
+            const trigger = item.querySelector('[data-collab-trigger]');
+            const panel = item.querySelector('[data-collab-panel]');
+
+            if (!trigger || !panel) {
+                return;
+            }
+
+            panel.addEventListener('transitionend', (event) => {
+                if (event.propertyName !== 'max-height') {
+                    return;
+                }
+
+                if (!item.hasAttribute('data-open')) {
+                    panel.style.display = 'none';
+                }
+            });
+
+            if (item.hasAttribute('data-open')) {
+                openItem(item);
+            } else {
+                closeItem(item);
+                panel.style.display = 'none';
+            }
+
+            trigger.addEventListener('click', () => {
+                const isOpen = item.hasAttribute('data-open');
+
+                items.forEach(closeItem);
+
+                if (!isOpen) {
+                    openItem(item);
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            items.forEach((item) => {
+                if (item.hasAttribute('data-open')) {
+                    openItem(item);
+                }
+            });
+        });
+    });
+}
+
+/**
  * Initialize client logo rotation
  */
 function initClientLogos() {
@@ -479,33 +575,31 @@ function init() {
 
     // Initialize on page load
     document.addEventListener('trac:loaded', () => {
-        // Initialize network canvas (not in initializePageComponents)
-        const canvases = Array.from(
-            document.querySelectorAll('#network-canvas, [data-network-canvas]'),
+        // Initialize network canvases (not in initializePageComponents)
+        const networkCanvases = Array.from(
+            document.querySelectorAll('#network-canvas, [data-community-hub-canvas]')
         );
 
-        if (canvases.length && !app.prefersReducedMotion) {
-            canvases.forEach((canvas) => {
-                if (canvas.dataset.networkCanvasInit === 'true') return;
-                canvas.dataset.networkCanvasInit = 'true';
+        if (networkCanvases.length && !app.prefersReducedMotion) {
+            app.networkCanvas = networkCanvases
+                .map((canvas) => {
+                    const isCommunityHub = canvas.hasAttribute(
+                        'data-community-hub-canvas'
+                    );
 
-                const instance = initNetworkCanvas(canvas, {
-                    starCount: 100,
-                    linkDistance: 150,
-                    maxVelocity: 25,
-                    minRadius: 1,
-                    maxRadius: 2,
-                    starColor: '#ffffff',
-                    lineColor: '#ffffff',
-                    interactive: true,
-                });
-
-                app.networkCanvases.push(instance);
-                // Back-compat: keep the first instance on app.networkCanvas
-                if (!app.networkCanvas) {
-                    app.networkCanvas = instance;
-                }
-            });
+                    return initNetworkCanvas(canvas, {
+                        starCount: isCommunityHub ? 14 : 100,
+                        linkDistance: isCommunityHub ? 240 : 150,
+                        maxVelocity: isCommunityHub ? 6 : 25,
+                        minRadius: isCommunityHub ? 5 : 1,
+                        maxRadius: isCommunityHub ? 7 : 2,
+                        starColor: isCommunityHub ? '#9CB2CF' : '#ffffff',
+                        lineColor: isCommunityHub ? '#D8E1EF' : '#ffffff',
+                        interactive: !isCommunityHub,
+                        activeAreaStart: isCommunityHub ? 0.22 : 0.4,
+                    });
+                })
+                .filter(Boolean);
         }
 
         // Call initializePageComponents which handles everything else

@@ -359,11 +359,18 @@ function trac_body_classes($classes)
 add_filter('body_class', 'trac_body_classes');
 
 /**
- * Disable Gutenberg for pages using ACF sections
+ * Disable Gutenberg for specific page templates
  */
 function trac_disable_gutenberg($use_block_editor, $post)
 {
     if ($post->post_type === 'page') {
+        $template = get_page_template_slug($post->ID);
+
+        // Disable for Connecting Communities template
+        if ($template === 'page-connecting-communities.php') {
+            return false;
+        }
+
         // Check if page has flexible content layout
         if (get_field('page_sections', $post->ID)) {
             return false;
@@ -372,3 +379,31 @@ function trac_disable_gutenberg($use_block_editor, $post)
     return $use_block_editor;
 }
 add_filter('use_block_editor_for_post', 'trac_disable_gutenberg', 10, 2);
+
+/**
+ * Fix REST API 403 errors
+ * Allow REST API access for logged-in users
+ */
+function trac_fix_rest_api_permissions()
+{
+    // Remove REST API restrictions
+    remove_filter('rest_authentication_errors', 'rest_cookie_check_errors', 100);
+}
+add_action('rest_api_init', 'trac_fix_rest_api_permissions', 10);
+
+/**
+ * Allow REST API for all authenticated users
+ */
+add_filter('rest_authentication_errors', function ($result) {
+    if (!empty($result)) {
+        return $result;
+    }
+    if (!is_user_logged_in()) {
+        return new WP_Error(
+            'rest_not_logged_in',
+            'You are not currently logged in.',
+            ['status' => 401],
+        );
+    }
+    return $result;
+});

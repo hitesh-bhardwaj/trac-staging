@@ -201,6 +201,5 @@ if (!defined('ABSPATH')) {
             </div>
         </div>
     </div>
-                <canvas id="network-canvas" class="absolute inset-0 h-full w-full"></canvas>
-
+    <canvas id="network-canvas" class="absolute inset-0 h-full w-full"></canvas>
 </section>

@@ -37,11 +37,210 @@ export function initAnimations() {
     initWhyTracCircles();
     initWhyTracScrollStory();
     initCtaLineAnimation();
+    initCommunityHubCards();
+    initImpactGallery();
 
     // Refresh ScrollTrigger after all animations are set up
     ScrollTrigger.refresh();
 
     console.log('[Trac] Animations initialized');
+}
+
+function initCommunityHubCards() {
+    const section = document.querySelector('.community-hub-section');
+    if (!section || window.innerWidth <= 1024) return;
+
+    const cards = Array.from(
+        section.querySelectorAll('[data-community-hub-card]')
+    );
+
+    if (cards.length < 5) return;
+
+    const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    if (prefersReducedMotion) {
+        gsap.set(cards, { clearProps: 'all' });
+        return;
+    }
+
+    const cardMap = {
+        outerLeft: cards[0],
+        innerLeft: cards[1],
+        center: cards[2],
+        innerRight: cards[3],
+        outerRight: cards[4],
+    };
+
+    gsap.set(cardMap.outerLeft, { x: 0, y: 0 });
+    gsap.set(cardMap.innerLeft, { x: 0, y: 0 });
+    gsap.set(cardMap.center, { x: 0, y: 0 });
+    gsap.set(cardMap.innerRight, { x: 0, y: 0 });
+    gsap.set(cardMap.outerRight, { x: 0, y: 0 });
+
+    const timeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: '60% 80%',
+            end: 'center 20%',
+            // markers: true,
+            scrub: 0.25,
+        },
+    });
+
+    timeline.from(
+        [cardMap.innerLeft, cardMap.innerRight],
+        {
+            y: '20%',
+            duration: 0.42,
+            ease: 'none',
+        });
+
+    timeline.from(
+        [cardMap.outerLeft, cardMap.outerRight],
+        {
+            y: '40%',
+            duration: 0.42,
+            ease: 'none',
+            delay: -0.42,
+        });
+}
+
+function initImpactGallery() {
+    const section = document.querySelector('.impact-gallery-section');
+    if (!section || window.innerWidth <= 1024) return;
+
+    const images = Array.from(section.querySelectorAll('[data-impact-image]'));
+    if (images.length !== 6) return;
+
+    const titleSecondary = section.querySelector('.impact-gallery-title__secondary');
+
+    const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    const stripStates = [
+        { left: '42%', top: '105%', width: '8.6%', height: '11.2%', rotation: -7 },
+        { left: '46%', top: '104.5%', width: '7.9%', height: '10.4%', rotation: -4 },
+        { left: '50%', top: '105%', width: '7.2%', height: '9.8%', rotation: 6 },
+        { left: '54%', top: '104.5%', width: '7.9%', height: '10.4%', rotation: -6 },
+        { left: '58%', top: '105%', width: '8.8%', height: '11.8%', rotation: 8 },
+        { left: '62%', top: '105%', width: '8.8%', height: '11.8%', rotation: 5 },
+    ];
+
+    const finalStates = [
+        { left: '5.5%', top: '3%', width: '24.5%', height: '28.1%', rotation: -3.4 },
+        { left: '6.2%', top: '22.8%', width: '16.6%', height: '24.1%', rotation: -3.4 },
+        { left: '76.8%', top: '5.2%', width: '13.2%', height: '28.3%', rotation: 7.5 },
+        { left: '75.1%', top: '33.4%', width: '16.8%', height: '23.2%', rotation: -5.8 },
+        { left: '9.1%', top: '61.7%', width: '23.1%', height: '33.7%', rotation: 8.3 },
+        { left: '67.4%', top: '68.6%', width: '23.1%', height: '33.7%', rotation: 8.3 },
+    ];
+
+    if (prefersReducedMotion) {
+        images.forEach((image, index) => {
+            const state = finalStates[index];
+            gsap.set(image, {
+                left: state.left,
+                top: state.top,
+                width: state.width,
+                height: state.height,
+                rotation: state.rotation,
+                xPercent: 0,
+                yPercent: 0,
+            });
+        });
+        if (titleSecondary) {
+            gsap.set(titleSecondary, { '--impact-fill': '100%' });
+        }
+        return;
+    }
+
+    images.forEach((image, index) => {
+        const stripState = stripStates[index];
+        gsap.set(image, {
+            left: stripState.left,
+            top: stripState.top,
+            width: stripState.width,
+            height: stripState.height,
+            rotation: stripState.rotation,
+            xPercent: -50,
+            yPercent: -100,
+        });
+    });
+
+    const timeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: '5% top',
+            end: 'bottom bottom',
+            scrub: 0.25,
+        },
+    });
+
+    if (titleSecondary) {
+        timeline.to(
+            titleSecondary,
+            {
+                '--impact-fill': '100%',
+                duration: 1,
+                ease: 'none',
+            },
+            0
+        );
+    }
+
+    timeline.to(
+        [images[0], images[2]],
+        {
+            left: (index) => finalStates[index === 0 ? 0 : 2].left,
+            top: (index) => finalStates[index === 0 ? 0 : 2].top,
+            width: (index) => finalStates[index === 0 ? 0 : 2].width,
+            height: (index) => finalStates[index === 0 ? 0 : 2].height,
+            rotation: (index) => finalStates[index === 0 ? 0 : 2].rotation,
+            xPercent: 0,
+            yPercent: 0,
+            duration: 0.34,
+            ease: 'none',
+            stagger: 0.06,
+        },
+        0
+    );
+
+    timeline.to(
+        [images[1], images[3]],
+        {
+            left: (index) => finalStates[index === 0 ? 1 : 3].left,
+            top: (index) => finalStates[index === 0 ? 1 : 3].top,
+            width: (index) => finalStates[index === 0 ? 1 : 3].width,
+            height: (index) => finalStates[index === 0 ? 1 : 3].height,
+            rotation: (index) => finalStates[index === 0 ? 1 : 3].rotation,
+            xPercent: 0,
+            yPercent: 0,
+            duration: 0.34,
+            ease: 'none',
+            stagger: 0.06,
+        },
+        0.33
+    );
+
+    timeline.to(
+        [images[4], images[5]],
+        {
+            left: (index) => finalStates[index === 0 ? 4 : 5].left,
+            top: (index) => finalStates[index === 0 ? 4 : 5].top,
+            width: (index) => finalStates[index === 0 ? 4 : 5].width,
+            height: (index) => finalStates[index === 0 ? 4 : 5].height,
+            rotation: (index) => finalStates[index === 0 ? 4 : 5].rotation,
+            xPercent: 0,
+            yPercent: 0,
+            duration: 0.34,
+            ease: 'none',
+            stagger: 0.06,
+        },
+        0.66
+    );
 }
 
 /**

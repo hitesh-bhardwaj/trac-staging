@@ -1,0 +1,110 @@
+{
+    "key": "group_connecting_communities",
+    "title": "Connecting Communities Page Settings",
+    "fields": [
+        {
+            "key": "field_cc_hero_title",
+            "label": "Hero Title",
+            "name": "cc_hero_title",
+            "type": "text",
+            "default_value": "Connectivity Is Where It All Begins",
+            "required": 0,
+            "instructions": "Main heading for the hero section"
+        },
+        {
+            "key": "field_cc_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "cc_hero_subtitle",
+            "type": "text",
+            "default_value": "Access to services starts with access to connectivity.",
+            "required": 0,
+            "instructions": "Subheading below the main title"
+        },
+        {
+            "key": "field_cc_hero_description",
+            "label": "Hero Description",
+            "name": "cc_hero_description",
+            "type": "textarea",
+            "default_value": "Without it, systems cannot function, platforms cannot reach people, and opportunities remain out of reach. TrAC provides that foundation, building the infrastructure that enables everything else to work.",
+            "required": 0,
+            "rows": 4,
+            "instructions": "Description text below the subtitle"
+        },
+        {
+            "key": "field_cc_hero_image",
+            "label": "Hero Image",
+            "name": "cc_hero_image",
+            "type": "image",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "Large hero image showing connectivity network"
+        },
+        {
+            "key": "field_cc_overview_label",
+            "label": "Overview Label",
+            "name": "cc_overview_label",
+            "type": "text",
+            "default_value": "TrAc Overview",
+            "required": 0,
+            "instructions": "Small eyebrow label above the overview heading"
+        },
+        {
+            "key": "field_cc_overview_title",
+            "label": "Overview Title",
+            "name": "cc_overview_title",
+            "type": "text",
+            "default_value": "A Stronger Network for Greater Impact",
+            "required": 0,
+            "instructions": "Main heading for the overview section"
+        },
+        {
+            "key": "field_cc_overview_description",
+            "label": "Overview Description",
+            "name": "cc_overview_description",
+            "type": "textarea",
+            "default_value": "TransAfrica Communications (TrAC) was built on a simple idea—reliable internet can empower people and businesses. Since 2012, it has grown from Rwanda into a regional provider across East Africa, delivering.\n\nNow, in partnership with Connecting Communities Africa, TrAC is expanding its reach and impact bringing connectivity to underserved regions and enabling more communities to learn, work, and grow.",
+            "required": 0,
+            "rows": 6,
+            "instructions": "Body copy for the overview section. Separate paragraphs with a blank line."
+        },
+        {
+            "key": "field_cc_overview_image_left",
+            "label": "Overview Left Image",
+            "name": "cc_overview_image_left",
+            "type": "image",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "Left image in the overview section"
+        },
+        {
+            "key": "field_cc_overview_image_right",
+            "label": "Overview Right Image",
+            "name": "cc_overview_image_right",
+            "type": "image",
+            "required": 0,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "instructions": "Right image in the overview section"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-connecting-communities.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}
