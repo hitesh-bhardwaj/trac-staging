@@ -1123,7 +1123,7 @@
     font-family: var(--font-heading);
     font-size: 5.729vw;
     /* Changed from 0.9 to 1 to prevent clipping */
-    line-height: 1; 
+    line-height: 1;
     font-weight: 400;
 }
 
@@ -1131,7 +1131,7 @@
     position: relative;
     display: inline-flex;
     /* Force height to exactly 1em (the size of one digit) */
-    height: 1em; 
+    height: 1em;
     overflow: hidden;
 }
 
@@ -1147,7 +1147,7 @@
     align-items: center;
     justify-content: center;
     /* This must match the window height exactly */
-    height: 1em; 
+    height: 1em;
     /* Ensures consistent width for numbers like '1' vs '8' */
 }
 
@@ -1158,7 +1158,7 @@
 
 .counter-suffix-top {
     /* Slightly adjusted margin for better alignment with the top of the numbers */
-    margin-top: 0.2vw; 
+    margin-top: 0.2vw;
     font-family: var(--font-body);
     font-size: 1.25vw;
     line-height: 1;
@@ -1167,7 +1167,7 @@
 .counter-suffix-bottom {
     align-self: flex-end;
     /* Adjusted margin to sit on the baseline */
-    margin-bottom: 1.2vw; 
+    margin-bottom: 1.2vw;
     font-family: var(--font-body);
     font-size: 1.5vw;
     line-height: 1;
@@ -2121,24 +2121,24 @@
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Footer Social Icons */
-.footer-social .social-icon {
+/* Social Icons - Shared styles for footer and contact page */
+.social-icon {
     border-color: #111;
     transition:
         border-color 0.3s ease,
         color 0.3s ease;
 }
 
-.footer-social .social-icon img {
+.social-icon img {
     filter: brightness(0) saturate(100%);
     transition: filter 0.3s ease;
 }
 
-.footer-social .social-icon:hover {
+.social-icon:hover {
     border-color: var(--color-brand-primary);
 }
 
-.footer-social .social-icon:hover img {
+.social-icon:hover img {
     filter: brightness(0) saturate(100%) invert(18%) sepia(59%) saturate(1921%)
         hue-rotate(195deg) brightness(96%) contrast(92%);
 }
@@ -3347,5 +3347,266 @@
         height: 220px;
         min-height: 220px;
         border-radius: 20px;
+    }
+}
+
+/* ========================================
+   Contact Form 7 Styling
+   Match Figma Design - Contact Us Page
+   ======================================== */
+
+/* Form Container */
+.contact-form-wrapper .wpcf7-form {
+    display: flex;
+    flex-direction: column;
+    gap: 3.646vw;
+}
+
+/* Form Fields */
+.contact-form-wrapper .wpcf7-form-control-wrap {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+/* Input and Textarea Base Styles */
+.contact-form-wrapper input[type="text"],
+.contact-form-wrapper input[type="email"],
+.contact-form-wrapper input[type="tel"],
+.contact-form-wrapper textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1.5px solid var(--color-brand-primary);
+    background: transparent;
+    padding: 0.521vw 0;
+    font-family: var(--font-body);
+    font-size: 1.146vw;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form-wrapper input[type="text"]::placeholder,
+.contact-form-wrapper input[type="email"]::placeholder,
+.contact-form-wrapper input[type="tel"]::placeholder,
+.contact-form-wrapper textarea::placeholder {
+    color: #333;
+    opacity: 1;
+    font-family: var(--font-body);
+    font-size: 1.146vw;
+}
+
+.contact-form-wrapper input[type="text"]:focus,
+.contact-form-wrapper input[type="email"]:focus,
+.contact-form-wrapper input[type="tel"]:focus,
+.contact-form-wrapper textarea:focus {
+    border-bottom-color: var(--color-brand-secondary);
+}
+
+/* Textarea Specific */
+.contact-form-wrapper textarea {
+    resize: vertical;
+    min-height: 60px;
+    height: 80px;
+}
+
+/* Labels */
+.contact-form-wrapper label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 1.146vw;
+    color: #333;
+    margin-bottom: 0.521vw;
+}
+
+/* Required Asterisk */
+.contact-form-wrapper .wpcf7-form-control.wpcf7-validates-as-required + span.wpcf7-not-valid-tip {
+    font-size: 0.833vw;
+    color: #dc2626;
+    margin-top: 0.3vw;
+}
+
+/* Submit Button */
+.contact-form-wrapper .wpcf7-submit {
+    background-color: var(--color-brand-primary);
+    color: white;
+    border: 1px solid var(--color-brand-primary);
+    border-radius: 2.344vw;
+    padding: 1.042vw 1.25vw;
+    font-family: var(--font-body);
+    font-size: 1.146vw;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+    min-width: 13.646vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.521vw;
+    position: relative;
+    align-self: center;
+}
+
+.contact-form-wrapper .wpcf7-submit:hover {
+    background-color: white;
+    transform: translateY(-2px);
+    color: var(--color-brand-primary);
+}
+
+.contact-form-wrapper .wpcf7-submit:active {
+    transform: translateY(0);
+}
+
+/* Add arrow icon after submit button using pseudo-element */
+.contact-form-wrapper .wpcf7-submit::after {
+    content: '';
+    display: inline-block;
+    width: 1.25vw;
+    height: 1.25vw;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12h14m0 0l-7-7m7 7l-7 7' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 0.521vw;
+}
+
+/* Validation Messages */
+.contact-form-wrapper .wpcf7-not-valid-tip {
+    font-size: 0.833vw;
+    color: #dc2626;
+    margin-top: 0.3vw;
+    display: block;
+}
+
+.contact-form-wrapper .wpcf7-validation-errors {
+    border: 1.5px solid #dc2626;
+    background-color: #fef2f2;
+    color: #dc2626;
+    padding: 1vw;
+    margin-top: 1vw;
+    border-radius: 0.5vw;
+    font-size: 0.938vw;
+}
+
+.contact-form-wrapper .wpcf7-mail-sent-ok {
+    border: 1.5px solid #16a34a;
+    background-color: #f0fdf4;
+    color: #16a34a;
+    padding: 1vw;
+    margin-top: 1vw;
+    border-radius: 0.5vw;
+    font-size: 0.938vw;
+}
+
+/* Loading Spinner */
+.contact-form-wrapper .wpcf7-spinner {
+    position: absolute;
+    right: 1vw;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Tablet Styles (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .contact-form-wrapper .wpcf7-form {
+        gap: 48px;
+    }
+
+    .contact-form-wrapper input[type="text"],
+    .contact-form-wrapper input[type="email"],
+    .contact-form-wrapper input[type="tel"],
+    .contact-form-wrapper textarea {
+        font-size: 18px;
+        padding: 8px 0;
+    }
+
+    .contact-form-wrapper input[type="text"]::placeholder,
+    .contact-form-wrapper input[type="email"]::placeholder,
+    .contact-form-wrapper input[type="tel"]::placeholder,
+    .contact-form-wrapper textarea::placeholder {
+        font-size: 18px;
+    }
+
+    .contact-form-wrapper label {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .contact-form-wrapper .wpcf7-submit {
+        font-size: 18px;
+        padding: 16px 20px;
+        border-radius: 40px;
+        min-width: 180px;
+        height: 56px;
+        gap: 8px;
+    }
+
+    .contact-form-wrapper .wpcf7-submit::after {
+        width: 20px;
+        height: 20px;
+        margin-left: 8px;
+    }
+
+    .contact-form-wrapper .wpcf7-not-valid-tip {
+        font-size: 14px;
+    }
+
+    .contact-form-wrapper .wpcf7-validation-errors,
+    .contact-form-wrapper .wpcf7-mail-sent-ok {
+        font-size: 16px;
+        padding: 16px;
+    }
+}
+
+/* Mobile Styles (max-width: 540px) */
+@media (max-width: 540px) {
+    .contact-form-wrapper .wpcf7-form {
+        gap: 32px;
+    }
+
+    .contact-form-wrapper input[type="text"],
+    .contact-form-wrapper input[type="email"],
+    .contact-form-wrapper input[type="tel"],
+    .contact-form-wrapper textarea {
+        font-size: 16px;
+        padding: 6px 0;
+    }
+
+    .contact-form-wrapper input[type="text"]::placeholder,
+    .contact-form-wrapper input[type="email"]::placeholder,
+    .contact-form-wrapper input[type="tel"]::placeholder,
+    .contact-form-wrapper textarea::placeholder {
+        font-size: 16px;
+    }
+
+    .contact-form-wrapper label {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    .contact-form-wrapper .wpcf7-submit {
+        font-size: 16px;
+        padding: 14px 18px;
+        border-radius: 36px;
+        min-width: 160px;
+        height: 52px;
+        gap: 6px;
+    }
+
+    .contact-form-wrapper .wpcf7-submit::after {
+        width: 18px;
+        height: 18px;
+        margin-left: 6px;
+    }
+
+    .contact-form-wrapper .wpcf7-not-valid-tip {
+        font-size: 13px;
+    }
+
+    .contact-form-wrapper .wpcf7-validation-errors,
+    .contact-form-wrapper .wpcf7-mail-sent-ok {
+        font-size: 14px;
+        padding: 12px;
     }
 }

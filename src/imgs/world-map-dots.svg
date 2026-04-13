@@ -1,0 +1,37 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Dot pattern for continents -->
+    <pattern id="dots" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.2" fill="#333333" opacity="0.4"/>
+    </pattern>
+
+    <!-- Lighter dot pattern for oceans -->
+    <pattern id="dots-light" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+      <circle cx="7.5" cy="7.5" r="0.8" fill="#D9D9D9" opacity="0.2"/>
+    </pattern>
+  </defs>
+
+  <!-- Ocean background with light dots -->
+  <rect width="1200" height="600" fill="url(#dots-light)"/>
+
+  <!-- North America (simplified) -->
+  <path d="M 150 100 Q 180 80, 220 90 L 280 95 Q 300 100, 310 120 L 320 140 Q 325 160, 315 180 L 300 220 Q 290 240, 270 250 L 200 270 Q 170 265, 150 240 L 130 200 Q 120 160, 130 130 Z" fill="url(#dots)"/>
+
+  <!-- South America (simplified) -->
+  <path d="M 260 280 Q 280 275, 295 285 L 310 310 Q 315 340, 310 370 L 300 420 Q 290 450, 270 465 L 250 475 Q 230 470, 220 450 L 210 410 Q 205 380, 210 350 L 220 320 Q 235 290, 260 280 Z" fill="url(#dots)"/>
+
+  <!-- Europe (simplified) -->
+  <path d="M 520 130 Q 540 125, 560 130 L 590 140 Q 605 150, 610 170 L 615 195 Q 610 215, 595 225 L 565 235 Q 540 235, 520 225 L 500 210 Q 490 190, 495 170 L 505 145 Z" fill="url(#dots)"/>
+
+  <!-- Africa (simplified) -->
+  <path d="M 540 220 Q 560 215, 580 225 L 610 245 Q 625 270, 630 300 L 635 350 Q 630 390, 615 420 L 590 450 Q 565 465, 540 460 L 515 450 Q 495 435, 490 410 L 485 370 Q 485 330, 495 290 L 510 250 Q 525 230, 540 220 Z" fill="url(#dots)"/>
+
+  <!-- Asia (simplified) -->
+  <path d="M 640 110 Q 680 100, 720 110 L 790 125 Q 830 140, 860 165 L 900 200 Q 920 230, 925 265 L 930 310 Q 925 340, 905 360 L 870 385 Q 830 395, 790 390 L 730 380 Q 690 370, 660 350 L 630 320 Q 615 285, 615 250 L 620 200 Q 625 160, 640 140 Z" fill="url(#dots)"/>
+
+  <!-- Australia (simplified) -->
+  <path d="M 850 400 Q 880 395, 910 405 L 950 425 Q 970 445, 975 470 L 975 495 Q 965 515, 945 525 L 910 535 Q 875 535, 845 525 L 820 510 Q 805 490, 805 465 L 810 435 Q 825 410, 850 400 Z" fill="url(#dots)"/>
+
+  <!-- Antarctica (bottom edge, simplified) -->
+  <path d="M 100 550 Q 300 540, 500 545 Q 700 550, 900 545 Q 1050 540, 1150 550 L 1150 600 L 100 600 Z" fill="url(#dots)" opacity="0.6"/>
+</svg>

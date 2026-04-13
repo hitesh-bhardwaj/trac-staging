@@ -10,6 +10,7 @@ import { initAnimations } from './animations.js';
 import { initGlobe } from './globe.js';
 import { initNetworkCanvas } from './network-canvas.js';
 import { initBarba, initPageLoader } from './barba.js';
+import { initMapAnimation } from './map-animation.js';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -270,6 +271,7 @@ function initializePageComponents() {
     }
 
     initNetworkCanvases();
+    initMapAnimation();
 
     initSmoothAnchors();
     initLazyImages();

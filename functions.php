@@ -259,6 +259,42 @@ function trac_ensure_partners_page()
 add_action('init', 'trac_ensure_partners_page');
 
 /**
+ * Ensure Contact Us page exists (so /contact-us doesn't 404 on staging/local).
+ */
+function trac_ensure_contact_us_page()
+{
+    if (!trac_can_autocreate_pages()) {
+        return;
+    }
+
+    $slug = 'contact-us';
+    $existing = trac_get_page_by_slug($slug);
+    $did_change = false;
+
+    if ($existing instanceof WP_Post) {
+        update_post_meta($existing->ID, '_wp_page_template', 'page-contact-us.php');
+    } else {
+        $page_id = wp_insert_post([
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'post_title' => 'Contact Us',
+            'post_name' => $slug,
+            'post_parent' => 0,
+        ]);
+
+        if (!is_wp_error($page_id) && $page_id) {
+            update_post_meta($page_id, '_wp_page_template', 'page-contact-us.php');
+            $did_change = true;
+        }
+    }
+
+    if ($did_change) {
+        flush_rewrite_rules(false);
+    }
+}
+add_action('init', 'trac_ensure_contact_us_page');
+
+/**
  * Redirect legacy product URLs to the new /products/* routes.
  * Keeps old bookmarks working after we nest pages under Products.
  */

@@ -39,8 +39,19 @@ if (!defined('ABSPATH')) {
             </div>
 
             <div class="flex justify-end md:justify-start" data-animate="fade-up" data-delay="0.25">
-                <!-- Border-only form shell (intentionally blank inside) -->
-                <div class="w-full max-w-[44vw] md:max-w-full min-h-[34vw] md:min-h-[520px] rounded-[2.083vw] md:rounded-3xl border border-brand-primary bg-transparent"></div>
+                <div class="contact-form-card w-full max-w-[42.708vw] md:max-w-full bg-white rounded-[2.083vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.167vw_2.604vw] md:p-12 sm:p-6">
+                    <div class="contact-form-wrapper">
+                        <?php
+                        // Using the same Contact Form 7 form as contact page
+                        // You can create a separate enterprise form if needed
+                        if (function_exists('wpcf7_contact_form')) {
+                            echo do_shortcode('[contact-form-7 id="a5b8209" title="Contact Us Form"]');
+                        } else {
+                            echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
