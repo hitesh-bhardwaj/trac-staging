@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) {
                             ); ?></p>
                             <a href="<?php echo esc_url(
                                 get_field('service_1_link') ?:
-                                    home_url('/home-internet'),
+                                    home_url('/products/home-internet'),
                             ); ?>" class="btn btn-primary group">
                                 <span class="btn-line"></span>
                                 <span class="btn-text">Learn More</span>

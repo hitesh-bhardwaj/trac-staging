@@ -156,6 +156,126 @@
     }
 }
 
+/* Home Internet: Installation (sticky stepper) */
+.hi-installation-scroll {
+    /* Static section: no scroll spacer. */
+    height: auto;
+}
+
+.hi-installation-sticky {
+    position: relative;
+    top: auto;
+    min-height: auto;
+    display: block;
+    padding: 0 0 5vw;
+    box-sizing: border-box;
+}
+
+.hi-installation-viewport {
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 6px 0 14px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hi-installation-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.hi-installation-track {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    width: max-content;
+}
+
+.hi-installation-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.hi-installation-line-base,
+.hi-installation-line-progress {
+    position: absolute;
+    left: 6%;
+    width: 88%;
+    height: 2px;
+    border-radius: 999px;
+}
+
+.hi-installation-line-base {
+    background: rgba(16, 65, 127, 0.22);
+}
+
+.hi-installation-line-progress {
+    background: #10417f;
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.hi-install-card {
+    flex: 0 0 auto;
+    width: min(520px, 70vw);
+    background: #ffffff;
+    border: 1px solid rgba(16, 65, 127, 0.45);
+    border-radius: 22px;
+    padding: 26px 26px 22px;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.hi-install-card.is-active {
+    background: #eef3fc;
+    border-color: rgba(16, 65, 127, 0.9);
+    transform: translateY(-2px);
+}
+
+.hi-install-card__icon {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+    opacity: 0.9;
+}
+
+.hi-install-card__title {
+    font-family: var(--font-body, inherit);
+    font-size: 22px;
+    line-height: 1.2;
+    color: #111111;
+    margin: 0 0 8px;
+    font-weight: 500;
+}
+
+.hi-install-card__desc {
+    font-family: var(--font-body, inherit);
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(17, 17, 17, 0.72);
+    margin: 0;
+    max-width: 34ch;
+}
+
+@media (max-width: 1024px) {
+    .hi-installation-track {
+        gap: 18px;
+    }
+
+    .hi-install-card {
+        width: min(560px, 82vw);
+        border-radius: 20px;
+        padding: 22px 20px 18px;
+    }
+}
+
+
 /* ========================================
    Base Styles
    ======================================== */

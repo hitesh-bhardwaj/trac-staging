@@ -39,7 +39,7 @@
             "label": "Service 1 - Link URL",
             "name": "service_1_link",
             "type": "url",
-            "default_value": "/home-internet",
+            "default_value": "/products/home-internet",
             "required": 1
         },
         {

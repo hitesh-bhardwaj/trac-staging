@@ -27,13 +27,14 @@ export function initAnimations() {
     initHeroAnimations();
     initSectionAnimations();
     initParallaxAnimations();
-    initTextAnimations();
-    // initFooterParallax();
-    initPartnersProgramCards();
-    initPartnerVoicesSlider();
-    initTeamSlider();
-    initStackingCards();
-    initTestimonialsSlider();
+		    initTextAnimations();
+			    // initFooterParallax();
+			    initPartnersProgramCards();
+			    initHomeInternetWhyTrac();
+			    initPartnerVoicesSlider();
+			    initTeamSlider();
+			    initStackingCards();
+	    initTestimonialsSlider();
     initWhoWeAreSlider();
     initWhoWeAreCounters();
     initWhatWeDoScroll();
@@ -318,8 +319,45 @@ function initPartnersProgramCards() {
 
     ScrollTrigger.addEventListener('refreshInit', setInitialWidths);
 
-    console.log('[Trac] Partners program cards initialized');
-}
+	    console.log('[Trac] Partners program cards initialized');
+	}
+
+	/**
+	 * Home Internet page: "Why TrAC" list pills slide from right -> final position on scroll.
+	 * Left-side content uses the generic [data-animate="fade-up"] system.
+	 */
+	function initHomeInternetWhyTrac() {
+	    const section = document.querySelector('[data-hi-why]');
+	    if (!section) return;
+	    if (section.dataset.hiWhyInit === 'true') return;
+
+	    const items = Array.from(section.querySelectorAll('[data-hi-why-item]'));
+	    if (!items.length) return;
+
+	    section.dataset.hiWhyInit = 'true';
+
+	    const dist = window.innerWidth <= 768 ? 56 : 220;
+
+	    items.forEach((el) => {
+	        gsap.fromTo(
+	            el,
+	            { x: dist, opacity: 0 },
+	            {
+	                x: 0,
+	                opacity: 1,
+	                ease: 'none',
+	                overwrite: 'auto',
+	                scrollTrigger: {
+	                    trigger: el,
+	                    start: 'top 85%',
+	                    end: 'top 70%',
+	                    scrub: 0.6,
+	                },
+	            }
+	        );
+	    });
+	}
+
 /**
  * Partners page: "Partner Voices" looping slider (7 slides).
  * Custom logic (no external slider lib), transitions powered by GSAP.
@@ -2929,5 +2967,3 @@ export function refreshAnimations() {
 
 // Export individual animation creators for use in components
 export { gsap, ScrollTrigger };
-
-

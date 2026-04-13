@@ -16,6 +16,46 @@ define('TRAC_DIR', get_template_directory());
 define('TRAC_URI', get_template_directory_uri());
 
 /**
+ * Only auto-create/move pages in non-production environments.
+ * This avoids unexpected writes for real visitors on production.
+ */
+function trac_can_autocreate_pages()
+{
+    // Always allow for site admins (safe for local/staging workflows).
+    if (is_user_logged_in() && current_user_can('manage_options')) {
+        return true;
+    }
+
+    if (function_exists('wp_get_environment_type')) {
+        $env = wp_get_environment_type(); // 'local', 'development', 'staging', 'production'
+        if (in_array($env, ['local', 'development', 'staging'], true)) {
+            return true;
+        }
+    }
+
+    // Heuristic for LocalWP / staging domains where env might still be "production".
+    $home = function_exists('home_url') ? (string) home_url('/') : '';
+    if ($home) {
+        $host = wp_parse_url($home, PHP_URL_HOST);
+        $host = is_string($host) ? $host : '';
+
+        $ends_with_local = $host && substr($host, -6) === '.local';
+        $has_staging = $host && strpos($host, 'staging') !== false;
+
+        if (
+            $host === 'localhost' ||
+            $ends_with_local ||
+            $has_staging
+        ) {
+            return true;
+        }
+    }
+
+    // Fallback: allow when WP_DEBUG is on.
+    return defined('WP_DEBUG') && WP_DEBUG;
+}
+
+/**
  * Theme Setup
  */
 function trac_setup()
@@ -55,27 +95,80 @@ add_action('after_setup_theme', 'trac_setup');
  * Ensure key utility pages exist in local/staging environments.
  * This prevents 404s when templates are added but the WP Page doesn't exist yet.
  */
-function trac_ensure_enterprise_network_page()
+function trac_get_page_by_slug($slug)
 {
-    // Only allow an admin to auto-create pages to avoid unexpected writes for visitors.
-    if (!is_user_logged_in() || !current_user_can('manage_options')) {
-        return;
+    $posts = get_posts([
+        'post_type' => 'page',
+        'post_status' => 'any',
+        'name' => $slug,
+        'numberposts' => 1,
+        'no_found_rows' => true,
+    ]);
+
+    return !empty($posts) && $posts[0] instanceof WP_Post ? $posts[0] : null;
+}
+
+function trac_ensure_products_parent_page()
+{
+    $slug = 'products';
+    $existing = trac_get_page_by_slug($slug);
+    if ($existing instanceof WP_Post) {
+        return (int) $existing->ID;
     }
 
-    $slug = 'enterprise-network';
-    $existing = get_page_by_path($slug, OBJECT, 'page');
-    if ($existing instanceof WP_Post) {
-        return;
+    if (!trac_can_autocreate_pages()) {
+        return 0;
     }
 
     $page_id = wp_insert_post([
         'post_type' => 'page',
         'post_status' => 'publish',
-        'post_title' => 'Enterprise Network',
+        'post_title' => 'Products',
         'post_name' => $slug,
+        'post_parent' => 0,
     ]);
 
-    if (!is_wp_error($page_id) && $page_id) {
+    return !is_wp_error($page_id) && $page_id ? (int) $page_id : 0;
+}
+
+function trac_ensure_enterprise_network_page()
+{
+    if (!trac_can_autocreate_pages()) {
+        return;
+    }
+
+    $products_id = trac_ensure_products_parent_page();
+    if (!$products_id) {
+        return;
+    }
+
+    $slug = 'enterprise-network';
+    $existing = trac_get_page_by_slug($slug);
+    $did_change = false;
+
+    if ($existing instanceof WP_Post) {
+        if ((int) $existing->post_parent !== (int) $products_id) {
+            wp_update_post([
+                'ID' => $existing->ID,
+                'post_parent' => $products_id,
+            ]);
+            $did_change = true;
+        }
+    } else {
+        $page_id = wp_insert_post([
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'post_title' => 'Enterprise Network',
+            'post_name' => $slug,
+            'post_parent' => $products_id,
+        ]);
+
+        if (!is_wp_error($page_id) && $page_id) {
+            $did_change = true;
+        }
+    }
+
+    if ($did_change) {
         // Needed when permalinks are enabled and this slug hasn't existed before.
         flush_rewrite_rules(false);
     }
@@ -83,17 +176,67 @@ function trac_ensure_enterprise_network_page()
 add_action('init', 'trac_ensure_enterprise_network_page');
 
 /**
+ * Ensure Home Internet page exists (so /products/home-internet doesn't 404).
+ */
+function trac_ensure_home_internet_page()
+{
+    if (!trac_can_autocreate_pages()) {
+        return;
+    }
+
+    $products_id = trac_ensure_products_parent_page();
+    if (!$products_id) {
+        return;
+    }
+
+    $slug = 'home-internet';
+    $existing = trac_get_page_by_slug($slug);
+
+    $did_change = false;
+
+    if ($existing instanceof WP_Post) {
+        if ((int) $existing->post_parent !== (int) $products_id) {
+            wp_update_post([
+                'ID' => $existing->ID,
+                'post_parent' => $products_id,
+            ]);
+            $did_change = true;
+        }
+
+        // Force the Home Internet template for clarity (slug-based template also works).
+        update_post_meta($existing->ID, '_wp_page_template', 'page-home-internet.php');
+    } else {
+        $page_id = wp_insert_post([
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'post_title' => 'Home Internet',
+            'post_name' => $slug,
+            'post_parent' => $products_id,
+        ]);
+
+        if (!is_wp_error($page_id) && $page_id) {
+            update_post_meta($page_id, '_wp_page_template', 'page-home-internet.php');
+            $did_change = true;
+        }
+    }
+
+    if ($did_change) {
+        flush_rewrite_rules(false);
+    }
+}
+add_action('init', 'trac_ensure_home_internet_page');
+
+/**
  * Ensure Partners page exists (so /partners doesn't 404 on staging/local).
  */
 function trac_ensure_partners_page()
 {
-    // Only allow an admin to auto-create pages to avoid unexpected writes for visitors.
-    if (!is_user_logged_in() || !current_user_can('manage_options')) {
+    if (!trac_can_autocreate_pages()) {
         return;
     }
 
     $slug = 'partners';
-    $existing = get_page_by_path($slug, OBJECT, 'page');
+    $existing = trac_get_page_by_slug($slug);
     if ($existing instanceof WP_Post) {
         return;
     }
@@ -114,6 +257,34 @@ function trac_ensure_partners_page()
     }
 }
 add_action('init', 'trac_ensure_partners_page');
+
+/**
+ * Redirect legacy product URLs to the new /products/* routes.
+ * Keeps old bookmarks working after we nest pages under Products.
+ */
+function trac_redirect_legacy_product_routes()
+{
+    if (!is_404()) {
+        return;
+    }
+
+    $path = '';
+    if (!empty($_SERVER['REQUEST_URI'])) {
+        $path = wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    }
+    $path = trim((string) $path, '/');
+
+    if ($path === 'home-internet') {
+        wp_safe_redirect(home_url('/products/home-internet'), 301);
+        exit();
+    }
+
+    if ($path === 'enterprise-network') {
+        wp_safe_redirect(home_url('/products/enterprise-network'), 301);
+        exit();
+    }
+}
+add_action('template_redirect', 'trac_redirect_legacy_product_routes', 0);
 
 /**
  * Enqueue Styles and Scripts
