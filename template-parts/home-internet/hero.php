@@ -3,10 +3,11 @@ if (!defined('ABSPATH')) {
     exit();
 } ?>
 
-<section class="hero relative min-h-screen bg-white overflow-hidden" data-section="hero" data-hero-static>
-    <div class="hero-container w-full px-[5.21vw] pt-[12vw] pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
-        <div class="flex items-center justify-center min-h-[calc(100vh-10vw)] md:min-h-[calc(100vh-120px)]">
+<section class="hero relative bg-white overflow-hidden " data-section="hero" data-hero-static>
+    <div class="hero-container px-[5.21vw] py-[12vw]  w-screen h-fit flex  items-center flex-col gap-[2vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
+        <div class="flex items-center justify-center ">
             <div class="hero-text w-full max-w-[80rem] text-center">
+                <div>
                 <h1 class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4" data-animate="fade-up">
                     <span class="block hero-title-line"><?php echo esc_html(
                         get_field('hero_title_line_1') ?: 'Reliable, Unlimited Home Internet.',
@@ -40,8 +41,9 @@ if (!defined('ABSPATH')) {
                         </span>
                     </a>
                 </div>
+                </div>
 
-                <div class="enterprise-hero-images w-full mx-auto md:mt-10 sm:mt-8 flex items-end justify-center h-full gap-[1.25vw]">
+                <div class="enterprise-hero-images w-full mx-auto mt-[7vw] md:mt-10 sm:mt-8 flex items-end justify-center h-full gap-[1.25vw]">
                     <div class="rounded-[2vw] overflow-hidden h-[18vw] w-[20vw]" data-animate="fade-up" data-delay="0.25">
                         <img src="<?php echo esc_url(
                             get_template_directory_uri() .

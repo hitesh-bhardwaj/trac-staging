@@ -27,6 +27,7 @@ export function initAnimations() {
     initHeroAnimations();
     initSectionAnimations();
     initParallaxAnimations();
+    initHiInstallationScroll();
 		    initTextAnimations();
 			    initPartnersProgramCards();
 			    initHomeInternetWhyTrac();
@@ -2837,6 +2838,80 @@ export function createHorizontalScroll(container, items) {
     });
 }
 
+
+function initHiInstallationScroll() {
+    const section = document.querySelector('[data-hi-installation]');
+    if (!section) return;
+
+    const trackArea = section.querySelector('.hi-installation-track-area');
+    const track = section.querySelector('[data-hi-installation-track]');
+    const cards = Array.from(section.querySelectorAll('[data-hi-installation-step]'));
+    const progressLine = section.querySelector('.progress-line');
+
+    if (!trackArea || !track || !cards.length || !progressLine) return;
+
+    if (window.innerWidth <= 768) {
+        gsap.set(trackArea, { xPercent: 0 });
+        gsap.set(progressLine, { scaleX: 1, transformOrigin: 'left center' });
+        cards.forEach((card, index) => {
+            card.classList.toggle('is-active', index === 0);
+        });
+        return;
+    }
+
+    gsap.set(trackArea, { xPercent: 15, force3D: true });
+    gsap.set(progressLine, {
+        scaleX: 0,
+        transformOrigin: 'left center',
+        force3D: true,
+    });
+
+    const setActiveCard = (activeIndex) => {
+        cards.forEach((card, index) => {
+            card.classList.toggle('is-active', index === activeIndex);
+        });
+    };
+
+    setActiveCard(0);
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                const maxIndex = cards.length - 1;
+                const activeIndex = Math.min(
+                    maxIndex,
+                    Math.floor(progress * cards.length)
+                );
+
+                setActiveCard(activeIndex);
+            },
+        },
+    });
+
+    tl.to(
+        trackArea,
+        {
+            xPercent: -70,
+            ease: 'none',
+        },
+        0
+    ).to(
+        progressLine,
+        {
+            scaleX: 1,
+            ease: 'none',
+        },
+        0
+    );
+
+    console.log('[Trac] Hi installation scroll initialized');
+}
 
 
 /**

@@ -31,7 +31,7 @@ $items = [
                     ); ?></span>
                 </div>
 
-                <h2 class="font-heading text-[4.1vw] font-normal leading-[1.08] tracking-[0.01em] text-text-primary mb-[1.2vw] md:text-5xl md:mb-5 sm:text-4xl" data-animate="fade-up" data-delay="0.1">
+                <h2 class="font-heading text-[3.5vw] font-normal leading-[1.08] tracking-[0.01em] text-text-primary mb-[1.2vw] md:text-5xl md:mb-5 sm:text-4xl" data-animate="fade-up" data-delay="0.1">
                     <?php echo esc_html($title); ?>
                 </h2>
 
@@ -44,20 +44,20 @@ $items = [
                 </p>
             </div>
 
-            <div class="md:pt-0">
-                <ul class="flex flex-col items-end gap-[1.6vw] md:gap-5" aria-label="Home internet benefits">
+            <div class="md:pt-0 pt-[3vw]">
+                <ul class="flex flex-col items-start gap-[1.6vw] md:gap-5" aria-label="Home internet benefits">
                     <?php foreach ($items as $i => $text):
                         // A gentle cascade in layout like the reference (bigger shift for lower items).
                         $step = 1.6; // vw
-                        $mr = max(0, (5 - $i) * $step);
+                        // $mr = max(0, (5 - $i) * $step);
                         ?>
-                        <li class="w-full flex justify-end" style="margin-right: <?php echo esc_attr(
+                        <li class="w-full flex justify-start" style="margin-right: <?php echo esc_attr(
                             $mr,
                         ); ?>vw;">
-                            <div class="bg-white rounded-[1.6vw] md:rounded-2xl px-[2.1vw] py-[1.35vw] md:px-8 md:py-6 sm:px-6 sm:py-5 w-[34vw] md:w-full shadow-[0_16px_40px_rgba(16,65,127,0.06)] flex items-center gap-6"
+                            <div class="bg-white rounded-[1.2vw] md:rounded-2xl px-[2.1vw] py-[2.35vw] md:px-8 md:py-6 sm:px-6 sm:py-5 w-[34vw] md:w-full shadow-[0_16px_40px_rgba(16,65,127,0.06)] flex items-center gap-6"
                                  data-hi-why-item>
                                 <span class="w-3 h-3 rounded-full bg-brand-primary shrink-0"></span>
-                                <span class="font-body text-text-primary text-[1.042vw] md:text-base sm:text-sm leading-[1.35]">
+                                <span class="font-body text-text-primary text-body-lg md:text-base sm:text-sm leading-[1.35]">
                                     <?php echo esc_html($text); ?>
                                 </span>
                             </div>

@@ -156,16 +156,11 @@
     }
 }
 
-/* Home Internet: Installation (sticky stepper) */
-.hi-installation-scroll {
-    /* Static section: no scroll spacer. */
-    height: auto;
-}
 
 .hi-installation-sticky {
-    position: relative;
-    top: auto;
-    min-height: auto;
+    position: sticky;
+    top: 15%;
+    height: fit-content;
     display: block;
     padding: 0 0 5vw;
     box-sizing: border-box;
@@ -173,8 +168,6 @@
 
 .hi-installation-viewport {
     position: relative;
-    overflow-x: auto;
-    overflow-y: hidden;
     padding: 6px 0 14px;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -186,7 +179,7 @@
 
 .hi-installation-track {
     display: flex;
-    gap: 28px;
+    gap: 7vw;
     align-items: center;
     width: max-content;
 }
@@ -219,48 +212,125 @@
     transform-origin: left;
 }
 
+
+
+.hi-install-card.is-active {
+    background: #eef3fc;
+    border: 1px solid rgba(16, 65, 127, 0.0);
+
+}
+
+.hi-install-card__icon-svg {
+    width: 3vw;
+    height: 3vw;
+    display: block;
+}
+
+
+.hi-installation-track-area {
+    position: relative;
+    width: max-content;
+    will-change: transform;
+}
+
+.hi-installation-viewport {
+    position: relative;
+    overflow: visible;
+}
+
+.hi-installation-track {
+    display: flex;
+    align-items: center;
+    gap: 10vw;
+    width: max-content;
+    position: relative;
+    z-index: 2;
+}
+
 .hi-install-card {
-    flex: 0 0 auto;
-    width: min(520px, 70vw);
+    width: 32vw;
+    min-height: 18vw;
+    padding: 1.8vw;
+    border-radius: 1.4vw;
+    border: 1px solid #10417f;
     background: #ffffff;
-    border: 1px solid rgba(16, 65, 127, 0.45);
-    border-radius: 22px;
-    padding: 26px 26px 22px;
+    transform: scale(1);
     transition:
-        background 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.25s ease;
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        transform 0.35s ease;
+    will-change: transform;
+}
+
+.hi-install-card__icon-svg {
+    width: 2.2vw;
+    height: 2.2vw;
+    display: block;
+}
+
+.hi-install-card__icon-svg * {
+    transition:
+        stroke 0.35s ease,
+        fill 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.hi-install-card__title {
+    color: #111111;
+    transition: color 0.35s ease;
+}
+
+.hi-install-card__desc {
+    margin-top: 0.8vw;
+    color: rgba(17, 17, 17, 0.72);
+}
+
+.hi-install-card:not(.is-active) .hi-install-card__icon-svg * {
+    stroke: rgba(0, 0, 0, 0.2) !important;
+    /* fill: rgba(0, 0, 0, 0.2) !important; */
 }
 
 .hi-install-card.is-active {
     background: #eef3fc;
-    border-color: rgba(16, 65, 127, 0.9);
-    transform: translateY(-2px);
+    border-color: transparent;
+    transform: scale(1.05);
 }
 
-.hi-install-card__icon {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 12px;
-    opacity: 0.9;
+.hi-install-card.is-active .hi-install-card__title {
+    color: #10417f;
 }
 
-.hi-install-card__title {
-    font-family: var(--font-body, inherit);
-    font-size: 22px;
-    line-height: 1.2;
-    color: #111111;
-    margin: 0 0 8px;
-    font-weight: 500;
+.hi-install-card.is-active .hi-install-card__icon-svg * {
+    stroke: #10417f !important;
+    /* fill: #10417f !important; */
 }
 
-.hi-install-card__desc {
-    font-family: var(--font-body, inherit);
-    font-size: 14px;
-    line-height: 1.5;
-    color: rgba(17, 17, 17, 0.72);
-    margin: 0;
-    max-width: 34ch;
+.hi-install-card:nth-child(4):not(.is-active) .hi-install-card__icon-svg * {
+    fill: rgba(0, 0, 0, 0.2) !important;
+}
+
+.hi-install-card:nth-child(4).is-active .hi-install-card__icon-svg * {
+    fill: #10417f !important;
+}
+
+.progress-line {
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+@media (max-width: 991px) {
+    .hi-install-card {
+        width: 280px;
+        min-height: 220px;
+        padding: 24px;
+        border-radius: 20px;
+    }
+
+    .hi-install-card__icon-svg {
+        width: 34px;
+        height: 34px;
+    }
 }
 
 @media (max-width: 1024px) {
