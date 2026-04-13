@@ -83,64 +83,89 @@ function initHeader() {
 
     if (!header) return;
 
-    let lastScroll = 0;
-    const scrollThreshold = 100;
     let scrollTimeout = null;
+    let currentState = null;
 
-    // Header scroll behavior with scroll-stop detection
+    const desktop = () => window.innerWidth > 1024;
+    const shrinkTrigger = () => window.innerHeight * 0.5;
+
+    const setTopState = (immediate = false) => {
+        if (currentState === 'top' && !immediate) return;
+        currentState = 'top';
+
+        gsap.killTweensOf(header);
+
+        gsap.to(header, {
+            width: '100%',
+            top: '0%',
+            borderRadius: '0vw',
+            backgroundColor: 'rgba(255,255,255,0.7)',
+            backdropFilter: 'blur(12px)',
+            webkitBackdropFilter: 'blur(12px)',
+            duration: immediate ? 0 : 0.55,
+            ease: 'power3.out',
+            overwrite: true,
+        });
+    };
+
+    const setScrolledState = (immediate = false) => {
+        if (currentState === 'scrolled' && !immediate) return;
+        currentState = 'scrolled';
+
+        gsap.killTweensOf(header);
+
+        gsap.to(header, {
+            width: desktop() ? '90%' : 'calc(100% - 24px)',
+            top: desktop() ? '2%' : '12px',
+            borderRadius: desktop() ? '0.9vw' : '16px',
+            backgroundColor: 'rgba(255,255,255,1)',
+            backdropFilter: 'blur(0px)',
+            webkitBackdropFilter: 'blur(0px)',
+            duration: immediate ? 0 : 0.55,
+            ease: 'power3.out',
+            overwrite: true,
+        });
+    };
+
     const updateHeader = () => {
-        const currentScroll = window.scrollY;
-        const scrollDelta = Math.abs(currentScroll - lastScroll);
+        const currentScroll = window.scrollY || 0;
 
-        // Add/remove scrolled class (updates immediately)
-        if (currentScroll > 50) {
-            header.classList.add('is-scrolled');
+        if (currentScroll > shrinkTrigger()) {
+            setScrolledState();
         } else {
-            header.classList.remove('is-scrolled');
+            setTopState();
         }
 
-        // Scrolling up - show header immediately
-        if (currentScroll < lastScroll && scrollDelta > 0.5) {
-            if (scrollTimeout) {
-                clearTimeout(scrollTimeout);
-            }
-            header.classList.remove('is-hidden');
-            lastScroll = currentScroll;
-            return;
-        }
-
-        // Scrolling down - hide header immediately
-        if (
-            currentScroll > lastScroll &&
-            currentScroll > scrollThreshold &&
-            scrollDelta > 0.5
-        ) {
-            header.classList.add('is-hidden');
-        }
-
-        // Always set/reset timeout to show header after scroll stops
-        if (scrollTimeout) {
-            clearTimeout(scrollTimeout);
-        }
+        if (scrollTimeout) clearTimeout(scrollTimeout);
 
         scrollTimeout = setTimeout(() => {
             if (header.classList.contains('is-hidden')) {
                 header.classList.remove('is-hidden');
-                console.log('[Header] Showing header after scroll stop');
             }
         }, 300);
-
-        lastScroll = currentScroll;
     };
 
-    // Use Lenis scroll event if available, otherwise use native
+    // initial state
+    if ((window.scrollY || 0) > shrinkTrigger()) {
+        setScrolledState(true);
+    } else {
+        setTopState(true);
+    }
+
     if (app.lenis) {
         app.lenis.on('scroll', updateHeader);
     } else {
         window.addEventListener('scroll', updateHeader, { passive: true });
     }
 
-    // Mobile menu toggle
+    window.addEventListener('resize', () => {
+        if ((window.scrollY || 0) > shrinkTrigger()) {
+            setScrolledState(true);
+        } else {
+            setTopState(true);
+        }
+    });
+
     if (mobileMenuToggle && mobileMenu) {
         mobileMenuToggle.addEventListener('click', () => {
             const isOpen =
@@ -150,7 +175,6 @@ function initHeader() {
             mobileMenu.classList.toggle('is-open');
             mobileMenu.classList.toggle('hidden', isOpen);
 
-            // Toggle body scroll
             if (app.lenis) {
                 isOpen ? app.lenis.start() : app.lenis.stop();
             } else {
@@ -158,7 +182,6 @@ function initHeader() {
             }
         });
 
-        // Close menu on escape
         document.addEventListener('keydown', (e) => {
             if (
                 e.key === 'Escape' &&
@@ -226,6 +249,7 @@ function initializePageComponents() {
     initPartnerNetworkTabs();
     initCollaborationsAccordion();
     initClientLogos();
+    initProductsMegaMenu();
 
     if (!app.prefersReducedMotion) {
         initAnimations();
@@ -592,6 +616,287 @@ function initClientLogos() {
             });
         }, 3000);
     });
+}
+
+function initProductsMegaMenu() {
+    const header = document.getElementById('site-header');
+    const trigger = document.querySelector('[data-products-trigger]');
+    const menuItem = document.querySelector('[data-products-menu-item]');
+    const dropdown = document.querySelector('[data-products-dropdown]');
+    const overlay = document.querySelector('[data-products-overlay]');
+
+    if (!header || !trigger || !menuItem || !dropdown || !overlay) return;
+    if (window.innerWidth <= 1024) return;
+
+    if (dropdown._productsMenuCleanup) {
+        dropdown._productsMenuCleanup();
+    }
+
+    let isOpen = false;
+    let closeTimer = null;
+
+    const bridge = document.createElement('div');
+    bridge.setAttribute('data-products-bridge-runtime', 'true');
+    bridge.style.position = 'fixed';
+    bridge.style.left = '0px';
+    bridge.style.top = '0px';
+    bridge.style.width = '0px';
+    bridge.style.height = '0px';
+    bridge.style.zIndex = '999';
+    bridge.style.pointerEvents = 'none';
+    bridge.style.background = 'transparent';
+
+    document.body.appendChild(bridge);
+
+    gsap.killTweensOf([dropdown, overlay]);
+
+    gsap.set(dropdown, {
+        opacity: 0,
+        yPercent: -20,
+        visibility: 'hidden',
+        pointerEvents: 'none',
+    });
+
+    gsap.set(overlay, {
+        opacity: 0,
+        visibility: 'hidden',
+        pointerEvents: 'none',
+    });
+
+    const clearCloseTimer = () => {
+        if (closeTimer) {
+            clearTimeout(closeTimer);
+            closeTimer = null;
+        }
+    };
+
+    const updateBridge = () => {
+        if (!isOpen) return;
+
+        const triggerRect = menuItem.getBoundingClientRect();
+        const dropdownRect = dropdown.getBoundingClientRect();
+
+        const gapTop = Math.min(triggerRect.bottom, dropdownRect.top);
+        const gapBottom = Math.max(triggerRect.bottom, dropdownRect.top);
+        const gapHeight = Math.max(18, gapBottom - gapTop);
+
+        const left = Math.min(triggerRect.left, dropdownRect.left);
+        const right = Math.max(triggerRect.right, dropdownRect.right);
+
+        bridge.style.left = `${left}px`;
+        bridge.style.top = `${gapTop - 6}px`;
+        bridge.style.width = `${right - left}px`;
+        bridge.style.height = `${gapHeight + 12}px`;
+    };
+
+    const enableBridge = () => {
+        bridge.style.pointerEvents = 'auto';
+        updateBridge();
+    };
+
+    const disableBridge = () => {
+        bridge.style.pointerEvents = 'none';
+        bridge.style.left = '0px';
+        bridge.style.top = '0px';
+        bridge.style.width = '0px';
+        bridge.style.height = '0px';
+    };
+
+    const openMenu = () => {
+        clearCloseTimer();
+
+        if (isOpen) {
+            updateBridge();
+            return;
+        }
+
+        isOpen = true;
+
+        gsap.killTweensOf([dropdown, overlay]);
+
+        gsap.set(overlay, {
+            visibility: 'visible',
+            pointerEvents: 'auto',
+        });
+
+        gsap.set(dropdown, {
+            visibility: 'visible',
+            pointerEvents: 'auto',
+        });
+
+        enableBridge();
+
+        gsap.to(overlay, {
+            opacity: 1,
+            duration: 0.28,
+            ease: 'power2.out',
+        });
+
+        gsap.to(dropdown, {
+            opacity: 1,
+            yPercent: 0,
+            duration: 0.35,
+            ease: 'power2.out',
+            onUpdate: updateBridge,
+            onComplete: updateBridge,
+        });
+    };
+
+    const closeMenu = () => {
+        clearCloseTimer();
+        if (!isOpen) return;
+
+        isOpen = false;
+
+        gsap.killTweensOf([dropdown, overlay]);
+
+        gsap.to(dropdown, {
+            opacity: 0,
+            yPercent: -10,
+            duration: 0.26,
+            ease: 'power2.out',
+            pointerEvents: 'none',
+            onComplete: () => {
+                gsap.set(dropdown, {
+                    visibility: 'hidden',
+                });
+                disableBridge();
+            },
+        });
+
+        gsap.to(overlay, {
+            opacity: 0,
+            duration: 0.22,
+            ease: 'power2.out',
+            pointerEvents: 'none',
+            onComplete: () => {
+                gsap.set(overlay, {
+                    visibility: 'hidden',
+                });
+            },
+        });
+    };
+
+    const scheduleClose = () => {
+        clearCloseTimer();
+        closeTimer = setTimeout(() => {
+            closeMenu();
+        }, 140);
+    };
+
+    const keepOpen = () => {
+        clearCloseTimer();
+        if (isOpen) updateBridge();
+    };
+
+    const onTriggerEnter = () => openMenu();
+    const onTriggerLeave = (e) => {
+        const related = e.relatedTarget;
+        if (
+            related &&
+            (menuItem.contains(related) ||
+                dropdown.contains(related) ||
+                bridge.contains(related))
+        ) {
+            return;
+        }
+        scheduleClose();
+    };
+
+    const onDropdownEnter = () => keepOpen();
+    const onDropdownLeave = (e) => {
+        const related = e.relatedTarget;
+        if (
+            related &&
+            (menuItem.contains(related) ||
+                dropdown.contains(related) ||
+                bridge.contains(related))
+        ) {
+            return;
+        }
+        scheduleClose();
+    };
+
+    const onBridgeEnter = () => keepOpen();
+    const onBridgeLeave = (e) => {
+        const related = e.relatedTarget;
+        if (
+            related &&
+            (menuItem.contains(related) ||
+                dropdown.contains(related) ||
+                bridge.contains(related))
+        ) {
+            return;
+        }
+        scheduleClose();
+    };
+
+    const onOverlayEnter = () => scheduleClose();
+    const onOverlayClick = () => closeMenu();
+
+    const onWindowUpdate = () => {
+        if (isOpen) updateBridge();
+    };
+
+    trigger.addEventListener('mouseenter', onTriggerEnter);
+    menuItem.addEventListener('mouseenter', onTriggerEnter);
+
+    trigger.addEventListener('mouseleave', onTriggerLeave);
+    menuItem.addEventListener('mouseleave', onTriggerLeave);
+
+    dropdown.addEventListener('mouseenter', onDropdownEnter);
+    dropdown.addEventListener('mouseleave', onDropdownLeave);
+
+    bridge.addEventListener('mouseenter', onBridgeEnter);
+    bridge.addEventListener('mouseleave', onBridgeLeave);
+
+    overlay.addEventListener('mouseenter', onOverlayEnter);
+    overlay.addEventListener('click', onOverlayClick);
+
+    window.addEventListener('resize', onWindowUpdate);
+    window.addEventListener('scroll', onWindowUpdate, true);
+
+    const onKeydown = (e) => {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
+    };
+
+    document.addEventListener('keydown', onKeydown);
+
+    dropdown._productsMenuCleanup = () => {
+        clearCloseTimer();
+
+        trigger.removeEventListener('mouseenter', onTriggerEnter);
+        menuItem.removeEventListener('mouseenter', onTriggerEnter);
+
+        trigger.removeEventListener('mouseleave', onTriggerLeave);
+        menuItem.removeEventListener('mouseleave', onTriggerLeave);
+
+        dropdown.removeEventListener('mouseenter', onDropdownEnter);
+        dropdown.removeEventListener('mouseleave', onDropdownLeave);
+
+        bridge.removeEventListener('mouseenter', onBridgeEnter);
+        bridge.removeEventListener('mouseleave', onBridgeLeave);
+
+        overlay.removeEventListener('mouseenter', onOverlayEnter);
+        overlay.removeEventListener('click', onOverlayClick);
+
+        window.removeEventListener('resize', onWindowUpdate);
+        window.removeEventListener('scroll', onWindowUpdate, true);
+
+        document.removeEventListener('keydown', onKeydown);
+
+        gsap.killTweensOf([dropdown, overlay]);
+
+        bridge.remove();
+
+        gsap.set([dropdown, overlay], {
+            opacity: 0,
+            visibility: 'hidden',
+            pointerEvents: 'none',
+        });
+    };
 }
 
 /**

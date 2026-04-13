@@ -566,7 +566,7 @@
    Header Styles
    ======================================== */
 .site-header {
-    @apply bg-white/95 backdrop-blur-sm;
+    /* @apply bg-white/95 backdrop-blur-sm; */
     transition:
         transform 0.4s var(--ease-out-expo),
         background-color 0.3s ease;
@@ -576,8 +576,43 @@
     @apply shadow-lg;
 }
 
+.site-header {
+    will-change: width, top, border-radius, background-color, backdrop-filter;
+    transform: translateX(-50%);
+}
+
 .site-header.is-hidden {
-    transform: translateY(-100%);
+    transform: translate(-50%, -100%);
+    transition: transform 0.35s ease;
+}
+.site-header.site-header--top {
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.site-header.site-header--scrolled {
+    top: 2%;
+    width: 90%;
+    border-radius: 0.9vw;
+     background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    box-shadow: 0 0.26vw 1.042vw rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 1024px) {
+    .site-header.site-header--scrolled {
+        top: 12px;
+        width: calc(100% - 24px);
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
 }
 
 /* Navigation Menu */
@@ -591,6 +626,20 @@
 
 .nav-menu > li.current-menu-item > a {
     @apply text-brand-primary;
+}
+[data-products-overlay] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    will-change: opacity;
+}
+
+[data-products-dropdown] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, -20%);
+    will-change: transform, opacity;
 }
 
 /* Mobile Menu */
@@ -948,6 +997,21 @@
 .cta-title,
 .cta-subtitle {
     font-weight: 400;
+}
+
+.cta-bg-pattern {
+    pointer-events: none;
+    contain: layout paint;
+}
+
+.cta-bg-pattern svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.cta-bg-pattern path[stroke="#D9D9D9"] {
+    vector-effect: non-scaling-stroke;
 }
 
 .why-card-image img,

@@ -39,8 +39,11 @@
         <?php esc_html_e('Skip to content', 'trac'); ?>
     </a>
 
-    <header id="site-header" class="site-header fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm transition-all duration-400">
-        <div class="header-inner w-full px-[5.21vw] py-[1.302vw] flex items-center justify-between md:px-[4vw] md:py-5 sm:px-[6vw] sm:py-4">
+   <header
+    id="site-header"
+    class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[999] bg-white "
+>
+        <div class="header-inner w-full px-[4vw] py-[1.15vw] flex items-center justify-between md:px-[4vw] md:py-5 sm:px-[6vw] sm:py-4">
             <!-- Logo -->
             <div class="site-logo flex-shrink-0">
                 <?php if (has_custom_logo()): ?>
@@ -67,17 +70,20 @@
                             About Us
                         </a>
                     </li>
-                    <li class="menu-item menu-item-has-children relative group">
-                        <a href="<?php echo esc_url(
-                            home_url('/products'),
-                        ); ?>" class="nav-link inline-flex items-center gap-[0.26vw]">
-                            Products
-                            <svg class="nav-dropdown-icon transition-transform group-hover:rotate-180" viewBox="0 0 32 32" fill="currentColor">
-                                <path d="M16 20L8 12H24L16 20Z"/>
-                            </svg>
-                        </a>
-                        <!-- Dropdown would go here -->
-                    </li>
+                    <li class="menu-item menu-item-has-children relative group" data-products-menu-item>
+    <a
+        href="<?php echo esc_url(home_url('/products')); ?>"
+        class="nav-link inline-flex items-center gap-[0.26vw]"
+        data-products-trigger
+    >
+        Products
+        <div class="size-[1.5vw] mt-[-0.5vw] group-hover:translate-y-[10%] duration-300 ease-out">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.708 22.122L23.416 14.416L22.002 13L15.708 19.294L9.416 13L8 14.416L15.708 22.122Z" fill="#1D1D1D"/>
+            </svg>
+        </div>
+    </a>
+                 </li> 
                     <li class="menu-item">
                         <a href="<?php echo esc_url(
                             home_url('/connecting-communities'),
@@ -180,6 +186,88 @@
             </nav>
         </div>
     </header>
+   <nav
+    class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] px-[2vw] py-[1.5vw] flex justify-between z-[999] bg-white"
+    data-products-dropdown
+      >
+    <a href="#" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+        <div class="w-full flex flex-col gap-[1vw]">
+            <h4 class="font-medium text-[1.5vw]">Home Internet</h4>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        </div>
+        <div class="w-full flex justify-end">
+            <div class="size-[3.5vw] rounded-[0.6vw] bg-white p-[1vw] flex justify-center items-center text-black">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+        <div class="w-full flex flex-col gap-[1vw]">
+            <h4 class="font-medium text-[1.5vw]">SME Internet</h4>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        </div>
+        <div class="w-full flex justify-end">
+            <div class="size-[3.5vw] rounded-[0.6vw] bg-white p-[1vw] flex justify-center items-center text-black">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+        <div class="w-full flex flex-col gap-[1vw]">
+            <h4 class="font-medium text-[1.5vw]">Enterprise Network</h4>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        </div>
+        <div class="w-full flex justify-end">
+            <div class="size-[3.5vw] rounded-[0.6vw] bg-white p-[1vw] flex justify-center items-center text-black">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+    </a>
+
+    <a href="#" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+        <div class="w-full flex flex-col gap-[1vw]">
+            <h4 class="font-medium text-[1.5vw]">Wholesale & Carrier</h4>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        </div>
+        <div class="w-full flex justify-end">
+            <div class="size-[3.5vw] rounded-[0.6vw] bg-white p-[1vw] flex justify-center items-center text-black">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+    </a>
+   </nav>
+   <div data-products-overlay class=" bg-black/20 backdrop-blur-md fixed inset-0 w-screen h-screen z-[998]">
+    </div>
 
 <style>
 /* ==========================================

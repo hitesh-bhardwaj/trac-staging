@@ -28,7 +28,6 @@ export function initAnimations() {
     initSectionAnimations();
     initParallaxAnimations();
 		    initTextAnimations();
-			    // initFooterParallax();
 			    initPartnersProgramCards();
 			    initHomeInternetWhyTrac();
 			    initPartnerVoicesSlider();
@@ -506,65 +505,6 @@ function initPartnerVoicesSlider() {
     });
 }
 
-/**
- * Parallax footer reveal:
- * footer is fixed at bottom; CTA scrolls over it; we reveal footer via clip-path.
- */
-function initFooterParallax() {
-    const footer = document.querySelector('[data-parallax-footer]');
-    const page = document.getElementById('page');
-    if (!footer || !page) return;
-
-    // Only enable on desktop.
-    if (window.innerWidth <= 768) {
-        document.documentElement.style.setProperty(
-            '--parallax-footer-height',
-            '0px',
-        );
-        return;
-    }
-
-    const cta = document.querySelector('.cta-section');
-    if (!cta) return;
-
-    const setFooterHeight = () => {
-        const h = footer.offsetHeight || 0;
-        document.documentElement.style.setProperty(
-            '--parallax-footer-height',
-            `${h}px`,
-        );
-    };
-
-    setFooterHeight();
-    window.addEventListener('resize', () => {
-        setFooterHeight();
-        ScrollTrigger.refresh();
-    });
-
-    const footerInner = footer.querySelector('.footer-container') || footer;
-
-    gsap.set(footer, {
-        clipPath: 'inset(100% 0% 0% 0%)',
-        webkitClipPath: 'inset(100% 0% 0% 0%)',
-    });
-
-    gsap.timeline({
-        scrollTrigger: {
-            trigger: cta,
-            start: 'bottom 92%',
-            end: 'bottom 10%',
-            scrub: true,
-        },
-    }).to(
-        footer,
-        {
-            clipPath: 'inset(0% 0% 0% 0%)',
-            webkitClipPath: 'inset(0% 0% 0% 0%)',
-            ease: 'none',
-        },
-        0,
-    );
-}
 
 /**
  * Why TrAC circles intro (outer -> inner, bouncy)
@@ -1152,9 +1092,9 @@ function initCtaLineAnimation() {
         gradient.setAttribute('y2', String(end.y));
 
         [
-            { offset: '0%', color: '#FFFFFF', opacity: '0' },
-            { offset: '58%', color: '#FFFFFF', opacity: '0' },
-            { offset: '82%', color: '#10417F', opacity: '0.45' },
+            { offset: '0%', color: '#10417F', opacity: '0' },
+            { offset: '25%', color: '#10417F', opacity: '0.5' },
+            { offset: '75%', color: '#10417F', opacity: '0.75' },
             { offset: '100%', color: '#10417F', opacity: '1' },
         ].forEach(({ offset, color, opacity }) => {
             const stop = document.createElementNS(
@@ -1994,48 +1934,6 @@ function initTextAnimations() {
 }
 
 /**
- * Horizontal scroll section for "Why Businesses Choose TrAC"
- */
-// function initHorizontalScroll() {
-//     const section = document.querySelector('[data-horizontal-scroll]');
-//     if (!section) return;
-
-//     // Only enable on desktop (above 768px)
-//     if (window.innerWidth <= 768) {
-//         console.log('[Trac] Horizontal scroll disabled on mobile');
-//         return;
-//     }
-
-//     const track = section.querySelector('.why-trac-track');
-//     const slides = section.querySelectorAll('.why-trac-slide');
-
-//     if (!track || slides.length === 0) return;
-
-//     // Calculate total scroll width
-//     const totalWidth = track.scrollWidth;
-//     const viewportWidth = window.innerWidth;
-//     const scrollDistance = totalWidth - viewportWidth;
-
-//     // Create horizontal scroll animation - just translate, no other animations
-//     gsap.to(track, {
-//         x: -scrollDistance,
-//         // Keep it linear so the SVG draw (also scrubbed) stays in sync.
-//         ease: 'none',
-//         scrollTrigger: {
-//             trigger: section,
-//             // Match the storytelling trigger so the draw + horizontal movement stay aligned.
-//             start: 'top 70%',
-//             end: 'bottom bottom',
-//             // Slight smoothing so it doesn't feel twitchy/fast.
-//             scrub: 0.8,
-//             // markers:true
-//         },
-//     });
-
-//     console.log('[Trac] Horizontal scroll initialized');
-// }
-
-/**
  * Stacking cards animation for services section
  */
 function initStackingCards() {
@@ -2114,7 +2012,7 @@ function initTestimonialsSlider() {
 
     function resetCard(card) {
         gsap.set(card, {
-            x: 20,
+            x: 0,
             scale: 1,
             autoAlpha: 0,
             filter: 'brightness(1)',
@@ -2125,7 +2023,7 @@ function initTestimonialsSlider() {
 
     function setFrontCard(card) {
         gsap.set(card, {
-            x: 20,
+            x: 0,
             scale: 1,
             autoAlpha: 1,
             filter: 'brightness(1)',
@@ -2136,7 +2034,6 @@ function initTestimonialsSlider() {
 
     function setBackCard(card) {
         gsap.set(card, {
-            // x: -36,,
             scale: 0.93,
             autoAlpha: 1,
             filter: 'brightness(0.78)',
@@ -2175,7 +2072,7 @@ function initTestimonialsSlider() {
         });
 
         gsap.set(nextCard, {
-            x: distance,
+            x: distance*1.1,
             scale: 1,
             autoAlpha: 1,
             filter: 'brightness(1)',
@@ -2202,7 +2099,6 @@ function initTestimonialsSlider() {
         tl.to(
             currentCard,
             {
-                // x: -36,
                 scale: 0.93,
                 filter: 'brightness(0.78)',
             },
@@ -2210,7 +2106,7 @@ function initTestimonialsSlider() {
         ).to(
             nextCard,
             {
-                x: 20,
+                x: 0,
             },
             0,
         );
@@ -2235,7 +2131,7 @@ function initTestimonialsSlider() {
 
         // current moves out to right
         gsap.set(currentCard, {
-            x: 20,
+            x: 0,
             scale: 1,
             autoAlpha: 1,
             filter: 'brightness(1)',
@@ -2245,7 +2141,6 @@ function initTestimonialsSlider() {
 
         // previous comes forward from its stacked back state
         gsap.set(previousCard, {
-            // x: -36,
             scale: 0.93,
             autoAlpha: 1,
             filter: 'brightness(0.78)',
@@ -2272,7 +2167,7 @@ function initTestimonialsSlider() {
         tl.to(
             currentCard,
             {
-                x: distance,
+                x: distance*1.1,
             },
             0,
         ).to(
@@ -2559,9 +2454,6 @@ function initWhatWeDoScroll() {
                     trigger: section,
                     start: `top+=${index * 12}% 70%`,
                     end:"bottom bottom",
-                    // markers: true,
-
-                    // once: true,
                     scrub: true,
                 },
             },
@@ -2617,12 +2509,7 @@ function initTracStoryTimeline() {
             end: `+=${totalScroll}`,
             scrub: true,
             invalidateOnRefresh: true,
-            // markers: {
-            //     startColor: '#0f62fe',
-            //     endColor: '#0f62fe',
-            //     fontSize: '12px',
-            //     indent: 20,
-            // },
+           
         },
         defaults: {
             ease: 'none',
@@ -2655,12 +2542,6 @@ function initTracStoryTimeline() {
             trigger: section,
             start: () => `top+=${window.innerHeight * index} bottom`,
             end: () => `top+=${window.innerHeight * (index + 1)} top`,
-            // markers: {
-            //     startColor: '#16a34a',
-            //     endColor: '#ef4444',
-            //     fontSize: '11px',
-            //     indent: 120 + index * 16,
-            // },
             onEnter: () => console.log(`[Trac Story] Enter ${year}`),
             onEnterBack: () => console.log(`[Trac Story] Enter back ${year}`),
         });

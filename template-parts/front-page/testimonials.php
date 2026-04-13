@@ -9,8 +9,6 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
 
 
 <section class="testimonials-section relative overflow-hidden bg-[#eef3fc]" data-section="testimonials">
-
-
     <div class="testimonials-container w-full flex flex-col items-end px-[5.21vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="testimonials-header mb-[2.604vw] md:mb-10 sm:mb-8 w-full">
             <div
@@ -50,42 +48,7 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
                     03
                 </span>
             </div>
-<!-- 
-            <div
-                class="slide-arrows flex items-center gap-[0.521vw] md:gap-2"
-                data-animate="fade-up"
-                data-delay="0.2"
-            >
-                <button
-                    class="arrow-prev flex h-[2.708vw] w-[2.708vw] items-center justify-center rounded-full border border-brand-primary text-brand-primary transition-all duration-300 hover:bg-brand-primary hover:text-white disabled:pointer-events-none disabled:opacity-40 md:h-12 md:w-12 sm:h-10 sm:w-10"
-                    aria-label="Previous testimonial"
-                    type="button"
-                >
-                    <svg
-                        class="h-[1.042vw] w-[1.042vw] md:h-5 md:w-5 sm:h-4 sm:w-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                </button>
 
-                <button
-                    class="arrow-next flex h-[2.708vw] w-[2.708vw] items-center justify-center rounded-full border border-brand-primary text-brand-primary transition-all duration-300 hover:bg-brand-primary hover:text-white disabled:pointer-events-none disabled:opacity-40 md:h-12 md:w-12 sm:h-10 sm:w-10"
-                    aria-label="Next testimonial"
-                    type="button"
-                >
-                    <svg
-                        class="h-[1.042vw] w-[1.042vw] md:h-5 md:w-5 sm:h-4 sm:w-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                </button>
-            </div> -->
             <div data-animate="fade-up" class=" w-fit rounded-full flex items-center md:mt-10 sm:mt-8 border border-brand-primary px-[1vw] gap-[1vw] ">
             <button
                 type="button"
