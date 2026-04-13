@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <section class="hero relative min-h-screen bg-white overflow-hidden" data-section="hero">
-    <div class="hero-container w-full px-[5.21vw] pt-[5vw] pb-[5.21vw] relative z-10 md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
+    <div class="hero-container w-full px-[5.21vw] pt-[5vw] pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
         <div class="hero-grid flex justify-between gap-[2.604vw] items-start md:grid-cols-1 md:gap-8">
             <div class="hero-text w-[70%] md:max-w-full md:pt-8 sm:pt-4">
                 <h1 class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4" data-animate="fade-up">

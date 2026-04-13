@@ -13,7 +13,7 @@ $page_excerpt = has_excerpt()
 ?>
 
 <section class="about-hero relative overflow-hidden" data-section="about-hero">
-    <div class="w-screen h-screen flex  items-center flex-col gap-[2vw] pt-[12%] ">
+    <div class="w-screen h-screen flex  items-center flex-col gap-[2vw] pt-[12vw] ">
                 <h1 class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4 relative z-[10]" data-animate="fade-up">
                     <span class="block hero-title-line">About Us</span>
                 </h1>

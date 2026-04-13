@@ -33,7 +33,7 @@ $cta_secondary_url = $cta_secondary['url'] ?? '#';
 ?>
 
 <section class="hero relative min-h-screen bg-white overflow-hidden" data-section="hero">
-    <div class="container mx-auto px-6 lg:px-[100px] pt-[120px] lg:pt-[200px] pb-20 relative z-10">
+    <div class="container mx-auto px-6 lg:px-[100px] pt-[120px] lg:pt-[200px] pb-20 relative z-[10]">
         <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)]">
             <!-- Hero Text Content -->
             <div class="hero-text max-w-[788px]">
@@ -108,7 +108,7 @@ $cta_secondary_url = $cta_secondary['url'] ?? '#';
     </div>
 
     <!-- Connection lines decoration (optional CSS-based) -->
-    <div class="connection-lines absolute inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="connection-lines absolute inset-0 pointer-events-none overflow-hidden z-[0]">
         <svg class="absolute right-0 top-0 w-[60%] h-full opacity-20" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="400" cy="400" r="300" stroke="#10417f" stroke-width="0.5" stroke-dasharray="4 4" fill="none" opacity="0.3"/>
             <circle cx="400" cy="400" r="350" stroke="#10417f" stroke-width="0.5" stroke-dasharray="4 4" fill="none" opacity="0.2"/>

@@ -74,7 +74,7 @@ $slides = [
                   </h2>
 
 </div>
-    <div class="relative z-10 w-full   flex flex-col items-center gap-[4vw]">
+    <div class="relative z-[10] w-full   flex flex-col items-center gap-[4vw]">
         <div class="max-w-full mx-auto text-center">
            
 	

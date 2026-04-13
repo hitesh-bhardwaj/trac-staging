@@ -10,9 +10,9 @@ $hero_image_url = $args['hero_image_url'] ?? '';
 $hero_image_alt = $args['hero_image_alt'] ?? '';
 ?>
 
-<section class="communities-hero relative w-full min-h-screen bg-white pt-[13.021vw] pb-[6.25vw] px-[5.208vw] md:pt-32 md:pb-16 md:px-[4vw] sm:pt-24 sm:pb-12 sm:px-[6vw]" data-section="communities-hero">
+<section class="communities-hero relative w-full min-h-screen bg-white pt-[12vw] pb-[6.25vw] px-[5.208vw] md:pt-32 md:pb-16 md:px-[4vw] sm:pt-24 sm:pb-12 sm:px-[6vw]" data-section="communities-hero">
     <div class="hero-content text-center mb-[5.208vw] md:mb-16 sm:mb-12 space-y-[2vw]">
-        <h1 class="hero-title font-heading text-[3.958vw] leading-[5vw] tracking-[0.04vw] text-[#111] max-w-[71.51vw] mx-auto md:text-6xl md:leading-[1.2] md:mb-12 sm:text-4xl sm:mb-8" data-animate="fade-up">
+        <h1 class="hero-title font-heading hero-title-line leading-[5vw] tracking-[0.04vw] text-[#111] max-w-[71.51vw] mx-auto md:text-6xl md:leading-[1.2] md:mb-12 sm:text-4xl sm:mb-8" data-animate="fade-up">
             <?php echo esc_html($hero_title); ?>
         </h1>
 

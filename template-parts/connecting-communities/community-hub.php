@@ -7,7 +7,7 @@ $community_hub_cards = $args['community_hub_cards'] ?? [];
 ?>
 
 <section class="community-hub-section relative overflow-hidden bg-white" data-section="community-hub">
-    <div class="community-hub-container relative z-10 px-[5.208vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+    <div class="community-hub-container relative z-[10] px-[5.208vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="community-hub-header mx-auto max-w-[68vw] text-center md:max-w-[90%] sm:max-w-full">
             <div class="community-hub-label mx-auto mb-14 inline-flex items-center gap-[0.938vw] md:mb-5 md:gap-3 sm:mb-4 sm:gap-3" data-animate="fade-up">
                 <span class="community-hub-label__line" aria-hidden="true"></span>

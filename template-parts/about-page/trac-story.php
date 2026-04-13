@@ -42,7 +42,7 @@ $story_content = [
         </div>
 
     </div>
-    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-20 mt-[-100vh]">
+    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-[20] mt-[-100vh]">
          <div class="trac-story-label flex items-center gap-[0.833vw] md:gap-3" data-animate="fade-up">
             <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-primary md:h-1 md:w-6 sm:w-5"></span>
             <h3 class="font-body font-medium text-[1.25vw] text-text-primary md:text-xl sm:text-lg">
@@ -120,7 +120,7 @@ $story_content = [
         </div>
 
     </div>
-    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-20 ">
+    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-[20] ">
          
         <div class="w-full flex justify-between">
             <div class="w-[80%] flex  gap-[2vw]">
@@ -193,7 +193,7 @@ $story_content = [
         </div>
 
     </div>
-    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-20 ">
+    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-[20] ">
          
         <div class="w-full flex justify-between">
             <div class="w-[80%] flex  gap-[2vw]">
@@ -266,7 +266,7 @@ $story_content = [
         </div>
 
     </div>
-    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-20 ">
+    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-[20] ">
          
         <div class="w-full flex justify-between">
             <div class="w-[80%] flex  gap-[2vw]">
@@ -339,7 +339,7 @@ $story_content = [
         </div>
 
     </div>
-    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-20 ">
+    <div class="px-[7vw] py-[7vw] h-fit flex flex-col gap-[7vw] items-center relative z-[20] ">
          
         <div class="w-full flex justify-between">
             <div class="w-[80%] flex  gap-[2vw]">

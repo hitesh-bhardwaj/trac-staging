@@ -20,7 +20,7 @@ $hero_image = get_field('hero_new_image') ?: 'https://www.figma.com/api/mcp/asse
     <div class="hero-new-container w-full px-[5.21vw] pt-[13vw] pb-[7.031vw] md:px-[4vw] md:pt-[160px] md:pb-16 sm:px-[6vw] sm:pt-[140px] sm:pb-12">
 
         <!-- Hero Text Content -->
-        <div class="hero-text-content relative z-10 text-center mb-[5.208vw] md:mb-16 sm:mb-12">
+        <div class="hero-text-content relative z-[10] text-center mb-[5.208vw] md:mb-16 sm:mb-12">
             <!-- Main Title -->
             <h1 class="hero-main-title font-heading text-[3.958vw] leading-[5vw] tracking-[0.04vw] text-[#111] mb-[3.125vw] max-w-[71.51vw] mx-auto md:text-5xl md:leading-[1.2] md:mb-8 sm:text-4xl sm:mb-6" data-animate="fade-up">
                 <?php echo esc_html($hero_title); ?>
@@ -38,7 +38,7 @@ $hero_image = get_field('hero_new_image') ?: 'https://www.figma.com/api/mcp/asse
         </div>
 
         <!-- Hero Image -->
-        <div class="hero-image-container relative z-10" data-animate="fade-up" data-delay="0.3">
+        <div class="hero-image-container relative z-[10]" data-animate="fade-up" data-delay="0.3">
             <div class="hero-image-wrapper relative bg-[#edecec] rounded-[2.083vw] overflow-hidden h-[30.99vw] md:rounded-3xl md:h-[400px] sm:rounded-2xl sm:h-[300px]">
                 <?php if (is_array($hero_image) && isset($hero_image['url'])): ?>
                     <img

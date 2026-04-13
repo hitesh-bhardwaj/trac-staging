@@ -34,7 +34,7 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
             </h2>
         </div>
 
-        <div class="testimonials-controls mb-[2.083vw] flex items-center justify-between md:mb-8 sm:mb-6 w-full relative z-10">
+        <div class="testimonials-controls mb-[2.083vw] flex items-center justify-between md:mb-8 sm:mb-6 w-full relative z-[10]">
             <div
                 class="slide-counter flex items-center gap-[0.833vw] md:gap-3"
                 data-animate="fade-up"
@@ -81,7 +81,7 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
         </div>
 
         <div
-            class="testimonials-slider flex w-fit justify-end min-h-[28vw] md:min-h-[360px] sm:min-h-[300px] relative z-10"
+            class="testimonials-slider flex w-fit justify-end min-h-[28vw] md:min-h-[360px] sm:min-h-[300px] relative z-[10]"
             data-animate="fade-up"
             data-delay="0.3"
         >

@@ -35,13 +35,13 @@
 </div>
 
 <div id="page" class="site" data-scroll-container data-barba="wrapper">
-    <a class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-brand-primary focus:text-white focus:px-4 focus:py-2 focus:rounded" href="#main-content">
+    <a class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[50] focus:bg-brand-primary focus:text-white focus:px-4 focus:py-2 focus:rounded" href="#main-content">
         <?php esc_html_e('Skip to content', 'trac'); ?>
     </a>
 
    <header
     id="site-header"
-    class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[999] bg-white "
+    class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[9999] bg-white "
 >
         <div class="header-inner w-full px-[4vw] py-[1.15vw] flex items-center justify-between md:px-[4vw] md:py-5 sm:px-[6vw] sm:py-4">
             <!-- Logo -->
@@ -143,7 +143,7 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu hidden fixed inset-0 top-[80px] bg-white z-40 overflow-y-auto">
+        <div id="mobile-menu" class="mobile-menu hidden fixed inset-0 top-[80px] bg-white z-[40] overflow-y-auto">
             <nav class="w-full px-[4vw] py-8 sm:px-[6vw]" aria-label="<?php esc_attr_e(
                 'Mobile Navigation',
                 'trac',
@@ -228,7 +228,7 @@
         </div>
     </a>
 
-    <a href="#" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="/products/enterprise-network" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">Enterprise Network</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>

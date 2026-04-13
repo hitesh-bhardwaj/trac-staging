@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 
 <section class="enterprise-why relative overflow-hidden bg-[#eef3fc] py-[7vw] md:py-20 sm:py-16" data-section="enterprise-why">
 
-    <div class="relative z-10 w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="relative z-[1] w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[80rem] mx-auto text-center">
             <div class="flex items-center justify-center gap-3 mb-8 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-primary"></span>
@@ -70,6 +70,6 @@ if (!defined('ABSPATH')) {
 	            </div>
         </div>
     </div>
-                                  <canvas class="network-canvas-el absolute inset-0 h-full w-full"></canvas>
+    <canvas class="network-canvas-el absolute inset-0 h-full w-full"></canvas>
 
 </section>
