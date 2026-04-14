@@ -6,9 +6,9 @@ if (!defined('ABSPATH')) {
 
 <section class="contact-form-section relative overflow-hidden bg-[#eef3fc] py-[7vw] md:py-20 sm:py-16" data-section="contact-form">
     <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
-        <div class="max-w-[92rem] mx-auto grid grid-cols-[1fr_1fr] gap-[6vw] items-start md:grid-cols-1 md:gap-12">
+        <div class="max-w-[104rem] mx-auto grid grid-cols-[1fr_1fr] gap-[6vw] items-start md:grid-cols-1 md:gap-12">
             <!-- Left Column: Content -->
-            <div class="pt-[3vw] md:pt-0">
+            <div class="">
                 <!-- Section Label -->
                 <div class="flex items-center gap-[0.729vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">
                     <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>

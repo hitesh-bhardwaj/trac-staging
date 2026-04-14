@@ -119,3 +119,42 @@ function trac_register_faq_taxonomy()
     register_taxonomy('faq_category', ['faq'], $args);
 }
 add_action('init', 'trac_register_faq_taxonomy');
+
+/**
+ * Register Jobs Custom Post Type
+ */
+function trac_register_jobs_cpt()
+{
+    $labels = [
+        'name' => __('Jobs', 'trac'),
+        'singular_name' => __('Job', 'trac'),
+        'menu_name' => __('Jobs', 'trac'),
+        'add_new' => __('Add New', 'trac'),
+        'add_new_item' => __('Add New Job', 'trac'),
+        'edit_item' => __('Edit Job', 'trac'),
+        'new_item' => __('New Job', 'trac'),
+        'view_item' => __('View Job', 'trac'),
+        'search_items' => __('Search Jobs', 'trac'),
+        'not_found' => __('No jobs found', 'trac'),
+        'not_found_in_trash' => __('No jobs found in trash', 'trac'),
+        'all_items' => __('All Jobs', 'trac'),
+    ];
+
+    $args = [
+        'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_icon' => 'dashicons-businessman',
+        'menu_position' => 22,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'has_archive' => false,
+        'rewrite' => ['slug' => 'careers/job', 'with_front' => false],
+        'capability_type' => 'post',
+        'show_in_rest' => true,
+    ];
+
+    register_post_type('job', $args);
+}
+add_action('init', 'trac_register_jobs_cpt');

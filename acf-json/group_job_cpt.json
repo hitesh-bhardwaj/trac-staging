@@ -1,0 +1,84 @@
+{
+    "key": "group_job_cpt",
+    "title": "Job Details",
+    "fields": [
+        {
+            "key": "field_job_location",
+            "label": "Job Location",
+            "name": "job_location",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter the job location (e.g., Nairobi, Kenya)",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "e.g., Nairobi, Kenya",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_job_department",
+            "label": "Department",
+            "name": "job_department",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter the department (e.g., Operations, Engineering, Data & Analytics)",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "e.g., Operations",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_job_excerpt",
+            "label": "Job Excerpt",
+            "name": "job_excerpt",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Brief description of the job (1-2 sentences) shown on the careers page",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "This role involves...",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "job"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}

@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 <section class="map-section relative overflow-hidden bg-white py-[7vw] md:py-20 sm:py-16" data-section="map">
     <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
-        <div class="max-w-[92rem] mx-auto">
+        <div class="max-w-[104rem] mx-auto">
             <!-- Section Label -->
             <div class="flex items-center gap-[0.729vw] mb-[2vw] justify-center md:gap-3 md:mb-8" data-animate="fade-up">
                 <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
