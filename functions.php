@@ -227,6 +227,64 @@ function trac_ensure_home_internet_page()
 add_action('init', 'trac_ensure_home_internet_page');
 
 /**
+ * Ensure Carrier Services page exists (so /products/carrier-services doesn't 404).
+ */
+function trac_ensure_carrier_services_page()
+{
+    if (!trac_can_autocreate_pages()) {
+        return;
+    }
+
+    $products_id = trac_ensure_products_parent_page();
+    if (!$products_id) {
+        return;
+    }
+
+    $slug = 'carrier-services';
+    $existing = trac_get_page_by_slug($slug);
+
+    $did_change = false;
+
+    if ($existing instanceof WP_Post) {
+        if ((int) $existing->post_parent !== (int) $products_id) {
+            wp_update_post([
+                'ID' => $existing->ID,
+                'post_parent' => $products_id,
+            ]);
+            $did_change = true;
+        }
+
+        update_post_meta(
+            $existing->ID,
+            '_wp_page_template',
+            'page-carrier-services.php',
+        );
+    } else {
+        $page_id = wp_insert_post([
+            'post_type' => 'page',
+            'post_status' => 'publish',
+            'post_title' => 'Carrier Services',
+            'post_name' => $slug,
+            'post_parent' => $products_id,
+        ]);
+
+        if (!is_wp_error($page_id) && $page_id) {
+            update_post_meta(
+                $page_id,
+                '_wp_page_template',
+                'page-carrier-services.php',
+            );
+            $did_change = true;
+        }
+    }
+
+    if ($did_change) {
+        flush_rewrite_rules(false);
+    }
+}
+add_action('init', 'trac_ensure_carrier_services_page');
+
+/**
  * Ensure Partners page exists (so /partners doesn't 404 on staging/local).
  */
 function trac_ensure_partners_page()
@@ -315,6 +373,10 @@ function trac_redirect_legacy_product_routes()
         exit();
     }
 
+    if ($path === 'carrier-services') {
+        wp_safe_redirect(home_url('/products/carrier-services'), 301);
+        exit();
+    }
     if ($path === 'enterprise-network') {
         wp_safe_redirect(home_url('/products/enterprise-network'), 301);
         exit();

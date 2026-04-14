@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<section class="enterprise-contact relative overflow-hidden bg-white py-[7vw] md:py-20 sm:py-16" data-section="enterprise-contact">
+<section class="carrier-contact relative overflow-hidden bg-white py-[7vw] md:py-20 sm:py-16" data-section="carrier-contact">
     <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[104rem] mx-auto grid grid-cols-[1fr_1fr] gap-[6vw] items-start md:grid-cols-1 md:gap-12">
             <div class="pt-[0.5vw] md:pt-0">
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-animate="fade-up" data-delay="0.1">
-                    Enquire About Enterprise<br class="md:hidden"> Connectivity.
+                    Talk to Our Wholesale Team
                 </h2>
 
                 <p class="font-body text-[1.25vw] leading-[1.58] text-[#1e1e1e] mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-animate="fade-up" data-delay="0.2">

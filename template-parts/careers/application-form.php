@@ -50,7 +50,7 @@ if (!defined('ABSPATH')) {
                         // Contact Form 7 for job applications
                         // You'll need to create this form in WordPress admin
                         if (function_exists('wpcf7_contact_form')) {
-                            echo do_shortcode('[contact-form-7 id="8fb1bcd" title="Job Application Form"]');
+                            echo do_shortcode('[contact-form-7 id="bce66aa" title="Contact us form"]');
                         } else {
                             echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';
                         }

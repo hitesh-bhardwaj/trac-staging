@@ -47,6 +47,10 @@ export function initAnimations() {
     initCommunityHubCards();
     initImpactGallery();
     initParallaxImgSlider();
+    initFooterOverlayFade();
+    initOurOfferingAccordion();
+    initWhyChooseTracCards();
+    initSolutionOverviewStack();
 
     // Refresh ScrollTrigger after all animations are set up
     ScrollTrigger.refresh();
@@ -2797,6 +2801,345 @@ function initParallaxImgSlider() {
 
     console.log('[Trac] Parallax image slider initialized');
 }
+
+// footer overlay
+
+function initFooterOverlayFade() {
+    const footer = document.getElementById('site-footer');
+    const overlay = footer?.querySelector('.footer-overlay');
+
+    if (!footer || !overlay) return;
+
+    gsap.set(overlay, {
+        opacity: 1,
+    });
+
+    gsap.to(overlay, {
+        opacity: 0,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: footer,
+            start: 'top 85%',
+            end: 'bottom bottom',
+            scrub: true,
+        },
+    });
+
+    console.log('[Trac] Footer overlay fade initialized');
+}
+
+// our offering animation 
+
+function initOurOfferingAccordion() {
+    const section = document.querySelector('.our-offering-section');
+    if (!section) return;
+
+    const items = Array.from(section.querySelectorAll('[data-offering-item]'));
+    if (!items.length) return;
+
+    const setInitial = () => {
+        items.forEach((item, index) => {
+            const body = item.querySelector('.our-offering-item__body');
+            const inner = item.querySelector('.our-offering-item__body-inner');
+            if (!body || !inner) return;
+
+            if (index === 0) {
+                item.classList.add('is-active');
+                gsap.set(item, {
+                    backgroundColor: '#EEF3FC',
+                    borderColor: '#10417f',
+                    scale: 1,
+                });
+                gsap.set(body, {
+                    height: inner.offsetHeight,
+                    opacity: 1,
+                });
+            } else {
+                item.classList.remove('is-active');
+                gsap.set(item, {
+                    backgroundColor: '#ffffff',
+                    borderColor: 'transparent',
+                    scale: 0.985,
+                });
+                gsap.set(body, {
+                    height: 0,
+                    opacity: 0,
+                });
+            }
+        });
+    };
+
+    const activateItem = (activeIndex) => {
+        items.forEach((item, index) => {
+            const body = item.querySelector('.our-offering-item__body');
+            const inner = item.querySelector('.our-offering-item__body-inner');
+            if (!body || !inner) return;
+
+            const isActive = index === activeIndex;
+            item.classList.toggle('is-active', isActive);
+
+            gsap.killTweensOf(item);
+            gsap.killTweensOf(body);
+
+            if (isActive) {
+                gsap.to(item, {
+                    backgroundColor: '#EEF3FC',
+                    borderColor: '#10417f',
+                    scale: 1,
+                    duration: 0.45,
+                    ease: 'power3.out',
+                    overwrite: true,
+                });
+
+                gsap.to(body, {
+                    height: inner.offsetHeight,
+                    opacity: 1,
+                    duration: 0.45,
+                    ease: 'power3.out',
+                    overwrite: true,
+                });
+            } else {
+                gsap.to(item, {
+                    backgroundColor: '#ffffff',
+                    borderColor: 'transparent',
+                    scale: 0.985,
+                    duration: 0.4,
+                    ease: 'power3.out',
+                    overwrite: true,
+                });
+
+                gsap.to(body, {
+                    height: 0,
+                    opacity: 0,
+                    duration: 0.35,
+                    ease: 'power3.out',
+                    overwrite: true,
+                });
+            }
+        });
+    };
+
+    setInitial();
+
+    const total = items.length;
+
+    ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.6,
+        onUpdate: (self) => {
+            const index = Math.min(total - 1, Math.floor(self.progress * total));
+            activateItem(index);
+        },
+    });
+}
+
+// carrier overview 
+function initSolutionOverviewStack() {
+    const section = document.querySelector('.solution-overview-section');
+    if (!section) return;
+
+    const stack = section.querySelector('[data-solution-stack]');
+    const cards = Array.from(section.querySelectorAll('[data-solution-card]'));
+
+    if (!stack || !cards.length) return;
+
+    if (window.innerWidth <= 768) {
+        cards.forEach((card, index) => {
+            gsap.set(card, {
+                clearProps: 'all',
+                position: 'relative',
+                zIndex: index + 1,
+            });
+        });
+        return;
+    }
+
+    const CARD_GAP = 14;
+    const STACK_LIFT = 30;
+    const SCALE_STEP = 0.04;
+    const ENTRY_Y = 540;
+    const SEGMENT = 1;
+
+    const setInitialLayout = () => {
+        let maxHeight = 0;
+
+        cards.forEach((card, index) => {
+            const h = card.offsetHeight;
+            if (h > maxHeight) maxHeight = h;
+
+            if (index === 0) {
+                gsap.set(card, {
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    y: 0,
+                    scale: 1,
+                    zIndex: index + 1,
+                });
+            } else {
+                gsap.set(card, {
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    y: ENTRY_Y,
+                    scale: 1,
+                    zIndex: index + 1,
+                });
+            }
+        });
+
+        stack.style.minHeight = `${maxHeight + cards.length * CARD_GAP + 60}px`;
+    };
+
+    setInitialLayout();
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: () => 'bottom 60%',
+            // markers: true,
+            scrub: true,
+            invalidateOnRefresh: true,
+            onRefresh: setInitialLayout,
+        },
+    });
+
+    for (let activeIndex = 1; activeIndex < cards.length; activeIndex += 1) {
+        const incomingCard = cards[activeIndex];
+        const previousCards = cards.slice(0, activeIndex);
+
+        tl.to(
+            incomingCard,
+            {
+                y: activeIndex * CARD_GAP,
+                duration: SEGMENT,
+                ease: 'none',
+            },
+            activeIndex - 1
+        );
+
+        previousCards.forEach((card, prevIndex) => {
+            tl.to(
+                card,
+                {
+                    y: prevIndex * CARD_GAP - activeIndex * STACK_LIFT,
+                    scale: Math.max(0.82, 1 - (activeIndex - prevIndex) * SCALE_STEP),
+                    duration: SEGMENT,
+                    ease: 'none',
+                },
+                activeIndex - 1
+            );
+        });
+    }
+
+    // final lift after the last card has stacked
+    tl.to(
+        cards,
+        {
+            y: (index) => index * CARD_GAP - cards.length * STACK_LIFT,
+            scale: (index) =>
+                Math.max(0.82, 1 - (cards.length - 1 - index) * SCALE_STEP),
+            duration: SEGMENT,
+            ease: 'none',
+            stagger: 0,
+        },
+        cards.length - 1
+    );
+
+    console.log('[Trac] Solution overview stack initialized');
+}
+
+// why choose trac
+
+function initWhyChooseTracCards() {
+    const section = document.querySelector('.why-choose-trac-section');
+    if (!section) return;
+
+    const container = section.querySelector('.why-choose-container');
+    const cards = Array.from(section.querySelectorAll('[data-why-card]'));
+
+    if (!container || !cards.length) return;
+
+    if (window.innerWidth <= 768) {
+        gsap.set(cards, { clearProps: 'all' });
+        gsap.set(container, { clearProps: 'all' });
+        return;
+    }
+
+    const randomBetween = (min, max) => gsap.utils.random(min, max, 0.1);
+
+    const startStates = [
+        { x: -80, y: 40, rotation: -6 },
+        { x: -20, y: 8, rotation: 4 },
+        { x: 30, y: 32, rotation: -5 },
+        { x: 70, y: 12, rotation: 6 },
+        { x: 120, y: 48, rotation: -4 },
+        { x: 170, y: 22, rotation: 5 },
+    ];
+
+    const endStates = cards.map((_, i) => ({
+        x: randomBetween(-80, 120) + i * 8,
+        y: randomBetween(-30, 70),
+        rotation: randomBetween(-14, 14),
+    }));
+
+    cards.forEach((card, index) => {
+        const start = startStates[index] || {
+            x: randomBetween(-80, 120),
+            y: randomBetween(-20, 60),
+            rotation: randomBetween(-8, 8),
+        };
+
+        gsap.set(card, {
+            x: start.x,
+            y: start.y,
+            rotation: start.rotation,
+            transformOrigin: '50% 50%',
+        });
+    });
+
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 50%',
+            end: 'bottom 30%',
+            // markers:true,
+            scrub: true,
+            invalidateOnRefresh: true,
+        },
+    });
+
+    tl.to(
+        container,
+        {
+           translateX:"-75%",
+            ease: 'none',
+        },
+        0
+    );
+
+    cards.forEach((card, index) => {
+        const target = endStates[index];
+
+        tl.to(
+            card,
+            {
+                x: target.x,
+                y: target.y,
+                rotation: target.rotation,
+                ease: 'none',
+            },
+            0
+        );
+    });
+
+    console.log('[Trac] Why Choose TrAC cards initialized');
+}
+
 /**
  * Create scroll-triggered counter animation
  */
@@ -2817,6 +3160,9 @@ export function animateCounter(el, target, duration = 2) {
         },
     });
 }
+
+
+
 
 /**
  * Create horizontal scroll section

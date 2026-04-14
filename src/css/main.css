@@ -226,7 +226,6 @@
     display: block;
 }
 
-
 .hi-installation-track-area {
     position: relative;
     width: max-content;
@@ -1925,6 +1924,333 @@
     background: #fff;
     box-shadow: 0 0.521vw 1.563vw rgba(16, 65, 127, 0.1);
 }
+
+
+/* our offering css  */
+
+.our-offering-sticky {
+    min-height: 100vh;
+}
+
+.our-offering-item {
+    border: 1px solid transparent;
+    border-radius: 1.2vw;
+    background: #fff;
+    padding: 1.6vw 1.4vw;
+    transform: scale(0.985);
+    transform-origin: center center;
+    overflow: hidden;
+    will-change: transform, background-color, border-color;
+}
+
+.our-offering-item__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5vw;
+}
+
+.our-offering-item__title {
+    font-family: var(--font-heading, inherit);
+    font-size: 1.85vw;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #10417f;
+    transition: color 0.35s ease;
+}
+
+.our-offering-item__number {
+    font-family: var(--font-body, inherit);
+    font-size: 2vw;
+    line-height: 1;
+    color: #111;
+}
+
+.our-offering-item__divider {
+    height: 1px;
+    background: rgba(17, 17, 17, 0.12);
+    margin-top: 1.25vw;
+}
+
+.our-offering-item__body {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+}
+
+.our-offering-item__body-inner {
+    padding-top: 1.25vw;
+}
+
+.our-offering-item__body p {
+    margin: 0;
+    max-width: 48vw;
+    font-family: var(--font-body, inherit);
+    font-size: 1.25vw;
+    line-height: 1.45;
+    color: #2f2f2f;
+}
+
+.our-offering-item:not(.is-active) {
+    background: #fff;
+    border-color: transparent;
+}
+
+.our-offering-item.is-active {
+    background: #eef3fc;
+    border-color: #10417f;
+    transform: scale(1);
+}
+
+@media (max-width: 991px) {
+    .our-offering-item {
+        padding: 24px 20px;
+        border-radius: 24px;
+        transform: none;
+    }
+
+    .our-offering-item__title {
+        font-size: 32px;
+    }
+
+    .our-offering-item__number {
+        font-size: 28px;
+    }
+
+    .our-offering-item__divider {
+        margin-top: 16px;
+    }
+
+    .our-offering-item__body p {
+        margin-top: 16px;
+        max-width: 100%;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 639px) {
+    .our-offering-item__title {
+        font-size: 24px;
+    }
+
+    .our-offering-item__number {
+        font-size: 22px;
+    }
+
+    .our-offering-item__body p {
+        font-size: 16px;
+    }
+}
+
+/* solution overview */
+.solution-overview-stack-wrap {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.solution-overview-stack {
+    position: relative;
+    width: 100%;
+    max-width: 39vw;
+    min-height: 34vw;
+}
+
+.solution-overview-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 1px solid #10417f;
+    background: #ffffff;
+    border-radius: 1.6vw;
+    padding: 1.6vw;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: center center;
+}
+
+.solution-overview-card__title {
+    font-family: var(--font-body, inherit);
+    font-size: 2.05vw;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #111111;
+}
+
+.solution-overview-card__number {
+    font-family: var(--font-body, inherit);
+    font-size: 2vw;
+    line-height: 1;
+    color: #111111;
+    flex-shrink: 0;
+}
+
+.solution-overview-card__divider {
+    margin-top: 1.25vw;
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.solution-overview-card__desc {
+    margin-top: 1.25vw;
+    max-width: 28vw;
+    font-family: var(--font-body, inherit);
+    font-size: 1.3vw;
+    line-height: 1.5;
+    color: #2f2f2f;
+}
+
+@media (max-width: 991px) {
+    .solution-overview-stack-wrap {
+        justify-content: flex-start;
+    }
+
+    .solution-overview-stack {
+        max-width: 520px;
+        min-height: 430px;
+    }
+
+    .solution-overview-card {
+        border-radius: 24px;
+        padding: 24px;
+    }
+
+    .solution-overview-card__title {
+        font-size: 32px;
+    }
+
+    .solution-overview-card__number {
+        font-size: 30px;
+    }
+
+    .solution-overview-card__divider {
+        margin-top: 16px;
+    }
+
+    .solution-overview-card__desc {
+        margin-top: 16px;
+        max-width: 100%;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 639px) {
+    .solution-overview-stack {
+        max-width: 100%;
+        min-height: 380px;
+    }
+
+    .solution-overview-card {
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .solution-overview-card__title {
+        font-size: 24px;
+    }
+
+    .solution-overview-card__number {
+        font-size: 22px;
+    }
+
+    .solution-overview-card__desc {
+        font-size: 16px;
+        line-height: 1.45;
+    }
+}
+
+
+/* why choose trac */
+
+.why-choose-cards-stage {
+    pointer-events: none;
+}
+
+.why-choose-container {
+    transform: translateX(70%);
+}
+
+.why-choose-card {
+    width: 18.5vw;
+    min-width: 18.5vw;
+    height: 19vw;
+    border: 1px solid #10417f;
+    border-radius: 1.2vw;
+    background: #ffffff;
+    padding: 1.6vw 1.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    will-change: transform;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.why-choose-card__number {
+    font-family: var(--font-body, inherit);
+    font-size: 2.1vw;
+    line-height: 1;
+    color: #111111;
+}
+
+.why-choose-card__content {
+    max-width: 12.5vw;
+    font-family: var(--font-body, inherit);
+    font-size: 1.1vw;
+    line-height: 1.28;
+    color: #2f2f2f;
+}
+
+@media (max-width: 991px) {
+    .why-choose-container {
+        padding-left: 10vw;
+        padding-right: 10vw;
+        gap: 20px;
+    }
+
+    .why-choose-card {
+        width: 240px;
+        min-width: 240px;
+        height: 250px;
+        border-radius: 20px;
+        padding: 20px 18px;
+    }
+
+    .why-choose-card__number {
+        font-size: 34px;
+    }
+
+    .why-choose-card__content {
+        max-width: 160px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 639px) {
+    .why-choose-container {
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+
+    .why-choose-card {
+        width: 220px;
+        min-width: 220px;
+        height: 220px;
+    }
+
+    .why-choose-card__number {
+        font-size: 28px;
+    }
+
+    .why-choose-card__content {
+        font-size: 16px;
+        max-width: 150px;
+    }
+}
+
 
 /* .service-card:not(:first-child) {
     margin-top: -25vw;

@@ -66,7 +66,7 @@ function trac_render_inline_svg($svg_path, $class = '')
     data-hi-installation
     style="--hi-steps: <?php echo esc_attr(count($steps)); ?>;"
 >
-        <div class="hi-installation-sticky">
+        <div class="hi-installation-sticky overflow-hidden">
             <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
                 <div class="mx-auto max-w-[92rem]">
                     <div class="mx-auto max-w-[56rem] text-center">
