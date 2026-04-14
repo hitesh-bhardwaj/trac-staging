@@ -28,13 +28,13 @@ export function initAnimations() {
     initSectionAnimations();
     initParallaxAnimations();
     initHiInstallationScroll();
-		    initTextAnimations();
-			    initPartnersProgramCards();
-			    initHomeInternetWhyTrac();
-			    initPartnerVoicesSlider();
-			    initTeamSlider();
-			    initStackingCards();
-	    initTestimonialsSlider();
+    initTextAnimations();
+    initPartnersProgramCards();
+    initHomeInternetWhyTrac();
+    initPartnerVoicesSlider();
+    initTeamSlider();
+    initStackingCards();
+    initTestimonialsSlider();
     initWhoWeAreSlider();
     initWhoWeAreCounters();
     initWhatWeDoScroll();
@@ -323,44 +323,44 @@ function initPartnersProgramCards() {
 
     ScrollTrigger.addEventListener('refreshInit', setInitialWidths);
 
-	    console.log('[Trac] Partners program cards initialized');
-	}
+    console.log('[Trac] Partners program cards initialized');
+}
 
-	/**
-	 * Home Internet page: "Why TrAC" list pills slide from right -> final position on scroll.
-	 * Left-side content uses the generic [data-animate="fade-up"] system.
-	 */
-	function initHomeInternetWhyTrac() {
-	    const section = document.querySelector('[data-hi-why]');
-	    if (!section) return;
-	    if (section.dataset.hiWhyInit === 'true') return;
+/**
+ * Home Internet page: "Why TrAC" list pills slide from right -> final position on scroll.
+ * Left-side content uses the generic [data-animate="fade-up"] system.
+ */
+function initHomeInternetWhyTrac() {
+    const section = document.querySelector('[data-hi-why]');
+    if (!section) return;
+    if (section.dataset.hiWhyInit === 'true') return;
 
-	    const items = Array.from(section.querySelectorAll('[data-hi-why-item]'));
-	    if (!items.length) return;
+    const items = Array.from(section.querySelectorAll('[data-hi-why-item]'));
+    if (!items.length) return;
 
-	    section.dataset.hiWhyInit = 'true';
+    section.dataset.hiWhyInit = 'true';
 
-	    const dist = window.innerWidth <= 768 ? 56 : 220;
+    const dist = window.innerWidth <= 768 ? 56 : 220;
 
-	    items.forEach((el) => {
-	        gsap.fromTo(
-	            el,
-	            { x: dist, opacity: 0 },
-	            {
-	                x: 0,
-	                opacity: 1,
-	                ease: 'none',
-	                overwrite: 'auto',
-	                scrollTrigger: {
-	                    trigger: el,
-	                    start: 'top 85%',
-	                    end: 'top 70%',
-	                    scrub: 0.6,
-	                },
-	            }
-	        );
-	    });
-	}
+    items.forEach((el) => {
+        gsap.fromTo(
+            el,
+            { x: dist, opacity: 0 },
+            {
+                x: 0,
+                opacity: 1,
+                ease: 'none',
+                overwrite: 'auto',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%',
+                    end: 'top 70%',
+                    scrub: 0.6,
+                },
+            }
+        );
+    });
+}
 
 /**
  * Partners page: "Partner Voices" looping slider (7 slides).
@@ -616,9 +616,9 @@ function initWhyTracScrollStory() {
         const drawLine = progressBase.cloneNode(true);
         drawLine.setAttribute('data-why-progress-draw', 'true');
         // Keep a constant primary color all the way to the end.
-        drawLine.style.stroke = '#10417F';
+        drawLine.style.stroke = '#072245';
         drawLine.style.strokeOpacity = '1';
-        drawLine.style.strokeWidth = '1.5';
+        drawLine.style.strokeWidth = '1.2';
         drawLine.style.strokeLinecap = 'round';
         drawLine.style.vectorEffect = '';
         progressBase.insertAdjacentElement('afterend', drawLine);
@@ -780,7 +780,7 @@ function initWhyTracStory(
 
             // Keep connector base invisible so the draw feels like it fills on transparency.
             path.style.stroke = 'rgba(17, 17, 17, 0)';
-            path.style.strokeWidth = '1.25';
+            path.style.strokeWidth = '1.2';
             path.style.strokeLinecap = 'round';
             path.style.strokeLinejoin = 'round';
             path.style.vectorEffect = 'non-scaling-stroke';
@@ -788,10 +788,10 @@ function initWhyTracStory(
             // Clone for the actual drawing stroke (brand color).
             const clone = path.cloneNode(true);
             clone.setAttribute('data-why-draw', 'true');
-            clone.style.stroke = '#10417F';
+            clone.style.stroke = '#072245';
             // We'll fade the stroke in as it draws so it feels like it fills from transparent -> primary.
             clone.style.strokeOpacity = '0';
-            clone.style.strokeWidth = '2';
+            clone.style.strokeWidth = '1.2';
             clone.style.strokeLinecap = 'round';
             clone.style.strokeLinejoin = 'round';
             clone.style.vectorEffect = 'non-scaling-stroke';
@@ -919,7 +919,7 @@ function initWhyTracStory(
                 straightClone,
                 {
                     opacity: 1,
-                    stroke: '#10417F',
+                    stroke: '#072245',
                     strokeDashoffset: 0,
                     strokeOpacity: 1,
                     duration: 0.18,
@@ -1021,6 +1021,7 @@ function initWhyTracStory(
                 y: 0,
                 duration: 0.18,
                 ease: 'power2.out',
+                delay: -0.1,
             },
             t,
         );
@@ -1679,42 +1680,42 @@ function initTeamSlider() {
             overwrite: true,
         });
 
-       gsap.to([activeName, activeRole], {
-    autoAlpha: 0,
-    y: 12,
-    duration: 0.18,
-    ease: 'power2.out',
-    overwrite: true,
-    onComplete: () => {
-        activeName.textContent = nextMember.name;
-        activeRole.textContent = nextMember.role;
-
         gsap.to([activeName, activeRole], {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.26,
+            autoAlpha: 0,
+            y: 12,
+            duration: 0.18,
             ease: 'power2.out',
             overwrite: true,
-        });
-    },
-});
+            onComplete: () => {
+                activeName.textContent = nextMember.name;
+                activeRole.textContent = nextMember.role;
 
-gsap.to(activeLinkedin, {
-    autoAlpha: 0,
-    duration: 0.18,
-    ease: 'power2.out',
-    overwrite: true,
-    onComplete: () => {
-        activeLinkedin.href = nextMember.linkedin || '#';
+                gsap.to([activeName, activeRole], {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.26,
+                    ease: 'power2.out',
+                    overwrite: true,
+                });
+            },
+        });
 
         gsap.to(activeLinkedin, {
-            autoAlpha: 1,
-            duration: 0.22,
+            autoAlpha: 0,
+            duration: 0.18,
             ease: 'power2.out',
             overwrite: true,
+            onComplete: () => {
+                activeLinkedin.href = nextMember.linkedin || '#';
+
+                gsap.to(activeLinkedin, {
+                    autoAlpha: 1,
+                    duration: 0.22,
+                    ease: 'power2.out',
+                    overwrite: true,
+                });
+            },
         });
-    },
-});
     };
 
     const animateThumbs = (nextIndex, direction) => {
@@ -2077,7 +2078,7 @@ function initTestimonialsSlider() {
         });
 
         gsap.set(nextCard, {
-            x: distance*1.1,
+            x: distance * 1.1,
             scale: 1,
             autoAlpha: 1,
             filter: 'brightness(1)',
@@ -2172,7 +2173,7 @@ function initTestimonialsSlider() {
         tl.to(
             currentCard,
             {
-                x: distance*1.1,
+                x: distance * 1.1,
             },
             0,
         ).to(
@@ -2458,7 +2459,7 @@ function initWhatWeDoScroll() {
                 scrollTrigger: {
                     trigger: section,
                     start: `top+=${index * 12}% 70%`,
-                    end:"bottom bottom",
+                    end: "bottom bottom",
                     scrub: true,
                 },
             },
@@ -2514,7 +2515,7 @@ function initTracStoryTimeline() {
             end: `+=${totalScroll}`,
             scrub: true,
             invalidateOnRefresh: true,
-           
+
         },
         defaults: {
             ease: 'none',

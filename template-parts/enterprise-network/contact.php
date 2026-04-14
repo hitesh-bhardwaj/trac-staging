@@ -45,7 +45,7 @@ if (!defined('ABSPATH')) {
                         // Using the same Contact Form 7 form as contact page
                         // You can create a separate enterprise form if needed
                         if (function_exists('wpcf7_contact_form')) {
-                            echo do_shortcode('[contact-form-7 id="bce66aa" title="Contact us form"]');
+                            echo do_shortcode('[contact-form-7 id="496fec6" title="Contact Us Form"]');
                         } else {
                             echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';
                         }

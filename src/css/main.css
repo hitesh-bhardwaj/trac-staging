@@ -4006,3 +4006,147 @@
         padding: 12px;
     }
 }
+
+/* ========================================
+   File Upload Styling
+   Match Figma Design - Upload CV Field
+   ======================================== */
+
+/* File Upload Container - Target the wrapper span with specific class names */
+.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"]),
+.contact-form-wrapper .wpcf7-form-control-wrap.cv-upload,
+.contact-form-wrapper .wpcf7-form-control-wrap.file-upload {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+/* Hide the default file input but keep it accessible for clicks */
+.contact-form-wrapper input[type="file"],
+.contact-form-wrapper input[type="file"].wpcf7-file {
+    position: absolute;
+    width: 100%;
+    height: 6.719vw;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+
+/* Custom File Upload Visual Button */
+.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::before,
+.contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::before,
+.contact-form-wrapper .wpcf7-form-control-wrap.file-upload::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 6.719vw;
+    background-color: #eef3fc;
+    border-radius: 1.302vw;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Upload Icon */
+.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::after,
+.contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::after,
+.contact-form-wrapper .wpcf7-form-control-wrap.file-upload::after {
+    content: '';
+    display: block;
+    width: 2.135vw;
+    height: 1.771vw;
+    background-image: url('../assets/icons/upload-icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 3.36vw;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Hover State */
+.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"]:hover)::before,
+.contact-form-wrapper .wpcf7-form-control-wrap.cv-upload:hover::before,
+.contact-form-wrapper .wpcf7-form-control-wrap.file-upload:hover::before {
+    background-color: #dce7f8;
+}
+
+/* Focus State (when file input is focused via keyboard) */
+.contact-form-wrapper input[type="file"]:focus + *,
+.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"]:focus)::before,
+.contact-form-wrapper .wpcf7-form-control-wrap.cv-upload:has(input:focus)::before,
+.contact-form-wrapper .wpcf7-form-control-wrap.file-upload:has(input:focus)::before {
+    outline: 2px solid var(--color-brand-primary);
+    outline-offset: 2px;
+}
+
+/* File Name Display - CF7 adds this automatically */
+.contact-form-wrapper .wpcf7-file-name {
+    font-family: var(--font-body);
+    font-size: 0.938vw;
+    color: var(--color-brand-primary);
+    margin-top: 0.521vw;
+    text-align: center;
+    display: block;
+}
+
+/* Tablet Styles (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .contact-form-wrapper input[type="file"],
+    .contact-form-wrapper input[type="file"].wpcf7-file {
+        height: 120px;
+    }
+
+    .contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::before,
+    .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::before,
+    .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::before {
+        height: 120px;
+        border-radius: 20px;
+    }
+
+    .contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::after,
+    .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::after,
+    .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::after {
+        width: 38px;
+        height: 32px;
+        top: 60px;
+    }
+
+    .contact-form-wrapper .wpcf7-file-name {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+}
+
+/* Mobile Styles (max-width: 540px) */
+@media (max-width: 540px) {
+    .contact-form-wrapper input[type="file"],
+    .contact-form-wrapper input[type="file"].wpcf7-file {
+        height: 100px;
+    }
+
+    .contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::before,
+    .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::before,
+    .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::before {
+        height: 100px;
+        border-radius: 16px;
+    }
+
+    .contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::after,
+    .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::after,
+    .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::after {
+        width: 32px;
+        height: 26px;
+        top: 50px;
+    }
+
+    .contact-form-wrapper .wpcf7-file-name {
+        font-size: 13px;
+        margin-top: 6px;
+    }
+}

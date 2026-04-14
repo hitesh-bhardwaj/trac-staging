@@ -41,7 +41,6 @@ if (!defined('ABSPATH')) {
                     </div>
                 </div>
             </div>
-
             <!-- Right Column: Form Card -->
             <div class="flex justify-end md:justify-start" data-animate="fade-up" data-delay="0.25">
                 <div class="application-form-card w-full max-w-[42.708vw] md:max-w-full bg-white rounded-[2.083vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.167vw_2.604vw] md:p-12 sm:p-6">
@@ -50,7 +49,7 @@ if (!defined('ABSPATH')) {
                         // Contact Form 7 for job applications
                         // You'll need to create this form in WordPress admin
                         if (function_exists('wpcf7_contact_form')) {
-                            echo do_shortcode('[contact-form-7 id="bce66aa" title="Contact us form"]');
+                            echo do_shortcode('[contact-form-7 id="f00d8a1" title="Job Application Form"]');
                         } else {
                             echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';
                         }
