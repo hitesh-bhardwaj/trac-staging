@@ -31,6 +31,7 @@ export function initAnimations() {
     initTextAnimations();
     initPartnersProgramCards();
     initHomeInternetWhyTrac();
+			    initSmeProblemStatement();
     initPartnerVoicesSlider();
     initTeamSlider();
     initStackingCards();
@@ -338,7 +339,41 @@ function initHomeInternetWhyTrac() {
     const items = Array.from(section.querySelectorAll('[data-hi-why-item]'));
     if (!items.length) return;
 
-    section.dataset.hiWhyInit = 'true';
+    section.dataset.slideRightInit = 'true';
+
+	    items.forEach((el) => {
+	        gsap.fromTo(
+	            el,
+	            { x: dist, opacity: 0 },
+	            {
+	                x: 0,
+	                opacity: 1,
+	                ease: 'none',
+	                overwrite: 'auto',
+	                scrollTrigger: {
+	                    trigger: el,
+	                    start: 'top 85%',
+	                    end: 'top 70%',
+	                    scrub: 0.6,
+	                },
+	            }
+	        );
+	    });
+	}
+
+	/**
+	 * SME Internet: Problem Statement rows slide from right to a centered final layout.
+	 * Each row has a small final offset (`data-offset-vw`) to create the diagonal rhythm.
+	 */
+	function initSmeProblemStatement() {
+	    const section = document.querySelector('[data-sme-problem]');
+	    if (!section) return;
+	    if (section.dataset.smeProblemInit === 'true') return;
+
+	    const items = Array.from(section.querySelectorAll('[data-sme-problem-item]'));
+	    if (!items.length) return;
+
+	    section.dataset.smeProblemInit = 'true';
 
     const dist = window.innerWidth <= 768 ? 56 : 220;
 
