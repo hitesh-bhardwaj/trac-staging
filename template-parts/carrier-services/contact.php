@@ -39,8 +39,9 @@ if (!defined('ABSPATH')) {
             </div>
 
             <div class="flex justify-end md:justify-start" data-animate="fade-up" data-delay="0.25">
-                <div class="contact-form-card w-full max-w-[42.708vw] md:max-w-full bg-white rounded-[2.083vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.167vw_2.604vw] md:p-12 sm:p-6">
-                    <div class="contact-form-wrapper">
+                <div data-animate="fade-up"
+                data-delay="0.2" class="contact-form-card w-full max-w-[42.708vw] md:max-w-full bg-white rounded-[2.083vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.167vw_2.604vw] md:p-12 sm:p-6">
+                    <div  class="contact-form-wrapper">
                         <?php
                         // Using the same Contact Form 7 form as contact page
                         // You can create a separate enterprise form if needed

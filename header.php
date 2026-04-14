@@ -19,19 +19,21 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<!-- Page Loader -->
+Page Loader
 <div class="page-loader">
-    <div class="loader-inner">
-        <div class="loader-logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" alt="Trac Logo">
-        </div>
-        <div class="loader-spinner">
-            <div class="spinner-ring"></div>
-            <div class="spinner-ring"></div>
-            <div class="spinner-ring"></div>
-        </div>
-        <p class="loader-text">Loading...</p>
+    <div class="w-screen h-screen fixed inset-0 bg-white z-[99999] flex flex-col justify-center items-center loader">
+    <div class="size-[15vw] min-w-[72px] min-h-[72px]">
+       <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon-light.svg" class="w-full h-full" alt="Trac Logo">
     </div>
+    <div class="size-[15vw] min-w-[72px] min-h-[72px] absolute [clip-path:inset(0%_100%_0%_0%)] overflow-hidden overlay-logo">
+    <img
+        src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg"
+        class="w-full h-full object-contain"
+        alt="Trac Logo"
+    >
+</div>
+</div>
+
 </div>
 
 <div id="page" class="site" data-scroll-container data-barba="wrapper">
@@ -247,7 +249,7 @@
         </div>
     </a>
 
-    <a href="#" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="/products/carrier-services" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">Wholesale & Carrier</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>

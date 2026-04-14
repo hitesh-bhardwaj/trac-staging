@@ -23,6 +23,7 @@ const defaults = {
  */
 export function initAnimations() {
     // Basic fade animations
+    initBarbaSyncedHeroReveal();
     initFadeAnimations();
     initHeroAnimations();
     initSectionAnimations();
@@ -31,7 +32,7 @@ export function initAnimations() {
     initTextAnimations();
     initPartnersProgramCards();
     initHomeInternetWhyTrac();
-			    initSmeProblemStatement();
+	initSmeProblemStatement();
     initPartnerVoicesSlider();
     initTeamSlider();
     initStackingCards();
@@ -58,6 +59,8 @@ export function initAnimations() {
 
     console.log('[Trac] Animations initialized');
 }
+
+
 
 function initCommunityHubCards() {
     const section = document.querySelector('.community-hub-section');
@@ -141,6 +144,62 @@ function initCommunityHubCards() {
         },
         0
     );
+}
+
+function initBarbaSyncedHeroReveal(scope = document, options = {}) {
+    const { skipAnimation = false } = options;
+    const heroItems = Array.from(scope.querySelectorAll('[data-hero-reveal]'));
+    if (!heroItems.length) return;
+
+    heroItems.forEach((el) => {
+        gsap.killTweensOf(el);
+
+        if (el.dataset.heroAnimated === 'true') {
+            gsap.set(el, {
+                opacity: 1,
+                y: 0,
+                clearProps: 'willChange',
+            });
+            el.classList.add('is-hero-revealed');
+            return;
+        }
+
+        if (skipAnimation) {
+            gsap.set(el, {
+                opacity: 1,
+                y: 0,
+                clearProps: 'willChange',
+            });
+            el.dataset.heroAnimated = 'true';
+            el.classList.add('is-hero-revealed');
+            return;
+        }
+
+        const delay = parseFloat(el.dataset.heroDelay || '0');
+
+        gsap.fromTo(
+            el,
+            {
+                opacity: 0,
+                y: 30,
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                delay,
+                ease: 'power3.out',
+                overwrite: true,
+                onComplete: () => {
+                    el.dataset.heroAnimated = 'true';
+                    el.classList.add('is-hero-revealed');
+                    gsap.set(el, { clearProps: 'willChange' });
+                },
+            }
+        );
+    });
+
+    console.log('[Trac] Hero reveal initialized');
 }
 
 function initImpactGallery() {
@@ -1287,6 +1346,7 @@ function initFadeAnimations() {
     const animatedElements = document.querySelectorAll('[data-animate]');
 
     animatedElements.forEach((el) => {
+         if (el.classList.contains('is-animated')) return;
         const animationType = el.dataset.animate;
         const delay = parseFloat(el.dataset.delay) || 0;
         const duration = parseFloat(el.dataset.duration) || defaults.duration;
@@ -1335,19 +1395,24 @@ function getInitialState(type) {
 function initHeroAnimations() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
-    if (hero.hasAttribute('data-hero-static')) return;
+
+    // skip old hero animation system if this page uses static/barba-synced hero reveals
+    if (
+        hero.hasAttribute('data-hero-static') ||
+        hero.querySelector('[data-hero-reveal]')
+    ) {
+        return;
+    }
 
     const heroTitle = hero.querySelector('.hero-title');
     const heroSubtitle = hero.querySelector('.hero-subtitle');
     const heroCta = hero.querySelector('.hero-cta');
     const heroMedia = hero.querySelector('.hero-media');
 
-    // Create hero timeline
     const tl = gsap.timeline({
         defaults: { ease: 'power3.out' },
     });
 
-    // Animate hero content after page load
     document.addEventListener('trac:loaded', () => {
         if (heroTitle) {
             tl.fromTo(
@@ -1385,7 +1450,6 @@ function initHeroAnimations() {
         }
     });
 
-    // Hero parallax on scroll
     if (heroMedia) {
         gsap.to(heroMedia, {
             y: '20%',
@@ -2842,26 +2906,27 @@ function initParallaxImgSlider() {
 
 function initFooterOverlayFade() {
     const footer = document.getElementById('site-footer');
-    const overlay = footer?.querySelector('.footer-overlay');
+    const footerContainer = footer?.querySelector('.footer-container');
 
-    if (!footer || !overlay) return;
+    if (!footer || !footerContainer) return;
 
-    gsap.set(overlay, {
-        opacity: 1,
+    gsap.set(footerContainer, {
+        yPercent: 50,
+        willChange: 'transform',
     });
 
-    gsap.to(overlay, {
-        opacity: 0,
-        ease: 'none',
+    gsap.to(footerContainer, {
+        yPercent: 0,
+        ease: 'power1.out',
         scrollTrigger: {
             trigger: footer,
-            start: 'top 85%',
-            end: 'bottom bottom',
+            start: 'top bottom',
+            end: 'bottom 88%',
             scrub: true,
         },
     });
 
-    console.log('[Trac] Footer overlay fade initialized');
+    console.log('[Trac] Footer container parallax initialized');
 }
 
 // our offering animation 

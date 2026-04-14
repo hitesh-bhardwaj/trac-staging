@@ -1,28 +1,22 @@
 /**
  * Barba.js Page Transitions
- *
- * Handles smooth page transitions with proper loader integration
  */
 
 import barba from '@barba/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-/**
- * Initialize Barba.js with page transitions
- */
 export function initBarba(app) {
-    // Don't initialize if Barba is already running
     if (window.barbaInitialized) return;
 
     barba.init({
         debug: false,
         timeout: 10000,
+
         prevent: ({ el }) => {
-            // Prevent Barba on specific links
             if (el.classList?.contains('no-barba')) return true;
             if (el.hasAttribute('download')) return true;
-            if (el.href?.includes('#')) return true; // Keep anchor links normal
+            if (el.href?.includes('#')) return true;
             if (el.href?.includes('wp-admin')) return true;
             if (el.href?.includes('wp-login')) return true;
             return false;
@@ -31,25 +25,13 @@ export function initBarba(app) {
         transitions: [
             {
                 name: 'default-transition',
+                sync: true,
 
-                // Before leaving current page
-                async leave(data) {
-                    const loader = document.querySelector('.page-loader');
-
-                    // Show loader
-                    if (loader) {
-                        gsap.set(loader, { display: 'flex' });
-                        await gsap.to(loader, {
-                            opacity: 1,
-                            duration: 0.3,
-                            ease: 'power2.inOut',
-                        });
-                    }
-
-                    // Stop Lenis scroll
+                async before(data) {
                     if (app.lenis) {
                         app.lenis.stop();
                     }
+
                     if (app.networkInstances && app.networkInstances.length) {
                         app.networkInstances.forEach((instance) => {
                             if (!instance) return;
@@ -64,63 +46,120 @@ export function initBarba(app) {
                         app.networkInstances = [];
                     }
 
-                    // Fade out current page content
-                    await gsap.to(data.current.container, {
+                    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+                    data.next.container
+                        ?.querySelectorAll('[data-hero-reveal]')
+                        .forEach((el) => delete el.dataset.heroAnimated);
+
+                    gsap.set(data.current.container, {
+                        position: 'relative',
+                        zIndex: 2,
+                        transformOrigin: '50% 0%',
+                        willChange: 'opacity, transform, filter',
+                    });
+
+                    gsap.set(data.next.container, {
+                        position: 'absolute',
+                        inset: 0,
+                        width: '100%',
+                        zIndex: 3,
                         opacity: 0,
-                        y: -50,
-                        duration: 0.4,
-                        ease: 'power2.in',
+                        scale: 1.06,
+                        filter: 'blur(14px)',
+                        transformOrigin: '50% 0%',
+                        willChange: 'opacity, transform, filter',
                     });
                 },
 
-                // After new page HTML is fetched
+                async leave(data) {
+                    return gsap.to(data.current.container, {
+                        opacity: 0,
+                        scale: 0.92,
+                        filter: 'blur(10px)',
+                        duration: 0.38,
+                        ease: 'power2.out',
+                    });
+                },
+
                 async enter(data) {
-                    // Scroll to top
                     window.scrollTo(0, 0);
+
                     if (app.lenis) {
                         app.lenis.scrollTo(0, { immediate: true });
                     }
 
-                    // Reset new page container
-                    gsap.set(data.next.container, {
-                        opacity: 0,
-                        y: 50,
-                    });
+                    const heroItems = Array.from(
+                        data.next.container.querySelectorAll(
+                            '[data-hero-reveal]',
+                        ),
+                    );
 
-                    // Kill all ScrollTrigger instances from previous page
-                    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+                    document.documentElement.classList.add(
+                        'is-barba-page-enter',
+                    );
 
-                    // Fade in new page
-                    await gsap.to(data.next.container, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.5,
-                        ease: 'power2.out',
-                    });
-
-                    // Hide loader
-                    const loader = document.querySelector('.page-loader');
-                    if (loader) {
-                        await gsap.to(loader, {
-                            opacity: 0,
-                            duration: 0.3,
-                            ease: 'power2.inOut',
-                            onComplete: () => {
-                                gsap.set(loader, { display: 'none' });
-                            },
+                    if (heroItems.length) {
+                        heroItems.forEach((el) => {
+                            gsap.set(el, {
+                                opacity: 0,
+                                y: 30,
+                                willChange: 'transform, opacity',
+                            });
                         });
                     }
-                },
 
-                // After everything is done
-                async after(data) {
-                    if (app.lenis) {
-                        app.lenis.start();
+                    const tl = gsap.timeline();
+
+                    tl.to(
+                        data.next.container,
+                        {
+                            opacity: 1,
+                            scale: 1,
+                            filter: 'blur(0px)',
+                            duration: 0.5,
+                            ease: 'power2.out',
+                        },
+                        0,
+                    );
+
+                    if (heroItems.length) {
+                        heroItems.forEach((el) => {
+                            const delay = parseFloat(
+                                el.dataset.heroDelay || '0',
+                            );
+
+                            tl.to(
+                                el,
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.65,
+                                    ease: 'power3.out',
+                                    clearProps: 'willChange',
+                                    onComplete: () => {
+                                        el.dataset.heroAnimated = 'true';
+                                    },
+                                },
+                                delay + 0.05,
+                            );
+                        });
                     }
 
-                    await new Promise((resolve) =>
-                        requestAnimationFrame(resolve),
-                    );
+                    return tl;
+                },
+
+                async after(data) {
+                    gsap.set(data.next.container, {
+                        clearProps:
+                            'position,inset,width,zIndex,willChange,transformOrigin,filter',
+                    });
+
+                    gsap.set(data.current.container, {
+                        clearProps:
+                            'position,zIndex,willChange,transformOrigin,filter',
+                    });
+
                     await new Promise((resolve) =>
                         requestAnimationFrame(resolve),
                     );
@@ -130,6 +169,14 @@ export function initBarba(app) {
                     }
 
                     ScrollTrigger.refresh();
+
+                    if (app.lenis) {
+                        app.lenis.start();
+                    }
+
+                    document.documentElement.classList.remove(
+                        'is-barba-page-enter',
+                    );
 
                     console.log('[Barba] Transition complete');
                 },
@@ -146,13 +193,11 @@ export function initBarba(app) {
         ],
     });
 
-    // Handle Barba errors
     barba.hooks.once(() => {
         console.log('[Barba] Initialized');
     });
 
     barba.hooks.afterLeave(() => {
-        // Clean up any page-specific event listeners
         document.querySelectorAll('[data-barba-cleanup]').forEach((el) => {
             const clone = el.cloneNode(true);
             el.parentNode.replaceChild(clone, el);
@@ -162,52 +207,80 @@ export function initBarba(app) {
     window.barbaInitialized = true;
 }
 
-/**
- * Initial page load animation
- */
 export function initPageLoader() {
-    const loader = document.querySelector('.page-loader');
+    const pageLoader = document.querySelector('.page-loader');
+    const loader = document.querySelector('.loader');
+    const overlayLogo = loader?.querySelector('.overlay-logo');
 
     if (!loader) {
-        console.warn('[Loader] No .page-loader element found');
-        // Dispatch event anyway so page doesn't stay hidden
+        console.warn('[Loader] No .loader element found');
         document.dispatchEvent(new CustomEvent('trac:loaded'));
         return;
     }
 
-    // Show loader initially
-    gsap.set(loader, { display: 'flex', opacity: 1 });
+    gsap.set(pageLoader || loader, {
+        opacity: 1,
+        visibility: 'visible',
+        pointerEvents: 'auto',
+    });
+
+    gsap.set(overlayLogo, {
+        clipPath: 'inset(0% 100% 0% 0%)',
+    });
+
+    let hasHidden = false;
 
     const hideLoader = () => {
-        gsap.to(loader, {
+        if (hasHidden) return;
+        hasHidden = true;
+
+        gsap.to(pageLoader || loader, {
             opacity: 0,
-            duration: 0.6,
-            delay: 0.3,
+            duration: 0.45,
             ease: 'power2.inOut',
             onComplete: () => {
-                gsap.set(loader, { display: 'none' });
-                loader.classList.add('is-loaded');
+                gsap.set(pageLoader || loader, {
+                    pointerEvents: 'none',
+                    visibility: 'hidden',
+                    display: 'none',
+                });
+
+                loader.classList.add('is-hidden');
                 document.dispatchEvent(new CustomEvent('trac:loaded'));
                 console.log('[Loader] trac:loaded event dispatched');
             },
         });
     };
 
-    // Hide loader when page is ready
-    if (document.readyState === 'complete') {
-        // Page already loaded
-        hideLoader();
-    } else {
-        window.addEventListener('load', hideLoader);
+    const introTl = gsap.timeline({
+        onComplete: () => {
+            if (document.readyState === 'complete') {
+                hideLoader();
+            }
+        },
+    });
+
+    introTl.to(overlayLogo, {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        duration: 1,
+        ease: 'power2.inOut',
+    });
+
+    if (document.readyState !== 'complete') {
+        window.addEventListener(
+            'load',
+            () => {
+                if (introTl.progress() >= 1) {
+                    hideLoader();
+                } else {
+                    introTl.eventCallback('onComplete', hideLoader);
+                }
+            },
+            { once: true },
+        );
     }
 
-    // Fallback: dispatch event after 3 seconds max
     setTimeout(() => {
-        if (!loader.classList.contains('is-loaded')) {
-            console.warn('[Loader] Fallback timeout - forcing trac:loaded');
-            document.dispatchEvent(new CustomEvent('trac:loaded'));
-        }
+        hideLoader();
     }, 3000);
-
-    console.log('[Loader] Page loader initialized');
 }

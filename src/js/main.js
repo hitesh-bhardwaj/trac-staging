@@ -28,6 +28,7 @@ const app = {
         .matches,
 };
 
+document.documentElement.classList.add('js');
 /**
  * Initialize Lenis + GSAP ScrollTrigger sync
  */

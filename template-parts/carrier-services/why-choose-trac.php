@@ -53,7 +53,7 @@ $why_cards = [
             </h2>
 
             <div
-                class="mx-auto max-w-[66vw] space-y-[1.4vw] font-body text-[1.45vw] leading-[1.5] text-text-body md:max-w-[88%] md:space-y-5 md:text-[22px] sm:max-w-full sm:space-y-4 sm:text-[17px]"
+                class="mx-auto max-w-[66vw] space-y-[1.4vw] font-body text-body-lg leading-[1.5] text-text-body md:max-w-[88%] md:space-y-5 md:text-[22px] sm:max-w-full sm:space-y-4 sm:text-[17px]"
                 data-animate="fade-up"
                 data-delay="0.2"
             >

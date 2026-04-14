@@ -87,12 +87,14 @@ $offerings = [
                     </div>
 
                     <div class="our-offering-cta mt-[4.8vw] text-center md:mt-10">
-                        <p class="mx-auto max-w-[42vw] font-body text-body-lg leading-[1.4] text-text-body md:max-w-[640px] md:text-lg sm:max-w-full sm:text-base">
+                        <p   data-animate="fade-up"
+                data-delay="0.1" class="mx-auto max-w-[42vw] font-body text-body-lg leading-[1.4] text-text-body md:max-w-[640px] md:text-lg sm:max-w-full sm:text-base">
                             Tell us what your network requires, and our team will design a solution that fits.
                         </p>
 
                         <div class="mt-[2vw] md:mt-6">
-                            <a href="#" class="btn btn-primary group magnetic inline-flex">
+                            <a   data-animate="fade-up"
+                data-delay="0.1" href="#" class="btn btn-primary group magnetic inline-flex">
                                 <span class="btn-line"></span>
                                 <span class="btn-text">Request a Quote</span>
                                 <span class="btn-icon" aria-hidden="true">

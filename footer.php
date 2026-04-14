@@ -123,8 +123,8 @@
                 </div>
             </div>
         </div>
-        <div class="bg-black/40 absolute inset-0 w-screen h-screen footer-overlay pointer-events-none">
-        </div>
+        <!-- <div class="bg-black/40 absolute inset-0 w-screen h-screen footer-overlay pointer-events-none">
+        </div> -->
     </footer>
 
 </div><!-- #page -->
