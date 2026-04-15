@@ -13,26 +13,26 @@ export function initBarba(app) {
         debug: false,
         timeout: 10000,
         prevent: ({ el }) => {
-            if (!el || !el.href) return false;
+    if (!el || !el.href) return false;
 
-            if (el.classList?.contains('no-barba')) return true;
-            if (el.hasAttribute('download')) return true;
-            if (el.href?.includes('#')) return true;
-            if (el.href?.includes('wp-admin')) return true;
-            if (el.href?.includes('wp-login')) return true;
+    if (el.classList?.contains('no-barba')) return true;
+    if (el.hasAttribute('download')) return true;
+    if (el.href?.includes('#')) return true;
+    if (el.href?.includes('wp-admin')) return true;
+    if (el.href?.includes('wp-login')) return true;
 
-            const currentUrl = new URL(window.location.href);
-            const targetUrl = new URL(el.href, window.location.origin);
+    const currentUrl = new URL(window.location.href);
+    const targetUrl = new URL(el.href, window.location.origin);
 
-            const normalize = (url) =>
-                `${url.origin}${url.pathname.replace(/\/+$/, '') || '/'}`;
+    const normalize = (url) =>
+        `${url.origin}${url.pathname.replace(/\/+$/, '') || '/'}`;
 
-            if (normalize(currentUrl) === normalize(targetUrl)) {
-                return true;
-            }
+    if (normalize(currentUrl) === normalize(targetUrl)) {
+        return true;
+    }
 
-            return false;
-        },
+    return false;
+},
 
         transitions: [
             {

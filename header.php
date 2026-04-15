@@ -45,6 +45,7 @@ Page Loader
         </div>
     </div>
 </div>
+<div class="mouse-follower" aria-hidden="true"></div>
 
 </div>
 

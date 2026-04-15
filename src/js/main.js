@@ -252,6 +252,7 @@ function initializePageComponents() {
     initCollaborationsAccordion();
     initClientLogos();
     initProductsMegaMenu();
+    initMouseFollower();
 
     if (!app.prefersReducedMotion) {
         initAnimations();
@@ -864,9 +865,39 @@ function initProductsMegaMenu() {
         if (isOpen) updateBridge();
     };
 
-    const onDropdownLinkClick = () => {
-        closeMenu(true);
-    };
+   const onDropdownLinkClick = () => {
+    clearCloseTimer();
+
+    gsap.killTweensOf([dropdown, overlay]);
+
+    gsap.to(dropdown, {
+        opacity: 0,
+        yPercent: -10,
+        duration: 0.18,
+        ease: 'power2.out',
+        pointerEvents: 'none',
+        onComplete: () => {
+            gsap.set(dropdown, {
+                visibility: 'hidden',
+            });
+            disableBridge();
+        },
+    });
+
+    gsap.to(overlay, {
+        opacity: 0,
+        duration: 0.16,
+        ease: 'power2.out',
+        pointerEvents: 'none',
+        onComplete: () => {
+            gsap.set(overlay, {
+                visibility: 'hidden',
+            });
+        },
+    });
+
+    isOpen = false;
+};
 
     trigger.addEventListener('mouseenter', onTriggerEnter);
     menuItem.addEventListener('mouseenter', onTriggerEnter);
@@ -934,6 +965,46 @@ function initProductsMegaMenu() {
             visibility: 'hidden',
             pointerEvents: 'none',
         });
+    };
+}
+
+function initMouseFollower() {
+    const follower = document.querySelector('.mouse-follower');
+    if (!follower) return;
+
+    if (window.innerWidth <= 1024) {
+        gsap.set(follower, { display: 'none' });
+        return;
+    }
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
+
+    const lerp = (start, end, factor) => start + (end - start) * factor;
+
+    const onMouseMove = (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    };
+
+    const render = () => {
+        currentX = lerp(currentX, mouseX, 0.12);
+        currentY = lerp(currentY, mouseY, 0.12);
+
+        follower.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+
+        follower._raf = requestAnimationFrame(render);
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+
+    render();
+
+    follower._cleanup = () => {
+        window.removeEventListener('mousemove', onMouseMove);
+        if (follower._raf) cancelAnimationFrame(follower._raf);
     };
 }
 
