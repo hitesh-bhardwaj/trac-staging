@@ -35,11 +35,11 @@ $items = [
                     <?php echo esc_html($title); ?>
                 </h2>
 
-                <p class="font-body text-[1.25vw] leading-[1.5] text-text-primary mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-animate="fade-up" data-delay="0.15">
+                <p class="font-body text-[1.25vw] leading-[1.5] text-text-primary mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-para-anim data-delay="0.15">
                     <?php echo esc_html($subtitle); ?>
                 </p>
 
-                <p class="font-body text-[1.25vw] leading-[1.65] text-text-body max-w-[34rem] md:text-lg sm:text-base" data-animate="fade-up" data-delay="0.2">
+                <p class="font-body text-[1.25vw] leading-[1.65] text-text-body max-w-[34rem] md:text-lg sm:text-base" data-para-anim data-delay="0.2">
                     <?php echo esc_html($body); ?>
                 </p>
             </div>

@@ -66,9 +66,9 @@ $who_we_are_stats = [
                 </span>
             </div>
 
-            <div class="who-we-are-copy space-y-[2.5vw] md:space-y-6" data-animate="fade-up" data-delay="0.1">
+            <div class="who-we-are-copy space-y-[2.5vw] md:space-y-6" >
                 <?php foreach ($who_we_are_copy as $paragraph): ?>
-                    <p class="max-w-[48vw] font-body text-[1.406vw] leading-[1.45] text-text-body md:max-w-full md:text-[22px] md:leading-[1.5] sm:text-[17px]">
+                    <p data-para-anim data-delay="0.08" class="max-w-[48vw] font-body text-[1.406vw] leading-[1.45] text-text-body md:max-w-full md:text-[22px] md:leading-[1.5] sm:text-[17px]">
                         <?php echo esc_html($paragraph); ?>
                     </p>
                 <?php endforeach; ?>
@@ -129,7 +129,7 @@ $who_we_are_stats = [
             </div>
         </div>
 
-        <p data-animate="fade-up" class="hero-subtitle-1 text-center font-body text-[1.875vw] leading-[1.35] text-text-primary md:text-[28px] sm:text-[20px]">
+        <p data-para-anim class="hero-subtitle-1 text-center font-body text-[1.875vw] leading-[1.35] text-text-primary md:text-[28px] sm:text-[20px]">
             We’re a leading provider of telecommunications in Africa
         </p>
 
@@ -201,7 +201,7 @@ $who_we_are_stats = [
                             <?php endif; ?>
                         </div>
 
-                        <p data-animate="fade-up" class="counter-label whitespace-pre-line font-body text-[1.2vw] leading-[1] text-text-primary md:text-[24px] sm:text-[18px]">
+                        <p data-para-anim class="counter-label whitespace-pre-line font-body text-[1.2vw] leading-[1] text-text-primary md:text-[24px] sm:text-[18px]">
                             <?php echo esc_html($stat["label"]); ?>
                         </p>
                     </article>

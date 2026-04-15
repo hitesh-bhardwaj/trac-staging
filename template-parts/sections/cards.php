@@ -46,7 +46,7 @@ $card_bg = $background === 'dark' ? 'bg-neutral-900' : 'bg-white';
         <?php if ($eyebrow || $title): ?>
             <header class="section-header text-center max-w-3xl mx-auto mb-12">
                 <?php if ($eyebrow): ?>
-                    <p class="text-brand-primary text-body-sm font-semibold uppercase tracking-wider mb-4" data-animate="fade-up">
+                    <p class="text-brand-primary text-body-sm font-semibold uppercase tracking-wider mb-4" data-para-anim>
                         <?php echo esc_html($eyebrow); ?>
                     </p>
                 <?php endif; ?>

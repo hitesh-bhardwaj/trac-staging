@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
                     Talk to Our Wholesale Team
                 </h2>
 
-                <p class="font-body text-[1.25vw] leading-[1.58] text-[#1e1e1e] mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-animate="fade-up" data-delay="0.2">
+                <p class="font-body text-[1.25vw] leading-[1.58] text-[#1e1e1e] mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-para-anim data-delay="0.2">
                     Tell us about your organisation and connectivity needs. Our enterprise team will be in touch to discuss a tailored solution.
                 </p>
 
@@ -46,7 +46,7 @@ if (!defined('ABSPATH')) {
                         // Using the same Contact Form 7 form as contact page
                         // You can create a separate enterprise form if needed
                         if (function_exists('wpcf7_contact_form')) {
-                            echo do_shortcode('[contact-form-7 id="496fec6" title="Contact Us Form"]');
+                            echo do_shortcode('[contact-form-7 id="7912219" title="Contact form 1"]');
                         } else {
                             echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';
                         }

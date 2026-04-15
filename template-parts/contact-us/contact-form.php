@@ -77,7 +77,7 @@ if (!defined('ABSPATH')) {
                     <div class="contact-form-wrapper">
                         <?php
                         if (function_exists('wpcf7_contact_form')) {
-                            echo do_shortcode('[contact-form-7 id="496fec6" title="Contact Us Form"]');
+                            echo do_shortcode('[contact-form-7 id="7912219" title="Contact form 1"]');
                         } else {
                             // Fallback placeholder if CF7 is not installed
                             echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';

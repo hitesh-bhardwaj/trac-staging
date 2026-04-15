@@ -345,6 +345,20 @@ html.js [data-hero-reveal].is-hero-revealed {
     transform-origin: left center;
 }
 
+/* Paragraph line reveal (used by SME Internet `data-para-anim`) */
+.para-line {
+    display: block;
+    overflow: hidden;
+    /* Prevent descenders getting clipped when a paragraph has a tight line-height (e.g. leading-[1]). */
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+}
+
+.line-internal {
+    display: inline-block;
+    will-change: transform;
+}
+
 @media (max-width: 991px) {
     .hi-install-card {
         width: 280px;

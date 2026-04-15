@@ -30,6 +30,7 @@ export function initAnimations() {
     initParallaxAnimations();
     initHiInstallationScroll();
     initTextAnimations();
+    initParagraphLineReveal();
     initPartnersProgramCards();
     initHomeInternetWhyTrac();
 	initSmeProblemStatement();
@@ -424,7 +425,7 @@ function initHomeInternetWhyTrac() {
 	 * SME Internet: Problem Statement rows slide from right to a centered final layout.
 	 * Each row has a small final offset (`data-offset-vw`) to create the diagonal rhythm.
 	 */
-	function initSmeProblemStatement() {
+function initSmeProblemStatement() {
 	    const section = document.querySelector('[data-sme-problem]');
 	    if (!section) return;
 	    if (section.dataset.smeProblemInit === 'true') return;
@@ -454,6 +455,132 @@ function initHomeInternetWhyTrac() {
             }
         );
     });
+}
+
+/**
+ * Paragraph line-by-line reveal (y -> 0) using overflow-hidden line masks.
+ * Triggered by `data-para-anim`.
+ *
+ * Based on the user's reference:
+ * SplitInLine(el); gsap.from(".line-internal", { yPercent: 100, stagger: 0.07, duration: 1.2, start: "top 90%" })
+ */
+function initParagraphLineReveal(scope = null) {
+    const root =
+        scope ||
+        document.querySelector('[data-barba="container"]') ||
+        document.body ||
+        document.documentElement;
+
+    const paras = Array.from(root.querySelectorAll('[data-para-anim]'));
+    if (!paras.length) return;
+
+    // Prevent double-init on the same container; avoids "shows once then animates again".
+    if (root.dataset && root.dataset.paraAnimInit === 'true') return;
+    if (root.dataset) root.dataset.paraAnimInit = 'true';
+
+    const escapeHtml = (str) =>
+        str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+
+    // Equivalent to the user's SplitInLine helper.
+    const SplitInLine = (el) => {
+        if (el.dataset.paraSplit === 'true') return;
+
+        const raw = (el.textContent || '').trim();
+        if (!raw) return;
+
+        const words = raw.split(/\s+/);
+
+        // Build DOM with normal spaces (not &nbsp;) to avoid overflow/clipping after we "lock" words into lines.
+        el.innerHTML = '';
+        words.forEach((w, idx) => {
+            const span = document.createElement('span');
+            span.className = 'para-word';
+            span.innerHTML = escapeHtml(w);
+            el.appendChild(span);
+            if (idx !== words.length - 1) {
+                el.appendChild(document.createTextNode(' '));
+            }
+        });
+
+        const wordEls = Array.from(el.querySelectorAll('.para-word'));
+        if (!wordEls.length) return;
+
+        // Group words by their rendered line (offsetTop).
+        const lines = [];
+        let current = [];
+        let currentTop = null;
+
+        wordEls.forEach((w) => {
+            const top = w.offsetTop;
+            if (currentTop === null) {
+                currentTop = top;
+                current = [w];
+                return;
+            }
+            if (Math.abs(top - currentTop) > 2) {
+                lines.push(current);
+                currentTop = top;
+                current = [w];
+            } else {
+                current.push(w);
+            }
+        });
+        if (current.length) lines.push(current);
+
+        // Rebuild DOM into overflow-hidden line masks.
+        el.innerHTML = '';
+        lines.forEach((wordLine) => {
+            const wrap = document.createElement('span');
+            wrap.className = 'para-line';
+
+            const inner = document.createElement('span');
+            inner.className = 'line-internal';
+
+            wordLine.forEach((w, idx) => {
+                inner.appendChild(w);
+                if (idx !== wordLine.length - 1) {
+                    inner.appendChild(document.createTextNode(' '));
+                }
+            });
+            wrap.appendChild(inner);
+            el.appendChild(wrap);
+        });
+
+        el.dataset.paraSplit = 'true';
+    };
+
+    root._paraCtx = gsap.context(() => {
+        const paraAnimations = root.querySelectorAll('[data-para-anim]');
+
+        paraAnimations.forEach((paraAnimation) => {
+            SplitInLine(paraAnimation);
+            const paraLine = paraAnimation.querySelectorAll('.line-internal');
+            if (!paraLine.length) return;
+
+            const delay = parseFloat(paraAnimation.dataset.delay) || 0;
+            const duration = parseFloat(paraAnimation.dataset.duration) || 1.2;
+            const stagger = parseFloat(paraAnimation.dataset.stagger) || 0.07;
+
+            gsap.from(paraLine, {
+                scrollTrigger: {
+                    trigger: paraAnimation,
+                    start: 'top 90%',
+                    once: true,
+                },
+                duration,
+                delay,
+                yPercent: 100,
+                stagger,
+                ease: 'power3.out',
+                overwrite: 'auto',
+            });
+        });
+    }, root);
 }
 
 /**

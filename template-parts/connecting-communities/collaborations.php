@@ -18,7 +18,7 @@ $collaboration_items = $args['collaboration_items'] ?? [];
                 Working Together to Bridge the Digital Divide
             </h2>
 
-            <p class="communities-collaborations__description" data-animate="fade-up" data-delay="0.2">
+            <p class="communities-collaborations__description" data-para-anim data-delay="0.2">
                 Real impact happens through collaboration. Our partnership
                 with Connecting Communities Africa brings together
                 investment, expertise, and a shared mission to create

@@ -26,7 +26,7 @@ get_header();
                 <h1 class="faqs-title font-heading text-[3.438vw] leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl" data-animate="fade-up" data-delay="0.1">
                     Frequently Asked Questions
                 </h1>
-                <p class="faqs-description font-body text-[1.25vw] text-text-body max-w-[52vw] mx-auto mt-[1.563vw] md:text-lg md:max-w-full md:mt-5 sm:text-base sm:mt-4" data-animate="fade-up" data-delay="0.2">
+                <p class="faqs-description font-body text-[1.25vw] text-text-body max-w-[52vw] mx-auto mt-[1.563vw] md:text-lg md:max-w-full md:mt-5 sm:text-base sm:mt-4" data-para-anim data-delay="0.2">
                     Find answers to common questions about our services, connectivity, and support.
                 </p>
             </div>

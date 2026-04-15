@@ -48,7 +48,7 @@ $cta_secondary_url = $cta_secondary['url'] ?? '#';
                 </h1>
 
                 <!-- Subtitle -->
-                <p class="hero-subtitle font-body font-normal text-text-body text-[clamp(18px,2vw,24px)] leading-[44px] max-w-[588px] mb-12" data-animate="fade-up" data-delay="0.1">
+                <p class="hero-subtitle font-body font-normal text-text-body text-[clamp(18px,2vw,24px)] leading-[44px] max-w-[588px] mb-12" data-para-anim data-delay="0.1">
                     <?php echo esc_html($subtitle); ?>
                 </p>
 

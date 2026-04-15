@@ -55,7 +55,7 @@ $team_members = [
                     Welcome our talented team
                      </h2>
 
-                      <p data-animate="fade-up" class="mt-[2.2vw] max-w-[18vw] font-body text-[1.25vw] leading-[1.45] text-text-body md:mt-6 md:max-w-[360px] md:text-[22px] sm:text-[18px]">
+                      <p data-para-anim class="mt-[2.2vw] max-w-[18vw] font-body text-[1.25vw] leading-[1.45] text-text-body md:mt-6 md:max-w-[360px] md:text-[22px] sm:text-[18px]">
                     These individuals are the heart and soul of our product.
                       </p>
                  </div>

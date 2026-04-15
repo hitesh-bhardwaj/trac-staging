@@ -25,9 +25,9 @@ if (!defined('ABSPATH')) {
                     </h1>
 
                     <p
-                        class="hero-subtitle font-body font-medium text-text-body mx-auto max-w-[45rem] mb-[3.125vw] md:mb-8 sm:mb-6"
-                        data-hero-reveal
-                        data-hero-delay="0.08"
+                        class="hero-subtitle font-body font-medium text-text-body mx-auto max-w-[48rem] mb-[3.125vw] md:mb-8 sm:mb-6"
+                        data-para-anim
+                        data-delay="0.08"
                     >
                         <?php echo esc_html(
                             get_field('hero_subtitle_2') ?:

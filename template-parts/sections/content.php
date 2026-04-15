@@ -39,7 +39,7 @@ $image_order = $layout === 'image-text' ? 'lg:order-first' : 'lg:order-last';
             <!-- Text Only Layout -->
             <div class="max-w-3xl mx-auto text-center">
                 <?php if ($eyebrow): ?>
-                    <p class="text-brand-primary text-body-sm font-semibold uppercase tracking-wider mb-4" data-animate="fade-up">
+                    <p class="text-brand-primary text-body-sm font-semibold uppercase tracking-wider mb-4" data-para-anim>
                         <?php echo esc_html($eyebrow); ?>
                     </p>
                 <?php endif; ?>
@@ -79,7 +79,7 @@ $image_order = $layout === 'image-text' ? 'lg:order-first' : 'lg:order-last';
                 <!-- Text Column -->
                 <div class="content-text">
                     <?php if ($eyebrow): ?>
-                        <p class="text-brand-primary text-body-sm font-semibold uppercase tracking-wider mb-4" data-animate="fade-up">
+                        <p class="text-brand-primary text-body-sm font-semibold uppercase tracking-wider mb-4" data-para-anim>
                             <?php echo esc_html($eyebrow); ?>
                         </p>
                     <?php endif; ?>

@@ -47,7 +47,7 @@ $cards = [
                 <?php echo esc_html($title); ?>
             </h2>
 
-            <p class="font-body text-[1.25vw] leading-[1.58] text-text-body max-w-[58rem] mx-auto mb-[3.2vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-animate="fade-up" data-delay="0.2">
+            <p class="font-body text-[1.25vw] leading-[1.58] text-text-body max-w-[58rem] mx-auto mb-[3.2vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-para-anim data-delay="0.2">
                 <?php echo esc_html($subtitle); ?>
             </p>
 
@@ -63,14 +63,14 @@ $cards = [
                         <img src="<?php echo esc_url(
                             $c['icon'],
                         ); ?>" alt="" class="w-[4vw] h-[4vw] md:w-14 md:h-14 sm:w-12 sm:h-12 object-contain shrink-0">
-                        <p class="font-body text-text-body text-[1.25vw] md:text-base sm:text-sm leading-[1.55] flex-1 min-w-0">
+                        <p class="font-body text-text-body text-[1.25vw] md:text-base sm:text-sm leading-[1.55] flex-1 min-w-0" data-para-anim>
                             <?php echo esc_html($c['text']); ?>
                         </p>
                     </div>
                 <?php endforeach; ?>
             </div>
 
-            <p class="font-body text-text-body text-center text-[1.25vw] leading-[1.65] md:text-sm sm:text-xs mt-[3.6vw] md:mt-10 sm:mt-8" data-animate="fade-up" data-delay="0.25">
+            <p class="font-body text-text-body text-center text-[1.25vw] leading-[1.65] md:text-sm sm:text-xs mt-[3.6vw] md:mt-10 sm:mt-8" data-para-anim data-delay="0.25">
                 <?php echo esc_html($footer); ?>
             </p>
         </div>

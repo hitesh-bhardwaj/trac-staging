@@ -27,12 +27,12 @@ $hero_image = get_field('hero_new_image') ?: 'https://www.figma.com/api/mcp/asse
             </h1>
 
             <!-- Subtitle -->
-            <p class="hero-subtitle font-heading text-[1.875vw] tracking-[0.019vw] text-[#111] mb-[5vw] md:text-3xl md:mb-8 sm:text-2xl sm:mb-6" data-animate="fade-up" data-delay="0.1">
+            <p class="hero-subtitle font-heading text-[1.875vw] tracking-[0.019vw] text-[#111] mb-[5vw] md:text-3xl md:mb-8 sm:text-2xl sm:mb-6" data-para-anim data-delay="0.1">
                 <?php echo esc_html($hero_subtitle); ?>
             </p>
 
             <!-- Description -->
-            <p class="hero-description font-body text-[1.25vw] leading-[2.083vw] text-[#1e1e1e] max-w-[46.927vw] mx-auto md:text-xl md:leading-[1.6] md:max-w-full sm:text-lg sm:leading-[1.5]" data-animate="fade-up" data-delay="0.2">
+            <p class="hero-description font-body text-[1.25vw] leading-[2.083vw] text-[#1e1e1e] max-w-[46.927vw] mx-auto md:text-xl md:leading-[1.6] md:max-w-full sm:text-lg sm:leading-[1.5]" data-para-anim data-delay="0.2">
                 <?php echo esc_html($hero_description); ?>
             </p>
         </div>

@@ -44,7 +44,7 @@ $grid_class = $grid_classes[$layout] ?? $grid_classes['grid-3'];
         <?php if ($eyebrow || $title || $description): ?>
             <header class="section-header text-center max-w-3xl mx-auto mb-16">
                 <?php if ($eyebrow): ?>
-                    <p class="section-eyebrow text-brand-primary text-body-sm font-semibold uppercase tracking-wider mb-4" data-animate="fade-up">
+                    <p class="section-eyebrow text-brand-primary text-body-sm font-semibold uppercase tracking-wider mb-4" data-para-anim>
                         <?php echo esc_html($eyebrow); ?>
                     </p>
                 <?php endif; ?>

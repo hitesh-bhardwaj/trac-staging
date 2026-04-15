@@ -56,10 +56,10 @@ $cards = [
                     <?php echo esc_html($title); ?>
                 </h2>
 
-                <p class="font-body text-[1.25vw] leading-[1.58] text-text-body mb-[1.3vw] md:text-lg md:mb-5 sm:text-base" data-animate="fade-up" data-delay="0.2">
+                <p class="font-body text-[1.25vw] leading-[1.58] text-text-body mb-[1.3vw] md:text-lg md:mb-5 sm:text-base" data-para-anim data-delay="0.2">
                     <?php echo esc_html($p1); ?>
                 </p>
-                <p class="font-body text-[1.25vw] leading-[1.58] text-text-body md:text-lg sm:text-base" data-animate="fade-up" data-delay="0.3">
+                <p class="font-body text-[1.25vw] leading-[1.58] text-text-body md:text-lg sm:text-base" data-para-anim data-delay="0.3">
                     <?php echo esc_html($p2); ?>
                 </p>
             </div>

@@ -87,7 +87,7 @@ $offerings = [
                     </div>
 
                     <div class="our-offering-cta mt-[4.8vw] text-center md:mt-10">
-                        <p   data-animate="fade-up"
+                        <p   data-para-anim
                 data-delay="0.1" class="mx-auto max-w-[42vw] font-body text-body-lg leading-[1.4] text-text-body md:max-w-[640px] md:text-lg sm:max-w-full sm:text-base">
                             Tell us what your network requires, and our team will design a solution that fits.
                         </p>

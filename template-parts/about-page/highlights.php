@@ -56,7 +56,7 @@ $about_highlights = [
                     <h3 class="mb-[1.042vw] font-heading text-[1.667vw] leading-[1.2] text-text-primary md:mb-4 md:text-2xl">
                         <?php echo esc_html($highlight['title']); ?>
                     </h3>
-                    <p class="font-body text-[1.042vw] leading-[1.7] text-neutral-600 md:text-base">
+                    <p data-para-anim data-delay="0.08" class="font-body text-[1.042vw] leading-[1.7] text-neutral-600 md:text-base">
                         <?php echo esc_html($highlight['description']); ?>
                     </p>
                 </article>

@@ -31,7 +31,7 @@ $items = [
                     <?php echo esc_html($title); ?>
                 </h2>
 
-                <p class="font-body text-[1.25vw] mt-[6vw] leading-[1.5] text-text-primary mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-animate="fade-up" data-delay="0.15">
+                <p class="font-body text-[1.25vw] mt-[6vw] leading-[1.5] text-text-primary mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-para-anim data-delay="0.15">
                     <?php echo esc_html($subtitle); ?>
                 </p>
             </div>
@@ -54,7 +54,7 @@ $items = [
                     <?php endforeach; ?>
                 </ul>
 
-                <p class="font-body text-[1.25vw] mt-[3vw] leading-[1.5] text-text-primary text-center mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-animate="fade-up" data-delay="0.15">
+                <p class="font-body text-[1.25vw] mt-[3vw] leading-[1.5] text-text-primary text-center mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-para-anim data-delay="0.15">
                     <?php echo esc_html($footer); ?>
                 </p>
             </div>

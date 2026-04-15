@@ -89,7 +89,7 @@ $cta_button_link = get_field('cta_button_link') ?: '#get-connected';
                     <?php echo esc_html($cta_title); ?>
                 </h2>
 
-                <p class="cta-subtitle font-body text-[1.25vw] leading-[1.5] text-[#1e1e1e] mb-[4.167vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-animate="fade-up" data-delay="0.1">
+                <p class="cta-subtitle font-body text-[1.25vw] leading-[1.5] text-[#1e1e1e] mb-[4.167vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-para-anim data-delay="0.1">
                     <?php echo esc_html($cta_subtitle); ?>
                 </p>
 
@@ -115,4 +115,3 @@ $cta_button_link = get_field('cta_button_link') ?: '#get-connected';
         </div>
     </div>
 </section>
-

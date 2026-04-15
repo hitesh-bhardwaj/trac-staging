@@ -65,17 +65,17 @@ Page Loader
                 'trac',
             ); ?>">
                 <ul class="nav-menu flex items-center gap-[3.125vw]">
-                    <li class="menu-item">
+                    <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/about-us'),
-                        ); ?>" class="nav-link">
+                        ); ?>" class=" under-multi">
                             About Us
                         </a>
                     </li>
-                    <li class="menu-item menu-item-has-children relative group" data-products-menu-item>
+                    <li class="menu-item menu-item-has-children relative group under-multi-parent" data-products-menu-item>
     <a
         href="<?php echo esc_url(home_url('/products')); ?>"
-        class="nav-link inline-flex items-center gap-[0.26vw]"
+        class="nav-link inline-flex items-center gap-[0.26vw] under-multi"
         data-products-trigger
     >
         Products
@@ -86,31 +86,31 @@ Page Loader
         </div>
     </a>
                  </li> 
-                    <li class="menu-item">
+                    <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/connecting-communities'),
-                        ); ?>" class="nav-link">
+                        ); ?>" class="nav-link under-multi">
                             Communities
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/partners'),
-                        ); ?>" class="nav-link">
+                        ); ?>" class="nav-link under-multi">
                             Partners
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/careers'),
-                        ); ?>" class="nav-link">
+                        ); ?>" class="nav-link under-multi">
                             Careers
                         </a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/contact-us'),
-                        ); ?>" class="nav-link">
+                        ); ?>" class="nav-link under-multi">
                             Contact Us
                         </a>
                     </li>
@@ -211,7 +211,7 @@ Page Loader
         </div>
     </a>
 
-    <a href="#" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="/products/sme-internet" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">SME Internet</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
@@ -303,6 +303,11 @@ Page Loader
     color: var(--color-text-secondary);
     transition: color 0.3s ease;
     white-space: nowrap;
+}
+
+/* If a nav-link also uses the under-multi underline, preserve background-size transition too. */
+.nav-link.under-multi {
+    transition: color 0.3s ease, background-size 0.3s ease-out;
 }
 
 .nav-link:hover {

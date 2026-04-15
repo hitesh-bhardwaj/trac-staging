@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
                 Built for Organisations That Cannot Afford Downtime.
             </h2>
 
-            <p class="w-[70%] font-body text-[1.25vw] leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-center mx-auto" data-animate="fade-up" data-delay="0.2">
+            <p class="w-[70%] font-body text-[1.25vw] leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-center mx-auto" data-para-anim data-delay="0.2">
                 TrAC designs and deploys enterprise-grade networks that support complex organisations with infrastructure built to perform under pressure to ensure systems remain stable when it matters most.
             </p>
 

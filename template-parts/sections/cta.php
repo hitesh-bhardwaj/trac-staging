@@ -49,7 +49,7 @@ $btn_class = $btn_classes[$background] ?? $btn_classes['primary'];
             <?php endif; ?>
 
             <?php if ($description): ?>
-                <p class="cta-description text-body-lg opacity-90 mb-8 max-w-2xl mx-auto" data-animate="fade-up" data-delay="0.1">
+                <p class="cta-description text-body-lg opacity-90 mb-8 max-w-2xl mx-auto" data-para-anim data-delay="0.1">
                     <?php echo wp_kses_post($description); ?>
                 </p>
             <?php endif; ?>

@@ -52,7 +52,7 @@
                                 <a href="/about-us" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">About Us</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/communities" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Communities</a>
+                                <a href="/connecting-communities/" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Communities</a>
                             </li>
                             <li class="under-multi-parent">
                                 <a href="/partners" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Partners</a>
@@ -71,16 +71,16 @@
                         <h4 class="font-body text-[1.25vw] text-[#111] mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6 !font-normal">Product</h4>
                         <ul class="footer-links flex flex-col gap-3 md:gap-5 sm:gap-4">
                             <li class="under-multi-parent">
-                                <a href="/home" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Home</a>
+                                <a href="/products/home-internet" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Home Internet</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/business" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Business</a>
+                                <a href="/products/sme-internet" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">SME Internet</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/enterprise" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Enterprise</a>
+                                <a href="/products/enterprise-network" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Enterprise Network</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/service-provider" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Service Provider</a>
+                                <a href="/products/carrier-services/" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Wholesale & Carrier</a>
                             </li>
                         </ul>
                     </div>
