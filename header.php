@@ -21,17 +21,29 @@
 
 Page Loader
 <div class="page-loader">
-    <div class="w-screen h-screen fixed inset-0 bg-white z-[99999] flex flex-col justify-center items-center loader">
-    <div class="size-[15vw] min-w-[72px] min-h-[72px]">
-       <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon-light.svg" class="w-full h-full" alt="Trac Logo">
+    <div class="w-screen h-screen fixed inset-0 bg-white z-[99999] flex flex-col justify-center items-center loader [clip-path:inset(0%_0%_0%_0%)]">
+        <div class="size-[15vw] min-w-[72px] min-h-[72px]">
+            <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon-light.svg" class="w-full h-full" alt="Trac Logo">
+        </div>
+
+        <p class="loader-text text-brand-primary text-[1.85vw] absolute top-[65%] left-[51%] -translate-x-1/2">
+             <span class="loader-text-label">Loading</span>
+             <span class="loader-dots" aria-hidden="true">
+             <span class="loader-dot">.</span>
+             <span class="loader-dot">.</span>
+             <span class="loader-dot">.</span>
+             <span class="loader-dot">.</span>
+             </span>
+        </p>
+
+        <div class="size-[15vw] min-w-[72px] min-h-[72px] absolute [clip-path:inset(0%_100%_0%_0%)] overflow-hidden overlay-logo">
+            <img
+                src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg"
+                class="w-full h-full object-contain"
+                alt="Trac Logo"
+            >
+        </div>
     </div>
-    <div class="size-[15vw] min-w-[72px] min-h-[72px] absolute [clip-path:inset(0%_100%_0%_0%)] overflow-hidden overlay-logo">
-    <img
-        src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg"
-        class="w-full h-full object-contain"
-        alt="Trac Logo"
-    >
-</div>
 </div>
 
 </div>
@@ -192,7 +204,7 @@ Page Loader
     class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] px-[2vw] py-[1.5vw] flex justify-between z-[999] bg-white"
     data-products-dropdown
       >
-    <a href="/products/home-internet" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="<?php echo esc_url(home_url('/products/home-internet/')); ?>" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">Home Internet</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
@@ -211,7 +223,7 @@ Page Loader
         </div>
     </a>
 
-    <a href="/products/sme-internet" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a  href="<?php echo esc_url(home_url('/products/sme-internet/')); ?>" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">SME Internet</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
@@ -230,7 +242,7 @@ Page Loader
         </div>
     </a>
 
-    <a href="/products/enterprise-network" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="<?php echo esc_url(home_url('/products/enterprise-network/')); ?>" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">Enterprise Network</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
@@ -249,7 +261,7 @@ Page Loader
         </div>
     </a>
 
-    <a href="/products/carrier-services" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="<?php echo esc_url(home_url('/products/carrier-services/')); ?>" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">Wholesale & Carrier</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>

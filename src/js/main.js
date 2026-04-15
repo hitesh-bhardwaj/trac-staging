@@ -638,6 +638,8 @@ function initProductsMegaMenu() {
     let isOpen = false;
     let closeTimer = null;
 
+    const dropdownLinks = Array.from(dropdown.querySelectorAll('a[href]'));
+
     const bridge = document.createElement('div');
     bridge.setAttribute('data-products-bridge-runtime', 'true');
     bridge.style.position = 'fixed';
@@ -745,13 +747,31 @@ function initProductsMegaMenu() {
         });
     };
 
-    const closeMenu = () => {
+    const closeMenu = (instant = false) => {
         clearCloseTimer();
-        if (!isOpen) return;
+        if (!isOpen && !instant) return;
 
         isOpen = false;
 
         gsap.killTweensOf([dropdown, overlay]);
+
+        if (instant) {
+            gsap.set(dropdown, {
+                opacity: 0,
+                yPercent: -10,
+                visibility: 'hidden',
+                pointerEvents: 'none',
+            });
+
+            gsap.set(overlay, {
+                opacity: 0,
+                visibility: 'hidden',
+                pointerEvents: 'none',
+            });
+
+            disableBridge();
+            return;
+        }
 
         gsap.to(dropdown, {
             opacity: 0,
@@ -793,6 +813,7 @@ function initProductsMegaMenu() {
     };
 
     const onTriggerEnter = () => openMenu();
+
     const onTriggerLeave = (e) => {
         const related = e.relatedTarget;
         if (
@@ -807,6 +828,7 @@ function initProductsMegaMenu() {
     };
 
     const onDropdownEnter = () => keepOpen();
+
     const onDropdownLeave = (e) => {
         const related = e.relatedTarget;
         if (
@@ -821,6 +843,7 @@ function initProductsMegaMenu() {
     };
 
     const onBridgeEnter = () => keepOpen();
+
     const onBridgeLeave = (e) => {
         const related = e.relatedTarget;
         if (
@@ -841,6 +864,10 @@ function initProductsMegaMenu() {
         if (isOpen) updateBridge();
     };
 
+    const onDropdownLinkClick = () => {
+        closeMenu(true);
+    };
+
     trigger.addEventListener('mouseenter', onTriggerEnter);
     menuItem.addEventListener('mouseenter', onTriggerEnter);
 
@@ -855,6 +882,10 @@ function initProductsMegaMenu() {
 
     overlay.addEventListener('mouseenter', onOverlayEnter);
     overlay.addEventListener('click', onOverlayClick);
+
+    dropdownLinks.forEach((link) => {
+        link.addEventListener('click', onDropdownLinkClick);
+    });
 
     window.addEventListener('resize', onWindowUpdate);
     window.addEventListener('scroll', onWindowUpdate, true);
@@ -884,6 +915,10 @@ function initProductsMegaMenu() {
 
         overlay.removeEventListener('mouseenter', onOverlayEnter);
         overlay.removeEventListener('click', onOverlayClick);
+
+        dropdownLinks.forEach((link) => {
+            link.removeEventListener('click', onDropdownLinkClick);
+        });
 
         window.removeEventListener('resize', onWindowUpdate);
         window.removeEventListener('scroll', onWindowUpdate, true);

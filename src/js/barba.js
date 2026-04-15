@@ -12,13 +12,25 @@ export function initBarba(app) {
     barba.init({
         debug: false,
         timeout: 10000,
-
         prevent: ({ el }) => {
+            if (!el || !el.href) return false;
+
             if (el.classList?.contains('no-barba')) return true;
             if (el.hasAttribute('download')) return true;
             if (el.href?.includes('#')) return true;
             if (el.href?.includes('wp-admin')) return true;
             if (el.href?.includes('wp-login')) return true;
+
+            const currentUrl = new URL(window.location.href);
+            const targetUrl = new URL(el.href, window.location.origin);
+
+            const normalize = (url) =>
+                `${url.origin}${url.pathname.replace(/\/+$/, '') || '/'}`;
+
+            if (normalize(currentUrl) === normalize(targetUrl)) {
+                return true;
+            }
+
             return false;
         },
 
@@ -211,76 +223,149 @@ export function initPageLoader() {
     const pageLoader = document.querySelector('.page-loader');
     const loader = document.querySelector('.loader');
     const overlayLogo = loader?.querySelector('.overlay-logo');
+    const loaderDotEls = loader?.querySelectorAll('.loader-dot');
 
-    if (!loader) {
-        console.warn('[Loader] No .loader element found');
+    if (!pageLoader || !loader || !overlayLogo) {
+        console.warn('[Loader] Missing loader elements');
         document.dispatchEvent(new CustomEvent('trac:loaded'));
         return;
     }
 
-    gsap.set(pageLoader || loader, {
-        opacity: 1,
+    gsap.set(pageLoader, {
         visibility: 'visible',
         pointerEvents: 'auto',
+        display: 'block',
+        clipPath: 'inset(0% 0% 0% 0%)',
+        opacity: 1,
     });
 
     gsap.set(overlayLogo, {
         clipPath: 'inset(0% 100% 0% 0%)',
     });
 
+    if (loaderDotEls?.length) {
+        gsap.set(loaderDotEls, {
+            opacity: 0,
+            yPercent: 40,
+        });
+    }
+
     let hasHidden = false;
+    let animationDone = false;
+    let pageReady = document.readyState === 'complete';
+    let minTimeDone = false;
+    let dotsTween = null;
+
+    const maybeHideLoader = () => {
+        if (!animationDone || !pageReady || !minTimeDone) return;
+        hideLoader();
+    };
 
     const hideLoader = () => {
         if (hasHidden) return;
         hasHidden = true;
 
-        gsap.to(pageLoader || loader, {
-            opacity: 0,
-            duration: 0.45,
-            ease: 'power2.inOut',
+        if (dotsTween) {
+            dotsTween.kill();
+            dotsTween = null;
+        }
+
+        gsap.to(pageLoader, {
+            clipPath: 'inset(0% 0% 100% 0%)',
+            duration: 1,
+            ease: 'power3.inOut',
+            onStart: () => {
+                gsap.delayedCall(0.55, () => {
+                    document.dispatchEvent(new CustomEvent('trac:loaded'));
+                    console.log('[Loader] trac:loaded event dispatched');
+                });
+            },
             onComplete: () => {
-                gsap.set(pageLoader || loader, {
+                gsap.set(pageLoader, {
                     pointerEvents: 'none',
                     visibility: 'hidden',
                     display: 'none',
                 });
 
+                pageLoader.classList.add('is-hidden');
                 loader.classList.add('is-hidden');
-                document.dispatchEvent(new CustomEvent('trac:loaded'));
-                console.log('[Loader] trac:loaded event dispatched');
             },
         });
     };
 
+    if (loaderDotEls?.length) {
+        dotsTween = gsap.timeline({
+            repeat: -1,
+            repeatDelay: 0.12,
+        });
+
+        dotsTween
+            .to(loaderDotEls, {
+                opacity: 1,
+                yPercent: 0,
+                duration: 0.32,
+                stagger: 0.08,
+                ease: 'power2.out',
+            })
+            .to(
+                loaderDotEls,
+                {
+                    opacity: 0,
+                    yPercent: -20,
+                    duration: 0.26,
+                    stagger: 0.06,
+                    ease: 'power2.in',
+                },
+                '+=0.18',
+            );
+    }
+
     const introTl = gsap.timeline({
         onComplete: () => {
-            if (document.readyState === 'complete') {
-                hideLoader();
-            }
+            animationDone = true;
+            maybeHideLoader();
         },
     });
 
-    introTl.to(overlayLogo, {
-        clipPath: 'inset(0% 0% 0% 0%)',
-        duration: 1,
-        ease: 'power2.inOut',
+    introTl
+        .to(overlayLogo, {
+            clipPath: 'inset(0% 70% 0% 0%)',
+            duration: 0.6,
+            ease: 'power2.inOut',
+        })
+        .to({}, { duration: 0.08 })
+        .to(overlayLogo, {
+            clipPath: 'inset(0% 20% 0% 0%)',
+            duration: 2.2,
+            ease: 'power2.inOut',
+        })
+        .to({}, { duration: 0.08 })
+        .to(overlayLogo, {
+            clipPath: 'inset(0% 0% 0% 0%)',
+            duration: 0.7,
+            ease: 'power2.inOut',
+        });
+
+    gsap.delayedCall(2, () => {
+        minTimeDone = true;
+        maybeHideLoader();
     });
 
-    if (document.readyState !== 'complete') {
+    if (!pageReady) {
         window.addEventListener(
             'load',
             () => {
-                if (introTl.progress() >= 1) {
-                    hideLoader();
-                } else {
-                    introTl.eventCallback('onComplete', hideLoader);
-                }
+                pageReady = true;
+                maybeHideLoader();
             },
             { once: true },
         );
     }
 
     setTimeout(() => {
-        hideLoader();
-    }, 3000);
+        pageReady = true;
+        animationDone = true;
+        minTimeDone = true;
+        maybeHideLoader();
+    }, 5000);
 }

@@ -61,7 +61,7 @@ if (!defined('ABSPATH')) {
 
                 <div class="enterprise-hero-images w-full mx-auto md:mt-10 sm:mt-8 flex items-end justify-center h-full gap-[1.25vw]">
                     <div
-                        class="rounded-[2vw] overflow-hidden h-[18vw] w-[20vw]"
+                        class="rounded-[1.2vw] overflow-hidden h-[18vw] w-[20vw]"
                         data-hero-reveal
                         data-hero-delay="0.24"
                     >
@@ -76,7 +76,7 @@ if (!defined('ABSPATH')) {
                     </div>
 
                     <div
-                        class="rounded-[2vw] overflow-hidden h-[15vw] w-[20vw]"
+                        class="rounded-[1.2vw] overflow-hidden h-[15vw] w-[20vw]"
                         data-hero-reveal
                         data-hero-delay="0.32"
                     >
@@ -91,7 +91,7 @@ if (!defined('ABSPATH')) {
                     </div>
 
                     <div
-                        class="rounded-[2vw] overflow-hidden h-[18vw] w-[20vw]"
+                        class="rounded-[1.2vw] overflow-hidden h-[18vw] w-[20vw]"
                         data-hero-reveal
                         data-hero-delay="0.40"
                     >

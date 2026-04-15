@@ -155,17 +155,50 @@
         --header-height: 70px;
     }
 }
-.loader {
-    opacity: 1;
+
+.page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    visibility: visible;
     pointer-events: auto;
-    transition: opacity 0.45s ease;
+    clip-path: inset(0% 0% 0% 0%);
+    will-change: clip-path;
 }
 
-.loader.is-hidden {
-    opacity: 0;
+.page-loader.is-hidden {
+    visibility: hidden;
     pointer-events: none;
 }
 
+.loader-text {
+    white-space: nowrap;
+    width: 8.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.02em;
+}
+
+.loader-text-label {
+    display: inline-block;
+}
+
+.loader-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 1.6em;
+}
+
+.loader-dot {
+    display: inline-block;
+    width: 0.4em;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(0%);
+    will-change: transform, opacity;
+}
 .overlay-logo {
     clip-path: inset(0% 100% 0% 0%);
     will-change: clip-path;
