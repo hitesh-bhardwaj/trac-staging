@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
                 <span class="font-body text-base text-[#111]">Why Choose TrAC</span>
             </div>
 
-            <h2 class="font-heading text-[3.438vw]  font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6" data-animate="fade-up" data-delay="0.1">
+            <h2 class="font-heading text-[3.438vw]  font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6" data-heading-anim>
                 Why Enterprises Partner with TrAC.
             </h2>
 

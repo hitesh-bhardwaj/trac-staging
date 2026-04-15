@@ -62,7 +62,7 @@ $subtitle =
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[2.5vw] md:text-5xl md:mb-6 sm:text-4xl" data-animate="fade-up" data-delay="0.1">
+            <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[2.5vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
                 <?php echo esc_html($title); ?>
             </h2>
 

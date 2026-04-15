@@ -8,10 +8,10 @@ if (!defined('ABSPATH')) {
         <div class="max-w-[80rem] mx-auto text-center">
             <div class="flex items-center justify-center gap-3 mb-12 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-primary"></span>
-                <span class="font-body text-base text-[#111]">Our Services</span>
+                <span class="font-body text-base text-[#111] text-[1.25vw]">Our Services</span>
             </div>
 
-        <h2 class="font-heading text-[3.438vw]  font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6" data-animate="fade-up" data-delay="0.1">
+        <h2 data-heading-anim class="font-heading text-[3.438vw]  font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6">
                 Built for Organisations That Cannot Afford Downtime.
             </h2>
 

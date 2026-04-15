@@ -31,6 +31,7 @@ export function initAnimations() {
     initHiInstallationScroll();
     initTextAnimations();
     initParagraphLineReveal();
+    initHeadingLineReveal();
     initPartnersProgramCards();
     initHomeInternetWhyTrac();
 	initSmeProblemStatement();
@@ -59,6 +60,11 @@ export function initAnimations() {
     ScrollTrigger.refresh();
 
     console.log('[Trac] Animations initialized');
+}
+
+// Lightweight helper for reduced-motion (or when you want to just "show" the hero instantly).
+export function revealHeroContent(scope = document, options = {}) {
+    initBarbaSyncedHeroReveal(scope, options);
 }
 
 
@@ -161,6 +167,18 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
                 y: 0,
                 clearProps: 'willChange',
             });
+            if (el.hasAttribute('data-heading-anim')) {
+                const lines = Array.from(el.querySelectorAll('.hero-title-line'));
+                if (lines.length) {
+                    gsap.set(lines, {
+                        WebkitMaskPosition: '0% 100%',
+                        maskPosition: '0% 100%',
+                    });
+                }
+            }
+            if (el.hasAttribute('data-para-anim')) {
+                el.style.visibility = 'visible';
+            }
             el.classList.add('is-hero-revealed');
             return;
         }
@@ -171,12 +189,176 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
                 y: 0,
                 clearProps: 'willChange',
             });
+            if (el.hasAttribute('data-heading-anim')) {
+                const lines = Array.from(el.querySelectorAll('.hero-title-line'));
+                if (lines.length) {
+                    gsap.set(lines, {
+                        WebkitMaskPosition: '0% 100%',
+                        maskPosition: '0% 100%',
+                    });
+                }
+            }
+            if (el.hasAttribute('data-para-anim')) {
+                el.style.visibility = 'visible';
+            }
             el.dataset.heroAnimated = 'true';
             el.classList.add('is-hero-revealed');
             return;
         }
 
         const delay = parseFloat(el.dataset.heroDelay || '0');
+
+        // If a hero element also opts into our line-based text reveals, run those immediately
+        // (no ScrollTrigger) so the text never "shows first then animates".
+        if (el.hasAttribute('data-heading-anim')) {
+            const lines = Array.from(el.querySelectorAll('.hero-title-line'));
+            // Ensure mask styles apply even before initHeadingLineReveal runs.
+            lines.forEach((line) => line.classList.add('heading-line'));
+
+            const prefersReducedMotion = window.matchMedia(
+                '(prefers-reduced-motion: reduce)',
+            ).matches;
+
+            const duration = parseFloat(el.dataset.duration || '1.25') || 1.25;
+            const stagger = parseFloat(el.dataset.stagger || '0.1') || 0.1;
+            const baseDelay =
+                parseFloat(el.dataset.baseDelay || '0') || 0;
+
+            if (!prefersReducedMotion && lines.length) {
+                gsap.set(lines, {
+                    WebkitMaskPosition: '100% 100%',
+                    maskPosition: '100% 100%',
+                    willChange: 'mask-position',
+                });
+
+                gsap.to(lines, {
+                    WebkitMaskPosition: '0% 100%',
+                    maskPosition: '0% 100%',
+                    duration,
+                    stagger,
+                    delay: baseDelay + delay,
+                    ease: 'power3.out',
+                    overwrite: 'auto',
+                    onComplete: () => {
+                        gsap.set(lines, { clearProps: 'willChange' });
+                    },
+                });
+            }
+
+            el.dataset.heroAnimated = 'true';
+            el.classList.add('is-hero-revealed');
+            return;
+        }
+
+        if (el.hasAttribute('data-para-anim')) {
+            // Run the paragraph line reveal immediately for hero copy.
+            const escapeHtml = (str) =>
+                str
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+
+            const SplitInLine = (node) => {
+                if (node.dataset.paraSplit === 'true') return;
+                const raw = (node.textContent || '').trim();
+                if (!raw) return;
+
+                const words = raw.split(/\s+/);
+                node.innerHTML = '';
+                words.forEach((w, idx) => {
+                    const span = document.createElement('span');
+                    span.className = 'para-word';
+                    span.innerHTML = escapeHtml(w);
+                    node.appendChild(span);
+                    if (idx !== words.length - 1) {
+                        node.appendChild(document.createTextNode(' '));
+                    }
+                });
+
+                const wordEls = Array.from(node.querySelectorAll('.para-word'));
+                if (!wordEls.length) return;
+
+                const lines = [];
+                let current = [];
+                let currentTop = null;
+
+                wordEls.forEach((w) => {
+                    const top = w.offsetTop;
+                    if (currentTop === null) {
+                        currentTop = top;
+                        current = [w];
+                        return;
+                    }
+                    if (Math.abs(top - currentTop) > 2) {
+                        lines.push(current);
+                        currentTop = top;
+                        current = [w];
+                    } else {
+                        current.push(w);
+                    }
+                });
+                if (current.length) lines.push(current);
+
+                node.innerHTML = '';
+                lines.forEach((wordLine) => {
+                    const wrap = document.createElement('span');
+                    wrap.className = 'para-line';
+
+                    const inner = document.createElement('span');
+                    inner.className = 'line-internal';
+
+                    wordLine.forEach((w, idx) => {
+                        inner.appendChild(w);
+                        if (idx !== wordLine.length - 1) {
+                            inner.appendChild(document.createTextNode(' '));
+                        }
+                    });
+
+                    wrap.appendChild(inner);
+                    node.appendChild(wrap);
+                });
+
+                node.dataset.paraSplit = 'true';
+            };
+
+            const duration =
+                parseFloat(el.dataset.duration || '1.2') || 1.2;
+            const stagger =
+                parseFloat(el.dataset.stagger || '0.07') || 0.07;
+            const localDelay = parseFloat(el.dataset.delay || '0') || 0;
+
+            // Avoid first paint flash by splitting while hidden (CSS also covers this for heroes).
+            el.style.visibility = 'hidden';
+            SplitInLine(el);
+            const paraLine = Array.from(el.querySelectorAll('.line-internal'));
+            // Force visible so it overrides any lingering CSS hide rules.
+            el.style.visibility = 'visible';
+
+            const prefersReducedMotion = window.matchMedia(
+                '(prefers-reduced-motion: reduce)',
+            ).matches;
+
+            if (!prefersReducedMotion && paraLine.length) {
+                gsap.set(paraLine, { yPercent: 100, willChange: 'transform' });
+                gsap.to(paraLine, {
+                    yPercent: 0,
+                    duration,
+                    stagger,
+                    delay: delay + localDelay,
+                    ease: 'power3.out',
+                    overwrite: 'auto',
+                    onComplete: () => {
+                        gsap.set(paraLine, { clearProps: 'willChange' });
+                    },
+                });
+            }
+
+            el.dataset.heroAnimated = 'true';
+            el.classList.add('is-hero-revealed');
+            return;
+        }
 
         gsap.fromTo(
             el,
@@ -471,7 +653,16 @@ function initParagraphLineReveal(scope = null) {
         document.body ||
         document.documentElement;
 
-    const paras = Array.from(root.querySelectorAll('[data-para-anim]'));
+    const paras = Array.from(root.querySelectorAll('[data-para-anim]')).filter(
+        (el) => {
+            // Horizontal "Why TrAC" sections animate via containerAnimation; skip here to avoid non-firing vertical triggers.
+            const why = el.closest('.why-trac-section[data-horizontal-scroll]');
+            // Hero copy is handled by `data-hero-reveal` to avoid "shows first then animates".
+            const isHero = el.closest('[data-hero-static]');
+            const isHeroReveal = el.hasAttribute('data-hero-reveal');
+            return !why && !isHero && !isHeroReveal;
+        },
+    );
     if (!paras.length) return;
 
     // Prevent double-init on the same container; avoids "shows once then animates again".
@@ -555,7 +746,7 @@ function initParagraphLineReveal(scope = null) {
     };
 
     root._paraCtx = gsap.context(() => {
-        const paraAnimations = root.querySelectorAll('[data-para-anim]');
+        const paraAnimations = paras;
 
         paraAnimations.forEach((paraAnimation) => {
             SplitInLine(paraAnimation);
@@ -581,6 +772,192 @@ function initParagraphLineReveal(scope = null) {
             });
         });
     }, root);
+}
+
+/**
+ * Heading reveal using a horizontal CSS-mask wipe per line.
+ * Triggered by `data-heading-anim`.
+ *
+ * Reference behavior based on the user's SplitText + maskPosition tween.
+ * We support:
+ * - Existing manual line wrappers (e.g. `.hero-title-line` spans)
+ * - Auto splitting text into visual lines (simple word-wrap measurement)
+ */
+function initHeadingLineReveal(scope = null) {
+    const root =
+        scope ||
+        document.querySelector('[data-barba="container"]') ||
+        document.body ||
+        document.documentElement;
+
+    const headings = Array.from(root.querySelectorAll('[data-heading-anim]')).filter(
+        (el) => {
+            // Hero headings are handled by `data-hero-reveal`.
+            const isHero = el.closest('[data-hero-static]');
+            const isHeroReveal = el.hasAttribute('data-hero-reveal');
+            return !isHero && !isHeroReveal;
+        },
+    );
+    if (!headings.length) return;
+
+    // Prevent double-init per container.
+    if (root.dataset && root.dataset.headingAnimInit === 'true') return;
+    if (root.dataset) root.dataset.headingAnimInit = 'true';
+
+    const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    const waitForFonts = async () => {
+        if (document.fonts && document.fonts.ready) {
+            try {
+                await document.fonts.ready;
+            } catch (_) {}
+        }
+    };
+
+    const escapeHtml = (str) =>
+        str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+
+    const splitHeadingIntoLines = (el) => {
+        if (el.dataset.headingSplit === 'true') {
+            return Array.from(el.querySelectorAll('.heading-line'));
+        }
+
+        // If markup already provides line wrappers, just tag them.
+        const manual = Array.from(el.querySelectorAll('.hero-title-line'));
+        if (manual.length) {
+            manual.forEach((line) => {
+                line.classList.add('heading-line');
+            });
+            el.dataset.headingSplit = 'true';
+            return manual;
+        }
+
+        // Otherwise: build spans per word and group by rendered line.
+        const raw = (el.textContent || '').trim();
+        if (!raw) return [];
+
+        const words = raw.split(/\s+/);
+        el.innerHTML = '';
+        words.forEach((w, idx) => {
+            const span = document.createElement('span');
+            span.className = 'heading-word';
+            span.innerHTML = escapeHtml(w);
+            el.appendChild(span);
+            if (idx !== words.length - 1) {
+                el.appendChild(document.createTextNode(' '));
+            }
+        });
+
+        const wordEls = Array.from(el.querySelectorAll('.heading-word'));
+        if (!wordEls.length) return [];
+
+        const lines = [];
+        let current = [];
+        let currentTop = null;
+
+        wordEls.forEach((w) => {
+            const top = w.offsetTop;
+            if (currentTop === null) {
+                currentTop = top;
+                current = [w];
+                return;
+            }
+            if (Math.abs(top - currentTop) > 2) {
+                lines.push(current);
+                currentTop = top;
+                current = [w];
+            } else {
+                current.push(w);
+            }
+        });
+        if (current.length) lines.push(current);
+
+        // Rebuild as line blocks so the mask can animate per line.
+        el.innerHTML = '';
+        lines.forEach((wordLine) => {
+            const wrap = document.createElement('span');
+            wrap.className = 'heading-line-wrap';
+
+            const line = document.createElement('span');
+            line.className = 'heading-line';
+
+            wordLine.forEach((w, idx) => {
+                line.appendChild(w);
+                if (idx !== wordLine.length - 1) {
+                    line.appendChild(document.createTextNode(' '));
+                }
+            });
+
+            wrap.appendChild(line);
+            el.appendChild(wrap);
+        });
+
+        el.dataset.headingSplit = 'true';
+        return Array.from(el.querySelectorAll('.heading-line'));
+    };
+
+    // We need font metrics to be stable so "visual lines" are correct.
+    // Do work async but keep init synchronous for the caller.
+    (async () => {
+        await waitForFonts();
+
+        headings.forEach((el) => {
+            // Avoid a flash of unmasked text on slower pages.
+            el.style.visibility = 'hidden';
+
+            const lines = splitHeadingIntoLines(el);
+            el.style.visibility = '';
+
+            if (!lines.length) return;
+
+            if (prefersReducedMotion) {
+                gsap.set(lines, {
+                    WebkitMaskPosition: '0% 100%',
+                    maskPosition: '0% 100%',
+                    clearProps: 'willChange',
+                });
+                return;
+            }
+
+            const delay = parseFloat(el.dataset.delay || '0') || 0;
+            // Faster defaults to match the reference.
+            const duration = parseFloat(el.dataset.duration || '1.25') || 1.25;
+            const stagger = parseFloat(el.dataset.stagger || '0.10') || 0.1;
+            const baseDelay =
+                parseFloat(el.dataset.baseDelay || '0') || 0;
+
+            gsap.set(lines, {
+                WebkitMaskPosition: '100% 100%',
+                maskPosition: '100% 100%',
+                willChange: 'mask-position',
+            });
+
+            gsap.to(lines, {
+                WebkitMaskPosition: '0% 100%',
+                maskPosition: '0% 100%',
+                stagger,
+                duration,
+                delay: baseDelay + delay,
+                ease: 'power3.out',
+                overwrite: 'auto',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 80%',
+                    once: true,
+                },
+                onComplete: () => {
+                    gsap.set(lines, { clearProps: 'willChange' });
+                },
+            });
+        });
+    })();
 }
 
 /**
@@ -867,6 +1244,120 @@ function initWhyTracScrollStory() {
     // Add the svg + dots + card reveals into the same timeline.
     // SVG should begin during the HOLD (before horizontal movement), but cards should reveal with movement.
     initWhyTracStory(masterTl, 0, HOLD);
+
+    // Make `data-para-anim` content inside this horizontal section reveal correctly using containerAnimation.
+    // (Vertical ScrollTriggers won't fire reliably for elements moving via horizontal transforms.)
+    initWhyTracParaReveal(section, masterTl);
+}
+
+/**
+ * Why TrAC: line-by-line reveal driven by the horizontal container animation.
+ */
+function initWhyTracParaReveal(section, containerTl) {
+    if (!section || !containerTl) return;
+    if (section.dataset.whyParaInit === 'true') return;
+
+    const targets = Array.from(section.querySelectorAll('[data-para-anim]'));
+    if (!targets.length) return;
+
+    section.dataset.whyParaInit = 'true';
+
+    const escapeHtml = (str) =>
+        str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+
+    const splitInLine = (el) => {
+        if (el.dataset.paraSplit === 'true') return;
+        if (el.children && el.children.length > 0) return;
+
+        const raw = (el.textContent || '').trim();
+        if (!raw) return;
+
+        const words = raw.split(/\s+/);
+        el.innerHTML = '';
+        words.forEach((w, idx) => {
+            const span = document.createElement('span');
+            span.className = 'para-word';
+            span.innerHTML = escapeHtml(w);
+            el.appendChild(span);
+            if (idx !== words.length - 1) el.appendChild(document.createTextNode(' '));
+        });
+
+        const wordEls = Array.from(el.querySelectorAll('.para-word'));
+        if (!wordEls.length) return;
+
+        const lines = [];
+        let current = [];
+        let currentTop = null;
+
+        wordEls.forEach((w) => {
+            const top = w.offsetTop;
+            if (currentTop === null) {
+                currentTop = top;
+                current = [w];
+                return;
+            }
+            if (Math.abs(top - currentTop) > 2) {
+                lines.push(current);
+                currentTop = top;
+                current = [w];
+            } else {
+                current.push(w);
+            }
+        });
+        if (current.length) lines.push(current);
+
+        el.innerHTML = '';
+        lines.forEach((wordLine) => {
+            const wrap = document.createElement('span');
+            wrap.className = 'para-line';
+
+            const inner = document.createElement('span');
+            inner.className = 'line-internal';
+
+            wordLine.forEach((w, idx) => {
+                inner.appendChild(w);
+                if (idx !== wordLine.length - 1) inner.appendChild(document.createTextNode(' '));
+            });
+            wrap.appendChild(inner);
+            el.appendChild(wrap);
+        });
+
+        el.dataset.paraSplit = 'true';
+    };
+
+    targets.forEach((el) => {
+        splitInLine(el);
+        const lines = Array.from(el.querySelectorAll('.line-internal'));
+        if (!lines.length) return;
+
+        const delay = parseFloat(el.dataset.delay) || 0;
+        const duration = parseFloat(el.dataset.duration) || 1.2;
+        const stagger = parseFloat(el.dataset.stagger) || 0.07;
+
+        gsap.fromTo(
+            lines,
+            { yPercent: 100 },
+            {
+                yPercent: 0,
+                duration,
+                delay,
+                stagger,
+                ease: 'power3.out',
+                overwrite: 'auto',
+                scrollTrigger: {
+                    trigger: el,
+                    containerAnimation: containerTl,
+                    start: 'left 85%',
+                    once: true,
+                },
+            },
+        );
+    });
 }
 
 /**

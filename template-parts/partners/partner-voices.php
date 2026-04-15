@@ -69,7 +69,7 @@ $slides = [
                 ); ?></span>
             </div>
               <div class="w-full flex justify-center">
-                  <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[3.2vw] md:text-5xl md:mb-10 sm:text-4xl sm:mb-8" data-animate="fade-up" data-delay="0.1">
+                  <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[3.2vw] md:text-5xl md:mb-10 sm:text-4xl sm:mb-8" data-heading-anim>
                       <?php echo esc_html($title); ?>
                   </h2>
 

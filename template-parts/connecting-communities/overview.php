@@ -19,13 +19,13 @@ $overview_image_right_alt = $args['overview_image_right_alt'] ?? '';
             <span class="communities-overview__eyebrow-text"><?php echo esc_html($overview_label); ?></span>
         </div>
 
-        <h2 class="communities-overview__title mx-auto mb-[2.396vw] max-w-[63.333vw] md:mb-6 md:max-w-[90%] sm:mb-5 sm:max-w-full" data-animate="fade-up" data-delay="0.1">
+        <h2 class="communities-overview__title mx-auto mb-[2.396vw] max-w-[63.333vw] md:mb-6 md:max-w-[90%] sm:mb-5 sm:max-w-full" data-heading-anim>
             <?php echo esc_html($overview_title); ?>
         </h2>
 
-        <div class="communities-overview__description mx-auto max-w-[55.156vw]" data-animate="fade-up" data-delay="0.2">
+        <div class="communities-overview__description mx-auto max-w-[55.156vw]">
             <?php foreach (preg_split('/\R{2,}/', trim($overview_description)) as $paragraph): ?>
-                <p><?php echo esc_html(trim($paragraph)); ?></p>
+                <p data-para-anim><?php echo esc_html(trim($paragraph)); ?></p>
             <?php endforeach; ?>
         </div>
     </div>

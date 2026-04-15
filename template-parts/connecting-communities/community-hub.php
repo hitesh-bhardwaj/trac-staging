@@ -14,13 +14,13 @@ $community_hub_cards = $args['community_hub_cards'] ?? [];
                 <span class="community-hub-label__text">Community Hub Sites (CHS)</span>
             </div>
 
-            <h2 class="community-hub-title mx-auto mb-[2.292vw] max-w-[68.438vw] md:mb-6 md:max-w-full sm:mb-5" data-animate="fade-up" data-delay="0.1">
+            <h2 class="community-hub-title mx-auto mb-[2.292vw] max-w-[68.438vw] md:mb-6 md:max-w-full sm:mb-5" data-heading-anim>
                 TrAC is leading the rollout of Community Hub Sites across Rwanda.
             </h2>
 
-            <div class="community-hub-description mx-auto max-w-[59.948vw]" data-animate="fade-up" data-delay="0.2">
-                <p>These hubs are physical access points designed to bring connectivity and essential services directly into communities.</p>
-                <p>Each hub is built on TrAC infrastructure and serves as a local centre for:</p>
+            <div class="community-hub-description mx-auto max-w-[59.948vw]">
+                <p data-para-anim>These hubs are physical access points designed to bring connectivity and essential services directly into communities.</p>
+                <p data-para-anim>Each hub is built on TrAC infrastructure and serves as a local centre for:</p>
             </div>
         </div>
 

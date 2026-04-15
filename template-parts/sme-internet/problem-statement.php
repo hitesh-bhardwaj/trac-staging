@@ -27,7 +27,7 @@ $items = [
                     </span>
                 </div>
 
-                <h2 class="font-heading text-[3.5vw] font-normal leading-[1.08] tracking-[0.01em] text-text-primary mb-[1.2vw] md:text-5xl md:mb-5 sm:text-4xl" data-animate="fade-up" data-delay="0.1">
+                <h2 class="font-heading text-[3.5vw] font-normal leading-[1.08] tracking-[0.01em] text-text-primary mb-[1.2vw] md:text-5xl md:mb-5 sm:text-4xl" data-heading-anim>
                     <?php echo esc_html($title); ?>
                 </h2>
 

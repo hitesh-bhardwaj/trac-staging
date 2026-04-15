@@ -51,7 +51,7 @@ $team_members = [
                       </span>
                      </div>
 
-                     <h2 data-animate="fade-up" class="w-[25vw] font-heading text-[3.5vw] font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:max-w-full md:text-[52px] sm:text-[38px]">
+                     <h2 data-heading-anim class="w-[25vw] font-heading text-[3.5vw] font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:max-w-full md:text-[52px] sm:text-[38px]">
                     Welcome our talented team
                      </h2>
 

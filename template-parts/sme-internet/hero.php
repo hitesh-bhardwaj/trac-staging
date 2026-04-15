@@ -10,6 +10,8 @@ if (!defined('ABSPATH')) {
                 <div>
                     <h1
                         class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4"
+                        data-heading-anim
+                        data-base-delay="0.05"
                         data-hero-reveal
                     >
                         <span class="block hero-title-line">
@@ -28,6 +30,8 @@ if (!defined('ABSPATH')) {
                         class="hero-subtitle font-body font-medium text-text-body mx-auto max-w-[48rem] mb-[3.125vw] md:mb-8 sm:mb-6"
                         data-para-anim
                         data-delay="0.08"
+                        data-hero-reveal
+                        data-hero-delay="0.12"
                     >
                         <?php echo esc_html(
                             get_field('hero_subtitle_2') ?:

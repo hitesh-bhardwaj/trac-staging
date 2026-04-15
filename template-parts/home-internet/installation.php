@@ -82,8 +82,7 @@ function trac_render_inline_svg($svg_path, $class = '')
 
                         <h2
                             class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary md:text-5xl sm:text-4xl"
-                            data-animate="fade-up"
-                            data-delay="0.1"
+                           data-heading-anim
                         >
                             <?php echo esc_html($title); ?>
                         </h2>

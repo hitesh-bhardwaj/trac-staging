@@ -414,6 +414,63 @@ html.js [data-hero-reveal].is-hero-revealed {
     will-change: transform;
 }
 
+/* Heading line mask reveal (used by `data-heading-anim`) */
+.heading-line-wrap {
+    display: block;
+}
+
+.heading-line {
+    display: block;
+    /* Mask wipe with a slanted leading edge. We animate mask-position from 100% -> 0%. */
+    -webkit-mask-image: linear-gradient(
+        112deg,
+        #000 0%,
+        #000 48%,
+        transparent 58%,
+        transparent 100%
+    );
+    -webkit-mask-size: 220% 120%;
+    -webkit-mask-position: 100% 100%;
+    mask-image: linear-gradient(
+        112deg,
+        #000 0%,
+        #000 48%,
+        transparent 58%,
+        transparent 100%
+    );
+    mask-size: 220% 120%;
+    mask-position: 100% 100%;
+}
+
+/* Ensure hero heading lines are masked from first paint (before JS adds classes) */
+[data-heading-anim] .hero-title-line {
+    display: block;
+    -webkit-mask-image: linear-gradient(
+        112deg,
+        #000 0%,
+        #000 48%,
+        transparent 58%,
+        transparent 100%
+    );
+    -webkit-mask-size: 220% 120%;
+    -webkit-mask-position: 100% 100%;
+    mask-image: linear-gradient(
+        112deg,
+        #000 0%,
+        #000 48%,
+        transparent 58%,
+        transparent 100%
+    );
+    mask-size: 220% 120%;
+    mask-position: 100% 100%;
+}
+
+/* Prevent first-paint flashes for hero copy that is animated via JS line-splits.
+   Once `initBarbaSyncedHeroReveal` runs it adds `.is-hero-revealed`, so we unhide. */
+[data-hero-static] [data-hero-reveal][data-para-anim]:not(.is-hero-revealed) {
+    visibility: hidden;
+}
+
 @media (max-width: 991px) {
     .hi-install-card {
         width: 280px;

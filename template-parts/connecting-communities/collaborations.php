@@ -14,7 +14,7 @@ $collaboration_items = $args['collaboration_items'] ?? [];
                 <span class="communities-collaborations__eyebrow-text">Our Collaborations</span>
             </div>
 
-            <h2 class="communities-collaborations__title" data-animate="fade-up" data-delay="0.1">
+            <h2 class="communities-collaborations__title" data-heading-anim>
                 Working Together to Bridge the Digital Divide
             </h2>
 

@@ -16,24 +16,24 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <!-- Heading -->
-                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-animate="fade-up" data-delay="0.1">
+                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
                     Application Form.
                 </h2>
 
                 <!-- Description -->
-                <div class="font-body text-[1.25vw] leading-[1.65] text-[#1e1e1e] mb-[3vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[31.5vw] md:max-w-full" data-animate="fade-up" data-delay="0.2">
-                    <p class="mb-6">Send us your details and CV and we'll be in touch when the right opportunity comes up.</p>
+                <div class="font-body text-[1.25vw] leading-[1.65] text-[#1e1e1e] mb-[3vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[31.5vw] md:max-w-full">
+                    <p data-para-anim class="mb-6">Send us your details and CV and we'll be in touch when the right opportunity comes up.</p>
 
-                    <p class="mb-6">All applications are reviewed by our team. We aim to respond within 5-7 working days.</p>
+                    <p data-para-anim class="mb-6">All applications are reviewed by our team. We aim to respond within 5-7 working days.</p>
 
-                    <p class="mb-2">For questions, reach us at:</p>
+                    <p data-para-anim class="mb-2">For questions, reach us at:</p>
                     <div class="flex flex-col gap-[0.3vw] md:gap-1">
-                        <div class="under-multi-parent w-fit">
+                        <div data-para-anim class="under-multi-parent w-fit">
                             <a href="mailto:careers@trac.africa" class="font-body text-[1.25vw] tracking-[0.03em] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
                                 careers@trac.africa
                             </a>
                         </div>
-                        <div class="under-multi-parent w-fit">
+                        <div data-para-anim class="under-multi-parent w-fit">
                             <a href="tel:+250733000190" class="font-body text-[1.25vw] tracking-[0.03em] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
                                 +250 733 000 190
                             </a>

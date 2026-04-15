@@ -28,8 +28,8 @@ if (!defined('ABSPATH')) {
                 >
             </div>
 
-            <div class="about-content w-[47%] mt-[-4vw]" data-animate="fade-left" data-delay="0.1">
-                <h2 class="about-title font-heading text-[3.438vw] leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-3xl sm:mb-6">
+            <div class="about-content w-[47%] mt-[-4vw]">
+                <h2 data-para-anim  class="about-title font-heading text-[3.438vw] leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-3xl sm:mb-6">
                     <?php echo esc_html(
                         get_field('about_title') ?:
                             "TrAC is Rwanda's homegrown ISP, built on long-term commitment and technical excellence.",
@@ -49,14 +49,14 @@ if (!defined('ABSPATH')) {
                     ];
                     foreach ($list_items as $item):
                     ?>
-                        <li class="flex items-center gap-[0.625vw] md:gap-2">
+                        <li data-animate="fade-up" data-delay="0.08" class="flex items-center gap-[0.625vw] md:gap-2">
                             <span class="list-dot w-[0.375vw] h-[0.375vw] bg-text-primary rounded-full flex-shrink-0 md:w-1.5 md:h-1.5 md:mt-2.5"></span>
                             <span><?php echo esc_html($item); ?></span>
                         </li>
                     <?php endforeach; ?>
                 </ul>
 
-                <p class="about-subtitle font-heading text-[1.875vw] leading-[1.33] tracking-[0.01em] text-text-primary md:text-2xl sm:text-xl">
+                <p data-para-anim data-delay="0.16" class="about-subtitle font-heading text-[1.875vw] leading-[1.33] tracking-[0.01em] text-text-primary md:text-2xl sm:text-xl">
                     <?php echo esc_html(
                         get_field('about_subtitle') ?:
                             'We design our network with protection in mind so you can stay online, connected, and secure.',

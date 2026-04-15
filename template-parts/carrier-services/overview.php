@@ -42,22 +42,20 @@ $solution_cards = [
 
             <h2
                 class="mb-[2.4vw] w-full font-heading text-[3.5vw] font-normal leading-[1.15] tracking-[-0.03em] text-text-primary md:mb-6 md:max-w-full md:text-[48px] sm:mb-5 sm:text-[34px]"
-                data-animate="fade-up"
-                data-delay="0.1"
+                data-heading-anim
             >
                 Built for Network Operators
             </h2>
 
             <div
                 class="w-full space-y-[1.8vw] font-body text-body-lg leading-[1.4] text-text-body md:max-w-full md:space-y-5 md:text-[20px] sm:text-[17px]"
-                data-animate="fade-up"
-                data-delay="0.2"
+                
             >
-                <p>
+                <p data-para-anim>
                     Running a network requires more than connectivity it requires infrastructure you can rely on.
                 </p>
 
-                <p>
+                <p data-para-anim data-para-delay="0.08">
                     TrAC supports operators at every stage, from new ISPs launching services to established carriers expanding capacity. Our role is simple: provide the backbone, infrastructure, and support you need to build, operate, and scale with confidence.
                 </p>
             </div>

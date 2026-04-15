@@ -6,7 +6,7 @@
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { initAnimations } from './animations.js';
+import { initAnimations, revealHeroContent } from './animations.js';
 import { initGlobe } from './globe.js';
 import { initNetworkCanvas } from './network-canvas.js';
 import { initBarba, initPageLoader } from './barba.js';
@@ -256,6 +256,9 @@ function initializePageComponents() {
 
     if (!app.prefersReducedMotion) {
         initAnimations();
+    } else {
+        // Ensure hero content is visible (CSS masks/hides hero copy until revealed).
+        revealHeroContent(document, { skipAnimation: true });
     }
 
     const globeContainer = document.getElementById('globe-container');

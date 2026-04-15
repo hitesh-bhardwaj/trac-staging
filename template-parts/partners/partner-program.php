@@ -52,7 +52,7 @@ $cards = [
                     ); ?></span>
                 </div>
 
-                <h2 class="font-heading text-[3.438vw] font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.5vw] md:text-4xl md:mb-6 sm:text-3xl" data-animate="fade-up" data-delay="0.1">
+                <h2 class="font-heading text-[3.438vw] font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.5vw] md:text-4xl md:mb-6 sm:text-3xl" data-heading-anim>
                     <?php echo esc_html($title); ?>
                 </h2>
 

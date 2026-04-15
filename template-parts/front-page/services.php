@@ -6,13 +6,13 @@ if (!defined('ABSPATH')) {
 <section class="services-section relative bg-white py-[7%]" data-section="services" id="products">
     <div class="services-container w-full">
         <div class="services-heading text-center pb-[7vw] md:py-12 sm:py-8 bg-white">
-            <div class="services-label flex items-center justify-center gap-[0.833vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4">
+            <div class="services-label flex items-center justify-center gap-[0.833vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
                 <span class="label-line w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1 sm:w-5"></span>
                 <span class="label-text font-body text-[1.25vw] text-text-primary md:text-xl sm:text-lg"><?php echo esc_html(
                     get_field('services_label') ?: 'What We Offer',
                 ); ?></span>
             </div>
-            <h2 class="services-title font-heading text-[3.438vw] leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl">
+            <h2 data-heading-anim class="services-title font-heading text-[3.438vw] leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl">
                 <?php echo esc_html(
                     get_field('services_title') ?: 'Get Connected. Glitch Free',
                 ); ?>

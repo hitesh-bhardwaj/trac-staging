@@ -16,22 +16,22 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <!-- Heading -->
-                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-animate="fade-up" data-delay="0.1">
+                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
                     Let's Get You<br>Connected
                 </h2>
 
                 <!-- Description -->
-                <div class="font-body text-[1.25vw] leading-[1.65] text-[#1e1e1e] mb-[2vw] md:text-lg md:mb-8 sm:text-base sm:mb-6 max-w-[31.5vw] md:max-w-full" data-animate="fade-up" data-delay="0.2">
-                    <p class="mb-4">Tell us about your organisation and connectivity needs. Our enterprise team will be in touch to discuss a tailored solution.</p>
+                <div class="font-body text-[1.25vw] leading-[1.65] text-[#1e1e1e] mb-[2vw] md:text-lg md:mb-8 sm:text-base sm:mb-6 max-w-[31.5vw] md:max-w-full">
+                    <p data-para-anim class="mb-4">Tell us about your organisation and connectivity needs. Our enterprise team will be in touch to discuss a tailored solution.</p>
 
-                    <p class="mb-2">Or reach us directly:</p>
+                    <p data-para-anim class="mb-2">Or reach us directly:</p>
                     <div class="flex flex-col gap-[0.3vw] md:gap-1">
-                        <div class="under-multi-parent w-fit">
+                        <div data-para-anim class="under-multi-parent w-fit">
                             <a href="mailto:info@trac.africa" class="font-body text-[1.25vw] tracking-[0.03em] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
                                 info@trac.africa
                             </a>
                         </div>
-                        <div class="under-multi-parent w-fit">
+                        <div data-para-anim class="under-multi-parent w-fit">
                             <a href="tel:+250733000190" class="font-body text-[1.25vw] tracking-[0.03em] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
                                 +250 733 000 190
                             </a>
@@ -41,7 +41,7 @@ if (!defined('ABSPATH')) {
 
                 <!-- Social Links -->
                 <div class="mt-[4vw] md:mt-12 sm:mt-8" data-animate="fade-up" data-delay="0.3">
-                    <p class="font-body text-[1.25vw] text-[#1e1e1e] mb-[1.5vw] md:text-lg md:mb-4 sm:text-base sm:mb-3">Social Links :</p>
+                    <p  class="font-body text-[1.25vw] text-[#1e1e1e] mb-[1.5vw] md:text-lg md:mb-4 sm:text-base sm:mb-3">Social Links :</p>
 
                     <div class="contact-social flex items-center gap-[1.302vw] md:gap-4 sm:gap-3">
                         <!-- Facebook -->

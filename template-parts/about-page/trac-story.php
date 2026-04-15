@@ -51,7 +51,7 @@ $story_content = [
          </div>
         <div class="w-full flex justify-between">
             <div class="w-[80%] flex  gap-[2vw]">
-                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1">
+                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-1.png'
@@ -62,13 +62,13 @@ $story_content = [
                          />
 
                 </div>
-                <p class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
+                <p data-para-anim class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 
                 </p>
 
             </div>
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden" data-animate="fade-up">
                 <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-2.png'
@@ -80,7 +80,7 @@ $story_content = [
             </div>
         </div>
         <div class="w-full flex justify-between">
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden" data-animate="fade-up">
                  <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-3.png'
@@ -93,18 +93,18 @@ $story_content = [
             </div>
             <div class="flex w-[40%]">
                 <div class="flex flex-col gap-[1vw] w-[70%]">
-                    <h4 class="text-[1.835vw] font-normal">
+                    <h4 data-para-anim class="text-[1.835vw] font-normal">
                         Lorem ipsum dolor 
 
                     </h4>
-                    <p>
+                    <p data-para-anim>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
 
                     </p>
 
                 </div>
                 
-                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]">
+                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-4.png'
@@ -124,7 +124,7 @@ $story_content = [
          
         <div class="w-full flex justify-between">
             <div class="w-[80%] flex  gap-[2vw]">
-                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1">
+                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-1.png'
@@ -135,13 +135,13 @@ $story_content = [
                          />
 
                 </div>
-                <p class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
+                <p data-para-anim class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 
                 </p>
 
             </div>
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden" data-animate="fade-up">
                 <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-2.png'
@@ -153,7 +153,7 @@ $story_content = [
             </div>
         </div>
         <div class="w-full flex justify-between">
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden" data-animate="fade-up">
                  <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-3.png'
@@ -166,18 +166,18 @@ $story_content = [
             </div>
             <div class="flex w-[40%]">
                 <div class="flex flex-col gap-[1vw] w-[70%]">
-                    <h4 class="text-[1.835vw] font-normal">
+                    <h4 data-para-anim class="text-[1.835vw] font-normal">
                         Lorem ipsum dolor 
 
                     </h4>
-                    <p>
+                    <p data-para-anim>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
 
                     </p>
 
                 </div>
                 
-                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]">
+                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-4.png'
@@ -197,7 +197,7 @@ $story_content = [
          
         <div class="w-full flex justify-between">
             <div class="w-[80%] flex  gap-[2vw]">
-                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1">
+                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-1.png'
@@ -208,13 +208,13 @@ $story_content = [
                          />
 
                 </div>
-                <p class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
+                <p data-para-anim class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 
                 </p>
 
             </div>
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden" data-animate="fade-up">
                 <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-2.png'
@@ -226,7 +226,7 @@ $story_content = [
             </div>
         </div>
         <div class="w-full flex justify-between">
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden" data-animate="fade-up">
                  <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-3.png'
@@ -239,18 +239,18 @@ $story_content = [
             </div>
             <div class="flex w-[40%]">
                 <div class="flex flex-col gap-[1vw] w-[70%]">
-                    <h4 class="text-[1.835vw] font-normal">
+                    <h4 data-para-anim class="text-[1.835vw] font-normal">
                         Lorem ipsum dolor 
 
                     </h4>
-                    <p>
+                    <p data-para-anim>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
 
                     </p>
 
                 </div>
                 
-                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]">
+                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-4.png'
@@ -270,7 +270,7 @@ $story_content = [
          
         <div class="w-full flex justify-between">
             <div class="w-[80%] flex  gap-[2vw]">
-                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1">
+                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-1.png'
@@ -281,13 +281,13 @@ $story_content = [
                          />
 
                 </div>
-                <p class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
+                <p data-para-anim class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 
                 </p>
 
             </div>
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden" data-animate="fade-up">
                 <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-2.png'
@@ -299,7 +299,7 @@ $story_content = [
             </div>
         </div>
         <div class="w-full flex justify-between">
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden" data-animate="fade-up">
                  <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-3.png'
@@ -312,18 +312,18 @@ $story_content = [
             </div>
             <div class="flex w-[40%]">
                 <div class="flex flex-col gap-[1vw] w-[70%]">
-                    <h4 class="text-[1.835vw] font-normal">
+                    <h4 data-para-anim class="text-[1.835vw] font-normal">
                         Lorem ipsum dolor 
 
                     </h4>
-                    <p>
+                    <p data-para-anim>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
 
                     </p>
 
                 </div>
                 
-                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]">
+                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-4.png'
@@ -343,7 +343,7 @@ $story_content = [
          
         <div class="w-full flex justify-between">
             <div class="w-[80%] flex  gap-[2vw]">
-                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1">
+                <div class="w-[34vw] h-[22vw] rounded-[1.2vw] overflow-hidden  img-1" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-1.png'
@@ -354,13 +354,13 @@ $story_content = [
                          />
 
                 </div>
-                <p class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
+                <p data-para-anim class="text-[3.2vw] font-medium !leading-[1.2] w-[50%]">
                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 
                 </p>
 
             </div>
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] img-2 overflow-hidden" data-animate="fade-up">
                 <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-2.png'
@@ -372,7 +372,7 @@ $story_content = [
             </div>
         </div>
         <div class="w-full flex justify-between">
-            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden">
+            <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden" data-animate="fade-up">
                  <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-3.png'
@@ -385,18 +385,18 @@ $story_content = [
             </div>
             <div class="flex w-[40%]">
                 <div class="flex flex-col gap-[1vw] w-[70%]">
-                    <h4 class="text-[1.835vw] font-normal">
+                    <h4 data-para-anim class="text-[1.835vw] font-normal">
                         Lorem ipsum dolor 
 
                     </h4>
-                    <p>
+                    <p data-para-anim>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
 
                     </p>
 
                 </div>
                 
-                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]">
+                <div class="w-[10vw] h-[12vw] rounded-[0.8vw] overflow-hidden mt-[15vw]" data-animate="fade-up">
                      <img
                           src="<?php echo esc_url(
                               get_template_directory_uri() . '/src/imgs/about/timeline-2026-img-4.png'

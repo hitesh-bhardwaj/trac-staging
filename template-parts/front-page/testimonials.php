@@ -25,8 +25,7 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
 
             <h2
                 class="testimonials-title font-heading text-[3.438vw] leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl"
-                data-animate="fade-up"
-                data-delay="0.1"
+                data-heading-anim
             >
                 <?php echo esc_html(
                     get_field('testimonials_title') ?: 'What Our Clients Say',

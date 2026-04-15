@@ -14,14 +14,14 @@ if (!defined('ABSPATH')) {
             </div>
 
             <!-- Heading -->
-            <h2 class="font-heading text-[3.438vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] text-center mb-[3vw] md:text-5xl md:mb-8 sm:text-4xl sm:mb-6" data-animate="fade-up" data-delay="0.1">
+            <h2 class="font-heading text-[3.438vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] text-center mb-[3vw] md:text-5xl md:mb-8 sm:text-4xl sm:mb-6" data-heading-anim>
                 Why Work With Us
             </h2>
 
             <!-- Description -->
-            <div class="font-body text-[1.25vw] leading-[1.62] text-[#1e1e1e] text-center max-w-[68vw] mx-auto md:text-lg md:max-w-full sm:text-base" data-animate="fade-up" data-delay="0.2">
-                <p class="mb-4">We're always looking for people who want to do meaningful work, solve real problems, and grow with a team that is shaping connectivity across Rwanda and beyond.</p>
-                <p>If you're interested in working with us, get in touch!</p>
+            <div class="font-body text-[1.25vw] leading-[1.62] text-[#1e1e1e] text-center max-w-[68vw] mx-auto md:text-lg md:max-w-full sm:text-base" >
+                <p data-para-anim class="mb-4">We're always looking for people who want to do meaningful work, solve real problems, and grow with a team that is shaping connectivity across Rwanda and beyond.</p>
+                <p data-para-anim>If you're interested in working with us, get in touch!</p>
             </div>
         </div>
     </div>

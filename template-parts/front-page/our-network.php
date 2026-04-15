@@ -20,8 +20,7 @@ $network_circle_lines_svg_path_line =
     data-section="our-network"
 >
     <div class="pt-[7vw] text-center md:py-12 sm:py-8">
-        <div
-            class="mb-[1.563vw] flex items-center justify-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-4"
+        <div data-animate="fade-up" class="mb-[1.563vw] flex items-center justify-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-4"
         >
             <span
                 class="label-line h-[0.208vw] w-[1.354vw] bg-brand-primary md:h-1 md:w-6 sm:w-5"
@@ -36,8 +35,8 @@ $network_circle_lines_svg_path_line =
         <h2
             class="services-title font-heading flex flex-col text-[3.438vw] leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl"
         >
-            <span>Built for Resilience.</span>
-            <span>Designed for Africa.</span>
+            <span data-heading-anim >Built for Resilience.</span>
+            <span data-heading-anim>Designed for Africa.</span>
         </h2>
 
         <div
@@ -64,19 +63,19 @@ $network_circle_lines_svg_path_line =
                 >
             </div>
 
-            <div class="absolute inset-0 left-[10%] top-[20%] z-[50] h-fit w-[10vw] text-start font-medium uppercase">
+            <div data-animate="fade-up" class="absolute inset-0 left-[10%] top-[20%] z-[50] h-fit w-[10vw] text-start font-medium uppercase">
                 democratic republic of the congo
             </div>
 
-            <div class="absolute inset-0 left-[50%] top-[10%] z-[50] h-fit w-[10vw] text-start font-medium uppercase">
+            <div data-animate="fade-up" class="absolute inset-0 left-[50%] top-[10%] z-[50] h-fit w-[10vw] text-start font-medium uppercase">
                 UGANDA
             </div>
 
-            <div class="absolute inset-0 left-[50%] top-[90%] z-[50] h-fit w-[10vw] text-start font-medium uppercase">
+            <div  class="absolute inset-0 left-[50%] top-[90%] z-[50] h-fit w-[10vw] text-start font-medium uppercase">
                 BURUNDI
             </div>
 
-            <div class="absolute inset-0 left-[80%] top-[85%] z-[50] flex h-fit w-[20vw] flex-col gap-[1vw] text-start font-medium uppercase">
+            <div data-animate="fade-up" class="absolute inset-0 left-[80%] top-[85%] z-[50] flex h-fit w-[20vw] flex-col gap-[1vw] text-start font-medium uppercase">
                 <div class="flex items-center gap-[0.5vw]">
                     <div class="h-auto w-[3vw]">
                         <img
@@ -98,11 +97,11 @@ $network_circle_lines_svg_path_line =
                 </div>
             </div>
 
-            <div class="absolute inset-0 left-[75%] top-[70%] z-[50] h-fit w-[10vw] text-start font-medium uppercase">
+            <div data-animate="fade-up" class="absolute inset-0 left-[75%] top-[70%] z-[50] h-fit w-[10vw] text-start font-medium uppercase">
                 tanzania
             </div>
 
-            <div class="absolute inset-0 left-[37%] top-[47%] z-[50] h-fit w-fit text-start font-medium uppercase">
+            <div data-animate="fade-up" class="absolute inset-0 left-[37%] top-[47%] z-[50] h-fit w-fit text-start font-medium uppercase">
                 RWANDA
             </div>
 

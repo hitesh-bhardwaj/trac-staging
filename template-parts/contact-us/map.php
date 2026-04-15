@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
             </div>
 
             <!-- Heading -->
-            <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] text-center mb-[4vw] md:text-5xl md:mb-12 sm:text-4xl sm:mb-10" data-animate="fade-up" data-delay="0.1">
+            <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] text-center mb-[4vw] md:text-5xl md:mb-12 sm:text-4xl sm:mb-10" data-heading-anim>
                 Our Head office
             </h2>
 
@@ -55,7 +55,7 @@ if (!defined('ABSPATH')) {
 
                 <!-- Address Cards -->
                 <!-- Rwanda Address -->
-                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 55%; top: 70%;" data-address="rwanda">
+                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 55%; top: 70%;" data-address="rwanda" data-animate="fade-up">
                     <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:text-base">Rwanda</h3>
                     <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-sm">
                         KG 15 Ave, #11, Gacuriro<br>
@@ -64,7 +64,7 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <!-- BVI Address -->
-                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 37%; top: 20%;" data-address="bvi">
+                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 37%; top: 20%;" data-address="bvi" data-animate="fade-up">
                     <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:text-base">British Virgin Island</h3>
                     <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-sm">
                         80 Main St, Road Town<br>

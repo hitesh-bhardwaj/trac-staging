@@ -23,7 +23,7 @@ $jobs_query = new WP_Query([
             </div>
 
             <!-- Heading -->
-            <h2 class="font-heading text-[3.438vw] font-normal leading-[1.12] tracking-[-0.01em] text-[#111] text-center mb-[4vw] md:text-5xl md:mb-12 sm:text-4xl sm:mb-10" data-animate="fade-up" data-delay="0.1">
+            <h2 class="font-heading text-[3.438vw] font-normal leading-[1.12] tracking-[-0.01em] text-[#111] text-center mb-[4vw] md:text-5xl md:mb-12 sm:text-4xl sm:mb-10" data-heading-anim>
                 Open Positions
             </h2>
 
@@ -81,7 +81,7 @@ $jobs_query = new WP_Query([
                 </div>
             <?php else: ?>
                 <div class="no-jobs text-center py-[5vw] md:py-20 sm:py-16">
-                    <p class="font-body text-[1.25vw] text-[#1e1e1e] md:text-xl sm:text-lg">
+                    <p data-para-anim class="font-body text-[1.25vw] text-[#1e1e1e] md:text-xl sm:text-lg">
                         No open positions at the moment. Check back soon!
                     </p>
                 </div>

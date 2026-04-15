@@ -46,18 +46,16 @@ $why_cards = [
 
             <h2
                 class="mx-auto mb-[2vw] max-w-[72vw] font-heading text-[3.5vw] font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:mb-6 md:max-w-[90%] md:text-[48px] sm:mb-5 sm:max-w-full sm:text-[34px]"
-                data-animate="fade-up"
-                data-delay="0.1"
+                data-heading-anim
             >
                 Built as a Partnership, Not Just a Service
             </h2>
 
             <div
                 class="mx-auto max-w-[66vw] space-y-[1.4vw] font-body text-body-lg leading-[1.5] text-text-body md:max-w-[88%] md:space-y-5 md:text-[22px] sm:max-w-full sm:space-y-4 sm:text-[17px]"
-                data-animate="fade-up"
-                data-delay="0.2"
+                
             >
-                <p>
+                <p data-para-anim >
                     Every network is different. That’s why we work closely with you to design solutions that fit your technical and commercial needs.
                 </p>
             </div>

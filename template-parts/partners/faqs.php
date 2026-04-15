@@ -82,7 +82,7 @@ $fallback_faqs = [
                     $section_label,
                 ); ?></span>
             </div>
-            <h2 class="faqs-title font-heading text-[3.438vw] leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl" data-animate="fade-up" data-delay="0.1">
+            <h2 class="faqs-title font-heading text-[3.438vw] leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl" data-heading-anim>
                 <?php echo esc_html($section_title); ?>
             </h2>
         </div>

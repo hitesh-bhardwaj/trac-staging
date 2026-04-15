@@ -13,23 +13,24 @@ if (!defined('ABSPATH')) {
                     <span class="font-body text-[1.25vw] text-[#111] md:text-xl">Get in Touch</span>
                 </div>
 
-                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-animate="fade-up" data-delay="0.1">
-                    Enquire About Enterprise<br class="md:hidden"> Connectivity.
+                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" >
+                    <span data-heading-anim class="block">Enquire About Enterprise </span>
+                     <span data-heading-anim class="block"> Connectivity.</span>
                 </h2>
 
                 <p class="font-body text-[1.25vw] leading-[1.58] text-[#1e1e1e] mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-para-anim data-delay="0.2">
                     Tell us about your organisation and connectivity needs. Our enterprise team will be in touch to discuss a tailored solution.
                 </p>
 
-                <div class="font-body text-[1.25vw] leading-[1.7] text-[#111] md:text-base sm:text-sm" data-animate="fade-up" data-delay="0.3">
-                    <p class="mb-3 md:mb-2">Or reach us directly:</p>
+                <div class="font-body text-[1.25vw] leading-[1.7] text-[#111] md:text-base sm:text-sm">
+                    <p data-para-anim class="mb-3 md:mb-2">Or reach us directly:</p>
                      <div class="contact-links flex flex-col gap-[0.5vw] md:gap-2">
-                            <div class="under-multi-parent w-fit leading-[1.2]">
+                            <div data-para-anim class="under-multi-parent w-fit leading-[1.2]">
                                 <a href="mailto:info@trac.africa" class="font-body text-[1.25vw] tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
                                     info@trac.africa
                                 </a>
                             </div>
-                            <div class="under-multi-parent w-fit leading-[1.2]">
+                            <div data-para-anim class="under-multi-parent w-fit leading-[1.2]">
                                 <a href="tel:+250733000190" class="font-body text-[1.25vw] tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
                                     +250 733 000 190
                                 </a>

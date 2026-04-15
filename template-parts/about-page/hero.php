@@ -12,13 +12,13 @@ $page_excerpt = has_excerpt()
     );
 ?>
 
-<section class="about-hero relative overflow-hidden" data-section="about-hero">
+<section class="about-hero relative overflow-hidden" data-section="about-hero" data-hero-static>
     <div class="w-screen h-screen flex items-center flex-col gap-[2vw] pt-[12vw]">
-        <h1 class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4 relative z-[10]" data-hero-reveal>
+        <h1 class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4 relative z-[10]" data-hero-reveal data-heading-anim data-base-delay="0.05">
             <span class="block hero-title-line">About Us</span>
         </h1>
 
-        <p class="hero-subtitle font-body font-medium text-text-body w-[50%] mb-[3.125vw] md:max-w-full md:mb-8 sm:mb-6 text-center relative z-[10]" data-hero-reveal data-hero-delay="0.08">
+        <p class="hero-subtitle font-body font-medium text-text-body w-[50%] mb-[3.125vw] md:max-w-full md:mb-8 sm:mb-6 text-center relative z-[10]" data-hero-reveal data-hero-delay="0.08" data-para-anim>
             Rooted in Rwanda and expanding across East Africa, TrAC delivers reliable, fibre-first connectivity for homes, businesses, and the communities shaping the region's future.
         </p>
 
