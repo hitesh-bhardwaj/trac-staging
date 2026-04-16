@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
             </h2>
 
             <!-- Map Container -->
-            <div class="map-container relative w-full h-[35vw] md:h-[500px] sm:h-[400px] mb-[3vw] md:mb-12 sm:mb-8">
+            <div class="map-container relative w-full h-[35vw] md:h-[500px] sm:h-[200px] mb-[3vw] md:mb-12 sm:mb-8">
                 <!-- Dotted World Map SVG -->
                 <div class="map-svg-wrapper absolute inset-0 flex items-center justify-center" data-map-svg>
                     <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/contact/map-contact.svg" alt="World Map" class="w-full h-full object-contain">
@@ -33,11 +33,11 @@ if (!defined('ABSPATH')) {
                 <div class="location-marker absolute opacity-0" style="left: 53%; top: 70%;" data-location="rwanda">
                     <!-- Pulsing Circle -->
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div class="w-[1.8vw] h-[1.8vw] md:w-12 md:h-12 sm:w-10 sm:h-10 rounded-full border border-brand-primary animate-ping opacity-75"></div>
+                        <div class="w-[1.8vw] h-[1.8vw] md:w-12 md:h-12 sm:w-8 sm:h-8 rounded-full border border-brand-primary animate-ping opacity-75"></div>
                     </div>
                     <!-- Static Circle -->
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div class="w-[1vw] h-[1vw] md:w-6 md:h-6 sm:w-5 sm:h-5 rounded-full bg-brand-primary shadow-lg"></div>
+                        <div class="w-[1vw] h-[1vw] md:w-6 md:h-6 sm:w-4 sm:h-4 rounded-full bg-brand-primary shadow-lg"></div>
                     </div>
                 </div>
 
@@ -45,36 +45,59 @@ if (!defined('ABSPATH')) {
                 <div class="location-marker absolute opacity-0" style="left: 37%; top: 50%;" data-location="bvi">
                     <!-- Pulsing Circle -->
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div class="w-[1.8vw] h-[1.8vw] md:w-12 md:h-12 sm:w-10 sm:h-10 rounded-full border border-brand-primary animate-ping opacity-75"></div>
+                        <div class="w-[1.8vw] h-[1.8vw] md:w-12 md:h-12 sm:w-8 sm:h-8 rounded-full border border-brand-primary animate-ping opacity-75"></div>
                     </div>
                     <!-- Static Circle -->
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div class="w-[1vw] h-[1vw] md:w-6 md:h-6 sm:w-5 sm:h-5 rounded-full bg-brand-primary shadow-lg"></div>
+                        <div class="w-[1vw] h-[1vw] md:w-6 md:h-6 sm:w-4 sm:h-4 rounded-full bg-brand-primary shadow-lg"></div>
                     </div>
                 </div>
 
                 <!-- Connector Lines (positioned/rotated via JS to link marker -> card) -->
-                <div class="map-connector pointer-events-none" data-map-connector="bvi" aria-hidden="true">
+                <div class="map-connector pointer-events-none sm:hidden" data-map-connector="bvi" aria-hidden="true">
                     <span class="map-connector-line" data-map-line></span>
                 </div>
-                <div class="map-connector pointer-events-none" data-map-connector="rwanda" aria-hidden="true">
+                <div class="map-connector pointer-events-none sm:hidden" data-map-connector="rwanda" aria-hidden="true">
                     <span class="map-connector-line" data-map-line></span>
                 </div>
 
                 <!-- Address Cards -->
                 <!-- Rwanda Address -->
-                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 18%; top: 68%;" data-address="rwanda">
-                    <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:text-base">Rwanda</h3>
-                    <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-sm">
+                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0 sm:hidden" style="left: 18%; top: 68%;" data-address="rwanda">
+                    <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:mb-[1vw] sm:text-[4vw]">Rwanda</h3>
+                    <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-[4vw]">
                         KG 15 Ave, #11, Gacuriro<br>
                         Kigali, Rwanda
                     </p>
                 </div>
 
                 <!-- BVI Address -->
-                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 52%; top: 24%;" data-address="bvi">
-                    <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:text-base">British Virgin Island</h3>
-                    <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-sm">
+                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0 sm:hidden" style="left: 52%; top: 24%;" data-address="bvi">
+                    <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 ">British Virgin Island</h3>
+                    <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-[4vw]">
+                        80 Main St, Road Town<br>
+                        Tortola VG 11100 BVI
+                    </p>
+                </div>
+            </div>
+
+            <!-- Mobile Address List (below map, no background) -->
+            <div class="hidden sm:block mt-8">
+                <div class="address-card opacity-0">
+                    <h3 class="font-heading leading-[1.1] font-medium text-[#111] mb-3 text-[4.5vw] sm:mb-[1vw]">
+                        Rwanda
+                    </h3>
+                    <p class="font-body text-[4vw] leading-[1.5] text-[#1e1e1e]">
+                        KG 15 Ave, #11, Gacuriro<br>
+                        Kigali, Rwanda
+                    </p>
+                </div>
+
+                <div class="address-card opacity-0 mt-16">
+                    <h3 class="font-heading  leading-[1.1] font-medium text-[#111] mb-3 text-[4.5vw] sm:mb-[1vw]">
+                        British Virgin Island
+                    </h3>
+                    <p class="font-body text-[4vw] leading-[1.5] text-[#1e1e1e]">
                         80 Main St, Road Town<br>
                         Tortola VG 11100 BVI
                     </p>

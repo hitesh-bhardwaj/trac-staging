@@ -3,13 +3,21 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-// Get FAQ section settings
-$section_label = get_field('faq_section_label') ?: 'FAQs';
+// Allow this FAQs section to be reused across pages by passing `$args` via get_template_part(..., null, $args).
+// Pattern mirrors `template-parts/connecting-communities/hero.php` and the shared CTA.
+$faq_args = isset($args) && is_array($args) ? $args : [];
+
+// Get FAQ section settings (args override ACF override defaults)
+$section_label =
+    $faq_args['section_label'] ?? get_field('faq_section_label') ?? 'FAQs';
 $section_title =
-    get_field('faq_section_title') ?: 'Any Questions? We Got You.';
-$display_mode = get_field('faq_display_mode') ?: 'latest';
-$faq_limit = get_field('faq_limit') ?: 5;
-$open_first = get_field('faq_open_first');
+    $faq_args['section_title'] ??
+    get_field('faq_section_title') ??
+    'Any Questions? We Got You.';
+$display_mode =
+    $faq_args['display_mode'] ?? get_field('faq_display_mode') ?? 'latest';
+$faq_limit = $faq_args['limit'] ?? get_field('faq_limit') ?? 5;
+$open_first = $faq_args['open_first'] ?? get_field('faq_open_first');
 $open_first = $open_first !== null ? $open_first : true;
 
 // Build query args based on display mode
@@ -24,7 +32,7 @@ $query_args = [
 // Modify query based on display mode
 switch ($display_mode) {
     case 'category':
-        $categories = get_field('faq_categories');
+        $categories = $faq_args['categories'] ?? get_field('faq_categories');
         if ($categories) {
             $query_args['tax_query'] = [
                 [
@@ -37,7 +45,8 @@ switch ($display_mode) {
         break;
 
     case 'specific':
-        $specific_faqs = get_field('faq_specific_items');
+        $specific_faqs =
+            $faq_args['specific_items'] ?? get_field('faq_specific_items');
         if ($specific_faqs) {
             $query_args['post__in'] = $specific_faqs;
             $query_args['orderby'] = 'post__in'; // Maintain selected order
@@ -58,18 +67,20 @@ switch ($display_mode) {
 $faqs_query = new WP_Query($query_args);
 
 // Fallback FAQs if no posts exist
-$fallback_faqs = [
+$fallback_faqs =
+    $faq_args['fallback_faqs'] ??
     [
-        'question' => "What does 'uncontended' internet mean?",
-        'answer' =>
-            "Being on TrAC means being on the most resilient trans-African network available. Every aspect of the TrAC network is designed with protection in mind.",
-    ],
-    [
-        'question' => 'How quickly can I get connected?',
-        'answer' =>
-            'Connection times vary depending on your location and the type of service required. For areas with existing fiber infrastructure, we can typically have you connected within 5-7 business days.',
-    ],
-];
+        [
+            'question' => "What does 'uncontended' internet mean?",
+            'answer' =>
+                "Being on TrAC means being on the most resilient trans-African network available. Every aspect of the TrAC network is designed with protection in mind.",
+        ],
+        [
+            'question' => 'How quickly can I get connected?',
+            'answer' =>
+                'Connection times vary depending on your location and the type of service required. For areas with existing fiber infrastructure, we can typically have you connected within 5-7 business days.',
+        ],
+    ];
 ?>
 
 <section class="faqs-section relative bg-white overflow-hidden" data-section="faqs">

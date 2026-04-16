@@ -21,8 +21,21 @@ if (have_posts()) {
             <?php get_template_part('template-parts/partners/partner-program'); ?>
             <?php get_template_part('template-parts/partners/partner-network'); ?>
             <?php get_template_part('template-parts/partners/partner-voices'); ?>
-            <?php get_template_part('template-parts/partners/faqs'); ?>
-            <?php get_template_part('template-parts/partners/cta'); ?>
+            <?php get_template_part('template-parts/front-page/faqs'); ?>
+            <?php
+            get_template_part(
+                'template-parts/front-page/cta',
+                null,
+                [
+                    'title' => 'Ready to Get on TrAC?',
+                    'subtitle' =>
+                        "Stop paying for internet you're not getting. Join businesses across Africa that trust TrAC.",
+                    'button_text' => 'Get Connected',
+                    'button_link' => '#get-connected',
+                    'pattern_top_class' => 'top-[-12%] sm:top-0',
+                ],
+            );
+            ?>
         </main>
 
         <?php

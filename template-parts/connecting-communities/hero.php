@@ -10,9 +10,9 @@ $hero_image_url = $args['hero_image_url'] ?? '';
 $hero_image_alt = $args['hero_image_alt'] ?? '';
 ?>
 
-<section class="communities-hero relative w-full min-h-screen bg-white pt-[12vw] pb-[6.25vw] px-[5.208vw] md:pt-32 md:pb-16 md:px-[4vw] sm:pt-24 sm:pb-12 sm:px-[6vw]" data-section="communities-hero" data-hero-static>
-    <div class="hero-content text-center mb-[5.208vw] md:mb-16 sm:mb-12 space-y-[2vw]">
-        <h1 class="hero-title font-heading leading-[1.08] tracking-[-0.04vw] text-[#111] max-w-[71.51vw] mx-auto md:text-6xl md:leading-[1.2] sm:text-4xl" data-hero-reveal data-heading-anim data-base-delay="0.05">
+<section class="communities-hero relative w-full min-h-screen bg-white pt-[12vw] pb-[6.25vw] px-[5vw] md:pt-32 md:pb-16 md:px-[4vw] sm:py-[30%]  sm:px-[7vw] sm:h-fit sm:min-h-fit" data-section="communities-hero" data-hero-static>
+    <div class="hero-content text-center mb-[5.208vw] md:mb-16 sm:mb-12 space-y-[2vw] sm:space-y-[10vw]">
+        <h1 class="hero-title font-heading leading-[1.08] tracking-[-0.04vw] text-[#111] max-w-[71.51vw] mx-auto md:text-6xl md:leading-[1.2] sm:text-[10vw]" data-hero-reveal data-heading-anim data-base-delay="0.05">
             <span class="block hero-title-line"><?php echo esc_html($hero_title); ?></span>
         </h1>
 
@@ -23,7 +23,7 @@ $hero_image_alt = $args['hero_image_alt'] ?? '';
         <?php endif; ?>
 
         <?php if ($hero_description): ?>
-            <p class="hero-description font-body text-[1.25vw] leading-[2.083vw] text-[#1e1e1e] max-w-[46.927vw] mx-auto md:text-xl md:leading-[1.6] md:max-w-[90%] sm:text-lg sm:leading-[1.5] sm:max-w-full" data-hero-reveal data-hero-delay="0.14" data-para-anim>
+            <p class="hero-description font-body text-[1.25vw] leading-[2.083vw] text-[#1e1e1e] max-w-[46.927vw] mx-auto md:text-xl md:leading-[1.6] md:max-w-[90%] sm:text-lg sm:leading-[1.5] sm:max-w-[80%]" data-hero-reveal data-hero-delay="0.14" data-para-anim>
                 <?php echo esc_html($hero_description); ?>
             </p>
         <?php endif; ?>

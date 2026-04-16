@@ -3,17 +3,41 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-// Get CTA section settings
-$cta_title = get_field('cta_title') ?: 'Ready to Get on TrAC?';
+// Allow this CTA to be reused across pages by passing `$args` via get_template_part(..., null, $args).
+// Pattern mirrors `template-parts/connecting-communities/hero.php`.
+$cta_args = isset($args) && is_array($args) ? $args : [];
+
+// Get CTA section settings (args override ACF override defaults)
+$cta_title =
+    $cta_args['title'] ?? get_field('cta_title') ?? 'Ready to Get on TrAC?';
 $cta_subtitle =
-    get_field('cta_subtitle') ?:
+    $cta_args['subtitle'] ??
+    get_field('cta_subtitle') ??
     "Stop paying for internet you're not getting. Join businesses across Africa that trust TrAC.";
-$cta_button_text = get_field('cta_button_text') ?: 'Get Connected';
-$cta_button_link = get_field('cta_button_link') ?: '#get-connected';
+// Optional second paragraph used on some pages (e.g. Connecting Communities)
+$cta_para = $cta_args['para'] ?? get_field('cta_para') ?? '';
+
+$cta_button_text =
+    $cta_args['button_text'] ??
+    get_field('cta_button_text') ??
+    'Get Connected';
+$cta_button_link =
+    $cta_args['button_link'] ??
+    get_field('cta_button_link') ??
+    '#get-connected';
+
+// Optional extra class hooks
+$cta_button_wrapper_class = $cta_args['button_wrapper_class'] ?? '';
+$cta_button_class = $cta_args['button_class'] ?? '';
+
+// Background SVG offset differs slightly across pages; allow override.
+$pattern_top_class = $cta_args['pattern_top_class'] ?? 'top-[-12%] sm:top-0';
 ?>
 
 <section class="cta-section relative bg-[#eef3fc] overflow-hidden" data-section="cta">
-    <div class="cta-bg-pattern absolute inset-0 w-full h-full top-[-12%]">
+    <div class="cta-bg-pattern absolute inset-0 w-full h-full <?php echo esc_attr(
+        $pattern_top_class,
+    ); ?>">
         <svg width="1796" height="670" viewBox="0 0 1796 670" fill="none" xmlns="http://www.w3.org/2000/svg" data-cta-svg>
             <path d="M897.253 0.433594L897.753 669.434" stroke="#D9D9D9"/>
             <path d="M1795.73 0.433594C1795.73 0.433594 1480.02 188.66 1307.73 346.434C1181.94 461.627 1013.73 669.434 1013.73 669.434" stroke="#D9D9D9"/>
@@ -77,7 +101,7 @@ $cta_button_link = get_field('cta_button_link') ?: '#get-connected';
                 <linearGradient id="paint11_linear_329_19266" x1="148.752" y1="93" x2="91.752" y2="57" gradientUnits="userSpaceOnUse">
                     <stop stop-color="#10417F"/>
                     <stop offset="1" stop-color="white" stop-opacity="0"/>
-                </linearGradient>
+                </linearGradient> 
             </defs>
         </svg>
     </div>
@@ -93,8 +117,20 @@ $cta_button_link = get_field('cta_button_link') ?: '#get-connected';
                     <?php echo esc_html($cta_subtitle); ?>
                 </p>
 
-                <div class="cta-button-wrapper mt-[12vw]" data-animate="fade-up" data-delay="0.2">
-                    <a href="<?php echo esc_url($cta_button_link); ?>" class="btn btn-primary group magnetic inline-flex">
+                <?php if (!empty($cta_para)): ?>
+                    <p class="cta-subtitle font-body text-[1.25vw] leading-[1.5] text-[#1e1e1e] mb-[4.167vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-para-anim data-delay="0.2">
+                        <?php echo esc_html($cta_para); ?>
+                    </p>
+                <?php endif; ?>
+
+                <div class="cta-button-wrapper mt-[12vw] <?php echo esc_attr(
+                    $cta_button_wrapper_class,
+                ); ?>" data-animate="fade-up" data-delay="0.2">
+                    <a href="<?php echo esc_url(
+                        $cta_button_link,
+                    ); ?>" class="btn btn-primary group magnetic inline-flex <?php echo esc_attr(
+                        $cta_button_class,
+                    ); ?>">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
                             $cta_button_text,

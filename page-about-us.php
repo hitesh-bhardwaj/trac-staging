@@ -23,13 +23,25 @@ get_header();
             'vision-mission',
             'trac-story',
             'our-team',
-            'cta',
-
         ];
 
         foreach ($about_page_sections as $section_slug) {
             get_template_part('template-parts/about-page/' . $section_slug);
         }
+
+        // Shared CTA
+        get_template_part(
+            'template-parts/front-page/cta',
+            null,
+            [
+                'title' => 'Ready to Get on TrAC?',
+                'subtitle' =>
+                    "Stop paying for internet you're not getting. Join businesses across Africa that trust TrAC.",
+                'button_text' => 'Get Connected',
+                'button_link' => '#get-connected',
+                'pattern_top_class' => 'top-[-12%] sm:top-0',
+            ],
+        );
         ?>
     <?php endwhile; ?>
 </main>

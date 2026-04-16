@@ -185,7 +185,24 @@ get_header();
             ?>
 
             <?php get_template_part('template-parts/front-page/faqs'); ?>
-            <?php get_template_part('template-parts/connecting-communities/cta'); ?>
+            <?php
+            get_template_part(
+                'template-parts/front-page/cta',
+                null,
+                [
+                    'title' => 'Building the Future, Together',
+                    'subtitle' =>
+                        'Connectivity is where it starts but the impact goes much further.',
+                    'para' =>
+                        "",
+                    'button_text' => 'Get Connected',
+                    'button_link' => '#get-connected',
+                    'pattern_top_class' => 'top-[-15%]',
+                    // Move CTA button slightly upward for this page.
+                    'button_wrapper_class' => '',
+                ],
+            );
+            ?>
         </main>
 
         <?php

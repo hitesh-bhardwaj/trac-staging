@@ -205,80 +205,157 @@ Page Loader
     class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] px-[2vw] py-[1.5vw] flex justify-between z-[999] bg-white"
     data-products-dropdown
       >
-    <a href="<?php echo esc_url(home_url('/products/home-internet/')); ?>" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
-        <div class="w-full flex flex-col gap-[1vw]">
-            <h4 class="font-medium text-[1.5vw]">Home Internet</h4>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-        </div>
-        <div class="w-full flex justify-end">
-            <div class="size-[3.5vw] rounded-[0.6vw] bg-white p-[1vw] flex justify-center items-center text-black">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                </svg>
+    <a href="<?php echo esc_url(home_url('/products/home-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <div class="w-full flex flex-col gap-[1vw]">
+        <h4 class="font-medium text-[1.5vw]">Home Internet</h4>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+    </div>
+
+    <div class="w-full flex justify-end">
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white flex justify-center items-center text-black overflow-hidden">
+            <div class="relative w-[20px] h-[20px] overflow-hidden">
+                
+                <!-- First SVG -->
+                <div class="absolute top-0 left-0 w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <!-- Second SVG -->
+                <div class="absolute top-0 left-[-120%] w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    </svg>
+                </div>
+
             </div>
         </div>
-    </a>
+    </div>
+</a>
 
-    <a  href="<?php echo esc_url(home_url('/products/sme-internet/')); ?>" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a  href="<?php echo esc_url(home_url('/products/sme-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">SME Internet</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
         </div>
         <div class="w-full flex justify-end">
-            <div class="size-[3.5vw] rounded-[0.6vw] bg-white p-[1vw] flex justify-center items-center text-black">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                </svg>
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white flex justify-center items-center text-black overflow-hidden">
+            <div class="relative w-[20px] h-[20px] overflow-hidden">
+                
+                <!-- First SVG -->
+                <div class="absolute top-0 left-0 w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <!-- Second SVG -->
+                <div class="absolute top-0 left-[-120%] w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    </svg>
+                </div>
+
             </div>
         </div>
+    </div>
     </a>
 
-    <a href="<?php echo esc_url(home_url('/products/enterprise-network/')); ?>" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="<?php echo esc_url(home_url('/products/enterprise-network/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">Enterprise Network</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
         </div>
         <div class="w-full flex justify-end">
-            <div class="size-[3.5vw] rounded-[0.6vw] bg-white p-[1vw] flex justify-center items-center text-black">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                </svg>
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white flex justify-center items-center text-black overflow-hidden">
+            <div class="relative w-[20px] h-[20px] overflow-hidden">
+                
+                <!-- First SVG -->
+                <div class="absolute top-0 left-0 w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <!-- Second SVG -->
+                <div class="absolute top-0 left-[-120%] w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    </svg>
+                </div>
+
             </div>
         </div>
+    </div>
     </a>
 
-    <a href="<?php echo esc_url(home_url('/products/carrier-services/')); ?>" class="w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="<?php echo esc_url(home_url('/products/carrier-services/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
             <h4 class="font-medium text-[1.5vw]">Wholesale & Carrier</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
         </div>
         <div class="w-full flex justify-end">
-            <div class="size-[3.5vw] rounded-[0.6vw] bg-white p-[1vw] flex justify-center items-center text-black">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                </svg>
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white flex justify-center items-center text-black overflow-hidden">
+            <div class="relative w-[20px] h-[20px] overflow-hidden">
+                
+                <!-- First SVG -->
+                <div class="absolute top-0 left-0 w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <!-- Second SVG -->
+                <div class="absolute top-0 left-[-120%] w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
+                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
+                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                    </svg>
+                </div>
+
             </div>
         </div>
+    </div>
     </a>
    </nav>
    <div data-products-overlay class=" bg-black/20 backdrop-blur-md fixed inset-0 w-screen h-screen z-[998]">
