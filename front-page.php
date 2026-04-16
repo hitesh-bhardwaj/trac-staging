@@ -20,7 +20,7 @@ get_header();
         $front_page_sections = [
             'hero',
             'about',
-            'why-trac',
+            // 'why-trac',
             'services',
             'testimonials',
             'clients',

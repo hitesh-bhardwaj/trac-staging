@@ -148,14 +148,13 @@
         --text-h1: 8vw;
         --text-h2: 6vw;
         --text-h3: 5vw;
-        --text-body-lg: 4vw;
-        --text-body: 3.8vw;
+        --text-body-lg: 4.5vw;
+        --text-body: 4.2vw;
         --text-body-sm: 3.2vw;
         --space-container: 6vw;
         --header-height: 70px;
     }
 }
-
 
 .mouse-follower {
     position: fixed;
@@ -238,7 +237,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     will-change: auto;
 }
 
-
 .hi-installation-sticky {
     position: sticky;
     top: 15%;
@@ -294,12 +292,9 @@ html.js [data-hero-reveal].is-hero-revealed {
     transform-origin: left;
 }
 
-
-
 .hi-install-card.is-active {
     background: #eef3fc;
-    border: 1px solid rgba(16, 65, 127, 0.0);
-
+    border: 1px solid rgba(16, 65, 127, 0);
 }
 
 .hi-install-card__icon-svg {
@@ -519,7 +514,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 }
 
-
 /* ========================================
    Base Styles
    ======================================== */
@@ -694,9 +688,11 @@ html.js [data-hero-reveal].is-hero-revealed {
     /* Mobile button adjustments */
     @media (max-width: 540px) {
         .btn {
-            font-size: 16px;
-            padding: 12px 20px;
-            gap: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 4.5vw;
+            padding: 4vw 10vw;
+            width: 75vw;
             border-radius: 40px;
             min-height: 52px;
             --btn-line-w: 20px;
@@ -842,7 +838,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     top: 2%;
     width: 90%;
     border-radius: 0.9vw;
-     background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 1);
     backdrop-filter: blur(0px);
@@ -1254,7 +1250,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     height: 100%;
 }
 
-.cta-bg-pattern path[stroke="#D9D9D9"] {
+.cta-bg-pattern path[stroke='#D9D9D9'] {
     vector-effect: non-scaling-stroke;
 }
 
@@ -1320,7 +1316,6 @@ html.js [data-hero-reveal].is-hero-revealed {
         display: none;
     }
 }
-
 
 .who-we-are-track {
     isolation: isolate;
@@ -1423,8 +1418,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     /* margin-top: 1vw;  Added a small gap between number and text */
 }
 
-
-
 .what-we-do-section {
     height: 240vh;
     overflow: clip;
@@ -1482,9 +1475,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     min-width: 0.58em;
 }
 
-
 /* about page team slider */
-
 
 .team-slider-active-card {
     position: relative;
@@ -1494,7 +1485,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     overflow: hidden;
     border-radius: 2vw;
     border: 1px solid #10417f;
-    background: #EEF3FC;
+    background: #eef3fc;
 }
 
 .team-slider-active-image {
@@ -1603,7 +1594,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     overflow: hidden;
     border: 0;
     border-radius: 1.2vw;
-    background: #EEF3FC;
+    background: #eef3fc;
     padding: 0;
     cursor: pointer;
     appearance: none;
@@ -1620,7 +1611,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     -webkit-user-drag: none;
 }
 
-
 .team-slider-nav {
     display: inline-flex;
     align-items: center;
@@ -1636,7 +1626,6 @@ html.js [data-hero-reveal].is-hero-revealed {
         color 0.25s ease,
         border-color 0.25s ease;
 }
-
 
 .team-slider-nav-icon {
     display: inline-flex;
@@ -1958,14 +1947,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     #page {
         margin-bottom: 0px;
     }
-
-    [data-parallax-footer] {
-        position: static;
-        clip-path: none;
-        -webkit-clip-path: none;
-        max-height: none;
-        overflow: visible;
-    }
 }
 
 /* Parallax footer (CTA passes over a fixed footer) */
@@ -1993,20 +1974,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     z-index: 1;
 }
 
-@media (max-width: 768px) {
-    #page {
-        margin-bottom: 0px;
-    }
-
-    [data-parallax-footer] {
-        position: static;
-        clip-path: none;
-        -webkit-clip-path: none;
-        max-height: none;
-        overflow: visible;
-    }
-}
-
 .about-section,
 .services-section,
 .clients-section,
@@ -2024,11 +1991,14 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .our-network-section .pointer-card {
-     /* opacity: 0; */
-     /* visibility: hidden; */
+    /* opacity: 0; */
+    /* visibility: hidden; */
     pointer-events: none;
     transform: translateY(10px);
-    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
 }
 
 .our-network-section .pointer-card.is-active {
@@ -2038,19 +2008,24 @@ html.js [data-hero-reveal].is-hero-revealed {
     pointer-events: auto;
 }
 
-.our-network-section [data-network-draw] svg circle[cx][cy][r="11.5"] {
+.our-network-section [data-network-draw] svg circle[cx][cy][r='11.5'] {
     cursor: pointer;
-    transition: transform 0.2s ease, filter 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
     transform-box: fill-box;
     transform-origin: center;
 }
 
-.our-network-section [data-network-draw] svg circle[r="11.5"][fill="#EFF4FC"][stroke="#001837"],
-.our-network-section [data-network-draw] svg circle[r="7"][fill="#F0741C"] {
+.our-network-section
+    [data-network-draw]
+    svg
+    circle[r='11.5'][fill='#EFF4FC'][stroke='#001837'],
+.our-network-section [data-network-draw] svg circle[r='7'][fill='#F0741C'] {
     cursor: pointer;
 }
 
-.our-network-section [data-network-draw] svg circle[cx][cy][r="11.5"]:hover {
+.our-network-section [data-network-draw] svg circle[cx][cy][r='11.5']:hover {
     transform: scale(1.08);
     filter: brightness(1.08);
 }
@@ -2099,7 +2074,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     background: #fff;
     box-shadow: 0 0.521vw 1.563vw rgba(16, 65, 127, 0.1);
 }
-
 
 /* our offering css  */
 
@@ -2337,7 +2311,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 }
 
-
 /* why choose trac */
 
 .why-choose-cards-stage {
@@ -2425,7 +2398,6 @@ html.js [data-hero-reveal].is-hero-revealed {
         max-width: 150px;
     }
 }
-
 
 /* .service-card:not(:first-child) {
     margin-top: -25vw;
@@ -2923,7 +2895,8 @@ html.js [data-hero-reveal].is-hero-revealed {
     border: 3px solid transparent;
     border-top-color: #10417f;
     border-radius: 50%;
-    animation: spinnerRotate 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    animation: spinnerRotate 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+        infinite;
 }
 
 .spinner-ring:nth-child(2) {
@@ -2931,7 +2904,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     height: 70%;
     top: 15%;
     left: 15%;
-    border-top-color: #E85D24;
+    border-top-color: #e85d24;
     animation-delay: 0.2s;
     animation-duration: 1.2s;
 }
@@ -2957,7 +2930,8 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 @keyframes logoFloat {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0);
     }
     50% {
@@ -2975,7 +2949,8 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 @keyframes textPulse {
-    0%, 100% {
+    0%,
+    100% {
         opacity: 1;
     }
     50% {
@@ -3319,7 +3294,8 @@ html.js [data-hero-reveal].is-hero-revealed {
     opacity: 1;
 }
 
-.communities-collaborations__item[data-open] .communities-collaborations__toggle-bar {
+.communities-collaborations__item[data-open]
+    .communities-collaborations__toggle-bar {
     transform: rotate(180deg);
 }
 
@@ -3802,7 +3778,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     border-radius: 1.042vw;
     overflow: hidden;
     transform-origin: 50% 50%;
-    opacity: .96;
+    opacity: 0.96;
     will-change: transform, width, height, left, top;
 }
 
@@ -3941,9 +3917,9 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 /* Input and Textarea Base Styles */
-.contact-form-wrapper input[type="text"],
-.contact-form-wrapper input[type="email"],
-.contact-form-wrapper input[type="tel"],
+.contact-form-wrapper input[type='text'],
+.contact-form-wrapper input[type='email'],
+.contact-form-wrapper input[type='tel'],
 .contact-form-wrapper textarea {
     width: 100%;
     border: none;
@@ -3957,9 +3933,9 @@ html.js [data-hero-reveal].is-hero-revealed {
     transition: border-color 0.3s ease;
 }
 
-.contact-form-wrapper input[type="text"]::placeholder,
-.contact-form-wrapper input[type="email"]::placeholder,
-.contact-form-wrapper input[type="tel"]::placeholder,
+.contact-form-wrapper input[type='text']::placeholder,
+.contact-form-wrapper input[type='email']::placeholder,
+.contact-form-wrapper input[type='tel']::placeholder,
 .contact-form-wrapper textarea::placeholder {
     color: #333;
     opacity: 1;
@@ -3967,9 +3943,9 @@ html.js [data-hero-reveal].is-hero-revealed {
     font-size: 1.146vw;
 }
 
-.contact-form-wrapper input[type="text"]:focus,
-.contact-form-wrapper input[type="email"]:focus,
-.contact-form-wrapper input[type="tel"]:focus,
+.contact-form-wrapper input[type='text']:focus,
+.contact-form-wrapper input[type='email']:focus,
+.contact-form-wrapper input[type='tel']:focus,
 .contact-form-wrapper textarea:focus {
     border-bottom-color: var(--color-brand-secondary);
 }
@@ -3991,7 +3967,9 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 /* Required Asterisk */
-.contact-form-wrapper .wpcf7-form-control.wpcf7-validates-as-required + span.wpcf7-not-valid-tip {
+.contact-form-wrapper
+    .wpcf7-form-control.wpcf7-validates-as-required
+    + span.wpcf7-not-valid-tip {
     font-size: 0.833vw;
     color: #dc2626;
     margin-top: 0.3vw;
@@ -4084,17 +4062,17 @@ html.js [data-hero-reveal].is-hero-revealed {
         gap: 48px;
     }
 
-    .contact-form-wrapper input[type="text"],
-    .contact-form-wrapper input[type="email"],
-    .contact-form-wrapper input[type="tel"],
+    .contact-form-wrapper input[type='text'],
+    .contact-form-wrapper input[type='email'],
+    .contact-form-wrapper input[type='tel'],
     .contact-form-wrapper textarea {
         font-size: 18px;
         padding: 8px 0;
     }
 
-    .contact-form-wrapper input[type="text"]::placeholder,
-    .contact-form-wrapper input[type="email"]::placeholder,
-    .contact-form-wrapper input[type="tel"]::placeholder,
+    .contact-form-wrapper input[type='text']::placeholder,
+    .contact-form-wrapper input[type='email']::placeholder,
+    .contact-form-wrapper input[type='tel']::placeholder,
     .contact-form-wrapper textarea::placeholder {
         font-size: 18px;
     }
@@ -4136,17 +4114,17 @@ html.js [data-hero-reveal].is-hero-revealed {
         gap: 32px;
     }
 
-    .contact-form-wrapper input[type="text"],
-    .contact-form-wrapper input[type="email"],
-    .contact-form-wrapper input[type="tel"],
+    .contact-form-wrapper input[type='text'],
+    .contact-form-wrapper input[type='email'],
+    .contact-form-wrapper input[type='tel'],
     .contact-form-wrapper textarea {
         font-size: 16px;
         padding: 6px 0;
     }
 
-    .contact-form-wrapper input[type="text"]::placeholder,
-    .contact-form-wrapper input[type="email"]::placeholder,
-    .contact-form-wrapper input[type="tel"]::placeholder,
+    .contact-form-wrapper input[type='text']::placeholder,
+    .contact-form-wrapper input[type='email']::placeholder,
+    .contact-form-wrapper input[type='tel']::placeholder,
     .contact-form-wrapper textarea::placeholder {
         font-size: 16px;
     }
@@ -4188,7 +4166,7 @@ html.js [data-hero-reveal].is-hero-revealed {
    ======================================== */
 
 /* File Upload Container - Target the wrapper span with specific class names */
-.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"]),
+.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type='file']),
 .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload,
 .contact-form-wrapper .wpcf7-form-control-wrap.file-upload {
     position: relative;
@@ -4197,8 +4175,8 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 /* Hide the default file input but keep it accessible for clicks */
-.contact-form-wrapper input[type="file"],
-.contact-form-wrapper input[type="file"].wpcf7-file {
+.contact-form-wrapper input[type='file'],
+.contact-form-wrapper input[type='file'].wpcf7-file {
     position: absolute;
     width: 100%;
     height: 6.719vw;
@@ -4210,7 +4188,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 /* Custom File Upload Visual Button */
-.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::before,
+.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type='file'])::before,
 .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::before,
 .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::before {
     content: '';
@@ -4225,7 +4203,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 /* Upload Icon */
-.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::after,
+.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type='file'])::after,
 .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::after,
 .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::after {
     content: '';
@@ -4245,17 +4223,21 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 /* Hover State */
-.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"]:hover)::before,
+.contact-form-wrapper
+    .wpcf7-form-control-wrap:has(input[type='file']:hover)::before,
 .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload:hover::before,
 .contact-form-wrapper .wpcf7-form-control-wrap.file-upload:hover::before {
     background-color: #dce7f8;
 }
 
 /* Focus State (when file input is focused via keyboard) */
-.contact-form-wrapper input[type="file"]:focus + *,
-.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"]:focus)::before,
-.contact-form-wrapper .wpcf7-form-control-wrap.cv-upload:has(input:focus)::before,
-.contact-form-wrapper .wpcf7-form-control-wrap.file-upload:has(input:focus)::before {
+.contact-form-wrapper input[type='file']:focus + *,
+.contact-form-wrapper
+    .wpcf7-form-control-wrap:has(input[type='file']:focus)::before,
+.contact-form-wrapper
+    .wpcf7-form-control-wrap.cv-upload:has(input:focus)::before,
+.contact-form-wrapper
+    .wpcf7-form-control-wrap.file-upload:has(input:focus)::before {
     outline: 2px solid var(--color-brand-primary);
     outline-offset: 2px;
 }
@@ -4272,19 +4254,21 @@ html.js [data-hero-reveal].is-hero-revealed {
 
 /* Tablet Styles (max-width: 1024px) */
 @media (max-width: 1024px) {
-    .contact-form-wrapper input[type="file"],
-    .contact-form-wrapper input[type="file"].wpcf7-file {
+    .contact-form-wrapper input[type='file'],
+    .contact-form-wrapper input[type='file'].wpcf7-file {
         height: 120px;
     }
 
-    .contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::before,
+    .contact-form-wrapper
+        .wpcf7-form-control-wrap:has(input[type='file'])::before,
     .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::before,
     .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::before {
         height: 120px;
         border-radius: 20px;
     }
 
-    .contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::after,
+    .contact-form-wrapper
+        .wpcf7-form-control-wrap:has(input[type='file'])::after,
     .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::after,
     .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::after {
         width: 38px;
@@ -4300,19 +4284,21 @@ html.js [data-hero-reveal].is-hero-revealed {
 
 /* Mobile Styles (max-width: 540px) */
 @media (max-width: 540px) {
-    .contact-form-wrapper input[type="file"],
-    .contact-form-wrapper input[type="file"].wpcf7-file {
+    .contact-form-wrapper input[type='file'],
+    .contact-form-wrapper input[type='file'].wpcf7-file {
         height: 100px;
     }
 
-    .contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::before,
+    .contact-form-wrapper
+        .wpcf7-form-control-wrap:has(input[type='file'])::before,
     .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::before,
     .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::before {
         height: 100px;
         border-radius: 16px;
     }
 
-    .contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])::after,
+    .contact-form-wrapper
+        .wpcf7-form-control-wrap:has(input[type='file'])::after,
     .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::after,
     .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::after {
         width: 32px;

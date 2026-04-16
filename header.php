@@ -67,7 +67,7 @@ Page Loader
                     <a href="<?php echo esc_url(
                         home_url('/'),
                     ); ?>" class="flex items-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[8vw]" alt="Trac Logo">
+                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[8vw] sm:w-[20vw]" alt="Trac Logo">
                     </a>
                 <?php endif; ?>
             </div>

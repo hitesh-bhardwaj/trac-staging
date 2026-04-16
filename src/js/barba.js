@@ -101,20 +101,11 @@ export function initBarba(app) {
                         app.lenis.scrollTo(0, { immediate: true });
                     }
 
-                    // Only pre-hide non-text hero items (when motion is allowed).
-                    // Heading/paragraph hero animations are handled by `initBarbaSyncedHeroReveal`
-                    // after the transition completes.
-                    const heroItems = app.prefersReducedMotion
-                        ? []
-                        : Array.from(
-                              data.next.container.querySelectorAll(
-                                  '[data-hero-reveal]',
-                              ),
-                          ).filter(
-                              (el) =>
-                                  !el.hasAttribute('data-heading-anim') &&
-                                  !el.hasAttribute('data-para-anim'),
-                          );
+                    const heroItems = Array.from(
+                        data.next.container.querySelectorAll(
+                            '[data-hero-reveal]',
+                        ),
+                    );
 
                     document.documentElement.classList.add(
                         'is-barba-page-enter',
@@ -143,6 +134,29 @@ export function initBarba(app) {
                         },
                         0,
                     );
+
+                    if (heroItems.length) {
+                        heroItems.forEach((el) => {
+                            const delay = parseFloat(
+                                el.dataset.heroDelay || '0',
+                            );
+
+                            tl.to(
+                                el,
+                                {
+                                    opacity: 1,
+                                    y: 0,
+                                    duration: 0.65,
+                                    ease: 'power3.out',
+                                    clearProps: 'willChange',
+                                    onComplete: () => {
+                                        el.dataset.heroAnimated = 'true';
+                                    },
+                                },
+                                delay + 0.05,
+                            );
+                        });
+                    }
 
                     return tl;
                 },
@@ -306,33 +320,33 @@ export function initPageLoader() {
             );
     }
 
-    const introTl = gsap.timeline({
-        onComplete: () => {
-            animationDone = true;
-            maybeHideLoader();
-        },
-    });
+    // const introTl = gsap.timeline({
+    //     onComplete: () => {
+    //         animationDone = true;
+    //         maybeHideLoader();
+    //     },
+    // });
 
-    introTl
-        .to(overlayLogo, {
-            clipPath: 'inset(0% 70% 0% 0%)',
-            duration: 0.6,
-            ease: 'power2.inOut',
-        })
-        .to({}, { duration: 0.08 })
-        .to(overlayLogo, {
-            clipPath: 'inset(0% 20% 0% 0%)',
-            duration: 2.2,
-            ease: 'power2.inOut',
-        })
-        .to({}, { duration: 0.08 })
-        .to(overlayLogo, {
-            clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 0.7,
-            ease: 'power2.inOut',
-        });
+    // introTl
+    //     .to(overlayLogo, {
+    //         clipPath: 'inset(0% 70% 0% 0%)',
+    //         duration: 0.6,
+    //         ease: 'power2.inOut',
+    //     })
+    //     .to({}, { duration: 0.08 })
+    //     .to(overlayLogo, {
+    //         clipPath: 'inset(0% 20% 0% 0%)',
+    //         duration: 2.2,
+    //         ease: 'power2.inOut',
+    //     })
+    //     .to({}, { duration: 0.08 })
+    //     .to(overlayLogo, {
+    //         clipPath: 'inset(0% 0% 0% 0%)',
+    //         duration: 0.7,
+    //         ease: 'power2.inOut',
+    //     });
 
-    gsap.delayedCall(2, () => {
+    gsap.delayedCall(0, () => {
         minTimeDone = true;
         maybeHideLoader();
     });
@@ -353,5 +367,5 @@ export function initPageLoader() {
         animationDone = true;
         minTimeDone = true;
         maybeHideLoader();
-    }, 5000);
+    }, 1000);
 }

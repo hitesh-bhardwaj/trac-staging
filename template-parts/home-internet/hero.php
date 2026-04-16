@@ -4,12 +4,12 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <section class="hero relative bg-white overflow-hidden" data-section="hero" data-hero-static>
-    <div class="hero-container px-[5.21vw] py-[12vw] w-screen h-fit flex items-center flex-col gap-[2vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
+    <div class="hero-container px-[5.21vw] py-[12vw] w-screen h-fit flex items-center flex-col gap-[2vw] relative z-[10] max-md:px-[4vw] max-md:pt-[120px] max-sm:px-[6vw] max-sm:pt-[100px]">
         <div class="flex items-center justify-center">
             <div class="hero-text w-full max-w-[80rem] text-center">
                 <div>
                     <h1
-                        class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4"
+                        class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] max-md:mb-6 max-sm:mb-4"
                         data-hero-reveal
                         data-heading-anim
                         data-base-delay="0.05"
@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
                     </h1>
 
                     <p
-                        class="hero-subtitle font-body font-medium text-text-body mx-auto max-w-[45rem] mb-[3.125vw] md:mb-8 sm:mb-6"
+                        class="hero-subtitle font-body font-medium text-text-body mx-auto max-w-[45rem] mb-[3.125vw] max-md:mb-8 max-sm:mb-6"
                         data-hero-reveal
                         data-hero-delay="0.08"
                         data-para-anim
@@ -34,7 +34,7 @@ if (!defined('ABSPATH')) {
                     </p>
 
                     <div
-                        class="hero-cta flex flex-wrap justify-center gap-[1.042vw] md:gap-4 sm:flex-col sm:gap-3"
+                        class="hero-cta flex flex-wrap justify-center gap-[1.042vw] max-md:gap-4 max-sm:flex-col max-sm:gap-3"
                         data-hero-reveal
                         data-hero-delay="0.16"
                     >
@@ -59,7 +59,7 @@ if (!defined('ABSPATH')) {
                     </div>
                 </div>
 
-                <div class="enterprise-hero-images w-full mx-auto mt-[2vw] md:mt-10 sm:mt-8 flex items-end justify-center h-full gap-[1.25vw]">
+                <div class="enterprise-hero-images w-full mx-auto mt-[2vw] max-md:mt-10 max-sm:mt-8 flex items-end justify-center h-full gap-[1.25vw]">
                     <div
                         class="rounded-[1.2vw] overflow-hidden h-[18vw] w-[20vw]"
                         data-hero-reveal
