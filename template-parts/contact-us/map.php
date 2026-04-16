@@ -53,9 +53,17 @@ if (!defined('ABSPATH')) {
                     </div>
                 </div>
 
+                <!-- Connector Lines (positioned/rotated via JS to link marker -> card) -->
+                <div class="map-connector pointer-events-none" data-map-connector="bvi" aria-hidden="true">
+                    <span class="map-connector-line" data-map-line></span>
+                </div>
+                <div class="map-connector pointer-events-none" data-map-connector="rwanda" aria-hidden="true">
+                    <span class="map-connector-line" data-map-line></span>
+                </div>
+
                 <!-- Address Cards -->
                 <!-- Rwanda Address -->
-                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 55%; top: 70%;" data-address="rwanda" data-animate="fade-up">
+                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 18%; top: 68%;" data-address="rwanda">
                     <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:text-base">Rwanda</h3>
                     <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-sm">
                         KG 15 Ave, #11, Gacuriro<br>
@@ -64,7 +72,7 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <!-- BVI Address -->
-                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 37%; top: 20%;" data-address="bvi" data-animate="fade-up">
+                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0" style="left: 52%; top: 24%;" data-address="bvi">
                     <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:text-base">British Virgin Island</h3>
                     <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-sm">
                         80 Main St, Road Town<br>

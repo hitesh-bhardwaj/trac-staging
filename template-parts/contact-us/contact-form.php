@@ -16,8 +16,9 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <!-- Heading -->
-                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
-                    Let's Get You<br>Connected
+                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" >
+                    <span data-heading-anim class="block">Let's Get You</span>
+                   <span data-heading-anim class="block"> Connected </span>
                 </h2>
 
                 <!-- Description -->

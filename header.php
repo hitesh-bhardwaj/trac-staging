@@ -56,7 +56,7 @@ Page Loader
 
    <header
     id="site-header"
-    class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[9999] bg-white "
+    class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[9999] bg-white"
 >
         <div class="header-inner w-full px-[4vw] py-[1.15vw] flex items-center justify-between md:px-[4vw] md:py-5 sm:px-[6vw] sm:py-4">
             <!-- Logo -->

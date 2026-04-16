@@ -219,10 +219,11 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
                 '(prefers-reduced-motion: reduce)',
             ).matches;
 
-            const duration = parseFloat(el.dataset.duration || '1.25') || 1.25;
-            const stagger = parseFloat(el.dataset.stagger || '0.1') || 0.1;
+            // Subtle defaults (same as non-hero `data-heading-anim`)
+            const duration = parseFloat(el.dataset.duration || '1.6') || 1.6;
+            const stagger = parseFloat(el.dataset.stagger || '0.14') || 0.14;
             const baseDelay =
-                parseFloat(el.dataset.baseDelay || '0') || 0;
+                parseFloat(el.dataset.baseDelay || '0.05') || 0.05;
 
             if (!prefersReducedMotion && lines.length) {
                 gsap.set(lines, {
@@ -231,18 +232,37 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
                     willChange: 'mask-position',
                 });
 
-                gsap.to(lines, {
-                    WebkitMaskPosition: '0% 100%',
-                    maskPosition: '0% 100%',
-                    duration,
-                    stagger,
+                // Sync a blur-to-sharp reveal with the same timing as the mask wipe.
+                const tl = gsap.timeline({
                     delay: baseDelay + delay,
-                    ease: 'power3.out',
-                    overwrite: 'auto',
-                    onComplete: () => {
-                        gsap.set(lines, { clearProps: 'willChange' });
-                    },
+                    defaults: { ease: 'power3.out', overwrite: 'auto' },
                 });
+
+                tl.fromTo(
+                    el,
+                    { filter: 'blur(12px)', opacity: 1 },
+                    {
+                        filter: 'blur(0px)',
+                        duration: Math.max(0.7, duration * 0.65),
+                        ease: 'power2.out',
+                        clearProps: 'filter',
+                    },
+                    0,
+                );
+
+                tl.to(
+                    lines,
+                    {
+                        WebkitMaskPosition: '0% 100%',
+                        maskPosition: '0% 100%',
+                        duration,
+                        stagger,
+                        onComplete: () => {
+                            gsap.set(lines, { clearProps: 'willChange' });
+                        },
+                    },
+                    0,
+                );
             }
 
             el.dataset.heroAnimated = 'true';
@@ -927,11 +947,11 @@ function initHeadingLineReveal(scope = null) {
             }
 
             const delay = parseFloat(el.dataset.delay || '0') || 0;
-            // Faster defaults to match the reference.
-            const duration = parseFloat(el.dataset.duration || '1.25') || 1.25;
-            const stagger = parseFloat(el.dataset.stagger || '0.10') || 0.1;
+            // Subtle defaults (same as hero `data-heading-anim`, but without blur).
+            const duration = parseFloat(el.dataset.duration || '5') || 5;
+            const stagger = parseFloat(el.dataset.stagger || '0.14') || 0.14;
             const baseDelay =
-                parseFloat(el.dataset.baseDelay || '0') || 0;
+                parseFloat(el.dataset.baseDelay || '0.05') || 0.05;
 
             gsap.set(lines, {
                 WebkitMaskPosition: '100% 100%',

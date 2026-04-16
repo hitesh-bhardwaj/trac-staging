@@ -426,19 +426,20 @@ html.js [data-hero-reveal].is-hero-revealed {
         112deg,
         #000 0%,
         #000 48%,
-        transparent 58%,
+        transparent 88%,
         transparent 100%
     );
-    -webkit-mask-size: 220% 120%;
+    /* Bigger/wider mask so the wipe feels softer/subtler. */
+    -webkit-mask-size: 600% 100%;
     -webkit-mask-position: 100% 100%;
     mask-image: linear-gradient(
-        112deg,
+        150deg,
         #000 0%,
         #000 48%,
-        transparent 58%,
+        transparent 88%,
         transparent 100%
     );
-    mask-size: 220% 120%;
+    mask-size: 600% 100%;
     mask-position: 100% 100%;
 }
 
@@ -446,22 +447,22 @@ html.js [data-hero-reveal].is-hero-revealed {
 [data-heading-anim] .hero-title-line {
     display: block;
     -webkit-mask-image: linear-gradient(
-        112deg,
+        150deg,
         #000 0%,
         #000 48%,
-        transparent 58%,
+        transparent 88%,
         transparent 100%
     );
-    -webkit-mask-size: 220% 120%;
+    -webkit-mask-size: 600% 100%;
     -webkit-mask-position: 100% 100%;
     mask-image: linear-gradient(
-        112deg,
+        150deg,
         #000 0%,
         #000 48%,
-        transparent 58%,
+        transparent 88%,
         transparent 100%
     );
-    mask-size: 220% 120%;
+    mask-size: 600% 100%;
     mask-position: 100% 100%;
 }
 
@@ -469,6 +470,27 @@ html.js [data-hero-reveal].is-hero-revealed {
    Once `initBarbaSyncedHeroReveal` runs it adds `.is-hero-revealed`, so we unhide. */
 [data-hero-static] [data-hero-reveal][data-para-anim]:not(.is-hero-revealed) {
     visibility: hidden;
+}
+
+/* Contact map connectors (marker -> address card) */
+.map-connector {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: rotate(var(--map-line-angle, 0deg));
+    transform-origin: 0 50%;
+    z-index: 5;
+}
+
+.map-connector-line {
+    display: block;
+    width: var(--map-line-length, 160px);
+    height: 2px;
+    background: #10417f;
+    border-radius: 999px;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    will-change: transform;
 }
 
 @media (max-width: 991px) {
