@@ -23,8 +23,9 @@ get_header();
             // 'why-trac',
             'services',
             'testimonials',
-            'clients',
+            // 'clients',
             'our-network',
+            "connecting-communities",
             'faqs',
             'cta',
         ];

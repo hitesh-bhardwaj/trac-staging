@@ -84,16 +84,16 @@ $fallback_faqs =
 ?>
 
 <section class="faqs-section relative bg-white overflow-hidden" data-section="faqs">
-    <div class="px-[5.21vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+    <div class="px-[5vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[7vw] sm:py-12">
 
-        <div class="faqs-header text-center mb-[4.844vw] md:mb-12 sm:mb-8">
-            <div class="faqs-label flex items-center justify-center gap-[0.729vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
-                <span class="label-line w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1 sm:w-5"></span>
-                <span class="label-text font-body text-[1.25vw] text-text-primary md:text-xl sm:text-lg"><?php echo esc_html(
+        <div class="faqs-header mb-[4.844vw] md:mb-12 sm:mb-10">
+            <div class="faqs-label flex items-center gap-[0.729vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
+                <span class="label-line w-[1.354vw] h-[0.208vw] bg-[#E86224] md:w-6 md:h-1 sm:w-5"></span>
+                <span class="label-text font-body text-[1.25vw] text-[#E86224] md:text-xl sm:text-lg"><?php echo esc_html(
                     $section_label,
                 ); ?></span>
             </div>
-            <h2 class="faqs-title font-heading text-[3.438vw] leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl" data-heading-anim>
+            <h2 class="faqs-title font-heading text-[3.438vw] leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]" data-heading-anim>
                 <?php echo esc_html($section_title); ?>
             </h2>
         </div>
@@ -122,7 +122,7 @@ $fallback_faqs =
                             aria-controls="faq-answer-<?php echo $index; ?>"
                             id="faq-btn-<?php echo $index; ?>"
                         >
-                            <span class="faq-question-text font-body text-[1.458vw] text-text-primary md:text-xl sm:text-lg">
+                            <span class="faq-question-text font-body text-[1.458vw] md:text-xl sm:text-lg">
                                 <?php echo esc_html($question); ?>
                             </span>
 

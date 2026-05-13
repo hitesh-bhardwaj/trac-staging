@@ -18,8 +18,6 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-
-Page Loader
 <div class="page-loader">
     <div class="w-screen h-screen fixed inset-0 bg-white z-[99999] flex flex-col justify-center items-center loader [clip-path:inset(0%_0%_0%_0%)]">
         <div class="size-[15vw] min-w-[72px] min-h-[72px]">
@@ -56,8 +54,8 @@ Page Loader
 
    <header
     id="site-header"
-    class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[9999] bg-white"
->
+    class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[9999] bg-[#0B1F3A]"
+ >
         <div class="header-inner w-full px-[4vw] py-[1.15vw] flex items-center justify-between md:px-[4vw] md:py-5 sm:px-[6vw] sm:py-4">
             <!-- Logo -->
             <div class="site-logo flex-shrink-0">
@@ -67,7 +65,7 @@ Page Loader
                     <a href="<?php echo esc_url(
                         home_url('/'),
                     ); ?>" class="flex items-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[8vw] sm:w-[20vw]" alt="Trac Logo">
+                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[8vw] sm:w-[20vw] brightness-[16]" alt="Trac Logo">
                     </a>
                 <?php endif; ?>
             </div>
@@ -91,10 +89,10 @@ Page Loader
         class="nav-link inline-flex items-center gap-[0.26vw] under-multi"
         data-products-trigger
     >
-        Products
+        Solutions
         <div class="size-[1.5vw] mt-[-0.5vw] group-hover:translate-y-[10%] duration-300 ease-out">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.708 22.122L23.416 14.416L22.002 13L15.708 19.294L9.416 13L8 14.416L15.708 22.122Z" fill="#1D1D1D"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.708 22.122L23.416 14.416L22.002 13L15.708 19.294L9.416 13L8 14.416L15.708 22.122Z" fill="#ffffff"/>
             </svg>
         </div>
     </a>
@@ -103,16 +101,10 @@ Page Loader
                         <a href="<?php echo esc_url(
                             home_url('/connecting-communities'),
                         ); ?>" class="nav-link under-multi">
-                            Communities
+                            Connecting Communities
                         </a>
                     </li>
-                    <li class="menu-item under-multi-parent">
-                        <a href="<?php echo esc_url(
-                            home_url('/partners'),
-                        ); ?>" class="nav-link under-multi">
-                            Partners
-                        </a>
-                    </li>
+                    
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/careers'),
@@ -120,13 +112,7 @@ Page Loader
                             Careers
                         </a>
                     </li>
-                    <li class="menu-item under-multi-parent">
-                        <a href="<?php echo esc_url(
-                            home_url('/contact-us'),
-                        ); ?>" class="nav-link under-multi">
-                            Contact Us
-                        </a>
-                    </li>
+                    
                 </ul>
             </nav>
 
@@ -135,10 +121,10 @@ Page Loader
                 <!-- Cloud Login CTA Button - Desktop -->
                 <a href="<?php echo esc_url(
                     get_field('header_cta_link', 'option') ?: '#',
-                ); ?>" class="btn btn-primary md:hidden hover:bg-white hover:text-brand-primary transition-colors durtaion-500 ease-in-out border border-brand-primary">
+                ); ?>" class="btn btn-primary md:hidden hover:bg-white hover:text-[#E86224] transition-colors durtaion-500 ease-in-out border border-[#E86224]">
                     <!-- <span class="btn-line"></span> -->
                      <span>
-                        Cloud Login
+                         Contact Us
                      </span>
                 </a>
 
@@ -169,24 +155,22 @@ Page Loader
                     ); ?>" class="mobile-nav-link">About Us</a></li>
                     <li><a href="<?php echo esc_url(
                         home_url('/products'),
-                    ); ?>" class="mobile-nav-link">Products</a></li>
+                    ); ?>" class="mobile-nav-link">Solutions</a></li>
                     <li><a href="<?php echo esc_url(
                         home_url('/communities'),
-                    ); ?>" class="mobile-nav-link">Communities</a></li>
+                    ); ?>" class="mobile-nav-link">Connecting Communities</a></li>
                     <li><a href="<?php echo esc_url(
                         home_url('/partners'),
                     ); ?>" class="mobile-nav-link">Partners</a></li>
                     <li><a href="<?php echo esc_url(
                         home_url('/careers'),
                     ); ?>" class="mobile-nav-link">Careers</a></li>
-                    <li><a href="<?php echo esc_url(
-                        home_url('/contact-us'),
-                    ); ?>" class="mobile-nav-link">Contact Us</a></li>
+                    
                 </ul>
 
                 <a href="#" class="btn btn-primary mt-10 w-full justify-center">
                     <span class="btn-line"></span>
-                    <span class="btn-text">Cloud Login</span>
+                    <span class="btn-text">Contact Us</span>
                     <span class="btn-icon" aria-hidden="true">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
@@ -205,38 +189,30 @@ Page Loader
     class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] px-[2vw] py-[1.5vw] flex justify-between z-[999] bg-white"
     data-products-dropdown
       >
-    <a href="<?php echo esc_url(home_url('/products/home-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="<?php echo esc_url(home_url('/products/home-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
     <div class="w-full flex flex-col gap-[1vw]">
-        <h4 class="font-medium text-[1.5vw]">Home Internet</h4>
+        <h4 class="font-medium text-[1.5vw] font-body">Home Internet</h4>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
     </div>
 
     <div class="w-full flex justify-end">
-        <div class="size-[3.5vw] rounded-[0.6vw] bg-white flex justify-center items-center text-black overflow-hidden">
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:text-white duration-300 ease-out ">
             <div class="relative w-[20px] h-[20px] overflow-hidden">
                 
                 <!-- First SVG -->
                 <div class="absolute top-0 left-0 w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    </svg>
+                             <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                              <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                              </svg>
                 </div>
 
                 <!-- Second SVG -->
                 <div class="absolute top-0 left-[-120%] w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    </svg>
+                    <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                              <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                              </svg>
                 </div>
 
             </div>
@@ -244,37 +220,29 @@ Page Loader
     </div>
 </a>
 
-    <a  href="<?php echo esc_url(home_url('/products/sme-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a  href="<?php echo esc_url(home_url('/products/sme-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
-            <h4 class="font-medium text-[1.5vw]">SME Internet</h4>
+            <h4 class="font-medium text-[1.5vw] font-body">SME Internet</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
         </div>
         <div class="w-full flex justify-end">
-        <div class="size-[3.5vw] rounded-[0.6vw] bg-white flex justify-center items-center text-black overflow-hidden">
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:text-white duration-300 ease-out">
             <div class="relative w-[20px] h-[20px] overflow-hidden">
                 
-                <!-- First SVG -->
+                 <!-- First SVG -->
                 <div class="absolute top-0 left-0 w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    </svg>
+                             <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                              <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                              </svg>
                 </div>
 
                 <!-- Second SVG -->
                 <div class="absolute top-0 left-[-120%] w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    </svg>
+                    <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                              <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                              </svg>
                 </div>
 
             </div>
@@ -282,37 +250,29 @@ Page Loader
     </div>
     </a>
 
-    <a href="<?php echo esc_url(home_url('/products/enterprise-network/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="<?php echo esc_url(home_url('/products/enterprise-network/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
-            <h4 class="font-medium text-[1.5vw]">Enterprise Network</h4>
+            <h4 class="font-medium text-[1.5vw] font-body">Enterprise Network</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
         </div>
         <div class="w-full flex justify-end">
-        <div class="size-[3.5vw] rounded-[0.6vw] bg-white flex justify-center items-center text-black overflow-hidden">
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:text-white duration-300 ease-out">
             <div class="relative w-[20px] h-[20px] overflow-hidden">
                 
                 <!-- First SVG -->
                 <div class="absolute top-0 left-0 w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    </svg>
+                             <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                              <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                              </svg>
                 </div>
 
                 <!-- Second SVG -->
                 <div class="absolute top-0 left-[-120%] w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    </svg>
+                    <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                              <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                              </svg>
                 </div>
 
             </div>
@@ -320,37 +280,29 @@ Page Loader
     </div>
     </a>
 
-    <a href="<?php echo esc_url(home_url('/products/carrier-services/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-[#EEF3FC] p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
+    <a href="<?php echo esc_url(home_url('/products/carrier-services/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
         <div class="w-full flex flex-col gap-[1vw]">
-            <h4 class="font-medium text-[1.5vw]">Wholesale & Carrier</h4>
+            <h4 class="font-medium text-[1.5vw] font-body">Wholesale & Carrier</h4>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
         </div>
         <div class="w-full flex justify-end">
-        <div class="size-[3.5vw] rounded-[0.6vw] bg-white flex justify-center items-center text-black overflow-hidden">
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:text-white duration-300 ease-out">
             <div class="relative w-[20px] h-[20px] overflow-hidden">
                 
                 <!-- First SVG -->
                 <div class="absolute top-0 left-0 w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    </svg>
+                             <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                              <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                              </svg>
                 </div>
 
                 <!-- Second SVG -->
                 <div class="absolute top-0 left-[-120%] w-[20px] h-[20px] flex items-center justify-center transition-transform duration-300 ease-in-out group-hover:translate-x-[120%]">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                        <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                    </svg>
+                    <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                              <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                              </svg>
                 </div>
 
             </div>
@@ -388,7 +340,7 @@ Page Loader
 
 /* Nav link - 22px at 1920px */
 .nav-link {
-    font-family: var(--font-heading);
+    /* font-family: var(--font-heading); */
     font-size: var(--text-body);  /* 1.146vw = 22px at 1920 */
     color: var(--color-text-secondary);
     transition: color 0.3s ease;
@@ -419,7 +371,7 @@ Page Loader
 
 /* Mobile nav link */
 .mobile-nav-link {
-    font-family: var(--font-heading);
+    /* font-family: var(--font-heading); */
     font-size: 24px;
     color: var(--color-text-secondary);
     display: block;

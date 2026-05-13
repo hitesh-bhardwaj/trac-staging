@@ -34,7 +34,7 @@ export function initAnimations() {
     initHeadingLineReveal();
     initPartnersProgramCards();
     initHomeInternetWhyTrac();
-	initSmeProblemStatement();
+    initSmeProblemStatement();
     initPartnerVoicesSlider();
     initTeamSlider();
     initStackingCards();
@@ -55,6 +55,7 @@ export function initAnimations() {
     initOurOfferingAccordion();
     initWhyChooseTracCards();
     initSolutionOverviewStack();
+    initConnectorSvgAnimation();
 
     // Refresh ScrollTrigger after all animations are set up
     ScrollTrigger.refresh();
@@ -67,20 +68,18 @@ export function revealHeroContent(scope = document, options = {}) {
     initBarbaSyncedHeroReveal(scope, options);
 }
 
-
-
 function initCommunityHubCards() {
     const section = document.querySelector('.community-hub-section');
     if (!section || window.innerWidth <= 1024) return;
 
     const cards = Array.from(
-        section.querySelectorAll('[data-community-hub-card]')
+        section.querySelectorAll('[data-community-hub-card]'),
     );
 
     if (cards.length < 5) return;
 
     const prefersReducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
+        '(prefers-reduced-motion: reduce)',
     ).matches;
 
     if (prefersReducedMotion) {
@@ -141,7 +140,7 @@ function initCommunityHubCards() {
             duration: 1,
             ease: 'none',
         },
-        0
+        0,
     ).to(
         [outerLeft, outerRight],
         {
@@ -149,7 +148,7 @@ function initCommunityHubCards() {
             duration: 1,
             ease: 'none',
         },
-        0
+        0,
     );
 }
 
@@ -168,7 +167,9 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
                 clearProps: 'willChange',
             });
             if (el.hasAttribute('data-heading-anim')) {
-                const lines = Array.from(el.querySelectorAll('.hero-title-line'));
+                const lines = Array.from(
+                    el.querySelectorAll('.hero-title-line'),
+                );
                 if (lines.length) {
                     gsap.set(lines, {
                         WebkitMaskPosition: '0% 100%',
@@ -190,7 +191,9 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
                 clearProps: 'willChange',
             });
             if (el.hasAttribute('data-heading-anim')) {
-                const lines = Array.from(el.querySelectorAll('.hero-title-line'));
+                const lines = Array.from(
+                    el.querySelectorAll('.hero-title-line'),
+                );
                 if (lines.length) {
                     gsap.set(lines, {
                         WebkitMaskPosition: '0% 100%',
@@ -343,10 +346,8 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
                 node.dataset.paraSplit = 'true';
             };
 
-            const duration =
-                parseFloat(el.dataset.duration || '1.2') || 1.2;
-            const stagger =
-                parseFloat(el.dataset.stagger || '0.07') || 0.07;
+            const duration = parseFloat(el.dataset.duration || '1.2') || 1.2;
+            const stagger = parseFloat(el.dataset.stagger || '0.07') || 0.07;
             const localDelay = parseFloat(el.dataset.delay || '0') || 0;
 
             // Avoid first paint flash by splitting while hidden (CSS also covers this for heroes).
@@ -398,7 +399,7 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
                     el.classList.add('is-hero-revealed');
                     gsap.set(el, { clearProps: 'willChange' });
                 },
-            }
+            },
         );
     });
 
@@ -412,28 +413,102 @@ function initImpactGallery() {
     const images = Array.from(section.querySelectorAll('[data-impact-image]'));
     if (images.length !== 6) return;
 
-    const titleSecondary = section.querySelector('.impact-gallery-title__secondary');
+    const titleSecondary = section.querySelector(
+        '.impact-gallery-title__secondary',
+    );
 
     const prefersReducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
+        '(prefers-reduced-motion: reduce)',
     ).matches;
 
     const stripStates = [
-        { left: '42%', top: '105%', width: '8.6%', height: '11.2%', rotation: -7 },
-        { left: '46%', top: '104.5%', width: '7.9%', height: '10.4%', rotation: -4 },
-        { left: '50%', top: '105%', width: '7.2%', height: '9.8%', rotation: 6 },
-        { left: '54%', top: '104.5%', width: '7.9%', height: '10.4%', rotation: -6 },
-        { left: '58%', top: '105%', width: '8.8%', height: '11.8%', rotation: 8 },
-        { left: '62%', top: '105%', width: '8.8%', height: '11.8%', rotation: 5 },
+        {
+            left: '42%',
+            top: '105%',
+            width: '8.6%',
+            height: '11.2%',
+            rotation: -7,
+        },
+        {
+            left: '46%',
+            top: '104.5%',
+            width: '7.9%',
+            height: '10.4%',
+            rotation: -4,
+        },
+        {
+            left: '50%',
+            top: '105%',
+            width: '7.2%',
+            height: '9.8%',
+            rotation: 6,
+        },
+        {
+            left: '54%',
+            top: '104.5%',
+            width: '7.9%',
+            height: '10.4%',
+            rotation: -6,
+        },
+        {
+            left: '58%',
+            top: '105%',
+            width: '8.8%',
+            height: '11.8%',
+            rotation: 8,
+        },
+        {
+            left: '62%',
+            top: '105%',
+            width: '8.8%',
+            height: '11.8%',
+            rotation: 5,
+        },
     ];
 
     const finalStates = [
-        { left: '5.5%', top: '3%', width: '24.5%', height: '28.1%', rotation: -3.4 },
-        { left: '6.2%', top: '22.8%', width: '16.6%', height: '24.1%', rotation: -3.4 },
-        { left: '76.8%', top: '5.2%', width: '13.2%', height: '28.3%', rotation: 7.5 },
-        { left: '75.1%', top: '33.4%', width: '16.8%', height: '23.2%', rotation: -5.8 },
-        { left: '9.1%', top: '61.7%', width: '23.1%', height: '33.7%', rotation: 8.3 },
-        { left: '67.4%', top: '68.6%', width: '23.1%', height: '33.7%', rotation: 8.3 },
+        {
+            left: '5.5%',
+            top: '3%',
+            width: '24.5%',
+            height: '28.1%',
+            rotation: -3.4,
+        },
+        {
+            left: '6.2%',
+            top: '22.8%',
+            width: '16.6%',
+            height: '24.1%',
+            rotation: -3.4,
+        },
+        {
+            left: '76.8%',
+            top: '5.2%',
+            width: '13.2%',
+            height: '28.3%',
+            rotation: 7.5,
+        },
+        {
+            left: '75.1%',
+            top: '33.4%',
+            width: '16.8%',
+            height: '23.2%',
+            rotation: -5.8,
+        },
+        {
+            left: '9.1%',
+            top: '61.7%',
+            width: '23.1%',
+            height: '33.7%',
+            rotation: 8.3,
+        },
+        {
+            left: '67.4%',
+            top: '68.6%',
+            width: '23.1%',
+            height: '33.7%',
+            rotation: 8.3,
+        },
     ];
 
     if (prefersReducedMotion) {
@@ -485,7 +560,7 @@ function initImpactGallery() {
                 duration: 1,
                 ease: 'none',
             },
-            0
+            0,
         );
     }
 
@@ -503,7 +578,7 @@ function initImpactGallery() {
             ease: 'none',
             stagger: 0.06,
         },
-        0
+        0,
     );
 
     timeline.to(
@@ -520,7 +595,7 @@ function initImpactGallery() {
             ease: 'none',
             stagger: 0.06,
         },
-        0.33
+        0.33,
     );
 
     timeline.to(
@@ -537,7 +612,7 @@ function initImpactGallery() {
             ease: 'none',
             stagger: 0.06,
         },
-        0.66
+        0.66,
     );
 }
 
@@ -603,39 +678,168 @@ function initHomeInternetWhyTrac() {
 
     section.dataset.slideRightInit = 'true';
 
-	    items.forEach((el) => {
-	        gsap.fromTo(
-	            el,
-	            { x: dist, opacity: 0 },
-	            {
-	                x: 0,
-	                opacity: 1,
-	                ease: 'none',
-	                overwrite: 'auto',
-	                scrollTrigger: {
-	                    trigger: el,
-	                    start: 'top 85%',
-	                    end: 'top 70%',
-	                    scrub: 0.6,
-	                },
-	            }
-	        );
-	    });
-	}
+    items.forEach((el) => {
+        gsap.fromTo(
+            el,
+            { x: dist, opacity: 0 },
+            {
+                x: 0,
+                opacity: 1,
+                ease: 'none',
+                overwrite: 'auto',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%',
+                    end: 'top 70%',
+                    scrub: 0.6,
+                },
+            },
+        );
+    });
+}
 
-	/**
-	 * SME Internet: Problem Statement rows slide from right to a centered final layout.
-	 * Each row has a small final offset (`data-offset-vw`) to create the diagonal rhythm.
-	 */
+export function initConnectorSvgAnimation() {
+    const wrappers = document.querySelectorAll('.connectors-svg');
+
+    if (!wrappers.length) return;
+
+    wrappers.forEach((wrapper) => {
+        if (wrapper.dataset.connectorAnimationInit === 'true') return;
+
+        wrapper.dataset.connectorAnimationInit = 'true';
+
+        const svg = wrapper.querySelector('svg');
+
+        if (!svg || typeof gsap === 'undefined') return;
+
+        const allPaths = Array.from(svg.querySelectorAll('path'));
+
+        const whiteLinePaths = allPaths.filter((path) => {
+            const stroke = path.getAttribute('stroke');
+            return stroke && stroke.toLowerCase() === 'white';
+        });
+
+        const orangePointStrokePaths = allPaths.filter((path) => {
+            const stroke = path.getAttribute('stroke');
+            const strokeWidth = path.getAttribute('stroke-width');
+
+            return (
+                stroke &&
+                stroke.toLowerCase() === '#e86224' &&
+                Number.parseFloat(strokeWidth) === 0.948993
+            );
+        });
+
+        const orangeFillPaths = allPaths.filter((path) => {
+            const fill = path.getAttribute('fill');
+            return fill && fill.toLowerCase() === '#e86224';
+        });
+
+        // Orange filled dots should stay visible always.
+        gsap.set(orangeFillPaths, {
+            opacity: 1,
+        });
+
+        // White connector lines: hidden initially, then randomly draw and erase.
+        whiteLinePaths.forEach((path) => {
+            const length = path.getTotalLength();
+
+            path.dataset.pathLength = length;
+
+            gsap.set(path, {
+                strokeDasharray: length,
+                strokeDashoffset: length,
+                opacity: 0,
+            });
+        });
+
+        // Orange outlined point paths: subtle random scale-down pulse.
+        gsap.set(orangePointStrokePaths, {
+            transformOrigin: '50% 50%',
+            transformBox: 'fill-box',
+        });
+
+        function animateWhitePath(path) {
+            const length = Number(path.dataset.pathLength);
+
+            if (!length) return;
+
+            gsap.killTweensOf(path);
+
+            const delayBeforeStart = gsap.utils.random(0.2, 3.2);
+            const drawDuration = gsap.utils.random(1.4, 2.6);
+            const holdDuration = gsap.utils.random(0.8, 1.4);
+            const eraseDuration = gsap.utils.random(1.2, 2.2);
+            const delayBeforeRepeat = gsap.utils.random(1.0, 4.0);
+
+            const tl = gsap.timeline({
+                delay: delayBeforeStart,
+                onComplete: () => {
+                    gsap.delayedCall(delayBeforeRepeat, () => {
+                        animateWhitePath(path);
+                    });
+                },
+            });
+
+            tl.set(path, {
+                strokeDasharray: length,
+                strokeDashoffset: length,
+                opacity: 1,
+            });
+
+            // Draw from start to end.
+            tl.to(path, {
+                strokeDashoffset: 0,
+                duration: drawDuration,
+                ease: 'power2.inOut',
+            });
+
+            // Hold for around 1 second.
+            tl.to(path, {
+                strokeDashoffset: 0,
+                duration: holdDuration,
+                ease: 'none',
+            });
+
+            // Erase from start to end.
+            tl.to(path, {
+                strokeDashoffset: -length,
+                duration: eraseDuration,
+                ease: 'power2.inOut',
+            });
+
+            tl.to(
+                path,
+                {
+                    opacity: 0,
+                    duration: 0.25,
+                    ease: 'power1.out',
+                },
+                '-=0.15'
+            );
+        }
+
+        whiteLinePaths.forEach((path) => {
+            animateWhitePath(path);
+        });
+    });
+}
+
+/**
+ * SME Internet: Problem Statement rows slide from right to a centered final layout.
+ * Each row has a small final offset (`data-offset-vw`) to create the diagonal rhythm.
+ */
 function initSmeProblemStatement() {
-	    const section = document.querySelector('[data-sme-problem]');
-	    if (!section) return;
-	    if (section.dataset.smeProblemInit === 'true') return;
+    const section = document.querySelector('[data-sme-problem]');
+    if (!section) return;
+    if (section.dataset.smeProblemInit === 'true') return;
 
-	    const items = Array.from(section.querySelectorAll('[data-sme-problem-item]'));
-	    if (!items.length) return;
+    const items = Array.from(
+        section.querySelectorAll('[data-sme-problem-item]'),
+    );
+    if (!items.length) return;
 
-	    section.dataset.smeProblemInit = 'true';
+    section.dataset.smeProblemInit = 'true';
 
     const dist = window.innerWidth <= 768 ? 56 : 220;
 
@@ -654,7 +858,7 @@ function initSmeProblemStatement() {
                     end: 'top 70%',
                     scrub: 0.6,
                 },
-            }
+            },
         );
     });
 }
@@ -810,14 +1014,14 @@ function initHeadingLineReveal(scope = null) {
         document.body ||
         document.documentElement;
 
-    const headings = Array.from(root.querySelectorAll('[data-heading-anim]')).filter(
-        (el) => {
-            // Hero headings are handled by `data-hero-reveal`.
-            const isHero = el.closest('[data-hero-static]');
-            const isHeroReveal = el.hasAttribute('data-hero-reveal');
-            return !isHero && !isHeroReveal;
-        },
-    );
+    const headings = Array.from(
+        root.querySelectorAll('[data-heading-anim]'),
+    ).filter((el) => {
+        // Hero headings are handled by `data-hero-reveal`.
+        const isHero = el.closest('[data-hero-static]');
+        const isHeroReveal = el.hasAttribute('data-hero-reveal');
+        return !isHero && !isHeroReveal;
+    });
     if (!headings.length) return;
 
     // Prevent double-init per container.
@@ -1008,7 +1212,9 @@ function initPartnerVoicesSlider() {
         return Number.isFinite(gap) ? gap : 0;
     };
 
-    const slides = Array.from(track.querySelectorAll('[data-partner-voices-slide]'));
+    const slides = Array.from(
+        track.querySelectorAll('[data-partner-voices-slide]'),
+    );
     if (slides.length < 2) return;
 
     let stepPx = 0;
@@ -1127,7 +1333,6 @@ function initPartnerVoicesSlider() {
         gsap.delayedCall(0.05, refreshLayout);
     });
 }
-
 
 /**
  * Why TrAC circles intro (outer -> inner, bouncy)
@@ -1304,7 +1509,8 @@ function initWhyTracParaReveal(section, containerTl) {
             span.className = 'para-word';
             span.innerHTML = escapeHtml(w);
             el.appendChild(span);
-            if (idx !== words.length - 1) el.appendChild(document.createTextNode(' '));
+            if (idx !== words.length - 1)
+                el.appendChild(document.createTextNode(' '));
         });
 
         const wordEls = Array.from(el.querySelectorAll('.para-word'));
@@ -1341,7 +1547,8 @@ function initWhyTracParaReveal(section, containerTl) {
 
             wordLine.forEach((w, idx) => {
                 inner.appendChild(w);
-                if (idx !== wordLine.length - 1) inner.appendChild(document.createTextNode(' '));
+                if (idx !== wordLine.length - 1)
+                    inner.appendChild(document.createTextNode(' '));
             });
             wrap.appendChild(inner);
             el.appendChild(wrap);
@@ -1794,189 +2001,234 @@ function initCtaLineAnimation() {
     const section = document.querySelector('.cta-section');
     const svg = section?.querySelector('[data-cta-svg]');
 
-    if (!section || !svg) {
+    if (!section || !svg || section.dataset.ctaLineInit === 'true') {
         return;
     }
 
-    const strokePaths = Array.from(svg.querySelectorAll('path[stroke]'));
+    section.dataset.ctaLineInit = 'true';
 
-    if (!strokePaths.length) {
-        return;
-    }
-    const accentPaths = Array.from(svg.querySelectorAll("path[fill^='url(']"));
-    let defs = svg.querySelector('defs');
+    const gsapRef =
+        window.gsap || (typeof gsap !== 'undefined' ? gsap : null);
 
-    if (!defs) {
-        defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-        svg.appendChild(defs);
-    }
+    if (!gsapRef) return;
 
-    const travelEntries = strokePaths.map((path, index) => {
+    const basePaths = Array.from(svg.querySelectorAll('path[stroke]')).filter(
+        (path) =>
+            !path.hasAttribute('data-cta-traveller') &&
+            !path.closest('defs'),
+    );
+
+    if (!basePaths.length) return;
+
+    const travellerEntries = [];
+
+    basePaths.forEach((path, index) => {
         const length = path.getTotalLength();
-        const start = path.getPointAtLength(0);
-        const end = path.getPointAtLength(length);
-        const gradientId = `cta-travel-gradient-${index}`;
-        const gradient = document.createElementNS(
-            'http://www.w3.org/2000/svg',
-            'linearGradient',
-        );
 
-        gradient.setAttribute('id', gradientId);
-        gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
-        // Align gradient with each path direction (top -> bottom on these arcs).
-        gradient.setAttribute('x1', String(start.x));
-        gradient.setAttribute('y1', String(start.y));
-        gradient.setAttribute('x2', String(end.x));
-        gradient.setAttribute('y2', String(end.y));
+        if (!length) return;
 
-        [
-            { offset: '0%', color: '#10417F', opacity: '0' },
-            { offset: '25%', color: '#10417F', opacity: '0.5' },
-            { offset: '75%', color: '#10417F', opacity: '0.75' },
-            { offset: '100%', color: '#10417F', opacity: '1' },
-        ].forEach(({ offset, color, opacity }) => {
-            const stop = document.createElementNS(
-                'http://www.w3.org/2000/svg',
-                'stop',
-            );
-            stop.setAttribute('offset', offset);
-            stop.setAttribute('stop-color', color);
-            stop.setAttribute('stop-opacity', opacity);
-            gradient.appendChild(stop);
-        });
+        const startPoint = path.getPointAtLength(0);
+        const endPoint = path.getPointAtLength(length);
 
-        defs.appendChild(gradient);
+        const shouldTravelForward = startPoint.y <= endPoint.y;
 
-        const clone = path.cloneNode(false);
-        clone.removeAttribute('fill');
-        clone.setAttribute('fill', 'none');
-        clone.setAttribute('stroke', `url(#${gradientId})`);
-        clone.setAttribute('stroke-width', '1.25');
-        clone.setAttribute('stroke-linecap', 'round');
-        clone.setAttribute('stroke-linejoin', 'round');
-        clone.setAttribute('data-cta-travel', '');
-        defs.parentNode.insertBefore(clone, defs);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
 
-        gsap.set(path, {
+        gsapRef.set(path, {
             strokeDasharray: length,
             strokeDashoffset: length,
         });
 
-        gsap.set(clone, {
-            opacity: 0,
-            // One moving dash that travels from start -> end.
-            // Keep it shorter than before so the highlight feels tighter.
-            strokeDasharray: `${Math.max(length * 0.04, 20)} ${length}`,
-            strokeDashoffset: 0,
-        });
-
-        return { clone, length };
-    });
-
-    gsap.set(accentPaths, { opacity: 0 });
-
-    const runTravelPulse = (entry) => {
-        const { clone, length } = entry;
-        const segmentLength = gsap.utils.random(
-            Math.max(length * 0.03, 18),
-            Math.max(length * 0.055, 38),
+        const traveller = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'path',
         );
 
-        gsap.set(clone, {
+        traveller.setAttribute('fill', 'none');
+        traveller.setAttribute('stroke', '#E86224');
+        traveller.setAttribute('stroke-width', '3');
+        traveller.setAttribute('stroke-linecap', 'round');
+        traveller.setAttribute('stroke-linejoin', 'round');
+        traveller.setAttribute('pointer-events', 'none');
+        traveller.setAttribute('data-cta-traveller', `traveller-${index}`);
+
+        svg.appendChild(traveller);
+
+        gsapRef.set(traveller, {
             opacity: 0,
-            strokeDasharray: `${segmentLength} ${length}`,
-            strokeDashoffset: 0,
         });
 
-        const tl = gsap.timeline();
+        travellerEntries.push({
+            sourcePath: path,
+            traveller,
+            length,
+            shouldTravelForward,
+        });
+    });
 
-        // Start visible at the path start, then travel start -> end.
-        // (Fade-in was making it feel like it "appears" mid-path.)
-        tl.set(clone, { opacity: 1 }, 0).to(
-            clone,
+    const setTravellerSegment = (entry, distance, segmentLength) => {
+        const { sourcePath, traveller, length, shouldTravelForward } = entry;
+
+        let startDistance;
+        let endDistance;
+
+        if (shouldTravelForward) {
+            startDistance = Math.max(0, Math.min(distance, length));
+            endDistance = Math.max(
+                0,
+                Math.min(distance + segmentLength, length),
+            );
+        } else {
+            startDistance = Math.max(0, Math.min(distance, length));
+            endDistance = Math.max(
+                0,
+                Math.min(distance - segmentLength, length),
+            );
+        }
+
+        const p1 = sourcePath.getPointAtLength(startDistance);
+        const p2 = sourcePath.getPointAtLength(endDistance);
+
+        traveller.setAttribute(
+            'd',
+            `M ${p1.x} ${p1.y} L ${p2.x} ${p2.y}`,
+        );
+    };
+
+    const runTraveller = (entry) => {
+        const segmentLength = gsapRef.utils.random(28, 48);
+        const proxy = {
+            distance: entry.shouldTravelForward ? 0 : entry.length,
+        };
+
+        const startDistance = entry.shouldTravelForward ? 0 : entry.length;
+        const endDistance = entry.shouldTravelForward ? entry.length : 0;
+
+        setTravellerSegment(entry, startDistance, segmentLength);
+
+        const tl = gsapRef.timeline();
+
+        tl.set(entry.traveller, {
+            opacity: 0,
+        });
+
+        tl.to(entry.traveller, {
+            opacity: 1,
+            duration: 0.25,
+            ease: 'power2.out',
+        });
+
+        tl.to(
+            proxy,
             {
-                // Travel start -> end
-                strokeDashoffset: -(length + segmentLength),
-                duration: gsap.utils.random(3.2, 4.8),
+                distance: endDistance,
+                duration: gsapRef.utils.random(2.8, 4.2),
                 ease: 'none',
+                onUpdate: () => {
+                    setTravellerSegment(
+                        entry,
+                        proxy.distance,
+                        segmentLength,
+                    );
+                },
             },
             0,
         );
 
         tl.to(
-            clone,
-            { opacity: 0, duration: 0.32, ease: 'power1.inOut' },
-            `>${-0.28}`,
+            entry.traveller,
+            {
+                opacity: 0,
+                duration: 0.35,
+                ease: 'power2.inOut',
+            },
+            '>-0.25',
         );
 
         return tl;
     };
 
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            once: true,
-        },
-    });
-
-    tl.to(strokePaths, {
-        strokeDashoffset: 0,
-        duration: 1.6,
-        stagger: {
-            each: 0.03,
-            from: 'start',
-        },
-        ease: 'power2.out',
-    }).call(() => {
-        const maxConcurrent = Math.min(5, travelEntries.length);
+    const startContinuousTravellers = () => {
+        const maxConcurrent = Math.min(5, travellerEntries.length);
         const active = new Set();
 
         const pickNextEntry = () => {
-            const available = travelEntries.filter(
+            const available = travellerEntries.filter(
                 (entry) => !active.has(entry),
             );
-            if (!available.length) {
-                return null;
-            }
+
+            if (!available.length) return null;
+
             return available[Math.floor(Math.random() * available.length)];
         };
 
-        const startPulse = (entry) => {
-            if (!entry || active.has(entry)) {
-                return;
-            }
+        const startOne = (entry) => {
+            if (!entry || active.has(entry)) return;
 
             active.add(entry);
 
-            runTravelPulse(entry).eventCallback('onComplete', () => {
+            runTraveller(entry).eventCallback('onComplete', () => {
                 active.delete(entry);
-                // Keep ~5 running, but start replacement slightly staggered.
-                gsap.delayedCall(gsap.utils.random(0.05, 0.55), () => {
-                    startPulse(pickNextEntry() || entry);
+
+                gsapRef.delayedCall(gsapRef.utils.random(0.2, 0.8), () => {
+                    startOne(pickNextEntry() || entry);
                 });
             });
         };
 
-        const fillToMax = () => {
-            const needed = maxConcurrent - active.size;
-            for (let i = 0; i < needed; i += 1) {
-                gsap.delayedCall(gsap.utils.random(0.0, 0.9), () => {
-                    startPulse(pickNextEntry());
-                });
-            }
-        };
+        for (let i = 0; i < maxConcurrent; i += 1) {
+            gsapRef.delayedCall(gsapRef.utils.random(0.1, 1.1), () => {
+                startOne(pickNextEntry());
+            });
+        }
+    };
 
-        // Start a small number of pulses with random offsets,
-        // keeping concurrency capped so they don't all move at once.
-        fillToMax();
+    const playAnimation = () => {
+        gsapRef
+            .timeline()
+            .to(basePaths, {
+                strokeDashoffset: 0,
+                duration: 1.5,
+                stagger: 0.035,
+                ease: 'power2.out',
+            })
+            .call(startContinuousTravellers);
+    };
 
-        // Safety: if something ends early, top back up.
-        gsap.delayedCall(1.5, fillToMax);
-        gsap.delayedCall(3.5, fillToMax);
-    });
+    if (window.ScrollTrigger) {
+        gsapRef.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 80%',
+                once: true,
+            },
+        }).call(playAnimation);
+    } else {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry.isIntersecting) return;
+
+                playAnimation();
+                observer.disconnect();
+            },
+            {
+                threshold: 0.25,
+            },
+        );
+
+        observer.observe(section);
+    }
 }
 
+window.initCtaLineAnimation = initCtaLineAnimation;
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCtaLineAnimation);
+} else {
+    initCtaLineAnimation();
+}
 /**
  * Basic fade animations for [data-animate] elements
  */
@@ -1984,7 +2236,7 @@ function initFadeAnimations() {
     const animatedElements = document.querySelectorAll('[data-animate]');
 
     animatedElements.forEach((el) => {
-         if (el.classList.contains('is-animated')) return;
+        if (el.classList.contains('is-animated')) return;
         const animationType = el.dataset.animate;
         const delay = parseFloat(el.dataset.delay) || 0;
         const duration = parseFloat(el.dataset.duration) || defaults.duration;
@@ -2260,7 +2512,7 @@ function initTeamSlider() {
     const rail = section.querySelector('[data-team-slider-rail]');
 
     const initialThumbs = Array.from(
-        section.querySelectorAll('[data-team-slider-thumb]')
+        section.querySelectorAll('[data-team-slider-thumb]'),
     );
 
     if (
@@ -2347,20 +2599,27 @@ function initTeamSlider() {
 
     const bindThumbClicks = () => {
         const liveThumbs = Array.from(
-            rail.querySelectorAll('[data-team-slider-thumb-live]')
+            rail.querySelectorAll('[data-team-slider-thumb-live]'),
         );
 
         liveThumbs.forEach((thumb) => {
             thumb.addEventListener('click', () => {
                 const targetIndex = Number(thumb.dataset.teamIndex);
-                if (Number.isNaN(targetIndex) || targetIndex === currentIndex) return;
+                if (Number.isNaN(targetIndex) || targetIndex === currentIndex)
+                    return;
 
-                const forwardDistance = mod(targetIndex - currentIndex, members.length);
-                const backwardDistance = mod(currentIndex - targetIndex, members.length);
+                const forwardDistance = mod(
+                    targetIndex - currentIndex,
+                    members.length,
+                );
+                const backwardDistance = mod(
+                    currentIndex - targetIndex,
+                    members.length,
+                );
 
                 goToIndex(
                     targetIndex,
-                    forwardDistance <= backwardDistance ? 1 : -1
+                    forwardDistance <= backwardDistance ? 1 : -1,
                 );
             });
         });
@@ -2397,8 +2656,12 @@ function initTeamSlider() {
         activeImageWrap.appendChild(outgoingLayer);
         activeImageWrap.appendChild(incomingLayer);
 
-        const outgoingSlide = outgoingLayer.querySelector('.team-slider-active-slide');
-        const incomingSlide = incomingLayer.querySelector('.team-slider-active-slide');
+        const outgoingSlide = outgoingLayer.querySelector(
+            '.team-slider-active-slide',
+        );
+        const incomingSlide = incomingLayer.querySelector(
+            '.team-slider-active-slide',
+        );
 
         gsap.set(outgoingSlide, { xPercent: 0 });
         gsap.set(incomingSlide, { xPercent: direction > 0 ? 100 : -100 });
@@ -2478,7 +2741,9 @@ function initTeamSlider() {
             currentTrack.style.gap = getComputedStyle(rail).gap;
             currentTrack.style.display = 'flex';
             currentTrack.style.alignItems = 'flex-end';
-            currentTrack.innerHTML = currentIndexes.map(createThumbMarkup).join('');
+            currentTrack.innerHTML = currentIndexes
+                .map(createThumbMarkup)
+                .join('');
 
             const nextTrack = document.createElement('div');
             nextTrack.className = 'team-slider-rail team-slider-rail-clone';
@@ -2521,7 +2786,7 @@ function initTeamSlider() {
                         duration: 0.72,
                         ease: 'power3.inOut',
                     },
-                    0
+                    0,
                 ).to(
                     nextTrack,
                     {
@@ -2529,7 +2794,7 @@ function initTeamSlider() {
                         duration: 0.72,
                         ease: 'power3.inOut',
                     },
-                    0
+                    0,
                 );
             } else {
                 gsap.set(currentTrack, { x: 0 });
@@ -2553,7 +2818,7 @@ function initTeamSlider() {
                         duration: 0.72,
                         ease: 'power3.inOut',
                     },
-                    0
+                    0,
                 ).to(
                     nextTrack,
                     {
@@ -2561,7 +2826,7 @@ function initTeamSlider() {
                         duration: 0.72,
                         ease: 'power3.inOut',
                     },
-                    0
+                    0,
                 );
             }
         });
@@ -2720,8 +2985,8 @@ function initTestimonialsSlider() {
 
     const track = section.querySelector('.testimonials-track');
     const cards = Array.from(section.querySelectorAll('.testimonial-card'));
-    const prevBtn = section.querySelector('.arrow-prev');
-    const nextBtn = section.querySelector('.arrow-next');
+    const prevBtns = Array.from(section.querySelectorAll('.arrow-prev'));
+    const nextBtns = Array.from(section.querySelectorAll('.arrow-next'));
     const currentSlide = section.querySelector('.current-slide');
     const totalSlides = section.querySelector('.total-slides');
 
@@ -2744,9 +3009,26 @@ function initTestimonialsSlider() {
         }
     }
 
+    function setButtonState(buttons, disabled) {
+        buttons.forEach((btn) => {
+            btn.disabled = disabled;
+            btn.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+
+            btn.classList.toggle('pointer-events-none', disabled);
+            btn.classList.toggle('opacity-40', disabled);
+            btn.classList.toggle('cursor-not-allowed', disabled);
+
+            btn.classList.toggle('opacity-100', !disabled);
+            btn.classList.toggle('cursor-pointer', !disabled);
+        });
+    }
+
     function updateButtons() {
-        if (prevBtn) prevBtn.disabled = currentIndex === 0;
-        if (nextBtn) nextBtn.disabled = currentIndex === totalCards - 1;
+        const isAtStart = currentIndex === 0;
+        const isAtEnd = currentIndex === totalCards - 1;
+
+        setButtonState(prevBtns, isAtStart);
+        setButtonState(nextBtns, isAtEnd);
     }
 
     function getSlideDistance() {
@@ -2777,6 +3059,7 @@ function initTestimonialsSlider() {
 
     function setBackCard(card) {
         gsap.set(card, {
+            x: 0,
             scale: 0.93,
             autoAlpha: 1,
             filter: 'brightness(0.78)',
@@ -2792,6 +3075,7 @@ function initTestimonialsSlider() {
         if (isAnimating || currentIndex >= totalCards - 1) return;
 
         isAnimating = true;
+        updateButtons();
 
         const currentCard = cards[currentIndex];
         const nextCard = cards[currentIndex + 1];
@@ -2859,6 +3143,7 @@ function initTestimonialsSlider() {
         if (isAnimating || currentIndex <= 0) return;
 
         isAnimating = true;
+        updateButtons();
 
         const currentCard = cards[currentIndex];
         const previousCard = cards[currentIndex - 1];
@@ -2872,7 +3157,6 @@ function initTestimonialsSlider() {
 
         gsap.killTweensOf([currentCard, previousCard]);
 
-        // current moves out to right
         gsap.set(currentCard, {
             x: 0,
             scale: 1,
@@ -2882,8 +3166,8 @@ function initTestimonialsSlider() {
             pointerEvents: 'none',
         });
 
-        // previous comes forward from its stacked back state
         gsap.set(previousCard, {
+            x: 0,
             scale: 0.93,
             autoAlpha: 1,
             filter: 'brightness(0.78)',
@@ -2924,8 +3208,8 @@ function initTestimonialsSlider() {
         );
     }
 
-    nextBtn?.addEventListener('click', goNext);
-    prevBtn?.addEventListener('click', goPrev);
+    nextBtns.forEach((btn) => btn.addEventListener('click', goNext));
+    prevBtns.forEach((btn) => btn.addEventListener('click', goPrev));
 
     window.addEventListener('resize', () => {
         cards.forEach(resetCard);
@@ -3196,7 +3480,7 @@ function initWhatWeDoScroll() {
                 scrollTrigger: {
                     trigger: section,
                     start: `top+=${index * 12}% 70%`,
-                    end: "bottom bottom",
+                    end: 'bottom bottom',
                     scrub: true,
                 },
             },
@@ -3210,7 +3494,9 @@ function initTracStoryTimeline() {
     const section = document.querySelector('.trac-story-section');
     if (!section) return;
 
-    const reels = Array.from(section.querySelectorAll('[data-story-year-reel]'));
+    const reels = Array.from(
+        section.querySelectorAll('[data-story-year-reel]'),
+    );
     if (!reels.length) return;
 
     if (window.innerWidth <= 768) {
@@ -3252,7 +3538,6 @@ function initTracStoryTimeline() {
             end: `+=${totalScroll}`,
             scrub: true,
             invalidateOnRefresh: true,
-
         },
         defaults: {
             ease: 'none',
@@ -3274,7 +3559,7 @@ function initTracStoryTimeline() {
                     each: 0.1,
                 },
             },
-            stage
+            stage,
         );
     }
 
@@ -3345,26 +3630,31 @@ function initOurNetworkAnimation() {
 
 function initOurNetworkPointers() {
     const section = document.querySelector('.our-network-section');
-    if (!section) return;
+    if (!section || section.dataset.networkPointersInit === 'true') return;
 
-    const circleLayer = section.querySelector('[data-network-draw="circle"]');
-    const dottedLayer = section.querySelector('[data-network-draw="dotted"]');
+    section.dataset.networkPointersInit = 'true';
 
-    const allCircles = [
-        ...(circleLayer
-            ? Array.from(circleLayer.querySelectorAll('circle'))
-            : []),
-        ...(dottedLayer
-            ? Array.from(dottedLayer.querySelectorAll('circle'))
-            : []),
-    ];
+    const drawLayers = Array.from(
+        section.querySelectorAll(
+            '[data-network-draw="dotted"], [data-network-draw="circle"]',
+        ),
+    );
+
+    const allCircles = drawLayers.flatMap((layer) =>
+        Array.from(layer.querySelectorAll('circle')),
+    );
 
     const pointerCards = Array.from(section.querySelectorAll('.pointer-card'));
+
     if (!allCircles.length || !pointerCards.length) return;
 
-    const hideAllPointers = () => {
-        pointerCards.forEach((card) => card.classList.remove('is-active'));
-    };
+    if (window.gsap) {
+        window.gsap.set(pointerCards, {
+            autoAlpha: 0,
+            yPercent: 30,
+            pointerEvents: 'none',
+        });
+    }
 
     const isOuterNode = (circle) =>
         circle.getAttribute('r') === '11.5' &&
@@ -3375,71 +3665,205 @@ function initOurNetworkPointers() {
         circle.getAttribute('r') === '7' &&
         circle.getAttribute('fill') === '#F0741C';
 
-    // group only valid node circles by same cx/cy
-    const nodeMap = new Map();
-
-    allCircles.forEach((circle) => {
-        if (!isOuterNode(circle) && !isInnerNode(circle)) return;
-
-        const cx = circle.getAttribute('cx');
-        const cy = circle.getAttribute('cy');
-        const key = `${cx}-${cy}`;
-
-        if (!nodeMap.has(key)) {
-            nodeMap.set(key, {
-                outer: null,
-                inner: null,
-                circles: [],
-            });
-        }
-
-        const group = nodeMap.get(key);
-
-        if (isOuterNode(circle)) group.outer = circle;
-        if (isInnerNode(circle)) group.inner = circle;
-
-        group.circles.push(circle);
+    const getCirclePoint = (circle) => ({
+        cx: parseFloat(circle.getAttribute('cx')),
+        cy: parseFloat(circle.getAttribute('cy')),
     });
 
-    // keep only true node pairs, or at least a single valid node if only one exists
-    const nodeGroups = Array.from(nodeMap.values()).filter(
-        (group) => group.outer || group.inner,
-    );
+    const isSamePoint = (a, b, tolerance = 1) =>
+        Math.abs(a.cx - b.cx) <= tolerance &&
+        Math.abs(a.cy - b.cy) <= tolerance;
 
-    nodeGroups.forEach((group, index) => {
-        const pointerCard = section.querySelector(`.pointer-${index + 1}`);
+    const getLayerName = (circle) => {
+        const layer = circle.closest('[data-network-draw]');
+        return layer?.getAttribute('data-network-draw') || '';
+    };
+
+    const findPointerCardByCoordinate = (node) => {
+        return pointerCards.find((card) => {
+            const cardLayer = card.getAttribute('data-node-layer');
+            const cardCx = parseFloat(card.getAttribute('data-node-cx'));
+            const cardCy = parseFloat(card.getAttribute('data-node-cy'));
+
+            if (!cardLayer || Number.isNaN(cardCx) || Number.isNaN(cardCy)) {
+                return false;
+            }
+
+            if (cardLayer !== node.layerName) return false;
+
+            return isSamePoint(
+                {
+                    cx: cardCx,
+                    cy: cardCy,
+                },
+                node.point,
+                1,
+            );
+        });
+    };
+
+    const outerCircles = allCircles.filter(isOuterNode);
+    const innerCircles = allCircles.filter(isInnerNode);
+
+    const usedInnerCircles = new Set();
+    const nodeGroups = [];
+
+    outerCircles.forEach((outerCircle) => {
+        const outerPoint = getCirclePoint(outerCircle);
+        const outerLayer = getLayerName(outerCircle);
+
+        const innerCircle = innerCircles.find((inner) => {
+            if (usedInnerCircles.has(inner)) return false;
+            if (getLayerName(inner) !== outerLayer) return false;
+
+            const innerPoint = getCirclePoint(inner);
+
+            return isSamePoint(outerPoint, innerPoint, 1);
+        });
+
+        if (!innerCircle) return;
+
+        const pointerCard = findPointerCardByCoordinate({
+            point: outerPoint,
+            layerName: outerLayer,
+        });
+
         if (!pointerCard) return;
 
-        const showPointer = () => {
-            hideAllPointers();
-            pointerCard.classList.add('is-active');
-        };
+        usedInnerCircles.add(innerCircle);
 
-        const hidePointer = () => {
-            pointerCard.classList.remove('is-active');
-        };
+        const parent = outerCircle.parentNode;
+        const group = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'g',
+        );
 
-        group.circles.forEach((circle) => {
-            circle.addEventListener('mouseenter', showPointer);
-            circle.addEventListener('mouseleave', hidePointer);
-            circle.addEventListener('focus', showPointer);
-            circle.addEventListener('blur', hidePointer);
-            circle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showPointer();
-            });
+        group.classList.add('network-node');
+        group.setAttribute('tabindex', '0');
+        group.setAttribute('role', 'button');
+        group.setAttribute(
+            'aria-label',
+            `Show ${
+                pointerCard.querySelector('h3')?.textContent?.trim() ||
+                'network'
+            } pointer`,
+        );
 
-            circle.setAttribute('tabindex', '0');
-            circle.setAttribute('role', 'button');
-            circle.setAttribute(
-                'aria-label',
-                `Show network pointer ${index + 1}`,
-            );
-            circle.style.cursor = 'pointer';
+        parent.insertBefore(group, outerCircle);
+        group.appendChild(outerCircle);
+        group.appendChild(innerCircle);
+
+        nodeGroups.push({
+            group,
+            point: outerPoint,
+            layerName: outerLayer,
+            pointerCard,
         });
     });
 
-    section.addEventListener('mouseleave', hideAllPointers);
+    let activeCard = null;
+    let hideTimeout = null;
+    const hidePointer = (card) => {
+        if (!card) return;
+
+        card.classList.remove('is-active');
+
+        if (window.gsap) {
+            window.gsap.killTweensOf(card);
+
+            window.gsap.to(card, {
+                autoAlpha: 0,
+                yPercent: 30,
+                duration: 0.7,
+                ease: 'power2.out',
+                pointerEvents: 'none',
+            });
+        } else {
+            card.style.opacity = '0';
+            card.style.visibility = 'hidden';
+            card.style.pointerEvents = 'none';
+            card.style.transform = 'translateY(30%)';
+        }
+
+        if (activeCard === card) {
+            activeCard = null;
+        }
+    };
+
+    const showPointer = (card) => {
+        if (!card) return;
+
+        clearTimeout(hideTimeout);
+
+        if (activeCard && activeCard !== card) {
+            hidePointer(activeCard);
+        }
+
+        activeCard = card;
+        card.classList.add('is-active');
+
+        if (window.gsap) {
+            window.gsap.killTweensOf(card);
+
+            window.gsap.fromTo(
+                card,
+                {
+                    autoAlpha: 0,
+                    yPercent: 30,
+                },
+                {
+                    autoAlpha: 1,
+                    yPercent: 0,
+                    duration: 0.9,
+                    ease: 'power2.out',
+                    pointerEvents: 'auto',
+                },
+            );
+        } else {
+            card.style.opacity = '1';
+            card.style.visibility = 'visible';
+            card.style.pointerEvents = 'auto';
+            card.style.transform = 'translateY(0)';
+        }
+    };
+
+    const delayedHide = (card) => {
+        // clearTimeout(hideTimeout);
+
+        // hideTimeout = setTimeout(() => {
+            hidePointer(card);
+        // }, 220);
+    };
+
+    nodeGroups.forEach((node) => {
+        const { group, pointerCard } = node;
+
+        group.addEventListener('mouseenter', () => showPointer(pointerCard));
+        group.addEventListener('mouseleave', () => delayedHide(pointerCard));
+
+        group.addEventListener('focus', () => showPointer(pointerCard));
+        group.addEventListener('blur', () => delayedHide(pointerCard));
+
+        group.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showPointer(pointerCard);
+        });
+
+        pointerCard.addEventListener('mouseenter', () =>
+            showPointer(pointerCard),
+        );
+        pointerCard.addEventListener('mouseleave', () =>
+            delayedHide(pointerCard),
+        );
+    });
+
+    section.addEventListener('mouseleave', () => {
+        clearTimeout(hideTimeout);
+
+        hideTimeout = setTimeout(() => {
+            hideAllPointers();
+        }, 120);
+    });
 
     document.addEventListener('click', (e) => {
         if (!section.contains(e.target)) {
@@ -3448,9 +3872,17 @@ function initOurNetworkPointers() {
     });
 
     console.log('[Trac] Our Network pointers initialized', {
-        groups: nodeGroups.length,
+        groupedNodes: nodeGroups.length,
         cards: pointerCards.length,
     });
+}
+
+window.initOurNetworkPointers = initOurNetworkPointers;
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initOurNetworkPointers);
+} else {
+    initOurNetworkPointers();
 }
 
 function initParallaxImgSlider() {
@@ -3501,7 +3933,7 @@ function initParallaxImgSlider() {
                     start: '5% bottom',
                     toggleActions: 'play none none none',
                 },
-            }
+            },
         );
 
         const slides = gsap.utils.toArray('.parallax-img');
@@ -3524,7 +3956,7 @@ function initParallaxImgSlider() {
                         end: 'right left',
                         scrub: true,
                     },
-                }
+                },
             );
         });
     }, outer);
@@ -3567,7 +3999,7 @@ function initFooterOverlayFade() {
     console.log('[Trac] Footer container parallax initialized');
 }
 
-// our offering animation 
+// our offering animation
 
 function initOurOfferingAccordion() {
     const section = document.querySelector('.our-offering-section');
@@ -3668,13 +4100,16 @@ function initOurOfferingAccordion() {
         end: 'bottom bottom',
         scrub: 0.6,
         onUpdate: (self) => {
-            const index = Math.min(total - 1, Math.floor(self.progress * total));
+            const index = Math.min(
+                total - 1,
+                Math.floor(self.progress * total),
+            );
             activateItem(index);
         },
     });
 }
 
-// carrier overview 
+// carrier overview
 function initSolutionOverviewStack() {
     const section = document.querySelector('.solution-overview-section');
     if (!section) return;
@@ -3757,7 +4192,7 @@ function initSolutionOverviewStack() {
                 duration: SEGMENT,
                 ease: 'none',
             },
-            activeIndex - 1
+            activeIndex - 1,
         );
 
         previousCards.forEach((card, prevIndex) => {
@@ -3765,11 +4200,14 @@ function initSolutionOverviewStack() {
                 card,
                 {
                     y: prevIndex * CARD_GAP - activeIndex * STACK_LIFT,
-                    scale: Math.max(0.82, 1 - (activeIndex - prevIndex) * SCALE_STEP),
+                    scale: Math.max(
+                        0.82,
+                        1 - (activeIndex - prevIndex) * SCALE_STEP,
+                    ),
                     duration: SEGMENT,
                     ease: 'none',
                 },
-                activeIndex - 1
+                activeIndex - 1,
             );
         });
     }
@@ -3785,7 +4223,7 @@ function initSolutionOverviewStack() {
             ease: 'none',
             stagger: 0,
         },
-        cards.length - 1
+        cards.length - 1,
     );
 
     console.log('[Trac] Solution overview stack initialized');
@@ -3840,7 +4278,6 @@ function initWhyChooseTracCards() {
         });
     });
 
-
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: section,
@@ -3855,10 +4292,10 @@ function initWhyChooseTracCards() {
     tl.to(
         container,
         {
-           translateX:"-75%",
+            translateX: '-75%',
             ease: 'none',
         },
-        0
+        0,
     );
 
     cards.forEach((card, index) => {
@@ -3872,7 +4309,7 @@ function initWhyChooseTracCards() {
                 rotation: target.rotation,
                 ease: 'none',
             },
-            0
+            0,
         );
     });
 
@@ -3900,9 +4337,6 @@ export function animateCounter(el, target, duration = 2) {
     });
 }
 
-
-
-
 /**
  * Create horizontal scroll section
  */
@@ -3923,14 +4357,15 @@ export function createHorizontalScroll(container, items) {
     });
 }
 
-
 function initHiInstallationScroll() {
     const section = document.querySelector('[data-hi-installation]');
     if (!section) return;
 
     const trackArea = section.querySelector('.hi-installation-track-area');
     const track = section.querySelector('[data-hi-installation-track]');
-    const cards = Array.from(section.querySelectorAll('[data-hi-installation-step]'));
+    const cards = Array.from(
+        section.querySelectorAll('[data-hi-installation-step]'),
+    );
     const progressLine = section.querySelector('.progress-line');
 
     if (!trackArea || !track || !cards.length || !progressLine) return;
@@ -3971,7 +4406,7 @@ function initHiInstallationScroll() {
                 const maxIndex = cards.length - 1;
                 const activeIndex = Math.min(
                     maxIndex,
-                    Math.floor(progress * cards.length)
+                    Math.floor(progress * cards.length),
                 );
 
                 setActiveCard(activeIndex);
@@ -3985,19 +4420,18 @@ function initHiInstallationScroll() {
             xPercent: -70,
             ease: 'none',
         },
-        0
+        0,
     ).to(
         progressLine,
         {
             scaleX: 1,
             ease: 'none',
         },
-        0
+        0,
     );
 
     console.log('[Trac] Hi installation scroll initialized');
 }
-
 
 /**
  * Refresh all ScrollTriggers (call after dynamic content loads)

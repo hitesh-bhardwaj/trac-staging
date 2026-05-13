@@ -16,7 +16,7 @@ $hero_description = get_field('hero_new_description') ?: "Without it, systems ca
 $hero_image = get_field('hero_new_image') ?: 'https://www.figma.com/api/mcp/asset/72b7b9bf-2b36-4998-8fe1-5db1b166e089';
 ?>
 
-<section class="hero-new relative w-full min-h-screen bg-white" data-section="hero-new" data-hero-static>
+<section class="hero-new relative w-full min-h-screen bg-[#0B1F3A]" data-section="hero-new" data-hero-static>
     <div class="hero-new-container w-full px-[5.21vw] pt-[13vw] pb-[7.031vw] md:px-[4vw] md:pt-[160px] md:pb-16 sm:px-[6vw] sm:pt-[140px] sm:pb-12">
 
         <!-- Hero Text Content -->

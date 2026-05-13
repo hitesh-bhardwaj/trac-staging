@@ -11,7 +11,7 @@ export function createNetworkCanvas(canvas, options = {}) {
         maxRadius: 6,
         linkDistance: 200,
         maxConnectionsPerStar: 3,
-        starColor: '#97ACC8',
+        starColor: '#E86224',
         lineColor: '#97ACC8',
         backgroundClear: true,
         interactive: options.interactive ?? true,

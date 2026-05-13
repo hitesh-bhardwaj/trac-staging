@@ -48,8 +48,8 @@ $client_logos = [
         <div class="clients-grid grid grid-cols-[1fr_1.5fr] gap-[4.167vw] items-start md:grid-cols-1 md:gap-10 sm:gap-8">
             <div class="clients-header">
                 <div class="clients-label flex items-center gap-[0.833vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
-                    <span class="label-line w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1 sm:w-5"></span>
-                    <span class="label-text font-body text-[1.25vw] text-text-primary md:text-xl sm:text-lg">Our Clients</span>
+                    <span class="label-line w-[1.354vw] h-[0.208vw] bg-[#E86224] md:w-6 md:h-1 sm:w-5"></span>
+                    <span class="label-text font-body text-[1.25vw] text-[#E86224] md:text-xl sm:text-lg">Our Clients</span>
                 </div>
                 <h2 class="clients-title font-heading text-[3.438vw] leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl" >
                     <span data-heading-anim class="block">Some of Our </span>

@@ -49,6 +49,12 @@ export default {
             fontFamily: {
                 // Brand fonts from Figma
                 heading: [
+                    '"Georgia Custom"',
+                    'Georgia',
+                    '"Times New Roman"',
+                    'serif',
+                ],
+                subheading: [
                     '"Helvetica Neue"',
                     'Helvetica',
                     'Arial',
