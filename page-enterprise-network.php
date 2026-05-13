@@ -74,14 +74,14 @@ if (have_posts()) {
                 null,
                 [
                     'title' =>
-                        'Ready to Strengthen Your Network Infrastructure?',
+                        'Ready to Get on TrAC?',
                     'subtitle' =>
-                        "If your organisation requires secure, scalable, and resilient connectivity, TrAC is ready to support your next phase of growth.",
+                        "",
                     'button_text' => 'Get Connected',
                     'button_link' => '#get-connected',
                     'pattern_top_class' => 'top-[-15%]',
                     // Move CTA button slightly upward for this page.
-                    'button_wrapper_class' => 'mt-[5vw] md:mt-16 sm:mt-12',
+                    'button_wrapper_class' => '',
                 ],
             );
             ?>

@@ -21,7 +21,6 @@ get_header();
             'who-we-are',
             'what-we-do',
             'vision-mission',
-            'trac-story',
             'our-team',
         ];
 

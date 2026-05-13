@@ -116,7 +116,7 @@
    * Formula: px / 1920 * 100 = vw
    * 96px = 5vw, 24px = 1.25vw, 22px = 1.146vw
    */
-    --text-hero: 4.5vw; /* 96px at 1920 */
+    --text-hero: 4vw; /* 96px at 1920 */
     --text-h1: 3.646vw; /* 70px at 1920 */
     --text-h2: 2.604vw; /* 50px at 1920 */
     --text-h3: 1.823vw; /* 35px at 1920 */
@@ -628,13 +628,19 @@ html.js [data-hero-reveal].is-hero-revealed {
 
     .btn-primary {
         @apply bg-[#E86224] text-white relative;
-        @apply focus:ring-[#E86224];
-        border: 0.057vw solid #E86224;
+        /* @apply focus:ring-[#E86224]; */
+        /* border: 0.057vw solid #E86224; */
+    }
+    .btn-primary:hover {
+        @apply bg-white text-[#E86224];
     }
 
     .btn-secondary {
         @apply bg-brand-secondary text-white relative;
         @apply focus:ring-brand-secondary;
+    }
+    .btn-secondary:hover {
+        @apply bg-[#E86224] text-white;
     }
 
     .btn-outline {
@@ -642,7 +648,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 
     .btn-outline:hover {
-        @apply bg-white;
+        @apply bg-[#E86224] text-white;
     }
 
     .btn-text {
@@ -1376,19 +1382,19 @@ html.js [data-hero-reveal].is-hero-revealed {
     position: absolute;
     top: 50%;
     right: -1.823vw;
-    width: 1px;
+    width: 1.5px;
     height: 12.292vw;
-    background: rgba(16, 65, 127, 0.8);
+    background: #10417F;
     transform: translateY(-50%);
 }
 
 .counter-value {
     display: flex; /* Ensure it's a flex container */
     align-items: flex-start;
-    font-family: var(--font-heading);
+    font-family: var(--font-subheading);
     font-size: 5.729vw;
     /* Changed from 0.9 to 1 to prevent clipping */
-    line-height: 1;
+    line-height: 1.5;
     font-weight: 400;
 }
 
@@ -1423,7 +1429,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 
 .counter-suffix-top {
     /* Slightly adjusted margin for better alignment with the top of the numbers */
-    margin-top: 0.2vw;
+    margin-top: 0.5vw;
     font-family: var(--font-body);
     font-size: 1.25vw;
     line-height: 1;
@@ -1439,24 +1445,40 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .counter-label {
-    max-width: 16vw;
+    max-width: 12vw;
     line-height: 1.4;
     /* margin-top: 1vw;  Added a small gap between number and text */
 }
 
 .what-we-do-section {
-    height: 240vh;
-    overflow: clip;
+    height: auto;
+    overflow: visible;
+}
+
+.what-we-do-viewport {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding-left: 30vw;
+    padding-right: 5vw;
+    scroll-padding-left: 30vw;
+}
+
+.what-we-do-viewport::-webkit-scrollbar {
+    display: none;
 }
 
 .what-we-do-card-container {
     width: max-content;
     will-change: transform;
+    margin-left: 0;
 }
 
 .what-we-do-card {
     border: 1px solid rgba(255, 255, 255, 0.6);
     will-change: transform, opacity;
+    scroll-snap-align: start;
 }
 
 .vision-mission-card {
@@ -1551,12 +1573,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     bottom: 0;
     z-index: 3;
     padding: 2.2vw 1.8vw 1.8vw;
-    background: linear-gradient(
-        180deg,
-        rgba(132, 140, 156, 0) 0%,
-        rgba(118, 122, 131, 0.72) 44%,
-        rgba(104, 107, 114, 0.96) 100%
-    );
+    background: #0B1F3A;
     text-align: center;
     color: #ffffff;
     will-change: transform, opacity;
@@ -1644,7 +1661,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     width: 2.95vw;
     height: 2.95vw;
     background: transparent;
-    color: #10417f;
     line-height: 1;
     transition:
         opacity 0.25s ease,
@@ -1887,6 +1903,11 @@ html.js [data-hero-reveal].is-hero-revealed {
 
     .what-we-do-card-container {
         width: 100%;
+    }
+
+    .what-we-do-viewport {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 

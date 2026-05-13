@@ -121,7 +121,7 @@
                 <!-- Cloud Login CTA Button - Desktop -->
                 <a href="<?php echo esc_url(
                     get_field('header_cta_link', 'option') ?: '#',
-                ); ?>" class="btn btn-primary md:hidden hover:bg-white hover:text-[#E86224] transition-colors durtaion-500 ease-in-out border border-[#E86224]">
+                ); ?>" class="btn btn-primary md:hidden hover:bg-white hover:text-[#E86224] transition-colors durtaion-700 ease-in-out border border-[#E86224]">
                     <!-- <span class="btn-line"></span> -->
                      <span>
                          Contact Us

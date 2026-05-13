@@ -204,7 +204,7 @@ endif; ?>
         
          
     </div>
-                               <canvas class="network-canvas-el absolute inset-0 h-full w-full"></canvas>
+                               <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F6A"></canvas>
 
 
 </section>

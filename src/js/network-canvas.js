@@ -11,8 +11,8 @@ export function createNetworkCanvas(canvas, options = {}) {
         maxRadius: 6,
         linkDistance: 200,
         maxConnectionsPerStar: 3,
-        starColor: '#E86224',
-        lineColor: '#97ACC8',
+        starColor: options.starColor ?? '#FFBFA2',
+        lineColor: options.lineColor ?? '#10417F1A',
         backgroundClear: true,
         interactive: options.interactive ?? true,
         devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
@@ -257,7 +257,7 @@ export function createNetworkCanvas(canvas, options = {}) {
             }
         }
 
-        ctx.lineWidth = 0.3;
+        ctx.lineWidth = 1;
         ctx.strokeStyle = config.lineColor;
         ctx.stroke();
     }

@@ -223,14 +223,17 @@ function initNetworkCanvases() {
     app.networkInstances = [];
 
     networkCanvases.forEach((canvas) => {
+        const starColor = canvas.dataset.starColor || '#ffffff';
+        const lineColor = canvas.dataset.lineColor || '#ffffff';
+
         const instance = initNetworkCanvas(canvas, {
             starCount: 80,
             linkDistance: 150,
             maxVelocity: 20,
             minRadius: 1,
             maxRadius: 2,
-            starColor: '#ffffff',
-            lineColor: '#ffffff',
+            starColor,
+            lineColor,
             interactive: true,
         });
 

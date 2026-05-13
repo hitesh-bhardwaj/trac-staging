@@ -5,37 +5,9 @@ if (!defined("ABSPATH")) {
 
 $who_we_are_copy = [
     __(
-        "Being on TrAC means being on the most resilient trans-African network available. Every aspect of the TrAC network is designed with protection in mind. Internet enters our network from three different providers across three different geographies.",
+        "TrAC is a private, Rwanda-founded internet service provider with over 13 years of experience delivering reliable, high-performance connectivity. We enable businesses and communities to stay connected and grow with confidence, building strong relationships with the people and organisations we serve.",
         "trac"
     ),
-    __(
-        "We operate in 14 countries across Africa, with a total population of 635 million. With low levels of digital and financial inclusion, the opportunity for growth and our ability to transform lives remains substantial.",
-        "trac"
-    ),
-];
-
-$who_we_are_slides = [
-    [
-        "title" => __("Seamless Connectivity. No Boundaries.", "trac"),
-        "image" =>
-            get_template_directory_uri() . "/src/imgs/about/slider-img.png",
-        "alt" => __("Seamless connectivity across communities", "trac"),
-    ],
-    [
-        "title" => __("Protected Infrastructure. Regional Reach.", "trac"),
-        "image" => get_template_directory_uri() . "/src/imgs/service-1.png",
-        "alt" => __("Regional digital infrastructure", "trac"),
-    ],
-    [
-        "title" => __("Built For Access. Ready For Growth.", "trac"),
-        "image" => get_template_directory_uri() . "/src/imgs/service-2.png",
-        "alt" => __("Fiber network expansion", "trac"),
-    ],
-    [
-        "title" => __("Local Presence. Continental Ambition.", "trac"),
-        "image" => get_template_directory_uri() . "/src/imgs/service-3.png",
-        "alt" => __("Network presence across Africa", "trac"),
-    ],
 ];
 
 $who_we_are_stats = [
@@ -46,7 +18,7 @@ $who_we_are_stats = [
     ],
     [
         "value" => "60",
-        "suffix_bottom" => "m",
+        "suffix_bottom" => "",
         "label" => __("KILOMETERS OF\nFIBERS", "trac"),
     ],
     [
@@ -60,77 +32,25 @@ $who_we_are_stats = [
     <div class="who-we-are-container w-full flex flex-col items-center space-y-[7vw] px-[5.21vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="who-we-are-intro  w-full flex justify-between items-start">
             <div class="who-we-are-label flex items-center gap-[0.833vw] md:gap-3" data-animate="fade-up">
-                <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-primary md:h-1 md:w-6 sm:w-5"></span>
-                <span class="font-body text-[1.25vw] text-text-primary md:text-xl sm:text-lg">
+                <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
+                <span class="font-body text-[1.6vw] text-[#E86224] md:text-xl sm:text-lg">
                     <?php esc_html_e("Who We Are", "trac"); ?>
                 </span>
             </div>
 
             <div class="who-we-are-copy space-y-[2.5vw] md:space-y-6" >
                 <?php foreach ($who_we_are_copy as $paragraph): ?>
-                    <p data-para-anim data-delay="0.08" class="max-w-[48vw] font-body text-[1.406vw] leading-[1.45] text-text-body md:max-w-full md:text-[22px] md:leading-[1.5] sm:text-[17px]">
+                    <p data-para-anim data-delay="0.08" class="max-w-[50vw] font-body text-[1.406vw] leading-[1.45] text-text-body md:max-w-full md:text-[22px] md:leading-[1.5] sm:text-[17px]">
                         <?php echo esc_html($paragraph); ?>
                     </p>
                 <?php endforeach; ?>
             </div>
         </div>
 
-        <div class="who-we-are-slider-wrap w-full" data-animate="fade-up" data-delay="0.2">
-            <div class="who-we-are-slider relative">
-                <div class="who-we-are-track relative h-[32.292vw] overflow-hidden rounded-[1.875vw] md:h-[440px] md:rounded-[28px] sm:h-[300px] sm:rounded-[24px]">
-                    <?php foreach ($who_we_are_slides as $index => $slide): ?>
-                        <article
-                            class="who-we-are-slide absolute inset-0"
-                            data-slide-index="<?php echo esc_attr($index); ?>"
-                            aria-hidden="<?php echo $index === 0
-                                ? "false"
-                                : "true"; ?>"
-                        >
-                            <img
-                                src="<?php echo esc_url($slide["image"]); ?>"
-                                alt="<?php echo esc_attr($slide["alt"]); ?>"
-                                class="h-full w-full object-cover"
-                                loading="<?php echo $index === 0
-                                    ? "eager"
-                                    : "lazy"; ?>"
-                            >
-                            <div class="who-we-are-slide-overlay absolute inset-0 bg-gradient-to-r from-[#0b1630]/55 via-[#0b1630]/15 to-transparent"></div>
-                            <div class="who-we-are-slide-content absolute left-[4.167vw] top-[3.125vw] w-[40%] md:left-8 md:top-8 md:max-w-[320px] sm:left-6 sm:top-6 sm:max-w-[220px]">
-                                <h2 class="font-heading font-normal text-[3.021vw] leading-[1.1] tracking-[-0.02em] text-white md:text-[46px] sm:text-[34px]">
-                                    <?php echo esc_html($slide["title"]); ?>
-                                </h2>
-                            </div>
-                        </article>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="who-we-are-pagination mt-[1.25vw] flex items-center justify-center gap-[0.521vw] md:mt-5 md:gap-2 sm:mt-4">
-                    <?php foreach ($who_we_are_slides as $index => $slide): ?>
-                        <button
-                            class="who-we-are-dot<?php echo $index === 0
-                                ? " is-active"
-                                : ""; ?>"
-                            type="button"
-                            aria-label="<?php echo esc_attr(
-                                sprintf(
-                                    __("Go to slide %d", "trac"),
-                                    $index + 1
-                                )
-                            ); ?>"
-                            aria-pressed="<?php echo $index === 0
-                                ? "true"
-                                : "false"; ?>"
-                            data-who-we-are-dot="<?php echo esc_attr(
-                                $index
-                            ); ?>"
-                        ></button>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
+        
 
         <p data-para-anim class="hero-subtitle-1 text-center font-body text-[1.875vw] leading-[1.35] text-text-primary md:text-[28px] sm:text-[20px]">
-            We’re a leading provider of telecommunications in Africa
+            We’re a leading provider of telecommunications Africa
         </p>
 
         <div data-animate="fade-up" class="counter flex w-full justify-center" data-counter-section>
@@ -141,9 +61,9 @@ $who_we_are_stats = [
                             ? " has-divider"
                             : ""; ?>"
                     >
-                        <div class="counter-value-wrap  flex items-start justify-center gap-[0.208vw] text-brand-primary md:mb-4 md:gap-1">
+                        <div class="counter-value-wrap  flex items-start justify-center gap-[0.208vw] text-brand-primary  md:mb-4 md:gap-1">
                             <div
-                                class="counter-value flex overflow-hidden text-[3vw]"
+                                class="counter-value flex overflow-hidden text-[3vw] leading-[1.5]"
                                 aria-label="<?php echo esc_attr(
                                     str_replace("\n", " ", $stat["label"])
                                 ); ?>"

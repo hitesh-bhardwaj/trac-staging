@@ -41,7 +41,7 @@ export function initAnimations() {
     initTestimonialsSlider();
     initWhoWeAreSlider();
     initWhoWeAreCounters();
-    initWhatWeDoScroll();
+    initWhatWeDoSlider();
     initTracStoryTimeline();
     initOurNetworkAnimation();
     initOurNetworkPointers();
@@ -3434,60 +3434,76 @@ function initWhoWeAreCounters() {
     console.log('[Trac] Who we are counters initialized');
 }
 
-function initWhatWeDoScroll() {
-    const section = document.querySelector('[data-what-we-do-scroll]');
+function initWhatWeDoSlider() {
+    const section = document.querySelector('[data-what-we-do-slider]');
     if (!section) return;
+    if (section.dataset.whatWeDoSliderInit === 'true') return;
+    section.dataset.whatWeDoSliderInit = 'true';
 
-    const sticky = section.querySelector('.what-we-do-sticky');
+    const viewport = section.querySelector('[data-what-we-do-viewport]');
     const track = section.querySelector('[data-what-we-do-track]');
+    const prevBtn = section.querySelector('[data-what-we-do-prev]');
+    const nextBtn = section.querySelector('[data-what-we-do-next]');
     const cards = Array.from(section.querySelectorAll('.what-we-do-card'));
 
-    if (!sticky || !track || cards.length === 0) return;
-
-    if (window.innerWidth <= 768) {
-        gsap.set(track, { xPercent: 75 });
+    if (!viewport || !track || !prevBtn || !nextBtn || cards.length === 0) {
         return;
     }
 
-    gsap.set(track, { xPercent: 75 });
+    // Mobile stacks cards vertically; no slider needed.
+    if (window.innerWidth <= 768) return;
 
-    gsap.to(track, {
-        xPercent: -25,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: section,
-            start: 'top 70%',
-            end: 'bottom bottom',
-            scrub: true,
-            // markers:true,
-            invalidateOnRefresh: true,
+    // If the old scroll version ever ran (or a transition left transforms behind),
+    // ensure we start from a clean, non-transformed layout so padding/scroll works.
+    gsap.set(track, { clearProps: 'transform' });
+    gsap.set(cards, { clearProps: 'transform,opacity' });
+
+    let scrollStep = 0;
+
+    function computeScrollStep() {
+        const firstCard = cards[0];
+        const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
+        const styles = window.getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+        scrollStep = cardWidth + gap;
+    }
+
+    function updateButtons() {
+        const maxScrollLeft = viewport.scrollWidth - viewport.clientWidth;
+        prevBtn.disabled = viewport.scrollLeft <= 1;
+        nextBtn.disabled = viewport.scrollLeft >= maxScrollLeft - 1;
+    }
+
+    function scrollByStep(direction) {
+        if (!scrollStep) computeScrollStep();
+        viewport.scrollBy({ left: scrollStep * direction, behavior: 'smooth' });
+    }
+
+    prevBtn.addEventListener('click', () => scrollByStep(-1));
+    nextBtn.addEventListener('click', () => scrollByStep(1));
+
+    let raf = null;
+    viewport.addEventListener(
+        'scroll',
+        () => {
+            if (raf) return;
+            raf = requestAnimationFrame(() => {
+                raf = null;
+                updateButtons();
+            });
         },
-    });
-    cards.forEach((card, index) => {
-        gsap.fromTo(
-            card,
-            {
-                // autoAlpha: 0.45,
-                opacity: 0,
-                yPercent: 100,
-            },
-            {
-                // autoAlpha: 1,
-                opacity: 1,
-                yPercent: 0,
-                duration: 0.7,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: section,
-                    start: `top+=${index * 12}% 70%`,
-                    end: 'bottom bottom',
-                    scrub: true,
-                },
-            },
-        );
+        { passive: true },
+    );
+
+    window.addEventListener('resize', () => {
+        computeScrollStep();
+        updateButtons();
     });
 
-    console.log('[Trac] What we do scroll initialized');
+    computeScrollStep();
+    updateButtons();
+
+    console.log('[Trac] What we do slider initialized');
 }
 
 function initTracStoryTimeline() {

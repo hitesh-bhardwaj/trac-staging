@@ -1,123 +1,107 @@
 <?php
 if (!defined('ABSPATH')) {
     exit();
-} ?>
+}
+
+$enterprise_services = [
+    [
+        'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/business.svg',
+        'title'    => 'Enterprise Fibre Connectivity',
+        'para'     => 'Our network supports dedicated bandwidth for cloud systems and critical applications, as well as consistent speeds across demanding environments.',
+        'para2'     => 'With multiple international routes and fully redundant backbone infrastructure, TrAC is engineered to minimise disruption and maintain continuity across your operations.',
+        'link'     => '#get-connected',
+        'btn_text' => 'Get on TrAC',
+    ],
+    [
+        'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/private-network.svg',
+        'title'    => 'Private Network',
+        'para'     => 'For organisations operating across multiple locations, TrAC provides secure private networks that connect branches, teams, and systems into a single, controlled environment.',
+        'para2'     => 'Built on technologies such as MPLS, these networks enable reliable site-to-site connectivity with secure communication, centralised management, and consistent performance across locations. The result is a network that supports internal operations with stability and allows businesses to scale without disruption.',
+        'link'     => '#get-connected',
+        'btn_text' => 'Get on TrAC',
+    ],
+    [
+        'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/data-centre.svg',
+        'title'    => 'Data Centre & Colocation',
+        'para'     => 'TrAC operates an enterprise-grade data centre facility in Rwanda, designed to support secure and continuous operations.',
+        'para2'     => 'Our environment is built with controlled access and continuous monitoring, providing businesses with a secure foundation for hosting critical infrastructure for day-to-day and long-term operations.',
+        'link'     => '#get-connected',
+        'btn_text' => 'Get on TrAC',
+    ],
+    [
+        'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/cloud-infrastructure.svg',
+        'title'    => 'Cloud & Virtual Infrastructure',
+        'para'     => 'TrAC provides flexible cloud environments that support virtual infrastructure, data protection, and scalable operations, while integrating seamlessly with existing networks.',
+        'para2'     => 'Whether deployed independently or as part of a hybrid setup, TrAC’s cloud platform is designed to adapt to evolving business needs without adding complexity.',
+        'link'     => '#get-connected',
+        'btn_text' => 'Get on TrAC',
+    ],
+];
+?>
 
 <section class="enterprise-services py-[7vw] md:py-20 sm:py-16" data-section="enterprise-services">
     <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
-        <div class="max-w-[80rem] mx-auto text-center">
-            <div class="flex items-center justify-center gap-3 mb-12 md:mb-10" data-animate="fade-up">
-                <span class="w-6 h-1 bg-brand-primary"></span>
-                <span class="font-body text-base text-[#111] text-[1.25vw]">Our Services</span>
+        <div class="text-left">
+            <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
+                <span class="w-6 h-1 bg-[#E86224]"></span>
+                <span class="font-body  text-[#E86224] text-[1.6vw]">Our Services</span>
             </div>
 
-        <h2 data-heading-anim class="font-heading text-[3.438vw]  font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6">
+            <h2 data-heading-anim class="font-heading text-[3.438vw] font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6 text-left">
                 Built for Organisations That Cannot Afford Downtime.
             </h2>
 
-            <p class="w-[70%] font-body text-[1.25vw] leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-center mx-auto" data-para-anim data-delay="0.2">
-                TrAC designs and deploys enterprise-grade networks that support complex organisations with infrastructure built to perform under pressure to ensure systems remain stable when it matters most.
+            <p class="w-[70%] font-body text-[1.25vw] leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left" data-para-anim data-delay="0.2">
+                TrAC designs and deploys enterprise-grade networks that support complex organisations with an infrastructure built to perform under pressure to ensure systems remain stable when it matters most.
             </p>
 
-            <div class="grid grid-cols-3 gap-10 mt-[5vw] md:grid-cols-1 md:gap-8 text-left">
-                <div class="bg-white rounded-[32px] border border-[#d7e0f0] hover:border-brand-primary/60 focus-within:border-brand-primary/60 transition-colors duration-300 p-10 flex flex-col min-h-[440px] md:min-h-0 md:p-8 text-left" data-animate="fade-up">
-                    <div>
-                        <div class="h-[4.5vw] w-[4.5vw] mb-10">
-                        <img src="<?php echo esc_url(
-                            get_template_directory_uri() .
-                                '/src/imgs/enterprise-network/business.svg',
-                        ); ?>" alt="" class="w-full h-full " loading="lazy">
+            <div class="grid grid-cols-2 gap-10 mt-[5vw] md:grid-cols-1 md:gap-8 text-left">
+                <?php foreach ($enterprise_services as $index => $card) : ?>
+                    <div
+                        class="bg-[#10417F] rounded-[32px] p-10 flex flex-col min-h-[440px] md:min-h-0 md:p-8 text-left"
+                        data-animate="fade-up"
+                        <?php if ($index > 0) : ?>
+                            data-delay="<?php echo esc_attr($index * 0.1); ?>"
+                        <?php endif; ?>
+                    >
+                        <div>
+                            <div class="h-[4.5vw] w-[4.5vw] mb-10">
+                                <img src="<?php echo esc_url($card['img']); ?>" alt="" class="w-full h-full" loading="lazy">
+                            </div>
+
+                            <h3 class="font-subheading text-white text-[1.88vw] md:text-2xl mb-6 font-normal">
+                                <?php echo $card['title']; ?>
+                            </h3>
+
+                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw]">
+                                <?php echo esc_html($card['para']); ?>
+                            </p>
+                            <p class="font-body text-white leading-[1.7] text-[1.15vw]">
+                                <?php echo esc_html($card['para2']); ?>
+                            </p>
                         </div>
 
-                    <h3 class="font-body text-text-primary text-[1.823vw] md:text-2xl mb-6 font-normal">Business Internet</h3>
-                        <p class="font-body text-text-body  leading-[1.7]">
-                            Dedicated, uncontended bandwidth for cloud systems and critical applications. Multiple international routes and a fully redundant backbone ensure continuity across your operations.
-                        </p>
-                    </div>
+                        <div class="mt-auto pt-10">
+                            <a href="<?php echo esc_url(
+                        get_field('hero_primary_button_link') ?:
+                        '#get-connected',
+                     ); ?>" class="btn btn-primary group magnetic">
+                        <span class="btn-line"></span>
+                        <span class="btn-text"><?php echo esc_html(
+                            get_field('hero_primary_button_text') ?:
+                            'Get on TrAC',
+                        ); ?></span>
+                        <span class="btn-icon">
+                          <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                          <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                          </svg>
 
-                    <div class="mt-auto pt-10">
-                        <a href="<?php echo esc_url('#get-connected'); ?>" class="btn btn-primary group magnetic">
-                            <span class="btn-line"></span>
-                            <span class="btn-text">Get on TrAC</span>
-                            <span class="btn-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[32px] border border-[#d7e0f0] hover:border-brand-primary/60 focus-within:border-brand-primary/60 transition-colors duration-300 p-10 flex flex-col min-h-[440px] md:min-h-0 md:p-8 text-left" data-animate="fade-up" data-delay="0.1">
-                    <div>
-                        <div class="h-[4.5vw] w-[4.5vw] mb-10">
-                        <img src="<?php echo esc_url(
-                            get_template_directory_uri() .
-                                '/src/imgs/enterprise-network/private-network.svg',
-                        ); ?>" alt="" class="w-full h-full " loading="lazy">
+                        </span>
+                    </a>
                         </div>
-
-                    <h3 class="font-body text-text-primary text-[1.823vw] md:text-2xl mb-6 font-normal">Private Network &amp; VPN</h3>
-                        <p class="font-body text-text-body  leading-[1.7]">
-                            Secure MPLS private networks connecting branches, teams, and systems into a single controlled environment with site-to-site security and consistent performance.
-                        </p>
                     </div>
-
-                    <div class="mt-auto pt-10">
-                        <a href="<?php echo esc_url('#get-connected'); ?>" class="btn btn-primary group magnetic">
-                            <span class="btn-line"></span>
-                            <span class="btn-text">Get on TrAC</span>
-                            <span class="btn-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-[32px] border border-[#d7e0f0] hover:border-brand-primary/60 focus-within:border-brand-primary/60 transition-colors duration-300 p-10 flex flex-col min-h-[440px] md:min-h-0 md:p-8 text-left" data-animate="fade-up" data-delay="0.2">
-                    <div>
-                        <div class="h-[4.5vw] w-[4.5vw] mb-10">
-                        <img src="<?php echo esc_url(
-                            get_template_directory_uri() .
-                                '/src/imgs/enterprise-network/cloud-hosting.svg',
-                        ); ?>" alt="" class="w-full h-full " loading="lazy">
-                        </div>
-
-                    <h3 class="font-body text-text-primary text-[1.823vw] md:text-2xl mb-6 font-normal">Cloud &amp; Hosting</h3>
-                        <p class="font-body text-text-body  leading-[1.7]">
-                            Flexible cloud environments supporting virtual infrastructure, data protection, and scalable operations. Tier 3 data centre colocation with 24/7 monitoring.
-                        </p>
-                    </div>
-
-                    <div class="mt-auto pt-10">
-                        <a href="<?php echo esc_url('#get-connected'); ?>" class="btn btn-primary group magnetic">
-                            <span class="btn-line"></span>
-                            <span class="btn-text">Get on TrAC</span>
-                            <span class="btn-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                                    <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                                    <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                                    <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                                    <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                                    <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
