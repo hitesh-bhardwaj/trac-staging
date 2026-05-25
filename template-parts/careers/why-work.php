@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
             </div>
 
             <!-- Heading -->
-            <h2 class="font-heading text-[3.438vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] text-center mb-[3vw] md:text-5xl md:mb-8 sm:text-4xl sm:mb-6" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-[#111] text-center mb-[3vw] md:text-5xl md:mb-8 sm:text-4xl sm:mb-6" data-heading-anim>
                 Why Work With Us
             </h2>
 

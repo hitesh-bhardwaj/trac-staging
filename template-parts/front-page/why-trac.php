@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) {
                         <span class="label-line w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
                         <span class="label-text font-body text-[1.25vw] text-[#111] md:text-xl">Why Choose TrAC</span>
                     </div>
-                    <h2 class="why-main-title font-heading text-[3.438vw] leading-[1.18] tracking-[0.01em] text-[#1d1d1d] md:text-4xl sm:text-3xl">
+                    <h2 class="why-main-title font-heading text-66 leading-[1.18] tracking-[0.01em] text-[#1d1d1d] md:text-4xl sm:text-3xl">
                         <span data-heading-anim  class="block">Why Businesses</span>
                         <span data-heading-anim  class="block">Choose TrAC</span>
                     </h2>

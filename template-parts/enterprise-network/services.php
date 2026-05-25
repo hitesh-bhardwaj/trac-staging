@@ -44,14 +44,14 @@ $enterprise_services = [
         <div class="text-left">
             <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-[#E86224]"></span>
-                <span class="font-body  text-[#E86224] text-[1.6vw]">Our Services</span>
+                <span class="font-body  text-[#E86224] text-30">Our Services</span>
             </div>
 
-            <h2 data-heading-anim class="font-heading text-[3.438vw] font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6 text-left">
+            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6 text-left">
                 Built for Organisations That Cannot Afford Downtime.
             </h2>
 
-            <p class="w-[70%] font-body text-[1.25vw] leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left" data-para-anim data-delay="0.2">
+            <p class="w-[70%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left" data-para-anim data-delay="0.2">
                 TrAC designs and deploys enterprise-grade networks that support complex organisations with an infrastructure built to perform under pressure to ensure systems remain stable when it matters most.
             </p>
 
@@ -69,14 +69,14 @@ $enterprise_services = [
                                 <img src="<?php echo esc_url($card['img']); ?>" alt="" class="w-full h-full" loading="lazy">
                             </div>
 
-                            <h3 class="font-subheading text-white text-[1.88vw] md:text-2xl mb-6 font-normal">
+                            <h3 class="font-subheading text-white text-36 md:text-2xl mb-6 font-normal">
                                 <?php echo $card['title']; ?>
                             </h3>
 
-                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw]">
+                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.2vw]">
                                 <?php echo esc_html($card['para']); ?>
                             </p>
-                            <p class="font-body text-white leading-[1.7] text-[1.15vw]">
+                            <p class="font-body text-white leading-[1.7] text-[1.2vw]">
                                 <?php echo esc_html($card['para2']); ?>
                             </p>
                         </div>

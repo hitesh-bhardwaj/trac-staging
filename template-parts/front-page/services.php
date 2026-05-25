@@ -123,12 +123,12 @@ $services = [
             <div class="services-label mb-[1.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10" data-animate="fade-up">
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
 
-                <span class="label-text font-body text-[1.25vw] text-[#E86224] md:text-xl sm:text-lg">
+                <span class="label-text font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
                     <?php echo esc_html(get_field('services_label') ?: 'What We Offer'); ?>
                 </span>
             </div>
 
-            <h2 data-heading-anim class="services-title font-heading text-[3.438vw] leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-center sm:text-[8vw]">
+            <h2 data-heading-anim class="services-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-center sm:text-[8vw]">
                 <?php echo esc_html(get_field('services_title') ?: 'Get Connected. Stay Connected'); ?>
             </h2>
         </div>
@@ -145,11 +145,11 @@ $services = [
                             <div class="card-inner grid h-full grid-cols-[1fr_auto] items-center md:grid-cols-1">
                                 <div class="card-content flex h-full flex-col justify-between p-[3.073vw] pr-[2vw] md:p-8 sm:p-6">
                                     <div>
-                                        <h3 class="card-title font-subheading mb-[1.25vw] text-[1.875vw] font-normal text-white md:mb-4 md:text-2xl sm:mb-3 sm:text-[6vw]">
+                                        <h3 class="card-title font-subheading mb-[1.25vw] text-36 font-normal text-white md:mb-4 md:text-2xl sm:mb-3 sm:text-[6vw]">
                                             <?php echo esc_html($service['title']); ?>
                                         </h3>
 
-                                        <p class="card-description font-body max-w-[35vw] text-[1.25vw] leading-[1.5] text-white md:max-w-full md:text-lg sm:text-base">
+                                        <p class="card-description font-body max-w-[35vw] text-24 leading-[1.5] text-white md:max-w-full md:text-lg sm:text-base">
                                             <?php echo esc_html($service['description']); ?>
                                         </p>
                                     </div>

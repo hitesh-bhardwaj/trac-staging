@@ -9,23 +9,23 @@ if (!defined('ABSPATH')) {
             <div class="pt-[0.5vw] md:pt-0">
                 <div class="flex items-center gap-[0.729vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">
                     <span class="w-[1.354vw] h-[0.208vw] bg-[#E86224] md:w-6 md:h-1"></span>
-                    <span class="font-body text-[1.6vw] text-[#E86224] md:text-xl">Get in Touch</span>
+                    <span class="font-body text-30 text-[#E86224] md:text-xl">Get in Touch</span>
                 </div>
 
-                <h2 class="font-heading text-[3.438vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" >
+                <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" >
                     <span data-heading-anim class="block">Ready to Strengthen Your  </span>
                      <span data-heading-anim class="block"> Network Infrastructure?</span>
                 </h2>
 
-                <p class="font-body text-[1.25vw] leading-[1.58] text-[#1e1e1e] mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-para-anim data-delay="0.2">
+                <p class="font-body text-24 leading-[1.58] text-[#1e1e1e] mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-para-anim data-delay="0.2">
                     If your organisation requires secure, scalable, and resilient connectivity, TrAC is ready to support your next phase of growth.
                 </p>
 
-                <div class="font-body text-[1.25vw] leading-[1.7] text-[#111] md:text-base sm:text-sm">
+                <div class="font-body text-24 leading-[1.7] text-[#111] md:text-base sm:text-sm">
                     <p data-para-anim class="mb-3 md:mb-2">Or contact our enterprise team at:
 </p>
 <div data-para-anim class="under-multi-parent w-fit leading-[1.2]">
-                                <a href="mailto:sales@trac.africa" class="font-body text-[1.25vw] tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
+                                <a href="mailto:sales@trac.africa" class="font-body text-24 tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
                                     sales@trac.africa
                                 </a>
                             </div>

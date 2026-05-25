@@ -17,13 +17,13 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
                 data-animate="fade-up"
             >
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
-                <span class="label-text font-body text-[1.25vw] text-[#E86224] md:text-xl sm:text-lg">
+                <span class="label-text font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
                     <?php echo esc_html(get_field('testimonials_label') ? : 'Testimonials',); ?>
                 </span>
             </div>
 
             <h2
-                class="testimonials-title font-heading text-[3.438vw] leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]"
+                class="testimonials-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]"
                 data-heading-anim
              >
                 <?php echo esc_html(get_field('testimonials_title') ? : 'What Our Clients Say',); ?>
@@ -36,11 +36,11 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
                 data-animate="fade-up"
                 data-delay="0.2"
             >
-                <span class="current-slide font-body text-[1.563vw] text-brand-primary md:text-2xl sm:text-xl">
+                <span class="current-slide font-body text-30 text-brand-primary md:text-2xl sm:text-xl">
                     01
                 </span>
                 <span class="counter-line h-[1px] w-[8.073vw] bg-brand-primary md:w-24 sm:w-16"></span>
-                <span class="total-slides font-body text-[1.563vw] text-brand-primary md:text-2xl sm:text-xl">
+                <span class="total-slides font-body text-30 text-brand-primary md:text-2xl sm:text-xl">
                     03
                 </span>
             </div>
@@ -103,7 +103,7 @@ if ($testimonials_query->have_posts()):
 ?>
                         <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-[#0B1F3A] p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[2vw] sm:p-6  md:flex md:flex-col md:justify-between">
                             <?php if ($quote): ?>
-                                <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
+                                <p class="testimonial-text font-body mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                                     <?php echo esc_html($quote); ?>
                                 </p>
                             <?php

@@ -35,7 +35,7 @@ $hero_connectors_svg_path =
                 </h1>
 
                 <p
-                    class="hero-subtitle-1 font-subheading font-normal text-white w-[70%] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 sm:text-[6vw] md:text-[3.5vw] md:text-center"
+                    class="text-36 font-subheading font-normal text-white w-[70%] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 sm:text-[6vw] md:text-[3.5vw] md:text-center"
                     data-hero-reveal
                     data-hero-delay="0.08"
                     data-para-anim
@@ -47,7 +47,7 @@ $hero_connectors_svg_path =
                 </p>
 
                 <p
-                    class="hero-subtitle font-body font-medium text-white w-[60%] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center"
+                    class="texy-24 font-body font-medium text-white w-[60%] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center"
                     data-hero-reveal
                     data-hero-delay="0.14"
                     data-para-anim

@@ -119,10 +119,14 @@
     --text-hero: 4vw; /* 96px at 1920 */
     --text-h1: 3.646vw; /* 70px at 1920 */
     --text-h2: 2.604vw; /* 50px at 1920 */
-    --text-h3: 1.823vw; /* 35px at 1920 */
-    --text-body-lg: 1.25vw; /* 24px at 1920 */
-    --text-body: 1.146vw; /* 22px at 1920 */
-    --text-body-sm: 0.833vw; /* 16px at 1920 */
+	    --text-h3: 1.875vw; /* 35px at 1920 */
+	    --text-body-lg: 1.25vw; /* 24px at 1920 */
+	    --text-body: 1.146vw; /* 22px at 1920 */
+	    --text-body-sm: 0.833vw; /* 16px at 1920 */
+	    --text-30: 1.57vw; /* 30px at 1920 */
+	    --text-24: 1.25vw; /* 24px at 1920 */
+	    --text-36: 1.875vw; /* 36px at 1920 */
+	    --text-66: 3.438vw; /* 66px at 1920 */
 
     /* Line Heights */
     --leading-hero: 1.29; /* 124px / 96px */
@@ -151,13 +155,17 @@
         --text-h1: 5vw;
         --text-h2: 4vw;
         --text-h3: 3vw;
-        --text-body-lg: 2.2vw;
-        --text-body: 2vw;
-        --text-body-sm: 1.6vw;
+	        --text-body-lg: 2.2vw;
+	        --text-body: 2vw;
+	        --text-body-sm: 1.6vw;
         --space-container: 4vw;
-        --header-height: 80px;
-    }
-}
+	        --header-height: 80px;
+	        --text-30: 1.57vw;
+	        --text-24: 2.2vw;
+	        --text-36: 3vw;
+	        --text-66: 5vw;
+	    }
+	}
 
 /* Mobile adjustments (below 540px) */
 @media (max-width: 540px) {
@@ -1044,14 +1052,14 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .hero-subtitle-1 {
-    font-size: var(--text-h3);
+    font-size: var(--text-36);
     line-height: var(--leading-hero);
     font-weight: 400;
     font-style: normal;
 }
 
 .hero-subtitle {
-    font-size: var(--text-body-lg);
+    font-size: var(--text-24);
     line-height: var(--leading-relaxed);
     font-weight: 400;
     font-style: normal;

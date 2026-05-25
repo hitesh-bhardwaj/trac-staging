@@ -33,14 +33,14 @@ $who_we_are_stats = [
         <div class="who-we-are-intro  w-full flex justify-between items-start">
             <div class="who-we-are-label flex items-center gap-[0.833vw] md:gap-3" data-animate="fade-up">
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
-                <span class="font-body text-[1.6vw] text-[#E86224] md:text-xl sm:text-lg">
+                <span class="font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
                     <?php esc_html_e("Who We Are", "trac"); ?>
                 </span>
             </div>
 
             <div class="who-we-are-copy space-y-[2.5vw] md:space-y-6" >
                 <?php foreach ($who_we_are_copy as $paragraph): ?>
-                    <p data-para-anim data-delay="0.08" class="max-w-[50vw] font-body text-[1.406vw] leading-[1.45] text-text-body md:max-w-full md:text-[22px] md:leading-[1.5] sm:text-[17px]">
+                    <p data-para-anim data-delay="0.08" class="max-w-[50vw] font-body text-24 leading-[1.45] text-text-body md:max-w-full md:text-[22px] md:leading-[1.5] sm:text-[17px]">
                         <?php echo esc_html($paragraph); ?>
                     </p>
                 <?php endforeach; ?>
@@ -49,7 +49,7 @@ $who_we_are_stats = [
 
         
 
-        <p data-para-anim class="hero-subtitle-1 text-center font-body text-[1.875vw] leading-[1.35] text-text-primary md:text-[28px] sm:text-[20px]">
+        <p data-para-anim class="hero-subtitle-1 text-center font-body text-36 leading-[1.35] text-text-primary md:text-[28px] sm:text-[20px]">
             We’re a leading provider of telecommunications Africa
         </p>
 

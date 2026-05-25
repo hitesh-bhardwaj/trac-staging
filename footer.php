@@ -23,7 +23,7 @@
 
                     <!-- Contact Details -->
                     <div class="footer-contact">
-                        <h4 class="font-body !font-normal text-[1.25vw] text-[#111] md:text-xl mb-2">Connect with us</h4>
+                        <h4 class="font-body !font-normal text-24 text-[#111] md:text-xl mb-2">Connect with us</h4>
                         <div class="contact-links flex flex-col gap-[0.521vw] md:gap-2">
                             <div class="under-multi-parent w-fit">
                                 <a href="mailto:info@trac.africa" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
@@ -43,7 +43,7 @@
                 <div class="footer-nav-columns flex gap-[8vw] md:gap-16 sm:gap-12 sm:flex-wrap">
                     <!-- Company Column -->
                     <div class="footer-column">
-                        <h4 class="font-body text-[1.25vw] !font-normal text-[#111] mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6">Company</h4>
+                        <h4 class="font-body text-24 !font-normal text-[#111] mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6">Company</h4>
                         <ul class="footer-links flex flex-col gap-3 md:gap-5 sm:gap-4">
                             <li class="under-multi-parent">
                                 <a href="/about-us" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">About Us</a>
@@ -63,7 +63,7 @@
 
                     <!-- Product Column -->
                     <div class="footer-column">
-                        <h4 class="font-body text-[1.25vw] text-[#111] mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6 !font-normal">Solutions</h4>
+                        <h4 class="font-body text-24 text-[#111] mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6 !font-normal">Solutions</h4>
                         <ul class="footer-links flex flex-col gap-3 md:gap-5 sm:gap-4">
                             <li class="under-multi-parent">
                                 <a href="/products/home-internet" class="font-body text-[1.042vw] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Home Internet</a>

@@ -19,7 +19,7 @@ if (have_posts()) {
         <main id="main-content" class="site-main" data-barba="container" data-barba-namespace="sme-internet">
             <?php
             get_template_part(
-                'template-parts/enterprise-network/hero',
+                'template-parts/common/hero',
                 null,
                 [
                     'container_class' =>

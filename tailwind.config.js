@@ -87,6 +87,10 @@ export default {
                 'body-lg': ['1.125rem', { lineHeight: '1.6' }],
                 body: ['1rem', { lineHeight: '1.6' }],
                 'body-sm': ['0.875rem', { lineHeight: '1.5' }],
+                24: 'var(--text-24)',
+                30: 'var(--text-30)',
+                36: 'var(--text-36)',
+                66: 'var(--text-66)',
             },
             spacing: {
                 // Custom spacing for sections

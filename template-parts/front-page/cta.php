@@ -109,7 +109,7 @@ $pattern_top_class = $cta_args['pattern_top_class'] ?? 'top-[-12%] sm:top-0';
     <div class="cta-container relative z-[10] w-full px-[5.21vw] py-[7vw] md:px-[4vw] md:py-32 sm:px-[6vw] sm:py-24 ">
         <div class="cta-content text-center max-w-[51vw] mx-auto mt-[5vw] md:max-w-full space-y-[15vw]">
             <div>
-                <h2 class="cta-title font-heading text-[3.438vw] leading-[1.12] tracking-[0.01em] text-white mb-[1.563vw] md:text-4xl md:mb-4 sm:text-3xl sm:mb-3" data-heading-anim>
+                <h2 class="cta-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-white mb-[1.563vw] md:text-4xl md:mb-4 sm:text-3xl sm:mb-3" data-heading-anim>
                     <?php echo esc_html($cta_title); ?>
                 </h2>
                

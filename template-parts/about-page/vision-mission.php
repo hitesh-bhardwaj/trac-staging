@@ -32,7 +32,7 @@ $vision_mission_cards = [
                 data-animate="fade-up"
             >
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
-                <span class="label-text font-body text-[1.6vw] text-[#E86224] md:text-xl sm:text-lg">
+                <span class="label-text font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
                     <?php echo esc_html(get_field('testimonials_label') ? : 'Our Vision & Mission',); ?>
                 </span>
             </div>
@@ -52,11 +52,11 @@ $vision_mission_cards = [
                         >
                     </div>
 
-                    <h2 class="mb-[2.083vw] font-subheading text-[3.438vw] font-normal leading-[1.05] tracking-[-0.02em] text-white md:mb-6 md:text-[52px] sm:text-[38px]">
+                    <h2 class="mb-[2.083vw] font-subheading text-66 font-normal leading-[1.05] tracking-[-0.02em] text-white md:mb-6 md:text-[52px] sm:text-[38px]">
                         <?php echo esc_html($card['title']); ?>
                     </h2>
 
-                    <p class="max-w-[25vw] font-body text-[1.25vw] leading-[1.5] text-white md:max-w-full md:text-[22px] sm:text-[17px]">
+                    <p class="max-w-[25vw] font-body text-24 leading-[1.5] text-white md:max-w-full md:text-[22px] sm:text-[17px]">
                         <?php echo esc_html($card['description']); ?>
                     </p>
                 </article>

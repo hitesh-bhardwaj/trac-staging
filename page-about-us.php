@@ -16,8 +16,44 @@ get_header();
     <?php while (have_posts()):
         the_post(); ?>
         <?php
+        $title = get_field('hero_title_line_1') ?: 'About Us';
+        $subtitle =
+            get_field('hero_subtitle_2') ?:
+            'TrAC is a private, Rwanda-founded internet service provider with over 13 years of experience delivering reliable, high - performance connectivity. We enable businesses and communities to stay connected and grow with confidence, building strong relationships with the people and organisations we serve.';
+        $primary_link = get_field('hero_primary_button_link') ?: '#get-connected';
+        $primary_text = get_field('hero_primary_button_text') ?: 'Get Connected';
+        $secondary_link = get_field('hero_secondary_button_link') ?: '#products';
+        $secondary_text = get_field('hero_secondary_button_text') ?: 'Explore Solutions';
+
+        get_template_part('template-parts/common/hero', null, [
+            'grid_classes' =>
+                'hero-grid flex items-start justify-between gap-[10vw] md:flex-col md:gap-8 ',
+            'text_classes' =>
+                'hero-text w-[45%] md:w-full md:max-w-full relative z-[10]',
+            'title_classes' =>
+                'hero-title font-heading text-white tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4 md:text-center',
+            'subtitle_classes' =>
+                'hero-subtitle font-body text-24 font-medium text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center',
+            'title' => $title,
+            'subtitle' => $subtitle,
+            'primary' => [
+                'text' => $primary_text,
+                'link' => $primary_link,
+            ],
+            'secondary' => [
+                'text' => $secondary_text,
+                'link' => $secondary_link,
+            ],
+            'media' => [
+                'src' =>
+                    get_template_directory_uri() . '/src/imgs/about/about-hero.png',
+                'alt' => 'Mobile globe visual',
+            ],
+            'after_section' =>
+                '<div class=""><canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#E86224" data-line-color="#031022"></canvas></div>',
+        ]);
+
         $about_page_sections = [
-            'hero',
             'who-we-are',
             'what-we-do',
             'vision-mission',

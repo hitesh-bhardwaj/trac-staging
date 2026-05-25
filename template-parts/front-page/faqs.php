@@ -89,11 +89,11 @@ $fallback_faqs =
         <div class="faqs-header mb-[4.844vw] md:mb-12 sm:mb-10">
             <div class="faqs-label flex items-center gap-[0.729vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
                 <span class="label-line w-[1.354vw] h-[0.208vw] bg-[#E86224] md:w-6 md:h-1 sm:w-5"></span>
-                <span class="label-text font-body text-[1.25vw] text-[#E86224] md:text-xl sm:text-lg"><?php echo esc_html(
+                <span class="label-text font-body text-30 text-[#E86224] md:text-xl sm:text-lg"><?php echo esc_html(
                     $section_label,
                 ); ?></span>
             </div>
-            <h2 class="faqs-title font-heading text-[3.438vw] leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]" data-heading-anim>
+            <h2 class="faqs-title font-heading text-66 leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]" data-heading-anim>
                 <?php echo esc_html($section_title); ?>
             </h2>
         </div>
@@ -140,7 +140,7 @@ $fallback_faqs =
                             aria-labelledby="faq-btn-<?php echo $index; ?>"
                             aria-hidden="<?php echo $is_first ? 'false' : 'true'; ?>"
                         >
-                            <div class="faq-answer-text font-body text-[1.25vw] leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
+                            <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
                                 <?php echo wp_kses_post($answer); ?>
                             </div>
                         </div>

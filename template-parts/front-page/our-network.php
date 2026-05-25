@@ -25,18 +25,18 @@ $network_circle_lines_svg_path_line =
             >
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
 
-                <span class="label-text font-body text-[1.25vw] text-[#E86224] md:text-xl sm:text-lg">
+                <span class="label-text font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
                     Our Network
                 </span>
             </div>
 
-            <h2 class="services-title font-heading flex w-[60%] flex-col text-[3.438vw] leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl">
+            <h2 class="services-title font-heading flex w-[60%] flex-col text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl">
                 <span data-heading-anim>
                     Every part of the TrAC network is engineered for reliability and speed.
                 </span>
             </h2>
 
-            <div class="w-[45%] space-y-[1vw]">
+            <div class="w-[45%] space-y-[1vw] text-24">
                 <p>
                     Internet enters through multiple international routes. Backbones operate on fully redundant rings. Systems are monitored around the clock.
                 </p>

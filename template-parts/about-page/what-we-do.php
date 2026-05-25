@@ -53,7 +53,7 @@ $what_we_do_cards = [
         <div class="mb-[3.438vw]  px-[5.21vw] flex items-center justify-between md:mb-10">
             <div data-animate="fade-up" class="what-we-do-header flex items-center gap-[0.833vw] md:gap-3">
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-white md:h-1 md:w-6 sm:w-5"></span>
-                <span class="font-body text-[1.6vw] text-white md:text-xl sm:text-lg">
+                <span class="font-body text-30 text-white md:text-xl sm:text-lg">
                     <?php esc_html_e('What We Do', 'trac'); ?>
                 </span>
             </div>
@@ -99,11 +99,11 @@ $what_we_do_cards = [
                         </div>
                 
 
-                        <h2 class="mb-[1.875vw] font-subheading text-[1.88vw] font-normal leading-[1.18] tracking-[-0.02em] text-text-primary md:mb-5 md:text-[34px] sm:text-[28px]">
+                        <h2 class="mb-[1.875vw] font-subheading text-36 font-normal leading-[1.18] tracking-[-0.02em] text-text-primary md:mb-5 md:text-[34px] sm:text-[28px]">
                             <?php echo esc_html($card['title']); ?>
                         </h2>
 
-                        <p class="font-body text-[1.15vw] leading-[1.65] text-text-body md:text-[22px] sm:text-[17px]">
+                        <p class="font-body text-[1.2vw] leading-[1.65] text-text-body md:text-[22px] sm:text-[17px]">
                             <?php echo esc_html($card['description']); ?>
                         </p>
                     </article>

@@ -17,7 +17,7 @@ $content = trim((string) get_the_content());
                     </span>
                 </div>
 
-                <h2 class="font-heading text-[3.438vw] leading-[1.18] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl">
+                <h2 class="font-heading text-66 leading-[1.18] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl">
                     <?php esc_html_e(
                         'A network-led team focused on practical digital growth.',
                         'trac',

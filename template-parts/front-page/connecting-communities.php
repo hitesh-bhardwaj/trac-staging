@@ -44,13 +44,13 @@ $section_image_alt =
             >
                 <span class="h-[0.208vw] w-[1.354vw] bg-white md:h-[3px] md:w-6 sm:w-5"></span>
 
-                <span class="font-body text-[1.35vw] leading-none text-white md:text-xl sm:text-[4.5vw]">
+                <span class="font-body text-30 leading-none text-white md:text-xl sm:text-[4.5vw]">
                     <?php echo esc_html($section_label); ?>
                 </span>
             </div>
 
             <h2
-                class="font-heading flex w-full flex-col text-[3.438vw] leading-[1.12] tracking-[0.01em] text-white md:text-4xl sm:text-3xl"
+                class="font-heading flex w-full flex-col text-66 leading-[1.12] tracking-[0.01em] text-white md:text-4xl sm:text-3xl"
             >
                 <span data-heading-anim>
 
@@ -58,7 +58,7 @@ $section_image_alt =
                  </span>
             </h2>
 
-            <div class="mt-[2.8vw] max-w-[46vw] space-y-[2.2vw] font-body">
+            <div class="mt-[2.8vw] max-w-[46vw] space-y-[2.2vw] font-body text-24">
                 <p>
                     <?php echo esc_html($section_content_1); ?>
                 </p>

@@ -46,16 +46,16 @@ $team_members = [
                 <div>
                    <div class="mb-[1.8vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3" data-animate="fade-up">
                      <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
-                     <span class="font-body text-[1.6vw] text-[#E86224] md:text-xl sm:text-lg">
+                     <span class="font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
                         <?php esc_html_e('Team', 'trac'); ?>
                       </span>
                      </div>
 
-                     <h2 data-heading-anim class="w-[25vw] font-heading text-[3.438vw] font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:max-w-full md:text-[52px] sm:text-[38px]">
+                     <h2 data-heading-anim class="w-[25vw] font-heading text-66 font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:max-w-full md:text-[52px] sm:text-[38px]">
                     Meet our talented team
                      </h2>
 
-                      <p data-para-anim class="mt-[2.2vw] max-w-[22vw] font-body text-[1.25vw] leading-[1.45] text-text-body md:mt-6 md:max-w-[360px] md:text-[22px] sm:text-[18px]">
+                      <p data-para-anim class="mt-[2.2vw] max-w-[22vw] font-body text-24 leading-[1.45] text-text-body md:mt-6 md:max-w-[360px] md:text-[22px] sm:text-[18px]">
                     Our team brings together technical expertise and a strong commitment to the people we serve, delivering solutions that are built to last.
                       </p>
                  </div>
@@ -111,8 +111,8 @@ $team_members = [
                         </div>
 
                         <div class="team-slider-active-content bg-[#0B1F3A] font-normal">
-                            <h3 data-team-slider-active-name class="font-normal text-white font-subheading text-[1.88vw]"></h3>
-                            <p data-team-slider-active-role class="text-white text-[1.25vw]"></p>
+                            <h3 data-team-slider-active-name class="font-normal text-white font-subheading text-36"></h3>
+                            <p data-team-slider-active-role class="text-white text-24"></p>
                         </div>
                     </div>
 
