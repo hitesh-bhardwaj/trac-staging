@@ -451,31 +451,26 @@ function trac_enqueue_assets()
         : TRAC_VERSION;
 
     // Check if we're in development mode (Vite dev server running)
-    $is_dev =
-        defined('WP_DEBUG') && WP_DEBUG && file_exists(TRAC_DIR . '/.vite-dev');
+    // ponytail: .vite-dev is gitignored, so this can never switch on in production
+    $is_dev = file_exists(TRAC_DIR . '/.vite-dev');
 
     if ($is_dev) {
-        // Development: Load from Vite dev server
-        wp_enqueue_script(
-            'vite-client',
-            'http://localhost:5173/@vite/client',
-            [],
-            null,
-            false,
-        );
-        wp_enqueue_script(
-            'trac-main',
-            'http://localhost:5173/src/js/main.js',
-            [],
-            null,
-            true,
-        );
+        // Development: Load from Vite dev server.
+        // Must match `base` in vite.config.js, derived so a theme rename stays in sync.
+        $vite = 'http://localhost:5173' .
+            wp_make_link_relative(TRAC_URI) .
+            '/dist';
+
+        wp_enqueue_script('vite-client', $vite . '/@vite/client', [], null, false);
+        wp_enqueue_script('trac-main', $vite . '/src/js/main.js', [], null, true);
+        // Vite serves CSS as a JS module in dev, so main.css is enqueued as a script
+        wp_enqueue_script('trac-main-css', $vite . '/src/css/main.css', [], null, false);
 
         // Add type="module" to Vite scripts
         add_filter(
             'script_loader_tag',
             function ($tag, $handle) {
-                if (in_array($handle, ['vite-client', 'trac-main'])) {
+                if (in_array($handle, ['vite-client', 'trac-main', 'trac-main-css'])) {
                     return str_replace(' src', ' type="module" src', $tag);
                 }
                 return $tag;
