@@ -7,7 +7,7 @@ $what_we_do_cards = [
     [
         'title' => __('Network Design & Deployment', 'trac'),
         'description' => __(
-            'We engineer high-capacity fiber-optic and wireless networks that connect urban centers to underserved rural regions.',
+            'We deliver connectivity solutions powered by high-capacity fibre-optic and wireless networks, linking urban centres to hard to reach rural regions.',
             'trac',
         ),
         'icon' => '/assets/icons/network.svg',
@@ -31,7 +31,7 @@ $what_we_do_cards = [
     [
         'title' => __('Network Design & Deployment', 'trac'),
         'description' => __(
-            'We engineer high-capacity fiber-optic and wireless networks that connect urban centers to underserved rural regions.',
+            'We deliver connectivity solutions powered by high-capacity fibre-optic and wireless networks, linking urban centres to hard to reach rural regions.',
             'trac',
         ),
         'icon' => '/assets/icons/network.svg',
@@ -48,8 +48,8 @@ $what_we_do_cards = [
 ];
 ?>
 
-<section class="what-we-do-section relative bg-[#2F5FA0]" data-section="what-we-do" data-what-we-do-slider>
-    <div class="what-we-do-shell w-full py-[5.5vw]  md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+<section class="what-we-do-section relative py-[9vw] bg-[#389FD8]" data-section="what-we-do" data-what-we-do-slider>
+    <div class="what-we-do-shell w-full   md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="mb-[3.438vw]  px-[5.21vw] flex items-center justify-between md:mb-10">
             <div data-animate="fade-up" class="what-we-do-header flex items-center gap-[0.833vw] md:gap-3">
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-white md:h-1 md:w-6 sm:w-5"></span>
@@ -58,7 +58,7 @@ $what_we_do_cards = [
                 </span>
             </div>
 
-            <div class="what-we-do-nav flex items-center gap-[0.625vw] md:hidden overflow-visible" aria-label="<?php esc_attr_e(
+            <div class="what-we-do-nav flex fadeup items-center gap-[0.625vw] md:hidden overflow-visible" aria-label="<?php esc_attr_e(
                 'What we do navigation',
                 'trac',
             ); ?>">
@@ -85,9 +85,9 @@ $what_we_do_cards = [
 
         <div class="what-we-do-viewport overflow-x-auto overflow-y-hidden" data-what-we-do-viewport>
            
-            <div class="what-we-do-card-container flex gap-[1.667vw]  md:flex-col md:gap-6 " data-what-we-do-track>
+            <div class="what-we-do-card-container fade-up flex gap-[1.667vw]  md:flex-col md:gap-6 " data-what-we-do-track>
                 <?php foreach ($what_we_do_cards as $card): ?>
-                    <article class="what-we-do-card flex h-[31.25vw] w-[24.479vw] flex-shrink-0 flex-col rounded-[1.563vw] bg-white px-[2.083vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] md:h-auto md:w-full md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
+                    <article class="what-we-do-card flex h-[30vw] w-[25vw] flex-shrink-0 flex-col rounded-[1.563vw] bg-white px-[2.083vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] md:h-auto md:w-full md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
                         <div class="mb-[5.208vw] text-brand-primary md:mb-10 sm:mb-8">
                             <img
                                 src="<?php echo esc_url(get_template_directory_uri() . '/src' . $card['icon']); ?>"
@@ -99,11 +99,11 @@ $what_we_do_cards = [
                         </div>
                 
 
-                        <h2 class="mb-[1.875vw] font-subheading text-36 font-normal leading-[1.18] tracking-[-0.02em] text-text-primary md:mb-5 md:text-[34px] sm:text-[28px]">
+                        <h2 class="mb-[1.875vw] font-heading w-[80%] text-36 font-normal leading-[1.18] tracking-[-0.02em] text-text-primary md:mb-5 md:text-[34px] sm:text-[28px]">
                             <?php echo esc_html($card['title']); ?>
                         </h2>
 
-                        <p class="font-body text-[1.2vw] leading-[1.65] text-text-body md:text-[22px] sm:text-[17px]">
+                        <p class="font-body text-[1.15vw] leading-[1.65] text-text-body md:text-[22px] sm:text-[17px]">
                             <?php echo esc_html($card['description']); ?>
                         </p>
                     </article>

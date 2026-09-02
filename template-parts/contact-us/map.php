@@ -5,16 +5,17 @@ if (!defined('ABSPATH')) {
 ?>
 
 <section class="map-section relative overflow-hidden bg-white py-[7vw] md:py-20 sm:py-16" data-section="map">
-    <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[104rem] mx-auto">
             <!-- Section Label -->
-            <div class="flex items-center gap-[0.729vw] mb-[2vw] justify-center md:gap-3 md:mb-8" data-animate="fade-up">
-                <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
-                <span class="font-body text-24 text-[#111] md:text-xl">Map</span>
+           <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
+                <span class="w-6 h-1 bg-[#E86224]"></span>
+                <span class="font-body  text-[#E86224] text-30">Map</span>
             </div>
 
+
             <!-- Heading -->
-            <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] text-center mb-[4vw] md:text-5xl md:mb-12 sm:text-4xl sm:mb-10" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[4vw] md:text-5xl md:mb-12 sm:text-4xl sm:mb-10" data-heading-anim>
                 Our Head office
             </h2>
 
@@ -30,55 +31,35 @@ if (!defined('ABSPATH')) {
 
                 <!-- Location Markers -->
                 <!-- Rwanda Location -->
-                <div class="location-marker absolute opacity-0" style="left: 53%; top: 70%;" data-location="rwanda">
+                <div class="location-marker absolute opacity-0" style="left: 53%; top: 18%;" data-location="rwanda">
                     <!-- Pulsing Circle -->
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <div class="w-[1.8vw] h-[1.8vw] md:w-12 md:h-12 sm:w-8 sm:h-8 rounded-full border border-brand-primary animate-ping opacity-75"></div>
                     </div>
                     <!-- Static Circle -->
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div class="w-[1vw] h-[1vw] md:w-6 md:h-6 sm:w-4 sm:h-4 rounded-full bg-brand-primary shadow-lg"></div>
+                        <div class="w-[1vw] h-[1vw] md:w-6 md:h-6 sm:w-4 sm:h-4 rounded-full bg-[#E86224] shadow-lg"></div>
                     </div>
                 </div>
 
-                <!-- British Virgin Island Location -->
-                <div class="location-marker absolute opacity-0" style="left: 37%; top: 50%;" data-location="bvi">
-                    <!-- Pulsing Circle -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div class="w-[1.8vw] h-[1.8vw] md:w-12 md:h-12 sm:w-8 sm:h-8 rounded-full border border-brand-primary animate-ping opacity-75"></div>
-                    </div>
-                    <!-- Static Circle -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div class="w-[1vw] h-[1vw] md:w-6 md:h-6 sm:w-4 sm:h-4 rounded-full bg-brand-primary shadow-lg"></div>
-                    </div>
-                </div>
+               
 
                 <!-- Connector Lines (positioned/rotated via JS to link marker -> card) -->
-                <div class="map-connector pointer-events-none sm:hidden" data-map-connector="bvi" aria-hidden="true">
-                    <span class="map-connector-line" data-map-line></span>
-                </div>
+               
                 <div class="map-connector pointer-events-none sm:hidden" data-map-connector="rwanda" aria-hidden="true">
                     <span class="map-connector-line" data-map-line></span>
                 </div>
 
                 <!-- Address Cards -->
                 <!-- Rwanda Address -->
-                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0 sm:hidden" style="left: 18%; top: 68%;" data-address="rwanda">
-                    <h3 class="font-heading text-24 font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:mb-[1vw] sm:text-[4vw]">Rwanda</h3>
-                    <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-[4vw]">
-                        KG 15 Ave, #11, Gacuriro<br>
-                        Kigali, Rwanda
+                <div class="address-card w-[18vw] absolute bg-[#389FD8] rounded-2xl shadow-md p-[2vw] md:p-6 sm:p-4 opacity-0 sm:hidden" style="left: 30%; top: 60%;" data-address="rwanda" data-connector-anchor="top-right">
+                    <h3 class="font-body text-24 font-medium text-white mb-[0.5vw] md:text-lg md:mb-2 sm:mb-[1vw] sm:text-[4vw]">Kigali, Rwanda</h3>
+                    <p class="font-body text-24 leading-[1.25] text-white md:text-base sm:text-[4vw]">
+                        Urban Golf Peak,<br>5th floor, 4 KG 548 St
                     </p>
                 </div>
 
-                <!-- BVI Address -->
-                <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0 sm:hidden" style="left: 52%; top: 24%;" data-address="bvi">
-                    <h3 class="font-heading text-24 font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 ">British Virgin Island</h3>
-                    <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-[4vw]">
-                        80 Main St, Road Town<br>
-                        Tortola VG 11100 BVI
-                    </p>
-                </div>
+             
             </div>
 
             <!-- Mobile Address List (below map, no background) -->

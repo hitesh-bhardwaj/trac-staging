@@ -41,12 +41,17 @@ export function initMapAnimation() {
             const startX = m.left + m.width / 2 - containerRect.left;
             const startY = m.top + m.height / 2 - containerRect.top;
 
-            // Attach to the nearest horizontal edge of the card, centered vertically.
-            const cardMidY = c.top + c.height / 2 - containerRect.top;
+            const cardAnchor = card.dataset.connectorAnchor || '';
             const cardLeftX = c.left - containerRect.left;
             const cardRightX = c.right - containerRect.left;
-            const endX = cardLeftX > startX ? cardLeftX : cardRightX;
-            const endY = cardMidY;
+            const cardTopY = c.top - containerRect.top;
+            const cardMidY = c.top + c.height / 2 - containerRect.top;
+            const endX = cardAnchor === 'top-right'
+                ? cardRightX
+                : cardLeftX > startX
+                    ? cardLeftX
+                    : cardRightX;
+            const endY = cardAnchor === 'top-right' ? cardTopY : cardMidY;
 
             const dx = endX - startX;
             const dy = endY - startY;

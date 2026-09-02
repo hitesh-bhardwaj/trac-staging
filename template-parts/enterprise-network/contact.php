@@ -22,16 +22,14 @@ if (!defined('ABSPATH')) {
                 </p>
 
                 <div class="font-body text-24 leading-[1.7] text-[#111] md:text-base sm:text-sm">
-                    <p data-para-anim class="mb-3 md:mb-2">Or contact our enterprise team at:
-</p>
-<div data-para-anim class="under-multi-parent w-fit leading-[1.2]">
-                                <a href="mailto:sales@trac.africa" class="font-body text-24 tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
-                                    sales@trac.africa
-                                </a>
-                            </div>
-                     
+                    <p data-para-anim class="mb-3 md:mb-2">Or contact our enterprise team at:</p>
+                    <div data-para-anim class="under-multi-parent w-fit leading-[1.2]">
+                        <a href="mailto:sales@trac.africa" class="under-multi font-body text-24 tracking-[0.03em] text-[#1e1e1e] transition-colors hover:text-brand-primary focus-visible:text-brand-primary md:text-base sm:text-sm">
+                            sales@trac.africa
+                        </a>
+                    </div>
+                </div>
             </div>
-</div>
 
             <div class="flex justify-end md:justify-start" data-animate="fade-up" data-delay="0.25">
                 <div class="contact-form-card w-full max-w-[42.708vw] md:max-w-full bg-white rounded-[2.083vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.167vw_2.604vw] md:p-12 sm:p-6">

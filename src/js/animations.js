@@ -2503,10 +2503,15 @@ function initTeamSlider() {
     const prevBtn = section.querySelector('[data-team-slider-prev]');
     const nextBtn = section.querySelector('[data-team-slider-next]');
 
+    const activeCard = section.querySelector('[data-team-slider-active-card]');
     const activeImageWrap = section.querySelector('.team-slider-active-image');
     const activeName = section.querySelector('[data-team-slider-active-name]');
     const activeRole = section.querySelector('[data-team-slider-active-role]');
-    const activeLinkedin = section.querySelector('[data-team-slider-linkedin]');
+    const backName = section.querySelector('[data-team-slider-back-name]');
+    const backRole = section.querySelector('[data-team-slider-back-role]');
+    const backBio = section.querySelector('[data-team-slider-back-bio]');
+    const backLinkedin = section.querySelector('[data-team-slider-back-linkedin]');
+    const closeBtn = section.querySelector('[data-team-slider-close]');
 
     const railWrap = section.querySelector('.team-slider-rail-wrap');
     const rail = section.querySelector('[data-team-slider-rail]');
@@ -2518,10 +2523,15 @@ function initTeamSlider() {
     if (
         !prevBtn ||
         !nextBtn ||
+        !activeCard ||
         !activeImageWrap ||
         !activeName ||
         !activeRole ||
-        !activeLinkedin ||
+        !backName ||
+        !backRole ||
+        !backBio ||
+        !backLinkedin ||
+        !closeBtn ||
         !railWrap ||
         !rail ||
         !initialThumbs.length
@@ -2535,19 +2545,29 @@ function initTeamSlider() {
         role: thumb.dataset.role || '',
         image: thumb.dataset.image || '',
         linkedin: thumb.dataset.linkedin || '#',
+        bio: thumb.dataset.bio || '',
     }));
 
     let currentIndex = 0;
     let isAnimating = false;
+    let suppressCardClick = false;
+    let flipCompleteTimer = null;
+    let flipContentHideTimer = null;
 
     const mod = (n, m) => ((n % m) + m) % m;
+    const escapeAttr = (value) =>
+        String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
 
     const createActiveSlideMarkup = (member) => {
         return `
             <div class="team-slider-active-slide">
                 <img
-                    src="${member.image}"
-                    alt="${member.name}"
+                    src="${escapeAttr(member.image)}"
+                    alt="${escapeAttr(member.name)}"
                     draggable="false"
                 />
             </div>
@@ -2562,15 +2582,16 @@ function initTeamSlider() {
                 class="team-slider-thumb"
                 data-team-slider-thumb-live
                 data-team-index="${memberIndex}"
-                data-name="${member.name}"
-                data-role="${member.role}"
-                data-image="${member.image}"
-                data-linkedin="${member.linkedin}"
-                aria-label="${member.name}"
+                data-name="${escapeAttr(member.name)}"
+                data-role="${escapeAttr(member.role)}"
+                data-image="${escapeAttr(member.image)}"
+                data-linkedin="${escapeAttr(member.linkedin)}"
+                data-bio="${escapeAttr(member.bio)}"
+                aria-label="${escapeAttr(member.name)}"
             >
                 <img
-                    src="${member.image}"
-                    alt="${member.name}"
+                    src="${escapeAttr(member.image)}"
+                    alt="${escapeAttr(member.name)}"
                     draggable="false"
                 />
             </button>
@@ -2588,7 +2609,73 @@ function initTeamSlider() {
     const setActiveContent = (member) => {
         activeName.textContent = member.name;
         activeRole.textContent = member.role;
-        activeLinkedin.href = member.linkedin || '#';
+        backName.textContent = member.name.split(' ')[0] || member.name;
+        backRole.textContent = member.role;
+        backBio.textContent = member.bio;
+        backLinkedin.setAttribute('href', member.linkedin || '#');
+    };
+
+    const setCardFlipped = (flipped) => {
+        if (flipCompleteTimer) {
+            window.clearTimeout(flipCompleteTimer);
+            flipCompleteTimer = null;
+        }
+
+        if (flipContentHideTimer) {
+            window.clearTimeout(flipContentHideTimer);
+            flipContentHideTimer = null;
+        }
+
+        activeCard.classList.toggle('is-flipped', flipped);
+        if (flipped) {
+            activeCard.classList.remove('is-flip-complete');
+        } else {
+            flipContentHideTimer = window.setTimeout(() => {
+                activeCard.classList.remove('is-flip-complete');
+            }, 160);
+        }
+        activeCard.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+        const backFace = activeCard.querySelector('.team-slider-card-back');
+        const frontFace = activeCard.querySelector('.team-slider-card-front');
+
+        if (backFace) {
+            backFace.setAttribute('aria-hidden', flipped ? 'false' : 'true');
+        }
+
+        if (frontFace) {
+            frontFace.setAttribute('aria-hidden', flipped ? 'true' : 'false');
+        }
+
+        closeBtn.tabIndex = -1;
+        backLinkedin.tabIndex = -1;
+        closeBtn.setAttribute('aria-hidden', 'true');
+        backLinkedin.setAttribute('aria-hidden', 'true');
+
+        if (flipped) {
+            flipCompleteTimer = window.setTimeout(() => {
+                if (!activeCard.classList.contains('is-flipped')) return;
+
+                activeCard.classList.add('is-flip-complete');
+                closeBtn.tabIndex = 0;
+                backLinkedin.tabIndex = 0;
+                closeBtn.setAttribute('aria-hidden', 'false');
+                backLinkedin.setAttribute('aria-hidden', 'false');
+            }, 420);
+        }
+    };
+
+    const closeCard = (event) => {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        suppressCardClick = true;
+        setCardFlipped(false);
+
+        window.setTimeout(() => {
+            suppressCardClick = false;
+        }, 120);
     };
 
     const renderActiveStatic = () => {
@@ -2700,22 +2787,6 @@ function initTeamSlider() {
             },
         });
 
-        gsap.to(activeLinkedin, {
-            autoAlpha: 0,
-            duration: 0.18,
-            ease: 'power2.out',
-            overwrite: true,
-            onComplete: () => {
-                activeLinkedin.href = nextMember.linkedin || '#';
-
-                gsap.to(activeLinkedin, {
-                    autoAlpha: 1,
-                    duration: 0.22,
-                    ease: 'power2.out',
-                    overwrite: true,
-                });
-            },
-        });
     };
 
     const animateThumbs = (nextIndex, direction) => {
@@ -2839,6 +2910,7 @@ function initTeamSlider() {
         if (nextIndex === currentIndex) return;
 
         isAnimating = true;
+        setCardFlipped(false);
 
         animateFrame(nextIndex, direction);
         await animateThumbs(nextIndex, direction);
@@ -2855,7 +2927,31 @@ function initTeamSlider() {
         goToIndex(currentIndex + 1, 1);
     });
 
+    closeBtn.addEventListener('pointerdown', closeCard);
+    closeBtn.addEventListener('click', closeCard);
+
+    backLinkedin.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    activeCard.addEventListener('click', (event) => {
+        if (suppressCardClick) return;
+        if (event.target.closest('.team-slider-card-back')) return;
+        if (event.target.closest('[data-team-slider-back-linkedin]')) return;
+        if (activeCard.classList.contains('is-flipped')) return;
+        setCardFlipped(true);
+    });
+
+    activeCard.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            if (activeCard.classList.contains('is-flipped')) return;
+            setCardFlipped(true);
+        }
+    });
+
     const handleResize = () => {
+        setCardFlipped(false);
         renderActiveStatic();
         renderThumbsStatic(currentIndex);
     };
@@ -2864,6 +2960,7 @@ function initTeamSlider() {
 
     renderActiveStatic();
     renderThumbsStatic(currentIndex);
+    setCardFlipped(false);
 
     section._teamSliderCleanup = () => {
         window.removeEventListener('resize', handleResize);

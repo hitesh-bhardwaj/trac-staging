@@ -19,7 +19,7 @@ get_header();
         $title = get_field('hero_title_line_1') ?: 'About Us';
         $subtitle =
             get_field('hero_subtitle_2') ?:
-            'TrAC is a private, Rwanda-founded internet service provider with over 13 years of experience delivering reliable, high - performance connectivity. We enable businesses and communities to stay connected and grow with confidence, building strong relationships with the people and organisations we serve.';
+            'TrAC is a Rwanda-founded internet service provider with over 14 years of experience delivering reliable, high-performance connectivity. From our roots in Rwanda, we are helping businesses and communities across East Africa stay connected, grow with confidence, and build stronger futures.';
         $primary_link = get_field('hero_primary_button_link') ?: '#get-connected';
         $primary_text = get_field('hero_primary_button_text') ?: 'Get Connected';
         $secondary_link = get_field('hero_secondary_button_link') ?: '#products';
@@ -48,9 +48,7 @@ get_header();
                 'src' =>
                     get_template_directory_uri() . '/src/imgs/about/about-hero.png',
                 'alt' => 'Mobile globe visual',
-            ],
-            'after_section' =>
-                '<div class=""><canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#E86224" data-line-color="#031022"></canvas></div>',
+            ]
         ]);
 
         $about_page_sections = [
@@ -58,6 +56,7 @@ get_header();
             'what-we-do',
             'vision-mission',
             'our-team',
+            'socials',
         ];
 
         foreach ($about_page_sections as $section_slug) {

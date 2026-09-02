@@ -4,37 +4,45 @@ if (!defined('ABSPATH')) {
 }
 
 $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
+$team_right_arrow_svg = get_template_directory_uri() . '/src/assets/icons/right-arrow.svg';
+$team_cross_svg = get_template_directory_uri() . '/src/assets/icons/cross.svg';
+$team_linkedin_icon = get_template_directory_uri() . '/src/imgs/about/linkedin.png';
 
 $team_members = [
     [
-        'name' => 'John Doe',
-        'role' => 'Lorem ipsum dolor sit amet,',
-        'image' => get_template_directory_uri() . '/src/imgs/about/our-team-1.png',
+        'name' => 'Johnny Kayihura',
+        'role' => 'Managing Director and CCO',
+        'image' => get_template_directory_uri() . '/src/imgs/about/johnny-kayihura.png',
         'linkedin' => '#',
+        'bio' => 'With more than 25 years of experience in ICT and telecommunications across East Africa, Johnny has built and scaled multiple technology businesses, including Rock Global Consulting and TrAC. As CCO, he leads commercial strategy, business development, and regional growth, drawing on decades of experience transforming startups into market-leading organisations.',
     ],
     [
-        'name' => 'Jane Smith',
-        'role' => 'Senior Operations Lead',
-        'image' => get_template_directory_uri() . '/src/imgs/about/our-team-2.png',
+        'name' => 'Noorissa Khoja',
+        'role' => 'Chief Operating Officer (COO)',
+        'image' => get_template_directory_uri() . '/src/imgs/about/noorissa-khoja.png',
         'linkedin' => '#',
+        'bio' => "Drawing on experience across high-growth technology companies and startups, Noorissa brings expertise in product strategy, operational transformation, and business growth. She attained an MBA from Stanford and held leadership roles at Careem, Mastercard, and Munch:On. She now oversees TrAC's operations and market development, helping drive sustainable growth while ensuring the company remains focused on delivering reliable, customer-centered solutions.",
     ],
     [
-        'name' => 'Angela Brown',
-        'role' => 'Regional Growth Manager',
-        'image' => get_template_directory_uri() . '/src/imgs/about/our-team-3.png',
+        'name' => 'Andre Mutambuka',
+        'role' => 'Chief Technology Officer (CTO)',
+        'image' => get_template_directory_uri() . '/src/imgs/about/andre-mutambuka.png',
         'linkedin' => '#',
+        'bio' => "With more than 15 years of experience in telecommunications infrastructure, network planning, and project delivery, Andre has led some of Rwanda’s most significant connectivity initiatives, including FTTH, 4G LTE, and national education connectivity programmes. As CTO, he leads TrAC’s technology strategy, network development, and innovation agenda, ensuring the reliability and scalability of the company's infrastructure.",
     ],
     [
-        'name' => 'Sarah Wilson',
-        'role' => 'Customer Success Lead',
-        'image' => get_template_directory_uri() . '/src/imgs/about/our-team-4.png',
+        'name' => 'Aimé Bizimana',
+        'role' => 'Chief Innovation Officer (CIO)',
+        'image' => get_template_directory_uri() . '/src/imgs/about/aime-bizimana.png',
         'linkedin' => '#',
+        'bio' => "A co-founder of TrAC, Aimé brings over a decade of experience in ICT, operations, and systems design. He has played a central role in building TrAC’s operational foundations, internal systems, and technical capabilities. Today, he leads the company’s technology operations, driving efficiency, innovation, and the continued development of the systems that support TrAC’s growth.",
     ],
     [
-        'name' => 'Michael Lee',
-        'role' => 'Network Strategy Manager',
-        'image' => get_template_directory_uri() . '/src/imgs/about/our-team-5.png',
+        'name' => 'Karim Khoja',
+        'role' => 'Executive Chairman',
+        'image' => get_template_directory_uri() . '/src/imgs/about/karim-khoja.png',
         'linkedin' => '#',
+        'bio' => 'Karim has spent more than three decades building telecommunications businesses across Europe, South Asia, and Africa. As Executive Chairman, he provides strategic leadership and long-term vision, helping expand connectivity, strengthen partnerships, and guide TrAC’s growth as a leading provider of digital infrastructure and connectivity solutions.',
     ],
 ];
 ?>
@@ -87,33 +95,58 @@ $team_members = [
                 </div>
             </div>
 
-            <div class="w-[64%] max-md:w-full overflow-hidden">
+            <div class="w-[64%] max-md:w-full overflow-visible">
                 <div data-animate="fade-up" class="team-slider-stage relative flex items-end gap-[1.6vw]">
-                    <div class="team-slider-active-card" data-team-slider-active-card>
+                    <div class="team-slider-active-card group" data-team-slider-active-card tabindex="0" role="button" aria-pressed="false">
+                        <div class="team-slider-flip-inner">
+                            <div class="team-slider-card-face team-slider-card-front">
+                                <div class="team-slider-active-image">
+                                    <img
+                                        src=""
+                                        alt=""
+                                        data-team-slider-active-image
+                                        draggable="false"
+                                    >
+                                </div>
+
+                                <div class="team-slider-active-content bg-[#0B1F3A] font-normal">
+                                    <h3 data-team-slider-active-name class="font-normal text-white font-subheading text-36"></h3>
+                                    <p data-team-slider-active-role class="text-white text-24"></p>
+                                    <span class="team-slider-flip-arrow" aria-hidden="true">
+                                        <img src="<?php echo esc_url($team_right_arrow_svg); ?>" alt="">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="team-slider-card-face team-slider-card-back" aria-hidden="true">
+                                <div class="team-slider-card-back-header opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:opacity-100">
+                                    <h3 data-team-slider-back-name class="font-subheading text-36 font-normal"></h3>
+                                    <p data-team-slider-back-role class="font-body text-24"></p>
+                                </div>
+
+                                <div class="team-slider-card-divider opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:opacity-100"></div>
+
+                                <p data-team-slider-back-bio class="team-slider-card-bio font-body text-24 opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:opacity-100"></p>
+
+                            </div>
+                        </div>
+
                         <a
-                            class="team-slider-linkedin"
                             href="#"
+                            class="team-slider-back-linkedin pointer-events-none absolute bottom-[2.6vw] left-[3vw] z-10 flex h-[2.8vw] w-[2.8vw] items-center justify-center rounded-full bg-transparent opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:pointer-events-auto group-[.is-flip-complete]:opacity-100 md:bottom-[34px] md:left-[34px] md:h-[46px] md:w-[46px] sm:bottom-[28px] sm:left-[26px] sm:h-[38px] sm:w-[38px]"
                             target="_blank"
                             rel="noopener noreferrer"
-                            data-team-slider-linkedin
+                            data-team-slider-back-linkedin
                             aria-label="LinkedIn profile"
+                            aria-hidden="true"
+                            tabindex="-1"
                         >
-                            in
+                            <img class="block h-full w-full object-contain" src="<?php echo esc_url($team_linkedin_icon); ?>" alt="" aria-hidden="true">
                         </a>
 
-                        <div class="team-slider-active-image">
-                            <img
-                                src=""
-                                alt=""
-                                data-team-slider-active-image
-                                draggable="false"
-                            >
-                        </div>
-
-                        <div class="team-slider-active-content bg-[#0B1F3A] font-normal">
-                            <h3 data-team-slider-active-name class="font-normal text-white font-subheading text-36"></h3>
-                            <p data-team-slider-active-role class="text-white text-24"></p>
-                        </div>
+                        <button type="button" class="team-slider-card-close pointer-events-none absolute right-[2.2vw] top-[2.2vw] z-10 flex h-[3vw] w-[3vw] cursor-pointer items-center justify-center rounded-full border-2 border-current bg-transparent text-white opacity-0 transition-opacity duration-200 touch-manipulation group-[.is-flip-complete]:pointer-events-auto group-[.is-flip-complete]:opacity-100 md:right-[30px] md:top-[34px] md:h-[48px] md:w-[48px] sm:right-[22px] sm:top-[26px] sm:h-[40px] sm:w-[40px]" data-team-slider-close aria-label="Close team bio" aria-hidden="true" tabindex="-1">
+                            <img class="block h-[1.05vw] w-[1.05vw] object-contain md:h-[17px] md:w-[17px] sm:h-[14px] sm:w-[14px]" src="<?php echo esc_url($team_cross_svg); ?>" alt="" aria-hidden="true">
+                        </button>
                     </div>
 
                     <div class="team-slider-rail-wrap">
@@ -128,6 +161,7 @@ $team_members = [
                                     data-role="<?php echo esc_attr($member['role']); ?>"
                                     data-image="<?php echo esc_url($member['image']); ?>"
                                     data-linkedin="<?php echo esc_url($member['linkedin']); ?>"
+                                    data-bio="<?php echo esc_attr($member['bio']); ?>"
                                     aria-label="<?php echo esc_attr($member['name']); ?>"
                                 >
                                     <img

@@ -16,7 +16,7 @@ $container_classes = isset($args['container_classes'])
     : (isset($args['container_class']) ? (string) $args['container_class'] : '');
 $container_classes = $container_classes !== ''
     ? $container_classes
-    : 'hero-container w-full px-[5.21vw] pt-[12vw] pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]';
+    : 'hero-container w-full px-[5vw] pt-[12vw] pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]';
 $grid_classes = isset($args['grid_classes'])
     ? (string) $args['grid_classes']
     : 'hero-grid flex items-start justify-between gap-[5vw] md:flex-col md:gap-8';
@@ -66,6 +66,10 @@ $media_src = isset($media['src']) ? (string) $media['src'] : '';
 $media_alt = isset($media['alt']) ? (string) $media['alt'] : '';
 
 $after_section = $args['after_section'] ?? '';
+$text_footer = isset($args['text_footer']) ? (string) $args['text_footer'] : '';
+$right_content = isset($args['right_content'])
+    ? (string) $args['right_content']
+    : '';
 
 $cta_wrapper_classes = isset($args['cta_wrapper_classes'])
     ? (string) $args['cta_wrapper_classes']
@@ -245,9 +249,22 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
+
+                    <?php if ($text_footer !== ''): ?>
+                        <div
+                            data-hero-reveal
+                            data-hero-delay="0.3"
+                        >
+                            <?php echo $text_footer; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
-                <?php if ($media_src !== ''): ?>
+                <?php if ($right_content !== ''): ?>
+                    <div class="<?php echo esc_attr($media_classes); ?>">
+                        <?php echo $right_content; ?>
+                    </div>
+                <?php elseif ($media_src !== ''): ?>
                     <div class="<?php echo esc_attr($media_classes); ?>">
                         <div class="h-[40vw] w-full overflow-hidden rounded-[1.3vw] md:h-[360px] md:rounded-[28px] sm:h-[70vw] sm:rounded-[24px]">
                             <img

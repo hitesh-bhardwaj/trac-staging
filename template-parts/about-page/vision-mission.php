@@ -7,7 +7,7 @@ $vision_mission_cards = [
     [
         'title' => __('Our Vision', 'trac'),
         'description' => __(
-            'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+            "To ‘Light Africa’ by bringing premium internet to cities, towns, and communities alike.",
             'trac',
         ),
         'image' => get_template_directory_uri() . '/src/imgs/about/vision.png',
@@ -16,7 +16,7 @@ $vision_mission_cards = [
     [
         'title' => __('Our Mission', 'trac'),
         'description' => __(
-            'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+            "To enable access through reliable connectivity, delivering internet, infrastructure, and digital solutions that help businesses, communities, and service providers grow with confidence.",
             'trac',
         ),
         'image' => get_template_directory_uri() . '/src/imgs/about/mission.png',
@@ -26,7 +26,7 @@ $vision_mission_cards = [
 ?>
 
         
-<section class="vision-mission-section  relative px-[5vw] py-[6.25vw] w-screen h-fit bg-[#EEF3FC]" data-section="vision-mission">
+<section class="vision-mission-section  relative px-[5vw] py-[7vw] pb-[11vw] w-screen h-fit bg-[#EEF3FC]" data-section="vision-mission">
         <div
                 class="testimonials-label mb-[1.563vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10"
                 data-animate="fade-up"
@@ -37,12 +37,12 @@ $vision_mission_cards = [
                 </span>
             </div>
     
-            <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F6A"></canvas>
+            <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F1A"></canvas>
 
     <div class="vision-mission-container w-full h-fit px-[8vw] pt-[5vw]  md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12 relative z-[4]">
         <div class="vision-mission-grid grid grid-cols-2 gap-[3.646vw] md:grid-cols-1 md:gap-8">
             <?php foreach ($vision_mission_cards as $card): ?>
-                <article data-animate="fade-up" class="vision-mission-card rounded-[2.083vw] border border-brand-primary/70 bg-[#10417F] p-[3vw] md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
+                <article data-animate="fade-up" class="vision-mission-card rounded-[2.083vw] border-[1.5px] border-[#2F5FA0] bg-[#2F5FA0] p-[3vw] pb-[4vw] md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
                     <div class="mb-[3.125vw] md:mb-8 sm:mb-6">
                         <img
                             src="<?php echo esc_url($card['image']); ?>"
@@ -52,11 +52,11 @@ $vision_mission_cards = [
                         >
                     </div>
 
-                    <h2 class="mb-[2.083vw] font-subheading text-66 font-normal leading-[1.05] tracking-[-0.02em] text-white md:mb-6 md:text-[52px] sm:text-[38px]">
+                    <h2 class="mb-[2.083vw] font-heading text-66 font-normal leading-[1.05] tracking-[-0.02em] text-white md:mb-6 md:text-[52px] sm:text-[38px]">
                         <?php echo esc_html($card['title']); ?>
                     </h2>
 
-                    <p class="max-w-[25vw] font-body text-24 leading-[1.5] text-white md:max-w-full md:text-[22px] sm:text-[17px]">
+                    <p class="font-body text-24 leading-[1.5] text-white md:max-w-full md:text-[22px] sm:text-[17px]">
                         <?php echo esc_html($card['description']); ?>
                     </p>
                 </article>

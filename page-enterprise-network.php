@@ -11,10 +11,11 @@ if (have_posts()) {
 
 	        <main id="main-content" class="site-main" data-barba="container" data-barba-namespace="enterprise-network">
 	            <?php
+	            $hero_image = get_field('hero_image');
 	            $title_lines = [
 	                get_field('hero_title_line_1')
 	                    ?: 'Enterprise Connectivity Engineered for',
-	                get_field('hero_title_line_2') ?: 'Performance and Continuity.',
+	                get_field('hero_title_line_2') ?: 'Performance and Continuity',
 	            ];
 	            $subtitle =
 	                get_field('hero_subtitle_2') ?:
@@ -33,13 +34,18 @@ if (have_posts()) {
 	                        'hero-grid flex items-start justify-between gap-[5vw] md:flex-col md:gap-8 ',
 	                    'title_lines' => $title_lines,
 	                    'subtitle' => $subtitle,
-	                    'button_text' => $button_text,
-	                    'button_link' => $button_link,
+	                    'primary' => [
+	                        'text' => $button_text,
+	                        'link' => $button_link,
+	                    ],
 	                    'media' => [
-	                        'src' =>
-	                            get_template_directory_uri() .
-	                            '/src/imgs/enterprise-network/hero-image.png',
-	                        'alt' => 'Enterprise connectivity',
+	                        'src' => is_array($hero_image)
+	                            ? $hero_image['url']
+	                            : get_template_directory_uri() .
+	                                '/src/imgs/enterprise-network/hero-image.png',
+	                        'alt' => is_array($hero_image)
+	                            ? $hero_image['alt']
+	                            : 'Enterprise connectivity',
 	                    ],
 	                ],
 	            );
