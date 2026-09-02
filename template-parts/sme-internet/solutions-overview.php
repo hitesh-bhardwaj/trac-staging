@@ -40,7 +40,7 @@ $solutions = [
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
                 <span class="w-6 h-1 bg-white"></span>
-                <span class="font-body text-white/90 text-24"><?php echo esc_html(
+                <span class="font-body text-white/90 text-30"><?php echo esc_html(
                     $label,
                 ); ?></span>
             </div>

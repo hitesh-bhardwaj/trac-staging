@@ -3,34 +3,36 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$label = get_field('sme_plans_label') ?: 'Plans & Pricing';
-$title = get_field('sme_plans_title') ?: 'Simple Plans. Clear Pricing.';
+$label = get_field('hi_plans_label') ?: 'Plans & Pricing';
+$title = get_field('hi_plans_title') ?: 'Home Internet Packages';
 
 $plans = [
     [
-        'name' => 'SME Lite',
-        'speed' => '80Mbps',
-        'price' => 'RWF 75,000',
+        'name' => 'Home Plus',
+        'speed' => '75Mbps',
+        'price' => 'RWF 55,000',
         'period' => '/month',
         'description' =>
-            'Ideal for small offices, retail stores, and co-working spaces.',
+            'Ideal for families, online learning, and HD streaming.',
         'image' =>
-            get_template_directory_uri() . '/src/imgs/sme-internet/plan-1-img.png',
+            get_template_directory_uri() .
+            '/src/imgs/home-internet/plan-1.png',
     ],
     [
-        'name' => 'SME Elite',
-        'speed' => '150Mbps',
-        'price' => 'RWF 130,000',
+        'name' => 'Home Max',
+        'speed' => '100Mbps',
+        'price' => 'RWF 85,000',
         'period' => '/month',
         'description' =>
-            'Built for growing businesses using cloud tools, video meetings, and multi-user environments.',
+            'Perfect for smart homes, heavy streaming, and professionals working from home.',
         'image' =>
-            get_template_directory_uri() . '/src/imgs/sme-internet/plan-2-img.png',
+            get_template_directory_uri() .
+            '/src/imgs/home-internet/plan-2.png',
     ],
 ];
 ?>
 
-<section class="sme-plans relative bg-white py-[7vw] md:py-20 sm:py-16 overflow-hidden" data-section="sme-plans">
+<section class="home-internet-plans relative bg-white py-[7vw] md:py-20 sm:py-16 overflow-hidden" data-section="home-internet-plans">
     <div class="w-full px-[9vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
@@ -82,12 +84,12 @@ $plans = [
                                 </div>
 
                                 <a href="<?php echo esc_url(
-                                    get_field('sme_plans_button_link') ?:
+                                    get_field('hi_plans_button_link') ?:
                                         '#get-connected',
                                 ); ?>" class="btn btn-primary group magnetic">
                                     <span class="btn-line"></span>
                                     <span class="btn-text"><?php echo esc_html(
-                                        get_field('sme_plans_button_text') ?:
+                                        get_field('hi_plans_button_text') ?:
                                             'Get on TrAC',
                                     ); ?></span>
                                     <span class="btn-icon">

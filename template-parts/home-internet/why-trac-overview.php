@@ -4,46 +4,45 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <?php
-$label = get_field('sme_overview_label') ?: 'Product Overview';
-$title = get_field('sme_overview_title') ?: 'Built for Everyday Business';
+$label = get_field('hi_why_label') ?: 'Why TrAC';
+$title = get_field('hi_why_title') ?: 'Internet You Can Rely On';
 $subtitle =
-    get_field('sme_overview_subtitle') ?:
-    'When your internet goes down, your business slows down.';
+    get_field('hi_why_subtitle') ?: 'No buffering. No dropouts. No delays.';
 $subtitle_2 =
-    get_field('sme_overview_footer') ?:
-    'TrAC SME Internet is designed to keep your operations running - from transactions and video calls to cloud-based systems.';
+    get_field('hi_why_body') ?:
+    "TrAC delivers reliable home internet designed to keep your home connected, whether you're working, learning, or streaming.";
 
-$icon_base = get_template_directory_uri() . '/src/imgs/sme-internet/';
+$icon_base = get_template_directory_uri() . '/src/imgs/home-internet/';
 
 $cards = [
     [
-        'text' => 'Stable fibre connectivity',
-        'icon' => $icon_base . 'product-icon-1.svg',
+        'text' => 'Unlimited internet for everyday use',
+        'icon' => $icon_base . 'why-trac-icon-1.svg',
     ],
     [
-        'text' => 'Strong performance for POS and cloud systems',
-        'icon' => $icon_base . 'product-icon-2.svg',
+        'text' => 'Stable fibre connection',
+        'icon' => $icon_base . 'why-trac-icon-2.svg',
     ],
     [
-        'text' => 'Reliable video conferencing',
-        'icon' => $icon_base . 'product-icon-3.svg',
+        'text' => 'Consistent in-home Wi-Fi',
+        'icon' => $icon_base . 'why-trac-icon-3.svg',
     ],
     [
-        'text' => 'VAT-inclusive pricing',
-        'icon' => $icon_base . 'product-icon-7.svg',
+        'text' => 'Clear pricing with no hidden charges',
+        'icon' => $icon_base . 'why-trac-icon-4.svg',
     ],
     [
-        'text' => 'Priority business support',
-        'icon' => $icon_base . 'product-icon-6.svg',
+        'text' => 'Fast installation',
+        'icon' => $icon_base . 'why-trac-icon-5.svg',
     ],
     [
-        'text' => '24/7 monitoring',
-        'icon' => $icon_base . 'product-icon-5.svg',
+        'text' => '24/7 monitoring and local support',
+        'icon' => $icon_base . 'why-trac-icon-6.svg',
     ],
 ];
 ?>
 
-<section class="sme-overview relative overflow-hidden bg-[#eef3fc] py-[8vw] md:py-20 sm:py-16" data-section="sme-overview">
+<section class="home-internet-why relative overflow-hidden bg-[#eef3fc] py-[8vw] md:py-20 sm:py-16" data-section="home-internet-why">
     <div class="relative z-[1] w-full px-[9vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
