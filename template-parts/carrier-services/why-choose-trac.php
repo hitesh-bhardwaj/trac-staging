@@ -3,84 +3,73 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
+$label = get_field('cs_partner_label') ?: 'Partner with TrAC';
+$title = get_field('cs_partner_title') ?: 'Why Operators Partner with TrAC';
+$subtitle =
+    get_field('cs_partner_subtitle') ?:
+    'We provide the foundation your network can grow on.';
+
 $why_cards = [
     [
         'number' => '01',
-        'text'   => 'Understand your network and growth goals',
+        'text' => 'Rwanda-rooted infrastructure with regional reach',
     ],
     [
         'number' => '02',
-        'text'   => 'Design tailored infrastructure solutions',
+        'text' => 'Proven experience supporting telecom deployments',
     ],
     [
         'number' => '03',
-        'text'   => 'Provide flexible commercial models',
+        'text' => 'Scalable, carrier-grade infrastructure',
     ],
     [
         'number' => '04',
-        'text'   => 'Support implementation and expansion',
+        'text' => 'Built with security and data protection in mind',
     ],
     [
         'number' => '05',
-        'text'   => 'Deliver reliable long-term partnership',
-    ],
-    [
-        'number' => '06',
-        'text'   => 'Help you scale with confidence',
+        'text' => 'Technical expertise across network design and implementation',
     ],
 ];
 ?>
 
-<section class="why-choose-trac-section relative bg-[#EEF3FC] h-[300vh]  pt-[4.2vw] md:px-[4vw] md:pt-16 md:pb-24 sm:px-[6vw] sm:pt-12 sm:pb-16" data-section="why-choose-trac">
-    <div class="mx-auto text-center w-screen sticky top-[5%] h-screen overflow-hidden">
-        <div class="relative z-[2]">
-            <div
-                class="mx-auto mb-[2.4vw] inline-flex items-center gap-[0.85vw] md:mb-6 md:gap-3 sm:mb-4 sm:gap-3"
-                data-animate="fade-up"
-            >
-                <span class="h-[2px] w-[1.2vw] min-w-[22px] bg-brand-primary" aria-hidden="true"></span>
-                <span class="font-body text-[1.25vw] text-text-primary md:text-lg sm:text-base">
-                    Why Choose TrAC
-                </span>
-            </div>
-
-            <h2
-                class="mx-auto mb-[2vw] max-w-[72vw] font-heading text-[3.5vw] font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:mb-6 md:max-w-[90%] md:text-[48px] sm:mb-5 sm:max-w-full sm:text-[34px]"
-                data-heading-anim
-            >
-                Built as a Partnership, Not Just a Service
-            </h2>
-
-            <div
-                class="mx-auto max-w-[66vw] space-y-[1.4vw] font-body text-body-lg leading-[1.5] text-text-body md:max-w-[88%] md:space-y-5 md:text-[22px] sm:max-w-full sm:space-y-4 sm:text-[17px]"
-                
-            >
-                <p data-para-anim >
-                    Every network is different. That’s why we work closely with you to design solutions that fit your technical and commercial needs.
-                </p>
-            </div>
+<section class="why-choose-trac-section relative overflow-hidden bg-[#eef3fc] px-[5.208vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="why-choose-trac">
+    <div class="relative z-[2] mx-auto max-w-[92rem]">
+        <div class="flex items-center justify-start gap-3 mb-8 md:mb-6" data-animate="fade-up">
+            <span class="w-6 h-1 bg-[#E86224]"></span>
+            <span class="font-body text-[#E86224] text-24"><?php echo esc_html(
+                $label,
+            ); ?></span>
         </div>
 
-        <div class="why-choose-cards-stage relative z-[2] mt-[5vw] h-[42vw] md:mt-12 md:h-[520px] sm:mt-10 sm:h-[420px]">
-            <div class="why-choose-container absolute left-0 top-0 flex w-max flex-nowrap items-start gap-[2.2vw] will-change-transform">
-                <?php foreach ($why_cards as $index => $card): ?>
-                    <article
-                        class="why-choose-card"
-                        data-why-card
-                        data-card-index="<?php echo esc_attr($index); ?>"
-                    >
-                        <div class="why-choose-card__number">
-                            <?php echo esc_html($card['number']); ?>
-                        </div>
+        <h2 class="font-heading text-[3.5vw] font-normal leading-[1.15] tracking-[0.01em] text-text-primary mb-[1.4vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
+            <?php echo esc_html($title); ?>
+        </h2>
 
-                        <div class="why-choose-card__content">
-                            <?php echo esc_html($card['text']); ?>
-                        </div>
-                    </article>
-                <?php endforeach; ?>
-            </div>
+        <p class="font-body text-24 leading-[1.5] text-text-body md:text-lg sm:text-base" data-para-anim>
+            <?php echo esc_html($subtitle); ?>
+        </p>
+
+        <div class="mt-[4.5vw] md:mt-12 flex items-start gap-[1.6vw] md:flex-col md:gap-5 sm:gap-4">
+            <?php foreach ($why_cards as $i => $card): ?>
+                <article
+                    class="w-[16.5vw] md:w-full mt-[var(--card-mt)] md:mt-0 rounded-xl md:rounded-2xl bg-[color:var(--color-brand-tertiary)] p-[1.6vw] py-[2.2vw] md:p-8 flex flex-col justify-between gap-[3.2vw] md:gap-10"
+                    style="--card-mt: <?php echo esc_attr(
+                        $i * 2.4,
+                    ); ?>vw;"
+                    data-animate="fade-up"
+                    data-delay="<?php echo esc_attr(0.08 * $i); ?>"
+                >
+                    <span class="font-heading text-white text-[1.8vw] md:text-3xl font-normal">
+                        <?php echo esc_html($card['number']); ?>
+                    </span>
+                    <p class="font-body text-white text24 md:text-lg leading-[1.35]">
+                        <?php echo esc_html($card['text']); ?>
+                    </p>
+                </article>
+            <?php endforeach; ?>
         </div>
-
-        <canvas class="network-canvas-el absolute inset-0 h-full w-full"></canvas>
     </div>
+
+    <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#E86224" data-line-color="#10417F33"></canvas>
 </section>

@@ -23,7 +23,7 @@ $hero_image_alt = $args['hero_image_alt'] ?? '';
         <?php endif; ?>
 
         <?php if ($hero_description): ?>
-            <p class="hero-description font-body text-[1.25vw] leading-[2.083vw] text-[#1e1e1e] max-w-[46.927vw] mx-auto md:text-xl md:leading-[1.6] md:max-w-[90%] sm:text-lg sm:leading-[1.5] sm:max-w-[80%]" data-hero-reveal data-hero-delay="0.14" data-para-anim>
+            <p class="hero-description font-body text-24 leading-[2.083vw] text-[#1e1e1e] max-w-[46.927vw] mx-auto md:text-xl md:leading-[1.6] md:max-w-[90%] sm:text-lg sm:leading-[1.5] sm:max-w-[80%]" data-hero-reveal data-hero-delay="0.14" data-para-anim>
                 <?php echo esc_html($hero_description); ?>
             </p>
         <?php endif; ?>

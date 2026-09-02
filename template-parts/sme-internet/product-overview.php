@@ -58,10 +58,10 @@ $cards = [
             </h2>
 
             <div class="max-w-[46rem] mb-[5vw] md:mb-10 sm:mb-8">
-                <p class="font-body text-[1.25vw] leading-[1.58] text-text-body md:text-lg sm:text-base" data-para-anim>
+                <p class="font-body text-24 leading-[1.58] text-text-body md:text-lg sm:text-base" data-para-anim>
                     <?php echo esc_html($subtitle); ?>
                 </p>
-                <p class="font-body text-[1.25vw] leading-[1.58] text-text-body mt-[1.4vw] md:mt-4 md:text-lg sm:text-base" data-para-anim data-delay="0.1">
+                <p class="font-body text-24 leading-[1.58] text-text-body mt-[1.4vw] md:mt-4 md:text-lg sm:text-base" data-para-anim data-delay="0.1">
                     <?php echo esc_html($subtitle_2); ?>
                 </p>
             </div>
@@ -77,7 +77,7 @@ $cards = [
                             class="size-[3.5vw] md:w-10 md:h-10 sm:w-9 sm:h-9 object-contain"
                             loading="lazy"
                         >
-                        <p class="font-body text-white text-[1.25vw] md:text-lg sm:text-base leading-[1.35] w-[70%]">
+                        <p class="font-body text-white text-24 md:text-lg sm:text-base leading-[1.35] w-[70%]">
                             <?php echo esc_html($c['text']); ?>
                         </p>
                     </div>

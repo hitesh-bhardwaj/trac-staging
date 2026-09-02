@@ -2,66 +2,77 @@
 if (!defined('ABSPATH')) {
     exit();
 }
+
+$label = get_field('cs_infra_label') ?: 'Infrastructure';
+$title = get_field('cs_infra_title') ?: "Let's Design Your Network";
+$subtitle =
+    get_field('cs_infra_subtitle') ?:
+    'Tell us what your network requires, and our team will design a solution that fits.';
+$button_text =
+    get_field('cs_infra_button_text') ?: 'Request a Consultation';
+$button_link = get_field('cs_infra_button_link') ?: '#get-connected';
 ?>
 
-<section class="communities-overview relative bg-[#EEF3FC] px-[5.208vw] pt-[4.2vw] pb-[8.333vw] md:px-[4vw] md:pt-16 md:pb-24 sm:px-[6vw] sm:pt-12 sm:pb-16" data-section="infrastructure">
-    <div class="communities-overview__header mx-auto text-center max-w-[90vw]">
-        <div
-            class="communities-overview__eyebrow mx-auto mb-14 inline-flex items-center gap-[0.85vw] md:mb-6 md:gap-3 sm:mb-4 sm:gap-3"
-            data-animate="fade-up"
-        >
-             <span class="w-6 h-1 bg-brand-primary"></span>
-            <span class="font-body text-[1.25vw] text-text-primary md:text-lg sm:text-base">
-                Infrastructure
-            </span>
-        </div>
+<section class="carrier-infrastructure relative overflow-hidden bg-[color:var(--color-brand-quaternary)] px-[5.208vw] py-[6vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="infrastructure">
+    <div class="max-w-[92rem] mx-auto">
+        <div class="max-w-[46vw] md:max-w-full">
+            <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">
+                <span class="w-6 h-1 bg-white"></span>
+                <span class="font-body text-white text-30 md:text-lg sm:text-base">
+                    <?php echo esc_html($label); ?>
+                </span>
+            </div>
 
-        <h2
-            class="mx-auto mb-[2vw] max-w-[72vw] font-normal  font-heading text-[3.5vw] leading-[1.2] tracking-[-0.03em] text-text-primary md:mb-6 md:max-w-[90%] md:text-[48px] sm:mb-5 sm:max-w-full sm:text-[34px]"
-            data-heading-anim
-        >
-            A Network Designed for Scale and Reliability
-        </h2>
+            <h2 class="font-heading text-[3.5vw] font-normal leading-[1.15] tracking-[0.01em] text-white mb-[1.6vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
+                <?php echo esc_html($title); ?>
+            </h2>
 
-        <div
-            class="mx-auto max-w-[66vw] space-y-[1.4vw] font-body text-body-lg leading-[1.5] text-text-body md:max-w-[88%] md:space-y-5 md:text-[22px] sm:max-w-full sm:space-y-4 sm:text-[17px]"
-        >
-            <p data-para-anim>
-                Our fibre-first infrastructure enables reliable national and cross-border connectivity, while our private network capabilities support secure, controlled communication between sites and systems.
-            </p>
-            <p data-para-anim data-para-delay="0.08">
-                This is complemented by carrier-grade data centre and cloud environments, allowing operators to host, manage, and expand their services without building infrastructure from the ground up.
+            <p class="font-body text-24 leading-[1.5] text-white/90 md:text-lg sm:text-base" data-para-anim>
+                <?php echo esc_html($subtitle); ?>
             </p>
         </div>
-    </div>
 
-    <div class="mx-auto mt-[5.8vw] max-w-[84vw] md:mt-12 md:max-w-full sm:mt-10">
-        <div class="grid grid-cols-2 gap-[2vw] md:gap-5 sm:grid-cols-1 sm:gap-4">
-            <figure
-                class="overflow-hidden rounded-[2.1vw] bg-white md:rounded-[28px] sm:rounded-[22px]"
-                data-animate="fade-up"
-                data-delay="0.25"
-            >
-                <img
-                    src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/carrier-services/infrastructure-img-1.png'); ?>"
-                    alt="Fibre installation team working on infrastructure"
-                    class="block h-[32.2vw] w-full object-cover md:h-[420px] sm:h-[280px]"
-                    loading="lazy"
+        <div class="mt-[5vw] md:mt-12 sm:mt-10">
+            <div class="grid grid-cols-2 gap-[2vw] md:gap-5 sm:grid-cols-1 sm:gap-4">
+                <figure
+                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[28px] sm:rounded-[22px]"
+                    data-animate="fade-up"
+                    data-delay="0.1"
                 >
-            </figure>
+                    <img
+                        src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/carrier-services/infra-img-1.png'); ?>"
+                        alt="Fibre installation team working on infrastructure"
+                        class="block h-[32vw] w-full object-cover md:h-[420px] sm:h-[280px]"
+                        loading="lazy"
+                    >
+                </figure>
 
-            <figure
-                class="overflow-hidden rounded-[2.1vw] bg-white md:rounded-[28px] sm:rounded-[22px]"
-                data-animate="fade-up"
-                data-delay="0.3"
-            >
-                <img
-                    src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/carrier-services/infrastructure-img-2.png'); ?>"
-                    alt="Data centre environment supporting network operations"
-                    class="block h-[32.2vw] w-full object-cover md:h-[420px] sm:h-[280px]"
-                    loading="lazy"
+                <figure
+                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[28px] sm:rounded-[22px]"
+                    data-animate="fade-up"
+                    data-delay="0.15"
                 >
-            </figure>
+                    <img
+                        src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/carrier-services/infra-img-2.png'); ?>"
+                        alt="Data centre environment supporting network operations"
+                        class="block h-[32vw] w-full object-cover md:h-[420px] sm:h-[280px]"
+                        loading="lazy"
+                    >
+                </figure>
+            </div>
+        </div>
+
+        <div class="flex justify-center mt-[3.2vw] md:mt-10" data-animate="fade-up" data-delay="0.2">
+            <a href="<?php echo esc_url($button_link); ?>" class="btn btn-primary group magnetic">
+                <span class="btn-line"></span>
+                <span class="btn-text"><?php echo esc_html($button_text); ?></span>
+                <span class="btn-icon">
+                    <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                        <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
+                    </svg>
+                </span>
+            </a>
         </div>
     </div>
 </section>

@@ -22,7 +22,7 @@ $items = [
             <div class="max-w-[60rem] mx-auto text-center">
                 <div class="flex items-center justify-center text-center gap-3 mb-[3vw] md:mb-6" data-animate="fade-up">
                     <span class="w-6 h-1 bg-brand-primary"></span>
-                    <span class="font-body text-base text-[#111] !text-[1.25vw]">
+                    <span class="font-body text-base text-[#111] !text-24">
                         <?php echo esc_html($label); ?>
                     </span>
                 </div>
@@ -31,7 +31,7 @@ $items = [
                     <?php echo esc_html($title); ?>
                 </h2>
 
-                <p class="font-body text-[1.25vw] mt-[6vw] leading-[1.5] text-text-primary mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-para-anim data-delay="0.15">
+                <p class="font-body text-24 mt-[6vw] leading-[1.5] text-text-primary mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-para-anim data-delay="0.15">
                     <?php echo esc_html($subtitle); ?>
                 </p>
             </div>
@@ -46,7 +46,7 @@ $items = [
                                 <span class="text-[2.6vw] md:text-3xl sm:text-2xl text-brand-primary font-body shrink-0 w-[4.8rem] text-right">
                                     <?php echo esc_html($num); ?>
                                 </span>
-                                <span class="font-body text-text-primary text-[1.25vw] md:text-base sm:text-sm leading-[1.35] text-left">
+                                <span class="font-body text-text-primary text-24 md:text-base sm:text-sm leading-[1.35] text-left">
                                     <?php echo esc_html($text); ?>
                                 </span>
                             </div>
@@ -54,7 +54,7 @@ $items = [
                     <?php endforeach; ?>
                 </ul>
 
-                <p class="font-body text-[1.25vw] mt-[3vw] leading-[1.5] text-text-primary text-center mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-para-anim data-delay="0.15">
+                <p class="font-body text-24 mt-[3vw] leading-[1.5] text-text-primary text-center mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-para-anim data-delay="0.15">
                     <?php echo esc_html($footer); ?>
                 </p>
             </div>

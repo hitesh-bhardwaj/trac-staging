@@ -91,7 +91,7 @@ $slides = [
 ); ?>" class="h-full w-auto object-contain">
                                 </div>
 
-	                                <p class="font-body text-[1.25vw] md:text-lg sm:text-base leading-[1.65] text-text-primary mb-[2.5vw] md:mb-8 sm:mb-7">
+	                                <p class="font-body text-24 md:text-lg sm:text-base leading-[1.65] text-text-primary mb-[2.5vw] md:mb-8 sm:mb-7">
 	                                    &ldquo; <?php echo esc_html(
                                          $slide["quote"]
                                      ); ?> &rdquo;

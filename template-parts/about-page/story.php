@@ -12,7 +12,7 @@ $content = trim((string) get_the_content());
             <div class="w-[38%] md:w-full" data-animate="fade-up">
                 <div class="mb-[1.563vw] flex items-center gap-[1.042vw] md:mb-6 md:gap-4">
                     <span class="h-[0.208vw] w-[1.354vw] bg-brand-primary md:h-1 md:w-6"></span>
-                    <span class="font-body text-[1.25vw] text-text-primary md:text-xl sm:text-lg">
+                    <span class="font-body text-24 text-text-primary md:text-xl sm:text-lg">
                         <?php esc_html_e('Who We Are', 'trac'); ?>
                     </span>
                 </div>
@@ -25,7 +25,7 @@ $content = trim((string) get_the_content());
                 </h2>
             </div>
 
-            <div class="w-[47%] font-body text-[1.25vw] leading-[1.85] text-text-body md:w-full md:text-lg sm:text-base" data-animate="fade-up" data-delay="0.1">
+            <div class="w-[47%] font-body text-24 leading-[1.85] text-text-body md:w-full md:text-lg sm:text-base" data-animate="fade-up" data-delay="0.1">
                 <?php if ($content !== ''): ?>
                     <div class="prose prose-lg max-w-none">
                         <?php the_content(); ?>
