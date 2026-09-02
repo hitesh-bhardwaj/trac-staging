@@ -47,7 +47,13 @@ if (have_posts()) {
             <?php get_template_part('template-parts/enterprise-network/services'); ?>
             <?php get_template_part('template-parts/enterprise-network/why-choose'); ?>
             <?php get_template_part('template-parts/enterprise-network/contact'); ?>
-            <?php get_template_part('template-parts/front-page/faqs'); ?>
+            <?php
+            get_template_part(
+                'template-parts/common/faqs',
+                null,
+                trac_get_faq_section_args(['id_prefix' => 'enterprise-network-faq']),
+            );
+            ?>
             <?php
             get_template_part(
                 'template-parts/front-page/cta',

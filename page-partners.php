@@ -21,7 +21,13 @@ if (have_posts()) {
             <?php get_template_part('template-parts/partners/partner-program'); ?>
             <?php get_template_part('template-parts/partners/partner-network'); ?>
             <?php get_template_part('template-parts/partners/partner-voices'); ?>
-            <?php get_template_part('template-parts/front-page/faqs'); ?>
+            <?php
+            get_template_part(
+                'template-parts/common/faqs',
+                null,
+                trac_get_faq_section_args(['id_prefix' => 'partners-faq']),
+            );
+            ?>
             <?php
             get_template_part(
                 'template-parts/front-page/cta',

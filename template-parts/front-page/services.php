@@ -5,37 +5,37 @@ if (!defined('ABSPATH')) {
 
 $services = [
     [
-        'title' => get_field('service_1_title') ?: 'Home Internet',
-        'description' => get_field('service_1_description') ?: 'Fast, stable fibre internet with clear pricing and local support you can rely on.',
-        'link' => get_field('service_1_link') ?: home_url('/products/home-internet'),
-        'image' => get_field('service_1_image') ?: get_template_directory_uri() . '/src/imgs/service-1.png',
-        'alt' => get_field('service_1_title') ?: 'Home Internet Service',
+        'title' => get_field('service_1_title') ?: 'Enterprise Networks',
+        'description' => get_field('service_1_description') ?: 'Secure, high-capacity infrastructure built for large-scale operations, complex network environments, and mission-critical systems. Designed to support heavier workloads, multi-site connectivity, and evolving business demands.',
+        'link' => get_field('service_1_link') ?: home_url('/products/enterprise-networks'),
+        'image' => get_field('service_1_image') ?: get_template_directory_uri() . '/src/imgs/home/service-enterprise-network.png',
+        'alt' => get_field('service_1_title') ?: 'Enterprise Networks Service',
     ],
     [
-        'title' => get_field('service_2_title') ?: 'Business Internet',
-        'description' => get_field('service_2_description') ?: 'Dedicated connectivity, managed equipment, and reliable business support without oversubscription.',
-        'link' => get_field('service_2_link') ?: home_url('/business-internet'),
-        'image' => get_field('service_2_image') ?: get_template_directory_uri() . '/src/imgs/service-2.png',
-        'alt' => get_field('service_2_title') ?: 'Business Internet Service',
+        'title' => get_field('service_2_title') ?: 'SME Internet',
+        'description' => get_field('service_2_description') ?: "Reliable business internet built to support your growth, whether you're a small team or a growing company. Designed for daily operations, cloud tools, payments, and seamless collaboration.",
+        'link' => get_field('service_2_link') ?: home_url('/sme-internet'),
+        'image' => get_field('service_2_image') ?: get_template_directory_uri() . '/src/imgs/home/service-sme-internet.png',
+        'alt' => get_field('service_2_title') ?: 'SME Internet Service',
     ],
     [
-        'title' => get_field('service_3_title') ?: 'Enterprise Connectivity',
-        'description' => get_field('service_3_description') ?: 'Resilient enterprise connectivity with private links, redundancy, SLA-backed uptime, and scalable network architecture.',
-        'link' => get_field('service_3_link') ?: home_url('/enterprise-connectivity'),
-        'image' => get_field('service_3_image') ?: get_template_directory_uri() . '/src/imgs/service-3.png',
-        'alt' => get_field('service_3_title') ?: 'Enterprise Connectivity',
+        'title' => get_field('service_3_title') ?: 'Home Internet',
+        'description' => get_field('service_3_description') ?: 'Fast, stable fibre or wireless internet with clear pricing and local support you can rely on.',
+        'link' => get_field('service_3_link') ?: home_url('/home-internet'),
+        'image' => get_field('service_3_image') ?: get_template_directory_uri() . '/src/imgs/home/service-home-internet.png',
+        'alt' => get_field('service_3_title') ?: 'Home Internet Service',
     ],
     [
-        'title' => get_field('service_4_title') ?: 'Hosting & Data Centre',
-        'description' => get_field('service_4_description') ?: 'Secure hosting, colocation, and infrastructure services built to keep critical workloads close to your network.',
-        'link' => get_field('service_4_link') ?: home_url('/data-centre'),
-        'image' => get_field('service_4_image') ?: get_template_directory_uri() . '/src/imgs/service-4.png',
-        'alt' => get_field('service_4_title') ?: 'Data Centre Services',
+        'title' => get_field('service_4_title') ?: 'Wholesale & Carrier',
+        'description' => get_field('service_4_description') ?: 'Flexible, scalable infrastructure designed for network operators at every stage, from new ISPs to established carriers expanding capacity across Rwanda and East Africa.',
+        'link' => get_field('service_4_link') ?: home_url('/carrier-services'),
+        'image' => get_field('service_4_image') ?: get_template_directory_uri() . '/src/imgs/home/service-wholesale-carrier.png',
+        'alt' => get_field('service_4_title') ?: 'Wholesale & Carrier Services',
     ],
 ];
 ?>
 
-<section class="services-section relative overflow-hidden bg-white py-[7%] sm:pb-[25%]" data-section="services" id="products">
+<section class="services-section relative overflow-hidden bg-[var(--color-brand-light)] py-[7%] sm:pb-[25%]" data-section="services" id="products">
     <style>
         [data-service-slider] .services-slider-viewport {
             position: relative;
@@ -48,37 +48,73 @@ $services = [
         }
 
         [data-service-slider] .services-cards {
-            display: flex;
-            align-items: stretch;
-            gap: 2vw;
+            position: relative;
             height: 100%;
-            will-change: transform;
-            transition: transform 550ms ease-in-out;
-        }
-
-        [data-service-slider] .services-cards.is-jumping {
-            transition: none !important;
         }
 
         [data-service-slider] .service-card {
-            position: relative;
-            flex: 0 0 84vw;
-            width: 84vw;
+            position: absolute;
+            top: 0;
+            left: 10vw;
+            width: 80vw;
             height: 100%;
-            opacity: 1;
+            opacity: 0;
             pointer-events: none;
+            transform: translate3d(7.5vw, 0, 0);
             transition:
-                opacity 550ms ease,
-                filter 550ms ease,
-                transform 550ms ease-in-out;
-            will-change: transform, opacity, filter;
+                opacity 650ms ease,
+                transform 650ms ease-in-out;
+            will-change: transform, opacity;
+        }
+
+        [data-service-slider] .services-cards.is-jumping .service-card {
+            transition: none !important;
+        }
+
+        [data-service-slider] .service-card.is-prev,
+        [data-service-slider] .service-card.is-prev-2,
+        [data-service-slider] .service-card.is-prev-3,
+        [data-service-slider] .service-card.is-next,
+        [data-service-slider] .service-card.is-next-2,
+        [data-service-slider] .service-card.is-next-3,
+        [data-service-slider] .service-card.is-active {
+            opacity: 1;
+        }
+
+        [data-service-slider] .service-card.is-prev {
+            z-index: 3;
+            transform: translate3d(-2.5vw, 0, 0);
+        }
+
+        [data-service-slider] .service-card.is-prev-2 {
+            z-index: 2;
+            transform: translate3d(-5vw, 0, 0);
+        }
+
+        [data-service-slider] .service-card.is-prev-3 {
+            z-index: 1;
+            transform: translate3d(-7.5vw, 0, 0);
         }
 
         [data-service-slider] .service-card.is-active {
-            opacity: 1;
-            filter: brightness(1);
-            transform: scale(1);
+            z-index: 4;
+            transform: translate3d(0, 0, 0);
             pointer-events: auto;
+        }
+
+        [data-service-slider] .service-card.is-next {
+            z-index: 3;
+            transform: translate3d(2.5vw, 0, 0);
+        }
+
+        [data-service-slider] .service-card.is-next-2 {
+            z-index: 2;
+            transform: translate3d(5vw, 0, 0);
+        }
+
+        [data-service-slider] .service-card.is-next-3 {
+            z-index: 1;
+            transform: translate3d(7.5vw, 0, 0);
         }
 
         [data-service-slider] .services-nav-btn {
@@ -91,13 +127,33 @@ $services = [
                 min-height: 560px;
             }
 
-            [data-service-slider] .services-cards {
-                gap: 3vw;
+            [data-service-slider] .service-card {
+                left: 7vw;
+                width: 86vw;
             }
 
-            [data-service-slider] .service-card {
-                flex-basis: 86vw;
-                width: 86vw;
+            [data-service-slider] .service-card.is-prev {
+                transform: translate3d(-2.5vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-prev-2 {
+                transform: translate3d(-5vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-prev-3 {
+                transform: translate3d(-7.5vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-next {
+                transform: translate3d(2.5vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-next-2 {
+                transform: translate3d(5vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-next-3 {
+                transform: translate3d(7.5vw, 0, 0);
             }
         }
 
@@ -107,23 +163,43 @@ $services = [
                 min-height: 540px;
             }
 
-            [data-service-slider] .services-cards {
-                gap: 4vw;
+            [data-service-slider] .service-card {
+                left: 6vw;
+                width: 88vw;
             }
 
-            [data-service-slider] .service-card {
-                flex-basis: 88vw;
-                width: 88vw;
+            [data-service-slider] .service-card.is-prev {
+                transform: translate3d(-2vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-prev-2 {
+                transform: translate3d(-4vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-prev-3 {
+                transform: translate3d(-6vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-next {
+                transform: translate3d(2vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-next-2 {
+                transform: translate3d(4vw, 0, 0);
+            }
+
+            [data-service-slider] .service-card.is-next-3 {
+                transform: translate3d(6vw, 0, 0);
             }
         }
     </style>
 
     <div class="services-container w-full">
-        <div class="services-heading bg-white px-[5vw] pb-[7vw] md:px-[5vw] md:py-12 sm:px-[10vw] sm:py-8">
+        <div class="services-heading bg-[var(--color-brand-light)] px-[5vw] pb-[7vw] md:px-[5vw] md:py-12 sm:px-[10vw] sm:py-8">
             <div class="services-label mb-[1.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10" data-animate="fade-up">
-                <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
+                <span class="label-line h-[0.208vw] w-[1.354vw] bg-[var(--color-brand-secondary)] md:h-1 md:w-6 sm:w-5"></span>
 
-                <span class="label-text font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
+                <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                     <?php echo esc_html(get_field('services_label') ?: 'What We Offer'); ?>
                 </span>
             </div>
@@ -138,7 +214,7 @@ $services = [
                 <div class="services-cards">
                     <?php foreach ($services as $index => $service) : ?>
                         <article
-                            class="service-card !bg-[#10417F] overflow-hidden rounded-[1.2vw] border border-black md:rounded-3xl"
+                            class="service-card !bg-[var(--color-brand-tertiary)] overflow-hidden rounded-[1.2vw] border border-[var(--color-brand-dark)] md:rounded-3xl"
                             data-service-card
                             data-card-index="<?php echo esc_attr($index); ?>"
                         >
@@ -184,7 +260,7 @@ $services = [
             <div class="services-slider-controls mt-[4.688vw] flex items-center justify-center gap-[0.625vw] md:mt-10 md:gap-3 sm:mt-8">
                 <button
                     type="button"
-                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[#E86224] bg-white text-[#E86224] transition-all duration-300 hover:bg-[#E86224] hover:text-white md:h-12 md:w-20"
+                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[var(--color-brand-secondary)] bg-[var(--color-brand-light)] text-[var(--color-brand-secondary)] transition-all duration-300 hover:bg-[var(--color-brand-secondary)] hover:text-[var(--color-text-secondary)] md:h-12 md:w-20"
                     data-service-prev
                     aria-label="Previous service"
                 >
@@ -196,7 +272,7 @@ $services = [
 
                 <button
                     type="button"
-                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[#E86224] bg-white text-[#E86224] transition-all duration-300 hover:bg-[#E86224] hover:text-white md:h-12 md:w-20"
+                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[var(--color-brand-secondary)] bg-[var(--color-brand-light)] text-[var(--color-brand-secondary)] transition-all duration-300 hover:bg-[var(--color-brand-secondary)] hover:text-[var(--color-text-secondary)] md:h-12 md:w-20"
                     data-service-next
                     aria-label="Next service"
                 >
@@ -230,40 +306,59 @@ $services = [
                 if (!originalSlides.length) return;
 
                 const total = originalSlides.length;
-                let currentIndex = total;
+                let currentIndex = 0;
                 let isAnimating = false;
-                let normalizeTimer = null;
-
-                const beforeFragment = document.createDocumentFragment();
-                const afterFragment = document.createDocumentFragment();
-
-                originalSlides.forEach(function (slide) {
-                    const beforeClone = slide.cloneNode(true);
-                    beforeClone.setAttribute('data-clone', 'before');
-                    beforeFragment.appendChild(beforeClone);
-                });
-
-                originalSlides.forEach(function (slide) {
-                    const afterClone = slide.cloneNode(true);
-                    afterClone.setAttribute('data-clone', 'after');
-                    afterFragment.appendChild(afterClone);
-                });
-
-                track.insertBefore(beforeFragment, track.firstChild);
-                track.appendChild(afterFragment);
 
                 function getSlides() {
-                    return Array.from(track.querySelectorAll('[data-service-card]'));
+                    return originalSlides;
+                }
+
+                function clampIndex(index) {
+                    return Math.max(0, Math.min(index, total - 1));
+                }
+
+                function setButtonState(button, disabled) {
+                    button.disabled = disabled;
+                    button.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+                    button.classList.toggle('pointer-events-none', disabled);
+                    button.classList.toggle('opacity-40', disabled);
+                    button.classList.toggle('cursor-not-allowed', disabled);
+                    button.classList.toggle('opacity-100', !disabled);
+                    button.classList.toggle('cursor-pointer', !disabled);
+                }
+
+                function updateButtons() {
+                    setButtonState(prevBtn, currentIndex === 0);
+                    setButtonState(nextBtn, currentIndex === total - 1);
                 }
 
                 function updateActiveState() {
                     const slides = getSlides();
+                    const previousIndex = currentIndex - 1;
+                    const previousSecondIndex = currentIndex - 2;
+                    const previousThirdIndex = currentIndex - 3;
+                    const activeIndex = currentIndex;
+                    const nextIndex = currentIndex + 1;
+                    const nextSecondIndex = currentIndex + 2;
+                    const nextThirdIndex = currentIndex + 3;
 
                     slides.forEach(function (slide, index) {
-                        const isActive = index === currentIndex;
+                        const isPrevious = index === previousIndex;
+                        const isPreviousSecond = index === previousSecondIndex;
+                        const isPreviousThird = index === previousThirdIndex;
+                        const isActive = index === activeIndex;
+                        const isNext = index === nextIndex;
+                        const isNextSecond = index === nextSecondIndex;
+                        const isNextThird = index === nextThirdIndex;
                         const link = slide.querySelector('a');
 
+                        slide.classList.toggle('is-prev', isPrevious);
+                        slide.classList.toggle('is-prev-2', isPreviousSecond);
+                        slide.classList.toggle('is-prev-3', isPreviousThird);
                         slide.classList.toggle('is-active', isActive);
+                        slide.classList.toggle('is-next', isNext);
+                        slide.classList.toggle('is-next-2', isNextSecond);
+                        slide.classList.toggle('is-next-3', isNextThird);
                         slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
 
                         if (link) {
@@ -272,25 +367,12 @@ $services = [
                     });
                 }
 
-                function centerSlide(skipTransition) {
-                    const slides = getSlides();
-                    const activeSlide = slides[currentIndex];
-
-                    if (!activeSlide) return;
-
+                function renderSlides(skipTransition) {
                     if (skipTransition) {
                         track.classList.add('is-jumping');
-                    } else {
-                        track.classList.remove('is-jumping');
                     }
-
-                    const viewportCenter = viewport.clientWidth / 2;
-                    const slideCenter = activeSlide.offsetLeft + activeSlide.offsetWidth / 2;
-                    const translateX = viewportCenter - slideCenter;
-
-                    track.style.transform = 'translate3d(' + translateX + 'px, 0, 0)';
-
                     updateActiveState();
+                    updateButtons();
 
                     if (skipTransition) {
                         requestAnimationFrame(function () {
@@ -301,30 +383,19 @@ $services = [
                     }
                 }
 
-                function normalizeLoop() {
-                    if (currentIndex >= total * 2) {
-                        currentIndex -= total;
-                        centerSlide(true);
-                    }
-
-                    if (currentIndex < total) {
-                        currentIndex += total;
-                        centerSlide(true);
-                    }
-
-                    isAnimating = false;
-                }
-
                 function goTo(index) {
                     if (isAnimating) return;
 
-                    clearTimeout(normalizeTimer);
+                    const nextIndex = clampIndex(index);
+                    if (nextIndex === currentIndex) return;
 
                     isAnimating = true;
-                    currentIndex = index;
-                    centerSlide(false);
+                    currentIndex = nextIndex;
+                    renderSlides(false);
 
-                    normalizeTimer = setTimeout(normalizeLoop, 900);
+                    window.setTimeout(function () {
+                        isAnimating = false;
+                    }, 650);
                 }
 
                 nextBtn.addEventListener('click', function () {
@@ -336,11 +407,11 @@ $services = [
                 });
 
                 window.addEventListener('resize', function () {
-                    centerSlide(true);
+                    renderSlides(true);
                 });
 
                 requestAnimationFrame(function () {
-                    centerSlide(true);
+                    renderSlides(true);
                 });
             }
 

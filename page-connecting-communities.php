@@ -184,7 +184,13 @@ get_header();
             }
             ?>
 
-            <?php get_template_part('template-parts/front-page/faqs'); ?>
+            <?php
+            get_template_part(
+                'template-parts/common/faqs',
+                null,
+                trac_get_faq_section_args(['id_prefix' => 'connecting-communities-faq']),
+            );
+            ?>
             <?php
             get_template_part(
                 'template-parts/front-page/cta',

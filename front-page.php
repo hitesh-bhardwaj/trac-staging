@@ -20,10 +20,9 @@ get_header();
         $front_page_sections = [
             'hero',
             'about',
-            // 'why-trac',
             'services',
             'testimonials',
-            // 'clients',
+            'clients',
             'our-network',
             "connecting-communities",
             'faqs',
@@ -31,6 +30,15 @@ get_header();
         ];
 
         foreach ($front_page_sections as $section_slug) {
+            if ($section_slug === 'faqs') {
+                get_template_part(
+                    'template-parts/common/faqs',
+                    null,
+                    trac_get_faq_section_args(['id_prefix' => 'front-page-faq']),
+                );
+                continue;
+            }
+
             get_template_part('template-parts/front-page/' . $section_slug);
         }
         ?>

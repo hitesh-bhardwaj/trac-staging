@@ -70,7 +70,13 @@ if (have_posts()) {
             <?php get_template_part('template-parts/home-internet/installation'); ?>
 
             <?php // Reuse existing sections until Home Internet-specific sections are designed. ?>
-            <?php get_template_part('template-parts/front-page/faqs'); ?>
+            <?php
+            get_template_part(
+                'template-parts/common/faqs',
+                null,
+                trac_get_faq_section_args(['id_prefix' => 'home-internet-faq']),
+            );
+            ?>
             <?php
             get_template_part(
                 'template-parts/front-page/cta',

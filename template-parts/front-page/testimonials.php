@@ -73,11 +73,12 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
         </div>
 
         <div
-            class="testimonials-slider flex w-fit justify-end min-h-[28vw] md:min-h-[360px] sm:min-h-[300px] relative z-[10]"
+            class="testimonials-slider relative z-[10] w-full min-h-[28vw] md:min-h-[360px] sm:min-h-[300px]"
             data-animate="fade-up"
             data-delay="0.3"
          >
-            <div class="testimonials-track relative h-[30vw] w-[44vw] overflow-visible md:h-[360px] md:w-[72vw]  sm:w-[90vw] sm:h-[70vw]">
+            <div class="testimonials-viewport">
+                <div class="testimonials-track">
                 <?php
 // Get testimonials limit from ACF
 $limit = get_field('testimonials_limit') ? : 3;
@@ -101,7 +102,7 @@ if ($testimonials_query->have_posts()):
             $logo = get_template_directory_uri() . '/src/imgs/testimonial-logo-1.png';
         }
 ?>
-                        <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] bg-[#0B1F3A] p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[2vw] sm:p-6  md:flex md:flex-col md:justify-between">
+                        <div class="testimonial-card rounded-[1.563vw] bg-[var(--color-brand-primary)] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6 md:flex md:flex-col md:justify-between">
                             <?php if ($quote): ?>
                                 <p class="testimonial-text font-body mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                                     <?php echo esc_html($quote); ?>
@@ -158,39 +159,39 @@ if ($testimonials_query->have_posts()):
 else:
 ?>
                     <!-- Fallback: Show default testimonial if no posts exist -->
-                    <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[2vw] sm:p-6  md:flex md:flex-col md:justify-between">
+                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6 md:flex md:flex-col md:justify-between">
                         <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                            We have been working with TransAfrica Communications for 5 years now and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
+                            Throughout the course of working together since 2017, we have been constantly impressed by TrAC ability to provide requested services in a timely manner and ensure that any bumps along the way are sorted out with the at most priority in the shortest time possible.
                         </p>
                         <div class="testimonial-author">
                             <img
-                                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/testimonial-logo-1.png',); ?>"
+                                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/home/testimonials/partners-in-health.png',); ?>"
                                 alt="Client logo"
                                 class="h-[2.552vw] w-auto md:h-10 sm:h-8 brightness-[16]"
                             >
                         </div>
                     </div>
                    
-                    <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[2vw] sm:p-6  md:flex md:flex-col md:justify-between">
+                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6 md:flex md:flex-col md:justify-between">
                         <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                            We have been working with TransAfrica Communications for 5 years now and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
+                            We have been working with TrAC  since 2017 and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
                         </p>
                         <div class="testimonial-author">
                             <img
-                                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/testimonial-logo-1.png',); ?>"
+                                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/home/testimonials/urwego-bank.png',); ?>"
                                 alt="Client logo"
                                 class="h-[2.552vw] w-auto md:h-10 sm:h-8 brightness-[16]"
                             >
                         </div>
                     </div>
                    
-                    <div class="testimonial-card absolute right-0 top-0 w-[44vw] rounded-[1.563vw] p-[3.125vw] md:w-[72vw] md:rounded-3xl md:p-8 sm:w-full sm:rounded-[2vw] sm:p-6  md:flex md:flex-col md:justify-between">
+                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6 md:flex md:flex-col md:justify-between">
                         <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                            We have been working with TransAfrica Communications for 5 years now and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
+                            TrAC has  been providing to us Multiprotocol Label Switching (MPLS private network) and Internet services which are highly efficient, scalable and secure. In our interactions, we have found TrAC staff to be highly professional and rich with experience in project implementation skills and the ability to handle diverse environments while providing exceptional customer service and support in a timely manner.
                         </p>
                         <div class="testimonial-author">
                             <img
-                                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/testimonial-logo-1.png',); ?>"
+                                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/home/testimonials/smart-access.png',); ?>"
                                 alt="Client logo"
                                 class="h-[2.552vw] w-auto md:h-10 sm:h-8 brightness-[16]"
                             >
@@ -199,12 +200,13 @@ else:
                    
                 <?php
 endif; ?>
+                </div>
             </div>
         </div>
         
          
     </div>
-                               <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F6A"></canvas>
+                               <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F1A"></canvas>
 
 
 </section>

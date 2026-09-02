@@ -646,6 +646,133 @@ function trac_get_section($section_name, $args = [])
 }
 
 /**
+ * Helper: Build FAQ section data for shared templates.
+ */
+function trac_get_faq_section_args($overrides = [])
+{
+    $section_label =
+        $overrides['section_label'] ?? get_field('faq_section_label') ?? 'FAQs';
+    $section_title =
+        $overrides['section_title'] ??
+        get_field('faq_section_title') ??
+        'Any Questions? We Got You.';
+    $display_mode =
+        $overrides['display_mode'] ?? get_field('faq_display_mode') ?? 'latest';
+    $faq_limit = $overrides['limit'] ?? get_field('faq_limit') ?? 5;
+    $open_first = $overrides['open_first'] ?? get_field('faq_open_first');
+    $open_first = $open_first !== null ? (bool) $open_first : true;
+
+    $query_args = [
+        'post_type' => 'faq',
+        'post_status' => 'publish',
+        'posts_per_page' => $faq_limit > 0 ? (int) $faq_limit : -1,
+        'orderby' => 'menu_order date',
+        'order' => 'ASC',
+    ];
+
+    switch ($display_mode) {
+        case 'category':
+            $categories = $overrides['categories'] ?? get_field('faq_categories');
+            if ($categories) {
+                $query_args['tax_query'] = [
+                    [
+                        'taxonomy' => 'faq_category',
+                        'field' => 'term_id',
+                        'terms' => $categories,
+                    ],
+                ];
+            }
+            break;
+
+        case 'specific':
+            $specific_faqs =
+                $overrides['specific_items'] ?? get_field('faq_specific_items');
+            if ($specific_faqs) {
+                $query_args['post__in'] = $specific_faqs;
+                $query_args['orderby'] = 'post__in';
+            }
+            break;
+
+        case 'all':
+            $query_args['posts_per_page'] = -1;
+            break;
+    }
+
+    $items = [];
+    $faqs_query = new WP_Query($query_args);
+
+    if ($faqs_query->have_posts()) {
+        while ($faqs_query->have_posts()) {
+            $faqs_query->the_post();
+
+            $answer = get_field('faq_answer');
+            if (!$answer) {
+                $answer = get_the_content();
+            }
+
+            $items[] = [
+                'question' => get_the_title(),
+                'answer' => $answer,
+            ];
+        }
+
+        wp_reset_postdata();
+    }
+
+    if (!$items) {
+        $items = $overrides['fallback_faqs'] ?? [
+            [
+                'question' => 'Is TrAC just an ISP?',
+                'answer' =>
+                    'No, TrAC is more than an ISP. It provides internet, private networks, cloud, hosting, and carrier services, and is now connected in to the CC platform. TrAC is using its connectivity to enable access in opportunity across Rwanda and East Africa. ',
+            ],
+            [
+                'question' => 'How is TrAC different from other providers?',
+                'answer' =>
+                    'An uncontended service, resilient network design, business-grade support, and the ability to serve both end customers and carriers. TrAC guarantees you’re always get what you pay for – backed by a fully protected ring network and 24/7 support from Kigali.',
+            ],
+            [
+                'question' => 'What does uncontended mean in practice?',
+                'answer' =>
+                    'It means your connection is designed to deliver more consistent performance, even during busy periods. Rather than competing for bandwidth with large numbers of users, you can expect a more reliable online experience when it matters most.',
+            ],
+            [
+                'question' => 'Where does TrAC operate?',
+                'answer' =>
+                    'Headquartered in Kigali, Rwanda, TrAC delivers connectivity solutions across Rwanda and the wider East African region, including Uganda, Kenya, Tanzania, and Burundi.',
+            ],
+            [
+                'question' => 'What is Connecting Communities?',
+                'answer' =>
+                    'Connecting Communities (CC) is a platform. Enabled by connectivity, CC works to create access to essential services and tools in hard to reach communities. Bringing reliable Internet to more communities helps create opportunities to access services such as finance, clean water, agriculture, education, and healthcare.',
+            ],
+            [
+                'question' => 'What are Community Smart Hubs?',
+                'answer' =>
+                    'Community Smart Hubs are physical locations enabled by TrAC connectivity, designed to bring digital tools and essential services closer to the communities they serve.',
+            ],
+            [
+                'question' => 'How is TrAC supporting areas with limited access?',
+                'answer' =>
+                    'TrAC is expanding its network to bring reliable connectivity to more people and places. By improving access and strengthening infrastructure, we help communities stay connected to the opportunities and services that matter most.',
+            ],
+            [
+                'question' => 'What does long-term partnership mean at TrAC?',
+                'answer' =>
+                    'It means TrAC stays involved after installation or go-live, with support, visibility, and ongoing improvement as customer needs change over time.',
+            ],
+        ];
+    }
+
+    return array_merge($overrides, [
+        'section_label' => $section_label,
+        'section_title' => $section_title,
+        'open_first' => $open_first,
+        'items' => $items,
+    ]);
+}
+
+/**
  * Helper: Render ACF Flexible Content sections
  */
 function trac_render_sections($field_name = 'page_sections')

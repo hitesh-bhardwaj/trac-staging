@@ -73,7 +73,13 @@ if (have_posts()) {
             <?php get_template_part('template-parts/carrier-services/why-choose-trac'); ?>
             <?php get_template_part('template-parts/carrier-services/contact'); ?>
 
-            <?php get_template_part('template-parts/front-page/faqs'); ?>
+            <?php
+            get_template_part(
+                'template-parts/common/faqs',
+                null,
+                trac_get_faq_section_args(['id_prefix' => 'carrier-services-faq']),
+            );
+            ?>
             <?php
             get_template_part(
                 'template-parts/front-page/cta',

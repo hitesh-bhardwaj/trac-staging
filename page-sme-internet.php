@@ -68,7 +68,13 @@ if (have_posts()) {
             <?php get_template_part('template-parts/sme-internet/problem-statement'); ?>
             <?php get_template_part('template-parts/sme-internet/product-overview'); ?>
             <?php get_template_part('template-parts/sme-internet/plans'); ?>
-            <?php get_template_part('template-parts/front-page/faqs'); ?>
+            <?php
+            get_template_part(
+                'template-parts/common/faqs',
+                null,
+                trac_get_faq_section_args(['id_prefix' => 'sme-internet-faq']),
+            );
+            ?>
             <?php
             get_template_part(
                 'template-parts/front-page/cta',

@@ -12,11 +12,11 @@ $section_title =
 
 $section_content_1 =
     get_field('communities_section_content_1') ?:
-    'Beyond delivering reliable internet and strong customer support, we also build and continuously improve the infrastructure that enables wider access. Through long-term partnerships and ongoing optimisation, we ensure our networks evolve alongside the needs of the people and organisations they support.';
+    'Beyond delivering reliable internet and strong customer support, we continuously invest in infrastructure that enables wider access. Through long-term partnerships and ongoing optimisation, we ensure our networks evolve alongside the needs of people and organisations across Rwanda and East Africa.';
 
 $section_content_2 =
     get_field('communities_section_content_2') ?:
-    'The Connecting Communities model builds on this foundation, with TrAC enabling the rollout of Community Hub Sites across Rwanda, bringing connectivity into areas with limited access to financial services, education, clean water, and digital tools.';
+    'The Connecting Communities (CC) platform builds on this connectivity, with TrAC enabling the rollout of Community Smart Hubs across Rwanda and across East Africa. CC and TrAC are bringing access to financial services, education, clean water, and digital tools.';
 
 $button_text =
     get_field('communities_button_text') ?: 'Read More';
@@ -26,7 +26,7 @@ $button_link =
 
 $section_image =
     get_field('communities_section_image') ?:
-    get_template_directory_uri() . '/src/imgs/connecting-communities.png';
+    get_template_directory_uri() . '/src/imgs/home/connecting-communities.png';
 
 $section_image_alt =
     get_field('communities_section_image_alt') ?: 'Connecting communities';

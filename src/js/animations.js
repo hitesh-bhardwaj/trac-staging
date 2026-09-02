@@ -2984,17 +2984,43 @@ function initTestimonialsSlider() {
     if (!section) return;
 
     const track = section.querySelector('.testimonials-track');
-    const cards = Array.from(section.querySelectorAll('.testimonial-card'));
+    const viewport = section.querySelector('.testimonials-viewport');
+    const originalCards = Array.from(
+        section.querySelectorAll('.testimonial-card:not([data-clone])'),
+    );
     const prevBtns = Array.from(section.querySelectorAll('.arrow-prev'));
     const nextBtns = Array.from(section.querySelectorAll('.arrow-next'));
     const currentSlide = section.querySelector('.current-slide');
     const totalSlides = section.querySelector('.total-slides');
 
-    if (!track || !cards.length) return;
+    if (!track || !viewport || !originalCards.length) return;
 
-    let currentIndex = 0;
+    const totalCards = originalCards.length;
+    let currentIndex = totalCards;
     let isAnimating = false;
-    const totalCards = cards.length;
+    let normalizeTimer = null;
+
+    const beforeFragment = document.createDocumentFragment();
+    const afterFragment = document.createDocumentFragment();
+
+    originalCards.forEach((card) => {
+        const beforeClone = card.cloneNode(true);
+        beforeClone.setAttribute('data-clone', 'before');
+        beforeFragment.appendChild(beforeClone);
+    });
+
+    originalCards.forEach((card) => {
+        const afterClone = card.cloneNode(true);
+        afterClone.setAttribute('data-clone', 'after');
+        afterFragment.appendChild(afterClone);
+    });
+
+    track.insertBefore(beforeFragment, track.firstChild);
+    track.appendChild(afterFragment);
+
+    function getCards() {
+        return Array.from(section.querySelectorAll('.testimonial-card'));
+    }
 
     if (totalSlides) {
         totalSlides.textContent = String(totalCards).padStart(2, '0');
@@ -3002,230 +3028,112 @@ function initTestimonialsSlider() {
 
     function updateCounter() {
         if (currentSlide) {
-            currentSlide.textContent = String(currentIndex + 1).padStart(
+            const displayIndex = ((currentIndex - totalCards) % totalCards + totalCards) % totalCards;
+            currentSlide.textContent = String(displayIndex + 1).padStart(
                 2,
                 '0',
             );
         }
     }
 
-    function setButtonState(buttons, disabled) {
+    function setButtonState(buttons) {
         buttons.forEach((btn) => {
-            btn.disabled = disabled;
-            btn.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+            btn.disabled = false;
+            btn.setAttribute('aria-disabled', 'false');
 
-            btn.classList.toggle('pointer-events-none', disabled);
-            btn.classList.toggle('opacity-40', disabled);
-            btn.classList.toggle('cursor-not-allowed', disabled);
-
-            btn.classList.toggle('opacity-100', !disabled);
-            btn.classList.toggle('cursor-pointer', !disabled);
+            btn.classList.remove('pointer-events-none', 'opacity-40', 'cursor-not-allowed');
+            btn.classList.add('opacity-100', 'cursor-pointer');
         });
     }
 
     function updateButtons() {
-        const isAtStart = currentIndex === 0;
-        const isAtEnd = currentIndex === totalCards - 1;
-
-        setButtonState(prevBtns, isAtStart);
-        setButtonState(nextBtns, isAtEnd);
+        setButtonState(prevBtns);
+        setButtonState(nextBtns);
     }
 
-    function getSlideDistance() {
-        return track.offsetWidth * 0.92;
-    }
-
-    function resetCard(card) {
-        gsap.set(card, {
-            x: 0,
-            scale: 1,
-            autoAlpha: 0,
-            filter: 'brightness(1)',
-            zIndex: 1,
-            pointerEvents: 'none',
-        });
-    }
-
-    function setFrontCard(card) {
-        gsap.set(card, {
-            x: 0,
-            scale: 1,
-            autoAlpha: 1,
-            filter: 'brightness(1)',
-            zIndex: 3,
-            pointerEvents: 'auto',
-        });
-    }
-
-    function setBackCard(card) {
-        gsap.set(card, {
-            x: 0,
-            scale: 0.93,
-            autoAlpha: 1,
-            filter: 'brightness(0.78)',
-            zIndex: 2,
-            pointerEvents: 'none',
-        });
-    }
-
-    cards.forEach(resetCard);
-    setFrontCard(cards[0]);
-
-    function goNext() {
-        if (isAnimating || currentIndex >= totalCards - 1) return;
-
-        isAnimating = true;
-        updateButtons();
-
-        const currentCard = cards[currentIndex];
-        const nextCard = cards[currentIndex + 1];
-        const distance = getSlideDistance();
+    function updateActiveState() {
+        const cards = getCards();
 
         cards.forEach((card, index) => {
-            if (index !== currentIndex && index !== currentIndex + 1) {
-                resetCard(card);
-            }
+            const isActive = index === currentIndex;
+            card.classList.toggle('is-active', isActive);
+            card.setAttribute('aria-hidden', isActive ? 'false' : 'true');
         });
-
-        gsap.killTweensOf([currentCard, nextCard]);
-
-        gsap.set(currentCard, {
-            x: 0,
-            scale: 1,
-            autoAlpha: 1,
-            filter: 'brightness(1)',
-            zIndex: 3,
-            pointerEvents: 'none',
-        });
-
-        gsap.set(nextCard, {
-            x: distance * 1.1,
-            scale: 1,
-            autoAlpha: 1,
-            filter: 'brightness(1)',
-            zIndex: 4,
-            pointerEvents: 'auto',
-        });
-
-        const tl = gsap.timeline({
-            defaults: {
-                duration: 0.85,
-                ease: 'power3.inOut',
-                overwrite: 'auto',
-            },
-            onComplete: () => {
-                setBackCard(currentCard);
-                setFrontCard(nextCard);
-                currentIndex += 1;
-                updateCounter();
-                updateButtons();
-                isAnimating = false;
-            },
-        });
-
-        tl.to(
-            currentCard,
-            {
-                scale: 0.93,
-                filter: 'brightness(0.78)',
-            },
-            0,
-        ).to(
-            nextCard,
-            {
-                x: 0,
-            },
-            0,
-        );
     }
 
-    function goPrev() {
-        if (isAnimating || currentIndex <= 0) return;
+    function getTranslateX(index) {
+        const cards = getCards();
+        const activeCard = cards[index];
+        if (!activeCard) return 0;
 
-        isAnimating = true;
-        updateButtons();
+        const trackStyles = window.getComputedStyle(track);
+        const paddingLeft = parseFloat(trackStyles.paddingLeft) || 0;
 
-        const currentCard = cards[currentIndex];
-        const previousCard = cards[currentIndex - 1];
-        const distance = getSlideDistance();
-
-        cards.forEach((card, index) => {
-            if (index !== currentIndex && index !== currentIndex - 1) {
-                resetCard(card);
-            }
-        });
-
-        gsap.killTweensOf([currentCard, previousCard]);
-
-        gsap.set(currentCard, {
-            x: 0,
-            scale: 1,
-            autoAlpha: 1,
-            filter: 'brightness(1)',
-            zIndex: 4,
-            pointerEvents: 'none',
-        });
-
-        gsap.set(previousCard, {
-            x: 0,
-            scale: 0.93,
-            autoAlpha: 1,
-            filter: 'brightness(0.78)',
-            zIndex: 3,
-            pointerEvents: 'auto',
-        });
-
-        const tl = gsap.timeline({
-            defaults: {
-                duration: 0.85,
-                ease: 'power3.inOut',
-                overwrite: 'auto',
-            },
-            onComplete: () => {
-                resetCard(currentCard);
-                setFrontCard(previousCard);
-                currentIndex -= 1;
-                updateCounter();
-                updateButtons();
-                isAnimating = false;
-            },
-        });
-
-        tl.to(
-            currentCard,
-            {
-                x: distance * 1.1,
-            },
-            0,
-        ).to(
-            previousCard,
-            {
-                x: 0,
-                scale: 1,
-                filter: 'brightness(1)',
-            },
-            0,
-        );
+        return activeCard.offsetLeft - paddingLeft;
     }
 
-    nextBtns.forEach((btn) => btn.addEventListener('click', goNext));
-    prevBtns.forEach((btn) => btn.addEventListener('click', goPrev));
-
-    window.addEventListener('resize', () => {
-        cards.forEach(resetCard);
-
-        if (currentIndex > 0) {
-            setBackCard(cards[currentIndex - 1]);
+    function normalizeLoop() {
+        if (currentIndex >= totalCards * 2) {
+            currentIndex -= totalCards;
+            refreshPosition();
         }
 
-        setFrontCard(cards[currentIndex]);
+        if (currentIndex < totalCards) {
+            currentIndex += totalCards;
+            refreshPosition();
+        }
+
+        updateCounter();
+        updateActiveState();
+        isAnimating = false;
+    }
+
+    function goTo(index) {
+        if (isAnimating) return;
+
+        clearTimeout(normalizeTimer);
+
+        isAnimating = true;
+        currentIndex = index;
+        updateCounter();
+        updateButtons();
+        updateActiveState();
+
+        gsap.to(track, {
+            x: -getTranslateX(currentIndex),
+            duration: 0.85,
+            ease: 'power3.inOut',
+            overwrite: 'auto',
+            onComplete: () => {
+                normalizeLoop();
+            },
+        });
+    }
+
+    function refreshPosition() {
+        gsap.set(track, {
+            x: -getTranslateX(currentIndex),
+        });
+    }
+
+    nextBtns.forEach((btn) =>
+        btn.addEventListener('click', () => goTo(currentIndex + 1)),
+    );
+    prevBtns.forEach((btn) =>
+        btn.addEventListener('click', () => goTo(currentIndex - 1)),
+    );
+
+    window.addEventListener('resize', () => {
+        refreshPosition();
         updateButtons();
     });
 
+    refreshPosition();
+    updateActiveState();
     updateCounter();
     updateButtons();
 
-    console.log('[Trac] Testimonials stacking slider initialized');
+    console.log('[Trac] Testimonials full-width slider initialized');
 }
 
 /**
