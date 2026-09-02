@@ -189,14 +189,13 @@
     class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] px-[2vw] py-[1.5vw] flex justify-between z-[999] bg-white"
     data-products-dropdown
       >
-    <a href="<?php echo esc_url(home_url('/products/home-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
-    <div class="w-full flex flex-col gap-[1vw]">
-        <h4 class="font-medium text-[1.5vw] font-body">Home Internet</h4>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+    <a href="<?php echo esc_url(home_url('/products/home-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[1vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
+    <div class="w-full flex flex-col gap-[1vw] h-full justify-center">
+        <h4 class=" text-[1.8vw] font-body">Home Internet</h4>
     </div>
 
     <div class="w-full flex justify-end">
-        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:text-white duration-300 ease-out ">
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:border-[#E86224] group-hover:text-white duration-300 ease-out ">
             <div class="relative w-[20px] h-[20px] overflow-hidden">
                 
                 <!-- First SVG -->
@@ -220,13 +219,12 @@
     </div>
 </a>
 
-    <a  href="<?php echo esc_url(home_url('/products/sme-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
-        <div class="w-full flex flex-col gap-[1vw]">
-            <h4 class="font-medium text-[1.5vw] font-body">SME Internet</h4>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+    <a  href="<?php echo esc_url(home_url('/products/sme-internet/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[1vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
+        <div class="w-full flex flex-col gap-[1vw] h-full justify-center">
+            <h4 class=" text-[1.8vw] font-body">SME Internet</h4>
         </div>
         <div class="w-full flex justify-end">
-        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:text-white duration-300 ease-out">
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:border-[#E86224] group-hover:text-white duration-300 ease-out">
             <div class="relative w-[20px] h-[20px] overflow-hidden">
                 
                  <!-- First SVG -->
@@ -250,13 +248,12 @@
     </div>
     </a>
 
-    <a href="<?php echo esc_url(home_url('/products/enterprise-network/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
-        <div class="w-full flex flex-col gap-[1vw]">
-            <h4 class="font-medium text-[1.5vw] font-body">Enterprise Network</h4>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+    <a href="<?php echo esc_url(home_url('/products/enterprise-network/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[1vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
+        <div class="w-full flex flex-col gap-[1vw] h-full justify-center">
+            <h4 class=" text-[1.8vw] font-body">Enterprise Network</h4>
         </div>
         <div class="w-full flex justify-end">
-        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:text-white duration-300 ease-out">
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:border-[#E86224] group-hover:text-white duration-300 ease-out">
             <div class="relative w-[20px] h-[20px] overflow-hidden">
                 
                 <!-- First SVG -->
@@ -280,13 +277,12 @@
     </div>
     </a>
 
-    <a href="<?php echo esc_url(home_url('/products/carrier-services/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary p-[1vw] flex flex-col justify-between text-black hover:bg-brand-primary hover:text-white duration-300 ease-in-out">
-        <div class="w-full flex flex-col gap-[1vw]">
-            <h4 class="font-medium text-[1.5vw] font-body">Wholesale & Carrier</h4>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+    <a href="<?php echo esc_url(home_url('/products/carrier-services/')); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[1vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
+        <div class="w-full flex flex-col gap-[1vw] h-full justify-center">
+            <h4 class=" text-[1.8vw] font-body">Wholesale & Carrier</h4>
         </div>
         <div class="w-full flex justify-end">
-        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:text-white duration-300 ease-out">
+        <div class="size-[3.5vw] rounded-[0.6vw] bg-white border border-brand-primary flex justify-center items-center text-black overflow-hidden group-hover:bg-[#E86224] group-hover:border-[#E86224] group-hover:text-white duration-300 ease-out">
             <div class="relative w-[20px] h-[20px] overflow-hidden">
                 
                 <!-- First SVG -->

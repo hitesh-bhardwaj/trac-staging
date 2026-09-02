@@ -21,6 +21,8 @@ export default {
                 brand: {
                     primary: '#10417f', // Main blue
                     secondary: '#E85D24', // Orange accent (for markers)
+                    tertiary: 'var(--color-brand-tertiary)', // #389FD8
+                    quaternary: 'var(--color-brand-quaternary)', // #2F5FA0
                     dark: '#111111',
                     light: '#F5F5F5',
                 },
