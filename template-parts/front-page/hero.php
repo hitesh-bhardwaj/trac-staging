@@ -16,7 +16,7 @@ $hero_connectors_svg_path =
         <div class="hero-grid flex justify-between gap-[2.604vw] items-start md:flex-col md:gap-8">
             <div class="hero-text w-[70%] md:w-full md:max-w-full md:pt-8 sm:pt-4  relative z-[10]">
                 <h1
-                    class="hero-title font-heading text-[var(--color-text-secondary)] tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4 md:text-center"
+                    class="hero-title font-heading text-white tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4 md:text-center"
                     data-hero-reveal
                     data-heading-anim
                     data-base-delay="0.05"
@@ -40,7 +40,7 @@ $hero_connectors_svg_path =
 </h1>
 
                 <p
-                    class="text-24 font-body text-[var(--color-text-secondary)] w-[50%] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center"
+                    class="text-24 font-body text-white w-[36vw] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center"
                     data-hero-reveal
                     data-hero-delay="0.14"
                     data-para-anim

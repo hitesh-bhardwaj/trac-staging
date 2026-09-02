@@ -10,10 +10,10 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
 
 
 <section class="testimonials-section relative overflow-hidden sm:py-[15%]" data-section="testimonials">
-    <div class="testimonials-container w-full flex flex-col items-end px-[5vw] py-[6.25vw] md:py-16 sm:px-[7vw] sm:py-12 md:items-center sm:gap-[7vw]">
+    <div class="testimonials-container w-full flex flex-col items-end px-[5vw] pb-[6.25vw] md:py-16 sm:px-[7vw] sm:py-12 md:items-center sm:gap-[7vw]">
         <div class="testimonials-header mb-[2.604vw] md:mb-10 sm:mb-8 w-full md:flex md:flex-col md:items-center">
             <div
-                class="testimonials-label mb-[1.563vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10"
+                class="testimonials-label mb-[2.563vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10"
                 data-animate="fade-up"
             >
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
@@ -73,7 +73,7 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
         </div>
 
         <div
-            class="testimonials-slider relative z-[10] w-full min-h-[28vw] md:min-h-[360px] sm:min-h-[300px]"
+            class="testimonials-slider mt-[3vw] relative z-[10] w-full min-h-[28vw] md:min-h-[360px] sm:min-h-[300px]"
             data-animate="fade-up"
             data-delay="0.3"
          >
@@ -102,7 +102,7 @@ if ($testimonials_query->have_posts()):
             $logo = get_template_directory_uri() . '/src/imgs/testimonial-logo-1.png';
         }
 ?>
-                        <div class="testimonial-card rounded-[1.563vw] bg-[var(--color-brand-primary)] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6 md:flex md:flex-col md:justify-between">
+                        <div class="testimonial-card rounded-[1.563vw] bg-[var(--color-brand-primary)] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
                             <?php if ($quote): ?>
                                 <p class="testimonial-text font-body mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                                     <?php echo esc_html($quote); ?>
@@ -159,7 +159,7 @@ if ($testimonials_query->have_posts()):
 else:
 ?>
                     <!-- Fallback: Show default testimonial if no posts exist -->
-                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6 md:flex md:flex-col md:justify-between">
+                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
                         <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                             Throughout the course of working together since 2017, we have been constantly impressed by TrAC ability to provide requested services in a timely manner and ensure that any bumps along the way are sorted out with the at most priority in the shortest time possible.
                         </p>
@@ -172,7 +172,7 @@ else:
                         </div>
                     </div>
                    
-                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6 md:flex md:flex-col md:justify-between">
+                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
                         <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                             We have been working with TrAC  since 2017 and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
                         </p>
@@ -185,7 +185,7 @@ else:
                         </div>
                     </div>
                    
-                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6 md:flex md:flex-col md:justify-between">
+                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
                         <p class="testimonial-text font-body mb-[2.083vw] text-[1.25vw] leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                             TrAC has  been providing to us Multiprotocol Label Switching (MPLS private network) and Internet services which are highly efficient, scalable and secure. In our interactions, we have found TrAC staff to be highly professional and rich with experience in project implementation skills and the ability to handle diverse environments while providing exceptional customer service and support in a timely manner.
                         </p>

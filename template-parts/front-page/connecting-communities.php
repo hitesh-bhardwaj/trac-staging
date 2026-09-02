@@ -88,7 +88,7 @@ $section_image_alt =
         </div>
 
         <div
-            class="relative h-[41vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw]"
+            class="relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw]"
             data-animate="fade-up"
         >
             <img
