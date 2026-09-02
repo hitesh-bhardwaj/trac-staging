@@ -49,18 +49,25 @@ export default {
             fontFamily: {
                 // Brand fonts from Figma
                 heading: [
-                    '"Georgia Custom"',
-                    'Georgia',
-                    '"Times New Roman"',
-                    'serif',
-                ],
-                subheading: [
                     '"Helvetica Neue"',
                     'Helvetica',
                     'Arial',
                     'sans-serif',
                 ],
-                body: ['"Open Sans"', 'system-ui', 'sans-serif'],
+                subheading: [
+                    '"Ubuntu"',
+                    '"Helvetica Neue"',
+                    'Helvetica',
+                    'Arial',
+                    'sans-serif',
+                ],
+                body: [
+                    '"Ubuntu"',
+                    '"Helvetica Neue"',
+                    'Helvetica',
+                    'Arial',
+                    'sans-serif',
+                ],
             },
             fontSize: {
                 // Custom fluid typography scale

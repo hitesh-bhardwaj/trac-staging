@@ -2,6 +2,8 @@
    Font Imports
    ======================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
 /* Helvetica Neue */
 @font-face {
     font-family: 'Helvetica Neue';
@@ -35,55 +37,6 @@
     font-display: swap;
 }
 
-/* Georgia */
-@font-face {
-    font-family: 'Georgia Custom';
-    src: url('../assets/fonts/georgia.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Georgia Custom';
-    src: url('../assets/fonts/georgiab.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Open Sans */
-@font-face {
-    font-family: 'Open Sans';
-    src: url('../assets/fonts/OpenSans-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url('../assets/fonts/OpenSans-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url('../assets/fonts/OpenSans-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    src: url('../assets/fonts/OpenSans-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
 
 /* Tailwind Directives */
 @tailwind base;
@@ -96,20 +49,22 @@
    ======================================== */
 :root {
     /* Brand Colors from Figma - Trac/Enigma */
-    --color-brand-primary: #10417f;
-    --color-brand-secondary: #e85d24;
+    --color-brand-primary: #0B1F3A;
+    --color-brand-secondary: #E86224;
+    --color-brand-tertiary: #389FD8;
+    --color-brand-quaternary: #2F5FA0;
     --color-brand-dark: #111111;
-    --color-brand-light: #f5f5f5;
+    --color-brand-light: #FFFFFF;
 
     /* Text Colors */
     --color-text-primary: #111111;
-    --color-text-secondary: #1d1d1d;
-    --color-text-body: #1e1e1e;
+    --color-text-secondary: #FFFFFF;
+    --color-text-body: #1E1E1E;
 
     /* Typography from Figma - Desktop First (1920px base) */
-    --font-heading: 'Georgia Custom', Georgia, 'Times New Roman', serif;
-    --font-subheading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --font-body: 'Open Sans', system-ui, sans-serif;
+    --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-subheading: 'Ubuntu', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-body: 'Ubuntu', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     /*
    * Typography Scale (1920px = 100vw)

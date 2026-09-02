@@ -28,11 +28,11 @@ if (!defined('ABSPATH')) {
                 >
             </div>
 
-            <div class="about-content w-[47%] mt-[-7vw] md:w-full md:text-center">
+            <div class="about-content w-[50%] mt-[-7vw] md:w-full md:text-center">
 	                <h2 data-para-anim  class="about-title font-heading text-66 leading-[1.24] tracking-[0.01em] text-text-primary mb-[5.083vw] md:text-4xl md:mb-8 sm:text-[8vw] sm:mb-10">
 	                    <?php echo esc_html(
 	                        get_field('about_title') ?:
-	                            "TrAC is Rwanda's homegrown ISP, built on long-term commitment and technical excellence.",
+	                            "TrAC is Rwanda and East Africa's homegrown internet service provider, built on long-term commitment and technical excellence.",
 	                    ); ?>
 	                </h2>
                 <div class="w-full flex gap-[7vw] mb-[5vw]">

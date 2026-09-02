@@ -29,32 +29,25 @@ $hero_connectors_svg_path =
                     </span>
                     <span class="block hero-title-line">
                         <?php echo esc_html(
-                            get_field('hero_title_line_2') ?: 'Backbone',
+                            get_field('hero_title_line_2') ?: "Backbone. East Africa's",
                         ); ?>
                     </span>
-                </h1>
+                     <span class="block hero-title-line">
+                        <?php echo esc_html(
+                            get_field('hero_title_line_3') ?: 'Growth Partner.',
+                        ); ?>
+                    </span>
+</h1>
 
                 <p
-                    class="text-36 font-subheading font-normal text-white w-[70%] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 sm:text-[6vw] md:text-[3.5vw] md:text-center"
-                    data-hero-reveal
-                    data-hero-delay="0.08"
-                    data-para-anim
-                 >
-                    <?php echo esc_html(
-                        get_field('hero_subtitle_1') ?:
-                        'Built for Speed. Designed for Growth.',
-                    ); ?>
-                </p>
-
-                <p
-                    class="texy-24 font-body font-medium text-white w-[60%] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center"
+                    class="text-24 font-body text-white w-[50%] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center"
                     data-hero-reveal
                     data-hero-delay="0.14"
                     data-para-anim
                  >
                     <?php echo esc_html(
                         get_field('hero_subtitle_2') ?:
-                        "Rooted in Rwanda and expanding across East Africa, TrAC delivers reliable, fibre-first connectivity for homes, businesses, and the communities shaping the region's future.",
+                        "Rooted in Rwanda, TrAC delivers reliable internet for enterprises, small businesses, homes, and the communities shaping the future of Rwanda and East Africa.",
                     ); ?>
                 </p>
 
@@ -87,7 +80,7 @@ $hero_connectors_svg_path =
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
                             get_field('hero_secondary_button_text') ?:
-                            'Explore Solutions',
+                            'Explore Products',
                         ); ?></span>
                         <span class="btn-icon">
                              <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
