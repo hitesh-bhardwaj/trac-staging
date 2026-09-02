@@ -18,56 +18,41 @@ if (have_posts()) {
 
         <main id="main-content" class="site-main" data-barba="container" data-barba-namespace="sme-internet">
             <?php
+            $hero_image = get_field('hero_image');
             get_template_part(
                 'template-parts/common/hero',
                 null,
                 [
-                    'container_class' =>
-                        'hero-container px-[5.21vw] pt-[12vw] pb-[7vw] w-screen h-fit flex items-center flex-col gap-[2vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]',
                     'title_lines' => [
                         get_field('hero_title_line_1') ?:
-                            'Reliable Business Internet That Keeps ',
-                        get_field('hero_title_line_2') ?: 'You Moving',
+                            'Reliable Internet that Keeps your Business',
+                        get_field('hero_title_line_2') ?: 'Running',
                     ],
                     'subtitle' =>
                         get_field('hero_subtitle_2') ?:
-                        'Stable, business-grade connectivity designed to keep your operations running—whether it’s payments, video calls, or cloud systems.',
+                        'Stable, business-grade fibre designed for daily operations, cloud systems, POS tools, and team collaboration with local support you can trust.',
                     'button_text' =>
                         get_field('hero_primary_button_text') ?:
                         'Get on TrAC',
                     'button_link' =>
                         get_field('hero_primary_button_link') ?:
                         '#get-connected',
-                    'images_wrapper_class' =>
-                        'enterprise-hero-images w-full mx-auto mt-[1vw] md:mt-10 sm:mt-8 flex items-end justify-center h-full gap-[1.25vw]',
-                    'images' => [
-                        [
-                            'src' =>
-                                get_template_directory_uri() .
-                                '/src/imgs/sme-internet/hero-image-1.png',
-                            'alt' => 'SME internet speed',
-                        ],
-                        [
-                            'src' =>
-                                get_template_directory_uri() .
-                                '/src/imgs/sme-internet/hero-image-2.png',
-                            'alt' => 'Work and collaboration',
-                            'wrap_class' =>
-                                'rounded-[1.2vw] overflow-hidden h-[15vw] w-[20vw]',
-                        ],
-                        [
-                            'src' =>
-                                get_template_directory_uri() .
-                                '/src/imgs/sme-internet/hero-image-3.png',
-                            'alt' => 'Reliable coverage',
-                        ],
+                    'media' => [
+                        'src' => is_array($hero_image)
+                            ? $hero_image['url']
+                            : get_template_directory_uri() .
+                                '/src/imgs/sme-internet/sme-hero-banner.png',
+                        'alt' => is_array($hero_image)
+                            ? $hero_image['alt']
+                            : 'Team collaborating over reliable business internet',
                     ],
                 ],
             );
             ?>
-            <?php get_template_part('template-parts/sme-internet/problem-statement'); ?>
+            <!-- <?php get_template_part('template-parts/sme-internet/problem-statement'); ?> -->
             <?php get_template_part('template-parts/sme-internet/product-overview'); ?>
             <?php get_template_part('template-parts/sme-internet/plans'); ?>
+            <?php get_template_part('template-parts/sme-internet/solutions-overview'); ?>
             <?php
             get_template_part(
                 'template-parts/common/faqs',
@@ -80,7 +65,7 @@ if (have_posts()) {
                 'template-parts/front-page/cta',
                 null,
                 [
-                    'title' => 'Ready to Get Connected?',
+                    'title' => 'Ready to Get on TrAC?',
                     'subtitle' =>
                         "Fast, reliable home internet is just a few steps away.\nGet on TrAC today.",
                     'button_text' => 'Get Connected',

@@ -9,91 +9,91 @@ $title = get_field('sme_plans_title') ?: 'Simple Plans. Clear Pricing.';
 $plans = [
     [
         'name' => 'SME Lite',
+        'speed' => '80Mbps',
         'price' => 'RWF 75,000',
         'period' => '/month',
-        'bullets' => [
-            'Unlimited internet',
-            'Up to 80 Mbps',
+        'description' =>
             'Ideal for small offices, retail stores, and co-working spaces.',
-        ],
+        'image' =>
+            get_template_directory_uri() . '/src/imgs/sme-internet/plan-1-img.png',
     ],
     [
         'name' => 'SME Elite',
+        'speed' => '150Mbps',
         'price' => 'RWF 130,000',
         'period' => '/month',
-        'bullets' => [
-            'Unlimited internet',
-            'Up to 150 Mbps',
+        'description' =>
             'Built for growing businesses using cloud tools, video meetings, and multi-user environments.',
-        ],
+        'image' =>
+            get_template_directory_uri() . '/src/imgs/sme-internet/plan-2-img.png',
     ],
 ];
 ?>
 
 <section class="sme-plans relative bg-white py-[7vw] md:py-20 sm:py-16 overflow-hidden" data-section="sme-plans">
-    <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="w-full px-[9vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[92rem] mx-auto">
-            <div class="text-center max-w-[56rem] mx-auto">
-                <div class="flex items-center justify-center gap-3 mb-8 md:mb-6" data-animate="fade-up">
-                    <span class="w-6 h-1 bg-brand-primary"></span>
-                    <span class="font-body text-base text-[#111]"><?php echo esc_html(
-                        $label,
-                    ); ?></span>
-                </div>
-
-                <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[4.2vw] md:text-5xl md:mb-10 sm:text-4xl" data-heading-anim>
-                    <?php echo esc_html($title); ?>
-                </h2>
+            <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
+                <span class="w-6 h-1 bg-[#E86224]"></span>
+                <span class="font-body text-[#E86224] text-24"><?php echo esc_html(
+                    $label,
+                ); ?></span>
             </div>
 
-            <div class="grid grid-cols-2 gap-[3vw] mt-[5vw] md:grid-cols-1 md:gap-8 max-w-[60rem] mx-auto items-stretch">
-                <?php foreach ($plans as $i => $p): ?>
-                    <article class="group/plan rounded-[2vw] md:rounded-3xl p-[1.5vw] md:p-10 sm:p-7 bg-white flex flex-col border border-brand-primary min-h-[34vw] md:min-h-0 transition-all duration-300 ease-out" data-animate="fade-up" data-delay="<?php echo esc_attr(0.1 * $i); ?>">
-                        <div class="rounded-[1.6vw] md:rounded-2xl p-[1.2vw] md:p-8 sm:p-7 bg-[#EEF3FC] transition-colors duration-300 ease-out group-hover/plan:bg-brand-primary">
-                            <div class="flex justify-center">
-                                <span class="inline-flex items-center justify-center rounded-full px-8 py-1.5 font-body text-[1.25vw] md:text-sm sm:text-xs bg-brand-primary text-white transition-colors duration-300 ease-out group-hover/plan:bg-white group-hover/plan:text-brand-primary">
-                                    <?php echo esc_html($p['name']); ?>
-                                </span>
-                            </div>
+            <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[5vw] md:text-5xl md:mb-10 sm:text-4xl text-left" data-heading-anim>
+                <?php echo esc_html($title); ?>
+            </h2>
 
-                            <div class="mt-[5vw] md:mt-7 sm:mt-6 text-center">
-                                <span class="font-heading font-normal text-[2.604vw] md:text-4xl sm:text-3xl leading-[1] text-[#111111] transition-colors duration-300 ease-out group-hover/plan:text-white">
-                                    <?php echo esc_html($p['price']); ?>
-                                </span>
-                                <span class="font-body text-[1.25vw] md:text-sm sm:text-xs ml-[-0.5vw] text-black/70 transition-colors duration-300 ease-out group-hover/plan:text-white/80">
-                                    <?php echo esc_html($p['period']); ?>
-                                </span>
-                            </div>
+            <div class="grid grid-cols-2 gap-[7vw] md:grid-cols-1 md:gap-8  w-full items-stretch">
+                <?php foreach ($plans as $i => $p): ?>
+                    <article class="rounded-[1.6vw] md:rounded-3xl overflow-hidden border border-[color:var(--color-brand-quaternary)] flex flex-col" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                        0.1 * $i,
+                    ); ?>">
+                        <div class="relative h-[16vw] md:h-64 sm:h-56 w-full overflow-hidden bg-[color:var(--color-brand-quaternary)] ">
+                            <img
+                                src="<?php echo esc_url($p['image']); ?>"
+                                alt="<?php echo esc_attr($p['name']); ?>"
+                                class="h-full w-full object-cover rounded-[1.2vw] md:rounded-3xl"
+                                loading="lazy"
+                            >
+                            <span class="absolute left-[1.4vw] top-[1.4vw] md:left-5 md:bottom-5 inline-flex items-center rounded-full bg-white/60 border border-brand-primary backdrop-blur-lg px-[1.2vw] py-[0.5vw] md:px-5 md:py-2 font-body text-[1.5vw] md:text-sm text-[color:var(--color-brand-quaternary)]">
+                                Unlimited - <span class="font-bold ml-1"><?php echo esc_html(
+                                    $p['speed'],
+                                ); ?></span>
+                            </span>
                         </div>
 
-                        <div class="flex flex-col flex-1">
-                            <ul class="mt-[2.2vw] md:mt-8 sm:mt-7 space-y-4 font-body text-text-body text-[1.25vw] md:text-base sm:text-sm leading-[1.55]">
-                            <?php foreach ($p['bullets'] as $b): ?>
-                                <li class="flex gap-3">
-                                    <span class="mt-2 w-1.5 h-1.5 rounded-full bg-text-body shrink-0"></span>
-                                    <span><?php echo esc_html($b); ?></span>
-                                </li>
-                            <?php endforeach; ?>
-                            </ul>
+                        <div class="flex-1 flex flex-col bg-[color:var(--color-brand-quaternary)] p-[2vw] py-[3vw] md:p-8 sm:p-6">
+                            <h3 class="font-heading text-white text-[1.8vw] md:text-3xl font-normal mb-[1vw] md:mb-3">
+                                <?php echo esc_html($p['name']); ?>
+                            </h3>
+                            <p class="font-body text-white text-[1.2vw] md:text-base leading-[1.5] mb-[2vw] md:mb-6 w-[70%]">
+                                <?php echo esc_html($p['description']); ?>
+                            </p>
 
-                            <div class="mt-auto pt-[3vw] md:pt-10 sm:pt-8 flex justify-center">
+                            <div class="mt-auto">
+                                <div class="mb-[1.6vw] md:mb-6">
+                                    <span class="font-heading font-medium text-white text-[2vw] md:text-3xl">
+                                        <?php echo esc_html($p['price']); ?>
+                                    </span>
+                                    <span class="font-body text-white/70 text-[1vw] md:text-sm">
+                                        <?php echo esc_html($p['period']); ?>
+                                    </span>
+                                </div>
+
                                 <a href="<?php echo esc_url(
                                     get_field('sme_plans_button_link') ?:
                                         '#get-connected',
-                                ); ?>" class="btn btn-primary group magnetic inline-flex">
+                                ); ?>" class="btn btn-primary group magnetic">
                                     <span class="btn-line"></span>
                                     <span class="btn-text"><?php echo esc_html(
                                         get_field('sme_plans_button_text') ?:
                                             'Get on TrAC',
                                     ); ?></span>
-                                    <span class="btn-icon" aria-hidden="true">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                                            <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                                            <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                                            <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                                            <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                                            <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
+                                    <span class="btn-icon">
+                                        <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>
+                                            <path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>
                                         </svg>
                                     </span>
                                 </a>

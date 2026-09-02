@@ -13,9 +13,10 @@
                 <!-- Brand Column -->
                 <div class="footer-brand max-w-[33.854vw] md:max-w-full">
                     <!-- Logo -->
-                       <div class="site-logo flex items-center gap-5">
+                       <div class="site-logo flex flex-col  gap-3">
 
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[8vw] brightness-50" alt="Trac Logo">
+                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[7vw] brightness-50" alt="Trac Logo">
+                        <span class=" h-[1px] w-[5vw] ml-[1vw] bg-[#011E41] "></span>
                      <span class="font-subheading text-[3.333vw] text-[#011E41] md:text-5xl sm:text-4xl">TrAC</span>
             </div>
 

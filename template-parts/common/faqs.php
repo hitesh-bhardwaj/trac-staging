@@ -20,11 +20,11 @@ if (!$items) {
 ?>
 
 <section class="faqs-section relative bg-white overflow-hidden" data-section="faqs">
-    <div class="px-[5vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[7vw] sm:py-12">
+    <div class="px-[9vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[7vw] sm:py-12">
 
         <div class="faqs-header mb-[4.844vw] md:mb-12 sm:mb-10">
             <?php if ($section_label) : ?>
-                <div class="faqs-label flex items-center gap-[0.729vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
+                <div class="faqs-label flex items-center gap-[0.729vw] mb-10 md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
                     <span class="label-line w-[1.354vw] h-[0.208vw] bg-brand-secondary md:w-6 md:h-1 sm:w-5"></span>
                     <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                         <?php echo esc_html($section_label); ?>
