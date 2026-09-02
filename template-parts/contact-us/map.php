@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
             <!-- Section Label -->
             <div class="flex items-center gap-[0.729vw] mb-[2vw] justify-center md:gap-3 md:mb-8" data-animate="fade-up">
                 <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
-                <span class="font-body text-[1.25vw] text-[#111] md:text-xl">Map</span>
+                <span class="font-body text-24 text-[#111] md:text-xl">Map</span>
             </div>
 
             <!-- Heading -->
@@ -64,7 +64,7 @@ if (!defined('ABSPATH')) {
                 <!-- Address Cards -->
                 <!-- Rwanda Address -->
                 <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0 sm:hidden" style="left: 18%; top: 68%;" data-address="rwanda">
-                    <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:mb-[1vw] sm:text-[4vw]">Rwanda</h3>
+                    <h3 class="font-heading text-24 font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 sm:mb-[1vw] sm:text-[4vw]">Rwanda</h3>
                     <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-[4vw]">
                         KG 15 Ave, #11, Gacuriro<br>
                         Kigali, Rwanda
@@ -73,7 +73,7 @@ if (!defined('ABSPATH')) {
 
                 <!-- BVI Address -->
                 <div class="address-card absolute bg-[#EEF3FC] rounded-2xl shadow-md p-[1.5vw] md:p-6 sm:p-4 opacity-0 sm:hidden" style="left: 52%; top: 24%;" data-address="bvi">
-                    <h3 class="font-heading text-[1.25vw] font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 ">British Virgin Island</h3>
+                    <h3 class="font-heading text-24 font-medium text-[#111] mb-[0.5vw] md:text-lg md:mb-2 ">British Virgin Island</h3>
                     <p class="font-body text-[1.042vw] leading-[1.6] text-[#1e1e1e] md:text-base sm:text-[4vw]">
                         80 Main St, Road Town<br>
                         Tortola VG 11100 BVI

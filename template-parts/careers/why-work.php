@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
             <!-- Section Label -->
             <div class="flex items-center gap-[0.729vw] mb-[4.167vw] justify-center md:gap-3 md:mb-12 sm:mb-10" data-animate="fade-up">
                 <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
-                <span class="font-body text-[1.25vw] text-[#111] md:text-xl">Why TrAC</span>
+                <span class="font-body text-24 text-[#111] md:text-xl">Why TrAC</span>
             </div>
 
             <!-- Heading -->
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
             </h2>
 
             <!-- Description -->
-            <div class="font-body text-[1.25vw] leading-[1.62] text-[#1e1e1e] text-center max-w-[68vw] mx-auto md:text-lg md:max-w-full sm:text-base" >
+            <div class="font-body text-24 leading-[1.62] text-[#1e1e1e] text-center max-w-[68vw] mx-auto md:text-lg md:max-w-full sm:text-base" >
                 <p data-para-anim class="mb-4">We're always looking for people who want to do meaningful work, solve real problems, and grow with a team that is shaping connectivity across Rwanda and beyond.</p>
                 <p data-para-anim>If you're interested in working with us, get in touch!</p>
             </div>

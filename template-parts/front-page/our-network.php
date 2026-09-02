@@ -200,7 +200,7 @@ $network_circle_lines_svg_path_line =
                 <span class="absolute left-[52.1%] top-[28%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Gatuna
                 </span>
-                <span class="absolute left-[52.1%] top-[52%] whitespace-nowrap uppercase text-[1.25vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[52.1%] top-[52%] whitespace-nowrap uppercase text-24 font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Rawanda
                 </span>
 
@@ -245,7 +245,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="488"
                 data-node-cy="241"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Muhanga
                 </h3>
                 <p>Rwanda PoP</p>
@@ -257,7 +257,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="423"
                 data-node-cy="48"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Musanze
                 </h3>
                 <p>Rwanda PoP</p>
@@ -269,7 +269,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="476"
                 data-node-cy="369"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Ruhango
                 </h3>
                 <p>Rwanda PoP</p>
@@ -281,7 +281,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="610"
                 data-node-cy="29"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Gatuna
                 </h3>
                 <p>Uganda PoP</p>
@@ -293,7 +293,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="708"
                 data-node-cy="257"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Kigali
                 </h3>
                 <p>Data Center Presence</p>
@@ -305,7 +305,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="243"
                 data-node-cy="167"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Rubavu
                 </h3>
                 <p>Rwanda PoP</p>
@@ -317,7 +317,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="74"
                 data-node-cy="539"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                    Rusizi 
                 </h3>
                 <p>DRC PoP</p>
@@ -329,7 +329,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="27"
                 data-node-cy="563"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                 Bukavu
                 </h3>
                 <p>Rwanda / DRC Route</p>
@@ -341,7 +341,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="223"
                 data-node-cy="303"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Karongi
                 </h3>
                 <p>Rwanda PoP</p>
@@ -353,7 +353,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="188"
                 data-node-cy="101"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Goma
                 </h3>
                 <p>Rwanda PoP</p>
@@ -366,7 +366,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="138"
                 data-node-cy="58"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                 Kagitumba
                 </h3>
                 <p>DRC PoP</p>
@@ -378,7 +378,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="226"
                 data-node-cy="602"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Rusumo
                 </h3>
                 <p>DRC PoP</p>
@@ -390,7 +390,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="353"
                 data-node-cy="12"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                    Kampala
                 </h3>
                 <p>Rwanda PoP</p>
@@ -402,7 +402,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="533"
                 data-node-cy="114"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                 Nairobi
                 </h3>
                 <p>Kenya PoP</p>
@@ -414,7 +414,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="605.609"
                 data-node-cy="320.61"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                 Mombasa
                 </h3>
                 <p>Kenya PoP</p>
@@ -426,7 +426,7 @@ $network_circle_lines_svg_path_line =
                 data-node-cx="484.609"
                 data-node-cy="552.61"
             >
-                <h3 class="font-subheading text-[1.25vw] text-text-primary md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-text-primary md:text-lg sm:text-base">
                     Dar Es Salaam
                 </h3>
                 <p>Tanzania PoP</p>

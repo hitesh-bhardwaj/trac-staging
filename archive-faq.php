@@ -21,12 +21,12 @@ get_header();
             <div class="faqs-header text-center mb-[4.844vw] md:mb-12 sm:mb-8">
                 <div class="faqs-label flex items-center justify-center gap-[0.729vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
                     <span class="label-line w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1 sm:w-5"></span>
-                    <span class="label-text font-body text-[1.25vw] text-text-primary md:text-xl sm:text-lg">FAQs</span>
+                    <span class="label-text font-body text-24 text-text-primary md:text-xl sm:text-lg">FAQs</span>
                 </div>
                 <h1 class="faqs-title font-heading text-[3.438vw] leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl" data-animate="fade-up" data-delay="0.1">
                     Frequently Asked Questions
                 </h1>
-                <p class="faqs-description font-body text-[1.25vw] text-text-body max-w-[52vw] mx-auto mt-[1.563vw] md:text-lg md:max-w-full md:mt-5 sm:text-base sm:mt-4" data-para-anim data-delay="0.2">
+                <p class="faqs-description font-body text-24 text-text-body max-w-[52vw] mx-auto mt-[1.563vw] md:text-lg md:max-w-full md:mt-5 sm:text-base sm:mt-4" data-para-anim data-delay="0.2">
                     Find answers to common questions about our services, connectivity, and support.
                 </p>
             </div>
@@ -100,7 +100,7 @@ get_header();
                                             aria-labelledby="faq-btn-<?php echo $unique_id; ?>"
                                             aria-hidden="true"
                                         >
-                                            <div class="faq-answer-text font-body text-[1.25vw] leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
+                                            <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
                                                 <?php echo wp_kses_post($answer); ?>
                                             </div>
                                         </div>
@@ -167,7 +167,7 @@ get_header();
                                     aria-labelledby="faq-btn-<?php echo $index; ?>"
                                     aria-hidden="<?php echo $is_first ? 'false' : 'true'; ?>"
                                 >
-                                    <div class="faq-answer-text font-body text-[1.25vw] leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
+                                    <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
                                         <?php echo wp_kses_post($answer); ?>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@ get_header();
                 else:
                     ?>
                     <div class="no-faqs text-center py-[5.208vw] md:py-16 sm:py-12">
-                        <p class="font-body text-[1.25vw] text-text-muted md:text-lg sm:text-base">
+                        <p class="font-body text-24 text-text-muted md:text-lg sm:text-base">
                             No FAQs available yet. Please check back soon!
                         </p>
                     </div>

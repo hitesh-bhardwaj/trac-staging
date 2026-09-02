@@ -19,7 +19,7 @@ $jobs_query = new WP_Query([
             <!-- Section Label -->
             <div class="flex items-center gap-[0.729vw] mb-[4.167vw] justify-center md:gap-3 md:mb-12 sm:mb-10" data-animate="fade-up">
                 <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
-                <span class="font-body text-[1.25vw] text-[#111] md:text-xl">Career</span>
+                <span class="font-body text-24 text-[#111] md:text-xl">Career</span>
             </div>
 
             <!-- Heading -->
@@ -51,7 +51,7 @@ $jobs_query = new WP_Query([
 
                             <!-- Location -->
                             <?php if ($job_location): ?>
-                                <p class="job-location font-body text-[1.25vw] text-[#111] tracking-[-0.01em] mb-[3vw] md:text-2xl md:mb-10 sm:text-lg sm:mb-6">
+                                <p class="job-location font-body text-24 text-[#111] tracking-[-0.01em] mb-[3vw] md:text-2xl md:mb-10 sm:text-lg sm:mb-6">
                                     (Location - <?php echo esc_html($job_location); ?>)
                                 </p>
                             <?php endif; ?>
@@ -81,7 +81,7 @@ $jobs_query = new WP_Query([
                 </div>
             <?php else: ?>
                 <div class="no-jobs text-center py-[5vw] md:py-20 sm:py-16">
-                    <p data-para-anim class="font-body text-[1.25vw] text-[#1e1e1e] md:text-xl sm:text-lg">
+                    <p data-para-anim class="font-body text-24 text-[#1e1e1e] md:text-xl sm:text-lg">
                         No open positions at the moment. Check back soon!
                     </p>
                 </div>

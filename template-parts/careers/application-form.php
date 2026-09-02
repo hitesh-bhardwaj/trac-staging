@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
                 <!-- Section Label -->
                 <div class="flex items-center gap-[0.729vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">
                     <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
-                    <span class="font-body text-[1.25vw] text-[#111] md:text-xl">Don't See Your Position?</span>
+                    <span class="font-body text-24 text-[#111] md:text-xl">Don't See Your Position?</span>
                 </div>
 
                 <!-- Heading -->
@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
                 </h2>
 
                 <!-- Description -->
-                <div class="font-body text-[1.25vw] leading-[1.65] text-[#1e1e1e] mb-[3vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[31.5vw] md:max-w-full">
+                <div class="font-body text-24 leading-[1.65] text-[#1e1e1e] mb-[3vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[31.5vw] md:max-w-full">
                     <p data-para-anim class="mb-6">Send us your details and CV and we'll be in touch when the right opportunity comes up.</p>
 
                     <p data-para-anim class="mb-6">All applications are reviewed by our team. We aim to respond within 5-7 working days.</p>
@@ -29,12 +29,12 @@ if (!defined('ABSPATH')) {
                     <p data-para-anim class="mb-2">For questions, reach us at:</p>
                     <div class="flex flex-col gap-[0.3vw] md:gap-1">
                         <div data-para-anim class="under-multi-parent w-fit">
-                            <a href="mailto:careers@trac.africa" class="font-body text-[1.25vw] tracking-[0.03em] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
+                            <a href="mailto:careers@trac.africa" class="font-body text-24 tracking-[0.03em] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
                                 careers@trac.africa
                             </a>
                         </div>
                         <div data-para-anim class="under-multi-parent w-fit">
-                            <a href="tel:+250733000190" class="font-body text-[1.25vw] tracking-[0.03em] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
+                            <a href="tel:+250733000190" class="font-body text-24 tracking-[0.03em] text-[#1e1e1e] hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
                                 +250 733 000 190
                             </a>
                         </div>

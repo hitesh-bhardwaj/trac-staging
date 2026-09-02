@@ -66,7 +66,7 @@ $subtitle =
                 <?php echo esc_html($title); ?>
             </h2>
 
-            <p class="font-body text-[1.25vw] leading-[1.5] text-[#1e1e1e] max-w-[52rem] mx-auto mb-[3.2vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-para-anim data-delay="0.2">
+            <p class="font-body text-24 leading-[1.5] text-[#1e1e1e] max-w-[52rem] mx-auto mb-[3.2vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-para-anim data-delay="0.2">
                 <?php echo esc_html($subtitle); ?>
             </p>
 

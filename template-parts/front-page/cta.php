@@ -46,7 +46,7 @@ $cta_logo_svg_path = get_template_directory() . '/src/imgs/logo-trac.svg';
                 </h2>
 
                 <?php if (!empty($cta_para)): ?>
-                    <p class="cta-subtitle font-body text-[1.25vw] leading-[1.5] text-white/85 mb-[2.5vw] md:text-lg md:mb-8 sm:text-base sm:mb-6" data-para-anim data-delay="0.15">
+                    <p class="cta-subtitle font-body text-24 leading-[1.5] text-white/85 mb-[2.5vw] md:text-lg md:mb-8 sm:text-base sm:mb-6" data-para-anim data-delay="0.15">
                         <?php echo esc_html($cta_para); ?>
                     </p>
                 <?php endif; ?>

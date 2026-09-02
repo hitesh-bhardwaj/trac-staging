@@ -33,7 +33,7 @@ $about_highlights = [
         <div class="mb-[3.125vw] max-w-[52vw] md:mb-10 md:max-w-full">
             <div class="mb-[1.563vw] flex items-center gap-[1.042vw] md:mb-6 md:gap-4" data-animate="fade-up">
                 <span class="h-[0.208vw] w-[1.354vw] bg-brand-primary md:h-1 md:w-6"></span>
-                <span class="font-body text-[1.25vw] text-text-primary md:text-xl sm:text-lg">
+                <span class="font-body text-24 text-text-primary md:text-xl sm:text-lg">
                     <?php esc_html_e('What Shapes Our Work', 'trac'); ?>
                 </span>
             </div>
