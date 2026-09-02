@@ -35,7 +35,7 @@ $services = [
 ];
 ?>
 
-<section class="services-section relative overflow-hidden bg-[var(--color-brand-light)] py-[7%] sm:pb-[25%]" data-section="services" id="products">
+<section class="services-section relative overflow-hidden bg-[var(--color-brand-light)] py-[7vw] sm:pb-[25%]" data-section="services" id="products">
     <style>
         [data-service-slider] .services-slider-viewport {
             position: relative;
@@ -45,6 +45,8 @@ $services = [
             min-height: 360px;
             overflow: hidden;
             transform: translateX(-50%);
+            --service-stack-spread: 7.5vw;
+            --service-stack-scale-range: 0.06;
         }
 
         [data-service-slider] .services-cards {
@@ -55,15 +57,17 @@ $services = [
         [data-service-slider] .service-card {
             position: absolute;
             top: 0;
-            left: 10vw;
+            left: 50%;
             width: 80vw;
             height: 100%;
             opacity: 0;
             pointer-events: none;
-            transform: translate3d(7.5vw, 0, 0);
+            cursor: pointer;
+            transform: translate3d(-50%, 0, 0) scale(0.94);
+            transform-origin: center center;
             transition:
-                opacity 650ms ease,
-                transform 650ms ease-in-out;
+                opacity 350ms ease,
+                transform 500ms ease;
             will-change: transform, opacity;
         }
 
@@ -71,50 +75,9 @@ $services = [
             transition: none !important;
         }
 
-        [data-service-slider] .service-card.is-prev,
-        [data-service-slider] .service-card.is-prev-2,
-        [data-service-slider] .service-card.is-prev-3,
-        [data-service-slider] .service-card.is-next,
-        [data-service-slider] .service-card.is-next-2,
-        [data-service-slider] .service-card.is-next-3,
         [data-service-slider] .service-card.is-active {
-            opacity: 1;
-        }
-
-        [data-service-slider] .service-card.is-prev {
-            z-index: 3;
-            transform: translate3d(-2.5vw, 0, 0);
-        }
-
-        [data-service-slider] .service-card.is-prev-2 {
-            z-index: 2;
-            transform: translate3d(-5vw, 0, 0);
-        }
-
-        [data-service-slider] .service-card.is-prev-3 {
-            z-index: 1;
-            transform: translate3d(-7.5vw, 0, 0);
-        }
-
-        [data-service-slider] .service-card.is-active {
-            z-index: 4;
-            transform: translate3d(0, 0, 0);
             pointer-events: auto;
-        }
-
-        [data-service-slider] .service-card.is-next {
-            z-index: 3;
-            transform: translate3d(2.5vw, 0, 0);
-        }
-
-        [data-service-slider] .service-card.is-next-2 {
-            z-index: 2;
-            transform: translate3d(5vw, 0, 0);
-        }
-
-        [data-service-slider] .service-card.is-next-3 {
-            z-index: 1;
-            transform: translate3d(7.5vw, 0, 0);
+            cursor: default;
         }
 
         [data-service-slider] .services-nav-btn {
@@ -125,35 +88,11 @@ $services = [
             [data-service-slider] .services-slider-viewport {
                 height: 78vw;
                 min-height: 560px;
+                --service-stack-spread: 7.5vw;
             }
 
             [data-service-slider] .service-card {
-                left: 7vw;
                 width: 86vw;
-            }
-
-            [data-service-slider] .service-card.is-prev {
-                transform: translate3d(-2.5vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-prev-2 {
-                transform: translate3d(-5vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-prev-3 {
-                transform: translate3d(-7.5vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-next {
-                transform: translate3d(2.5vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-next-2 {
-                transform: translate3d(5vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-next-3 {
-                transform: translate3d(7.5vw, 0, 0);
             }
         }
 
@@ -161,42 +100,19 @@ $services = [
             [data-service-slider] .services-slider-viewport {
                 height: 132vw;
                 min-height: 540px;
+                --service-stack-spread: 6vw;
+                --service-stack-scale-range: 0.045;
             }
 
             [data-service-slider] .service-card {
-                left: 6vw;
                 width: 88vw;
-            }
-
-            [data-service-slider] .service-card.is-prev {
-                transform: translate3d(-2vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-prev-2 {
-                transform: translate3d(-4vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-prev-3 {
-                transform: translate3d(-6vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-next {
-                transform: translate3d(2vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-next-2 {
-                transform: translate3d(4vw, 0, 0);
-            }
-
-            [data-service-slider] .service-card.is-next-3 {
-                transform: translate3d(6vw, 0, 0);
             }
         }
     </style>
 
     <div class="services-container w-full">
-        <div class="services-heading bg-[var(--color-brand-light)] px-[5vw] pb-[7vw] md:px-[5vw] md:py-12 sm:px-[10vw] sm:py-8">
-            <div class="services-label mb-[1.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10" data-animate="fade-up">
+        <div class="services-heading bg-[var(--color-brand-light)] px-[5vw] md:px-[5vw] md:py-12 sm:px-[10vw] sm:py-8">
+            <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10" data-animate="fade-up">
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-[var(--color-brand-secondary)] md:h-1 md:w-6 sm:w-5"></span>
 
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
@@ -209,7 +125,7 @@ $services = [
             </h2>
         </div>
 
-        <div class="services-cards-wrapper relative w-full sm:mt-[8vw]" data-service-slider>
+        <div class="services-cards-wrapper mt-[7vw] relative w-full sm:mt-[8vw]" data-service-slider>
             <div class="services-slider-viewport">
                 <div class="services-cards">
                     <?php foreach ($services as $index => $service) : ?>
@@ -307,11 +223,6 @@ $services = [
 
                 const total = originalSlides.length;
                 let currentIndex = 0;
-                let isAnimating = false;
-
-                function getSlides() {
-                    return originalSlides;
-                }
 
                 function clampIndex(index) {
                     return Math.max(0, Math.min(index, total - 1));
@@ -332,34 +243,32 @@ $services = [
                     setButtonState(nextBtn, currentIndex === total - 1);
                 }
 
-                function updateActiveState() {
-                    const slides = getSlides();
-                    const previousIndex = currentIndex - 1;
-                    const previousSecondIndex = currentIndex - 2;
-                    const previousThirdIndex = currentIndex - 3;
-                    const activeIndex = currentIndex;
-                    const nextIndex = currentIndex + 1;
-                    const nextSecondIndex = currentIndex + 2;
-                    const nextThirdIndex = currentIndex + 3;
+                function calculateStackedTransforms() {
+                    const styles = window.getComputedStyle(viewport);
+                    const stackSpread = parseFloat(styles.getPropertyValue('--service-stack-spread')) || 7.5;
+                    const scaleRange = parseFloat(styles.getPropertyValue('--service-stack-scale-range')) || 0.06;
+                    const previousCount = currentIndex;
+                    const nextCount = total - currentIndex - 1;
+                    const maxCount = Math.max(previousCount, nextCount, 1);
+                    const offsetStep = stackSpread / maxCount;
+                    const scaleStep = scaleRange / maxCount;
 
-                    slides.forEach(function (slide, index) {
-                        const isPrevious = index === previousIndex;
-                        const isPreviousSecond = index === previousSecondIndex;
-                        const isPreviousThird = index === previousThirdIndex;
-                        const isActive = index === activeIndex;
-                        const isNext = index === nextIndex;
-                        const isNextSecond = index === nextSecondIndex;
-                        const isNextThird = index === nextThirdIndex;
+                    originalSlides.forEach(function (slide, index) {
+                        const distance = index - currentIndex;
+                        const stackDepth = Math.abs(distance);
+                        const isActive = distance === 0;
+                        const isVisible = isActive || stackDepth <= maxCount;
+                        const direction = distance < 0 ? -1 : 1;
+                        const offset = offsetStep * stackDepth * direction;
+                        const scale = Math.max(0.88, 1 - (stackDepth * scaleStep));
                         const link = slide.querySelector('a');
 
-                        slide.classList.toggle('is-prev', isPrevious);
-                        slide.classList.toggle('is-prev-2', isPreviousSecond);
-                        slide.classList.toggle('is-prev-3', isPreviousThird);
                         slide.classList.toggle('is-active', isActive);
-                        slide.classList.toggle('is-next', isNext);
-                        slide.classList.toggle('is-next-2', isNextSecond);
-                        slide.classList.toggle('is-next-3', isNextThird);
                         slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+                        slide.style.opacity = isVisible ? '1' : '0';
+                        slide.style.zIndex = isActive ? String(total * 5) : String(total * 5 - stackDepth);
+                        slide.style.pointerEvents = isVisible ? 'auto' : 'none';
+                        slide.style.transform = 'translate3d(calc(-50% + ' + offset + 'vw), 0, 0) scale(' + scale + ')';
 
                         if (link) {
                             link.tabIndex = isActive ? 0 : -1;
@@ -371,7 +280,7 @@ $services = [
                     if (skipTransition) {
                         track.classList.add('is-jumping');
                     }
-                    updateActiveState();
+                    calculateStackedTransforms();
                     updateButtons();
 
                     if (skipTransition) {
@@ -384,18 +293,46 @@ $services = [
                 }
 
                 function goTo(index) {
-                    if (isAnimating) return;
-
                     const nextIndex = clampIndex(index);
                     if (nextIndex === currentIndex) return;
 
-                    isAnimating = true;
                     currentIndex = nextIndex;
                     renderSlides(false);
+                }
 
-                    window.setTimeout(function () {
-                        isAnimating = false;
-                    }, 650);
+                function handleCardClick(slide, index, event) {
+                    if (index === currentIndex) return;
+                    event.preventDefault();
+                    goTo(index);
+                }
+
+                function detectSwipe(element, callback) {
+                    let startX = 0;
+                    let startY = 0;
+                    let startTime = 0;
+                    const threshold = 75;
+                    const restraint = 100;
+                    const allowedTime = 300;
+
+                    element.addEventListener('touchstart', function (event) {
+                        const touch = event.changedTouches[0];
+                        startX = touch.pageX;
+                        startY = touch.pageY;
+                        startTime = Date.now();
+                    }, { passive: true });
+
+                    element.addEventListener('touchend', function (event) {
+                        const touch = event.changedTouches[0];
+                        const distX = touch.pageX - startX;
+                        const distY = touch.pageY - startY;
+                        const elapsedTime = Date.now() - startTime;
+
+                        if (elapsedTime > allowedTime || Math.abs(distX) < threshold || Math.abs(distY) > restraint) {
+                            return;
+                        }
+
+                        callback(distX < 0 ? 'left' : 'right');
+                    }, { passive: true });
                 }
 
                 nextBtn.addEventListener('click', function () {
@@ -404,6 +341,20 @@ $services = [
 
                 prevBtn.addEventListener('click', function () {
                     goTo(currentIndex - 1);
+                });
+
+                originalSlides.forEach(function (slide, index) {
+                    slide.addEventListener('click', function (event) {
+                        handleCardClick(slide, index, event);
+                    });
+                });
+
+                detectSwipe(viewport, function (direction) {
+                    if (direction === 'left') {
+                        goTo(currentIndex + 1);
+                    } else if (direction === 'right') {
+                        goTo(currentIndex - 1);
+                    }
                 });
 
                 window.addEventListener('resize', function () {

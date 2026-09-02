@@ -71,7 +71,7 @@
    * Formula: px / 1920 * 100 = vw
    * 96px = 5vw, 24px = 1.25vw, 22px = 1.146vw
    */
-    --text-hero: 4vw; /* 96px at 1920 */
+    --text-hero: 4.7vw; /* 96px at 1920 */
     --text-h1: 3.646vw; /* 70px at 1920 */
     --text-h2: 2.604vw; /* 50px at 1920 */
 	    --text-h3: 1.875vw; /* 35px at 1920 */
@@ -1265,8 +1265,8 @@ html.js [data-hero-reveal].is-hero-revealed {
     position: relative;
     left: 50%;
     width: 100vw;
-    height: 25vw;
-    min-height: 360px;
+    height: 28vw;
+    min-height: 400px;
     overflow: hidden;
     transform: translateX(-50%);
 }
@@ -2455,12 +2455,19 @@ html.js [data-hero-reveal].is-hero-revealed {
     flex: 0 0 40vw;
     width: 40vw;
     height: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: var(--color-brand-primary);
     color: var(--color-text-secondary);
     will-change: transform, opacity, filter;
     backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
     transform-origin: center center;
+}
+
+.testimonial-author {
+    margin-top: auto;
 }
 
 @media (max-width: 768px) {
@@ -2512,6 +2519,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 .clients-marquee {
     width: 100%;
     overflow: hidden;
+    --clients-logo-gap: 3vw;
 }
 
 .clients-marquee-track {
@@ -2528,6 +2536,8 @@ html.js [data-hero-reveal].is-hero-revealed {
 .clients-marquee-group {
     display: flex;
     flex: 0 0 auto;
+    gap: var(--clients-logo-gap);
+    padding-right: var(--clients-logo-gap);
 }
 
 .clients-marquee .client-logo-card {
@@ -2550,6 +2560,10 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 @media (max-width: 768px) {
+    .clients-marquee {
+        --clients-logo-gap: 40px;
+    }
+
     .clients-marquee .client-logo-card {
         width: 220px;
         flex-basis: 220px;
@@ -2557,6 +2571,10 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 @media (max-width: 540px) {
+    .clients-marquee {
+        --clients-logo-gap: 28px;
+    }
+
     .client-logo-card {
         aspect-ratio: 1 / 1;
     }

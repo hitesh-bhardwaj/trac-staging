@@ -44,7 +44,7 @@ $client_logos = [
 ?>
 
 <section class="clients-section relative bg-white overflow-hidden" data-section="clients">
-    <div class="clients-container w-full  py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+    <div class="clients-container w-full  py-[3.5vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div
             class="clients-marquee"
             data-animate="fade-up"

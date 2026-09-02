@@ -29,13 +29,13 @@ if (!defined('ABSPATH')) {
             </div>
 
             <div class="about-content w-[50%] mt-[-7vw] md:w-full md:text-center">
-	                <h2 data-para-anim  class="about-title font-heading text-66 leading-[1.24] tracking-[0.01em] text-text-primary mb-[5.083vw] md:text-4xl md:mb-8 sm:text-[8vw] sm:mb-10">
+	                <h2 data-para-anim  class="about-title font-heading text-66 leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw] md:text-4xl md:mb-8 sm:text-[8vw] sm:mb-10">
 	                    <?php echo esc_html(
 	                        get_field('about_title') ?:
 	                            "TrAC is Rwanda and East Africa's homegrown internet service provider, built on long-term commitment and technical excellence.",
 	                    ); ?>
 	                </h2>
-                <div class="w-full flex gap-[7vw] mb-[5vw]">
+                <div class="w-full flex gap-[7vw] mb-[3vw]">
 
                 <ul class="about-list font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-lg md:space-y-2 md:mb-8  sm:text-base sm:space-y-[2vw] sm:mb-[10vw] sm:w-[80%] sm:mx-auto  ">
                     <?php
@@ -55,7 +55,7 @@ if (!defined('ABSPATH')) {
                         </li>
                     <?php endforeach; ?>
                 </ul>
-                <ul class="about-list font-body hero-subtitle leading-[1.58] text-text-body space-y-[0.521vw] md:text-lg md:space-y-2 md:mb-8  sm:text-base sm:space-y-[2vw] sm:mb-[10vw] sm:w-[80%] sm:mx-auto  ">
+                <ul class="about-list font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-lg md:space-y-2 md:mb-8  sm:text-base sm:space-y-[2vw] sm:mb-[10vw] sm:w-[80%] sm:mx-auto  ">
                     <?php
                     $list_items = [
                         
