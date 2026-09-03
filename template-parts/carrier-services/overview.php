@@ -67,7 +67,7 @@ $button_link = get_field('cs_overview_button_link') ?: '#get-connected';
         </div>
 
         <div class="mt-[5vw] md:mt-12 sm:mt-10" data-animate="fade-up" data-delay="0.15">
-            <article class="flex w-full  md:grid-cols-1 bg-[color:var(--color-brand-quaternary)] rounded-[1.6vw] md:rounded-3xl overflow-hidden">
+            <article class="flex w-full  md:grid-cols-1 bg-brand-quaternary rounded-[1.6vw] md:rounded-3xl overflow-hidden">
                 <div class="h-[30vw] w-[25vw] rounded-[1.6vw] md:rounded-3xl md:h-72 sm:h-64 overflow-hidden">
                     <img
                         src="<?php echo esc_url($solution_image_src); ?>"
@@ -89,7 +89,7 @@ $button_link = get_field('cs_overview_button_link') ?: '#get-connected';
 
         <div class="grid grid-cols-2 gap-[2.5vw] md:grid-cols-1 md:gap-6 mt-[2.5vw] md:mt-6 items-stretch">
             <?php foreach ($offerings as $i => $o): ?>
-                <div class="rounded-[1.4vw] md:rounded-3xl bg-[color:var(--color-brand-tertiary)] p-[2.2vw] md:p-10 sm:p-7 flex flex-col items-start gap-[2vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                <div class="rounded-[1.4vw] md:rounded-3xl bg-brand-tertiary p-[2.5vw] md:p-10 sm:p-7 flex flex-col items-start gap-[2vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
                     0.1 * $i,
                 ); ?>">
                     <img
@@ -99,10 +99,10 @@ $button_link = get_field('cs_overview_button_link') ?: '#get-connected';
                         loading="lazy"
                     >
                     <div>
-                        <h3 class="font-heading text-white text-[1.6vw] md:text-2xl font-normal mb-[0.8vw] md:mb-3">
+                        <h3 class="font-heading text-white text-36 md:text-2xl font-normal mb-[0.8vw] md:mb-3">
                             <?php echo esc_html($o['title']); ?>
                         </h3>
-                        <p class="font-body text-white text-24 md:text-base leading-[1.55]">
+                        <p class="font-body text-white text-24 md:text-base leading-[1.55] w-[88%]">
                             <?php echo esc_html($o['description']); ?>
                         </p>
                     </div>
@@ -111,7 +111,7 @@ $button_link = get_field('cs_overview_button_link') ?: '#get-connected';
         </div>
 
         <div class="flex justify-center mt-[3.2vw] md:mt-10" data-animate="fade-up" data-delay="0.2">
-            <a href="<?php echo esc_url($button_link); ?>" class="btn btn-primary group magnetic">
+            <a href="<?php echo esc_url($button_link); ?>" class="btn btn-primary group magnetic border border-brand-secondary">
                 <span class="btn-line"></span>
                 <span class="btn-text"><?php echo esc_html($button_text); ?></span>
                 <span class="btn-icon">

@@ -34,6 +34,10 @@ $title_tag = isset($args['title_tag']) ? (string) $args['title_tag'] : 'h1';
 $title_classes = isset($args['title_classes'])
     ? (string) $args['title_classes']
     : 'hero-title text-[4vw] font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 md:text-center';
+$subtitle_1 = isset($args['subtitle_1']) ? (string) $args['subtitle_1'] : '';
+$subtitle_1_classes = isset($args['subtitle_1_classes'])
+    ? (string) $args['subtitle_1_classes']
+    : 'hero-subtitle-1 font-heading pr-0.2 text-36 font-normal leading-[1.35] text-white mb-[1vw] md:text-[28px] sm:text-[20px]';
 $subtitle = $args['subtitle'] ?? '';
 $subtitle_paragraphs = is_array($subtitle)
     ? array_values(array_filter(array_map('strval', $subtitle), static fn($paragraph) => $paragraph !== ''))
@@ -109,6 +113,17 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                     ); ?></span>
                 <?php endforeach; ?>
             </<?php echo tag_escape($title_tag); ?>>
+
+            <?php if ($subtitle_1 !== ''): ?>
+                <p
+                    class="<?php echo esc_attr($subtitle_1_classes); ?>"
+                    data-hero-reveal
+                    data-hero-delay="0.14"
+                    data-para-anim
+                >
+                    <?php echo esc_html($subtitle_1); ?>
+                </p>
+            <?php endif; ?>
 
             <?php if (!empty($subtitle_paragraphs)): ?>
                 <div class="<?php echo esc_attr($subtitle_classes); ?> space-y-[0.7vw]">
@@ -202,6 +217,17 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                             ); ?></span>
                         <?php endforeach; ?>
                     </<?php echo tag_escape($title_tag); ?>>
+
+                    <?php if ($subtitle_1 !== ''): ?>
+                        <p
+                            class="<?php echo esc_attr($subtitle_1_classes); ?>"
+                            data-hero-reveal
+                            data-hero-delay="0.14"
+                            data-para-anim
+                        >
+                            <?php echo esc_html($subtitle_1); ?>
+                        </p>
+                    <?php endif; ?>
 
                     <?php if (!empty($subtitle_paragraphs)): ?>
                         <div class="<?php echo esc_attr($subtitle_classes); ?> space-y-[2vw]">

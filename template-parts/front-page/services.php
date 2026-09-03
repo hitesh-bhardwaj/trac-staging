@@ -35,7 +35,7 @@ $services = [
 ];
 ?>
 
-<section class="services-section relative overflow-hidden bg-[var(--color-brand-light)] py-[7vw] sm:pb-[25%]" data-section="services" id="products">
+<section class="relative overflow-hidden bg-brand-light py-[7vw] sm:pb-[25%] min-h-auto" data-section="services" id="products">
     <style>
         [data-service-slider] .services-slider-viewport {
             position: relative;
@@ -111,9 +111,9 @@ $services = [
     </style>
 
     <div class="services-container w-full">
-        <div class="services-heading bg-[var(--color-brand-light)] px-[5vw] md:px-[5vw] md:py-12 sm:px-[10vw] sm:py-8">
+        <div class="services-heading bg-brand-light px-[5vw] md:px-[5vw] md:py-12 sm:px-[10vw] sm:py-8">
             <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10" data-animate="fade-up">
-                <span class="label-line h-[0.208vw] w-[1.354vw] bg-[var(--color-brand-secondary)] md:h-1 md:w-6 sm:w-5"></span>
+                <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
 
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                     <?php echo esc_html(get_field('services_label') ?: 'What We Offer'); ?>
@@ -130,7 +130,7 @@ $services = [
                 <div class="services-cards">
                     <?php foreach ($services as $index => $service) : ?>
                         <article
-                            class="service-card !bg-[var(--color-brand-tertiary)] overflow-hidden rounded-[1.2vw] border border-[var(--color-brand-dark)] md:rounded-3xl"
+                            class="service-card !bg-brand-tertiary overflow-hidden rounded-[1.2vw] border border-brand-dark md:rounded-3xl"
                             data-service-card
                             data-card-index="<?php echo esc_attr($index); ?>"
                         >
@@ -141,7 +141,7 @@ $services = [
                                             <?php echo esc_html($service['title']); ?>
                                         </h3>
 
-                                        <p class="card-description font-body max-w-[35vw] text-24 leading-[1.5] text-white md:max-w-full md:text-lg sm:text-base">
+                                        <p class="font-body max-w-[35vw] text-24 leading-[1.5] text-white md:max-w-full md:text-lg sm:text-base">
                                             <?php echo esc_html($service['description']); ?>
                                         </p>
                                     </div>
@@ -176,7 +176,7 @@ $services = [
             <div class="services-slider-controls mt-[4.688vw] flex items-center justify-center gap-[0.625vw] md:mt-10 md:gap-3 sm:mt-8">
                 <button
                     type="button"
-                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[var(--color-brand-secondary)] bg-[var(--color-brand-light)] text-[var(--color-brand-secondary)] transition-all duration-300 hover:bg-[var(--color-brand-secondary)] hover:text-[var(--color-text-secondary)] md:h-12 md:w-20"
+                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-brand-light text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-text-secondary md:h-12 md:w-20"
                     data-service-prev
                     aria-label="Previous service"
                 >
@@ -188,7 +188,7 @@ $services = [
 
                 <button
                     type="button"
-                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[var(--color-brand-secondary)] bg-[var(--color-brand-light)] text-[var(--color-brand-secondary)] transition-all duration-300 hover:bg-[var(--color-brand-secondary)] hover:text-[var(--color-text-secondary)] md:h-12 md:w-20"
+                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-brand-light text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-text-secondary md:h-12 md:w-20"
                     data-service-next
                     aria-label="Next service"
                 >

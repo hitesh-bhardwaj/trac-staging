@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) {
                         <span class="label-line w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
                         <span class="label-text font-body text-24 text-text-primary md:text-xl">Why Choose TrAC</span>
                     </div>
-                    <h2 class="why-main-title font-heading text-66 leading-[1.18] tracking-[0.01em] text-text-secondary md:text-4xl sm:text-3xl">
+                    <h2 class="font-heading font-normal text-66 leading-[1.18] tracking-[0.01em] text-text-secondary md:text-4xl sm:text-3xl">
                         <span data-heading-anim  class="block">Why Businesses</span>
                         <span data-heading-anim  class="block">Choose TrAC</span>
                     </h2>
@@ -72,8 +72,8 @@ if (!defined('ABSPATH')) {
                         ); ?>" alt="Zero Contention" class="w-full h-full object-cover" loading="lazy">
                     </div>
                     <div class="why-card-content">
-                        <h3 class="why-card-title font-body text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Zero Contention</h3>
-                        <p class="why-card-desc font-body text-24 leading-[1.417] text-text-secondary md:text-lg">Your bandwidth is never shared with other customers. You always receive the full speed you're paying for.</p>
+                        <h3 class="font-body font-normal text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Zero Contention</h3>
+                        <p class="font-body font-normal text-24 leading-[1.417] text-text-secondary md:text-lg">Your bandwidth is never shared with other customers. You always receive the full speed you're paying for.</p>
                     </div>
                 </div>
             </div>
@@ -86,8 +86,8 @@ if (!defined('ABSPATH')) {
                         ); ?>" alt="24/7 NOC Support" class="w-full h-full object-cover" loading="lazy">
                     </div>
                     <div class="why-card-content">
-                        <h3 class="why-card-title font-body text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">24/7 NOC Support</h3>
-                        <p class="why-card-desc font-body text-24 leading-[1.417] text-text-secondary md:text-lg">Our Network Operations Centre monitors your connection around the clock from the heart of Africa.</p>
+                        <h3 class="font-body font-normal text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">24/7 NOC Support</h3>
+                        <p class="font-body font-normal text-24 leading-[1.417] text-text-secondary md:text-lg">Our Network Operations Centre monitors your connection around the clock from the heart of Africa.</p>
                     </div>
                 </div>
 </div>
@@ -100,8 +100,8 @@ if (!defined('ABSPATH')) {
                         ); ?>" alt="Fully Redundant" class="w-full h-full object-cover" loading="lazy">
                     </div>
                     <div class="why-card-content">
-                        <h3 class="why-card-title font-body text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Fully Redundant</h3>
-                        <p class="why-card-desc font-body text-24 leading-[1.417] text-text-secondary md:text-lg">Internet from 3 different providers across 3 geographies. A single fibre cut will never take you offline.</p>
+                        <h3 class="font-body font-normal text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Fully Redundant</h3>
+                        <p class="font-body font-normal text-24 leading-[1.417] text-text-secondary md:text-lg">Internet from 3 different providers across 3 geographies. A single fibre cut will never take you offline.</p>
                     </div>
                 </div>
 
@@ -119,8 +119,8 @@ if (!defined('ABSPATH')) {
                         ); ?>" alt="Business-Grade for All" class="w-full h-full object-cover" loading="lazy">
                     </div>
                     <div class="why-card-content">
-                        <h3 class="why-card-title font-body text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Business-Grade for All</h3>
-                        <p class="why-card-desc font-body text-24 leading-[1.417] text-text-secondary md:text-lg">Even home plans are built on business-grade infrastructure. No second-class service - ever.</p>
+                        <h3 class="font-body font-normal text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Business-Grade for All</h3>
+                        <p class="font-body font-normal text-24 leading-[1.417] text-text-secondary md:text-lg">Even home plans are built on business-grade infrastructure. No second-class service - ever.</p>
                     </div>
                 </div>
             </div>
@@ -133,8 +133,8 @@ if (!defined('ABSPATH')) {
                         ); ?>" alt="Managed Equipment" class="w-full h-full object-cover" loading="lazy">
                     </div>
                     <div class="why-card-content">
-                        <h3 class="why-card-title font-body text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Managed Equipment</h3>
-                        <p class="why-card-desc font-body text-24 leading-[1.417] text-text-secondary md:text-lg">We own, manage, and continuously update all hardware at your site. Zero maintenance for you.</p>
+                        <h3 class="font-body font-normal text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Managed Equipment</h3>
+                        <p class="font-body font-normal text-24 leading-[1.417] text-text-secondary md:text-lg">We own, manage, and continuously update all hardware at your site. Zero maintenance for you.</p>
                     </div>
                 </div>
 </div>
@@ -151,8 +151,8 @@ if (!defined('ABSPATH')) {
                         ); ?>" alt="Pan-African Reach" class="w-full h-full object-cover" loading="lazy">
                     </div>
                     <div class="why-card-content">
-                        <h3 class="why-card-title font-body text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Pan-African Reach</h3>
-                        <p class="why-card-desc font-body text-24 leading-[1.417] text-text-secondary md:text-lg">Our trans-African network spans multiple countries with local expertise and global connectivity.</p>
+                        <h3 class="font-body font-normal text-[1.667vw] text-text-secondary mb-[1.875vw] md:text-2xl md:mb-4">Pan-African Reach</h3>
+                        <p class="font-body font-normal text-24 leading-[1.417] text-text-secondary md:text-lg">Our trans-African network spans multiple countries with local expertise and global connectivity.</p>
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@ $vision_mission_cards = [
     <div class="vision-mission-container w-full h-fit px-[8vw] pt-[5vw]  md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12 relative z-[4]">
         <div class="vision-mission-grid grid grid-cols-2 gap-[3.646vw] md:grid-cols-1 md:gap-8">
             <?php foreach ($vision_mission_cards as $card): ?>
-                <article data-animate="fade-up" class="vision-mission-card rounded-[2.083vw] border-[1.5px] border-brand-quaternary bg-brand-quaternary p-[3vw] pb-[4vw] md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
+                <article data-animate="fade-up" class="rounded-[2.083vw] border-[1.5px] border-brand-quaternary bg-brand-quaternary p-[3vw] pb-[4vw] shadow-[0_18px_60px_rgba(16,65,127,0.04)] md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
                     <div class="mb-[3.125vw] md:mb-8 sm:mb-6">
                         <img
                             src="<?php echo esc_url($card['image']); ?>"

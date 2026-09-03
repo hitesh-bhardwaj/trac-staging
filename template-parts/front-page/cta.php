@@ -40,13 +40,13 @@ $cta_logo_svg_path = get_template_directory() . '/src/imgs/logo-trac.svg';
                 ?>
             </div>
 
-            <div class="cta-content text-center w-[55%] md:max-w-full">
-                <h2 class="cta-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-white mb-[2.5vw] md:text-4xl md:mb-8 sm:text-3xl sm:mb-6" data-heading-anim>
+            <div class="text-center w-[70%] md:max-w-full">
+                <h2 class="w-full  font-heading font-normal text-66 leading-[1.12] tracking-[0.01em] text-white mb-[2.5vw] md:text-4xl md:mb-8 sm:text-3xl sm:mb-6" data-heading-anim>
                     <?php echo esc_html($cta_title); ?>
                 </h2>
 
                 <?php if (!empty($cta_para)): ?>
-                    <p class="cta-subtitle font-body text-24 leading-[1.5] text-white/85 mb-[2.5vw] md:text-lg md:mb-8 sm:text-base sm:mb-6" data-para-anim data-delay="0.15">
+                    <p class="mx-auto w-[70%] font-body font-normal text-24 leading-[1.5] text-white/85 mb-[2.5vw] md:text-lg md:mb-8 sm:text-base sm:mb-6" data-para-anim data-delay="0.15">
                         <?php echo esc_html($cta_para); ?>
                     </p>
                 <?php endif; ?>

@@ -19,7 +19,7 @@ if (!$items) {
 }
 ?>
 
-<section class="faqs-section relative bg-white overflow-hidden" data-section="faqs">
+<section class="relative bg-white overflow-hidden min-h-auto" data-section="faqs">
     <div class="px-[9vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[7vw] sm:py-12">
 
         <div class="faqs-header mb-[4.844vw] md:mb-12 sm:mb-10">

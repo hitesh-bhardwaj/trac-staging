@@ -23,7 +23,7 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
             </div>
 
             <h2
-                class="testimonials-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]"
+                class="font-heading font-normal text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]"
                 data-heading-anim
              >
                 <?php echo esc_html(get_field('testimonials_title') ? : 'What Our Clients Say',); ?>
@@ -32,7 +32,7 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
 
         <div class="testimonials-controls mb-[2.083vw] flex items-center justify-between md:mb-8 sm:mb-6 w-full relative z-[10] md:hidden">
             <div
-                class="slide-counter flex items-center gap-[0.833vw] md:gap-3"
+                class="font-normal flex items-center gap-[0.833vw] md:gap-3"
                 data-animate="fade-up"
                 data-delay="0.2"
             >
@@ -102,9 +102,9 @@ if ($testimonials_query->have_posts()):
             $logo = get_template_directory_uri() . '/src/imgs/testimonial-logo-1.png';
         }
 ?>
-                        <div class="testimonial-card rounded-[1.563vw] bg-[var(--color-brand-primary)] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
+                        <div class="testimonial-card rounded-[1.563vw] bg-brand-primary p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
                             <?php if ($quote): ?>
-                                <p class="testimonial-text font-body mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
+                                <p class="font-body font-normal mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                                     <?php echo esc_html($quote); ?>
                                 </p>
                             <?php
@@ -160,7 +160,7 @@ else:
 ?>
                     <!-- Fallback: Show default testimonial if no posts exist -->
                     <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
-                        <p class="testimonial-text font-body mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
+                        <p class="font-body font-normal mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                             Throughout the course of working together since 2017, we have been constantly impressed by TrAC ability to provide requested services in a timely manner and ensure that any bumps along the way are sorted out with the at most priority in the shortest time possible.
                         </p>
                         <div class="testimonial-author">
@@ -173,7 +173,7 @@ else:
                     </div>
                    
                     <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
-                        <p class="testimonial-text font-body mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
+                        <p class="font-body font-normal mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                             We have been working with TrAC  since 2017 and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
                         </p>
                         <div class="testimonial-author">
@@ -186,7 +186,7 @@ else:
                     </div>
                    
                     <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
-                        <p class="testimonial-text font-body mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
+                        <p class="font-body font-normal mb-[2.083vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                             TrAC has  been providing to us Multiprotocol Label Switching (MPLS private network) and Internet services which are highly efficient, scalable and secure. In our interactions, we have found TrAC staff to be highly professional and rich with experience in project implementation skills and the ability to handle diverse environments while providing exceptional customer service and support in a timely manner.
                         </p>
                         <div class="testimonial-author">

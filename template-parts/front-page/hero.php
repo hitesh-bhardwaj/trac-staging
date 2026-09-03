@@ -11,7 +11,7 @@ $hero_connectors_svg_path =
 ?>
 
 
-<section class="hero relative min-h-screen !bg-[var(--color-brand-primary)] overflow-hidden" data-section="hero" data-hero-static>
+<section class="hero relative min-h-screen !bg-brand-primary overflow-hidden" data-section="hero" data-hero-static>
     <div class="hero-container w-full px-[5vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]">
         <div class="hero-grid flex justify-between gap-[2.604vw] items-start md:flex-col md:gap-8">
             <div class="hero-text w-[70%] md:w-full md:max-w-full md:pt-8 sm:pt-4  relative z-[10]">

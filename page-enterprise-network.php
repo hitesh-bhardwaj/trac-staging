@@ -42,7 +42,7 @@ if (have_posts()) {
 	                        'src' => is_array($hero_image)
 	                            ? $hero_image['url']
 	                            : get_template_directory_uri() .
-	                                '/src/imgs/enterprise-network/hero-image.png',
+	                                '/src/imgs/enterprise-network/enterprise-network-hero.png',
 	                        'alt' => is_array($hero_image)
 	                            ? $hero_image['alt']
 	                            : 'Enterprise connectivity',

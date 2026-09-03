@@ -67,7 +67,7 @@ $cards = [
 
             <div class="grid grid-cols-3 gap-[3.5vw] md:grid-cols-2 md:gap-6 sm:grid-cols-1 sm:gap-4 items-stretch">
                 <?php foreach ($cards as $i => $c): ?>
-                    <div class="rounded-[1.042vw] md:rounded-2xl bg-[color:var(--color-brand-tertiary)] p-[1.8vw] md:p-8 sm:p-6 flex flex-col items-start justify-between h-[12vw] gap-[1.4vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                    <div class="rounded-[1.042vw] md:rounded-2xl bg-brand-tertiary p-[1.8vw] md:p-8 sm:p-6 flex flex-col items-start justify-between h-[12vw] gap-[1.4vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
                         0.06 * $i,
                     ); ?>">
                         <img
@@ -76,7 +76,7 @@ $cards = [
                             class="size-[3.5vw] md:w-10 md:h-10 sm:w-9 sm:h-9 object-contain"
                             loading="lazy"
                         >
-                        <p class="font-body text-white text-24 md:text-lg sm:text-base leading-[1.35] w-[70%]">
+                        <p class="font-body text-white text-24 md:text-lg sm:text-base leading-[1.35] w-[55%]">
                             <?php echo esc_html($c['text']); ?>
                         </p>
                     </div>
@@ -85,5 +85,5 @@ $cards = [
         </div>
     </div>
 
-    <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#E86224" data-line-color="#10417F33"></canvas>
+    <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F1A"></canvas>
 </section>

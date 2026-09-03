@@ -60,10 +60,10 @@ $enterprise_services = [
                     >
                         <div>
                            
-                            <h3 class="font-heading text-white text-36 md:text-2xl mb-6 font-normal">
+                            <h3 class="font-heading text-white text-36 md:text-2xl font-normal">
                                 <?php echo $card['title']; ?>
                             </h3>
-                             <p class="font-body text-white leading-[1.7] mb-3 text-24">
+                             <p class="font-body text-white leading-[1.7] mb-6 text-24">
                                 <?php echo esc_html($card['location']); ?>
                             </p>
 

@@ -35,7 +35,7 @@ $solutions = [
 ];
 ?>
 
-<section class="sme-solutions relative overflow-hidden bg-[color:var(--color-brand-primary)] py-[7vw] md:py-20 sm:py-16" data-section="sme-solutions">
+<section class="sme-solutions relative overflow-hidden bg-brand-primary py-[7vw] md:py-20 sm:py-16" data-section="sme-solutions">
     <div class="relative z-[1] w-full px-[9vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
@@ -45,7 +45,7 @@ $solutions = [
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-white mb-[5vw] md:text-5xl md:mb-10 sm:text-4xl text-left" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-white mb-[5vw] md:text-5xl md:mb-10 sm:text-4xl text-left" data-heading-anim>
                 <?php echo esc_html($title); ?>
             </h2>
 
@@ -64,7 +64,7 @@ $solutions = [
                             <h3 class="font-heading text-text-primary text-[1.6vw] md:text-2xl font-normal mb-[0.8vw] md:mb-3">
                                 <?php echo esc_html($s['title']); ?>
                             </h3>
-                            <p class="font-body text-text-body text-[1.2vw] md:text-base leading-[1.55]">
+                            <p class="font-body text-text-body text-24 md:text-base leading-[1.55]">
                                 <?php echo esc_html($s['description']); ?>
                             </p>
                         </div>

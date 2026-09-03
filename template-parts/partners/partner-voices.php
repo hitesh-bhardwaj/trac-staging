@@ -115,11 +115,12 @@ $slides = [
                 data-partner-voices-prev
                 aria-label="Previous team member"
             >
-                <span class="team-slider-nav-icon">
+                <span class="team-slider-nav-icon inline-flex items-center justify-center w-[1.5vw] h-[1.5vw] md:w-[8vw] md:h-[4vw]">
                     <img
                         src="<?php echo esc_url($team_arrow_svg); ?>"
                         alt=""
                         aria-hidden="true"
+                        class="block w-full h-full object-contain"
                     >
                 </span>
             </button>
@@ -130,11 +131,12 @@ $slides = [
                 data-partner-voices-next
                 aria-label="Next team member"
             >
-                <span class="team-slider-nav-icon team-slider-nav-icon--next">
+                <span class="team-slider-nav-icon inline-flex items-center justify-center w-[1.5vw] h-[1.5vw] md:w-[8vw] md:h-[4vw] rotate-180">
                     <img
                         src="<?php echo esc_url($team_arrow_svg); ?>"
                         alt=""
                         aria-hidden="true"
+                        class="block w-full h-full object-contain"
                     >
                 </span>
             </button>

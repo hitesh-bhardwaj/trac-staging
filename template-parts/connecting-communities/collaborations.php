@@ -15,7 +15,7 @@ $collaboration_image_url = get_template_directory_uri() . '/src/imgs/communities
             </div>
 
             <h2 class="mb-[2.344vw] w-[45vw] font-heading text-66 font-normal leading-[1.22] tracking-normal text-white md:mb-6 md:max-w-[720px] md:text-5xl sm:mb-5 sm:text-[34px] sm:leading-[1.18]" data-heading-anim>
-                How TrAC enables Connecting Communities
+                How TrAC Enables Connecting Communities
             </h2>
 
             <div class="flex max-w-[40.417vw] flex-col gap-[2.083vw] font-body text-24 leading-[1.5] text-white md:max-w-[720px] md:gap-7 md:text-xl sm:gap-5 sm:text-base sm:leading-[1.55]">

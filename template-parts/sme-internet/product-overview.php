@@ -43,7 +43,7 @@ $cards = [
 ];
 ?>
 
-<section class="sme-overview relative overflow-hidden bg-brand-tint py-[8vw] md:py-20 sm:py-16" data-section="sme-overview">
+<section class="sme-overview relative overflow-hidden bg-brand-tint py-[7vw] md:py-20 sm:py-16" data-section="sme-overview">
     <div class="relative z-[1] w-full px-[9vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
@@ -53,11 +53,11 @@ $cards = [
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.6vw] md:text-5xl md:mb-6 sm:text-4xl text-left" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.6vw] md:text-5xl md:mb-6 sm:text-4xl text-left" data-heading-anim>
                 <?php echo esc_html($title); ?>
             </h2>
 
-            <div class="max-w-[46rem] mb-[5vw] md:mb-10 sm:mb-8">
+            <div class="w-[46%] mb-[5vw] md:mb-10 sm:mb-8">
                 <p class="font-body text-24 leading-[1.58] text-text-body md:text-lg sm:text-base" data-para-anim>
                     <?php echo esc_html($subtitle); ?>
                 </p>
@@ -68,7 +68,7 @@ $cards = [
 
             <div class="grid grid-cols-3 gap-[3.5vw] md:grid-cols-2 md:gap-6 sm:grid-cols-1 sm:gap-4 items-stretch">
                 <?php foreach ($cards as $i => $c): ?>
-                    <div class="rounded-[1.042vw] md:rounded-2xl bg-[color:var(--color-brand-tertiary)] p-[1.8vw] md:p-8 sm:p-6 flex flex-col items-start justify-between h-[12vw] gap-[1.4vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                    <div class="rounded-[1.042vw] md:rounded-2xl bg-brand-tertiary p-[1.8vw] md:p-8 sm:p-6 flex flex-col items-start justify-between h-[12vw] gap-[1.4vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
                         0.06 * $i,
                     ); ?>">
                         <img
@@ -86,5 +86,5 @@ $cards = [
         </div>
     </div>
 
-    <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#E86224" data-line-color="#10417F33"></canvas>
+    <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F1A"></canvas>
 </section>

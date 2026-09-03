@@ -99,7 +99,7 @@ $team_members = [
                 <div data-animate="fade-up" class="team-slider-stage relative flex items-end gap-[1.6vw]">
                     <div class="team-slider-active-card group" data-team-slider-active-card tabindex="0" role="button" aria-pressed="false">
                         <div class="team-slider-flip-inner">
-                            <div class="team-slider-card-face team-slider-card-front">
+                            <div class="team-slider-card-front absolute inset-0 overflow-hidden rounded-[1.5vw] border border-brand-quaternary [backface-visibility:hidden] lg:rounded-[20px]">
                                 <div class="team-slider-active-image">
                                     <img
                                         src=""
@@ -109,24 +109,24 @@ $team_members = [
                                     >
                                 </div>
 
-                                <div class="team-slider-active-content bg-brand-primary font-normal">
-                                    <h3 data-team-slider-active-name class="font-normal text-white font-subheading text-36"></h3>
-                                    <p data-team-slider-active-role class="text-white text-24"></p>
-                                    <span class="team-slider-flip-arrow" aria-hidden="true">
-                                        <img src="<?php echo esc_url($team_right_arrow_svg); ?>" alt="">
+                                <div class="absolute inset-x-0 bottom-0 z-[3] px-[1.8vw] pt-[1.8vw] pb-[1.45vw] text-center text-white [will-change:transform,opacity] bg-brand-primary font-normal lg:px-[20px] lg:pt-[20px] lg:pb-[16px]">
+                                    <h3 data-team-slider-active-name class="font-normal text-white font-subheading uppercase leading-none text-[2.1vw] lg:text-[36px] sm:text-[28px]"></h3>
+                                    <p data-team-slider-active-role class="text-white mt-[0.45vw] text-[1.15vw] leading-[1.35] opacity-95 lg:mt-[6px] lg:text-[18px] sm:text-[16px]"></p>
+                                    <span class="flex justify-center mt-[1vw] leading-none lg:mt-[14px]" aria-hidden="true">
+                                        <img class="block w-[2.6vw] h-auto object-contain lg:w-[40px]" src="<?php echo esc_url($team_right_arrow_svg); ?>" alt="">
                                     </span>
                                 </div>
                             </div>
 
-                            <div class="team-slider-card-face team-slider-card-back" aria-hidden="true">
-                                <div class="team-slider-card-back-header opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:opacity-100">
+                            <div class="team-slider-card-back absolute inset-0 overflow-hidden rounded-[1.5vw] border border-brand-quaternary [backface-visibility:hidden] lg:rounded-[20px]" aria-hidden="true">
+                                <div class="pr-[4.5vw] lg:pr-[70px] sm:pr-[54px] opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:opacity-100">
                                     <h3 data-team-slider-back-name class="font-subheading text-36 font-normal"></h3>
-                                    <p data-team-slider-back-role class="font-body text-24"></p>
+                                    <p data-team-slider-back-role class="font-body text-24 mt-[1vw] leading-[1.2] lg:mt-[12px]"></p>
                                 </div>
 
-                                <div class="team-slider-card-divider opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:opacity-100"></div>
+                                <div class="w-full h-[2px] shrink-0 mt-[1.25vw] mb-[1.45vw] bg-white lg:mt-[18px] lg:mb-[20px] opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:opacity-100"></div>
 
-                                <p data-team-slider-back-bio class="team-slider-card-bio font-body text-24 opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:opacity-100"></p>
+                                <p data-team-slider-back-bio class="font-body text-24 leading-[1.55] opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:opacity-100"></p>
 
                             </div>
                         </div>

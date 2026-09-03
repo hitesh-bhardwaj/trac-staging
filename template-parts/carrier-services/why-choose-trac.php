@@ -53,17 +53,17 @@ $why_cards = [
         <div class="mt-[4.5vw] md:mt-12 flex items-start gap-[1.6vw] md:flex-col md:gap-5 sm:gap-4">
             <?php foreach ($why_cards as $i => $card): ?>
                 <article
-                    class="w-[16.5vw] md:w-full mt-[var(--card-mt)] md:mt-0 rounded-xl md:rounded-2xl bg-[color:var(--color-brand-tertiary)] p-[1.6vw] py-[2.2vw] md:p-8 flex flex-col justify-between gap-[3.2vw] md:gap-10"
+                    class="w-[16.5vw] md:w-full mt-[var(--card-mt)] md:mt-0 rounded-xl md:rounded-2xl bg-brand-tertiary p-[1.6vw] py-[2.2vw] md:p-8 flex flex-col justify-between gap-[3.2vw] md:gap-10"
                     style="--card-mt: <?php echo esc_attr(
                         $i * 2.4,
                     ); ?>vw;"
                     data-animate="fade-up"
                     data-delay="<?php echo esc_attr(0.08 * $i); ?>"
                 >
-                    <span class="font-heading text-white text-[1.8vw] md:text-3xl font-normal">
+                    <span class="font-heading text-white text-36 md:text-3xl font-normal">
                         <?php echo esc_html($card['number']); ?>
                     </span>
-                    <p class="font-body text-white text24 md:text-lg leading-[1.35]">
+                    <p class="font-body text-white text-24 md:text-lg leading-[1.35]">
                         <?php echo esc_html($card['text']); ?>
                     </p>
                 </article>
@@ -71,5 +71,5 @@ $why_cards = [
         </div>
     </div>
 
-    <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#E86224" data-line-color="#10417F33"></canvas>
+    <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F1A"></canvas>
 </section>

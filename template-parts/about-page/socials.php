@@ -32,12 +32,12 @@ $instagram_posts = [
         </span>
     </div>
 
-    <div class="rounded-[1.7vw] bg-brand-tint p-[3vw] md:rounded-3xl md:p-7 sm:rounded-[24px] sm:p-5" data-animate="fade-up">
+    <div class="rounded-[2vw] bg-brand-tint p-[4vw] md:rounded-3xl md:p-7 sm:rounded-[24px] sm:p-5" data-animate="fade-up">
         <div class="grid grid-cols-3 gap-[1.25vw] md:gap-5 sm:grid-cols-1 sm:gap-5">
             <?php foreach ($instagram_posts as $index => $post): ?>
                 <a
                     href="<?php echo esc_url($post['link']); ?>"
-                    class="group relative block h-[33vw] w-[26vw] overflow-hidden rounded-[1.2vw] bg-white md:rounded-2xl sm:rounded-[16px]<?php echo $index === 2 ? ' border border-brand-primary-alt' : ''; ?>"
+                    class="group relative block h-[33vw] w-[26vw] overflow-hidden rounded-[1.5vw] bg-white md:rounded-2xl sm:rounded-[16px]<?php echo $index === 2 ? ' border border-brand-primary-alt' : ''; ?>"
                     aria-label="<?php echo esc_attr($post['alt']); ?>"
                 >
                     <img
