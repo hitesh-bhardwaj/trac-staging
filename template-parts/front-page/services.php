@@ -35,7 +35,7 @@ $services = [
 ];
 ?>
 
-<section class="relative overflow-hidden bg-brand-light py-[7vw] sm:pb-[25%] min-h-auto" data-section="services" id="products">
+<section class="relative overflow-hidden bg-white py-[7vw] sm:pb-[25%] min-h-auto" data-section="services" id="products">
     <style>
         [data-service-slider] .services-slider-viewport {
             position: relative;
@@ -111,7 +111,7 @@ $services = [
     </style>
 
     <div class="services-container w-full">
-        <div class="services-heading bg-brand-light px-[5vw] md:px-[5vw] md:py-12 sm:px-[10vw] sm:py-8">
+        <div class="services-heading px-[5vw] md:px-[5vw] md:py-12 sm:px-[10vw] sm:py-8">
             <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10" data-animate="fade-up">
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
 
@@ -176,7 +176,7 @@ $services = [
             <div class="services-slider-controls mt-[4.688vw] flex items-center justify-center gap-[0.625vw] md:mt-10 md:gap-3 sm:mt-8">
                 <button
                     type="button"
-                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-brand-light text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-text-secondary md:h-12 md:w-20"
+                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
                     data-service-prev
                     aria-label="Previous service"
                 >
@@ -188,7 +188,7 @@ $services = [
 
                 <button
                     type="button"
-                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-brand-light text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-text-secondary md:h-12 md:w-20"
+                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
                     data-service-next
                     aria-label="Next service"
                 >
