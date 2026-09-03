@@ -20,14 +20,14 @@ $story_content = [
 <section class="trac-story-section relative bg-brand-tint-alt" data-section="trac-story">
     <div class="trac-story-sticky sticky top-0 min-h-screen overflow-hidden">
         <div class="trac-story-year pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
-            <div class="trac-story-year-value flex items-center justify-center">
+            <div class="flex items-center justify-center font-heading text-[24vw] leading-none font-normal text-white/[0.82] tracking-[-0.06em] lg:text-[30vw] md:text-[34vw]">
                 <?php for (
                     $digit_index = 0;
                     $digit_index < 4;
                     $digit_index++
                 ): ?>
-                    <span class="trac-story-year-window">
-                        <span class="trac-story-year-reel" data-story-year-reel data-digit-index="<?php echo esc_attr(
+                    <span class="inline-flex h-[0.8em] overflow-hidden">
+                        <span class="flex flex-col [will-change:transform]" data-story-year-reel data-digit-index="<?php echo esc_attr(
                             $digit_index
                         ); ?>">
                             <?php foreach ($story_years as $year): ?>

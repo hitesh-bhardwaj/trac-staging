@@ -82,11 +82,10 @@ get_header();
                 'template-parts/front-page/cta',
                 null,
                 [
-                    'title' => 'Building the Future, Together',
-                    'subtitle' =>
-                        'Connectivity is where it starts but the impact goes much further.',
+                    'title' => 'Learn What is Possible for Your Community',
+                    'subtitle' => '',
                     'para' =>
-                        "",
+                        'If you’d like to explore how connectivity can support your community, or have ideas you’d like to discuss, our team is here to help.',
                     'button_text' => 'Get Connected',
                     'button_link' => '#get-connected',
                     'pattern_top_class' => 'top-[-15%]',

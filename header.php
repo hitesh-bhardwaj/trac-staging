@@ -24,7 +24,7 @@
             <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon-light.svg" class="w-full h-full" alt="Trac Logo">
         </div>
 
-        <p class="loader-text text-brand-primary text-[1.85vw] absolute top-[65%] left-[51%] -translate-x-1/2">
+        <p class="whitespace-nowrap w-[8.5em] flex items-center justify-center gap-[0.02em] text-brand-primary text-[1.85vw] absolute top-[65%] left-[51%] -translate-x-1/2">
              <span class="inline-block">Loading</span>
              <span class="inline-flex items-center justify-start w-[1.6em]" aria-hidden="true">
              <span class="loader-dot">.</span>
@@ -288,7 +288,7 @@
 }
 
 .nav-link:hover {
-    color: var(--color-brand-primary);
+    color: var(--color-text-secondary);
 }
 
 /* Nav dropdown icon */

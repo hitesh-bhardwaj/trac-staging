@@ -48,7 +48,7 @@ $what_we_do_cards = [
 ];
 ?>
 
-<section class="what-we-do-section relative py-[9vw] bg-brand-tertiary" data-section="what-we-do" data-what-we-do-slider>
+<section class="relative py-[9vw] bg-brand-tertiary h-auto overflow-visible lg:h-[260vh] md:h-auto" data-section="what-we-do" data-what-we-do-slider>
     <div class="what-we-do-shell w-full   md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="mb-[3.438vw]  px-[5vw] flex items-center justify-between md:mb-10">
             <div data-animate="fade-up" class="what-we-do-header flex items-center gap-[0.833vw] md:gap-3">
@@ -83,9 +83,9 @@ $what_we_do_cards = [
             </div>
         </div>
 
-        <div class="what-we-do-viewport overflow-x-auto overflow-y-hidden" data-what-we-do-viewport>
-           
-            <div class="what-we-do-card-container fade-up flex gap-[1.667vw]  md:flex-col md:gap-6 " data-what-we-do-track>
+        <div class="overflow-x-auto overflow-y-hidden [scroll-snap-type:x_mandatory] [-webkit-overflow-scrolling:touch] scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pl-[30vw] pr-[5vw] [scroll-padding-left:30vw] md:pl-0 md:pr-0" data-what-we-do-viewport>
+
+            <div class="fade-up flex gap-[1.667vw] w-max [will-change:transform] ml-0 md:flex-col md:gap-6 md:w-full" data-what-we-do-track>
                 <?php foreach ($what_we_do_cards as $card): ?>
                     <article class="what-we-do-card flex h-[30vw] w-[25vw] flex-shrink-0 flex-col rounded-[1.563vw] bg-white px-[2vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] md:h-auto md:w-full md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
                         <div class="mb-[5.208vw] text-brand-primary md:mb-10 sm:mb-8">

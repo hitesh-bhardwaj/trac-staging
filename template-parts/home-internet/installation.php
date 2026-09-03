@@ -66,7 +66,7 @@ function trac_render_inline_svg($svg_path, $class = '')
     data-hi-installation
     style="--hi-steps: <?php echo esc_attr(count($steps)); ?>;"
 >
-        <div class="hi-installation-sticky overflow-hidden">
+        <div class="sticky top-[15%] h-fit block pb-[5vw] box-border overflow-hidden">
             <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
                 <div class="mx-auto max-w-[92rem]">
                     <div class="mx-auto max-w-[56rem] text-center">
@@ -89,7 +89,7 @@ function trac_render_inline_svg($svg_path, $class = '')
                     </div>
 
                     <div class="mt-[5.2vw] hi-installation-track-area md:mt-12">
-                        <div class="hi-installation-viewport" data-hi-installation-viewport>
+                        <div class="relative overflow-visible py-[6px] pb-[14px] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" data-hi-installation-viewport>
                            <div class="w-[88%] bg-black/20 h-[1px] absolute top-1/2">
                             <div class="bg-brand-primary w-full h-full progress-line">
                             </div>
@@ -116,7 +116,7 @@ function trac_render_inline_svg($svg_path, $class = '')
                                             <h3 class="hi-install-card__title font-heading text-[1.85vw] font-normal">
                                                 <?php echo esc_html($s['title']); ?>
                                             </h3>
-                                            <p class="hi-install-card__desc">
+                                            <p class="mt-[0.8vw] text-[rgba(17,17,17,0.72)]">
                                                 <?php echo esc_html($s['desc']); ?>
                                             </p>
                                         </div>

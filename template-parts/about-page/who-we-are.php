@@ -29,8 +29,8 @@ $who_we_are_stats = [
 ];
 ?>
 
-<section class="who-we-are-section relative overflow-hidden bg-white py-[7vw]" data-section="who-we-are">
-    <div class="who-we-are-container w-full flex flex-col items-center space-y-[7vw] px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+<section class="who-we-are-section relative overflow-hidden bg-white px-[5vw] py-[8vw]" data-section="who-we-are">
+    <div class="who-we-are-container w-full flex flex-col items-center space-y-[7vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="who-we-are-intro w-full flex justify-start gap-[10vw] items-start md:flex-col md:gap-8">
             <div class="who-we-are-label flex shrink-0 items-center gap-[0.833vw] whitespace-nowrap md:gap-3" data-animate="fade-up">
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
@@ -38,12 +38,10 @@ $who_we_are_stats = [
                     <?php esc_html_e("Who We Are", "trac"); ?>
                 </span>
             </div>
-             <p data-para-anim class="hero-subtitle-1 text-center font-heading text-36 leading-[1.35] text-text-primary md:text-left md:text-[28px] sm:text-[20px]">
+             <p data-para-anim class="text-center font-heading text-36 leading-[1.35] font-normal not-italic text-text-primary md:text-left md:text-[28px] sm:text-[20px]">
             We’re a leading provider of telecommunications Africa
         </p>
         </div>
-
-        
 
        
 
@@ -55,16 +53,16 @@ $who_we_are_stats = [
                             ? " has-divider"
                             : ""; ?>"
                     >
-                        <div class="counter-value-wrap mb-[1.25vw] flex items-baseline justify-center text-brand-primary-alt md:mb-4">
+                        <div class="counter-value-wrap mb-[1.25vw] flex items-baseline justify-center text-[#10417F] md:mb-4">
                             <div
-                                class="counter-value"
+                                class="inline-flex items-baseline font-subheading text-[5.729vw] leading-none font-normal text-[#10417F] lg:text-[92px] sm:text-[64px]"
                                 aria-label="<?php echo esc_attr(
                                     $stat["value"] . ($stat["suffix"] ?? "")
                                 ); ?>"
                             >
                                 <?php foreach (str_split($stat["value"]) as $digit_index => $character): ?>
                                     <?php if (!ctype_digit($character)): ?>
-                                        <span class="counter-static-char" aria-hidden="true"><?php echo esc_html($character); ?></span>
+                                        <span class="inline-flex items-center h-[1em] font-[inherit] leading-none text-[#10417F]" aria-hidden="true"><?php echo esc_html($character); ?></span>
                                         <?php continue; ?>
                                     <?php endif; ?>
                                     <?php
@@ -82,11 +80,11 @@ $who_we_are_stats = [
                                     }
                                     ?>
                                     <span
-                                        class="counter-digit-window"
+                                        class="relative inline-flex items-start h-[1em] overflow-hidden"
                                         aria-hidden="true"
                                     >
                                         <span
-                                            class="counter-digit-reel"
+                                            class="flex flex-col items-center [will-change:transform]"
                                             data-digit-reel
                                             data-target-digit="<?php echo esc_attr(
                                                 $digit
@@ -106,14 +104,14 @@ $who_we_are_stats = [
                                 <?php endforeach; ?>
 
                                 <?php if (!empty($stat["suffix"])): ?>
-                                    <span class="counter-suffix" data-counter-fade>
+                                    <span class="inline-flex items-center h-[1em] font-[inherit] leading-none text-[#10417F]" data-counter-fade>
                                         <?php echo esc_html($stat["suffix"]); ?>
                                     </span>
                                 <?php endif; ?>
                             </div>
                         </div>
 
-                        <p data-para-anim class="counter-label whitespace-nowrap font-body text-[1.15vw] leading-[1] text-text-body md:whitespace-normal md:text-[24px] sm:text-[18px]">
+                        <p data-para-anim class="whitespace-nowrap font-body text-[1.15vw] leading-[1] text-text-body lg:max-w-none md:whitespace-normal md:text-[24px] sm:text-[18px]">
                             <?php echo esc_html($stat["label"]); ?>
                         </p>
                     </article>

@@ -35,7 +35,7 @@ $offerings = [
 ?>
 
 <section class="our-offering-section relative bg-white py-[7vw] md:py-20 sm:py-16 min-h-[400vh]" data-section="our-offering">
-    <div class="our-offering-sticky sticky top-[5%]">
+    <div class="sticky top-[5%] min-h-screen">
         <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
             <div class="max-w-[92rem] mx-auto">
                 <div class="text-center w-fit mx-auto">
@@ -63,16 +63,16 @@ $offerings = [
                                     $index,
                                 ); ?>"
                             >
-                                <div class="our-offering-item__head">
-                                    <h3 class="our-offering-item__title">
+                                <div class="flex items-center justify-between gap-[1.5vw]">
+                                    <h3 class="font-heading text-[1.85vw] leading-[1.2] font-normal text-brand-primary-alt transition-colors duration-[350ms] ease-in-out lg:text-[32px] sm:text-[24px]">
                                         <?php echo esc_html($item['title']); ?>
                                     </h3>
-                                    <span class="our-offering-item__number">
+                                    <span class="font-body text-[2vw] leading-none text-text-primary lg:text-[28px] sm:text-[22px]">
                                         <?php echo esc_html($item['number']); ?>
                                     </span>
                                 </div>
 
-                                <div class="our-offering-item__divider"></div>
+                                <div class="h-px bg-[rgba(17,17,17,0.12)] mt-[1.25vw] lg:mt-4"></div>
 
                                 <div class="our-offering-item__body">
                                       <div class="our-offering-item__body-inner">

@@ -42,40 +42,40 @@ $plans = [
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[5vw] md:text-5xl md:mb-10 sm:text-4xl text-left" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[5vw] md:text-5xl md:mb-10 sm:text-4xl text-left" data-heading-anim>
                 <?php echo esc_html($title); ?>
             </h2>
 
             <div class="grid grid-cols-2 gap-[7vw] md:grid-cols-1 md:gap-8  w-full items-stretch">
                 <?php foreach ($plans as $i => $p): ?>
-                    <article class="rounded-[1.6vw] md:rounded-3xl overflow-hidden border border-[color:var(--color-brand-quaternary)] flex flex-col" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                    <article class="rounded-[1.6vw] md:rounded-3xl overflow-hidden border border-brand-quaternary flex flex-col" data-animate="fade-up" data-delay="<?php echo esc_attr(
                         0.1 * $i,
                     ); ?>">
-                        <div class="relative h-[16vw] md:h-64 sm:h-56 w-full overflow-hidden bg-[color:var(--color-brand-quaternary)] ">
+                        <div class="relative h-[16vw] md:h-64 sm:h-56 w-full overflow-hidden bg-brand-quaternary ">
                             <img
                                 src="<?php echo esc_url($p['image']); ?>"
                                 alt="<?php echo esc_attr($p['name']); ?>"
                                 class="h-full w-full object-cover rounded-[1.2vw] md:rounded-3xl"
                                 loading="lazy"
                             >
-                            <span class="absolute left-[1.4vw] top-[1.4vw] md:left-5 md:bottom-5 inline-flex items-center rounded-full bg-white/60 border border-brand-primary backdrop-blur-lg px-[1.2vw] py-[0.5vw] md:px-5 md:py-2 font-body text-[1.5vw] md:text-sm text-[color:var(--color-brand-quaternary)]">
+                            <span class="absolute left-[1.4vw] top-[1.4vw] md:left-5 md:bottom-5 inline-flex items-center rounded-full bg-white/60 border border-brand-quaternary backdrop-blur-lg px-[1.2vw] py-[0.3vw] md:px-5 md:py-2 font-heading text-30 md:text-sm text-brand-quaternary">
                                 Unlimited - <span class="font-bold ml-1"><?php echo esc_html(
                                     $p['speed'],
                                 ); ?></span>
                             </span>
                         </div>
 
-                        <div class="flex-1 flex flex-col bg-[color:var(--color-brand-quaternary)] p-[2vw] py-[3vw] md:p-8 sm:p-6">
-                            <h3 class="font-heading text-white text-[1.8vw] md:text-3xl font-normal mb-[1vw] md:mb-3">
+                        <div class="flex-1 flex flex-col bg-brand-quaternary p-[2vw] py-[3vw] md:p-8 sm:p-6">
+                            <h3 class="font-heading text-white text-36 md:text-3xl font-normal mb-[1vw] md:mb-3">
                                 <?php echo esc_html($p['name']); ?>
                             </h3>
-                            <p class="font-body text-white text-[1.2vw] md:text-base leading-[1.5] mb-[2vw] md:mb-6 w-[70%]">
+                            <p class="font-body text-white text-24 md:text-base leading-[1.5] mb-[2vw] md:mb-6 w-[70%]">
                                 <?php echo esc_html($p['description']); ?>
                             </p>
 
                             <div class="mt-auto">
                                 <div class="mb-[1.6vw] md:mb-6">
-                                    <span class="font-heading font-medium text-white text-[2vw] md:text-3xl">
+                                    <span class="font-heading font-medium text-white text-36 md:text-3xl">
                                         <?php echo esc_html($p['price']); ?>
                                     </span>
                                     <span class="font-body text-white/70 text-[1vw] md:text-sm">

@@ -13,7 +13,7 @@ $button_text =
 $button_link = get_field('cs_infra_button_link') ?: '#get-connected';
 ?>
 
-<section class="carrier-infrastructure relative overflow-hidden bg-[color:var(--color-brand-quaternary)] px-[5vw] py-[6vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="infrastructure">
+<section class="carrier-infrastructure relative overflow-hidden bg-brand-quaternary px-[5vw] py-[6vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="infrastructure">
     <div class="max-w-[92rem] mx-auto">
         <div class="max-w-[46vw] md:max-w-full">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">
@@ -33,29 +33,29 @@ $button_link = get_field('cs_infra_button_link') ?: '#get-connected';
         </div>
 
         <div class="mt-[5vw] md:mt-12 sm:mt-10">
-            <div class="grid grid-cols-2 gap-[2vw] md:gap-5 sm:grid-cols-1 sm:gap-4">
+            <div class="grid grid-cols-2 gap-[3vw] md:gap-5 sm:grid-cols-1 sm:gap-4">
                 <figure
-                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[28px] sm:rounded-[22px]"
+                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[28px] sm:rounded-[22px] group"
                     data-animate="fade-up"
                     data-delay="0.1"
                 >
                     <img
                         src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/carrier-services/infra-img-1.png'); ?>"
                         alt="Fibre installation team working on infrastructure"
-                        class="block h-[32vw] w-full object-cover md:h-[420px] sm:h-[280px]"
+                        class="block h-[32vw] w-full md:h-[420px] sm:h-[280px] scale-105 object-cover transition-transform duration-600 ease-out group-hover:scale-100"
                         loading="lazy"
                     >
                 </figure>
 
                 <figure
-                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[28px] sm:rounded-[22px]"
+                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[28px] sm:rounded-[22px] group"
                     data-animate="fade-up"
                     data-delay="0.15"
                 >
                     <img
                         src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/carrier-services/infra-img-2.png'); ?>"
                         alt="Data centre environment supporting network operations"
-                        class="block h-[32vw] w-full object-cover md:h-[420px] sm:h-[280px]"
+                        class="block h-[32vw] w-full md:h-[420px] sm:h-[280px] scale-105 object-cover transition-transform duration-600 ease-out group-hover:scale-100"
                         loading="lazy"
                     >
                 </figure>
