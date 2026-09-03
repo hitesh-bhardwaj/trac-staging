@@ -12,11 +12,11 @@ $hero_connectors_svg_path =
 
 
 <section class="hero relative min-h-screen !bg-[var(--color-brand-primary)] overflow-hidden" data-section="hero" data-hero-static>
-    <div class="hero-container w-full px-[5.21vw] pt-[5vw] pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]">
+    <div class="hero-container w-full px-[5vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]">
         <div class="hero-grid flex justify-between gap-[2.604vw] items-start md:flex-col md:gap-8">
             <div class="hero-text w-[70%] md:w-full md:max-w-full md:pt-8 sm:pt-4  relative z-[10]">
                 <h1
-                    class="hero-title font-heading text-white tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4 md:text-center"
+                    class="hero-title font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 md:text-center"
                     data-hero-reveal
                     data-heading-anim
                     data-base-delay="0.05"

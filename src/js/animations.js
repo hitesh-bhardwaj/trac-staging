@@ -218,6 +218,12 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
             // Ensure mask styles apply even before initHeadingLineReveal runs.
             lines.forEach((line) => line.classList.add('heading-line'));
 
+            // The reveal motion here is carried by the mask wipe + blur below; this only
+            // needs to clear this element's own hidden state (opacity is handled by the
+            // fromTo below, but `y` is never touched otherwise) left by barba's `enter()`
+            // on nav (same issue as the `data-para-anim` branch further down).
+            gsap.set(el, { y: 0, clearProps: 'willChange' });
+
             const prefersReducedMotion = window.matchMedia(
                 '(prefers-reduced-motion: reduce)',
             ).matches;
@@ -356,6 +362,11 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
             const paraLine = Array.from(el.querySelectorAll('.line-internal'));
             // Force visible so it overrides any lingering CSS hide rules.
             el.style.visibility = 'visible';
+            // The reveal motion itself is carried by the inner `.line-internal` spans below;
+            // this only needs to clear the outer element's own hidden state (opacity:0, y:30,
+            // set by barba's `enter()` on nav) since nothing else does it once mask/blur or
+            // barba's own per-item tween isn't the one owning this element.
+            gsap.set(el, { opacity: 1, y: 0, clearProps: 'willChange' });
 
             const prefersReducedMotion = window.matchMedia(
                 '(prefers-reduced-motion: reduce)',
@@ -1137,7 +1148,10 @@ function initHeadingLineReveal(scope = null) {
             el.style.visibility = 'hidden';
 
             const lines = splitHeadingIntoLines(el);
-            el.style.visibility = '';
+            // Explicit 'visible' (not '') so this reliably overrides the CSS
+            // default (`html.js [data-heading-anim]:not([data-hero-reveal])`)
+            // that hides these headings before this script runs.
+            el.style.visibility = 'visible';
 
             if (!lines.length) return;
 

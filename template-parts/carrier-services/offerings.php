@@ -36,7 +36,7 @@ $offerings = [
 
 <section class="our-offering-section relative bg-white py-[7vw] md:py-20 sm:py-16 min-h-[400vh]" data-section="our-offering">
     <div class="our-offering-sticky sticky top-[5%]">
-        <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
+        <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
             <div class="max-w-[92rem] mx-auto">
                 <div class="text-center w-fit mx-auto">
                     <div class="flex items-center justify-center gap-3 mb-14 md:mb-6" data-animate="fade-up">

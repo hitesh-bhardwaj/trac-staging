@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 ?>
 
 <section class="contact-form-section relative overflow-hidden bg-[#eef3fc] py-[7vw] md:py-20 sm:py-16" data-section="contact-form">
-    <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[104rem] mx-auto grid grid-cols-[1fr_1fr] gap-[6vw] items-start md:grid-cols-1 md:gap-12">
             <!-- Left Column: Content -->
             <div class="">
@@ -78,7 +78,7 @@ if (!defined('ABSPATH')) {
                     <div class="contact-form-wrapper">
                         <?php
                         if (function_exists('wpcf7_contact_form')) {
-                            echo do_shortcode('[contact-form-7 id="7912219" title="Contact form 1"]');
+                            echo do_shortcode('[contact-form-7 id="559c9b1" title="Contact form 1"]');
                         } else {
                             // Fallback placeholder if CF7 is not installed
                             echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';

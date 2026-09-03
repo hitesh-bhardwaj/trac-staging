@@ -101,6 +101,13 @@ export function initBarba(app) {
                         app.lenis.scrollTo(0, { immediate: true });
                     }
 
+                    // Keep hero items hidden through the container crossfade. The actual
+                    // reveal (blur + mask-wipe / line reveal, same as a full page load)
+                    // is owned exclusively by `initBarbaSyncedHeroReveal()`, run afterwards
+                    // via the `after()` hook -> `reinitializePageComponents()`. Animating
+                    // opacity/y here too used to race that reveal: this tween resolved
+                    // (and flagged `heroAnimated`) first, so the richer reveal always got
+                    // skipped on client-side navigation.
                     const heroItems = Array.from(
                         data.next.container.querySelectorAll(
                             '[data-hero-reveal]',
@@ -134,29 +141,6 @@ export function initBarba(app) {
                         },
                         0,
                     );
-
-                    if (heroItems.length) {
-                        heroItems.forEach((el) => {
-                            const delay = parseFloat(
-                                el.dataset.heroDelay || '0',
-                            );
-
-                            tl.to(
-                                el,
-                                {
-                                    opacity: 1,
-                                    y: 0,
-                                    duration: 0.65,
-                                    ease: 'power3.out',
-                                    clearProps: 'willChange',
-                                    onComplete: () => {
-                                        el.dataset.heroAnimated = 'true';
-                                    },
-                                },
-                                delay + 0.05,
-                            );
-                        });
-                    }
 
                     return tl;
                 },

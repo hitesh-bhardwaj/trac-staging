@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 ?>
 
 <section class="why-work-section relative overflow-hidden bg-white pb-[7vw] md:py-20 sm:py-16" data-section="why-work">
-    <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[92rem] mx-auto">
             <!-- Section Label -->
             <div class="flex items-center gap-[0.729vw] mb-[4.167vw] justify-center md:gap-3 md:mb-12 sm:mb-10" data-animate="fade-up">

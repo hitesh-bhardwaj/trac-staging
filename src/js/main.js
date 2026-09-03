@@ -251,6 +251,7 @@ function initNetworkCanvases() {
  */
 function initializePageComponents() {
     initFaqs();
+    initPhoneNumberField();
     initPartnerNetworkTabs();
     initCollaborationsAccordion();
     initClientLogos();
@@ -285,6 +286,27 @@ function initializePageComponents() {
     initLazyImages();
 
     console.log('[Trac] Page components initialized');
+}
+
+/**
+ * Contact form: restrict the phone number field to digits only
+ */
+function initPhoneNumberField() {
+    const phoneInputs = document.querySelectorAll(
+        '.contact-form-wrapper input[name="your-number"]',
+    );
+    if (!phoneInputs.length) return;
+
+    phoneInputs.forEach((input) => {
+        input.setAttribute('inputmode', 'numeric');
+
+        input.addEventListener('input', () => {
+            const digitsOnly = input.value.replace(/\D/g, '');
+            if (digitsOnly !== input.value) {
+                input.value = digitsOnly;
+            }
+        });
+    });
 }
 
 /**

@@ -17,7 +17,7 @@ $items = [
 ?>
 
 <section class="sme-internet-problem relative overflow-hidden bg-white pt-[5vw] pb-[7vw] md:py-20 sm:py-16" data-section="sme-internet-problem" data-sme-problem>
-    <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
         <div class=" mx-auto space-y-[3vw]">
             <div class="max-w-[60rem] mx-auto text-center">
                 <div class="flex items-center justify-center text-center gap-3 mb-[3vw] md:mb-6" data-animate="fade-up">

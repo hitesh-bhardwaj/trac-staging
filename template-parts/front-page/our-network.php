@@ -17,7 +17,7 @@ $network_circle_lines_svg_path_line =
     class="our-network-section is-position-debug relative h-fit bg-[#EEF3FC]"
     data-section="our-network"
 >
-    <div class="pt-[7vw] md:py-12 sm:py-8">
+    <div class=" md:py-12 sm:py-8">
         <div class="space-y-[3vw] px-[5vw]">
             <div
                 data-animate="fade-up"

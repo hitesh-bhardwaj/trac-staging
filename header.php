@@ -120,7 +120,7 @@
             <div class="header-actions flex items-center gap-[0.833vw] md:gap-3">
                 <!-- Cloud Login CTA Button - Desktop -->
                 <a href="<?php echo esc_url(
-                    get_field('header_cta_link', 'option') ?: '#',
+                    get_field('header_cta_link', 'option') ?: '/contact-us',
                 ); ?>" class="btn btn-primary md:hidden hover:bg-white hover:text-[#E86224] transition-colors durtaion-700 ease-in-out border border-[#E86224]">
                     <!-- <span class="btn-line"></span> -->
                      <span>

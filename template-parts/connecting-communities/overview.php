@@ -12,7 +12,7 @@ $overview_image_right_url = $args['overview_image_right_url'] ?? '';
 $overview_image_right_alt = $args['overview_image_right_alt'] ?? '';
 ?>
 
-<section class="communities-overview relative bg-white px-[5.208vw] pt-[3%] pb-[8.333vw] md:px-[4vw] md:pb-24 sm:px-[6vw] sm:pb-16" data-section="communities-overview">
+<section class="communities-overview relative bg-white px-[5vw] pt-[3%] pb-[8.333vw] md:px-[4vw] md:pb-24 sm:px-[6vw] sm:pb-16" data-section="communities-overview">
     <div class="communities-overview__header mx-auto max-w-[91.25vw] text-center">
         <div class="communities-overview__eyebrow mx-auto mb-14 inline-flex items-center gap-[1.042vw] md:mb-6 md:gap-4 sm:mb-4 sm:gap-3" data-animate="fade-up">
             <span class="communities-overview__eyebrow-line" aria-hidden="true"></span>

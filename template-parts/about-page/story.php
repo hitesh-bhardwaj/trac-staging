@@ -7,7 +7,7 @@ $content = trim((string) get_the_content());
 ?>
 
 <section class="about-story relative overflow-hidden bg-white" data-section="about-story">
-    <div class="about-story-container w-full px-[5.21vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+    <div class="about-story-container w-full px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="about-story-grid flex justify-between gap-[5.208vw] md:flex-col md:gap-10">
             <div class="w-[38%] md:w-full" data-animate="fade-up">
                 <div class="mb-[1.563vw] flex items-center gap-[1.042vw] md:mb-6 md:gap-4">

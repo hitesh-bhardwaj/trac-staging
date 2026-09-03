@@ -59,7 +59,7 @@ $slides = [
 ];
 ?>
 
-<section class="partner-voices-section relative px-[5.21vw] overflow-hidden w-screen py-[7vw] md:px-[4vw] md:py-20 sm:px-[6vw] sm:py-16" data-section="partner-voices" data-partner-voices>
+<section class="partner-voices-section relative px-[5vw] overflow-hidden w-screen py-[7vw] md:px-[4vw] md:py-20 sm:px-[6vw] sm:py-16" data-section="partner-voices" data-partner-voices>
     <!-- Animated network canvas background (same system as enterprise "why" section) -->
     <canvas class="network-canvas-el absolute inset-0 h-full w-full"></canvas>
  <div class="flex items-center justify-center gap-3 mb-14 md:mb-6" data-animate="fade-up">

@@ -15,7 +15,7 @@ $impact_gallery_images = $args['impact_gallery_images'] ?? [];
                     <span class="impact-gallery-label__text">Image Gallery</span>
                 </div>
 
-                <h2 class="impact-gallery-title pt-[7vw]" data-animate="fade-up" data-delay="0.1">
+                <h2 class="impact-gallery-title " data-animate="fade-up" data-delay="0.1">
                     <span class="impact-gallery-title__secondary">Impact in Action</span>
                 </h2>
             </div>

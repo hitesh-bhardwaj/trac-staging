@@ -13,7 +13,7 @@ $button_text =
 $button_link = get_field('cs_infra_button_link') ?: '#get-connected';
 ?>
 
-<section class="carrier-infrastructure relative overflow-hidden bg-[color:var(--color-brand-quaternary)] px-[5.208vw] py-[6vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="infrastructure">
+<section class="carrier-infrastructure relative overflow-hidden bg-[color:var(--color-brand-quaternary)] px-[5vw] py-[6vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="infrastructure">
     <div class="max-w-[92rem] mx-auto">
         <div class="max-w-[46vw] md:max-w-full">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">

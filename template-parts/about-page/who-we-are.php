@@ -30,7 +30,7 @@ $who_we_are_stats = [
 ?>
 
 <section class="who-we-are-section relative overflow-hidden bg-white py-[7vw]" data-section="who-we-are">
-    <div class="who-we-are-container w-full flex flex-col items-center space-y-[7vw] px-[5.21vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+    <div class="who-we-are-container w-full flex flex-col items-center space-y-[7vw] px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="who-we-are-intro w-full flex justify-start gap-[10vw] items-start md:flex-col md:gap-8">
             <div class="who-we-are-label flex shrink-0 items-center gap-[0.833vw] whitespace-nowrap md:gap-3" data-animate="fade-up">
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>

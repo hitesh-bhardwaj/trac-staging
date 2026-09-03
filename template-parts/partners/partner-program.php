@@ -42,7 +42,7 @@ $cards = [
 ?>
 
 <section class="partners-program relative bg-white py-[7vw] md:py-20 sm:py-16" data-section="partners-program">
-    <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[92rem] mx-auto ">
             <div class="text-center max-w-[56rem] mx-auto">
                 <div class="flex items-center justify-center gap-3 mb-14 md:mb-6" data-animate="fade-up">

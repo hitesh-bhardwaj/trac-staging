@@ -63,7 +63,7 @@ if (!defined('ABSPATH')) {
 
             </div>
 
-            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5.21vw] md:flex-col md:gap-8 md:px-[4vw]">
+            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5vw] md:flex-col md:gap-8 md:px-[4vw]">
                 <div class="why-card flex flex-col gap-[0.729vw] w-[23.438vw] md:w-full md:max-w-md">
                     <div class="why-card-image bg-transparent h-[28.646vw] rounded-[1.25vw] overflow-hidden md:h-64 md:rounded-2xl">
                         <img src="<?php echo esc_url(
@@ -77,7 +77,7 @@ if (!defined('ABSPATH')) {
                     </div>
                 </div>
             </div>
-            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5.21vw] md:flex-col md:gap-8 md:px-[4vw]">
+            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5vw] md:flex-col md:gap-8 md:px-[4vw]">
                 <div class="why-card flex flex-col gap-[0.729vw] w-[23.438vw] md:w-full md:max-w-md">
                     <div class="why-card-image bg-transparent h-[28.646vw] rounded-[1.25vw] overflow-hidden md:h-64 md:rounded-2xl">
                         <img src="<?php echo esc_url(
@@ -91,7 +91,7 @@ if (!defined('ABSPATH')) {
                     </div>
                 </div>
 </div>
-            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5.21vw] md:flex-col md:gap-8 md:px-[4vw]">
+            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5vw] md:flex-col md:gap-8 md:px-[4vw]">
                 <div class="why-card flex flex-col gap-[0.729vw] w-[23.438vw] md:w-full md:max-w-md">
                     <div class="why-card-image bg-transparent h-[28.646vw] rounded-[1.25vw] overflow-hidden md:h-64 md:rounded-2xl">
                         <img src="<?php echo esc_url(
@@ -108,7 +108,7 @@ if (!defined('ABSPATH')) {
 </div>
 
 
-            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5.21vw] md:flex-col md:gap-8 md:px-[4vw]">
+            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5vw] md:flex-col md:gap-8 md:px-[4vw]">
 
 
                 <div class="why-card flex flex-col gap-[0.729vw] w-[23.438vw] md:w-full md:max-w-md">
@@ -124,7 +124,7 @@ if (!defined('ABSPATH')) {
                     </div>
                 </div>
             </div>
-             <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5.21vw] md:flex-col md:gap-8 md:px-[4vw]">
+             <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5vw] md:flex-col md:gap-8 md:px-[4vw]">
                  <div class="why-card flex flex-col gap-[0.729vw] w-[23.438vw] md:w-full md:max-w-md">
                     <div class="why-card-image bg-transparent h-[28.646vw] rounded-[1.25vw] overflow-hidden md:h-64 md:rounded-2xl">
                         <img src="<?php echo esc_url(
@@ -140,7 +140,7 @@ if (!defined('ABSPATH')) {
 </div>
 
 
-            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5.21vw] md:flex-col md:gap-8 md:px-[4vw]">
+            <div class="why-trac-slide why-trac-slide-cards relative z-[2] w-[50vw] h-screen flex-shrink-0 flex items-center justify-center gap-[2.604vw] px-[5vw] md:flex-col md:gap-8 md:px-[4vw]">
 
 
                 <div class="why-card flex flex-col gap-[0.729vw] w-[23.438vw] md:w-full md:max-w-md">

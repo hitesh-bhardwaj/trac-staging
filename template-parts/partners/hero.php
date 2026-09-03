@@ -5,11 +5,11 @@ if (!defined('ABSPATH')) {
 ?>
 
 <section class="hero relative min-h-screen bg-white overflow-hidden" data-section="hero" data-hero-static>
-    <div class="hero-container relative z-[10] w-full px-[5.21vw] pt-[12vw] pb-[5.21vw] md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
+    <div class="hero-container relative z-[10] w-full px-[5vw] pt-[12vw] pb-[5.21vw] md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
         <div class="flex min-h-[calc(100vh-10vw)] items-center justify-center md:min-h-[calc(100vh-120px)]">
             <div class="hero-text w-full max-w-[80rem] text-center">
                 <h1
-                    class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4"
+                    class="hero-title font-heading text-text-primary tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4"
                     data-hero-reveal
                     data-heading-anim
                     data-base-delay="0.05"

@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 ?>
 
 <section class="carrier-contact relative overflow-hidden bg-white py-[7vw] md:py-20 sm:py-16" data-section="carrier-contact">
-    <div class="w-full px-[5.21vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[104rem] mx-auto grid grid-cols-[1fr_1fr] gap-[6vw] items-start md:grid-cols-1 md:gap-12">
             <div class="pt-[0.5vw] md:pt-0">
                 <div class="flex items-center gap-[0.729vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">

@@ -15,7 +15,7 @@ get_header();
 
 <main id="main-content" class="site-main faq-archive" data-barba="container" data-barba-namespace="faq-archive">
     <section class="faqs-archive-section relative bg-white overflow-hidden" data-section="faq-archive">
-        <div class="px-[5.21vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+        <div class="px-[5vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
 
             <!-- Page Header -->
             <div class="faqs-header text-center mb-[4.844vw] md:mb-12 sm:mb-8">

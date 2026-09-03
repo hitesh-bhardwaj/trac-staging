@@ -16,7 +16,7 @@ $container_classes = isset($args['container_classes'])
     : (isset($args['container_class']) ? (string) $args['container_class'] : '');
 $container_classes = $container_classes !== ''
     ? $container_classes
-    : 'hero-container w-full px-[5vw] pt-[12vw] pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]';
+    : 'hero-container w-full px-[5vw]  pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]';
 $grid_classes = isset($args['grid_classes'])
     ? (string) $args['grid_classes']
     : 'hero-grid flex items-start justify-between gap-[5vw] md:flex-col md:gap-8';
@@ -33,7 +33,7 @@ $title_tag = isset($args['title_tag']) ? (string) $args['title_tag'] : 'h1';
 
 $title_classes = isset($args['title_classes'])
     ? (string) $args['title_classes']
-    : 'hero-title text-[4vw] font-heading text-white tracking-[0.05vw] mb-[1.667vw] md:mb-6 sm:mb-4 md:text-center';
+    : 'hero-title text-[4vw] font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 md:text-center';
 $subtitle = isset($args['subtitle']) ? (string) $args['subtitle'] : '';
 $subtitle_classes = isset($args['subtitle_classes'])
     ? (string) $args['subtitle_classes']

@@ -50,7 +50,7 @@ $what_we_do_cards = [
 
 <section class="what-we-do-section relative py-[9vw] bg-[#389FD8]" data-section="what-we-do" data-what-we-do-slider>
     <div class="what-we-do-shell w-full   md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
-        <div class="mb-[3.438vw]  px-[5.21vw] flex items-center justify-between md:mb-10">
+        <div class="mb-[3.438vw]  px-[5vw] flex items-center justify-between md:mb-10">
             <div data-animate="fade-up" class="what-we-do-header flex items-center gap-[0.833vw] md:gap-3">
                 <span class="label-line h-[0.208vw] w-[1.354vw] bg-white md:h-1 md:w-6 sm:w-5"></span>
                 <span class="font-body text-30 text-white md:text-xl sm:text-lg">

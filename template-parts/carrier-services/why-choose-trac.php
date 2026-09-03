@@ -33,7 +33,7 @@ $why_cards = [
 ];
 ?>
 
-<section class="why-choose-trac-section relative overflow-hidden bg-[#eef3fc] px-[5.208vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="why-choose-trac">
+<section class="why-choose-trac-section relative overflow-hidden bg-[#eef3fc] px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="why-choose-trac">
     <div class="relative z-[2] mx-auto max-w-[92rem]">
         <div class="flex items-center justify-start gap-3 mb-8 md:mb-6" data-animate="fade-up">
             <span class="w-6 h-1 bg-[#E86224]"></span>

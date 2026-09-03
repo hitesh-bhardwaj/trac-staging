@@ -27,11 +27,11 @@ get_header();
             ob_start();
             ?>
             <div class="flex justify-end md:justify-start" data-hero-reveal data-hero-delay="0.22">
-                <div class="contact-form-card w-full max-w-[42.708vw] rounded-[2.083vw] bg-white p-[4.167vw_2.604vw] md:max-w-full md:rounded-3xl md:p-12 sm:p-6">
+                <div class="contact-form-card w-full max-w-[42.708vw] rounded-[2.083vw] bg-white p-[3.5vw_2.5vw] md:max-w-full md:rounded-3xl md:p-12 sm:p-6">
                     <div class="contact-form-wrapper">
                         <?php
                         if (function_exists('wpcf7_contact_form')) {
-                            echo do_shortcode('[contact-form-7 id="7912219" title="Contact form 1"]');
+                            echo do_shortcode('[contact-form-7 id="559c9b1" title="Contact form 1"]');
                         } else {
                             echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';
                         }
@@ -46,11 +46,11 @@ get_header();
             ?>
             <div class="mt-[12vw] md:mt-10 sm:mt-8">
                 <div class="mb-[2vw] flex flex-wrap items-center gap-x-3 gap-y-2 font-body text-24 text-white md:mb-6 md:text-lg sm:text-base">
-                    <a href="mailto:sales@trac.africa" class="under-multi text-white transition-colors hover:text-white focus-visible:text-white">
+                    <a href="mailto:sales@trac.africa" class="under-multi under-multi-white text-white transition-colors hover:text-white focus-visible:text-white">
                         sales@trac.africa
                     </a>
                     <span aria-hidden="true">|</span>
-                    <a href="tel:1090" class="transition-colors hover:text-white focus-visible:text-white">
+                    <a href="tel:1090" class="under-multi under-multi-white transition-colors hover:text-white focus-visible:text-white">
                         1090
                     </a>
                 </div>
@@ -80,11 +80,11 @@ get_header();
                     'section_classes' =>
                         'hero relative min-h-screen overflow-hidden !bg-[#0B1F3A]',
                     'container_classes' =>
-                        'hero-container relative z-[10] w-full px-[5vw] pt-[12vw] pb-[5.21vw] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]',
+                        'hero-container relative z-[10] w-full px-[5vw]  pb-[5.21vw] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]',
                     'grid_classes' =>
-                        'hero-grid flex items-center justify-between gap-[6vw] md:flex-col md:items-start md:gap-10',
+                        'hero-grid flex justify-between gap-[6vw] md:flex-col md:items-start md:gap-10',
                     'text_classes' =>
-                        'hero-text flex min-h-[34vw] w-[45%] flex-col justify-between md:min-h-0 md:w-full md:max-w-full',
+                        'hero-text flex min-h-[34vw] w-[45%] flex-col md:min-h-0 md:w-full md:max-w-full',
                     'media_classes' =>
                         'hero-media w-[48%] md:w-full',
                     'title_lines' => [

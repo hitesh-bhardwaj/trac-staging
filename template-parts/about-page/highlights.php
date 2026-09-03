@@ -29,7 +29,7 @@ $about_highlights = [
 ?>
 
 <section class="about-highlights relative overflow-hidden bg-neutral-50" data-section="about-highlights">
-    <div class="about-highlights-container w-full px-[5.21vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+    <div class="about-highlights-container w-full px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="mb-[3.125vw] max-w-[52vw] md:mb-10 md:max-w-full">
             <div class="mb-[1.563vw] flex items-center gap-[1.042vw] md:mb-6 md:gap-4" data-animate="fade-up">
                 <span class="h-[0.208vw] w-[1.354vw] bg-brand-primary md:h-1 md:w-6"></span>

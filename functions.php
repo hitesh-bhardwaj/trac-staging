@@ -883,3 +883,72 @@ add_filter('rest_authentication_errors', function ($result) {
     }
     return $result;
 });
+
+/**
+ * Style every Contact Form 7 submit button as the same animated .btn.btn-primary
+ * pill used in hero sections (sliding line, text shift, fading arrow icon on hover).
+ * Rebuilds CF7's plain <input type="submit"> into the identical <button> markup
+ * hero.php uses, while preserving CF7's own classes so its JS/AJAX/spinner still work.
+ */
+add_filter('wpcf7_form_elements', 'trac_style_wpcf7_submit_button');
+function trac_style_wpcf7_submit_button($content)
+{
+    return preg_replace_callback(
+        '/<input\s+[^>]*type="submit"[^>]*>/i',
+        'trac_render_btn_primary_submit',
+        $content,
+    );
+}
+
+function trac_render_btn_primary_submit($matches)
+{
+    $tag = $matches[0];
+
+    if (false === strpos($tag, 'wpcf7-submit')) {
+        return $tag;
+    }
+
+    preg_match('/value="([^"]*)"/i', $tag, $value_match);
+    preg_match('/class="([^"]*)"/i', $tag, $class_match);
+    preg_match('/id="([^"]*)"/i', $tag, $id_match);
+
+    $label = isset($value_match[1]) ? $value_match[1] : 'Submit';
+    $classes = isset($class_match[1])
+        ? $class_match[1]
+        : 'wpcf7-form-control wpcf7-submit has-spinner';
+    $id_attr = isset($id_match[1]) ? ' id="' . esc_attr($id_match[1]) . '"' : '';
+
+    $svg = '<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">'
+        . '<path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>'
+        . '<path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>'
+        . '</svg>';
+
+    return sprintf(
+        '<button type="submit"%s class="%s btn btn-primary group magnetic"><span class="btn-line"></span><span class="btn-text">%s</span><span class="btn-icon">%s</span></button>',
+        $id_attr,
+        esc_attr($classes),
+        $label,
+        $svg,
+    );
+}
+
+/**
+ * Restrict the contact form's "Phone Number" field (your-number) to digits only.
+ * Field stays a plain text input (per Figma design); this enforces numeric-only
+ * server-side since the front-end input filtering can be bypassed.
+ */
+add_filter('wpcf7_validate_text*', 'trac_validate_phone_number_digits_only', 20, 2);
+function trac_validate_phone_number_digits_only($result, $tag)
+{
+    if ('your-number' !== $tag->name) {
+        return $result;
+    }
+
+    $value = isset($_POST['your-number']) ? trim(wp_unslash($_POST['your-number'])) : '';
+
+    if ('' !== $value && !preg_match('/^[0-9]+$/', $value)) {
+        $result->invalidate($tag, 'Please enter numbers only.');
+    }
+
+    return $result;
+}
