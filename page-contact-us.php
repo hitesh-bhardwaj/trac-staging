@@ -27,11 +27,11 @@ get_header();
             ob_start();
             ?>
             <div class="flex justify-end md:justify-start" data-hero-reveal data-hero-delay="0.22">
-                <div class="contact-form-card w-full max-w-[42.708vw] rounded-[2.083vw] bg-white p-[3.5vw_2.5vw] md:max-w-full md:rounded-3xl md:p-12 sm:p-6">
+                <div class="contact-form-card w-full max-w-[42.708vw] rounded-[2vw] bg-white p-[3.5vw_2.5vw] md:max-w-full md:rounded-3xl md:p-12 sm:p-6">
                     <div class="contact-form-wrapper">
                         <?php
                         if (function_exists('wpcf7_contact_form')) {
-                            echo do_shortcode('[contact-form-7 id="559c9b1" title="Contact form 1"]');
+                            echo do_shortcode('[contact-form-7 id="559c9b1" title="Contact form"]');
                         } else {
                             echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';
                         }
@@ -57,16 +57,16 @@ get_header();
 
                 <div class="flex items-center gap-[1.302vw] md:gap-4 sm:gap-3">
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="flex h-[3.125vw] w-[3.125vw] items-center justify-center rounded-full border border-white transition-colors hover:bg-white/10 md:h-12 md:w-12 sm:h-10 sm:w-10" aria-label="Facebook">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/src/assets/icons/facebook.svg'); ?>" alt="" aria-hidden="true" class="h-[2.083vw] w-[2.083vw] brightness-0 invert md:h-8 md:w-8 sm:h-6 sm:w-6">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/src/assets/icons/facebook.svg'); ?>" alt="" aria-hidden="true" class="h-[2vw] w-[2vw] brightness-0 invert md:h-8 md:w-8 sm:h-6 sm:w-6">
                     </a>
                     <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="flex h-[3.125vw] w-[3.125vw] items-center justify-center rounded-full border border-white transition-colors hover:bg-white/10 md:h-12 md:w-12 sm:h-10 sm:w-10" aria-label="X">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/src/assets/icons/twitter.svg'); ?>" alt="" aria-hidden="true" class="h-[2.083vw] w-[2.083vw] brightness-0 invert md:h-8 md:w-8 sm:h-6 sm:w-6">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/src/assets/icons/twitter.svg'); ?>" alt="" aria-hidden="true" class="h-[2vw] w-[2vw] brightness-0 invert md:h-8 md:w-8 sm:h-6 sm:w-6">
                     </a>
                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="flex h-[3.125vw] w-[3.125vw] items-center justify-center rounded-full border border-white transition-colors hover:bg-white/10 md:h-12 md:w-12 sm:h-10 sm:w-10" aria-label="Instagram">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/src/assets/icons/instagram.svg'); ?>" alt="" aria-hidden="true" class="h-[2.083vw] w-[2.083vw] brightness-0 invert md:h-8 md:w-8 sm:h-6 sm:w-6">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/src/assets/icons/instagram.svg'); ?>" alt="" aria-hidden="true" class="h-[2vw] w-[2vw] brightness-0 invert md:h-8 md:w-8 sm:h-6 sm:w-6">
                     </a>
                     <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="flex h-[3.125vw] w-[3.125vw] items-center justify-center rounded-full border border-white transition-colors hover:bg-white/10 md:h-12 md:w-12 sm:h-10 sm:w-10" aria-label="LinkedIn">
-                        <img src="<?php echo esc_url(get_template_directory_uri() . '/src/assets/icons/linkedin.svg'); ?>" alt="" aria-hidden="true" class="h-[2.083vw] w-[2.083vw] brightness-0 invert md:h-8 md:w-8 sm:h-6 sm:w-6">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/src/assets/icons/linkedin.svg'); ?>" alt="" aria-hidden="true" class="h-[2vw] w-[2vw] brightness-0 invert md:h-8 md:w-8 sm:h-6 sm:w-6">
                     </a>
                 </div>
             </div>

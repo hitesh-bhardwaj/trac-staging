@@ -17,13 +17,13 @@ $network_circle_lines_svg_path_line =
     class="our-network-section is-position-debug relative h-fit bg-brand-tint"
     data-section="our-network"
 >
-    <div class=" md:py-12 sm:py-8">
+    <div class=" pt-[7vw] md:py-12 sm:py-8">
         <div class="space-y-[3vw] px-[5vw]">
             <div
                 data-animate="fade-up"
                 class="flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-4"
             >
-                <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+                <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
 
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                     Our Network

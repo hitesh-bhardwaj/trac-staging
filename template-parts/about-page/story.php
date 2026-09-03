@@ -11,7 +11,7 @@ $content = trim((string) get_the_content());
         <div class="about-story-grid flex justify-between gap-[5.208vw] md:flex-col md:gap-10">
             <div class="w-[38%] md:w-full" data-animate="fade-up">
                 <div class="mb-[1.563vw] flex items-center gap-[1.042vw] md:mb-6 md:gap-4">
-                    <span class="h-[0.208vw] w-[1.354vw] bg-brand-primary md:h-1 md:w-6"></span>
+                    <span class="h-[0.2vw] w-[1.5vw] bg-brand-primary md:h-1 md:w-6"></span>
                     <span class="font-body text-24 text-text-primary md:text-xl sm:text-lg">
                         <?php esc_html_e('Who We Are', 'trac'); ?>
                     </span>

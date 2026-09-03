@@ -53,7 +53,7 @@ $team_members = [
             <div class="w-[30%] max-md:w-full flex flex-col h-full justify-between">
                 <div>
                    <div class="mb-[1.8vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3" data-animate="fade-up">
-                     <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+                     <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
                      <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                         <?php esc_html_e('Team', 'trac'); ?>
                       </span>

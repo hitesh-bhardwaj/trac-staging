@@ -42,7 +42,7 @@ $section_image_alt =
                 class="mb-[4vw] flex items-center justify-start gap-[1.2vw] md:mb-[5vw] md:gap-3 sm:mb-[8vw]"
                 data-animate="fade-up"
             >
-                <span class="h-[0.208vw] w-[1.354vw] bg-white md:h-[3px] md:w-6 sm:w-5"></span>
+                <span class="h-[0.2vw] w-[1.5vw] bg-white md:h-[3px] md:w-6 sm:w-5"></span>
 
                 <span class="font-body text-30 leading-none text-white md:text-xl sm:text-[4.5vw]">
                     <?php echo esc_html($section_label); ?>

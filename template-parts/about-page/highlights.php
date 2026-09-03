@@ -32,7 +32,7 @@ $about_highlights = [
     <div class="about-highlights-container w-full px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="mb-[3.125vw] max-w-[52vw] md:mb-10 md:max-w-full">
             <div class="mb-[1.563vw] flex items-center gap-[1.042vw] md:mb-6 md:gap-4" data-animate="fade-up">
-                <span class="h-[0.208vw] w-[1.354vw] bg-brand-primary md:h-1 md:w-6"></span>
+                <span class="h-[0.2vw] w-[1.5vw] bg-brand-primary md:h-1 md:w-6"></span>
                 <span class="font-body text-24 text-text-primary md:text-xl sm:text-lg">
                     <?php esc_html_e('What Shapes Our Work', 'trac'); ?>
                 </span>
@@ -49,7 +49,7 @@ $about_highlights = [
         <div class="grid grid-cols-3 gap-[1.667vw] md:grid-cols-1 md:gap-6">
             <?php foreach ($about_highlights as $index => $highlight): ?>
                 <article
-                    class="rounded-[1.875vw] border border-neutral-200 bg-white p-[2.083vw] shadow-[0_20px_60px_rgba(16,65,127,0.08)] md:rounded-[24px] md:p-8"
+                    class="rounded-[1.875vw] border border-neutral-200 bg-white p-[2vw] shadow-[0_20px_60px_rgba(16,65,127,0.08)] md:rounded-[24px] md:p-8"
                     data-animate="fade-up"
                     data-delay="<?php echo esc_attr(number_format($index * 0.1, 1)); ?>"
                 >

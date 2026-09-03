@@ -118,7 +118,7 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                             data-hero-delay="0.14"
                             data-para-anim
                         >
-                            <?php echo esc_html($paragraph); ?>
+                            <?php echo wp_kses_post($paragraph); ?>
                         </p>
                     <?php endforeach; ?>
                 </div>
@@ -211,7 +211,7 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                                     data-hero-delay="0.14"
                                     data-para-anim
                                 >
-                                    <?php echo esc_html($paragraph); ?>
+                                    <?php echo wp_kses_post($paragraph); ?>
                                 </p>
                             <?php endforeach; ?>
                         </div>

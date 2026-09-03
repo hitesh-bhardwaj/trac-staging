@@ -43,7 +43,7 @@ $enterprise_services = [
                 <span class="font-body  text-brand-secondary text-30">Our Services</span>
             </div>
 
-            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6 text-left">
+            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6 text-left">
                 Built for Organisations That Cannot Afford Downtime.
             </h2>
 

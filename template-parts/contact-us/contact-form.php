@@ -11,12 +11,12 @@ if (!defined('ABSPATH')) {
             <div class="">
                 <!-- Section Label -->
                 <div class="flex items-center gap-[0.729vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">
-                    <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
+                    <span class="w-[1.5vw] h-[0.2vw] bg-brand-primary md:w-6 md:h-1"></span>
                     <span class="font-body text-24 text-text-primary md:text-xl">Get in Touch</span>
                 </div>
 
                 <!-- Heading -->
-                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" >
+                <h2 class="font-heading text-[3.5vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" >
                     <span data-heading-anim class="block">Let's Get You</span>
                    <span data-heading-anim class="block"> Connected </span>
                 </h2>
@@ -47,22 +47,22 @@ if (!defined('ABSPATH')) {
                     <div class="contact-social flex items-center gap-[1.302vw] md:gap-4 sm:gap-3">
                         <!-- Facebook -->
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-12 sm:h-12" aria-label="Facebook">
-                            <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/facebook.svg" alt="Facebook" class="w-[2.083vw] h-[2.083vw] md:w-8 md:h-8 sm:w-8 sm:h-8">
+                            <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/facebook.svg" alt="Facebook" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-8 sm:h-8">
                         </a>
 
                         <!-- X (Twitter) -->
                         <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-12 sm:h-12" aria-label="X">
-                            <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/twitter.svg" alt="X" class="w-[2.083vw] h-[2.083vw] md:w-8 md:h-8 sm:w-8 sm:h-8">
+                            <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/twitter.svg" alt="X" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-8 sm:h-8">
                         </a>
 
                         <!-- Instagram -->
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-12 sm:h-12" aria-label="Instagram">
-                            <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/instagram.svg" alt="Instagram" class="w-[2.083vw] h-[2.083vw] md:w-8 md:h-8 sm:w-8 sm:h-8">
+                            <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/instagram.svg" alt="Instagram" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-8 sm:h-8">
                         </a>
 
                         <!-- LinkedIn -->
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-12 sm:h-12" aria-label="LinkedIn">
-                            <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/linkedin.svg" alt="LinkedIn" class="w-[2.083vw] h-[2.083vw] md:w-8 md:h-8 sm:w-8 sm:h-8">
+                            <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/linkedin.svg" alt="LinkedIn" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-8 sm:h-8">
                         </a>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ if (!defined('ABSPATH')) {
 
             <!-- Right Column: Form Card -->
             <div class="flex justify-end md:justify-start" data-animate="fade-up" data-delay="0.25">
-                <div class="contact-form-card w-full max-w-[42.708vw] md:max-w-full bg-white rounded-[2.083vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.167vw_2.604vw] md:p-12 sm:p-6">
+                <div class="contact-form-card w-full max-w-[42.708vw] md:max-w-full bg-white rounded-[2vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.167vw_2.604vw] md:p-12 sm:p-6">
                     <?php
                     // Contact Form 7 shortcode - replace XXX with your actual form ID
                     // Example: echo do_shortcode('[contact-form-7 id="123" title="Contact form"]');
@@ -78,7 +78,7 @@ if (!defined('ABSPATH')) {
                     <div class="contact-form-wrapper">
                         <?php
                         if (function_exists('wpcf7_contact_form')) {
-                            echo do_shortcode('[contact-form-7 id="559c9b1" title="Contact form 1"]');
+                            echo do_shortcode('[contact-form-7 id="559c9b1" title="Contact form"]');
                         } else {
                             // Fallback placeholder if CF7 is not installed
                             echo '<p class="text-center text-gray-500">Contact Form 7 plugin needs to be installed and configured.</p>';

@@ -33,7 +33,7 @@ $who_we_are_stats = [
     <div class="who-we-are-container w-full flex flex-col items-center space-y-[7vw] px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="who-we-are-intro w-full flex justify-start gap-[10vw] items-start md:flex-col md:gap-8">
             <div class="who-we-are-label flex shrink-0 items-center gap-[0.833vw] whitespace-nowrap md:gap-3" data-animate="fade-up">
-                <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+                <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
                 <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                     <?php esc_html_e("Who We Are", "trac"); ?>
                 </span>
@@ -48,7 +48,7 @@ $who_we_are_stats = [
        
 
         <div data-animate="fade-up" class="counter flex w-full justify-center" data-counter-section>
-            <div class="counter-grid grid w-full max-w-[72vw] grid-cols-3 gap-[3.646vw] md:max-w-full md:grid-cols-1 md:gap-10">
+            <div class="counter-grid grid w-full max-w-[72vw] grid-cols-3 gap-[3.5vw] md:max-w-full md:grid-cols-1 md:gap-10">
                 <?php foreach ($who_we_are_stats as $index => $stat): ?>
                     <article
                         class="counter-item relative flex flex-col items-center text-center<?php echo $index < count($who_we_are_stats) - 1

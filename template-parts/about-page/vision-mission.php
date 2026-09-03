@@ -31,7 +31,7 @@ $vision_mission_cards = [
                 class="testimonials-label mb-[1.563vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10"
                 data-animate="fade-up"
             >
-                <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+                <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                     <?php echo esc_html(get_field('testimonials_label') ? : 'Our Vision & Mission',); ?>
                 </span>
@@ -40,9 +40,9 @@ $vision_mission_cards = [
             <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F1A"></canvas>
 
     <div class="vision-mission-container w-full h-fit px-[8vw] pt-[5vw]  md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12 relative z-[4]">
-        <div class="vision-mission-grid grid grid-cols-2 gap-[3.646vw] md:grid-cols-1 md:gap-8">
+        <div class="vision-mission-grid grid grid-cols-2 gap-[3.5vw] md:grid-cols-1 md:gap-8">
             <?php foreach ($vision_mission_cards as $card): ?>
-                <article data-animate="fade-up" class="vision-mission-card rounded-[2.083vw] border-[1.5px] border-brand-quaternary bg-brand-quaternary p-[3vw] pb-[4vw] md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
+                <article data-animate="fade-up" class="vision-mission-card rounded-[2vw] border-[1.5px] border-brand-quaternary bg-brand-quaternary p-[3vw] pb-[4vw] md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
                     <div class="mb-[3.125vw] md:mb-8 sm:mb-6">
                         <img
                             src="<?php echo esc_url($card['image']); ?>"
@@ -52,7 +52,7 @@ $vision_mission_cards = [
                         >
                     </div>
 
-                    <h2 class="mb-[2.083vw] font-heading text-66 font-normal leading-[1.05] tracking-[-0.02em] text-white md:mb-6 md:text-[52px] sm:text-[38px]">
+                    <h2 class="mb-[2vw] font-heading text-66 font-normal leading-[1.05] tracking-[-0.02em] text-white md:mb-6 md:text-[52px] sm:text-[38px]">
                         <?php echo esc_html($card['title']); ?>
                     </h2>
 

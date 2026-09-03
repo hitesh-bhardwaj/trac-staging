@@ -54,7 +54,7 @@ $client_logos = [
                 <?php for ($set = 0; $set < 2; $set++) : ?>
                     <div class="clients-marquee-group" aria-hidden="<?php echo $set === 0 ? 'false' : 'true'; ?>">
                         <?php foreach ($client_logos as $logo) : ?>
-                            <div class="client-logo-card flex items-center justify-center p-[2.083vw] aspect-[327/239] md:p-6 sm:p-4">
+                            <div class="client-logo-card flex items-center justify-center p-[2vw] aspect-[327/239] md:p-6 sm:p-4">
                                 <img
                                     src="<?php echo esc_url($logo['src']); ?>"
                                     alt="<?php echo $set === 0 ? esc_attr($logo['alt']) : ''; ?>"

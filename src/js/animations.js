@@ -291,17 +291,42 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
 
             const SplitInLine = (node) => {
                 if (node.dataset.paraSplit === 'true') return;
-                const raw = (node.textContent || '').trim();
-                if (!raw) return;
 
-                const words = raw.split(/\s+/);
+                const words = [];
+                const collectWords = (n) => {
+                    n.childNodes.forEach((child) => {
+                        if (child.nodeType === Node.TEXT_NODE) {
+                            (child.textContent || '')
+                                .split(/\s+/)
+                                .filter(Boolean)
+                                .forEach((w) => words.push(w));
+                        } else if (child.tagName === 'BR') {
+                            words.push('\n');
+                        } else {
+                            collectWords(child);
+                        }
+                    });
+                };
+                collectWords(node);
+                if (!words.length) return;
+
                 node.innerHTML = '';
+                let afterForcedBreak = false;
                 words.forEach((w, idx) => {
+                    if (w === '\n') {
+                        node.appendChild(document.createElement('br'));
+                        afterForcedBreak = true;
+                        return;
+                    }
                     const span = document.createElement('span');
                     span.className = 'para-word';
                     span.innerHTML = escapeHtml(w);
+                    if (afterForcedBreak) {
+                        span.dataset.afterBreak = 'true';
+                        afterForcedBreak = false;
+                    }
                     node.appendChild(span);
-                    if (idx !== words.length - 1) {
+                    if (idx !== words.length - 1 && words[idx + 1] !== '\n') {
                         node.appendChild(document.createTextNode(' '));
                     }
                 });
@@ -334,6 +359,9 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
                 lines.forEach((wordLine) => {
                     const wrap = document.createElement('span');
                     wrap.className = 'para-line';
+                    if (wordLine[0]?.dataset.afterBreak === 'true') {
+                        wrap.classList.add('para-line-break');
+                    }
 
                     const inner = document.createElement('span');
                     inner.className = 'line-internal';
@@ -912,23 +940,48 @@ function initParagraphLineReveal(scope = null) {
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#039;');
 
-    // Equivalent to the user's SplitInLine helper.
+    // Equivalent to the user's SplitInLine helper. Walks child nodes (rather than
+    // flattening to textContent) so a literal <br> in the source survives as a
+    // forced line break instead of being silently discarded.
     const SplitInLine = (el) => {
         if (el.dataset.paraSplit === 'true') return;
 
-        const raw = (el.textContent || '').trim();
-        if (!raw) return;
-
-        const words = raw.split(/\s+/);
+        const words = [];
+        const collectWords = (node) => {
+            node.childNodes.forEach((child) => {
+                if (child.nodeType === Node.TEXT_NODE) {
+                    (child.textContent || '')
+                        .split(/\s+/)
+                        .filter(Boolean)
+                        .forEach((w) => words.push(w));
+                } else if (child.tagName === 'BR') {
+                    words.push('\n');
+                } else {
+                    collectWords(child);
+                }
+            });
+        };
+        collectWords(el);
+        if (!words.length) return;
 
         // Build DOM with normal spaces (not &nbsp;) to avoid overflow/clipping after we "lock" words into lines.
         el.innerHTML = '';
+        let afterForcedBreak = false;
         words.forEach((w, idx) => {
+            if (w === '\n') {
+                el.appendChild(document.createElement('br'));
+                afterForcedBreak = true;
+                return;
+            }
             const span = document.createElement('span');
             span.className = 'para-word';
             span.innerHTML = escapeHtml(w);
+            if (afterForcedBreak) {
+                span.dataset.afterBreak = 'true';
+                afterForcedBreak = false;
+            }
             el.appendChild(span);
-            if (idx !== words.length - 1) {
+            if (idx !== words.length - 1 && words[idx + 1] !== '\n') {
                 el.appendChild(document.createTextNode(' '));
             }
         });
@@ -963,6 +1016,9 @@ function initParagraphLineReveal(scope = null) {
         lines.forEach((wordLine) => {
             const wrap = document.createElement('span');
             wrap.className = 'para-line';
+            if (wordLine[0]?.dataset.afterBreak === 'true') {
+                wrap.classList.add('para-line-break');
+            }
 
             const inner = document.createElement('span');
             inner.className = 'line-internal';

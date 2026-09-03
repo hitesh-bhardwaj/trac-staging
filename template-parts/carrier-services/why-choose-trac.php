@@ -71,5 +71,5 @@ $why_cards = [
         </div>
     </div>
 
-    <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#E86224" data-line-color="#10417F33"></canvas>
+    <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F33"></canvas>
 </section>

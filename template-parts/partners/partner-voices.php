@@ -83,7 +83,7 @@ $slides = [
 		                    <div class="partner-voices-track flex gap-[8vw] md:gap-12 sm:gap-8 will-change-transform" data-partner-voices-track>
 		                        <?php foreach ($slides as $slide): ?>
 		                            <article class="partner-voices-slide flex-shrink-0 w-[48vw] md:w-[72vw] sm:w-[84vw] rounded-[1.563vw] md:rounded-3xl bg-white border border-brand-primary/40 p-[2.5vw] md:p-8 sm:p-6 text-left" data-partner-voices-slide>
-                                <div class="h-[4vw] md:h-10 sm:h-8 w-auto mb-[2.083vw] md:mb-6 sm:mb-5">
+                                <div class="h-[4vw] md:h-10 sm:h-8 w-auto mb-[2vw] md:mb-6 sm:mb-5">
                                     <img src="<?php echo esc_url(
                                         $slide["logo"]
                                     ); ?>" alt="<?php echo esc_attr(

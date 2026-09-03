@@ -885,6 +885,22 @@ add_filter('rest_authentication_errors', function ($result) {
 });
 
 /**
+ * Disable CF7's automatic wpautop() on form markup (not mail bodies). Our form
+ * templates use custom HTML (buttons, wrapper divs, spans) and wpautop silently
+ * wraps lines in <p> and inserts <br> between them, breaking flex layouts and
+ * the label/input structure of custom fields like the Solutions radio picker.
+ */
+add_filter('wpcf7_autop_or_not', 'trac_disable_wpcf7_autop_for_forms', 10, 2);
+function trac_disable_wpcf7_autop_for_forms($autop, $options)
+{
+    if (isset($options['for']) && 'mail' === $options['for']) {
+        return $autop;
+    }
+
+    return false;
+}
+
+/**
  * Style every Contact Form 7 submit button as the same animated .btn.btn-primary
  * pill used in hero sections (sliding line, text shift, fading arrow icon on hover).
  * Rebuilds CF7's plain <input type="submit"> into the identical <button> markup

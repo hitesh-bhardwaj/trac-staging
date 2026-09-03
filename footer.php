@@ -94,22 +94,22 @@
                 <div class="footer-social flex items-center gap-[1.302vw] md:gap-4 md:order-1">
                     <!-- Facebook -->
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-10 sm:h-10" aria-label="Facebook">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/facebook.svg" alt="Facebook" class="w-[2.083vw] h-[2.083vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
+                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/facebook.svg" alt="Facebook" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
                     </a>
 
                     <!-- X (Twitter) -->
                     <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-10 sm:h-10" aria-label="X">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/twitter.svg" alt="X" class="w-[2.083vw] h-[2.083vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
+                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/twitter.svg" alt="X" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
                     </a>
 
                     <!-- Instagram -->
                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-10 sm:h-10" aria-label="Instagram">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/instagram.svg" alt="Instagram" class="w-[2.083vw] h-[2.083vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
+                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/instagram.svg" alt="Instagram" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
                     </a>
 
                     <!-- LinkedIn -->
                     <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-10 sm:h-10" aria-label="LinkedIn">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/linkedin.svg" alt="LinkedIn" class="w-[2.083vw] h-[2.083vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
+                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/linkedin.svg" alt="LinkedIn" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
                     </a>
 
                     

@@ -71,7 +71,7 @@
             </div>
 
             <!-- Primary Navigation - Desktop -->
-            <nav id="primary-nav" class="primary-navigation flex items-center justify-center flex-1 mx-[2.083vw] md:hidden" aria-label="<?php esc_attr_e(
+            <nav id="primary-nav" class="primary-navigation flex items-center justify-center flex-1 mx-[2vw] md:hidden" aria-label="<?php esc_attr_e(
                 'Primary Navigation',
                 'trac',
             ); ?>">
@@ -90,7 +90,7 @@
         data-products-trigger
     >
         Solutions
-        <div class="size-[1.5vw] mt-[-0.5vw] group-hover:translate-y-[10%] duration-300 ease-out">
+        <div class="size-[1.5vw] group-hover:translate-y-[10%] duration-300 ease-out">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.708 22.122L23.416 14.416L22.002 13L15.708 19.294L9.416 13L8 14.416L15.708 22.122Z" fill="var(--color-brand-light)"/>
             </svg>

@@ -52,7 +52,7 @@ $what_we_do_cards = [
     <div class="what-we-do-shell w-full   md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="mb-[3.438vw]  px-[5vw] flex items-center justify-between md:mb-10">
             <div data-animate="fade-up" class="what-we-do-header flex items-center gap-[0.833vw] md:gap-3">
-                <span class="label-line h-[0.208vw] w-[1.354vw] bg-white md:h-1 md:w-6 sm:w-5"></span>
+                <span class="label-line h-[0.2vw] w-[1.5vw] bg-white md:h-1 md:w-6 sm:w-5"></span>
                 <span class="font-body text-30 text-white md:text-xl sm:text-lg">
                     <?php esc_html_e('What We Do', 'trac'); ?>
                 </span>
@@ -87,7 +87,7 @@ $what_we_do_cards = [
            
             <div class="what-we-do-card-container fade-up flex gap-[1.667vw]  md:flex-col md:gap-6 " data-what-we-do-track>
                 <?php foreach ($what_we_do_cards as $card): ?>
-                    <article class="what-we-do-card flex h-[30vw] w-[25vw] flex-shrink-0 flex-col rounded-[1.563vw] bg-white px-[2.083vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] md:h-auto md:w-full md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
+                    <article class="what-we-do-card flex h-[30vw] w-[25vw] flex-shrink-0 flex-col rounded-[1.563vw] bg-white px-[2vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] md:h-auto md:w-full md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
                         <div class="mb-[5.208vw] text-brand-primary md:mb-10 sm:mb-8">
                             <img
                                 src="<?php echo esc_url(get_template_directory_uri() . '/src' . $card['icon']); ?>"

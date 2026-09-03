@@ -25,8 +25,8 @@ $instagram_posts = [
 ?>
 
 <section class="about-socials-section px-[5vw] py-[7%] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
-    <div class="mb-[3.646vw] flex items-center gap-[0.833vw] md:mb-8 md:gap-3 sm:mb-6" data-animate="fade-up">
-        <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+    <div class="mb-[3.5vw] flex items-center gap-[0.833vw] md:mb-8 md:gap-3 sm:mb-6" data-animate="fade-up">
+        <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
         <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
             <?php esc_html_e('Our Instagram', 'trac'); ?>
         </span>
@@ -46,7 +46,7 @@ $instagram_posts = [
                         class="h-full w-full scale-105 object-cover transition-transform duration-[600ms] ease-out group-hover:scale-100"
                     >
 
-                    <span class="absolute bottom-[1.042vw] right-[1.042vw] flex h-[2.083vw] w-[2.083vw] items-center justify-center rounded-full bg-white md:bottom-4 md:right-4 md:h-10 md:w-10 sm:bottom-3 sm:right-3 sm:h-9 sm:w-9">
+                    <span class="absolute bottom-[1.042vw] right-[1.042vw] flex h-[2vw] w-[2vw] items-center justify-center rounded-full bg-white md:bottom-4 md:right-4 md:h-10 md:w-10 sm:bottom-3 sm:right-3 sm:h-9 sm:w-9">
                         <img
                             src="<?php echo esc_url($instagram_icon); ?>"
                             alt=""

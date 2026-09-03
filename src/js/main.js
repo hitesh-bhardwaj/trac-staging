@@ -252,10 +252,12 @@ function initNetworkCanvases() {
 function initializePageComponents() {
     initFaqs();
     initPhoneNumberField();
+    initSolutionPicker();
     initPartnerNetworkTabs();
     initCollaborationsAccordion();
     initClientLogos();
     initProductsMegaMenu();
+    initServicesSlider();
     initMouseFollower();
 
     if (!app.prefersReducedMotion) {
@@ -304,6 +306,56 @@ function initPhoneNumberField() {
             const digitsOnly = input.value.replace(/\D/g, '');
             if (digitsOnly !== input.value) {
                 input.value = digitsOnly;
+            }
+        });
+    });
+}
+
+/**
+ * Contact form: collapsible "Solutions" picker (radio panel instead of a native select)
+ */
+function initSolutionPicker() {
+    const pickers = document.querySelectorAll('.contact-form-wrapper .solution-picker');
+    if (!pickers.length) return;
+
+    pickers.forEach((picker) => {
+        const toggle = picker.querySelector('[data-solution-toggle]');
+        const panel = picker.querySelector('[data-solution-panel]');
+        const valueDisplay = picker.querySelector('[data-solution-value]');
+        if (!toggle || !panel) return;
+
+        const closePanel = () => {
+            panel.hidden = true;
+            toggle.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+        };
+
+        const openPanel = () => {
+            panel.hidden = false;
+            toggle.classList.add('is-open');
+            toggle.setAttribute('aria-expanded', 'true');
+        };
+
+        toggle.addEventListener('click', () => {
+            if (panel.hidden) {
+                openPanel();
+            } else {
+                closePanel();
+            }
+        });
+
+        panel.addEventListener('change', (e) => {
+            if (e.target.matches('input[type="radio"]')) {
+                if (valueDisplay) {
+                    valueDisplay.textContent = e.target.value;
+                }
+                closePanel();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!picker.contains(e.target)) {
+                closePanel();
             }
         });
     });
@@ -648,6 +700,218 @@ function initClientLogos() {
             });
         }, 3000);
     });
+}
+
+// Tracks the current services-slider resize listener so it can be removed before a
+// fresh one is added on the next Barba navigation (each nav swaps in a brand-new
+// `.services-cards-wrapper` element, so the old listener would otherwise leak).
+let servicesSliderResizeHandler = null;
+
+/**
+ * Homepage: "What We Offer" stacked services card slider.
+ * Was previously an inline <script> in services.php - inline scripts inserted via
+ * innerHTML (which is effectively how Barba swaps page content) never execute, so this
+ * only ever ran on a hard page load. Moved into the bundled JS and re-run via
+ * `reinitializePageComponents()` on every Barba transition, like every other
+ * per-section init here.
+ */
+function initServicesSlider() {
+    if (servicesSliderResizeHandler) {
+        window.removeEventListener('resize', servicesSliderResizeHandler);
+        servicesSliderResizeHandler = null;
+    }
+
+
+    function initSlider(slider) {
+        if (!slider || slider.dataset.serviceSliderInit === 'true') return;
+
+        slider.dataset.serviceSliderInit = 'true';
+
+        const viewport = slider.querySelector('.services-slider-viewport');
+        const track = slider.querySelector('.services-cards');
+        const prevBtn = slider.querySelector('[data-service-prev]');
+        const nextBtn = slider.querySelector('[data-service-next]');
+
+        if (!viewport || !track || !prevBtn || !nextBtn) return;
+
+        const originalSlides = Array.from(
+            track.querySelectorAll('[data-service-card]:not([data-clone])'),
+        );
+
+        if (!originalSlides.length) return;
+
+        const total = originalSlides.length;
+        let currentIndex = 0;
+
+        function clampIndex(index) {
+            return Math.max(0, Math.min(index, total - 1));
+        }
+
+        function setButtonState(button, disabled) {
+            button.disabled = disabled;
+            button.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+            button.classList.toggle('pointer-events-none', disabled);
+            button.classList.toggle('opacity-40', disabled);
+            button.classList.toggle('cursor-not-allowed', disabled);
+            button.classList.toggle('opacity-100', !disabled);
+            button.classList.toggle('cursor-pointer', !disabled);
+        }
+
+        function updateButtons() {
+            setButtonState(prevBtn, currentIndex === 0);
+            setButtonState(nextBtn, currentIndex === total - 1);
+        }
+
+        function calculateStackedTransforms() {
+            const styles = window.getComputedStyle(viewport);
+            const stackSpread =
+                parseFloat(
+                    styles.getPropertyValue('--service-stack-spread'),
+                ) || 7.5;
+            const scaleRange =
+                parseFloat(
+                    styles.getPropertyValue('--service-stack-scale-range'),
+                ) || 0.06;
+            const previousCount = currentIndex;
+            const nextCount = total - currentIndex - 1;
+            const maxCount = Math.max(previousCount, nextCount, 1);
+            const offsetStep = stackSpread / maxCount;
+            const scaleStep = scaleRange / maxCount;
+
+            originalSlides.forEach(function (slide, index) {
+                const distance = index - currentIndex;
+                const stackDepth = Math.abs(distance);
+                const isActive = distance === 0;
+                const isVisible = isActive || stackDepth <= maxCount;
+                const direction = distance < 0 ? -1 : 1;
+                const offset = offsetStep * stackDepth * direction;
+                const scale = Math.max(0.88, 1 - stackDepth * scaleStep);
+                const link = slide.querySelector('a');
+
+                slide.classList.toggle('is-active', isActive);
+                slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+                slide.style.opacity = isVisible ? '1' : '0';
+                slide.style.zIndex = isActive
+                    ? String(total * 5)
+                    : String(total * 5 - stackDepth);
+                slide.style.pointerEvents = isVisible ? 'auto' : 'none';
+                slide.style.transform =
+                    'translate3d(calc(-50% + ' +
+                    offset +
+                    'vw), 0, 0) scale(' +
+                    scale +
+                    ')';
+
+                if (link) {
+                    link.tabIndex = isActive ? 0 : -1;
+                }
+            });
+        }
+
+        function renderSlides(skipTransition) {
+            if (skipTransition) {
+                track.classList.add('is-jumping');
+            }
+            calculateStackedTransforms();
+            updateButtons();
+
+            if (skipTransition) {
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        track.classList.remove('is-jumping');
+                    });
+                });
+            }
+        }
+
+        function goTo(index) {
+            const nextIndex = clampIndex(index);
+            if (nextIndex === currentIndex) return;
+
+            currentIndex = nextIndex;
+            renderSlides(false);
+        }
+
+        function handleCardClick(slide, index, event) {
+            if (index === currentIndex) return;
+            event.preventDefault();
+            goTo(index);
+        }
+
+        function detectSwipe(element, callback) {
+            let startX = 0;
+            let startY = 0;
+            let startTime = 0;
+            const threshold = 75;
+            const restraint = 100;
+            const allowedTime = 300;
+
+            element.addEventListener(
+                'touchstart',
+                function (event) {
+                    const touch = event.changedTouches[0];
+                    startX = touch.pageX;
+                    startY = touch.pageY;
+                    startTime = Date.now();
+                },
+                { passive: true },
+            );
+
+            element.addEventListener(
+                'touchend',
+                function (event) {
+                    const touch = event.changedTouches[0];
+                    const distX = touch.pageX - startX;
+                    const distY = touch.pageY - startY;
+                    const elapsedTime = Date.now() - startTime;
+
+                    if (
+                        elapsedTime > allowedTime ||
+                        Math.abs(distX) < threshold ||
+                        Math.abs(distY) > restraint
+                    ) {
+                        return;
+                    }
+
+                    callback(distX < 0 ? 'left' : 'right');
+                },
+                { passive: true },
+            );
+        }
+
+        nextBtn.addEventListener('click', function () {
+            goTo(currentIndex + 1);
+        });
+
+        prevBtn.addEventListener('click', function () {
+            goTo(currentIndex - 1);
+        });
+
+        originalSlides.forEach(function (slide, index) {
+            slide.addEventListener('click', function (event) {
+                handleCardClick(slide, index, event);
+            });
+        });
+
+        detectSwipe(viewport, function (direction) {
+            if (direction === 'left') {
+                goTo(currentIndex + 1);
+            } else if (direction === 'right') {
+                goTo(currentIndex - 1);
+            }
+        });
+
+        servicesSliderResizeHandler = function () {
+            renderSlides(true);
+        };
+        window.addEventListener('resize', servicesSliderResizeHandler);
+
+        requestAnimationFrame(function () {
+            renderSlides(true);
+        });
+    }
+
+    document.querySelectorAll('[data-service-slider]').forEach(initSlider);
 }
 
 function initProductsMegaMenu() {
