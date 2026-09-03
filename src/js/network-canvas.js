@@ -111,112 +111,112 @@ export function createNetworkCanvas(canvas, options = {}) {
     }
 
     function rebuildConnections() {
-    const stars = state.stars;
-    const maxPerStar = config.maxConnectionsPerStar;
-    const connectionCounts = new Array(stars.length).fill(0);
-    const connectionSet = new Set();
-    const connections = [];
+        const stars = state.stars;
+        const maxPerStar = config.maxConnectionsPerStar;
+        const connectionCounts = new Array(stars.length).fill(0);
+        const connectionSet = new Set();
+        const connections = [];
 
-    if (stars.length <= 1) {
-        state.connections = connections;
-        return;
-    }
-
-    function tryAddConnection(i, j, ignoreDistance = false) {
-        if (i === j) return false;
-        if (connectionCounts[i] >= maxPerStar) return false;
-        if (connectionCounts[j] >= maxPerStar) return false;
-
-        const key = i < j ? `${i}-${j}` : `${j}-${i}`;
-        if (connectionSet.has(key)) return false;
-
-        const dist = distance(stars[i], stars[j]);
-        if (!ignoreDistance && dist > config.linkDistance) return false;
-
-        connectionSet.add(key);
-        connectionCounts[i] += 1;
-        connectionCounts[j] += 1;
-        connections.push([i, j]);
-        return true;
-    }
-
-    // 1) Build one guaranteed connected chain using nearest unvisited star
-    const visited = new Set([0]);
-    let current = 0;
-
-    while (visited.size < stars.length) {
-        let nextIndex = -1;
-        let bestDistance = Infinity;
-
-        for (let j = 0; j < stars.length; j++) {
-            if (visited.has(j)) continue;
-            if (connectionCounts[current] >= maxPerStar) break;
-            if (connectionCounts[j] >= maxPerStar) continue;
-
-            const dist = distance(stars[current], stars[j]);
-            if (dist < bestDistance) {
-                bestDistance = dist;
-                nextIndex = j;
-            }
+        if (stars.length <= 1) {
+            state.connections = connections;
+            return;
         }
 
-        // if current is saturated, connect from any visited node to nearest unvisited node
-        if (nextIndex === -1) {
-            let bestFrom = -1;
-            let bestTo = -1;
-            let bestDistanceFallback = Infinity;
+        function tryAddConnection(i, j, ignoreDistance = false) {
+            if (i === j) return false;
+            if (connectionCounts[i] >= maxPerStar) return false;
+            if (connectionCounts[j] >= maxPerStar) return false;
 
-            for (const from of visited) {
-                if (connectionCounts[from] >= maxPerStar) continue;
+            const key = i < j ? `${i}-${j}` : `${j}-${i}`;
+            if (connectionSet.has(key)) return false;
 
-                for (let to = 0; to < stars.length; to++) {
-                    if (visited.has(to)) continue;
-                    if (connectionCounts[to] >= maxPerStar) continue;
+            const dist = distance(stars[i], stars[j]);
+            if (!ignoreDistance && dist > config.linkDistance) return false;
 
-                    const dist = distance(stars[from], stars[to]);
-                    if (dist < bestDistanceFallback) {
-                        bestDistanceFallback = dist;
-                        bestFrom = from;
-                        bestTo = to;
-                    }
+            connectionSet.add(key);
+            connectionCounts[i] += 1;
+            connectionCounts[j] += 1;
+            connections.push([i, j]);
+            return true;
+        }
+
+        // 1) Build one guaranteed connected chain using nearest unvisited star
+        const visited = new Set([0]);
+        let current = 0;
+
+        while (visited.size < stars.length) {
+            let nextIndex = -1;
+            let bestDistance = Infinity;
+
+            for (let j = 0; j < stars.length; j++) {
+                if (visited.has(j)) continue;
+                if (connectionCounts[current] >= maxPerStar) break;
+                if (connectionCounts[j] >= maxPerStar) continue;
+
+                const dist = distance(stars[current], stars[j]);
+                if (dist < bestDistance) {
+                    bestDistance = dist;
+                    nextIndex = j;
                 }
             }
 
-            if (bestFrom !== -1 && bestTo !== -1) {
-                tryAddConnection(bestFrom, bestTo, true);
-                visited.add(bestTo);
-                current = bestTo;
+            // if current is saturated, connect from any visited node to nearest unvisited node
+            if (nextIndex === -1) {
+                let bestFrom = -1;
+                let bestTo = -1;
+                let bestDistanceFallback = Infinity;
+
+                for (const from of visited) {
+                    if (connectionCounts[from] >= maxPerStar) continue;
+
+                    for (let to = 0; to < stars.length; to++) {
+                        if (visited.has(to)) continue;
+                        if (connectionCounts[to] >= maxPerStar) continue;
+
+                        const dist = distance(stars[from], stars[to]);
+                        if (dist < bestDistanceFallback) {
+                            bestDistanceFallback = dist;
+                            bestFrom = from;
+                            bestTo = to;
+                        }
+                    }
+                }
+
+                if (bestFrom !== -1 && bestTo !== -1) {
+                    tryAddConnection(bestFrom, bestTo, true);
+                    visited.add(bestTo);
+                    current = bestTo;
+                } else {
+                    break;
+                }
             } else {
-                break;
-            }
-        } else {
-            tryAddConnection(current, nextIndex, true);
-            visited.add(nextIndex);
-            current = nextIndex;
-        }
-    }
-
-    // 2) Add extra nearby connections, but keep max 3 per star
-    const candidatePairs = [];
-
-    for (let i = 0; i < stars.length; i++) {
-        for (let j = i + 1; j < stars.length; j++) {
-            const dist = distance(stars[i], stars[j]);
-            if (dist <= config.linkDistance) {
-                candidatePairs.push({ i, j, dist });
+                tryAddConnection(current, nextIndex, true);
+                visited.add(nextIndex);
+                current = nextIndex;
             }
         }
+
+        // 2) Add extra nearby connections, but keep max 3 per star
+        const candidatePairs = [];
+
+        for (let i = 0; i < stars.length; i++) {
+            for (let j = i + 1; j < stars.length; j++) {
+                const dist = distance(stars[i], stars[j]);
+                if (dist <= config.linkDistance) {
+                    candidatePairs.push({ i, j, dist });
+                }
+            }
+        }
+
+        candidatePairs.sort((a, b) => a.dist - b.dist);
+
+        for (let k = 0; k < candidatePairs.length; k++) {
+            const { i, j } = candidatePairs[k];
+            tryAddConnection(i, j, false);
+        }
+
+        state.connections = connections;
     }
-
-    candidatePairs.sort((a, b) => a.dist - b.dist);
-
-    for (let k = 0; k < candidatePairs.length; k++) {
-        const { i, j } = candidatePairs[k];
-        tryAddConnection(i, j, false);
-    }
-
-    state.connections = connections;
-}
 
     function drawStars() {
         for (let i = 0; i < state.stars.length; i++) {

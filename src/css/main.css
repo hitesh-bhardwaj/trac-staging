@@ -37,7 +37,6 @@
     font-display: swap;
 }
 
-
 /* Tailwind Directives */
 @tailwind base;
 @tailwind components;
@@ -49,21 +48,21 @@
    ======================================== */
 :root {
     /* Brand Colors from Figma - Trac/Enigma */
-    --color-brand-primary: #0B1F3A;
-    --color-brand-secondary: #E86224;
-    --color-brand-tertiary: #389FD8;
-    --color-brand-quaternary: #2F5FA0;
+    --color-brand-primary: #0b1f3a;
+    --color-brand-secondary: #e86224;
+    --color-brand-tertiary: #389fd8;
+    --color-brand-quaternary: #2f5fa0;
     --color-brand-dark: #111111;
-    --color-brand-light: #FFFFFF;
-    --color-brand-primary-alt: #10417F; /* legacy/alternate blue used in a few sections */
-    --color-brand-navy: #011E41;
-    --color-brand-tint: #EEF3FC;
-    --color-brand-tint-alt: #EEF4FF;
+    --color-brand-light: #ffffff;
+    --color-brand-primary-alt: #10417f; /* legacy/alternate blue used in a few sections */
+    --color-brand-navy: #011e41;
+    --color-brand-tint: #eef3fc;
+    --color-brand-tint-alt: #eef4ff;
 
     /* Text Colors */
     --color-text-primary: #111111;
-    --color-text-secondary: #FFFFFF;
-    --color-text-body: #1E1E1E;
+    --color-text-secondary: #ffffff;
+    --color-text-body: #1e1e1e;
 
     /* Typography from Figma - Desktop First (1920px base) */
     --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -79,14 +78,14 @@
     --text-hero: 4vw; /* 96px at 1920 */
     --text-h1: 3.646vw; /* 70px at 1920 */
     --text-h2: 2.604vw; /* 50px at 1920 */
-	    --text-h3: 1.875vw; /* 35px at 1920 */
-	    --text-body-lg: 1.25vw; /* 24px at 1920 */
-	    --text-body: 1.146vw; /* 22px at 1920 */
-	    --text-body-sm: 0.833vw; /* 16px at 1920 */
-	    --text-30: 1.57vw; /* 30px at 1920 */
-	    --text-24: 1.25vw; /* 24px at 1920 */
-	    --text-36: 1.875vw; /* 36px at 1920 */
-	    --text-66: 3.438vw; /* 66px at 1920 */
+    --text-h3: 1.875vw; /* 35px at 1920 */
+    --text-body-lg: 1.25vw; /* 24px at 1920 */
+    --text-body: 1.146vw; /* 22px at 1920 */
+    --text-body-sm: 0.833vw; /* 16px at 1920 */
+    --text-30: 1.57vw; /* 30px at 1920 */
+    --text-24: 1.25vw; /* 24px at 1920 */
+    --text-36: 1.875vw; /* 36px at 1920 */
+    --text-66: 3.438vw; /* 66px at 1920 */
 
     /* Line Heights */
     --leading-hero: 1.29; /* 124px / 96px */
@@ -115,17 +114,17 @@
         --text-h1: 5vw;
         --text-h2: 4vw;
         --text-h3: 3vw;
-	        --text-body-lg: 2.2vw;
-	        --text-body: 2vw;
-	        --text-body-sm: 1.6vw;
+        --text-body-lg: 2.2vw;
+        --text-body: 2vw;
+        --text-body-sm: 1.6vw;
         --space-container: 4vw;
-	        --header-height: 80px;
-	        --text-30: 1.57vw;
-	        --text-24: 2.2vw;
-	        --text-36: 3vw;
-	        --text-66: 5vw;
-	    }
-	}
+        --header-height: 80px;
+        --text-30: 1.57vw;
+        --text-24: 2.2vw;
+        --text-36: 3vw;
+        --text-66: 5vw;
+    }
+}
 
 /* Mobile adjustments (below 540px) */
 @media (max-width: 540px) {
@@ -751,7 +750,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 
 .site-header {
     /* will-change: width, top, border-radius, background-color, backdrop-filter; */
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
 }
 
 .site-header.is-hidden {
@@ -762,7 +761,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     top: 0;
     width: 100%;
     border-radius: 0;
-    background: #0B1F3A;
+    background: #0b1f3a;
     /* backdrop-filter: blur(12px); */
     /* -webkit-backdrop-filter: blur(12px); */
 }
@@ -771,7 +770,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     /* top: 2%; */
     /* width: 90%; */
     /* border-radius: 0.9vw; */
-    background: #0B1F3A;
+    background: #0b1f3a;
     /* backdrop-filter: blur(12px); */
     /* background: rgba(255, 255, 255, 1); */
     /* backdrop-filter: blur(0px); */
@@ -793,8 +792,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     background-repeat: no-repeat, no-repeat;
     transition: background-size 0.3s ease-out;
 }
-
-
 
 [data-products-overlay] {
     opacity: 0;
@@ -1262,7 +1259,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     right: -1.823vw;
     width: 1.5px;
     height: 12.292vw;
-    background: #10417F;
+    background: #10417f;
     transform: translateY(-50%);
 }
 
@@ -1342,7 +1339,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     display: flex;
     flex-direction: column;
     padding: 3vw 3vw 2.6vw;
-    background: #2F5FA0;
+    background: #2f5fa0;
     color: #fff;
     pointer-events: none;
     transform: rotateY(-180deg);
@@ -1406,7 +1403,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     height: 21.2vw;
     flex-shrink: 0;
     overflow: hidden;
-    border: 0;
+    border: 1px solid #2f5fa0;
     border-radius: 1.2vw;
     background: #eef3fc;
     padding: 0;
@@ -1447,8 +1444,6 @@ html.js [data-hero-reveal].is-hero-revealed {
 .team-slider-nav[disabled] .team-slider-nav-icon {
     opacity: 0.28;
 }
-
-
 
 .team-slider-rail-wrap {
     position: relative;
@@ -1535,7 +1530,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 }
 
-
 @media (max-width: 1024px) {
     .who-we-are-dot {
         width: 10px;
@@ -1555,14 +1549,12 @@ html.js [data-hero-reveal].is-hero-revealed {
         height: 1px;
         transform: translateX(-50%);
     }
-
 }
 
 @media (max-width: 640px) {
     .who-we-are-copy br {
         display: none;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -1585,7 +1577,6 @@ html.js [data-hero-reveal].is-hero-revealed {
         position: relative;
         min-height: auto;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -1669,7 +1660,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     z-index: 1;
 }
 
-
 /* Parallax footer (CTA passes over a fixed footer) */
 #page {
     position: relative;
@@ -1685,7 +1675,6 @@ html.js [data-hero-reveal].is-hero-revealed {
         max-height: 90vh;
     }
 }
-
 
 [data-footer-clippath] {
     position: fixed;
@@ -1741,7 +1730,10 @@ html.js [data-hero-reveal].is-hero-revealed {
     filter: brightness(1.08);
 }
 
-.our-network-section [data-network-draw] svg circle[r='11.5'][fill='#EFF4FC'][stroke='#001837'],
+.our-network-section
+    [data-network-draw]
+    svg
+    circle[r='11.5'][fill='#EFF4FC'][stroke='#001837'],
 .our-network-section [data-network-draw] svg circle[r='7'][fill='#F0741C'] {
     cursor: pointer;
 }
@@ -1760,7 +1752,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     pointer-events: auto;
     transform: translateY(0);
 }
-
 
 /* our offering css  */
 
@@ -1999,7 +1990,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 @media (max-width: 639px) {
-        .service-card:not(:first-child) {
+    .service-card:not(:first-child) {
         margin-top: 20vw;
     }
     .service-card .card-inner {
@@ -2019,10 +2010,9 @@ html.js [data-hero-reveal].is-hero-revealed {
         padding-left: 6vw;
         padding-right: 6vw;
     }
-     .service-card {
+    .service-card {
         top: 15%;
     }
-     
 
     .why-choose-card {
         width: 220px;
@@ -2039,10 +2029,6 @@ html.js [data-hero-reveal].is-hero-revealed {
         max-width: 150px;
     }
 }
-
-
-
-
 
 .testimonials-section {
     min-height: 70vh;
@@ -2235,7 +2221,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .faq-item[data-open] {
-    background: #389FD8;
+    background: #389fd8;
     color: #ffffff;
     border-radius: 1.25vw;
     border: none;
@@ -4316,13 +4302,25 @@ html.js [data-hero-reveal].is-hero-revealed {
     background: transparent;
 }
 
-.contact-form-wrapper .solution-options input[type='radio']:checked + .wpcf7-list-item-label::before,
-.contact-form-wrapper .service-options input[type='radio']:checked + .wpcf7-list-item-label::before {
+.contact-form-wrapper
+    .solution-options
+    input[type='radio']:checked
+    + .wpcf7-list-item-label::before,
+.contact-form-wrapper
+    .service-options
+    input[type='radio']:checked
+    + .wpcf7-list-item-label::before {
     background: radial-gradient(circle, #e86224 42%, transparent 44%);
 }
 
-.contact-form-wrapper .solution-options input[type='radio']:focus-visible + .wpcf7-list-item-label::before,
-.contact-form-wrapper .service-options input[type='radio']:focus-visible + .wpcf7-list-item-label::before {
+.contact-form-wrapper
+    .solution-options
+    input[type='radio']:focus-visible
+    + .wpcf7-list-item-label::before,
+.contact-form-wrapper
+    .service-options
+    input[type='radio']:focus-visible
+    + .wpcf7-list-item-label::before {
     outline: 2px solid white;
     outline-offset: 2px;
 }

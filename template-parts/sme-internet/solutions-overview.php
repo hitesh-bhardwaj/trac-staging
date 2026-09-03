@@ -4,12 +4,10 @@ if (!defined('ABSPATH')) {
 }
 
 $label = get_field('sme_solutions_label') ?: 'Solutions Overview';
-$title =
-    get_field('sme_solutions_title') ?: 'Solutions to Support Your Growth';
+$title = get_field('sme_solutions_title') ?: 'Solutions to Support Your Growth';
 $button_text =
     get_field('sme_solutions_button_text') ?: 'Request a Consultation';
-$button_link =
-    get_field('sme_solutions_button_link') ?: '/contact-us';
+$button_link = get_field('sme_solutions_button_link') ?: '/contact-us';
 
 $solutions_icon_base = get_template_directory_uri() . '/src/imgs/sme-internet/';
 

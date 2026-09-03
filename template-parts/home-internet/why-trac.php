@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
 
 $label = get_field('hi_why_label') ?: 'Why TrAC';
 $title = get_field('hi_why_title') ?: 'Internet That Just Works.';
-$subtitle = get_field('hi_why_subtitle') ?: 'No buffering. No dropouts. No delays.';
+$subtitle =
+    get_field('hi_why_subtitle') ?: 'No buffering. No dropouts. No delays.';
 $body =
     get_field('hi_why_body') ?:
     "TrAC delivers reliable home internet designed to keep your home connected, whether you're working, learning, or streaming.";
@@ -48,7 +49,8 @@ $items = [
                 <ul class="flex flex-col items-start gap-[1.6vw] md:gap-5" aria-label="Home internet benefits">
                     <?php foreach ($items as $i => $text):
                         // A gentle cascade in layout like the reference (bigger shift for lower items).
-                        $step = 1.6; // vw
+                        $step = 1.6;
+                        // vw
                         // $mr = max(0, (5 - $i) * $step);
                         ?>
                         <li class="w-full flex justify-start" style="margin-right: <?php echo esc_attr(
@@ -62,7 +64,8 @@ $items = [
                                 </span>
                             </div>
                         </li>
-                    <?php endforeach; ?>
+                    <?php
+                    endforeach; ?>
                 </ul>
             </div>
         </div>

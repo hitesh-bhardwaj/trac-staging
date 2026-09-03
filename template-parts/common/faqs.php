@@ -23,7 +23,7 @@ if (!$items) {
     <div class="px-[9vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[7vw] sm:py-12">
 
         <div class="faqs-header mb-[4.844vw] md:mb-12 sm:mb-10">
-            <?php if ($section_label) : ?>
+            <?php if ($section_label): ?>
                 <div class="faqs-label flex items-center gap-[0.729vw] mb-10 md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
                     <span class="label-line w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1 sm:w-5"></span>
                     <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
@@ -32,7 +32,7 @@ if (!$items) {
                 </div>
             <?php endif; ?>
 
-            <?php if ($section_title) : ?>
+            <?php if ($section_title): ?>
                 <h2 class="faqs-title font-heading text-66 leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]" data-heading-anim>
                     <?php echo esc_html($section_title); ?>
                 </h2>
@@ -40,7 +40,8 @@ if (!$items) {
         </div>
 
         <div class="faqs-accordion w-full max-w-[89.583vw] mx-auto md:max-w-full" data-animate="fade-up" data-delay="0.2">
-            <?php foreach ($items as $index => $faq) :
+            <?php foreach ($items as $index => $faq):
+
                 $is_first = $index === 0 && $open_first;
                 $question = $faq['question'] ?? '';
                 $answer = $faq['answer'] ?? '';
@@ -58,7 +59,9 @@ if (!$items) {
                 >
                     <button
                         class="faq-question w-full flex items-center justify-between text-left py-[1.667vw] md:py-5 sm:py-4"
-                        aria-expanded="<?php echo $is_first ? 'true' : 'false'; ?>"
+                        aria-expanded="<?php echo $is_first
+                            ? 'true'
+                            : 'false'; ?>"
                         aria-controls="<?php echo esc_attr($answer_id); ?>"
                         id="<?php echo esc_attr($button_id); ?>"
                     >
@@ -77,14 +80,17 @@ if (!$items) {
                         id="<?php echo esc_attr($answer_id); ?>"
                         role="region"
                         aria-labelledby="<?php echo esc_attr($button_id); ?>"
-                        aria-hidden="<?php echo $is_first ? 'false' : 'true'; ?>"
+                        aria-hidden="<?php echo $is_first
+                            ? 'false'
+                            : 'true'; ?>"
                     >
                         <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-primary pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
                             <?php echo wp_kses_post($answer); ?>
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php
+            endforeach; ?>
         </div>
 
     </div>

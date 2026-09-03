@@ -19,6 +19,7 @@ $section_content_2 =
     'The Connecting Communities (CC) platform builds on this connectivity, with TrAC enabling the rollout of Community Smart Hubs across Rwanda and across East Africa. CC and TrAC are bringing access to financial services, education, clean water, and digital tools.';
 
 $button_text = get_field('communities_button_text') ?: 'Read More';
+$button_text = get_field('communities_button_text') ?: 'Read More';
 
 $button_link = get_field('communities_button_link') ?: '#';
 

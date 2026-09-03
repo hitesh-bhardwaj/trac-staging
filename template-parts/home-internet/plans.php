@@ -15,8 +15,7 @@ $plans = [
         'description' =>
             'Ideal for families, online learning, and HD streaming.',
         'image' =>
-            get_template_directory_uri() .
-            '/src/imgs/home-internet/plan-1.png',
+            get_template_directory_uri() . '/src/imgs/home-internet/plan-1.png',
     ],
     [
         'name' => 'Home Max',
@@ -26,8 +25,7 @@ $plans = [
         'description' =>
             'Perfect for smart homes, heavy streaming, and professionals working from home.',
         'image' =>
-            get_template_directory_uri() .
-            '/src/imgs/home-internet/plan-2.png',
+            get_template_directory_uri() . '/src/imgs/home-internet/plan-2.png',
     ],
 ];
 ?>
@@ -85,12 +83,12 @@ $plans = [
 
                                 <a href="<?php echo esc_url(
                                     get_field('hi_plans_button_link') ?:
-                                        home_url('/contact-us'),
+                                    home_url('/contact-us'),
                                 ); ?>" class="btn btn-primary group magnetic">
                                     <span class="btn-line"></span>
                                     <span class="btn-text"><?php echo esc_html(
                                         get_field('hi_plans_button_text') ?:
-                                            'Get on TrAC',
+                                        'Get on TrAC',
                                     ); ?></span>
                                     <span class="btn-icon">
                                         <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">

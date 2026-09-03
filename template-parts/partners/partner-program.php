@@ -4,7 +4,8 @@ if (!defined('ABSPATH')) {
 }
 
 $label = get_field('partners_program_label') ?: 'Partner Program';
-$title = get_field('partners_program_title') ?: 'What is the TrAC Partner Program?';
+$title =
+    get_field('partners_program_title') ?: 'What is the TrAC Partner Program?';
 $p1 =
     get_field('partners_program_paragraph_1') ?:
     "The TrAC Partner Programme is a structured ecosystem designed to help companies grow alongside Africa's fastest-expanding connectivity network. Whether you manufacture hardware, own infrastructure, or sell managed services there's a partnership built for you.";
@@ -67,13 +68,14 @@ $cards = [
 		            <div class="mt-[8vw] md:mt-12 space-y-[2.6vw] md:space-y-8 mx-auto flex flex-col items-end">
 		                <?php foreach ($cards as $card): ?>
 		                    <div class="<?php echo esc_attr(
-		                        'w-fit flex justify-center program-cards ' . $card['offsetClass'],
-		                    ); ?>">
+                          'w-fit flex justify-center program-cards ' .
+                              $card['offsetClass'],
+                      ); ?>">
 		                        <div class="bg-brand-tint w-full mx-auto rounded-[1.2vw] md:rounded-3xl overflow-hidden flex justify-between items-stretch" data-partners-program-card>
 		                            <div class="relative w-[27vw] h-full min-h-[16vw] md:min-h-[240px]">
 		                                <img src="<?php echo esc_url(
-		                                    $card['image'],
-		                                ); ?>" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+                                      $card['image'],
+                                  ); ?>" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
 	                                </div>
 
                             <div class="p-[3vw] md:p-8 sm:p-6 flex flex-col w-[40vw]">

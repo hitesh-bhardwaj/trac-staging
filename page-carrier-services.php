@@ -19,45 +19,47 @@ if (have_posts()) {
         <main id="main-content" class="site-main" data-barba="container" data-barba-namespace="carrier-services">
             <?php
             $hero_image = get_field('hero_image');
-            get_template_part(
-                'template-parts/common/hero',
-                null,
-                [
-                    'title_lines' => [
-                        get_field('hero_title_line_1') ?:
-                            'The Backbone Behind',
-                        get_field('hero_title_line_2') ?: 'your Networks',
-                    ],
-                    'subtitle' =>
-                        get_field('hero_subtitle_2') ?:
-                        'Secure, high-performance infrastructure for network operators, supporting enterprise and wholesale connectivity across Rwanda and East Africa.',
-                    'button_text' =>
-                        get_field('hero_primary_button_text') ?:
-                        'Get on TrAC',
-                    'button_link' =>
-                        get_field('hero_primary_button_link') ?:
-                        home_url('/contact-us'),
-                    'media' => [
-                        'src' => is_array($hero_image)
-                            ? $hero_image['url']
-                            : get_template_directory_uri() .
-                                '/src/imgs/carrier-services/carriers-hero-banner.png',
-                        'alt' => is_array($hero_image)
-                            ? $hero_image['alt']
-                            : 'Carrier services infrastructure',
-                    ],
+            get_template_part('template-parts/common/hero', null, [
+                'title_lines' => [
+                    get_field('hero_title_line_1') ?: 'The Backbone Behind',
+                    get_field('hero_title_line_2') ?: 'your Networks',
                 ],
-            );
+                'subtitle' =>
+                    get_field('hero_subtitle_2') ?:
+                    'Secure, high-performance infrastructure for network operators, supporting enterprise and wholesale connectivity across Rwanda and East Africa.',
+                'button_text' =>
+                    get_field('hero_primary_button_text') ?: 'Get on TrAC',
+                'button_link' =>
+                    get_field('hero_primary_button_link') ?: home_url('/contact-us'),
+                'media' => [
+                    'src' => is_array($hero_image)
+                        ? $hero_image['url']
+                        : get_template_directory_uri() .
+                            '/src/imgs/carrier-services/carriers-hero-banner.png',
+                    'alt' => is_array($hero_image)
+                        ? $hero_image['alt']
+                        : 'Carrier services infrastructure',
+                ],
+            ]);
             ?>
 
-            <?php get_template_part('template-parts/carrier-services/overview'); ?>
-            <?php get_template_part('template-parts/carrier-services/infrastructure'); ?>
-            <?php get_template_part('template-parts/carrier-services/why-choose-trac'); ?>
-            <!-- <?php get_template_part('template-parts/carrier-services/offerings'); ?> -->
-            <?php get_template_part('template-parts/carrier-services/contact'); ?>
+            <?php get_template_part(
+                'template-parts/carrier-services/overview',
+            ); ?>
+            <?php get_template_part(
+                'template-parts/carrier-services/infrastructure',
+            ); ?>
+            <?php get_template_part(
+                'template-parts/carrier-services/why-choose-trac',
+            ); ?>
+            <!-- <?php get_template_part(
+                'template-parts/carrier-services/offerings',
+            ); ?> -->
+            <?php get_template_part(
+                'template-parts/carrier-services/contact',
+            ); ?>
 
-            <?php
-            get_template_part(
+            <?php get_template_part(
                 'template-parts/common/faqs',
                 null,
                 trac_get_faq_section_args([
@@ -94,7 +96,8 @@ if (have_posts()) {
                                 'Yes. Our white-label Cloud services allow providers to expand their offerings without the cost and complexity of building their own Cloud infrastructure.',
                         ],
                         [
-                            'question' => 'Does TrAC offer Data Centre Hosting?',
+                            'question' =>
+                                'Does TrAC offer Data Centre Hosting?',
                             'answer' =>
                                 'Yes. Wholesale customers can leverage our Tier III Data Centre facilities to host infrastructure, applications, and customer services in a secure and scalable environment.',
                         ],
@@ -105,33 +108,28 @@ if (have_posts()) {
                                 "No. TrAC's own site already positions the offer for multinational carriers, national ISPs, smaller regional providers, and newer operators. TrAC scales to fit – regardless of where you are in your growth.",
                         ],
                         [
-                            'question' => 'Can TrAC help a new ISP get started?',
+                            'question' =>
+                                'Can TrAC help a new ISP get started?',
                             'answer' =>
                                 'Yes. If you hold an Internet service licence, TrAC provides the infrastructure and support needed to deliver white-label, business-grade Internet services without the cost and complexity of building your own network.',
                         ],
                         [
-                            'question' => 'Can services be sold under our own brand?',
+                            'question' =>
+                                'Can services be sold under our own brand?',
                             'answer' =>
                                 "Yes. Wholesale customers can offer TrAC's Internet, hosting, and network services under their own brand. Our infrastructure and support teams operate behind the scenes, enabling you to deliver reliable services without having to build and manage the network yourself.",
                         ],
                     ],
                 ]),
-            );
-            ?>
-            <?php
-            get_template_part(
-                'template-parts/front-page/cta',
-                null,
-                [
-                    'title' => 'Ready to Get Connected?',
-                    'subtitle' =>
-                        "Fast, reliable home internet is just a few steps away.\nGet on TrAC today.",
-                    'button_text' => 'Get Connected',
-                    'button_link' => home_url('/contact-us'),
-                    'pattern_top_class' => 'top-[-15%]',
-                ],
-            );
-            ?>
+            ); ?>
+            <?php get_template_part('template-parts/common/cta', null, [
+                'title' => 'Ready to Get Connected?',
+                'subtitle' =>
+                    "Fast, reliable home internet is just a few steps away.\nGet on TrAC today.",
+                'button_text' => 'Get Connected',
+                'button_link' => home_url('/contact-us'),
+                'pattern_top_class' => 'top-[-15%]',
+            ]); ?>
         </main>
 
         <?php

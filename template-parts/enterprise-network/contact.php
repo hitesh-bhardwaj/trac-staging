@@ -34,8 +34,7 @@ if (!defined('ABSPATH')) {
             <div class="flex justify-end md:justify-start" data-animate="fade-up" data-delay="0.25">
                 <div class="contact-form-card w-full max-w-[42.708vw] md:max-w-full bg-white rounded-[2vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.167vw_2.604vw] md:p-12 sm:p-6">
                     <div class="contact-form-wrapper">
-                        <?php
-                        if (function_exists('wpcf7_contact_form')) {
+                        <?php if (function_exists('wpcf7_contact_form')) {
                             echo do_shortcode(
                                 '[contact-form-7 id="d7d2441" title="Enterprise Network Contact Form"]',
                             );

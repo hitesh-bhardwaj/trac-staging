@@ -13,7 +13,8 @@ if (!defined('ABSPATH')) {
 get_header();
 ?>
 
-<?php if (have_posts()) {
+<?php
+if (have_posts()) {
     while (have_posts()) {
         the_post(); ?>
 
@@ -42,7 +43,7 @@ get_header();
                         '/src/assets/icons/community-hub-digital-services.svg',
                     'modifier' => 'is-center',
                 ],
-                
+
                 [
                     'title' => 'Agriculture and Nutrition',
                     'icon' =>
@@ -77,27 +78,28 @@ get_header();
                 );
             }
             ?>
-            <?php
-            get_template_part(
-                'template-parts/front-page/cta',
-                null,
-                [
-                    'title' => 'Learn What is Possible for Your Community',
-                    'subtitle' => '',
-                    'para' =>
-                        'If you’d like to explore how connectivity can support your community, or have ideas you’d like to discuss, our team is here to help.',
-                    'button_text' => 'Get Connected',
-                    'button_link' => home_url('/contact-us'),
-                    'pattern_top_class' => 'top-[-15%]',
-                    // Move CTA button slightly upward for this page.
-                    'button_wrapper_class' => '',
-                ],
-            );
-            ?>
+            <?php get_template_part('template-parts/common/cta', null, [
+                'title' => 'Learn What is Possible for Your Community',
+                'subtitle' => '',
+                'para' =>
+                    'If you’d like to explore how connectivity can support your community, or have ideas you’d like to discuss, our team is here to help.',
+                'button_text' => 'Get Connected',
+                'button_link' => home_url('/contact-us'),
+                'pattern_top_class' => 'top-[-15%]',
+                // Move CTA button slightly upward for this page.
+                'button_wrapper_class' => '',
+                'logo_class' => 'bottom-[1.25vw] md:bottom-4',
+                'container_class' => '!py-[5vw] md:!py-12 sm:!py-10',
+                'content_class' => '!w-full',
+                'title_class' => '!w-full',
+                'para_class' => '!w-[52%] md:!w-[70%] sm:!w-full',
+            ]); ?>
         </main>
 
         <?php
     }
 }
 
-get_footer(); ?>
+get_footer();
+
+?>

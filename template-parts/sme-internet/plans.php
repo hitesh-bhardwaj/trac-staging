@@ -15,7 +15,8 @@ $plans = [
         'description' =>
             'Ideal for small offices, retail stores, and co-working spaces.',
         'image' =>
-            get_template_directory_uri() . '/src/imgs/sme-internet/plan-1-img.png',
+            get_template_directory_uri() .
+            '/src/imgs/sme-internet/plan-1-img.png',
     ],
     [
         'name' => 'SME Elite',
@@ -25,7 +26,8 @@ $plans = [
         'description' =>
             'Built for growing businesses using cloud tools, video meetings, and multi-user environments.',
         'image' =>
-            get_template_directory_uri() . '/src/imgs/sme-internet/plan-2-img.png',
+            get_template_directory_uri() .
+            '/src/imgs/sme-internet/plan-2-img.png',
     ],
 ];
 ?>
@@ -83,12 +85,12 @@ $plans = [
 
                                 <a href="<?php echo esc_url(
                                     get_field('sme_plans_button_link') ?:
-                                        home_url('/contact-us'),
+                                    home_url('/contact-us'),
                                 ); ?>" class="btn btn-primary group magnetic">
                                     <span class="btn-line"></span>
                                     <span class="btn-text"><?php echo esc_html(
                                         get_field('sme_plans_button_text') ?:
-                                            'Get on TrAC',
+                                        'Get on TrAC',
                                     ); ?></span>
                                     <span class="btn-icon">
                                         <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">

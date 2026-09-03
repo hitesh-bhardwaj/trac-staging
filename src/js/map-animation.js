@@ -7,7 +7,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export function initMapAnimation() {
-
     const mapSection = document.querySelector('[data-section="map"]');
 
     if (!mapSection) {
@@ -46,11 +45,12 @@ export function initMapAnimation() {
             const cardRightX = c.right - containerRect.left;
             const cardTopY = c.top - containerRect.top;
             const cardMidY = c.top + c.height / 2 - containerRect.top;
-            const endX = cardAnchor === 'top-right'
-                ? cardRightX
-                : cardLeftX > startX
-                    ? cardLeftX
-                    : cardRightX;
+            const endX =
+                cardAnchor === 'top-right'
+                    ? cardRightX
+                    : cardLeftX > startX
+                      ? cardLeftX
+                      : cardRightX;
             const endY = cardAnchor === 'top-right' ? cardTopY : cardMidY;
 
             const dx = endX - startX;
@@ -100,42 +100,46 @@ export function initMapAnimation() {
             duration: 1.35,
             ease: 'power2.inOut',
         })
-        // Fade in location markers with scale effect
-        .to(locationMarkers, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.6,
-            stagger: 0.2,
-            ease: 'back.out(1.7)',
-        }, '-=0.6')
-        // Draw connector lines
-        .to(
-            connectorLines,
-            {
-                scaleX: 1,
-                duration: 0.7,
-                stagger: 0.15,
-                ease: 'power3.out',
-            },
-            '-=0.35',
-        )
-        // Fade in address cards after the lines connect
-        .to(
-            addressCards,
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.45,
-                stagger: 0.12,
-                ease: 'power2.out',
-            },
-            '-=0.35',
-        );
+            // Fade in location markers with scale effect
+            .to(
+                locationMarkers,
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.6,
+                    stagger: 0.2,
+                    ease: 'back.out(1.7)',
+                },
+                '-=0.6',
+            )
+            // Draw connector lines
+            .to(
+                connectorLines,
+                {
+                    scaleX: 1,
+                    duration: 0.7,
+                    stagger: 0.15,
+                    ease: 'power3.out',
+                },
+                '-=0.35',
+            )
+            // Fade in address cards after the lines connect
+            .to(
+                addressCards,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.45,
+                    stagger: 0.12,
+                    ease: 'power2.out',
+                },
+                '-=0.35',
+            );
     } else {
         console.warn('[Map Animation] Missing dependencies:', {
             gsap: !!gsap,
             ScrollTrigger: !!ScrollTrigger,
-            overlay: !!mapOverlay
+            overlay: !!mapOverlay,
         });
     }
 }

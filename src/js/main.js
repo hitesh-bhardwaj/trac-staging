@@ -242,7 +242,10 @@ function initNetworkCanvases() {
         }
     });
 
-    console.log('[Trac] Network canvases initialized', app.networkInstances.length);
+    console.log(
+        '[Trac] Network canvases initialized',
+        app.networkInstances.length,
+    );
 }
 
 /**
@@ -316,7 +319,9 @@ function initPhoneNumberField() {
  * Contact form: collapsible "Solutions" picker (radio panel instead of a native select)
  */
 function initSolutionPicker() {
-    const pickers = document.querySelectorAll('.contact-form-wrapper .solution-picker');
+    const pickers = document.querySelectorAll(
+        '.contact-form-wrapper .solution-picker',
+    );
     if (!pickers.length) return;
 
     pickers.forEach((picker) => {
@@ -366,12 +371,16 @@ function initSolutionPicker() {
  * Partners: partner-network tab filtering
  */
 function initPartnerNetworkTabs() {
-    const sections = Array.from(document.querySelectorAll('[data-partner-network]'));
+    const sections = Array.from(
+        document.querySelectorAll('[data-partner-network]'),
+    );
     if (!sections.length) return;
 
     sections.forEach((section) => {
         const tabs = Array.from(section.querySelectorAll('[data-partner-tab]'));
-        const cards = Array.from(section.querySelectorAll('[data-partner-logo]'));
+        const cards = Array.from(
+            section.querySelectorAll('[data-partner-logo]'),
+        );
         if (!tabs.length || !cards.length) return;
 
         const setActive = (value) => {
@@ -547,7 +556,7 @@ function initFaqs() {
  */
 function initCollaborationsAccordion() {
     const accordions = Array.from(
-        document.querySelectorAll('[data-collab-accordion]')
+        document.querySelectorAll('[data-collab-accordion]'),
     );
 
     if (!accordions.length) {
@@ -556,7 +565,7 @@ function initCollaborationsAccordion() {
 
     accordions.forEach((accordion) => {
         const items = Array.from(
-            accordion.querySelectorAll('[data-collab-item]')
+            accordion.querySelectorAll('[data-collab-item]'),
         );
 
         const closeItem = (item) => {
@@ -641,7 +650,9 @@ function initCollaborationsAccordion() {
  * Initialize client logo rotation
  */
 function initClientLogos() {
-    const logoGrids = Array.from(document.querySelectorAll('[data-client-logos]'));
+    const logoGrids = Array.from(
+        document.querySelectorAll('[data-client-logos]'),
+    );
 
     if (!logoGrids.length) {
         return;
@@ -722,7 +733,6 @@ function initServicesSlider() {
         servicesSliderResizeHandler = null;
     }
 
-
     function initSlider(slider) {
         if (!slider || slider.dataset.serviceSliderInit === 'true') return;
 
@@ -766,9 +776,8 @@ function initServicesSlider() {
         function calculateStackedTransforms() {
             const styles = window.getComputedStyle(viewport);
             const stackSpread =
-                parseFloat(
-                    styles.getPropertyValue('--service-stack-spread'),
-                ) || 7.5;
+                parseFloat(styles.getPropertyValue('--service-stack-spread')) ||
+                7.5;
             const scaleRange =
                 parseFloat(
                     styles.getPropertyValue('--service-stack-scale-range'),
@@ -1242,39 +1251,39 @@ function initProductsMegaMenu() {
         if (isOpen) updateBridge();
     };
 
-   const onDropdownLinkClick = () => {
-    clearCloseTimer();
+    const onDropdownLinkClick = () => {
+        clearCloseTimer();
 
-    gsap.killTweensOf([dropdown, overlay]);
+        gsap.killTweensOf([dropdown, overlay]);
 
-    gsap.to(dropdown, {
-        opacity: 0,
-        yPercent: -10,
-        duration: 0.18,
-        ease: 'power2.out',
-        pointerEvents: 'none',
-        onComplete: () => {
-            gsap.set(dropdown, {
-                visibility: 'hidden',
-            });
-            disableBridge();
-        },
-    });
+        gsap.to(dropdown, {
+            opacity: 0,
+            yPercent: -10,
+            duration: 0.18,
+            ease: 'power2.out',
+            pointerEvents: 'none',
+            onComplete: () => {
+                gsap.set(dropdown, {
+                    visibility: 'hidden',
+                });
+                disableBridge();
+            },
+        });
 
-    gsap.to(overlay, {
-        opacity: 0,
-        duration: 0.16,
-        ease: 'power2.out',
-        pointerEvents: 'none',
-        onComplete: () => {
-            gsap.set(overlay, {
-                visibility: 'hidden',
-            });
-        },
-    });
+        gsap.to(overlay, {
+            opacity: 0,
+            duration: 0.16,
+            ease: 'power2.out',
+            pointerEvents: 'none',
+            onComplete: () => {
+                gsap.set(overlay, {
+                    visibility: 'hidden',
+                });
+            },
+        });
 
-    isOpen = false;
-};
+        isOpen = false;
+    };
 
     trigger.addEventListener('mouseenter', onTriggerEnter);
     menuItem.addEventListener('mouseenter', onTriggerEnter);
@@ -1405,10 +1414,10 @@ function init() {
 
     // Initialize on page load
     // Initialize on page load
-document.addEventListener('trac:loaded', () => {
-    initializePageComponents();
-    console.log('[Trac] All systems initialized');
-});
+    document.addEventListener('trac:loaded', () => {
+        initializePageComponents();
+        console.log('[Trac] All systems initialized');
+    });
 }
 
 // Start when DOM is ready

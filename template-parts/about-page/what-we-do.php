@@ -43,8 +43,7 @@ $what_we_do_cards = [
             'trac',
         ),
         'icon' => '/assets/icons/satellite-communication.svg',
-    ]
-    
+    ],
 ];
 ?>
 
@@ -90,7 +89,11 @@ $what_we_do_cards = [
                     <article class="what-we-do-card flex h-[30vw] w-[25vw] flex-shrink-0 flex-col rounded-[1.563vw] bg-white px-[2vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] md:h-auto md:w-full md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
                         <div class="mb-[5.208vw] text-brand-primary md:mb-10 sm:mb-8">
                             <img
-                                src="<?php echo esc_url(get_template_directory_uri() . '/src' . $card['icon']); ?>"
+                                src="<?php echo esc_url(
+                                    get_template_directory_uri() .
+                                        '/src' .
+                                        $card['icon'],
+                                ); ?>"
                                 alt=""
                                 class="h-[5vw] w-[5vw] md:h-8 md:w-8 sm:h-6 sm:w-6"
                                 loading="lazy"

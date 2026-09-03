@@ -1,7 +1,6 @@
 <?php
 if (!defined('ABSPATH')) {
     exit();
-    
 }
 
 $hero_connectors_svg_path =
@@ -29,7 +28,8 @@ $hero_connectors_svg_path =
                     </span>
                     <span class="block hero-title-line">
                         <?php echo esc_html(
-                            get_field('hero_title_line_2') ?: "Backbone. East Africa's",
+                            get_field('hero_title_line_2') ?:
+                            "Backbone. East Africa's",
                         ); ?>
                     </span>
                      <span class="block hero-title-line">
@@ -47,7 +47,7 @@ $hero_connectors_svg_path =
                  >
                     <?php echo esc_html(
                         get_field('hero_subtitle_2') ?:
-                        "Rooted in Rwanda, TrAC delivers reliable internet for enterprises, small businesses, homes, and the communities shaping the future of Rwanda and East Africa.",
+                        'Rooted in Rwanda, TrAC delivers reliable internet for enterprises, small businesses, homes, and the communities shaping the future of Rwanda and East Africa.',
                     ); ?>
                 </p>
 
@@ -59,7 +59,7 @@ $hero_connectors_svg_path =
                     <a href="<?php echo esc_url(
                         get_field('hero_primary_button_link') ?:
                         home_url('/contact-us'),
-                     ); ?>" class="btn btn-primary group magnetic">
+                    ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
                             get_field('hero_primary_button_text') ?:
@@ -76,7 +76,7 @@ $hero_connectors_svg_path =
 
                     <a href="<?php echo esc_url(
                         get_field('hero_secondary_button_link') ?: '#products',
-                     ); ?>" class="btn btn-outline group magnetic">
+                    ); ?>" class="btn btn-outline group magnetic">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
                             get_field('hero_secondary_button_text') ?:
@@ -106,11 +106,9 @@ $hero_connectors_svg_path =
                    loading="lazy"
                   >
                      <div class="w-[115%] h-[115%] absolute top-[-8%] left-[-8%]  connectors-svg pointer-events-none" aria-hidden="true">
-                     <?php
-                     if (file_exists($hero_connectors_svg_path)) {
+                     <?php if (file_exists($hero_connectors_svg_path)) {
                          echo file_get_contents($hero_connectors_svg_path);
-                     }
-                     ?>
+                     } ?>
                      </div>
             </div>
          </div>

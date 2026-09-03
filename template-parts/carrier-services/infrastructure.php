@@ -8,8 +8,7 @@ $title = get_field('cs_infra_title') ?: "Let's Design Your Network";
 $subtitle =
     get_field('cs_infra_subtitle') ?:
     'Tell us what your network requires, and our team will design a solution that fits.';
-$button_text =
-    get_field('cs_infra_button_text') ?: 'Request a Consultation';
+$button_text = get_field('cs_infra_button_text') ?: 'Request a Consultation';
 $button_link = get_field('cs_infra_button_link') ?: '#get-in-touch';
 ?>
 
@@ -40,7 +39,10 @@ $button_link = get_field('cs_infra_button_link') ?: '#get-in-touch';
                     data-delay="0.1"
                 >
                     <img
-                        src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/carrier-services/infra-img-1.png'); ?>"
+                        src="<?php echo esc_url(
+                            get_template_directory_uri() .
+                                '/src/imgs/carrier-services/infra-img-1.png',
+                        ); ?>"
                         alt="Fibre installation team working on infrastructure"
                         class="block h-[32vw] w-full md:h-[420px] sm:h-[280px] scale-105 object-cover transition-transform duration-600 ease-out group-hover:scale-100"
                         loading="lazy"
@@ -53,7 +55,10 @@ $button_link = get_field('cs_infra_button_link') ?: '#get-in-touch';
                     data-delay="0.15"
                 >
                     <img
-                        src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/carrier-services/infra-img-2.png'); ?>"
+                        src="<?php echo esc_url(
+                            get_template_directory_uri() .
+                                '/src/imgs/carrier-services/infra-img-2.png',
+                        ); ?>"
                         alt="Data centre environment supporting network operations"
                         class="block h-[32vw] w-full md:h-[420px] sm:h-[280px] scale-105 object-cover transition-transform duration-600 ease-out group-hover:scale-100"
                         loading="lazy"
@@ -63,9 +68,13 @@ $button_link = get_field('cs_infra_button_link') ?: '#get-in-touch';
         </div>
 
         <div class="flex justify-center mt-[3.2vw] md:mt-10" data-animate="fade-up" data-delay="0.2">
-            <a href="<?php echo esc_url($button_link); ?>" class="btn btn-primary group magnetic">
+            <a href="<?php echo esc_url(
+                $button_link,
+            ); ?>" class="btn btn-primary group magnetic">
                 <span class="btn-line"></span>
-                <span class="btn-text"><?php echo esc_html($button_text); ?></span>
+                <span class="btn-text"><?php echo esc_html(
+                    $button_text,
+                ); ?></span>
                 <span class="btn-icon">
                     <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>

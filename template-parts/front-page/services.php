@@ -6,30 +6,52 @@ if (!defined('ABSPATH')) {
 $services = [
     [
         'title' => get_field('service_1_title') ?: 'Enterprise Networks',
-        'description' => get_field('service_1_description') ?: 'Secure, high-capacity infrastructure built for large-scale operations, complex network environments, and mission-critical systems. Designed to support heavier workloads, multi-site connectivity, and evolving business demands.',
-        'link' => get_field('service_1_link') ?: home_url('/solutions/enterprise-networks'),
-        'image' => get_field('service_1_image') ?: get_template_directory_uri() . '/src/imgs/home/service-enterprise-network.png',
+        'description' =>
+            get_field('service_1_description') ?:
+            'Secure, high-capacity infrastructure built for large-scale operations, complex network environments, and mission-critical systems. Designed to support heavier workloads, multi-site connectivity, and evolving business demands.',
+        'link' =>
+            get_field('service_1_link') ?:
+            home_url('/solutions/enterprise-networks'),
+        'image' =>
+            get_field('service_1_image') ?:
+            get_template_directory_uri() .
+                '/src/imgs/home/service-enterprise-network.png',
         'alt' => get_field('service_1_title') ?: 'Enterprise Networks Service',
     ],
     [
         'title' => get_field('service_2_title') ?: 'SME Internet',
-        'description' => get_field('service_2_description') ?: "Reliable business internet built to support your growth, whether you're a small team or a growing company. Designed for daily operations, cloud tools, payments, and seamless collaboration.",
+        'description' =>
+            get_field('service_2_description') ?:
+            "Reliable business internet built to support your growth, whether you're a small team or a growing company. Designed for daily operations, cloud tools, payments, and seamless collaboration.",
         'link' => get_field('service_2_link') ?: home_url('/sme-internet'),
-        'image' => get_field('service_2_image') ?: get_template_directory_uri() . '/src/imgs/home/service-sme-internet.png',
+        'image' =>
+            get_field('service_2_image') ?:
+            get_template_directory_uri() .
+                '/src/imgs/home/service-sme-internet.png',
         'alt' => get_field('service_2_title') ?: 'SME Internet Service',
     ],
     [
         'title' => get_field('service_3_title') ?: 'Home Internet',
-        'description' => get_field('service_3_description') ?: 'Fast, stable fibre or wireless internet with clear pricing and local support you can rely on.',
+        'description' =>
+            get_field('service_3_description') ?:
+            'Fast, stable fibre or wireless internet with clear pricing and local support you can rely on.',
         'link' => get_field('service_3_link') ?: home_url('/home-internet'),
-        'image' => get_field('service_3_image') ?: get_template_directory_uri() . '/src/imgs/home/service-home-internet.png',
+        'image' =>
+            get_field('service_3_image') ?:
+            get_template_directory_uri() .
+                '/src/imgs/home/service-home-internet.png',
         'alt' => get_field('service_3_title') ?: 'Home Internet Service',
     ],
     [
         'title' => get_field('service_4_title') ?: 'Wholesale & Carrier',
-        'description' => get_field('service_4_description') ?: 'Flexible, scalable infrastructure designed for network operators at every stage, from new ISPs to established carriers expanding capacity across Rwanda and East Africa.',
+        'description' =>
+            get_field('service_4_description') ?:
+            'Flexible, scalable infrastructure designed for network operators at every stage, from new ISPs to established carriers expanding capacity across Rwanda and East Africa.',
         'link' => get_field('service_4_link') ?: home_url('/carrier-services'),
-        'image' => get_field('service_4_image') ?: get_template_directory_uri() . '/src/imgs/home/service-wholesale-carrier.png',
+        'image' =>
+            get_field('service_4_image') ?:
+            get_template_directory_uri() .
+                '/src/imgs/home/service-wholesale-carrier.png',
         'alt' => get_field('service_4_title') ?: 'Wholesale & Carrier Services',
     ],
 ];
@@ -116,12 +138,17 @@ $services = [
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
 
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
-                    <?php echo esc_html(get_field('services_label') ?: 'What We Offer'); ?>
+                    <?php echo esc_html(
+                        get_field('services_label') ?: 'What We Offer',
+                    ); ?>
                 </span>
             </div>
 
             <h2 data-heading-anim class="services-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-center sm:text-[8vw]">
-                <?php echo esc_html(get_field('services_title') ?: 'Get Connected. Stay Connected'); ?>
+                <?php echo esc_html(
+                    get_field('services_title') ?:
+                    'Get Connected. Stay Connected',
+                ); ?>
             </h2>
         </div>
 <div data-animate="fade-up">
@@ -129,7 +156,7 @@ $services = [
         <div class="services-cards-wrapper mt-[7vw] relative w-full sm:mt-[8vw]" data-service-slider>
             <div class="services-slider-viewport">
                 <div class="services-cards">
-                    <?php foreach ($services as $index => $service) : ?>
+                    <?php foreach ($services as $index => $service): ?>
                         <article
                             class="service-card !bg-brand-tertiary overflow-hidden rounded-[1.2vw] border border-brand-dark md:rounded-3xl"
                             data-service-card
@@ -139,15 +166,21 @@ $services = [
                                 <div class="card-content flex h-full flex-col justify-between p-[3.073vw] pr-[2vw] md:p-8 sm:p-6">
                                     <div>
                                         <h3 class="card-title font-subheading mb-[1.25vw] text-36 font-normal text-white md:mb-4 md:text-2xl sm:mb-3 sm:text-[6vw]">
-                                            <?php echo esc_html($service['title']); ?>
+                                            <?php echo esc_html(
+                                                $service['title'],
+                                            ); ?>
                                         </h3>
 
                                         <p class="font-body max-w-[35vw] text-24 leading-[1.5] text-white md:max-w-full md:text-lg sm:text-base">
-                                            <?php echo esc_html($service['description']); ?>
+                                            <?php echo esc_html(
+                                                $service['description'],
+                                            ); ?>
                                         </p>
                                     </div>
 
-                                    <a href="<?php echo esc_url($service['link']); ?>" class="btn btn-primary group w-fit">
+                                    <a href="<?php echo esc_url(
+                                        $service['link'],
+                                    ); ?>" class="btn btn-primary group w-fit">
                                         <span class="btn-line"></span>
                                         <span class="btn-text">Learn More</span>
                                         <span class="btn-icon">
@@ -161,8 +194,12 @@ $services = [
 
                                 <div class="card-image relative mr-[0.938vw] h-[calc(100%-2vw)] w-[34.375vw] overflow-hidden rounded-[1vw] md:mx-8 md:mb-8 md:h-[45vw] md:w-[calc(100%-4rem)] md:rounded-2xl sm:mx-6 sm:mb-6 sm:h-[52vw] sm:w-[calc(100%-3rem)]">
                                     <img
-                                        src="<?php echo esc_url($service['image']); ?>"
-                                        alt="<?php echo esc_attr($service['alt']); ?>"
+                                        src="<?php echo esc_url(
+                                            $service['image'],
+                                        ); ?>"
+                                        alt="<?php echo esc_attr(
+                                            $service['alt'],
+                                        ); ?>"
                                         class="absolute inset-0 h-full w-full object-cover"
                                     >
 

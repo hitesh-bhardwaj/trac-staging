@@ -4,49 +4,59 @@ if (!defined('ABSPATH')) {
 }
 
 // Allow this CTA to be reused across pages by passing `$args` via get_template_part(..., null, $args).
-// Pattern mirrors `template-parts/connecting-communities/hero.php`.
 $cta_args = isset($args) && is_array($args) ? $args : [];
 
 // Get CTA section settings (args override ACF override defaults)
 $cta_title =
-    $cta_args['title'] ?? get_field('cta_title') ?? 'Ready to Get on TrAC?';
+    $cta_args['title'] ?? (get_field('cta_title') ?? 'Ready to Get on TrAC?');
 
 // Optional second paragraph used on some pages (e.g. Connecting Communities)
-$cta_para = $cta_args['para'] ?? get_field('cta_para') ?? '';
+$cta_para = $cta_args['para'] ?? (get_field('cta_para') ?? '');
 
 $cta_button_text =
     $cta_args['button_text'] ??
-    get_field('cta_button_text') ??
-    'Get Connected';
+    (get_field('cta_button_text') ?? 'Get Connected');
 $cta_button_link =
     $cta_args['button_link'] ??
-    get_field('cta_button_link') ??
-    home_url('/contact-us');
+    (get_field('cta_button_link') ?? home_url('/contact-us'));
 
 // Optional extra class hooks
+$cta_container_class = $cta_args['container_class'] ?? '';
+$cta_content_class = $cta_args['content_class'] ?? '';
+$cta_title_class = $cta_args['title_class'] ?? '';
+$cta_para_class = $cta_args['para_class'] ?? '';
 $cta_button_wrapper_class = $cta_args['button_wrapper_class'] ?? '';
+$cta_logo_class = $cta_args['logo_class'] ?? '';
 
 $cta_logo_svg_path = get_template_directory() . '/src/imgs/logo-trac.svg';
 ?>
 
 <section class="cta-section relative bg-brand-quaternary overflow-hidden" data-section="cta">
-    <div class="cta-container relative z-[10] w-full px-[5vw] py-[9vw] md:px-[4vw] md:py-20 sm:px-[6vw] sm:py-16">
+    <div class="cta-container relative z-[10] w-full px-[5vw] py-[9vw] md:px-[4vw] md:py-20 sm:px-[6vw] sm:py-16 <?php echo esc_attr(
+        $cta_container_class,
+    ); ?>">
         <div class="flex items-center justify-center gap-[4vw] md:flex-col md:gap-10">
-            <div class="cta-logo shrink-0 w-[30vw] absolute left-[-4%] md:w-[42vw] md:max-w-[220px] [--stroke-0:#fff] [--fill-0:#fff]" data-animate="fade-right" aria-hidden="true">
-                <?php
-                if (file_exists($cta_logo_svg_path)) {
+            <div class="cta-logo shrink-0 w-[30vw] absolute left-[-4%] md:w-[42vw] md:max-w-[220px] [--stroke-0:#fff] [--fill-0:#fff] <?php echo esc_attr(
+                $cta_logo_class,
+            ); ?>" data-animate="fade-right" aria-hidden="true">
+                <?php if (file_exists($cta_logo_svg_path)) {
                     echo file_get_contents($cta_logo_svg_path);
-                }
-                ?>
+                } ?>
             </div>
 
-            <div class="text-center w-[70%] md:max-w-full">
-                <h2 class="w-full  font-heading font-normal text-66 leading-[1.12] tracking-[0.01em] text-white mb-[2.5vw] md:text-4xl md:mb-8 sm:text-3xl sm:mb-6" data-heading-anim>
+            <div class="text-center w-[70%] md:max-w-full <?php echo esc_attr(
+                $cta_content_class,
+            ); ?>">
+                <h2 class="w-full font-heading font-normal text-66 leading-[1.12] tracking-[0.01em] text-white mb-[2.5vw] md:text-4xl md:mb-8 sm:text-3xl sm:mb-6 <?php echo esc_attr(
+                    $cta_title_class,
+                ); ?>" data-heading-anim>
                     <?php echo esc_html($cta_title); ?>
                 </h2>
 
                 <?php if (!empty($cta_para)): ?>
-                    <p class="mx-auto w-[70%] font-body font-normal text-24 leading-[1.5] text-white/85 mb-[2.5vw] md:text-lg md:mb-8 sm:text-base sm:mb-6" data-para-anim data-delay="0.15">
+                    <p class="mx-auto w-[70%] font-body font-normal text-24 leading-[1.5] text-white/85 mb-[2.5vw] md:text-lg md:mb-8 sm:text-base sm:mb-6 <?php echo esc_attr(
+                        $cta_para_class,
+                    ); ?>" data-para-anim data-delay="0.15">
                         <?php echo esc_html($cta_para); ?>
                     </p>
                 <?php endif; ?>
@@ -55,7 +65,7 @@ $cta_logo_svg_path = get_template_directory() . '/src/imgs/logo-trac.svg';
                     $cta_button_wrapper_class,
                 ); ?>" data-animate="fade-up" data-delay="0.2">
                      <a href="<?php echo esc_url(
-                        $cta_button_link,
+                         $cta_button_link,
                      ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(

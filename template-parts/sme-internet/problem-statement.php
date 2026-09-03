@@ -4,9 +4,15 @@ if (!defined('ABSPATH')) {
 }
 
 $label = get_field('hi_why_label') ?: 'Problem Statement';
-$title = get_field('hi_why_title') ?: 'When Your Internet Slows Down, Your Business Does Too';
-$subtitle = get_field('hi_why_subtitle') ?: 'Your business depends on staying connected. But unreliable internet can disrupt everything:';
-$footer = get_field('hi_why_footer') ?: 'These aren’t just technical issues—they impact your business performance.';
+$title =
+    get_field('hi_why_title') ?:
+    'When Your Internet Slows Down, Your Business Does Too';
+$subtitle =
+    get_field('hi_why_subtitle') ?:
+    'Your business depends on staying connected. But unreliable internet can disrupt everything:';
+$footer =
+    get_field('hi_why_footer') ?:
+    'These aren’t just technical issues—they impact your business performance.';
 
 $items = [
     'Transactions failing during peak hours',
@@ -39,8 +45,12 @@ $items = [
             <div class="md:pt-0 pt-[3vw] mx-auto w-full">
                 <ul class="flex flex-col items-start gap-[1.6vw] md:gap-5 mx-auto max-w-[52rem] w-fit" aria-label="SME internet impact points">
                     <?php foreach ($items as $i => $text):
-                        $num = str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT);
-                    ?>
+                        $num = str_pad(
+                            (string) ($i + 1),
+                            2,
+                            '0',
+                            STR_PAD_LEFT,
+                        ); ?>
                         <li class="w-full">
                             <div class="flex items-center gap-8 md:gap-6 w-full" data-sme-problem-item>
                                 <span class="text-[2.6vw] md:text-3xl sm:text-2xl text-brand-primary font-body shrink-0 w-[4.8rem] text-right">
@@ -51,7 +61,8 @@ $items = [
                                 </span>
                             </div>
                         </li>
-                    <?php endforeach; ?>
+                    <?php
+                    endforeach; ?>
                 </ul>
 
                 <p class="font-body text-24 mt-[3vw] leading-[1.5] text-text-primary text-center mb-[2.2vw] md:text-lg md:mb-6 sm:text-base" data-para-anim data-delay="0.15">

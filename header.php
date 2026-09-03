@@ -111,12 +111,14 @@
                             About Us
                         </a>
                     </li>
-                    <?php
-                    // Checked against 'products' (the real URL prefix, e.g.
-                    // /products/sme-internet/) rather than the "Solutions" label -
+                    <?php // Checked against 'products' (the real URL prefix, e.g.
+
+// /products/sme-internet/) rather than the "Solutions" label -
                     // the link itself is just a dropdown trigger (href="#").
-                    $is_solutions_active = $trac_nav_is_active('products', true);
-                    ?>
+                    $is_solutions_active = $trac_nav_is_active(
+                        'products',
+                        true,
+                    ); ?>
                     <li class="menu-item menu-item-has-children relative group under-multi-parent" data-products-menu-item>
     <a
         href="<?php echo esc_url(home_url('#')); ?>"
@@ -149,15 +151,15 @@
                         </a>
                     </li>
 
-                    <?php $is_careers_active = $trac_nav_is_active('careers'); ?>
+                    <?php $is_careers_active = $trac_nav_is_active(
+                        'careers',
+                    ); ?>
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/careers'),
                         ); ?>" class="nav-link nav-underline-offset under-multi text-white hover:text-white<?php echo $is_careers_active
     ? ' is-active-link'
-    : ''; ?>"<?php echo $is_careers_active
-    ? ' aria-current="page"'
-    : ''; ?>>
+    : ''; ?>"<?php echo $is_careers_active ? ' aria-current="page"' : ''; ?>>
                             Careers
                         </a>
                     </li>
@@ -207,10 +209,18 @@
                             home_url('/solutions'),
                         ); ?>" class="mobile-nav-link block py-2 text-xl text-neutral-900 hover:text-brand-primary">Solutions</a>
                         <ul class="mt-2 flex flex-col gap-2 pl-4">
-                            <li><a href="<?php echo esc_url(home_url('/solutions/enterprise-network/')); ?>" class="mobile-nav-link text-lg sm:text-base">Enterprise Network</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/solutions/sme-internet/')); ?>" class="mobile-nav-link text-lg sm:text-base">SME Internet</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/solutions/home-internet/')); ?>" class="mobile-nav-link text-lg sm:text-base">Home Internet</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/solutions/carrier-services/')); ?>" class="mobile-nav-link text-lg sm:text-base">Wholesale &amp; Carrier</a></li>
+                            <li><a href="<?php echo esc_url(
+                                home_url('/solutions/enterprise-network/'),
+                            ); ?>" class="mobile-nav-link text-lg sm:text-base">Enterprise Network</a></li>
+                            <li><a href="<?php echo esc_url(
+                                home_url('/solutions/sme-internet/'),
+                            ); ?>" class="mobile-nav-link text-lg sm:text-base">SME Internet</a></li>
+                            <li><a href="<?php echo esc_url(
+                                home_url('/solutions/home-internet/'),
+                            ); ?>" class="mobile-nav-link text-lg sm:text-base">Home Internet</a></li>
+                            <li><a href="<?php echo esc_url(
+                                home_url('/solutions/carrier-services/'),
+                            ); ?>" class="mobile-nav-link text-lg sm:text-base">Wholesale &amp; Carrier</a></li>
                         </ul>
                     </li>
                     <li><a href="<?php echo esc_url(
@@ -242,8 +252,7 @@
             </nav>
         </div>
     </header>
-   <?php
-   $solutions_menu_items = [
+   <?php $solutions_menu_items = [
        [
            'label' => 'Enterprise Network',
            'url' => home_url('/solutions/enterprise-network/'),
@@ -260,16 +269,19 @@
            'label' => 'Wholesale & Carrier',
            'url' => home_url('/solutions/carrier-services/'),
        ],
-   ];
-   ?>
+   ]; ?>
    <nav
     class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] p-[1.5vw] py-[1.5vw] flex justify-between z-[999] bg-white"
     data-products-dropdown
       >
     <?php foreach ($solutions_menu_items as $solution_item): ?>
-        <a href="<?php echo esc_url($solution_item['url']); ?>" class="group w-[24%] h-[12vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[0.8vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
+        <a href="<?php echo esc_url(
+            $solution_item['url'],
+        ); ?>" class="group w-[24%] h-[12vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[0.8vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
             <div class="w-full flex flex-col gap-[1vw] h-full justify-center">
-                <h4 class="text-[1.8vw] font-body"><?php echo esc_html($solution_item['label']); ?></h4>
+                <h4 class="text-[1.8vw] font-body"><?php echo esc_html(
+                    $solution_item['label'],
+                ); ?></h4>
             </div>
 
             <div class="w-full flex justify-end">

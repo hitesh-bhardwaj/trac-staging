@@ -7,9 +7,18 @@ export default defineConfig({
     resolve: {
         alias: {
             // Fix three.js subpath exports for Vite (more specific paths first)
-            'three/webgpu': resolve(__dirname, 'node_modules/three/build/three.webgpu.js'),
-            'three/tsl': resolve(__dirname, 'node_modules/three/build/three.tsl.js'),
-            'three/addons/': resolve(__dirname, 'node_modules/three/examples/jsm/'),
+            'three/webgpu': resolve(
+                __dirname,
+                'node_modules/three/build/three.webgpu.js',
+            ),
+            'three/tsl': resolve(
+                __dirname,
+                'node_modules/three/build/three.tsl.js',
+            ),
+            'three/addons/': resolve(
+                __dirname,
+                'node_modules/three/examples/jsm/',
+            ),
         },
     },
 

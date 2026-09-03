@@ -854,7 +854,7 @@ export function initConnectorSvgAnimation() {
                     duration: 0.25,
                     ease: 'power1.out',
                 },
-                '-=0.15'
+                '-=0.15',
             );
         }
 
@@ -2077,15 +2077,13 @@ function initCtaLineAnimation() {
 
     section.dataset.ctaLineInit = 'true';
 
-    const gsapRef =
-        window.gsap || (typeof gsap !== 'undefined' ? gsap : null);
+    const gsapRef = window.gsap || (typeof gsap !== 'undefined' ? gsap : null);
 
     if (!gsapRef) return;
 
     const basePaths = Array.from(svg.querySelectorAll('path[stroke]')).filter(
         (path) =>
-            !path.hasAttribute('data-cta-traveller') &&
-            !path.closest('defs'),
+            !path.hasAttribute('data-cta-traveller') && !path.closest('defs'),
     );
 
     if (!basePaths.length) return;
@@ -2161,10 +2159,7 @@ function initCtaLineAnimation() {
         const p1 = sourcePath.getPointAtLength(startDistance);
         const p2 = sourcePath.getPointAtLength(endDistance);
 
-        traveller.setAttribute(
-            'd',
-            `M ${p1.x} ${p1.y} L ${p2.x} ${p2.y}`,
-        );
+        traveller.setAttribute('d', `M ${p1.x} ${p1.y} L ${p2.x} ${p2.y}`);
     };
 
     const runTraveller = (entry) => {
@@ -2197,11 +2192,7 @@ function initCtaLineAnimation() {
                 duration: gsapRef.utils.random(2.8, 4.2),
                 ease: 'none',
                 onUpdate: () => {
-                    setTravellerSegment(
-                        entry,
-                        proxy.distance,
-                        segmentLength,
-                    );
+                    setTravellerSegment(entry, proxy.distance, segmentLength);
                 },
             },
             0,
@@ -2268,13 +2259,15 @@ function initCtaLineAnimation() {
     };
 
     if (window.ScrollTrigger) {
-        gsapRef.timeline({
-            scrollTrigger: {
-                trigger: section,
-                start: 'top 80%',
-                once: true,
-            },
-        }).call(playAnimation);
+        gsapRef
+            .timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    once: true,
+                },
+            })
+            .call(playAnimation);
     } else {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -2580,7 +2573,9 @@ function initTeamSlider() {
     const backName = section.querySelector('[data-team-slider-back-name]');
     const backRole = section.querySelector('[data-team-slider-back-role]');
     const backBio = section.querySelector('[data-team-slider-back-bio]');
-    const backLinkedin = section.querySelector('[data-team-slider-back-linkedin]');
+    const backLinkedin = section.querySelector(
+        '[data-team-slider-back-linkedin]',
+    );
     const closeBtn = section.querySelector('[data-team-slider-close]');
 
     const railWrap = section.querySelector('.team-slider-rail-wrap');
@@ -2679,7 +2674,7 @@ function initTeamSlider() {
     const setActiveContent = (member) => {
         activeName.textContent = member.name;
         activeRole.textContent = member.role;
-        backName.textContent = member.name.split(' ')[0] || member.name;
+        backName.textContent = member.name;
         backRole.textContent = member.role;
         backBio.textContent = member.bio;
         backLinkedin.setAttribute('href', member.linkedin || '#');
@@ -2856,7 +2851,6 @@ function initTeamSlider() {
                 });
             },
         });
-
     };
 
     const animateThumbs = (nextIndex, direction) => {
@@ -3195,7 +3189,9 @@ function initTestimonialsSlider() {
 
     function updateCounter() {
         if (currentSlide) {
-            const displayIndex = ((currentIndex - totalCards) % totalCards + totalCards) % totalCards;
+            const displayIndex =
+                (((currentIndex - totalCards) % totalCards) + totalCards) %
+                totalCards;
             currentSlide.textContent = String(displayIndex + 1).padStart(
                 2,
                 '0',
@@ -3208,7 +3204,11 @@ function initTestimonialsSlider() {
             btn.disabled = false;
             btn.setAttribute('aria-disabled', 'false');
 
-            btn.classList.remove('pointer-events-none', 'opacity-40', 'cursor-not-allowed');
+            btn.classList.remove(
+                'pointer-events-none',
+                'opacity-40',
+                'cursor-not-allowed',
+            );
             btn.classList.add('opacity-100', 'cursor-pointer');
         });
     }
@@ -3537,7 +3537,9 @@ function initWhatWeDoSlider() {
 
     function computeScrollStep() {
         const firstCard = cards[0];
-        const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
+        const cardWidth = firstCard
+            ? firstCard.getBoundingClientRect().width
+            : 0;
         const styles = window.getComputedStyle(track);
         const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
         scrollStep = cardWidth + gap;
@@ -3922,7 +3924,7 @@ function initOurNetworkPointers() {
         // clearTimeout(hideTimeout);
 
         // hideTimeout = setTimeout(() => {
-            hidePointer(card);
+        hidePointer(card);
         // }, 220);
     };
 

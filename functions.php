@@ -42,11 +42,7 @@ function trac_can_autocreate_pages()
         $ends_with_local = $host && substr($host, -6) === '.local';
         $has_staging = $host && strpos($host, 'staging') !== false;
 
-        if (
-            $host === 'localhost' ||
-            $ends_with_local ||
-            $has_staging
-        ) {
+        if ($host === 'localhost' || $ends_with_local || $has_staging) {
             return true;
         }
     }
@@ -204,7 +200,11 @@ function trac_ensure_home_internet_page()
         }
 
         // Force the Home Internet template for clarity (slug-based template also works).
-        update_post_meta($existing->ID, '_wp_page_template', 'page-home-internet.php');
+        update_post_meta(
+            $existing->ID,
+            '_wp_page_template',
+            'page-home-internet.php',
+        );
     } else {
         $page_id = wp_insert_post([
             'post_type' => 'page',
@@ -215,7 +215,11 @@ function trac_ensure_home_internet_page()
         ]);
 
         if (!is_wp_error($page_id) && $page_id) {
-            update_post_meta($page_id, '_wp_page_template', 'page-home-internet.php');
+            update_post_meta(
+                $page_id,
+                '_wp_page_template',
+                'page-home-internet.php',
+            );
             $did_change = true;
         }
     }
@@ -312,7 +316,11 @@ function trac_ensure_sme_internet_page()
             $did_change = true;
         }
 
-        update_post_meta($existing->ID, '_wp_page_template', 'page-sme-internet.php');
+        update_post_meta(
+            $existing->ID,
+            '_wp_page_template',
+            'page-sme-internet.php',
+        );
     } else {
         $page_id = wp_insert_post([
             'post_type' => 'page',
@@ -323,7 +331,11 @@ function trac_ensure_sme_internet_page()
         ]);
 
         if (!is_wp_error($page_id) && $page_id) {
-            update_post_meta($page_id, '_wp_page_template', 'page-sme-internet.php');
+            update_post_meta(
+                $page_id,
+                '_wp_page_template',
+                'page-sme-internet.php',
+            );
             $did_change = true;
         }
     }
@@ -380,7 +392,11 @@ function trac_ensure_contact_us_page()
     $did_change = false;
 
     if ($existing instanceof WP_Post) {
-        update_post_meta($existing->ID, '_wp_page_template', 'page-contact-us.php');
+        update_post_meta(
+            $existing->ID,
+            '_wp_page_template',
+            'page-contact-us.php',
+        );
     } else {
         $page_id = wp_insert_post([
             'post_type' => 'page',
@@ -391,7 +407,11 @@ function trac_ensure_contact_us_page()
         ]);
 
         if (!is_wp_error($page_id) && $page_id) {
-            update_post_meta($page_id, '_wp_page_template', 'page-contact-us.php');
+            update_post_meta(
+                $page_id,
+                '_wp_page_template',
+                'page-contact-us.php',
+            );
             $did_change = true;
         }
     }
@@ -457,20 +477,43 @@ function trac_enqueue_assets()
     if ($is_dev) {
         // Development: Load from Vite dev server.
         // Must match `base` in vite.config.js, derived so a theme rename stays in sync.
-        $vite = 'http://localhost:5173' .
-            wp_make_link_relative(TRAC_URI) .
-            '/dist';
+        $vite =
+            'http://localhost:5173' . wp_make_link_relative(TRAC_URI) . '/dist';
 
-        wp_enqueue_script('vite-client', $vite . '/@vite/client', [], null, false);
-        wp_enqueue_script('trac-main', $vite . '/src/js/main.js', [], null, true);
+        wp_enqueue_script(
+            'vite-client',
+            $vite . '/@vite/client',
+            [],
+            null,
+            false,
+        );
+        wp_enqueue_script(
+            'trac-main',
+            $vite . '/src/js/main.js',
+            [],
+            null,
+            true,
+        );
         // Vite serves CSS as a JS module in dev, so main.css is enqueued as a script
-        wp_enqueue_script('trac-main-css', $vite . '/src/css/main.css', [], null, false);
+        wp_enqueue_script(
+            'trac-main-css',
+            $vite . '/src/css/main.css',
+            [],
+            null,
+            false,
+        );
 
         // Add type="module" to Vite scripts
         add_filter(
             'script_loader_tag',
             function ($tag, $handle) {
-                if (in_array($handle, ['vite-client', 'trac-main', 'trac-main-css'])) {
+                if (
+                    in_array($handle, [
+                        'vite-client',
+                        'trac-main',
+                        'trac-main-css',
+                    ])
+                ) {
                     return str_replace(' src', ' type="module" src', $tag);
                 }
                 return $tag;
@@ -642,6 +685,12 @@ function trac_get_section($section_name, $args = [])
     if (!empty($args)) {
         extract($args);
     }
+
+    if ($section_name === 'cta') {
+        get_template_part('template-parts/common/cta', null, $args);
+        return;
+    }
+
     get_template_part('template-parts/sections/' . $section_name, null, $args);
 }
 
@@ -651,14 +700,15 @@ function trac_get_section($section_name, $args = [])
 function trac_get_faq_section_args($overrides = [])
 {
     $section_label =
-        $overrides['section_label'] ?? get_field('faq_section_label') ?? 'FAQs';
+        $overrides['section_label'] ??
+        (get_field('faq_section_label') ?? 'FAQs');
     $section_title =
         $overrides['section_title'] ??
-        get_field('faq_section_title') ??
-        'Any Questions? We Got You.';
+        (get_field('faq_section_title') ?? 'Any Questions? We Got You.');
     $display_mode =
-        $overrides['display_mode'] ?? get_field('faq_display_mode') ?? 'latest';
-    $faq_limit = $overrides['limit'] ?? get_field('faq_limit') ?? 5;
+        $overrides['display_mode'] ??
+        (get_field('faq_display_mode') ?? 'latest');
+    $faq_limit = $overrides['limit'] ?? (get_field('faq_limit') ?? 5);
     $open_first = $overrides['open_first'] ?? get_field('faq_open_first');
     $open_first = $open_first !== null ? (bool) $open_first : true;
 
@@ -672,7 +722,8 @@ function trac_get_faq_section_args($overrides = [])
 
     switch ($display_mode) {
         case 'category':
-            $categories = $overrides['categories'] ?? get_field('faq_categories');
+            $categories =
+                $overrides['categories'] ?? get_field('faq_categories');
             if ($categories) {
                 $query_args['tax_query'] = [
                     [
@@ -752,7 +803,8 @@ function trac_get_faq_section_args($overrides = [])
                     'Community Smart Hubs are physical locations enabled by TrAC connectivity, designed to bring digital tools and essential services closer to the communities they serve.',
             ],
             [
-                'question' => 'How is TrAC supporting areas with limited access?',
+                'question' =>
+                    'How is TrAC supporting areas with limited access?',
                 'answer' =>
                     'TrAC is expanding its network to bring reliable connectivity to more people and places. By improving access and strengthening infrastructure, we help communities stay connected to the opportunities and services that matter most.',
             ],
@@ -863,7 +915,11 @@ add_filter('use_block_editor_for_post', 'trac_disable_gutenberg', 10, 2);
 function trac_fix_rest_api_permissions()
 {
     // Remove REST API restrictions
-    remove_filter('rest_authentication_errors', 'rest_cookie_check_errors', 100);
+    remove_filter(
+        'rest_authentication_errors',
+        'rest_cookie_check_errors',
+        100,
+    );
 }
 add_action('rest_api_init', 'trac_fix_rest_api_permissions', 10);
 
@@ -932,12 +988,15 @@ function trac_render_btn_primary_submit($matches)
     $classes = isset($class_match[1])
         ? $class_match[1]
         : 'wpcf7-form-control wpcf7-submit has-spinner';
-    $id_attr = isset($id_match[1]) ? ' id="' . esc_attr($id_match[1]) . '"' : '';
+    $id_attr = isset($id_match[1])
+        ? ' id="' . esc_attr($id_match[1]) . '"'
+        : '';
 
-    $svg = '<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">'
-        . '<path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>'
-        . '<path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>'
-        . '</svg>';
+    $svg =
+        '<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">' .
+        '<path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>' .
+        '<path d="M16.4537 8.66578C16.4537 8.86726 16.3767 9.06894 16.2229 9.22276L8.34483 17.1008C8.03699 17.4086 7.53851 17.4086 7.23088 17.1008C6.92324 16.793 6.92304 16.2945 7.23088 15.9868L14.5519 8.66578L7.23087 1.34473C6.92304 1.03689 6.92304 0.538408 7.23087 0.230772C7.53871 -0.0768662 8.03719 -0.0770627 8.34483 0.230772L16.2229 8.1088C16.3767 8.26262 16.4537 8.4643 16.4537 8.66578Z" fill="currentColor"/>' .
+        '</svg>';
 
     return sprintf(
         '<button type="submit"%s class="%s btn btn-primary group magnetic"><span class="btn-line"></span><span class="btn-text">%s</span><span class="btn-icon">%s</span></button>',
@@ -953,14 +1012,21 @@ function trac_render_btn_primary_submit($matches)
  * Field stays a plain text input (per Figma design); this enforces numeric-only
  * server-side since the front-end input filtering can be bypassed.
  */
-add_filter('wpcf7_validate_text*', 'trac_validate_phone_number_digits_only', 20, 2);
+add_filter(
+    'wpcf7_validate_text*',
+    'trac_validate_phone_number_digits_only',
+    20,
+    2,
+);
 function trac_validate_phone_number_digits_only($result, $tag)
 {
     if ('your-number' !== $tag->name) {
         return $result;
     }
 
-    $value = isset($_POST['your-number']) ? trim(wp_unslash($_POST['your-number'])) : '';
+    $value = isset($_POST['your-number'])
+        ? trim(wp_unslash($_POST['your-number']))
+        : '';
 
     if ('' !== $value && !preg_match('/^[0-9]+$/', $value)) {
         $result->invalidate($tag, 'Please enter numbers only.');
