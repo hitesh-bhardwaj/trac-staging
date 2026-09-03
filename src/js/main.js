@@ -258,6 +258,7 @@ function initializePageComponents() {
     initClientLogos();
     initProductsMegaMenu();
     initServicesSlider();
+    initActiveNavLink();
     initMouseFollower();
 
     if (!app.prefersReducedMotion) {
@@ -912,6 +913,90 @@ function initServicesSlider() {
     }
 
     document.querySelectorAll('[data-service-slider]').forEach(initSlider);
+}
+
+/**
+ * Header: keep the hover underline permanently on for whichever nav link matches the
+ * current route. `header.php` sits outside `[data-barba="container"]` so it never
+ * re-renders on a Barba transition - PHP sets this correctly for the first request,
+ * this re-syncs it after every subsequent client-side navigation.
+ */
+function initActiveNavLink() {
+    const nav = document.getElementById('primary-nav');
+    if (!nav) return;
+
+    const links = Array.from(nav.querySelectorAll('a.under-multi[href]'));
+    if (!links.length) return;
+
+    const setActive = (activeLink) => {
+        links.forEach((link) => {
+            const isActive = link === activeLink;
+            link.classList.toggle('is-active-link', isActive);
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    };
+
+    const syncFromRoute = () => {
+        const currentPath = window.location.pathname
+            .replace(/\/+$/, '')
+            .toLowerCase();
+
+        const activeLink = links.find((link) => {
+            // "Solutions" is just a dropdown trigger (href="#"), so its own href isn't
+            // a real path to compare against - check it against the actual product URL
+            // prefix instead, matching every /products/* sub-page.
+            if (link.hasAttribute('data-products-trigger')) {
+                return (
+                    currentPath === '/products' ||
+                    currentPath.startsWith('/products/')
+                );
+            }
+
+            let linkPath;
+            try {
+                linkPath = new URL(link.href).pathname
+                    .replace(/\/+$/, '')
+                    .toLowerCase();
+            } catch (_) {
+                return false;
+            }
+            return currentPath === linkPath;
+        });
+
+        setActive(activeLink || null);
+    };
+
+    syncFromRoute();
+
+    // Attached once (the header persists across Barba transitions, unlike the rest of
+    // the page): mark the destination link active the instant it's clicked, rather than
+    // waiting for the full transition to land. Without this there's a visible gap
+    // between the hover-underline ending (cursor leaves on click) and
+    // `syncFromRoute()` re-running once the new page settles, which reads as the
+    // underline undrawing and redrawing rather than staying on continuously.
+    if (nav.dataset.activeNavClickInit === 'true') return;
+    nav.dataset.activeNavClickInit = 'true';
+
+    links.forEach((link) => {
+        if (link.hasAttribute('data-products-trigger')) return; // opens the dropdown, doesn't navigate
+        link.addEventListener('click', () => setActive(link));
+    });
+
+    const dropdownLinks = Array.from(
+        document.querySelectorAll('[data-products-dropdown] a[href]'),
+    );
+    const solutionsTrigger = links.find((link) =>
+        link.hasAttribute('data-products-trigger'),
+    );
+    if (solutionsTrigger) {
+        dropdownLinks.forEach((link) => {
+            link.addEventListener('click', () => setActive(solutionsTrigger));
+        });
+    }
 }
 
 function initProductsMegaMenu() {

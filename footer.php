@@ -67,16 +67,16 @@
                         <h4 class="font-body text-24 text-text-primary mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6 !font-normal">Solutions</h4>
                         <ul class="footer-links flex flex-col gap-3 md:gap-5 sm:gap-4">
                             <li class="under-multi-parent">
-                                <a href="/products/home-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Home Internet</a>
+                                <a href="/solutions/home-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Home Internet</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/products/sme-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">SME Internet</a>
+                                <a href="/solutions/sme-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">SME Internet</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/products/enterprise-network" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Enterprise Network</a>
+                                <a href="/solutions/enterprise-network" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Enterprise Network</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/products/carrier-services/" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Wholesale & Carrier</a>
+                                <a href="/solutions/carrier-services/" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Wholesale & Carrier</a>
                             </li>
                         </ul>
                     </div>

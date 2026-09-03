@@ -7,7 +7,7 @@ $services = [
     [
         'title' => get_field('service_1_title') ?: 'Enterprise Networks',
         'description' => get_field('service_1_description') ?: 'Secure, high-capacity infrastructure built for large-scale operations, complex network environments, and mission-critical systems. Designed to support heavier workloads, multi-site connectivity, and evolving business demands.',
-        'link' => get_field('service_1_link') ?: home_url('/products/enterprise-networks'),
+        'link' => get_field('service_1_link') ?: home_url('/solutions/enterprise-networks'),
         'image' => get_field('service_1_image') ?: get_template_directory_uri() . '/src/imgs/home/service-enterprise-network.png',
         'alt' => get_field('service_1_title') ?: 'Enterprise Networks Service',
     ],

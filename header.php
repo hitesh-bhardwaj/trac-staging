@@ -52,6 +52,31 @@
         <?php esc_html_e('Skip to content', 'trac'); ?>
     </a>
 
+   <?php
+   // Active nav-link detection (underline stays on for the current route).
+   // Header.php isn't re-rendered by Barba's client-side navigation (it lives outside
+   // `[data-barba="container"]`), so this only gets this right for the initial request;
+   // `initActiveNavLink()` in main.js re-syncs it on every subsequent transition.
+   $trac_current_path = trim(
+       (string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH),
+       '/',
+   );
+
+   /**
+    * @param string $path Route to check, e.g. 'about-us' or 'products'.
+    * @param bool $prefix When true, also matches sub-paths (e.g. 'products/sme-internet').
+    */
+   $trac_nav_is_active = function (string $path, bool $prefix = false) use (
+       $trac_current_path,
+   ): bool {
+       $path = trim($path, '/');
+       if ($prefix) {
+           return $trac_current_path === $path ||
+               strpos($trac_current_path, $path . '/') === 0;
+       }
+       return $trac_current_path === $path;
+   };
+   ?>
    <header
     id="site-header"
     class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[9999] bg-brand-primary"
@@ -76,39 +101,63 @@
                 'trac',
             ); ?>">
                 <ul class="list-none flex items-center gap-[3.125vw]">
+                    <?php $is_about_active = $trac_nav_is_active('about-us'); ?>
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/about-us'),
-                        ); ?>" class="text-white hover:text-white under-multi">
+                        ); ?>" class="nav-link nav-underline-offset text-white hover:text-white under-multi<?php echo $is_about_active
+    ? ' is-active-link'
+    : ''; ?>"<?php echo $is_about_active ? ' aria-current="page"' : ''; ?>>
                             About Us
                         </a>
                     </li>
+                    <?php
+                    // Checked against 'products' (the real URL prefix, e.g.
+                    // /products/sme-internet/) rather than the "Solutions" label -
+                    // the link itself is just a dropdown trigger (href="#").
+                    $is_solutions_active = $trac_nav_is_active('products', true);
+                    ?>
                     <li class="menu-item menu-item-has-children relative group under-multi-parent" data-products-menu-item>
     <a
-        href="<?php echo esc_url(home_url('/products')); ?>"
-        class="nav-link inline-flex items-center gap-[0.26vw] under-multi text-white hover:text-white"
+        href="<?php echo esc_url(home_url('#')); ?>"
+        class="nav-link inline-flex items-center gap-[0.26vw] under-multi text-white hover:text-white<?php echo $is_solutions_active
+            ? ' is-active-link'
+            : ''; ?>"
         data-products-trigger
+        <?php echo $is_solutions_active ? ' aria-current="page"' : ''; ?>
     >
         Solutions
         <div class="size-[1.5vw] group-hover:translate-y-[10%] duration-300 ease-out">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.708 22.122L23.416 14.416L22.002 13L15.708 19.294L9.416 13L8 14.416L15.708 22.122Z" fill="var(--color-brand-light)"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.708 22.122L23.416 14.416L22.002 13L15.708 19.294L9.416 13L8 14.416L15.708 22.122Z" fill="white"/>
             </svg>
         </div>
     </a>
                  </li>
+                    <?php $is_communities_active = $trac_nav_is_active(
+                        'connecting-communities',
+                    ); ?>
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/connecting-communities'),
-                        ); ?>" class="nav-link under-multi text-white hover:text-white">
+                        ); ?>" class="nav-link nav-underline-offset under-multi text-white hover:text-white<?php echo $is_communities_active
+    ? ' is-active-link'
+    : ''; ?>"<?php echo $is_communities_active
+    ? ' aria-current="page"'
+    : ''; ?>>
                             Connecting Communities
                         </a>
                     </li>
 
+                    <?php $is_careers_active = $trac_nav_is_active('careers'); ?>
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             home_url('/careers'),
-                        ); ?>" class="nav-link under-multi text-white hover:text-white">
+                        ); ?>" class="nav-link nav-underline-offset under-multi text-white hover:text-white<?php echo $is_careers_active
+    ? ' is-active-link'
+    : ''; ?>"<?php echo $is_careers_active
+    ? ' aria-current="page"'
+    : ''; ?>>
                             Careers
                         </a>
                     </li>
@@ -155,13 +204,13 @@
                     ); ?>" class="mobile-nav-link block py-2 text-xl text-neutral-900 hover:text-brand-primary">About Us</a></li>
                     <li>
                         <a href="<?php echo esc_url(
-                            home_url('/products'),
+                            home_url('/solutions'),
                         ); ?>" class="mobile-nav-link block py-2 text-xl text-neutral-900 hover:text-brand-primary">Solutions</a>
                         <ul class="mt-2 flex flex-col gap-2 pl-4">
-                            <li><a href="<?php echo esc_url(home_url('/products/enterprise-network/')); ?>" class="mobile-nav-link text-lg sm:text-base">Enterprise Network</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/products/sme-internet/')); ?>" class="mobile-nav-link text-lg sm:text-base">SME Internet</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/products/home-internet/')); ?>" class="mobile-nav-link text-lg sm:text-base">Home Internet</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/products/carrier-services/')); ?>" class="mobile-nav-link text-lg sm:text-base">Wholesale &amp; Carrier</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/solutions/enterprise-network/')); ?>" class="mobile-nav-link text-lg sm:text-base">Enterprise Network</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/solutions/sme-internet/')); ?>" class="mobile-nav-link text-lg sm:text-base">SME Internet</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/solutions/home-internet/')); ?>" class="mobile-nav-link text-lg sm:text-base">Home Internet</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/solutions/carrier-services/')); ?>" class="mobile-nav-link text-lg sm:text-base">Wholesale &amp; Carrier</a></li>
                         </ul>
                     </li>
                     <li><a href="<?php echo esc_url(
@@ -197,19 +246,19 @@
    $solutions_menu_items = [
        [
            'label' => 'Enterprise Network',
-           'url' => home_url('/products/enterprise-network/'),
+           'url' => home_url('/solutions/enterprise-network/'),
        ],
        [
            'label' => 'SME Internet',
-           'url' => home_url('/products/sme-internet/'),
+           'url' => home_url('/solutions/sme-internet/'),
        ],
        [
            'label' => 'Home Internet',
-           'url' => home_url('/products/home-internet/'),
+           'url' => home_url('/solutions/home-internet/'),
        ],
        [
            'label' => 'Wholesale & Carrier',
-           'url' => home_url('/products/carrier-services/'),
+           'url' => home_url('/solutions/carrier-services/'),
        ],
    ];
    ?>
@@ -289,6 +338,28 @@
 
 .nav-link:hover {
     color: var(--color-text-secondary);
+}
+
+/* Active route: keep the hover underline permanently on. Specificity matches
+   `.under-multi-parent:hover .under-multi` (3 classes) so it isn't overridden by the
+   `.menu-item .under-multi` resting-state rule (2 classes) in main.css. */
+.menu-item .under-multi.is-active-link {
+    background-size:
+        100% 0px,
+        100% 1px;
+}
+
+/* "Solutions" is an inline-flex box (text + dropdown chevron), which makes it taller
+   than the plain-text links, so its bottom-anchored underline (`background-position:
+   ... 100%`) naturally sits lower. Push the plain-text links' underline down to match. */
+.nav-underline-offset {
+    padding-bottom: 0.35vw;
+}
+
+@media (max-width: 1024px) {
+    .nav-underline-offset {
+        padding-bottom: 10px;
+    }
 }
 
 /* Nav dropdown icon */
