@@ -176,7 +176,7 @@ function trac_ensure_enterprise_network_page()
 add_action('init', 'trac_ensure_enterprise_network_page');
 
 /**
- * Ensure Home Internet page exists (so /products/home-internet doesn't 404).
+ * Ensure Home Internet page exists (so /solutions/home-internet doesn't 404).
  */
 function trac_ensure_home_internet_page()
 {
@@ -227,7 +227,7 @@ function trac_ensure_home_internet_page()
 add_action('init', 'trac_ensure_home_internet_page');
 
 /**
- * Ensure Carrier Services page exists (so /products/carrier-services doesn't 404).
+ * Ensure Carrier Services page exists (so /solutions/carrier-services doesn't 404).
  */
 function trac_ensure_carrier_services_page()
 {
@@ -285,7 +285,7 @@ function trac_ensure_carrier_services_page()
 add_action('init', 'trac_ensure_carrier_services_page');
 
 /**
- * Ensure SME Internet page exists (so /products/sme-internet doesn't 404).
+ * Ensure SME Internet page exists (so /solutions/sme-internet doesn't 404).
  */
 function trac_ensure_sme_internet_page()
 {
@@ -403,7 +403,7 @@ function trac_ensure_contact_us_page()
 add_action('init', 'trac_ensure_contact_us_page');
 
 /**
- * Redirect legacy product URLs to the new /products/* routes.
+ * Redirect legacy product URLs to the new /solutions/* routes.
  * Keeps old bookmarks working after we nest pages under Products.
  */
 function trac_redirect_legacy_product_routes()
@@ -419,21 +419,21 @@ function trac_redirect_legacy_product_routes()
     $path = trim((string) $path, '/');
 
     if ($path === 'home-internet') {
-        wp_safe_redirect(home_url('/products/home-internet'), 301);
+        wp_safe_redirect(home_url('/solutions/home-internet'), 301);
         exit();
     }
 
     if ($path === 'carrier-services') {
-        wp_safe_redirect(home_url('/products/carrier-services'), 301);
+        wp_safe_redirect(home_url('/solutions/carrier-services'), 301);
         exit();
     }
     if ($path === 'enterprise-network') {
-        wp_safe_redirect(home_url('/products/enterprise-network'), 301);
+        wp_safe_redirect(home_url('/solutions/enterprise-network'), 301);
         exit();
     }
 
     if ($path === 'sme-internet') {
-        wp_safe_redirect(home_url('/products/sme-internet'), 301);
+        wp_safe_redirect(home_url('/solutions/sme-internet'), 301);
         exit();
     }
 }
