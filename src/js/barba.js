@@ -37,7 +37,11 @@ export function initBarba(app) {
         transitions: [
             {
                 name: 'default-transition',
-                sync: true,
+                // No `sync: true`: leave() now fully completes (old container removed)
+                // before enter() starts (new container inserted). With sync mode, leave
+                // and enter ran concurrently, so both containers sat at partial opacity
+                // at the same time - `body` shows through that overlap, which read as
+                // the background flashing white mid-transition.
 
                 async before(data) {
                     if (app.lenis) {
@@ -64,33 +68,23 @@ export function initBarba(app) {
                         ?.querySelectorAll('[data-hero-reveal]')
                         .forEach((el) => delete el.dataset.heroAnimated);
 
-                    gsap.set(data.current.container, {
-                        position: 'relative',
-                        zIndex: 2,
-                        transformOrigin: '50% 0%',
-                        willChange: 'opacity, transform, filter',
-                    });
+                    gsap.set(data.next.container, { opacity: 0 });
 
-                    gsap.set(data.next.container, {
-                        position: 'absolute',
-                        inset: 0,
-                        width: '100%',
-                        zIndex: 3,
-                        opacity: 0,
-                        scale: 1.06,
-                        filter: 'blur(14px)',
-                        transformOrigin: '50% 0%',
-                        willChange: 'opacity, transform, filter',
-                    });
+                    // Covers the whole transition (leave -> gap -> enter), not just
+                    // enter, so the brief moment between the old container being
+                    // removed and the new one fading in shows the brand background
+                    // instead of `body`'s white (see the `.is-barba-page-enter` rule
+                    // in main.css).
+                    document.documentElement.classList.add(
+                        'is-barba-page-enter',
+                    );
                 },
 
                 async leave(data) {
                     return gsap.to(data.current.container, {
                         opacity: 0,
-                        scale: 0.92,
-                        filter: 'blur(10px)',
-                        duration: 0.38,
-                        ease: 'power2.out',
+                        duration: 0.32,
+                        ease: 'power1.out',
                     });
                 },
 
@@ -114,10 +108,6 @@ export function initBarba(app) {
                         ),
                     );
 
-                    document.documentElement.classList.add(
-                        'is-barba-page-enter',
-                    );
-
                     if (heroItems.length) {
                         heroItems.forEach((el) => {
                             gsap.set(el, {
@@ -128,32 +118,16 @@ export function initBarba(app) {
                         });
                     }
 
-                    const tl = gsap.timeline();
-
-                    tl.to(
-                        data.next.container,
-                        {
-                            opacity: 1,
-                            scale: 1,
-                            filter: 'blur(0px)',
-                            duration: 0.5,
-                            ease: 'power2.out',
-                        },
-                        0,
-                    );
-
-                    return tl;
+                    return gsap.to(data.next.container, {
+                        opacity: 1,
+                        duration: 0.32,
+                        ease: 'power1.out',
+                    });
                 },
 
                 async after(data) {
                     gsap.set(data.next.container, {
-                        clearProps:
-                            'position,inset,width,zIndex,willChange,transformOrigin,filter',
-                    });
-
-                    gsap.set(data.current.container, {
-                        clearProps:
-                            'position,zIndex,willChange,transformOrigin,filter',
+                        clearProps: 'opacity',
                     });
 
                     await new Promise((resolve) =>
@@ -287,7 +261,7 @@ export function initPageLoader() {
             .to(loaderDotEls, {
                 opacity: 1,
                 yPercent: 0,
-                duration: 0.32,
+                duration: 0.4,
                 stagger: 0.08,
                 ease: 'power2.out',
             })

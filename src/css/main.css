@@ -470,6 +470,13 @@ html.js [data-hero-reveal].is-hero-revealed {
         overflow-x: hidden;
     }
 
+    /* During a Barba transition, show the brand background instead of `body`'s white
+       for the brief gap between the old container fading out and the new one fading
+       in (see `.is-barba-page-enter` in barba.js's `before()`/`after()` hooks). */
+    html.is-barba-page-enter body {
+        background-color: var(--color-brand-primary);
+    }
+
     /* Add padding for fixed header */
     main {
         padding-top: var(--header-height);
