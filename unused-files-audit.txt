@@ -4,8 +4,8 @@ Unused Files Audit
 This is a static code-reference audit. It checks theme source references and does not detect files selected manually in WordPress admin or ACF media fields.
 
 
-High Confidence Code Files
---------------------------
+Unused Code Files
+-----------------
 
 src/js/scroll-frame-slider.js
 Not imported anywhere, and no data-scroll-frame-slider markup exists.
@@ -15,6 +15,27 @@ Contact form is now inline inside page-contact-us.php; this partial is not calle
 
 page-test-simple.php
 Looks like a test-only page template.
+
+
+Potentially Unused PHP Partials
+-------------------------------
+
+These PHP partials are not directly called by the current page templates. Some template-parts/sections files may still be used dynamically through ACF flexible content layouts, so confirm in WordPress admin before deleting them.
+
+template-parts/about-page/highlights.php
+template-parts/about-page/story.php
+template-parts/about-page/trac-story.php
+template-parts/contact-us/contact-form.php
+template-parts/enterprise-network/hero.php
+template-parts/front-page/why-trac.php
+template-parts/home-internet/installation.php
+template-parts/home-internet/packages.php
+template-parts/sections/cards.php
+template-parts/sections/content.php
+template-parts/sections/features.php
+template-parts/sections/hero.php
+template-parts/sections/stats.php
+template-parts/sections/testimonials.php
 
 
 Unused Icons
