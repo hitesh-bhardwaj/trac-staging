@@ -87,7 +87,7 @@ get_header();
                     'para' =>
                         'If you’d like to explore how connectivity can support your community, or have ideas you’d like to discuss, our team is here to help.',
                     'button_text' => 'Get Connected',
-                    'button_link' => '#get-connected',
+                    'button_link' => home_url('/contact-us'),
                     'pattern_top_class' => 'top-[-15%]',
                     // Move CTA button slightly upward for this page.
                     'button_wrapper_class' => '',

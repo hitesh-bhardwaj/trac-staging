@@ -39,7 +39,8 @@ $offerings = [
 ];
 
 $button_text = get_field('cs_overview_button_text') ?: 'Get on TrAC';
-$button_link = get_field('cs_overview_button_link') ?: '#get-connected';
+$button_link =
+    get_field('cs_overview_button_link') ?: home_url('/contact-us');
 ?>
 
 <section class="carrier-overview relative bg-white px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="solution-overview">

@@ -27,7 +27,7 @@ $globe_image = get_sub_field('globe_image');
 
 // Default button text
 $cta_primary_text = $cta_primary['title'] ?? 'Get Connected';
-$cta_primary_url = $cta_primary['url'] ?? '#';
+$cta_primary_url = $cta_primary['url'] ?? home_url('/contact-us');
 $cta_secondary_text = $cta_secondary['title'] ?? 'Explore Products';
 $cta_secondary_url = $cta_secondary['url'] ?? '#';
 ?>

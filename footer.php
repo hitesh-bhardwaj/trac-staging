@@ -27,12 +27,12 @@
                         <h4 class="font-body !font-normal text-24 text-text-primary md:text-xl mb-2">Connect with us</h4>
                         <div class="contact-links flex flex-col gap-[0.521vw] md:gap-2">
                             <div class="under-multi-parent w-fit">
-                                <a href="mailto:info@trac.africa" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
+                                <a href="mailto:info@trac.africa" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
                                     info@trac.africa
                                 </a>
                             </div>
                             <div class="under-multi-parent w-fit">
-                                <a href="tel:+250733000190" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
+                                <a href="tel:+250733000190" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
                                     +250 733 000 190
                                 </a>
                             </div>
@@ -47,17 +47,17 @@
                         <h4 class="font-body text-24 !font-normal text-text-primary mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6">Company</h4>
                         <ul class="footer-links flex flex-col gap-3 md:gap-5 sm:gap-4">
                             <li class="under-multi-parent">
-                                <a href="/about-us" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">About Us</a>
+                                <a href="/about-us" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">About Us</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/connecting-communities/" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Communities</a>
+                                <a href="/connecting-communities/" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Communities</a>
                             </li>
                             
                             <li class="under-multi-parent">
-                                <a href="/careers" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Careers</a>
+                                <a href="/careers" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Careers</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/contact-us" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Contact Us</a>
+                                <a href="/contact-us" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Contact Us</a>
                             </li>
                         </ul>
                     </div>
@@ -67,16 +67,16 @@
                         <h4 class="font-body text-24 text-text-primary mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6 !font-normal">Solutions</h4>
                         <ul class="footer-links flex flex-col gap-3 md:gap-5 sm:gap-4">
                             <li class="under-multi-parent">
-                                <a href="/solutions/home-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Home Internet</a>
+                                <a href="/solutions/enterprise-network" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Enterprise Network</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/solutions/sme-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">SME Internet</a>
+                                <a href="/solutions/sme-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">SME Internet</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/solutions/enterprise-network" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Enterprise Network</a>
+                                <a href="/solutions/home-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Home Internet</a>
                             </li>
                             <li class="under-multi-parent">
-                                <a href="/solutions/carrier-services/" class="font-body text-[1.042vw] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">Wholesale & Carrier</a>
+                                <a href="/solutions/carrier-services/" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Wholesale & Carrier</a>
                             </li>
                         </ul>
                     </div>

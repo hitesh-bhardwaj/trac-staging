@@ -8,28 +8,28 @@ $enterprise_services = [
         'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/business.svg',
         'title'    => 'Enterprise Fibre Connectivity',
         'para'     => 'Dedicated, high-performance fibre built for demanding business operations, with resilient infrastructure designed to support critical applications and maintain continuity.',
-        'link'     => '#get-connected',
+        'link'     => home_url('/contact-us'),
         'btn_text' => 'Get on TrAC',
     ],
     [
         'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/private-network.svg',
         'title'    => 'VPN',
         'para'     => 'Secure private networks that connect multiple locations, teams, and systems, providing reliable communication and consistent performance across your operations.',
-        'link'     => '#get-connected',
+        'link'     => home_url('/contact-us'),
         'btn_text' => 'Get on TrAC',
     ],
     [
         'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/data-centre.svg',
         'title'    => 'Data Centre & Colocation',
         'para'     => 'Enterprise-grade hosting in Rwanda, with controlled access and continuous monitoring to provide a secure, reliable environment for critical infrastructure.',
-        'link'     => '#get-connected',
+        'link'     => home_url('/contact-us'),
         'btn_text' => 'Get on TrAC',
     ],
     [
         'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/cloud-infrastructure.svg',
         'title'    => 'Cloud & Virtual Infrastructure',
         'para'     => 'Flexible Cloud environments that support virtual infrastructure, data protection, and scalable operations, adapting as your business needs evolve.',
-        'link'     => '#get-connected',
+        'link'     => home_url('/contact-us'),
         'btn_text' => 'Get on TrAC',
     ],
 ];
@@ -78,7 +78,7 @@ $enterprise_services = [
                         <div class="mt-auto pt-10">
                             <a href="<?php echo esc_url(
                         get_field('hero_primary_button_link') ?:
-                        '#get-connected',
+                        home_url('/contact-us'),
                      ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(

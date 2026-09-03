@@ -83,7 +83,7 @@ $plans = [
 
                                 <a href="<?php echo esc_url(
                                     get_field('sme_plans_button_link') ?:
-                                        '#get-connected',
+                                        home_url('/contact-us'),
                                 ); ?>" class="btn btn-primary group magnetic">
                                     <span class="btn-line"></span>
                                     <span class="btn-text"><?php echo esc_html(

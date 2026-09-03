@@ -9,7 +9,7 @@ $title =
 $button_text =
     get_field('sme_solutions_button_text') ?: 'Request a Consultation';
 $button_link =
-    get_field('sme_solutions_button_link') ?: '#get-connected';
+    get_field('sme_solutions_button_link') ?: '/contact-us';
 
 $solutions_icon_base = get_template_directory_uri() . '/src/imgs/sme-internet/';
 

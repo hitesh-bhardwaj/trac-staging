@@ -22,7 +22,7 @@ $grid_classes = isset($args['grid_classes'])
     : 'hero-grid flex items-start justify-between gap-[5vw] md:flex-col md:gap-8';
 $text_classes = isset($args['text_classes'])
     ? (string) $args['text_classes']
-    : 'hero-text w-[60%] md:w-full md:max-w-full relative z-[10]';
+    : 'hero-text w-[50%] md:w-full md:max-w-full relative z-[10]';
 $media_classes = isset($args['media_classes'])
     ? (string) $args['media_classes']
     : 'hero-media w-[55%] md:w-full';
@@ -167,7 +167,11 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
             <?php endif; ?>
 
             <?php if ($images_wrapper_classes !== ''): ?>
-                <div class="<?php echo esc_attr($images_wrapper_classes); ?>">
+                <div
+                    class="<?php echo esc_attr($images_wrapper_classes); ?>"
+                    data-hero-reveal
+                    data-hero-delay="0.2"
+                >
                     <?php foreach ($images as $image): ?>
                         <?php
                         if (!is_array($image) || empty($image['src'])) {
@@ -300,7 +304,11 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                         <?php echo $right_content; ?>
                     </div>
                 <?php elseif ($media_src !== ''): ?>
-                    <div class="<?php echo esc_attr($media_classes); ?>">
+                    <div
+                        class="<?php echo esc_attr($media_classes); ?>"
+                        data-hero-reveal
+                        data-hero-delay="0.2"
+                    >
                         <div class="h-[40vw] w-full overflow-hidden rounded-[1.3vw] md:h-[360px] md:rounded-[28px] sm:h-[70vw] sm:rounded-[24px]">
                             <img
                                 src="<?php echo esc_url($media_src); ?>"

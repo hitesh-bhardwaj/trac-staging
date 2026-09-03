@@ -10,7 +10,7 @@ $subtitle =
     'Tell us what your network requires, and our team will design a solution that fits.';
 $button_text =
     get_field('cs_infra_button_text') ?: 'Request a Consultation';
-$button_link = get_field('cs_infra_button_link') ?: '#get-connected';
+$button_link = get_field('cs_infra_button_link') ?: '#get-in-touch';
 ?>
 
 <section class="carrier-infrastructure relative overflow-hidden bg-brand-quaternary px-[5vw] py-[6vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="infrastructure">

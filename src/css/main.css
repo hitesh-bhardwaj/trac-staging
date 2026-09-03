@@ -561,7 +561,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 
     .btn-text {
-        @apply pb-1;
+        /* @apply pb-1; */
         transform: translateX(0);
         transition: transform 0.4s ease;
     }
@@ -2352,7 +2352,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     text-decoration: none;
     background-image:
         linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0, 0)),
-        linear-gradient(#10417f, #10417f);
+        linear-gradient(#2F5FA0, #2F5FA0);
     background-size:
         100% 0px,
         0% 1px;
@@ -2413,7 +2413,7 @@ html.js [data-hero-reveal].is-hero-revealed {
    Hero Section
    ======================================== */
 .hero {
-    @apply relative min-h-screen flex pt-[10vw] overflow-hidden bg-[#0B1F3A] text-white;
+    @apply relative min-h-screen flex pt-[8vw] overflow-hidden bg-[#0B1F3A] text-white;
 }
 
 .hero-bg {

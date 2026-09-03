@@ -263,11 +263,11 @@
    ];
    ?>
    <nav
-    class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] px-[2vw] py-[1.5vw] flex justify-between z-[999] bg-white"
+    class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] p-[1.5vw] py-[1.5vw] flex justify-between z-[999] bg-white"
     data-products-dropdown
       >
     <?php foreach ($solutions_menu_items as $solution_item): ?>
-        <a href="<?php echo esc_url($solution_item['url']); ?>" class="group w-[24%] h-[15vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[1vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
+        <a href="<?php echo esc_url($solution_item['url']); ?>" class="group w-[24%] h-[12vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[0.8vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
             <div class="w-full flex flex-col gap-[1vw] h-full justify-center">
                 <h4 class="text-[1.8vw] font-body"><?php echo esc_html($solution_item['label']); ?></h4>
             </div>

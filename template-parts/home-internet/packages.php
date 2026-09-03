@@ -13,7 +13,7 @@ $plans = [
         'desc' => 'Ideal for families, remote work, online learning, and HD streaming.',
         'price' => 'RWF 55,000',
         'period' => '/ month',
-        'link' => get_field('hi_packages_plan_1_link') ?: '#get-connected',
+        'link' => get_field('hi_packages_plan_1_link') ?: home_url('/contact-us'),
     ],
     [
         'name' => 'Home Max',
@@ -22,7 +22,7 @@ $plans = [
             'Perfect for smart homes, heavy streaming, and professionals working from home.',
         'price' => 'RWF 85,000',
         'period' => '/ month',
-        'link' => get_field('hi_packages_plan_2_link') ?: '#get-connected',
+        'link' => get_field('hi_packages_plan_2_link') ?: home_url('/contact-us'),
     ],
 ];
 ?>

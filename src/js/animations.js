@@ -3483,7 +3483,7 @@ function initWhoWeAreCounters() {
                     reel,
                     {
                         y: -(digitHeight * finalIndex),
-                        duration: 3,
+                        duration: 1.5,
                         ease: 'power3.inOut',
                     },
                     index * 0.12, // Staggering the start of each reel

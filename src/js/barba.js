@@ -68,8 +68,6 @@ export function initBarba(app) {
                         ?.querySelectorAll('[data-hero-reveal]')
                         .forEach((el) => delete el.dataset.heroAnimated);
 
-                    gsap.set(data.next.container, { opacity: 0 });
-
                     // Covers the whole transition (leave -> gap -> enter), not just
                     // enter, so the brief moment between the old container being
                     // removed and the new one fading in shows the brand background
@@ -94,6 +92,11 @@ export function initBarba(app) {
                     if (app.lenis) {
                         app.lenis.scrollTo(0, { immediate: true });
                     }
+
+                    // `data.next.container` isn't resolved/attached to the document yet
+                    // during `before()` (it's a phantom reference there), so setting its
+                    // opacity has to happen here instead, right before the fade-in tween.
+                    gsap.set(data.next.container, { opacity: 0 });
 
                     // Keep hero items hidden through the container crossfade. The actual
                     // reveal (blur + mask-wipe / line reveal, same as a full page load)

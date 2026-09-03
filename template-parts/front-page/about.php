@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <section class="relative bg-white overflow-hidden min-h-auto" data-section="about">
-    <div class="about-container w-full px-[5vw] pt-[10vw] pb-[6vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-[20%] sm:pb-[30%]">
+    <div class="about-container w-full px-[5vw] pt-[10vw] pb-[4vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-[20%] sm:pb-[30%]">
         <div class="about-label flex items-center gap-[1.042vw] mb-14 md:gap-4 md:mb-8 sm:mb-14 md:justify-center" data-animate="fade-up">
             <span class="label-line w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1 sm:w-5"></span>
             <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg"><?php echo esc_html(

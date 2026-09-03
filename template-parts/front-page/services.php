@@ -124,6 +124,7 @@ $services = [
                 <?php echo esc_html(get_field('services_title') ?: 'Get Connected. Stay Connected'); ?>
             </h2>
         </div>
+<div data-animate="fade-up">
 
         <div class="services-cards-wrapper mt-[7vw] relative w-full sm:mt-[8vw]" data-service-slider>
             <div class="services-slider-viewport">
@@ -199,5 +200,6 @@ $services = [
                 </button>
             </div>
         </div>
+                    </div>
     </div>
 </section>

@@ -35,7 +35,7 @@ if (have_posts()) {
                         'Get Connected',
                     'button_link' =>
                         get_field('hero_primary_button_link') ?:
-                        '#get-connected',
+                        home_url('/contact-us'),
                     'media' => [
                         'src' => is_array($hero_image)
                             ? $hero_image['url']
@@ -115,7 +115,7 @@ if (have_posts()) {
                     'subtitle' =>
                         "Fast, reliable home internet is just a few steps away.\nGet on TrAC today.",
                     'button_text' => 'Get Connected',
-                    'button_link' => '#get-connected',
+                    'button_link' => home_url('/contact-us'),
                     'pattern_top_class' => 'top-[-15%]',
                 ],
             );

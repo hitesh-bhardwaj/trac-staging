@@ -58,7 +58,7 @@ $hero_connectors_svg_path =
                  >
                     <a href="<?php echo esc_url(
                         get_field('hero_primary_button_link') ?:
-                        '#get-connected',
+                        home_url('/contact-us'),
                      ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
@@ -93,7 +93,11 @@ $hero_connectors_svg_path =
             </div>
 
             
-            <div class=" sm:block w-full h-screen absolute flex justify-end overflow-hidden -mt-4">
+            <div
+                class=" sm:block w-full h-screen absolute flex justify-end overflow-hidden -mt-4"
+                data-hero-reveal
+                data-hero-delay="0.2"
+            >
               <div class="w-[60%] h-full flex items-center justify-center relative">
                 <img
                    src="<?php echo get_template_directory_uri(); ?>/src/imgs/hero-earth.webp"

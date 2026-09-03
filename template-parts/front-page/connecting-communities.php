@@ -18,11 +18,9 @@ $section_content_2 =
     get_field('communities_section_content_2') ?:
     'The Connecting Communities (CC) platform builds on this connectivity, with TrAC enabling the rollout of Community Smart Hubs across Rwanda and across East Africa. CC and TrAC are bringing access to financial services, education, clean water, and digital tools.';
 
-$button_text =
-    get_field('communities_button_text') ?: 'Read More';
+$button_text = get_field('communities_button_text') ?: 'Read More';
 
-$button_link =
-    get_field('communities_button_link') ?: '#';
+$button_link = get_field('communities_button_link') ?: '#';
 
 $section_image =
     get_field('communities_section_image') ?:
@@ -59,22 +57,21 @@ $section_image_alt =
             </h2>
 
             <div class="mt-[2.8vw] max-w-[46vw] space-y-[2.2vw] font-body text-24">
-                <p>
+                <p data-para-anim>
                     <?php echo esc_html($section_content_1); ?>
                 </p>
 
-                <p>
+                <p data-para-anim>
                     <?php echo esc_html($section_content_2); ?>
                 </p>
             </div>
+<div data-animate="fade-up">
 
-             <a href="<?php echo esc_url(
-                        get_field('hero_primary_button_link') ?:
-                        '#',
-                    ); ?>" class="btn btn-primary group magnetic mt-[3vw]">
+             <a  href="<?php echo esc_url(
+                 get_field('hero_primary_button_link') ?: '/connecting-communities',
+             ); ?>" class="btn btn-primary group magnetic mt-[3vw]">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
-                            
                             'Read More',
                         ); ?></span>
                         <span class="btn-icon">
@@ -85,6 +82,7 @@ $section_image_alt =
 
                         </span>
                     </a>
+</div>
         </div>
 
         <div

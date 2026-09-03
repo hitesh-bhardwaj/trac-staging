@@ -21,7 +21,7 @@ $cta_button_text =
 $cta_button_link =
     $cta_args['button_link'] ??
     get_field('cta_button_link') ??
-    '#get-connected';
+    home_url('/contact-us');
 
 // Optional extra class hooks
 $cta_button_wrapper_class = $cta_args['button_wrapper_class'] ?? '';

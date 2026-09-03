@@ -37,7 +37,7 @@ if (have_posts()) {
                     'subtitle' =>
                         "Stop paying for internet you're not getting. Join businesses across Africa that trust TrAC.",
                     'button_text' => 'Get Connected',
-                    'button_link' => '#get-connected',
+                    'button_link' => home_url('/contact-us'),
                     'pattern_top_class' => 'top-[-12%] sm:top-0',
                 ],
             );

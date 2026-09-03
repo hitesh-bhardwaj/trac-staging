@@ -37,11 +37,11 @@ $network_circle_lines_svg_path_line =
             </h2>
 
             <div class="w-[53%] space-y-[1vw] text-24">
-                <p>
+                <p data-para-anim>
                     Internet enters through multiple international routes. Backbones operate on fully redundant rings. Systems are monitored around the clock
                 </p>
 
-                <p>
+                <p data-para-anim>
                     The result is consistent performance you can depend on, whether at home, in business, or across multiple locations.
                 </p>
             </div>

@@ -24,7 +24,7 @@ if (have_posts()) {
 	                get_field('hero_primary_button_text') ?:
 	                'Request a Consultation';
 	            $button_link =
-	                get_field('hero_primary_button_link') ?: '#get-connected';
+	                get_field('hero_primary_button_link') ?: '#get-in-touch';
 
 	            get_template_part(
 	                'template-parts/common/hero',
@@ -70,7 +70,7 @@ if (have_posts()) {
                     'subtitle' =>
                         "",
                     'button_text' => 'Get Connected',
-                    'button_link' => '#get-connected',
+                    'button_link' => home_url('/contact-us'),
                     'pattern_top_class' => 'top-[-15%]',
                     // Move CTA button slightly upward for this page.
                     'button_wrapper_class' => '',
