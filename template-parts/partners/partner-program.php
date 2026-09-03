@@ -47,7 +47,7 @@ $cards = [
             <div class="text-center max-w-[56rem] mx-auto">
                 <div class="flex items-center justify-center gap-3 mb-14 md:mb-6" data-animate="fade-up">
                     <span class="w-6 h-1 bg-brand-primary"></span>
-                    <span class="font-body text-base text-[#111]"><?php echo esc_html(
+                    <span class="font-body text-base text-text-primary"><?php echo esc_html(
                         $label,
                     ); ?></span>
                 </div>
@@ -69,7 +69,7 @@ $cards = [
 		                    <div class="<?php echo esc_attr(
 		                        'w-fit flex justify-center program-cards ' . $card['offsetClass'],
 		                    ); ?>">
-		                        <div class="bg-[#eef3fc] w-full mx-auto rounded-[1.2vw] md:rounded-3xl overflow-hidden flex justify-between items-stretch" data-partners-program-card>
+		                        <div class="bg-brand-tint w-full mx-auto rounded-[1.2vw] md:rounded-3xl overflow-hidden flex justify-between items-stretch" data-partners-program-card>
 		                            <div class="relative w-[27vw] h-full min-h-[16vw] md:min-h-[240px]">
 		                                <img src="<?php echo esc_url(
 		                                    $card['image'],

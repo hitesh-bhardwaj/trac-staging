@@ -36,8 +36,8 @@ $plans = [
     <div class="w-full px-[9vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
-                <span class="w-6 h-1 bg-[#E86224]"></span>
-                <span class="font-body text-[#E86224] text-30"><?php echo esc_html(
+                <span class="w-6 h-1 bg-brand-secondary"></span>
+                <span class="font-body text-brand-secondary text-30"><?php echo esc_html(
                     $label,
                 ); ?></span>
             </div>

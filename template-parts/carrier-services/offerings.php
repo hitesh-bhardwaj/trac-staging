@@ -41,7 +41,7 @@ $offerings = [
                 <div class="text-center w-fit mx-auto">
                     <div class="flex items-center justify-center gap-3 mb-14 md:mb-6" data-animate="fade-up">
                         <span class="w-6 h-1 bg-brand-primary"></span>
-                        <span class="font-body text-base text-[#111]">
+                        <span class="font-body text-base text-text-primary">
                             <?php echo esc_html($label); ?>
                         </span>
                     </div>

@@ -20,13 +20,13 @@ $items = [
 ];
 ?>
 
-<section class="home-internet-why relative bg-[#eef3fc] overflow-hidden" data-section="home-internet-why" data-hi-why>
+<section class="home-internet-why relative bg-brand-tint overflow-hidden" data-section="home-internet-why" data-hi-why>
     <div class="w-full px-[5vw] py-[7vw] md:px-[4vw] md:py-20 sm:px-[6vw] sm:py-16">
         <div class="max-w-[92rem] mx-auto grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-[6vw] items-start md:grid-cols-1 md:gap-12">
             <div class="max-w-[42rem]">
                 <div class="flex items-center gap-3 mb-8 md:mb-6" data-animate="fade-up">
                     <span class="w-6 h-1 bg-brand-primary"></span>
-                    <span class="font-body text-base text-[#111]"><?php echo esc_html(
+                    <span class="font-body text-base text-text-primary"><?php echo esc_html(
                         $label,
                     ); ?></span>
                 </div>

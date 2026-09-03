@@ -14,7 +14,7 @@ $network_circle_lines_svg_path_line =
 ?>
 
 <section
-    class="our-network-section is-position-debug relative h-fit bg-[#EEF3FC]"
+    class="our-network-section is-position-debug relative h-fit bg-brand-tint"
     data-section="our-network"
 >
     <div class=" md:py-12 sm:py-8">
@@ -165,74 +165,74 @@ $network_circle_lines_svg_path_line =
 
             <!-- STATIC LOCATION LABELS -->
             <div class="pointer-events-none absolute inset-0 z-[90]" aria-hidden="true">
-                <span class="absolute left-[33%] top-[32%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[33%] top-[32%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Goma
                 </span>
 
-                <span class="absolute left-[19%] top-[75%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[19%] top-[75%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Bukavu
                 </span>
 
-                <span class="absolute left-[27.5%] top-[72.5%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[27.5%] top-[72.5%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Rusizi
                 </span>
 
-                <span class="absolute left-[36%] top-[38.2%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[36%] top-[38.2%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Rubavu
                 </span>
 
-                <span class="absolute left-[35%] top-[50.5%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[35%] top-[50.5%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Karongi
                 </span>
 
-                <span class="absolute left-[42.2%] top-[45.5%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[42.2%] top-[45.5%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Muhanga
                 </span>
 
-                <span class="absolute left-[45%] top-[60%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[45%] top-[60%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Ruhango
                 </span>
 
-                <span class="absolute left-[45%] top-[27%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[45%] top-[27%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Musanze
                 </span>
 
-                <span class="absolute left-[52.1%] top-[28%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[52.1%] top-[28%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Gatuna
                 </span>
-                <span class="absolute left-[52.1%] top-[52%] whitespace-nowrap uppercase text-24 font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[52.1%] top-[52%] whitespace-nowrap uppercase text-24 font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Rawanda
                 </span>
 
-                <span class="absolute left-[59.7%] top-[8%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[59.7%] top-[8%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Kagitumba
                 </span>
 
-                <span class="absolute left-[73.8%] top-[10%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[73.8%] top-[10%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Kampala
                 </span>
 
-                <span class="absolute left-[81%] top-[17%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[81%] top-[17%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Nairobi
                 </span>
 
-                <span class="absolute left-[84%] top-[37.3%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[84%] top-[37.3%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Mombasa
                 </span>
 
-                <span class="absolute left-[75.3%] top-[60%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[75.3%] top-[60%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Dar Es Salaam
                 </span>
 
-                <span class="absolute left-[67%] top-[62%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-[#111111] max-md:text-[1.8vw] max-sm:text-[3vw]">
+                <span class="absolute left-[67%] top-[62%] whitespace-nowrap text-[0.9vw] font-medium leading-none text-text-primary max-md:text-[1.8vw] max-sm:text-[3vw]">
                     Rusumo
                 </span>
 
-                <span class="absolute left-[22.2%] top-[47%] whitespace-nowrap text-[1.05vw] font-bold leading-none text-[#111111]/40 max-md:text-[2vw] max-sm:text-[3.2vw]">
+                <span class="absolute left-[22.2%] top-[47%] whitespace-nowrap text-[1.05vw] font-bold leading-none text-text-primary/40 max-md:text-[2vw] max-sm:text-[3.2vw]">
                     DRC
                 </span>
 
-                <span class="absolute left-[76.8%] top-[34.5%] whitespace-nowrap text-[1.05vw] font-bold leading-[1.1] text-[#111111]/40 max-md:text-[2vw] max-sm:text-[3.2vw]">
+                <span class="absolute left-[76.8%] top-[34.5%] whitespace-nowrap text-[1.05vw] font-bold leading-[1.1] text-text-primary/40 max-md:text-[2vw] max-sm:text-[3.2vw]">
                     EAST<br>
                     AFRICA
                 </span>

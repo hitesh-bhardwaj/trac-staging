@@ -17,7 +17,7 @@ $story_content = [
 ];
 ?>
 
-<section class="trac-story-section relative bg-[#eef4ff]" data-section="trac-story">
+<section class="trac-story-section relative bg-brand-tint-alt" data-section="trac-story">
     <div class="trac-story-sticky sticky top-0 min-h-screen overflow-hidden">
         <div class="trac-story-year pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
             <div class="trac-story-year-value flex items-center justify-center">

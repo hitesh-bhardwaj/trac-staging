@@ -34,8 +34,9 @@ get_header();
                             'Work With Us',
                     ],
                     'subtitle' =>
-                        get_field('hero_subtitle_1') ?:
-                        "We're always looking for people who want to do meaningful work, solve real problems, and grow with a team that is shaping connectivity across Rwanda and beyond. If you're interested in working with us, get in touch!",
+                        get_field('hero_subtitle') ?:
+                        ["We're always looking for people who want to do meaningful work, solve real problems, and grow with a team that is shaping connectivity across Rwanda and beyond. ",
+                        "If you're interested in working with us, get in touch!"],
                     'button_text' =>
                         get_field('hero_primary_button_text') ?:
                         'Apply',

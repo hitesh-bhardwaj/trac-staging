@@ -29,7 +29,7 @@ $cta_button_wrapper_class = $cta_args['button_wrapper_class'] ?? '';
 $cta_logo_svg_path = get_template_directory() . '/src/imgs/logo-trac.svg';
 ?>
 
-<section class="cta-section relative bg-[#2F5FA0] overflow-hidden" data-section="cta">
+<section class="cta-section relative bg-brand-quaternary overflow-hidden" data-section="cta">
     <div class="cta-container relative z-[10] w-full px-[5vw] py-[9vw] md:px-[4vw] md:py-20 sm:px-[6vw] sm:py-16">
         <div class="flex items-center justify-center gap-[4vw] md:flex-col md:gap-10">
             <div class="cta-logo shrink-0 w-[30vw] absolute left-[-4%] md:w-[42vw] md:max-w-[220px] [--stroke-0:#fff] [--fill-0:#fff]" data-animate="fade-right" aria-hidden="true">

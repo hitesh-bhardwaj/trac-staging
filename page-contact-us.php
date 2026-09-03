@@ -78,7 +78,7 @@ get_header();
                 null,
                 [
                     'section_classes' =>
-                        'hero relative min-h-screen overflow-hidden !bg-[#0B1F3A]',
+                        'hero relative min-h-screen overflow-hidden !bg-brand-primary',
                     'container_classes' =>
                         'hero-container relative z-[10] w-full px-[5vw]  pb-[5.21vw] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]',
                     'grid_classes' =>
@@ -91,10 +91,10 @@ get_header();
                         get_field('hero_title_line_1') ?: 'Contact Us',
                     ],
                     'subtitle' =>
-                        get_field('hero_subtitle_2') ?:
+                        get_field('hero_description') ?:
                         'Tell us what your business needs, and our team will guide you to the right connectivity solution quickly and without complexity',
                     'subtitle_classes' =>
-                        'hero-subtitle font-body font-medium w-[78%] text-white mb-0 md:w-full md:max-w-full md:text-center',
+                        'hero-subtitle font-body text-24 font-medium w-[78%] text-white mb-0 md:w-full md:max-w-full md:text-center',
                     'text_footer' => $contact_text_footer,
                     'right_content' => $contact_form_card,
                 ],

@@ -110,9 +110,9 @@ $cta_secondary_url = $cta_secondary['url'] ?? '#';
     <!-- Connection lines decoration (optional CSS-based) -->
     <div class="connection-lines absolute inset-0 pointer-events-none overflow-hidden z-[0]">
         <svg class="absolute right-0 top-0 w-[60%] h-full opacity-20" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="400" cy="400" r="300" stroke="#10417f" stroke-width="0.5" stroke-dasharray="4 4" fill="none" opacity="0.3"/>
-            <circle cx="400" cy="400" r="350" stroke="#10417f" stroke-width="0.5" stroke-dasharray="4 4" fill="none" opacity="0.2"/>
-            <circle cx="400" cy="400" r="400" stroke="#10417f" stroke-width="0.5" stroke-dasharray="4 4" fill="none" opacity="0.1"/>
+            <circle cx="400" cy="400" r="300" stroke="var(--color-brand-primary)" stroke-width="0.5" stroke-dasharray="4 4" fill="none" opacity="0.3"/>
+            <circle cx="400" cy="400" r="350" stroke="var(--color-brand-primary)" stroke-width="0.5" stroke-dasharray="4 4" fill="none" opacity="0.2"/>
+            <circle cx="400" cy="400" r="400" stroke="var(--color-brand-primary)" stroke-width="0.5" stroke-dasharray="4 4" fill="none" opacity="0.1"/>
         </svg>
     </div>
 </section>

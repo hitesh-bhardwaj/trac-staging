@@ -33,8 +33,8 @@ $who_we_are_stats = [
     <div class="who-we-are-container w-full flex flex-col items-center space-y-[7vw] px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="who-we-are-intro w-full flex justify-start gap-[10vw] items-start md:flex-col md:gap-8">
             <div class="who-we-are-label flex shrink-0 items-center gap-[0.833vw] whitespace-nowrap md:gap-3" data-animate="fade-up">
-                <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
-                <span class="font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
+                <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+                <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                     <?php esc_html_e("Who We Are", "trac"); ?>
                 </span>
             </div>
@@ -55,7 +55,7 @@ $who_we_are_stats = [
                             ? " has-divider"
                             : ""; ?>"
                     >
-                        <div class="counter-value-wrap mb-[1.25vw] flex items-baseline justify-center text-[#10417F] md:mb-4">
+                        <div class="counter-value-wrap mb-[1.25vw] flex items-baseline justify-center text-brand-primary-alt md:mb-4">
                             <div
                                 class="counter-value"
                                 aria-label="<?php echo esc_attr(
@@ -113,7 +113,7 @@ $who_we_are_stats = [
                             </div>
                         </div>
 
-                        <p data-para-anim class="counter-label whitespace-nowrap font-body text-[1.15vw] leading-[1] text-[#1E1E1E] md:whitespace-normal md:text-[24px] sm:text-[18px]">
+                        <p data-para-anim class="counter-label whitespace-nowrap font-body text-[1.15vw] leading-[1] text-text-body md:whitespace-normal md:text-[24px] sm:text-[18px]">
                             <?php echo esc_html($stat["label"]); ?>
                         </p>
                     </article>

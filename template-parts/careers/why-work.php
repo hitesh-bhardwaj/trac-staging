@@ -10,16 +10,16 @@ if (!defined('ABSPATH')) {
             <!-- Section Label -->
             <div class="flex items-center gap-[0.729vw] mb-[4.167vw] justify-center md:gap-3 md:mb-12 sm:mb-10" data-animate="fade-up">
                 <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
-                <span class="font-body text-24 text-[#111] md:text-xl">Why TrAC</span>
+                <span class="font-body text-24 text-text-primary md:text-xl">Why TrAC</span>
             </div>
 
             <!-- Heading -->
-            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-[#111] text-center mb-[3vw] md:text-5xl md:mb-8 sm:text-4xl sm:mb-6" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary text-center mb-[3vw] md:text-5xl md:mb-8 sm:text-4xl sm:mb-6" data-heading-anim>
                 Why Work With Us
             </h2>
 
             <!-- Description -->
-            <div class="font-body text-24 leading-[1.62] text-[#1e1e1e] text-center max-w-[68vw] mx-auto md:text-lg md:max-w-full sm:text-base" >
+            <div class="font-body text-24 leading-[1.62] text-text-body text-center max-w-[68vw] mx-auto md:text-lg md:max-w-full sm:text-base" >
                 <p data-para-anim class="mb-4">We're always looking for people who want to do meaningful work, solve real problems, and grow with a team that is shaping connectivity across Rwanda and beyond.</p>
                 <p data-para-anim>If you're interested in working with us, get in touch!</p>
             </div>

@@ -10,7 +10,7 @@ $section_classes = isset($args['section_classes'])
     : (isset($args['section_class']) ? (string) $args['section_class'] : '');
 $section_classes = $section_classes !== ''
     ? $section_classes
-    : 'hero relative min-h-screen bg-[#0B1F3A]! overflow-hidden';
+    : 'hero relative min-h-screen bg-brand-primary! overflow-hidden';
 $container_classes = isset($args['container_classes'])
     ? (string) $args['container_classes']
     : (isset($args['container_class']) ? (string) $args['container_class'] : '');
@@ -34,7 +34,10 @@ $title_tag = isset($args['title_tag']) ? (string) $args['title_tag'] : 'h1';
 $title_classes = isset($args['title_classes'])
     ? (string) $args['title_classes']
     : 'hero-title text-[4vw] font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 md:text-center';
-$subtitle = isset($args['subtitle']) ? (string) $args['subtitle'] : '';
+$subtitle = $args['subtitle'] ?? '';
+$subtitle_paragraphs = is_array($subtitle)
+    ? array_values(array_filter(array_map('strval', $subtitle), static fn($paragraph) => $paragraph !== ''))
+    : ($subtitle !== '' ? [(string) $subtitle] : []);
 $subtitle_classes = isset($args['subtitle_classes'])
     ? (string) $args['subtitle_classes']
     : 'hero-subtitle font-body font-medium w-[80%] text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center';
@@ -107,15 +110,18 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                 <?php endforeach; ?>
             </<?php echo tag_escape($title_tag); ?>>
 
-            <?php if ($subtitle !== ''): ?>
-                <p
-                    class="<?php echo esc_attr($subtitle_classes); ?>"
-                    data-hero-reveal
-                    data-hero-delay="0.14"
-                    data-para-anim
-                >
-                    <?php echo esc_html($subtitle); ?>
-                </p>
+            <?php if (!empty($subtitle_paragraphs)): ?>
+                <div class="<?php echo esc_attr($subtitle_classes); ?> space-y-[0.7vw]">
+                    <?php foreach ($subtitle_paragraphs as $paragraph): ?>
+                        <p
+                            data-hero-reveal
+                            data-hero-delay="0.14"
+                            data-para-anim
+                        >
+                            <?php echo esc_html($paragraph); ?>
+                        </p>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
 
             <?php if ($primary_text !== '' && $primary_link !== ''): ?>
@@ -197,15 +203,18 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                         <?php endforeach; ?>
                     </<?php echo tag_escape($title_tag); ?>>
 
-                    <?php if ($subtitle !== ''): ?>
-                        <p
-                            class="<?php echo esc_attr($subtitle_classes); ?>"
-                            data-hero-reveal
-                            data-hero-delay="0.14"
-                            data-para-anim
-                        >
-                            <?php echo esc_html($subtitle); ?>
-                        </p>
+                    <?php if (!empty($subtitle_paragraphs)): ?>
+                        <div class="<?php echo esc_attr($subtitle_classes); ?> space-y-[2vw]">
+                            <?php foreach ($subtitle_paragraphs as $paragraph): ?>
+                                <p
+                                    data-hero-reveal
+                                    data-hero-delay="0.14"
+                                    data-para-anim
+                                >
+                                    <?php echo esc_html($paragraph); ?>
+                                </p>
+                            <?php endforeach; ?>
+                        </div>
                     <?php endif; ?>
 
                     <?php if ($primary_text !== '' || $secondary_text !== ''): ?>

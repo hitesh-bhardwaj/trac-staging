@@ -3,38 +3,53 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$hero_title = $args['hero_title'] ?? '';
-$hero_subtitle = $args['hero_subtitle'] ?? '';
-$hero_description = $args['hero_description'] ?? '';
-$hero_image_url = $args['hero_image_url'] ?? '';
-$hero_image_alt = $args['hero_image_alt'] ?? '';
+$hero_title = 'Connectivity is where access begins';
+$hero_subtitle = 'Connecting Communities brings reliable Internet and essential services together, making them easier for communities to access in one connected local platform.';
+$hero_description = 'Enabled by TrAC, the model starts with strong connectivity, creating the foundation for financial tools, education, clean water, agriculture, nutrition, and other services that support everyday life.';
+$hero_image = get_field('cc_hero_image');
+$hero_image_url = is_array($hero_image)
+    ? $hero_image['url']
+    : get_template_directory_uri() . '/src/imgs/communities/hero-img.png';
+$hero_image_alt = is_array($hero_image) && !empty($hero_image['alt'])
+    ? $hero_image['alt']
+    : 'Connecting Communities platform in Rwanda';
+
+ob_start();
 ?>
+<div class="mt-[2vw] max-w-[45vw] font-body text-24 leading-[1.6] text-white md:mt-6 md:max-w-full md:text-base sm:text-sm" data-hero-reveal data-hero-delay="0.2">
+    <?php echo esc_html($hero_description); ?>
+</div>
 
-<section class="communities-hero relative w-full min-h-screen bg-white pt-[12vw] pb-[6.25vw] px-[5vw] md:pt-32 md:pb-16 md:px-[4vw] sm:py-[30%]  sm:px-[7vw] sm:h-fit sm:min-h-fit" data-section="communities-hero" data-hero-static>
-    <div class="hero-content text-center mb-[5.208vw] md:mb-16 sm:mb-12 space-y-[2vw] sm:space-y-[10vw]">
-        <h1 class="hero-title font-heading leading-[1.08] tracking-[-0.04vw] text-[#111] max-w-[71.51vw] mx-auto md:text-6xl md:leading-[1.2] sm:text-[10vw]" data-hero-reveal data-heading-anim data-base-delay="0.05">
-            <span class="block hero-title-line"><?php echo esc_html($hero_title); ?></span>
-        </h1>
+<div class="mt-[2.604vw] md:mt-8" data-hero-reveal data-hero-delay="0.28">
+    <img
+        src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/communities/hero-icons.png'); ?>"
+        alt="Connecting Communities enabled by TrAC"
+        class="h-auto w-[22vw] md:w-[260px] sm:w-[220px]"
+        loading="lazy"
+    >
+</div>
+<?php
+$hero_text_footer = ob_get_clean();
 
-        <?php if ($hero_subtitle): ?>
-            <p class="hero-subtitle-1 !text-center font-body font-normal text-text-body w-[70%] max-w-[51.406vw] mx-auto md:max-w-full" data-hero-reveal data-hero-delay="0.08" data-para-anim>
-                <?php echo esc_html($hero_subtitle); ?>
-            </p>
-        <?php endif; ?>
-
-        <?php if ($hero_description): ?>
-            <p class="hero-description font-body text-24 leading-[2.083vw] text-[#1e1e1e] max-w-[46.927vw] mx-auto md:text-xl md:leading-[1.6] md:max-w-[90%] sm:text-lg sm:leading-[1.5] sm:max-w-[80%]" data-hero-reveal data-hero-delay="0.14" data-para-anim>
-                <?php echo esc_html($hero_description); ?>
-            </p>
-        <?php endif; ?>
-    </div>
-
-    <div class="hero-image-wrapper relative bg-[#edecec] rounded-[2.083vw] overflow-hidden h-[30.99vw] max-w-[89.583vw] mx-auto md:rounded-3xl md:h-[400px] sm:rounded-2xl sm:h-[300px]" data-hero-reveal data-hero-delay="0.22">
-        <img
-            src="<?php echo esc_url($hero_image_url); ?>"
-            alt="<?php echo esc_attr($hero_image_alt); ?>"
-            class="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
-        >
-    </div>
-</section>
+get_template_part(
+    'template-parts/common/hero',
+    null,
+    [
+        'section_classes' =>
+            'hero relative min-h-screen overflow-hidden !bg-brand-primary',
+        'grid_classes' =>
+            'hero-grid flex items-center justify-between gap-[6vw] md:flex-col md:gap-8',
+        'text_classes' =>
+            'hero-text w-[60%] md:w-full md:max-w-full relative z-[10]',
+        'media_classes' => 'hero-media w-[45%] md:w-full',
+        'title_lines' => [$hero_title],
+        'subtitle' => $hero_subtitle,
+        'subtitle_classes' =>
+            'hero-subtitle font-heading text-36 w-[90%] text-white mb-0 md:w-full md:max-w-full md:text-left',
+        'text_footer' => $hero_text_footer,
+        'media' => [
+            'src' => $hero_image_url,
+            'alt' => $hero_image_alt,
+        ],
+    ],
+);

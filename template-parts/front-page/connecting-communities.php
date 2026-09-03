@@ -33,7 +33,7 @@ $section_image_alt =
 ?>
 
 <section
-    class="connecting-communities-section relative w-full bg-[#2F5FA0] px-[5vw] py-[7vw] text-white md:py-[10vw] sm:px-[6vw] sm:py-[16vw]"
+    class="connecting-communities-section relative w-full bg-brand-quaternary px-[5vw] py-[7vw] text-white md:py-[10vw] sm:px-[6vw] sm:py-[16vw]"
     data-section="connecting-communities"
 >
     <div class="grid w-full grid-cols-[0.9fr_1fr] items-center gap-[6vw] md:grid-cols-1 md:gap-[8vw]">

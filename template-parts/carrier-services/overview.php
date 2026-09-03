@@ -46,8 +46,8 @@ $button_link = get_field('cs_overview_button_link') ?: '#get-connected';
     <div class="mx-auto max-w-[92rem]">
         <div class="max-w-[60rem]">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">
-                <span class="w-6 h-1 bg-[#E86224]"></span>
-                <span class="font-body text-[#E86224] text-30"><?php echo esc_html(
+                <span class="w-6 h-1 bg-brand-secondary"></span>
+                <span class="font-body text-brand-secondary text-30"><?php echo esc_html(
                     $label,
                 ); ?></span>
             </div>

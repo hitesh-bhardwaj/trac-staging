@@ -75,7 +75,7 @@ function trac_render_inline_svg($svg_path, $class = '')
                             data-animate="fade-up"
                         >
                             <span class="h-1 w-6 bg-brand-primary"></span>
-                            <span class="font-body text-base text-[#111]">
+                            <span class="font-body text-base text-text-primary">
                                 <?php echo esc_html($label); ?>
                             </span>
                         </div>

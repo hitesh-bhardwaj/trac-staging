@@ -39,8 +39,8 @@ $enterprise_services = [
     <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
         <div class="text-left">
             <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
-                <span class="w-6 h-1 bg-[#E86224]"></span>
-                <span class="font-body  text-[#E86224] text-30">Our Services</span>
+                <span class="w-6 h-1 bg-brand-secondary"></span>
+                <span class="font-body  text-brand-secondary text-30">Our Services</span>
             </div>
 
             <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2.083vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6 text-left">
@@ -55,7 +55,7 @@ $enterprise_services = [
             <div class="grid grid-cols-2 gap-10 mt-[5vw] md:grid-cols-1 md:gap-8 text-left">
                 <?php foreach ($enterprise_services as $index => $card) : ?>
                     <div
-                        class="bg-[#389FD8] rounded-[32px] p-10 flex flex-col min-h-[440px] md:min-h-0 md:p-8 text-left"
+                        class="bg-brand-tertiary rounded-[32px] p-10 flex flex-col min-h-[440px] md:min-h-0 md:p-8 text-left"
                         data-animate="fade-up"
                         <?php if ($index > 0) : ?>
                             data-delay="<?php echo esc_attr($index * 0.1); ?>"

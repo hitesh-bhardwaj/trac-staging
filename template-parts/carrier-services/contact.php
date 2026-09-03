@@ -10,18 +10,18 @@ if (!defined('ABSPATH')) {
             <div class="pt-[0.5vw] md:pt-0">
                 <div class="flex items-center gap-[0.729vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">
                     <span class="w-[1.354vw] h-[0.208vw] bg-brand-primary md:w-6 md:h-1"></span>
-                    <span class="font-body text-24 text-[#111] md:text-xl">Get in Touch</span>
+                    <span class="font-body text-24 text-text-primary md:text-xl">Get in Touch</span>
                 </div>
 
-                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
+                <h2 class="font-heading text-[3.646vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
                     Talk to Our Wholesale Team
                 </h2>
 
-                <p class="font-body text-24 leading-[1.58] text-[#1e1e1e] mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-para-anim data-delay="0.2">
+                <p class="font-body text-24 leading-[1.58] text-text-body mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-para-anim data-delay="0.2">
                     Tell us about your organisation and connectivity needs. Our enterprise team will be in touch to discuss a tailored solution.
                 </p>
 
-                <div class="font-body text-24 leading-[1.7] text-[#111] md:text-base sm:text-sm">
+                <div class="font-body text-24 leading-[1.7] text-text-primary md:text-base sm:text-sm">
                     <p data-para-anim class="mb-3 md:mb-2">Or reach us directly:</p>
                      <div class="contact-links flex flex-col gap-[0.5vw] md:gap-2">
                             <div data-para-anim class="under-multi-parent w-fit leading-[1.2]">

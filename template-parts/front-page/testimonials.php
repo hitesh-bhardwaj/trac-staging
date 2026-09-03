@@ -16,8 +16,8 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
                 class="testimonials-label mb-[2.563vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10"
                 data-animate="fade-up"
             >
-                <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
-                <span class="label-text font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
+                <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+                <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                     <?php echo esc_html(get_field('testimonials_label') ? : 'Testimonials',); ?>
                 </span>
             </div>
@@ -48,7 +48,7 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
             <div class=" flex items-center justify-center gap-[0.625vw] md:mt-10 md:gap-3 sm:mt-8 relative z-[10]">
                 <button
                     type="button"
-                     class=" arrow-prev flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[#E86224] bg-white text-[#E86224] transition-all duration-300 hover:bg-[#E86224] hover:text-white md:h-12 md:w-20"
+                     class=" arrow-prev flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
         data-testimonial-prev-desktop
         aria-label="Previous testimonial"
                 >
@@ -60,7 +60,7 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
 
                 <button
                     type="button"
-                     class=" arrow-next flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[#E86224] bg-white text-[#E86224] transition-all duration-300 hover:bg-[#E86224] hover:text-white md:h-12 md:w-20"
+                     class=" arrow-next flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
         data-testimonial-next-desktop
         aria-label="Next testimonial"
                 >

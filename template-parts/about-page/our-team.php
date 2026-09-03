@@ -53,8 +53,8 @@ $team_members = [
             <div class="w-[30%] max-md:w-full flex flex-col h-full justify-between">
                 <div>
                    <div class="mb-[1.8vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3" data-animate="fade-up">
-                     <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
-                     <span class="font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
+                     <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+                     <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                         <?php esc_html_e('Team', 'trac'); ?>
                       </span>
                      </div>
@@ -68,10 +68,10 @@ $team_members = [
                       </p>
                  </div>
 
-                <div data-animate="fade-up" class="mt-[15vw] w-fit rounded-full flex items-center md:mt-10 sm:mt-8 px-[1vw] gap-[1vw] text-[#E86224]">
+                <div data-animate="fade-up" class="mt-[15vw] w-fit rounded-full flex items-center md:mt-10 sm:mt-8 px-[1vw] gap-[1vw] text-brand-secondary">
                      <button
                     type="button"
-                        class="team-slider-nav team-slider-prev flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[#E86224] bg-white text-[#E86224] transition-all duration-300 hover:bg-[#E86224] hover:text-white md:h-12 md:w-20"
+                        class="team-slider-nav team-slider-prev flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
                         data-team-slider-prev
                         aria-label="Previous team member"
                 >
@@ -83,7 +83,7 @@ $team_members = [
 
                     <button
                    type="button"
-                        class="team-slider-nav team-slider-next flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-[#E86224] bg-white text-[#E86224] transition-all duration-300 hover:bg-[#E86224] hover:text-white md:h-12 md:w-20"
+                        class="team-slider-nav team-slider-next flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
                         data-team-slider-next
                         aria-label="Next team member"
                 >
@@ -109,7 +109,7 @@ $team_members = [
                                     >
                                 </div>
 
-                                <div class="team-slider-active-content bg-[#0B1F3A] font-normal">
+                                <div class="team-slider-active-content bg-brand-primary font-normal">
                                     <h3 data-team-slider-active-name class="font-normal text-white font-subheading text-36"></h3>
                                     <p data-team-slider-active-role class="text-white text-24"></p>
                                     <span class="team-slider-flip-arrow" aria-hidden="true">

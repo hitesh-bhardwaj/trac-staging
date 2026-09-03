@@ -19,12 +19,17 @@ export default {
             colors: {
                 // Brand colors from Figma - Trac/Enigma design
                 brand: {
-                    primary: '#10417f', // Main blue
-                    secondary: '#E85D24', // Orange accent (for markers)
-                    tertiary: 'var(--color-brand-tertiary)', // #389FD8
-                    quaternary: 'var(--color-brand-quaternary)', // #2F5FA0
+                    primary: '#0B1F3A', // Main blue
+                    secondary: '#E86224', // Orange accent (for markers)
+                    tertiary: '#389FD8',
+                    quaternary: '#2F5FA0',
                     dark: '#111111',
                     light: '#F5F5F5',
+                    // Legacy/alternate blues still used in a few sections - unify here instead of raw hex
+                    'primary-alt': '#10417F', // old primary blue (pre-rebrand), e.g. socials.php, who-we-are.php
+                    navy: '#011E41', // footer wordmark accent
+                    tint: '#EEF3FC', // light blue section background tint
+                    'tint-alt': '#EEF4FF', // near-duplicate light blue tint (trac-story.php)
                 },
                 // Text colors
                 text: {

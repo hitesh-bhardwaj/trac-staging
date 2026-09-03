@@ -48,7 +48,7 @@ $what_we_do_cards = [
 ];
 ?>
 
-<section class="what-we-do-section relative py-[9vw] bg-[#389FD8]" data-section="what-we-do" data-what-we-do-slider>
+<section class="what-we-do-section relative py-[9vw] bg-brand-tertiary" data-section="what-we-do" data-what-we-do-slider>
     <div class="what-we-do-shell w-full   md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
         <div class="mb-[3.438vw]  px-[5vw] flex items-center justify-between md:mb-10">
             <div data-animate="fade-up" class="what-we-do-header flex items-center gap-[0.833vw] md:gap-3">
@@ -62,7 +62,7 @@ $what_we_do_cards = [
                 'What we do navigation',
                 'trac',
             ); ?>">
-                <button type="button" class="what-we-do-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-white/60 bg-transparent text-white transition-all duration-300 hover:bg-[#E86224] hover:text-white hover:border-[#E86224] disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-white" data-what-we-do-prev aria-label="<?php esc_attr_e(
+                <button type="button" class="what-we-do-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-white/60 bg-transparent text-white transition-all duration-300 hover:bg-brand-secondary hover:text-white hover:border-brand-secondary disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-white" data-what-we-do-prev aria-label="<?php esc_attr_e(
                     'Previous',
                     'trac',
                 ); ?>">
@@ -71,7 +71,7 @@ $what_we_do_cards = [
                         <path d="M3 8.5H26" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                     </svg>
                 </button>
-                <button type="button" class="what-we-do-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-white/60 bg-transparent text-white transition-all duration-300 hover:bg-[#E86224] hover:text-white hover:border-[#E86224] disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-white" data-what-we-do-next aria-label="<?php esc_attr_e(
+                <button type="button" class="what-we-do-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-white/60 bg-transparent text-white transition-all duration-300 hover:bg-brand-secondary hover:text-white hover:border-brand-secondary disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-white" data-what-we-do-next aria-label="<?php esc_attr_e(
                     'Next',
                     'trac',
                 ); ?>">

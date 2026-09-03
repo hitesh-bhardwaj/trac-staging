@@ -52,21 +52,21 @@ $subtitle =
     "From global technology vendors to regional infrastructure leaders these are the organizations that help us deliver Africa's most reliable connectivity.";
 ?>
 
-<section class="partners-network relative bg-[#eef3fc] overflow-hidden" data-section="partners-network" data-partner-network>
+<section class="partners-network relative bg-brand-tint overflow-hidden" data-section="partners-network" data-partner-network>
     <div class="w-full px-[5vw] py-[7vw] md:px-[4vw] md:py-20 sm:px-[6vw] sm:py-16">
         <div class="max-w-[92rem] mx-auto text-center">
             <div class="flex items-center justify-center gap-3 mb-14 md:mb-6" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-primary"></span>
-                <span class="font-body text-base text-[#111]"><?php echo esc_html(
+                <span class="font-body text-base text-text-primary"><?php echo esc_html(
                     $label,
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-[#111] mb-[2.5vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
+            <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[2.5vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
                 <?php echo esc_html($title); ?>
             </h2>
 
-            <p class="font-body text-24 leading-[1.5] text-[#1e1e1e] max-w-[52rem] mx-auto mb-[3.2vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-para-anim data-delay="0.2">
+            <p class="font-body text-24 leading-[1.5] text-text-body max-w-[52rem] mx-auto mb-[3.2vw] md:text-lg md:mb-10 sm:text-base sm:mb-8" data-para-anim data-delay="0.2">
                 <?php echo esc_html($subtitle); ?>
             </p>
 

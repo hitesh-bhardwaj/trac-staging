@@ -26,18 +26,18 @@ $instagram_posts = [
 
 <section class="about-socials-section px-[5vw] py-[7%] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
     <div class="mb-[3.646vw] flex items-center gap-[0.833vw] md:mb-8 md:gap-3 sm:mb-6" data-animate="fade-up">
-        <span class="label-line h-[0.208vw] w-[1.354vw] bg-[#E86224] md:h-1 md:w-6 sm:w-5"></span>
-        <span class="font-body text-30 text-[#E86224] md:text-xl sm:text-lg">
+        <span class="label-line h-[0.208vw] w-[1.354vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+        <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
             <?php esc_html_e('Our Instagram', 'trac'); ?>
         </span>
     </div>
 
-    <div class="rounded-[1.7vw] bg-[#EEF3FC] p-[3vw] md:rounded-3xl md:p-7 sm:rounded-[24px] sm:p-5" data-animate="fade-up">
+    <div class="rounded-[1.7vw] bg-brand-tint p-[3vw] md:rounded-3xl md:p-7 sm:rounded-[24px] sm:p-5" data-animate="fade-up">
         <div class="grid grid-cols-3 gap-[1.25vw] md:gap-5 sm:grid-cols-1 sm:gap-5">
             <?php foreach ($instagram_posts as $index => $post): ?>
                 <a
                     href="<?php echo esc_url($post['link']); ?>"
-                    class="group relative block h-[33vw] w-[26vw] overflow-hidden rounded-[1.2vw] bg-white md:rounded-2xl sm:rounded-[16px]<?php echo $index === 2 ? ' border border-[#10417F]' : ''; ?>"
+                    class="group relative block h-[33vw] w-[26vw] overflow-hidden rounded-[1.2vw] bg-white md:rounded-2xl sm:rounded-[16px]<?php echo $index === 2 ? ' border border-brand-primary-alt' : ''; ?>"
                     aria-label="<?php echo esc_attr($post['alt']); ?>"
                 >
                     <img

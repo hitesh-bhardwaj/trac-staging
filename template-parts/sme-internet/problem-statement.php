@@ -22,7 +22,7 @@ $items = [
             <div class="max-w-[60rem] mx-auto text-center">
                 <div class="flex items-center justify-center text-center gap-3 mb-[3vw] md:mb-6" data-animate="fade-up">
                     <span class="w-6 h-1 bg-brand-primary"></span>
-                    <span class="font-body text-base text-[#111] !text-24">
+                    <span class="font-body text-base text-text-primary !text-24">
                         <?php echo esc_html($label); ?>
                     </span>
                 </div>
