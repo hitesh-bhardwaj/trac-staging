@@ -7,16 +7,22 @@ $args = isset($args) && is_array($args) ? $args : [];
 
 $section_classes = isset($args['section_classes'])
     ? (string) $args['section_classes']
-    : (isset($args['section_class']) ? (string) $args['section_class'] : '');
-$section_classes = $section_classes !== ''
-    ? $section_classes
-    : 'hero relative min-h-screen bg-brand-primary! overflow-hidden';
+    : (isset($args['section_class'])
+        ? (string) $args['section_class']
+        : '');
+$section_classes =
+    $section_classes !== ''
+        ? $section_classes
+        : 'hero relative min-h-screen bg-brand-primary! overflow-hidden';
 $container_classes = isset($args['container_classes'])
     ? (string) $args['container_classes']
-    : (isset($args['container_class']) ? (string) $args['container_class'] : '');
-$container_classes = $container_classes !== ''
-    ? $container_classes
-    : 'hero-container w-full px-[5vw]  pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]';
+    : (isset($args['container_class'])
+        ? (string) $args['container_class']
+        : '');
+$container_classes =
+    $container_classes !== ''
+        ? $container_classes
+        : 'hero-container w-full px-[5vw]  pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]';
 $grid_classes = isset($args['grid_classes'])
     ? (string) $args['grid_classes']
     : 'hero-grid flex items-start justify-between gap-[5vw] md:flex-col md:gap-8';
@@ -40,18 +46,27 @@ $subtitle_1_classes = isset($args['subtitle_1_classes'])
     : 'hero-subtitle-1 font-heading pr-0.2 text-36 font-normal leading-[1.35] text-white mb-[1vw] md:text-[28px] sm:text-[20px]';
 $subtitle = $args['subtitle'] ?? '';
 $subtitle_paragraphs = is_array($subtitle)
-    ? array_values(array_filter(array_map('strval', $subtitle), static fn($paragraph) => $paragraph !== ''))
-    : ($subtitle !== '' ? [(string) $subtitle] : []);
+    ? array_values(
+        array_filter(
+            array_map('strval', $subtitle),
+            static fn($paragraph) => $paragraph !== '',
+        ),
+    )
+    : ($subtitle !== ''
+        ? [(string) $subtitle]
+        : []);
 $subtitle_classes = isset($args['subtitle_classes'])
     ? (string) $args['subtitle_classes']
     : 'hero-subtitle font-body font-medium w-[80%] text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center';
 
-$primary = isset($args['primary']) && is_array($args['primary'])
-    ? $args['primary']
-    : [];
-$secondary = isset($args['secondary']) && is_array($args['secondary'])
-    ? $args['secondary']
-    : [];
+$primary =
+    isset($args['primary']) && is_array($args['primary'])
+        ? $args['primary']
+        : [];
+$secondary =
+    isset($args['secondary']) && is_array($args['secondary'])
+        ? $args['secondary']
+        : [];
 
 $primary_text = isset($primary['text']) ? (string) $primary['text'] : '';
 $primary_link = isset($primary['link']) ? (string) $primary['link'] : '';
@@ -59,8 +74,12 @@ $primary_link = isset($primary['link']) ? (string) $primary['link'] : '';
 $secondary_text = isset($secondary['text']) ? (string) $secondary['text'] : '';
 $secondary_link = isset($secondary['link']) ? (string) $secondary['link'] : '';
 
-$legacy_button_text = isset($args['button_text']) ? (string) $args['button_text'] : '';
-$legacy_button_link = isset($args['button_link']) ? (string) $args['button_link'] : '';
+$legacy_button_text = isset($args['button_text'])
+    ? (string) $args['button_text']
+    : '';
+$legacy_button_link = isset($args['button_link'])
+    ? (string) $args['button_link']
+    : '';
 if ($primary_text === '' && $legacy_button_text !== '') {
     $primary_text = $legacy_button_text;
 }
@@ -68,7 +87,8 @@ if ($primary_link === '' && $legacy_button_link !== '') {
     $primary_link = $legacy_button_link;
 }
 
-$media = isset($args['media']) && is_array($args['media']) ? $args['media'] : [];
+$media =
+    isset($args['media']) && is_array($args['media']) ? $args['media'] : [];
 $media_src = isset($media['src']) ? (string) $media['src'] : '';
 $media_alt = isset($media['alt']) ? (string) $media['alt'] : '';
 
@@ -84,15 +104,22 @@ $cta_wrapper_classes = isset($args['cta_wrapper_classes'])
 
 $center_wrap_classes = isset($args['center_wrap_classes'])
     ? (string) $args['center_wrap_classes']
-    : (isset($args['center_wrap_class']) ? (string) $args['center_wrap_class'] : '');
+    : (isset($args['center_wrap_class'])
+        ? (string) $args['center_wrap_class']
+        : '');
 $images_wrapper_classes = isset($args['images_wrapper_classes'])
     ? (string) $args['images_wrapper_classes']
-    : (isset($args['images_wrapper_class']) ? (string) $args['images_wrapper_class'] : '');
-$images = isset($args['images']) && is_array($args['images']) ? $args['images'] : [];
+    : (isset($args['images_wrapper_class'])
+        ? (string) $args['images_wrapper_class']
+        : '');
+$images =
+    isset($args['images']) && is_array($args['images']) ? $args['images'] : [];
 ?>
 
 <?php if (!empty($images)): ?>
-    <section class="<?php echo esc_attr($section_classes); ?>" data-section="hero" data-hero-static>
+    <section class="<?php echo esc_attr(
+        $section_classes,
+    ); ?>" data-section="hero" data-hero-static>
         <div class="<?php echo esc_attr($container_classes); ?>">
             <?php if ($center_wrap_classes !== ''): ?>
                 <div class="<?php echo esc_attr($center_wrap_classes); ?>">
@@ -126,7 +153,9 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
             <?php endif; ?>
 
             <?php if (!empty($subtitle_paragraphs)): ?>
-                <div class="<?php echo esc_attr($subtitle_classes); ?> space-y-[0.7vw]">
+                <div class="<?php echo esc_attr(
+                    $subtitle_classes,
+                ); ?> space-y-[0.7vw]">
                     <?php foreach ($subtitle_paragraphs as $paragraph): ?>
                         <p
                             data-hero-reveal
@@ -176,7 +205,9 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                         $wrap_class = isset($image['wrap_class'])
                             ? (string) $image['wrap_class']
                             : 'rounded-[1.2vw] overflow-hidden h-[18vw] w-[18vw]';
-                        $alt = isset($image['alt']) ? (string) $image['alt'] : '';
+                        $alt = isset($image['alt'])
+                            ? (string) $image['alt']
+                            : '';
                         ?>
                         <div class="<?php echo esc_attr($wrap_class); ?>">
                             <img
@@ -191,14 +222,14 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
             <?php endif; ?>
         </div>
 
-        <?php
-        if ($after_section) {
+        <?php if ($after_section) {
             echo is_string($after_section) ? $after_section : '';
-        }
-        ?>
+        } ?>
     </section>
 <?php else: ?>
-    <section class="<?php echo esc_attr($section_classes); ?>" data-section="hero" data-hero-static>
+    <section class="<?php echo esc_attr(
+        $section_classes,
+    ); ?>" data-section="hero" data-hero-static>
         <div class="<?php echo esc_attr($container_classes); ?>">
             <div class="<?php echo esc_attr($grid_classes); ?>">
                 <div class="<?php echo esc_attr($text_classes); ?>">
@@ -230,8 +261,13 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                     <?php endif; ?>
 
                     <?php if (!empty($subtitle_paragraphs)): ?>
-                        <div class="<?php echo esc_attr($subtitle_classes); ?> space-y-[2vw]">
-                            <?php foreach ($subtitle_paragraphs as $paragraph): ?>
+                        <div class="<?php echo esc_attr(
+                            $subtitle_classes,
+                        ); ?> space-y-[2vw]">
+                            <?php foreach (
+                                $subtitle_paragraphs
+                                as $paragraph
+                            ): ?>
                                 <p
                                     data-hero-reveal
                                     data-hero-delay="0.14"
@@ -243,13 +279,21 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                         </div>
                     <?php endif; ?>
 
-                    <?php if ($primary_text !== '' || $secondary_text !== ''): ?>
+                    <?php if (
+                        $primary_text !== '' ||
+                        $secondary_text !== ''
+                    ): ?>
                         <div
-                            class="<?php echo esc_attr($cta_wrapper_classes); ?>"
+                            class="<?php echo esc_attr(
+                                $cta_wrapper_classes,
+                            ); ?>"
                             data-hero-reveal
                             data-hero-delay="0.22"
                         >
-                            <?php if ($primary_text !== '' && $primary_link !== ''): ?>
+                            <?php if (
+                                $primary_text !== '' &&
+                                $primary_link !== ''
+                            ): ?>
                                 <a href="<?php echo esc_url(
                                     $primary_link,
                                 ); ?>" class="btn btn-primary group magnetic">
@@ -266,7 +310,10 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
                                 </a>
                             <?php endif; ?>
 
-                            <?php if ($secondary_text !== '' && $secondary_link !== ''): ?>
+                            <?php if (
+                                $secondary_text !== '' &&
+                                $secondary_link !== ''
+                            ): ?>
                                 <a href="<?php echo esc_url(
                                     $secondary_link,
                                 ); ?>" class="btn btn-outline group magnetic">
@@ -314,10 +361,8 @@ $images = isset($args['images']) && is_array($args['images']) ? $args['images'] 
             </div>
         </div>
 
-        <?php
-        if ($after_section) {
+        <?php if ($after_section) {
             echo is_string($after_section) ? $after_section : '';
-        }
-        ?>
+        } ?>
     </section>
 <?php endif; ?>

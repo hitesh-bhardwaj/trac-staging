@@ -1,21 +1,37 @@
 import { gsap } from 'gsap';
 
 export function initTeamSlider() {
-    const sections = Array.from(document.querySelectorAll('[data-team-slider]'));
+    const sections = Array.from(
+        document.querySelectorAll('[data-team-slider]'),
+    );
     if (!sections.length) return;
 
     sections.forEach((section) => {
         const prevBtn = section.querySelector('[data-team-slider-prev]');
         const nextBtn = section.querySelector('[data-team-slider-next]');
         const rail = section.querySelector('[data-team-slider-rail]');
-        const thumbs = Array.from(section.querySelectorAll('[data-team-slider-thumb]'));
+        const thumbs = Array.from(
+            section.querySelectorAll('[data-team-slider-thumb]'),
+        );
 
-        const activeCard = section.querySelector('[data-team-slider-active-card]');
-        const activeImage = section.querySelector('[data-team-slider-active-image]');
-        const activeImageEl = section.querySelector('[data-team-slider-active-image] img');
-        const activeName = section.querySelector('[data-team-slider-active-name]');
-        const activeRole = section.querySelector('[data-team-slider-active-role]');
-        const activeLinkedin = section.querySelector('[data-team-slider-linkedin]');
+        const activeCard = section.querySelector(
+            '[data-team-slider-active-card]',
+        );
+        const activeImage = section.querySelector(
+            '[data-team-slider-active-image]',
+        );
+        const activeImageEl = section.querySelector(
+            '[data-team-slider-active-image] img',
+        );
+        const activeName = section.querySelector(
+            '[data-team-slider-active-name]',
+        );
+        const activeRole = section.querySelector(
+            '[data-team-slider-active-role]',
+        );
+        const activeLinkedin = section.querySelector(
+            '[data-team-slider-linkedin]',
+        );
 
         if (
             !prevBtn ||
@@ -95,20 +111,23 @@ export function initTeamSlider() {
 
             tl.to([activeImage, activeName, activeRole, activeLinkedin], {
                 autoAlpha: 0,
-            }).add(() => {
-                activeImageEl.src = data.image;
-                activeImageEl.alt = data.name;
-                activeName.textContent = data.name;
-                activeRole.textContent = data.role;
-                activeLinkedin.href = data.linkedin || '#';
-            }).to([activeImage, activeName, activeRole, activeLinkedin], {
-                autoAlpha: 1,
-            });
+            })
+                .add(() => {
+                    activeImageEl.src = data.image;
+                    activeImageEl.alt = data.name;
+                    activeName.textContent = data.name;
+                    activeRole.textContent = data.role;
+                    activeLinkedin.href = data.linkedin || '#';
+                })
+                .to([activeImage, activeName, activeRole, activeLinkedin], {
+                    autoAlpha: 1,
+                });
         };
 
         const goTo = (index) => {
             if (isAnimating) return;
-            if (index < 0 || index >= thumbs.length || index === currentIndex) return;
+            if (index < 0 || index >= thumbs.length || index === currentIndex)
+                return;
 
             currentIndex = index;
             setActiveContent(currentIndex);

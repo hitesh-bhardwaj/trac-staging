@@ -3,23 +3,27 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$instagram_icon = get_template_directory_uri() . '/src/imgs/about/instagram.png';
+$instagram_icon =
+    get_template_directory_uri() . '/src/imgs/about/instagram.png';
 
 $instagram_posts = [
     [
-        'image' => get_template_directory_uri() . '/src/imgs/about/socials-1.png',
+        'image' =>
+            get_template_directory_uri() . '/src/imgs/about/socials-1.png',
         'alt' => 'TrAC SME internet social post',
-        'link' => '#',
+        'link' => 'https://www.instagram.com/',
     ],
     [
-        'image' => get_template_directory_uri() . '/src/imgs/about/socials-2.png',
+        'image' =>
+            get_template_directory_uri() . '/src/imgs/about/socials-2.png',
         'alt' => 'TrAC connecting communities social post',
-        'link' => '#',
+        'link' => 'https://www.instagram.com/',
     ],
     [
-        'image' => get_template_directory_uri() . '/src/imgs/about/socials-3.png',
+        'image' =>
+            get_template_directory_uri() . '/src/imgs/about/socials-3.png',
         'alt' => 'TrAC internet connectivity social post',
-        'link' => '#',
+        'link' => 'https://www.instagram.com/',
     ],
 ];
 ?>
@@ -37,7 +41,12 @@ $instagram_posts = [
             <?php foreach ($instagram_posts as $index => $post): ?>
                 <a
                     href="<?php echo esc_url($post['link']); ?>"
-                    class="group relative block h-[33vw] w-[26vw] overflow-hidden rounded-[1.5vw] bg-white md:rounded-2xl sm:rounded-[16px]<?php echo $index === 2 ? ' border border-brand-primary-alt' : ''; ?>"
+                    class="group relative block h-[33vw] w-[26vw] overflow-hidden rounded-[1.5vw] bg-white md:rounded-2xl sm:rounded-[16px]<?php echo $index ===
+                    2
+                        ? ' border border-brand-primary-alt'
+                        : ''; ?>"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="<?php echo esc_attr($post['alt']); ?>"
                 >
                     <img

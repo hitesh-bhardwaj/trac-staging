@@ -5,39 +5,51 @@ if (!defined('ABSPATH')) {
 
 $client_logos = [
     [
-        'src' => get_template_directory_uri() . '/src/imgs/home/clients/pccw.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/home/clients/pccw.png',
         'alt' => 'PCCW',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/home/clients/us-embassy.png',
+        'src' =>
+            get_template_directory_uri() .
+            '/src/imgs/home/clients/us-embassy.png',
         'alt' => 'US Embassy',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/home/clients/goodlife.png',
+        'src' =>
+            get_template_directory_uri() .
+            '/src/imgs/home/clients/goodlife.png',
         'alt' => 'GoodLife',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/home/clients/vodacom.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/home/clients/vodacom.png',
         'alt' => 'Vodacom',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/home/clients/nttdata.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/home/clients/nttdata.png',
         'alt' => 'NTT Data',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/home/clients/total-energies.png',
+        'src' =>
+            get_template_directory_uri() .
+            '/src/imgs/home/clients/total-energies.png',
         'alt' => 'Total Energies',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/home/clients/pwc.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/home/clients/pwc.png',
         'alt' => 'PWC',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/home/clients/serena.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/home/clients/serena.png',
         'alt' => 'Serena Hotels',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/home/clients/rca.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/home/clients/rca.png',
         'alt' => 'RCA',
     ],
 ];
@@ -51,13 +63,18 @@ $client_logos = [
             data-delay="0.2"
         >
             <div class="clients-marquee-track">
-                <?php for ($set = 0; $set < 2; $set++) : ?>
-                    <div class="clients-marquee-group" aria-hidden="<?php echo $set === 0 ? 'false' : 'true'; ?>">
-                        <?php foreach ($client_logos as $logo) : ?>
+                <?php for ($set = 0; $set < 2; $set++): ?>
+                    <div class="clients-marquee-group" aria-hidden="<?php echo $set ===
+                    0
+                        ? 'false'
+                        : 'true'; ?>">
+                        <?php foreach ($client_logos as $logo): ?>
                             <div class="client-logo-card flex items-center justify-center p-[2vw] aspect-[327/239] md:p-6 sm:p-4">
                                 <img
                                     src="<?php echo esc_url($logo['src']); ?>"
-                                    alt="<?php echo $set === 0 ? esc_attr($logo['alt']) : ''; ?>"
+                                    alt="<?php echo $set === 0
+                                        ? esc_attr($logo['alt'])
+                                        : ''; ?>"
                                     class="[filter:grayscale(0)] w-auto h-auto object-contain md:max-w-32 md:max-h-14 sm:max-w-24 sm:max-h-10"
                                 >
                             </div>

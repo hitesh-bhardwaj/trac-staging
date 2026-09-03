@@ -373,7 +373,10 @@ export function initGlobe(container, options = {}) {
     const config = { ...GLOBE_CONFIG, ...options };
 
     // Find the hero section for mouse tracking (or use window as fallback)
-    const heroSection = container.closest('[data-section="hero"]') || container.closest('section') || document.documentElement;
+    const heroSection =
+        container.closest('[data-section="hero"]') ||
+        container.closest('section') ||
+        document.documentElement;
     const width = container.clientWidth;
     const height = container.clientHeight;
 

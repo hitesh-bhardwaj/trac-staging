@@ -24,7 +24,7 @@ get_header();
             'testimonials',
             'clients',
             'our-network',
-            "connecting-communities",
+            'connecting-communities',
             'faqs',
             'cta',
         ];
@@ -34,8 +34,15 @@ get_header();
                 get_template_part(
                     'template-parts/common/faqs',
                     null,
-                    trac_get_faq_section_args(['id_prefix' => 'front-page-faq']),
+                    trac_get_faq_section_args([
+                        'id_prefix' => 'front-page-faq',
+                    ]),
                 );
+                continue;
+            }
+
+            if ($section_slug === 'cta') {
+                get_template_part('template-parts/common/cta');
                 continue;
             }
 

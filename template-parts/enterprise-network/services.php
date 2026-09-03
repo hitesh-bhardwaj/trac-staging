@@ -5,31 +5,43 @@ if (!defined('ABSPATH')) {
 
 $enterprise_services = [
     [
-        'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/business.svg',
-        'title'    => 'Enterprise Fibre Connectivity',
-        'para'     => 'Dedicated, high-performance fibre built for demanding business operations, with resilient infrastructure designed to support critical applications and maintain continuity.',
-        'link'     => '#get-connected',
+        'img' =>
+            get_template_directory_uri() .
+            '/src/imgs/enterprise-network/business.svg',
+        'title' => 'Enterprise Fibre Connectivity',
+        'para' =>
+            'Dedicated, high-performance fibre built for demanding business operations, with resilient infrastructure designed to support critical applications and maintain continuity.',
+        'link' => '#get-connected',
         'btn_text' => 'Get on TrAC',
     ],
     [
-        'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/private-network.svg',
-        'title'    => 'VPN',
-        'para'     => 'Secure private networks that connect multiple locations, teams, and systems, providing reliable communication and consistent performance across your operations.',
-        'link'     => '#get-connected',
+        'img' =>
+            get_template_directory_uri() .
+            '/src/imgs/enterprise-network/private-network.svg',
+        'title' => 'VPN',
+        'para' =>
+            'Secure private networks that connect multiple locations, teams, and systems, providing reliable communication and consistent performance across your operations.',
+        'link' => '#get-connected',
         'btn_text' => 'Get on TrAC',
     ],
     [
-        'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/data-centre.svg',
-        'title'    => 'Data Centre & Colocation',
-        'para'     => 'Enterprise-grade hosting in Rwanda, with controlled access and continuous monitoring to provide a secure, reliable environment for critical infrastructure.',
-        'link'     => '#get-connected',
+        'img' =>
+            get_template_directory_uri() .
+            '/src/imgs/enterprise-network/data-centre.svg',
+        'title' => 'Data Centre & Colocation',
+        'para' =>
+            'Enterprise-grade hosting in Rwanda, with controlled access and continuous monitoring to provide a secure, reliable environment for critical infrastructure.',
+        'link' => '#get-connected',
         'btn_text' => 'Get on TrAC',
     ],
     [
-        'img'      => get_template_directory_uri() . '/src/imgs/enterprise-network/cloud-infrastructure.svg',
-        'title'    => 'Cloud & Virtual Infrastructure',
-        'para'     => 'Flexible Cloud environments that support virtual infrastructure, data protection, and scalable operations, adapting as your business needs evolve.',
-        'link'     => '#get-connected',
+        'img' =>
+            get_template_directory_uri() .
+            '/src/imgs/enterprise-network/cloud-infrastructure.svg',
+        'title' => 'Cloud & Virtual Infrastructure',
+        'para' =>
+            'Flexible Cloud environments that support virtual infrastructure, data protection, and scalable operations, adapting as your business needs evolve.',
+        'link' => '#get-connected',
         'btn_text' => 'Get on TrAC',
     ],
 ];
@@ -53,17 +65,19 @@ $enterprise_services = [
             </p>
 
             <div class="grid grid-cols-2 gap-10 mt-[5vw] md:grid-cols-1 md:gap-8 text-left">
-                <?php foreach ($enterprise_services as $index => $card) : ?>
+                <?php foreach ($enterprise_services as $index => $card): ?>
                     <div
                         class="bg-brand-tertiary rounded-[32px] p-10 flex flex-col min-h-[440px] md:min-h-0 md:p-8 text-left"
                         data-animate="fade-up"
-                        <?php if ($index > 0) : ?>
+                        <?php if ($index > 0): ?>
                             data-delay="<?php echo esc_attr($index * 0.1); ?>"
                         <?php endif; ?>
                     >
                         <div>
                             <div class="h-[4.5vw] w-[4.5vw] mb-10">
-                                <img src="<?php echo esc_url($card['img']); ?>" alt="" class="w-full h-full" loading="lazy">
+                                <img src="<?php echo esc_url(
+                                    $card['img'],
+                                ); ?>" alt="" class="w-full h-full" loading="lazy">
                             </div>
 
                             <h3 class="font-heading text-white text-36 md:text-2xl mb-6 font-normal">
@@ -77,9 +91,9 @@ $enterprise_services = [
 
                         <div class="mt-auto pt-10">
                             <a href="<?php echo esc_url(
-                        get_field('hero_primary_button_link') ?:
-                        '#get-connected',
-                     ); ?>" class="btn btn-primary group magnetic">
+                                get_field('hero_primary_button_link') ?:
+                                '#get-connected',
+                            ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
                             get_field('hero_primary_button_text') ?:

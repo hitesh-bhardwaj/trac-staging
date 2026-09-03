@@ -87,13 +87,12 @@ $subtitle =
 
             <div class="flex w-full flex-wrap gap-[0.8vw] gap-y-[1.5vw] md:grid-cols-2 md:gap-6 sm:gap-4 h-[24vw]" data-partner-logos>
                 <?php foreach ($client_logos as $index => $logo):
-                    $category = $categories[$index % count($categories)];
-                    ?>
+                    $category = $categories[$index % count($categories)]; ?>
                     <div class="bg-white w-[24%] rounded-[0.8vw] h-fit md:rounded-2xl p-[3.5vw] md:p-7 sm:p-6 flex items-center justify-center" data-partner-logo data-partner-category="<?php echo esc_attr(
                         $category,
                     ); ?>" data-animate="fade-up" data-delay="<?php echo esc_attr(
-                        0.05 * ($index % 4),
-                    ); ?>">
+    0.05 * ($index % 4),
+); ?>">
                         <img
                             src="<?php echo esc_url($logo['src']); ?>"
                             alt="<?php echo esc_attr($logo['alt']); ?>"
@@ -101,7 +100,8 @@ $subtitle =
                             loading="lazy"
                         >
                     </div>
-                <?php endforeach; ?>
+                <?php
+                endforeach; ?>
             </div>
         </div>
     </div>

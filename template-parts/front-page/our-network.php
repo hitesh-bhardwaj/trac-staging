@@ -49,7 +49,9 @@ $network_circle_lines_svg_path_line =
 
         <div class="relative mt-[7vw] h-[55vw] w-screen overflow-hidden md:mt-8 md:h-[60vw] sm:mt-6 sm:h-[80vw]">
             <img
-                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/network-img.png'); ?>"
+                src="<?php echo esc_url(
+                    get_template_directory_uri() . '/src/imgs/network-img.png',
+                ); ?>"
                 alt="TrAC network map"
                 class="h-full w-full object-cover"
                 loading="lazy"
@@ -57,7 +59,9 @@ $network_circle_lines_svg_path_line =
 
             <div class="absolute inset-0 left-[53%] top-[42%] z-[50] size-[5vw]">
                 <img
-                    src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/building.png'); ?>"
+                    src="<?php echo esc_url(
+                        get_template_directory_uri() . '/src/imgs/building.png',
+                    ); ?>"
                     alt="Data center"
                     class="h-full w-full object-contain"
                     loading="lazy"
@@ -89,7 +93,10 @@ $network_circle_lines_svg_path_line =
                 <div class="flex items-center gap-[0.5vw]">
                     <div class="h-auto w-[3vw]">
                         <img
-                            src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/fiber-cable.png'); ?>"
+                            src="<?php echo esc_url(
+                                get_template_directory_uri() .
+                                    '/src/imgs/fiber-cable.png',
+                            ); ?>"
                             alt="fiber cable"
                             class="h-full w-full object-contain"
                             loading="lazy"
@@ -117,7 +124,9 @@ $network_circle_lines_svg_path_line =
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="relative h-[44vw] w-[50vw] md:h-[44vw] md:w-[66vw] sm:h-[58vw] sm:w-[88vw]">
                     <img
-                        src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/map.png'); ?>"
+                        src="<?php echo esc_url(
+                            get_template_directory_uri() . '/src/imgs/map.png',
+                        ); ?>"
                         alt="Central Africa network overlay"
                         class="absolute inset-0 z-[10] h-full w-full object-contain"
                         loading="lazy"
@@ -128,11 +137,11 @@ $network_circle_lines_svg_path_line =
                         data-network-draw="dotted"
                         aria-hidden="true"
                     >
-                        <?php
-                        if (file_exists($network_dotted_lines_svg_path)) {
-                            echo file_get_contents($network_dotted_lines_svg_path);
-                        }
-                        ?>
+                        <?php if (file_exists($network_dotted_lines_svg_path)) {
+                            echo file_get_contents(
+                                $network_dotted_lines_svg_path,
+                            );
+                        } ?>
                     </div>
 
                     <div
@@ -140,11 +149,11 @@ $network_circle_lines_svg_path_line =
                         data-network-draw="circle"
                         aria-hidden="true"
                     >
-                        <?php
-                        if (file_exists($network_circle_lines_svg_path)) {
-                            echo file_get_contents($network_circle_lines_svg_path);
-                        }
-                        ?>
+                        <?php if (file_exists($network_circle_lines_svg_path)) {
+                            echo file_get_contents(
+                                $network_circle_lines_svg_path,
+                            );
+                        } ?>
                     </div>
 
                     <div
@@ -154,11 +163,13 @@ $network_circle_lines_svg_path_line =
                         data-network-draw="circle-line"
                         aria-hidden="true"
                     >
-                        <?php
-                        if (file_exists($network_circle_lines_svg_path_line)) {
-                            echo file_get_contents($network_circle_lines_svg_path_line);
-                        }
-                        ?>
+                        <?php if (
+                            file_exists($network_circle_lines_svg_path_line)
+                        ) {
+                            echo file_get_contents(
+                                $network_circle_lines_svg_path_line,
+                            );
+                        } ?>
                     </div>
                 </div>
             </div>

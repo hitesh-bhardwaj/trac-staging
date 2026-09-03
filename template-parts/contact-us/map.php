@@ -1,8 +1,7 @@
 <?php
 if (!defined('ABSPATH')) {
     exit();
-}
-?>
+} ?>
 
 <section class="map-section relative overflow-hidden bg-white py-[7vw] md:py-20 sm:py-16" data-section="map">
     <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">

@@ -1,60 +1,60 @@
 <?php
-if (!defined("ABSPATH")) {
+if (!defined('ABSPATH')) {
     exit();
 }
 
-$label = get_field("partner_voices_label") ?: "Partner Voices";
-$title = get_field("partner_voices_title") ?: "What Our Partners Say";
-$team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
+$label = get_field('partner_voices_label') ?: 'Partner Voices';
+$title = get_field('partner_voices_title') ?: 'What Our Partners Say';
+$team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
 
 // 7 slides, looped by JS. Logos reused from homepage clients assets.
 $unified_quote =
-    "TransAfrica Communications (TrAC) has been providing to us Multiprotocol Label Switching (MPLS private network) and Internet services which are highly efficient, scalable and secure. In our interactions, we have found TrAC staff to be highly professional and rich with experience in project implementation skills and the ability to handle diverse environments while providing exceptional customer service and support in a timely manner.";
+    'TransAfrica Communications (TrAC) has been providing to us Multiprotocol Label Switching (MPLS private network) and Internet services which are highly efficient, scalable and secure. In our interactions, we have found TrAC staff to be highly professional and rich with experience in project implementation skills and the ability to handle diverse environments while providing exceptional customer service and support in a timely manner.';
 
 $slides = [
     [
-        "logo" =>
-            get_template_directory_uri() . "/src/imgs/client-partners.png",
-        "logo_alt" => "Partners In Health",
-        "quote" => $unified_quote,
-        "meta" => "CMO, PARTNERS IN HEALTH",
+        'logo' =>
+            get_template_directory_uri() . '/src/imgs/client-partners.png',
+        'logo_alt' => 'Partners In Health',
+        'quote' => $unified_quote,
+        'meta' => 'CMO, PARTNERS IN HEALTH',
     ],
     [
-        "logo" => get_template_directory_uri() . "/src/imgs/client-smart.png",
-        "logo_alt" => "Smart",
-        "quote" => $unified_quote,
-        "meta" => "CMO, SMART SERVICES",
+        'logo' => get_template_directory_uri() . '/src/imgs/client-smart.png',
+        'logo_alt' => 'Smart',
+        'quote' => $unified_quote,
+        'meta' => 'CMO, SMART SERVICES',
     ],
     [
-        "logo" => get_template_directory_uri() . "/src/imgs/client-airtel.png",
-        "logo_alt" => "Airtel",
-        "quote" => $unified_quote,
-        "meta" => "PARTNER SUCCESS LEAD, AIRTEL",
+        'logo' => get_template_directory_uri() . '/src/imgs/client-airtel.png',
+        'logo_alt' => 'Airtel',
+        'quote' => $unified_quote,
+        'meta' => 'PARTNER SUCCESS LEAD, AIRTEL',
     ],
     [
-        "logo" => get_template_directory_uri() . "/src/imgs/client-urwego.png",
-        "logo_alt" => "Urwego Bank",
-        "quote" => $unified_quote,
-        "meta" => "HEAD OF IT, URWEGO BANK",
+        'logo' => get_template_directory_uri() . '/src/imgs/client-urwego.png',
+        'logo_alt' => 'Urwego Bank',
+        'quote' => $unified_quote,
+        'meta' => 'HEAD OF IT, URWEGO BANK',
     ],
     [
-        "logo" =>
-            get_template_directory_uri() . "/src/imgs/client-partners.png",
-        "logo_alt" => "Partners In Health",
-        "quote" => $unified_quote,
-        "meta" => "OPERATIONS DIRECTOR, PARTNERS IN HEALTH",
+        'logo' =>
+            get_template_directory_uri() . '/src/imgs/client-partners.png',
+        'logo_alt' => 'Partners In Health',
+        'quote' => $unified_quote,
+        'meta' => 'OPERATIONS DIRECTOR, PARTNERS IN HEALTH',
     ],
     [
-        "logo" => get_template_directory_uri() . "/src/imgs/client-smart.png",
-        "logo_alt" => "Smart",
-        "quote" => $unified_quote,
-        "meta" => "TECHNICAL DIRECTOR, SMART SERVICES",
+        'logo' => get_template_directory_uri() . '/src/imgs/client-smart.png',
+        'logo_alt' => 'Smart',
+        'quote' => $unified_quote,
+        'meta' => 'TECHNICAL DIRECTOR, SMART SERVICES',
     ],
     [
-        "logo" => get_template_directory_uri() . "/src/imgs/client-airtel.png",
-        "logo_alt" => "Airtel",
-        "quote" => $unified_quote,
-        "meta" => "REGIONAL LEAD, AIRTEL",
+        'logo' => get_template_directory_uri() . '/src/imgs/client-airtel.png',
+        'logo_alt' => 'Airtel',
+        'quote' => $unified_quote,
+        'meta' => 'REGIONAL LEAD, AIRTEL',
     ],
 ];
 ?>
@@ -65,7 +65,7 @@ $slides = [
  <div class="flex items-center justify-center gap-3 mb-14 md:mb-6" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-primary"></span>
                 <span class="font-body text-base text-text-primary"><?php echo esc_html(
-                    $label
+                    $label,
                 ); ?></span>
             </div>
               <div class="w-full flex justify-center">
@@ -85,20 +85,20 @@ $slides = [
 		                            <article class="partner-voices-slide flex-shrink-0 w-[48vw] md:w-[72vw] sm:w-[84vw] rounded-[1.563vw] md:rounded-3xl bg-white border border-brand-primary/40 p-[2.5vw] md:p-8 sm:p-6 text-left" data-partner-voices-slide>
                                 <div class="h-[4vw] md:h-10 sm:h-8 w-auto mb-[2vw] md:mb-6 sm:mb-5">
                                     <img src="<?php echo esc_url(
-                                        $slide["logo"]
+                                        $slide['logo'],
                                     ); ?>" alt="<?php echo esc_attr(
-    $slide["logo_alt"]
+    $slide['logo_alt'],
 ); ?>" class="h-full w-auto object-contain">
                                 </div>
 
 	                                <p class="font-body text-24 md:text-lg sm:text-base leading-[1.65] text-text-primary mb-[2.5vw] md:mb-8 sm:mb-7">
 	                                    &ldquo; <?php echo esc_html(
-                                         $slide["quote"]
+                                         $slide['quote'],
                                      ); ?> &rdquo;
 	                                </p>
 
                                 <p class="font-body tracking-[0.18em] uppercase text-[0.938vw] md:text-sm sm:text-xs text-brand-secondary">
-                                    <?php echo esc_html($slide["meta"]); ?>
+                                    <?php echo esc_html($slide['meta']); ?>
                                 </p>
                             </article>
                         <?php endforeach; ?>

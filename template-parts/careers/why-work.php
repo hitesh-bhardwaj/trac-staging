@@ -1,8 +1,7 @@
 <?php
 if (!defined('ABSPATH')) {
     exit();
-}
-?>
+} ?>
 
 <section class="why-work-section relative overflow-hidden bg-white pb-[7vw] md:py-20 sm:py-16" data-section="why-work">
     <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">

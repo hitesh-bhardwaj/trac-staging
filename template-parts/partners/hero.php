@@ -1,8 +1,7 @@
 <?php
 if (!defined('ABSPATH')) {
     exit();
-}
-?>
+} ?>
 
 <section class="hero relative min-h-screen bg-white overflow-hidden" data-section="hero" data-hero-static>
     <div class="hero-container relative z-[10] w-full px-[5vw] pt-[12vw] pb-[5.21vw] md:px-[4vw] md:pt-[120px] sm:px-[6vw] sm:pt-[100px]">
@@ -16,12 +15,13 @@ if (!defined('ABSPATH')) {
                 >
                     <span class="block hero-title-line">
                         <?php echo esc_html(
-                            get_field('hero_title_line_1') ?: "Growing Africa's Connectivity,"
+                            get_field('hero_title_line_1') ?:
+                            "Growing Africa's Connectivity,",
                         ); ?>
                     </span>
                     <span class="block hero-title-line">
                         <?php echo esc_html(
-                            get_field('hero_title_line_2') ?: 'Together.'
+                            get_field('hero_title_line_2') ?: 'Together.',
                         ); ?>
                     </span>
                 </h1>
@@ -34,7 +34,7 @@ if (!defined('ABSPATH')) {
                 >
                     <?php echo esc_html(
                         get_field('hero_subtitle_2') ?:
-                            "TrAC doesn't just build networks, we build relationships. Whether you're a technology vendor, infrastructure provider, or reseller, there's a place for you in the TrAC ecosystem."
+                        "TrAC doesn't just build networks, we build relationships. Whether you're a technology vendor, infrastructure provider, or reseller, there's a place for you in the TrAC ecosystem.",
                     ); ?>
                 </p>
 
@@ -45,14 +45,16 @@ if (!defined('ABSPATH')) {
                 >
                     <a
                         href="<?php echo esc_url(
-                            get_field('hero_primary_button_link') ?: '#get-connected'
+                            get_field('hero_primary_button_link') ?:
+                            '#get-connected',
                         ); ?>"
                         class="btn btn-primary group magnetic"
                     >
                         <span class="btn-line"></span>
                         <span class="btn-text">
                             <?php echo esc_html(
-                                get_field('hero_primary_button_text') ?: 'Request Service'
+                                get_field('hero_primary_button_text') ?:
+                                'Request Service',
                             ); ?>
                         </span>
                         <span class="btn-icon" aria-hidden="true">
@@ -76,7 +78,8 @@ if (!defined('ABSPATH')) {
                     >
                         <img
                             src="<?php echo esc_url(
-                                get_template_directory_uri() . '/src/imgs/partners/hero-image.png'
+                                get_template_directory_uri() .
+                                    '/src/imgs/partners/hero-image.png',
                             ); ?>"
                             alt=""
                             class="h-full w-full object-cover"

@@ -5,42 +5,50 @@ if (!defined('ABSPATH')) {
 
 $gallery_images = [
     [
-        'src' => get_template_directory_uri() . '/src/imgs/communities/gallery1.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/communities/gallery1.png',
         'alt' => 'TrAC leaders in Rwanda',
         'class' => 'col-span-5 row-span-1 md:col-span-6 sm:col-span-1',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/communities/gallery2.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/communities/gallery2.png',
         'alt' => 'TrAC collaboration discussion',
         'class' => 'col-span-2 row-span-1 md:col-span-3 sm:col-span-1',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/communities/gallery3.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/communities/gallery3.png',
         'alt' => 'Digital access training session',
         'class' => 'col-span-2 row-span-1 md:col-span-3 sm:col-span-1',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/communities/gallery4.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/communities/gallery4.png',
         'alt' => 'Connecting Communities planning session',
         'class' => 'col-span-2 row-span-1 md:col-span-6 sm:col-span-1',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/communities/gallery5.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/communities/gallery5.png',
         'alt' => 'Team reviewing community access plans',
         'class' => 'col-span-2 row-span-1 md:col-span-3 sm:col-span-1',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/communities/gallery6.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/communities/gallery6.png',
         'alt' => 'Community Smart Hub presentation',
         'class' => 'col-span-2 row-span-1 md:col-span-3 sm:col-span-1',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/communities/gallery7.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/communities/gallery7.png',
         'alt' => 'TrAC Rwanda presentation',
         'class' => 'col-span-2 row-span-1 md:col-span-3 sm:col-span-1',
     ],
     [
-        'src' => get_template_directory_uri() . '/src/imgs/communities/gallery8.png',
+        'src' =>
+            get_template_directory_uri() . '/src/imgs/communities/gallery8.png',
         'alt' => 'TrAC team at Rwanda Internet Governance Forum',
         'class' => 'col-span-5 row-span-1 md:col-span-3 sm:col-span-1',
     ],
@@ -65,7 +73,11 @@ $gallery_images = [
 
         <div class="mt-[5.208vw] grid grid-cols-11 gap-[1.563vw] md:mt-12 md:grid-cols-6 md:gap-5 sm:grid-cols-1 sm:gap-4">
             <?php foreach ($gallery_images as $index => $image): ?>
-                <figure class="<?php echo esc_attr($image['class']); ?> m-0 h-[21.458vw] overflow-hidden rounded-[0.833vw] md:h-[260px] md:rounded-2xl sm:h-[230px]" data-animate="fade-up" data-delay="<?php echo esc_attr(0.08 * ($index % 4)); ?>">
+                <figure class="<?php echo esc_attr(
+                    $image['class'],
+                ); ?> m-0 h-[21.458vw] overflow-hidden rounded-[0.833vw] md:h-[260px] md:rounded-2xl sm:h-[230px]" data-animate="fade-up" data-delay="<?php echo esc_attr(
+     0.08 * ($index % 4),
+ ); ?>">
                     <img
                         src="<?php echo esc_url($image['src']); ?>"
                         alt="<?php echo esc_attr($image['alt']); ?>"

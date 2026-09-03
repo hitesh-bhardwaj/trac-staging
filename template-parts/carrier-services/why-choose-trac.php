@@ -28,7 +28,8 @@ $why_cards = [
     ],
     [
         'number' => '05',
-        'text' => 'Technical expertise across network design and implementation',
+        'text' =>
+            'Technical expertise across network design and implementation',
     ],
 ];
 ?>
@@ -54,9 +55,7 @@ $why_cards = [
             <?php foreach ($why_cards as $i => $card): ?>
                 <article
                     class="w-[16.5vw] md:w-full mt-[var(--card-mt)] md:mt-0 rounded-xl md:rounded-2xl bg-brand-tertiary p-[1.6vw] py-[2.2vw] md:p-8 flex flex-col justify-between gap-[3.2vw] md:gap-10"
-                    style="--card-mt: <?php echo esc_attr(
-                        $i * 2.4,
-                    ); ?>vw;"
+                    style="--card-mt: <?php echo esc_attr($i * 2.4); ?>vw;"
                     data-animate="fade-up"
                     data-delay="<?php echo esc_attr(0.08 * $i); ?>"
                 >

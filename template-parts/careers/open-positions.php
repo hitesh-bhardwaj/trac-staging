@@ -5,33 +5,35 @@ if (!defined('ABSPATH')) {
 
 $enterprise_services = [
     [
-        'title'    => 'Lorem Ipsum is simply dummy text',
+        'title' => 'Lorem Ipsum is simply dummy text',
         'location' => '(Location - Nairobi, Kenya)',
-        'para'     => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
-        'link'     => '#get-connected',
+        'para' =>
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
+        'link' => '#get-connected',
         'btn_text' => 'Apply',
     ],
     [
-        'title'    => 'Lorem Ipsum is simply dummy text',
+        'title' => 'Lorem Ipsum is simply dummy text',
         'location' => '(Location - Johannesburg, South Africa)',
-        'para'     => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
-        'link'     => '#get-connected',
+        'para' =>
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
+        'link' => '#get-connected',
         'btn_text' => 'Apply',
     ],
     [
-    
-        'title'    => 'Lorem Ipsum is simply dummy text',
+        'title' => 'Lorem Ipsum is simply dummy text',
         'location' => '(Location - Nairobi, Kenya)',
-        'para'     => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
-        'link'     => '#get-connected',
+        'para' =>
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
+        'link' => '#get-connected',
         'btn_text' => 'Apply',
     ],
     [
-       
-        'title'    => 'Lorem Ipsum is simply dummy text',
+        'title' => 'Lorem Ipsum is simply dummy text',
         'location' => '(Location - Johannesburg, South Africa)',
-        'para'     => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
-        'link'     => '#get-connected',
+        'para' =>
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
+        'link' => '#get-connected',
         'btn_text' => 'Apply',
     ],
 ];
@@ -50,11 +52,11 @@ $enterprise_services = [
             </h2>
 
             <div class="grid grid-cols-2 gap-10 mt-[5vw] md:grid-cols-1 md:gap-8 text-left">
-                <?php foreach ($enterprise_services as $index => $card) : ?>
+                <?php foreach ($enterprise_services as $index => $card): ?>
                     <div
                         class="bg-brand-tertiary rounded-[1.2vw] p-9 flex flex-col h-fit md:min-h-0 md:p-8 text-left"
                         data-animate="fade-up"
-                        <?php if ($index > 0) : ?>
+                        <?php if ($index > 0): ?>
                             data-delay="<?php echo esc_attr($index * 0.1); ?>"
                         <?php endif; ?>
                     >
@@ -74,13 +76,12 @@ $enterprise_services = [
 
                         <div class="mt-auto pt-10">
                             <a href="<?php echo esc_url(
-                        get_field('hero_primary_button_link') ?:
-                        '#job-application',
-                     ); ?>" class="btn btn-primary group magnetic">
+                                get_field('hero_primary_button_link') ?:
+                                '#job-application',
+                            ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
-                            get_field('hero_primary_button_text') ?:
-                            'Apply',
+                            get_field('hero_primary_button_text') ?: 'Apply',
                         ); ?></span>
                         <span class="btn-icon">
                           <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">

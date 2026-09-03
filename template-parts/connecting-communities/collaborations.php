@@ -3,7 +3,8 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$collaboration_image_url = get_template_directory_uri() . '/src/imgs/communities/collaborations.png';
+$collaboration_image_url =
+    get_template_directory_uri() . '/src/imgs/communities/collaborations.png';
 ?>
 
 <section class="bg-brand-quaternary px-[5vw] py-[7vw] text-white md:px-[4vw] md:py-[82px] sm:px-[6vw] sm:py-16" data-section="communities-collaborations">

@@ -1,11 +1,9 @@
 <?php
-if (!defined('ABSPATH'))
-{
+if (!defined('ABSPATH')) {
     exit();
 }
 
-$team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
-
+$team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
 ?>
 
 
@@ -18,7 +16,9 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
             >
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
-                    <?php echo esc_html(get_field('testimonials_label') ? : 'Testimonials',); ?>
+                    <?php echo esc_html(
+                        get_field('testimonials_label') ?: 'Testimonials',
+                    ); ?>
                 </span>
             </div>
 
@@ -26,7 +26,9 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
                 class="font-heading font-normal text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]"
                 data-heading-anim
              >
-                <?php echo esc_html(get_field('testimonials_title') ? : 'What Our Clients Say',); ?>
+                <?php echo esc_html(
+                    get_field('testimonials_title') ?: 'What Our Clients Say',
+                ); ?>
             </h2>
         </div>
 
@@ -80,45 +82,65 @@ $team_arrow_svg = get_template_directory_uri() . "/src/assets/icons/arrow.svg";
             <div class="testimonials-viewport">
                 <div class="testimonials-track">
                 <?php
-// Get testimonials limit from ACF
-$limit = get_field('testimonials_limit') ? : 3;
+                // Get testimonials limit from ACF
+                $limit = get_field('testimonials_limit') ?: 3;
 
-// Query testimonial posts
-$testimonials_query = new WP_Query(['post_type' => 'testimonial', 'posts_per_page' => $limit, 'post_status' => 'publish', 'orderby' => 'date', 'order' => 'DESC', 'meta_query' => ['relation' => 'OR', ['key' => 'testimonial_featured', 'value' => '1', 'compare' => '=', ], ['key' => 'testimonial_featured', 'compare' => 'NOT EXISTS', ], ], ]);
+                // Query testimonial posts
+                $testimonials_query = new WP_Query([
+                    'post_type' => 'testimonial',
+                    'posts_per_page' => $limit,
+                    'post_status' => 'publish',
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'meta_query' => [
+                        'relation' => 'OR',
+                        [
+                            'key' => 'testimonial_featured',
+                            'value' => '1',
+                            'compare' => '=',
+                        ],
+                        [
+                            'key' => 'testimonial_featured',
+                            'compare' => 'NOT EXISTS',
+                        ],
+                    ],
+                ]);
 
-if ($testimonials_query->have_posts()):
-    while ($testimonials_query->have_posts()):
-        $testimonials_query->the_post();
+                if ($testimonials_query->have_posts()):
+                    while ($testimonials_query->have_posts()):
 
-        $quote = get_field('testimonial_quote');
-        $author = get_field('testimonial_author');
-        $role = get_field('testimonial_role');
-        $company = get_field('testimonial_company');
-        $logo = get_field('testimonial_company_logo');
+                        $testimonials_query->the_post();
 
-        // Fallback logo if none provided
-        if (!$logo)
-        {
-            $logo = get_template_directory_uri() . '/src/imgs/testimonial-logo-1.png';
-        }
-?>
+                        $quote = get_field('testimonial_quote');
+                        $author = get_field('testimonial_author');
+                        $role = get_field('testimonial_role');
+                        $company = get_field('testimonial_company');
+                        $logo = get_field('testimonial_company_logo');
+
+                        // Fallback logo if none provided
+                        if (!$logo) {
+                            $logo =
+                                get_template_directory_uri() .
+                                '/src/imgs/testimonial-logo-1.png';
+                        }
+                        ?>
                         <div class="testimonial-card rounded-[1.563vw] bg-brand-primary p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
                             <?php if ($quote): ?>
                                 <p class="font-body font-normal mb-[2vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
                                     <?php echo esc_html($quote); ?>
                                 </p>
-                            <?php
-        endif; ?>
+                            <?php endif; ?>
 
                             <div class="testimonial-author">
                                 <?php if ($logo): ?>
                                     <img
                                         src="<?php echo esc_url($logo); ?>"
-                                        alt="<?php echo esc_attr($company ? : 'Client logo',); ?>"
+                                        alt="<?php echo esc_attr(
+                                            $company ?: 'Client logo',
+                                        ); ?>"
                                         class="h-[2.552vw] w-auto md:h-12 "
                                     >
-                                <?php
-        endif; ?>
+                                <?php endif; ?>
 
                                 <?php if ($author || $role): ?>
                                     <div class="author-details mt-4">
@@ -126,38 +148,30 @@ if ($testimonials_query->have_posts()):
                                             <p class="author-name font-heading text-[1.042vw] font-semibold text-white md:text-base">
                                                 <?php echo esc_html($author); ?>
                                             </p>
-                                        <?php
-            endif; ?>
+                                        <?php endif; ?>
 
                                         <?php if ($role || $company): ?>
                                             <p class="author-role font-body text-[0.938vw] text-text-muted md:text-sm">
-                                                <?php
-                if ($role && $company)
-                {
-                    echo esc_html($role . ', ' . $company,);
-                }
-                elseif ($role)
-                {
-                    echo esc_html($role);
-                }
-                elseif ($company)
-                {
-                    echo esc_html($company);
-                }
-?>
+                                                <?php if ($role && $company) {
+                                                    echo esc_html(
+                                                        $role . ', ' . $company,
+                                                    );
+                                                } elseif ($role) {
+                                                    echo esc_html($role);
+                                                } elseif ($company) {
+                                                    echo esc_html($company);
+                                                } ?>
                                             </p>
-                                        <?php
-            endif; ?>
+                                        <?php endif; ?>
                                     </div>
-                                <?php
-        endif; ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php
-    endwhile;
-    wp_reset_postdata();
-else:
-?>
+                    endwhile;
+                    wp_reset_postdata();
+                else:
+                     ?>
                     <!-- Fallback: Show default testimonial if no posts exist -->
                     <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[2vw] sm:p-6">
                         <p class="font-body font-normal mb-[2vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
@@ -165,7 +179,10 @@ else:
                         </p>
                         <div class="testimonial-author">
                             <img
-                                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/home/testimonials/partners-in-health.png',); ?>"
+                                src="<?php echo esc_url(
+                                    get_template_directory_uri() .
+                                        '/src/imgs/home/testimonials/partners-in-health.png',
+                                ); ?>"
                                 alt="Client logo"
                                 class="h-[2.552vw] w-auto md:h-10 sm:h-8 brightness-[16]"
                             >
@@ -178,7 +195,10 @@ else:
                         </p>
                         <div class="testimonial-author">
                             <img
-                                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/home/testimonials/urwego-bank.png',); ?>"
+                                src="<?php echo esc_url(
+                                    get_template_directory_uri() .
+                                        '/src/imgs/home/testimonials/urwego-bank.png',
+                                ); ?>"
                                 alt="Client logo"
                                 class="h-[2.552vw] w-auto md:h-10 sm:h-8 brightness-[16]"
                             >
@@ -191,7 +211,10 @@ else:
                         </p>
                         <div class="testimonial-author">
                             <img
-                                src="<?php echo esc_url(get_template_directory_uri() . '/src/imgs/home/testimonials/smart-access.png',); ?>"
+                                src="<?php echo esc_url(
+                                    get_template_directory_uri() .
+                                        '/src/imgs/home/testimonials/smart-access.png',
+                                ); ?>"
                                 alt="Client logo"
                                 class="h-[2.552vw] w-auto md:h-10 sm:h-8 brightness-[16]"
                             >
@@ -199,7 +222,8 @@ else:
                     </div>
                    
                 <?php
-endif; ?>
+                endif;
+                ?>
                 </div>
             </div>
         </div>

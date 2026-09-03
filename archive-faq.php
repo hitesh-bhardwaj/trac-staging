@@ -55,8 +55,7 @@ get_header();
                         'order' => 'ASC',
                     ]);
 
-                    if ($faq_query->have_posts()):
-                        ?>
+                    if ($faq_query->have_posts()): ?>
                         <div class="faq-category-group mb-[3.125vw] md:mb-10 sm:mb-8" data-animate="fade-up">
                             <h2 class="category-title font-heading text-[2vw] text-brand-primary mb-[2vw] md:text-2xl md:mb-6 sm:text-xl sm:mb-5">
                                 <?php echo esc_html($category->name); ?>
@@ -66,6 +65,7 @@ get_header();
                                 <?php
                                 $index = 0;
                                 while ($faq_query->have_posts()):
+
                                     $faq_query->the_post();
                                     $unique_id =
                                         $category->slug . '-' . get_the_ID();
@@ -84,7 +84,9 @@ get_header();
                                             id="faq-btn-<?php echo $unique_id; ?>"
                                         >
                                             <span class="faq-question-text font-body text-[1.458vw] text-text-primary md:text-xl sm:text-lg">
-                                                <?php echo esc_html($question); ?>
+                                                <?php echo esc_html(
+                                                    $question,
+                                                ); ?>
                                             </span>
 
                                             <span class="faq-icon-wrap" aria-hidden="true">
@@ -101,7 +103,9 @@ get_header();
                                             aria-hidden="true"
                                         >
                                             <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
-                                                <?php echo wp_kses_post($answer); ?>
+                                                <?php echo wp_kses_post(
+                                                    $answer,
+                                                ); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -111,12 +115,10 @@ get_header();
                                 ?>
                             </div>
                         </div>
-                        <?php
-                        wp_reset_postdata();
-                    endif;
+                        <?php wp_reset_postdata();endif;
                 endforeach;
-            else:
                 // Display all FAQs without categories
+            else:
                 $all_faqs = new WP_Query([
                     'post_type' => 'faq',
                     'posts_per_page' => -1,
@@ -124,12 +126,12 @@ get_header();
                     'order' => 'ASC',
                 ]);
 
-                if ($all_faqs->have_posts()):
-                    ?>
+                if ($all_faqs->have_posts()): ?>
                     <div class="faqs-accordion w-full max-w-[89.583vw] mx-auto md:max-w-full" data-animate="fade-up">
                         <?php
                         $index = 0;
                         while ($all_faqs->have_posts()):
+
                             $all_faqs->the_post();
                             $is_first = $index === 0;
                             $question = get_the_title();
@@ -146,7 +148,9 @@ get_header();
                             >
                                 <button
                                     class="faq-question w-full flex items-center justify-between text-left py-[1.667vw] md:py-5 sm:py-4"
-                                    aria-expanded="<?php echo $is_first ? 'true' : 'false'; ?>"
+                                    aria-expanded="<?php echo $is_first
+                                        ? 'true'
+                                        : 'false'; ?>"
                                     aria-controls="faq-answer-<?php echo $index; ?>"
                                     id="faq-btn-<?php echo $index; ?>"
                                 >
@@ -165,7 +169,9 @@ get_header();
                                     id="faq-answer-<?php echo $index; ?>"
                                     role="region"
                                     aria-labelledby="faq-btn-<?php echo $index; ?>"
-                                    aria-hidden="<?php echo $is_first ? 'false' : 'true'; ?>"
+                                    aria-hidden="<?php echo $is_first
+                                        ? 'false'
+                                        : 'true'; ?>"
                                 >
                                     <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
                                         <?php echo wp_kses_post($answer); ?>
@@ -178,16 +184,13 @@ get_header();
                         wp_reset_postdata();
                         ?>
                     </div>
-                    <?php
-                else:
-                    ?>
+                    <?php else: ?>
                     <div class="no-faqs text-center py-[5.208vw] md:py-16 sm:py-12">
                         <p class="font-body text-24 text-text-muted md:text-lg sm:text-base">
                             No FAQs available yet. Please check back soon!
                         </p>
                     </div>
-                <?php
-                endif;
+                <?php endif;
             endif;
             ?>
 

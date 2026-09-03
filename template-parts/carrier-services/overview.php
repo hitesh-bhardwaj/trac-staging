@@ -15,7 +15,8 @@ $subtitle_2 =
 $solution_image = get_field('cs_overview_image');
 $solution_image_src = is_array($solution_image)
     ? $solution_image['url']
-    : get_template_directory_uri() . '/src/imgs/carrier-services/solutions-new-img.png';
+    : get_template_directory_uri() .
+        '/src/imgs/carrier-services/solutions-new-img.png';
 $solution_title = get_field('cs_overview_card_title') ?: 'Wholesale & Carrier';
 $solution_desc =
     get_field('cs_overview_card_desc') ?:
@@ -111,9 +112,13 @@ $button_link = get_field('cs_overview_button_link') ?: '#get-connected';
         </div>
 
         <div class="flex justify-center mt-[3.2vw] md:mt-10" data-animate="fade-up" data-delay="0.2">
-            <a href="<?php echo esc_url($button_link); ?>" class="btn btn-primary group magnetic border border-brand-secondary">
+            <a href="<?php echo esc_url(
+                $button_link,
+            ); ?>" class="btn btn-primary group magnetic border border-brand-secondary">
                 <span class="btn-line"></span>
-                <span class="btn-text"><?php echo esc_html($button_text); ?></span>
+                <span class="btn-text"><?php echo esc_html(
+                    $button_text,
+                ); ?></span>
                 <span class="btn-icon">
                     <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor"/>

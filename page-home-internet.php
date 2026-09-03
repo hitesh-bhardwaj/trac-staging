@@ -19,40 +19,35 @@ if (have_posts()) {
         <main id="main-content" class="site-main" data-barba="container" data-barba-namespace="home-internet">
             <?php
             $hero_image = get_field('hero_image');
-            get_template_part(
-                'template-parts/common/hero',
-                null,
-                [
-                    'title_lines' => [
-                        get_field('hero_title_line_1') ?:
-                            'Reliable, Unlimited Home Internet',
-                    ],
-                    'subtitle' =>
-                        get_field('hero_subtitle_2') ?:
-                        'Fast, stable fibre internet build for streaming, learning, working from home to help you stay connected to your work, your family, and your community.',
-                    'button_text' =>
-                        get_field('hero_primary_button_text') ?:
-                        'Get Connected',
-                    'button_link' =>
-                        get_field('hero_primary_button_link') ?:
-                        '#get-connected',
-                    'media' => [
-                        'src' => is_array($hero_image)
-                            ? $hero_image['url']
-                            : get_template_directory_uri() .
-                                '/src/imgs/home-internet/home-internet-hero-banner.png',
-                        'alt' => is_array($hero_image)
-                            ? $hero_image['alt']
-                            : 'Home internet',
-                    ],
+            get_template_part('template-parts/common/hero', null, [
+                'title_lines' => [
+                    get_field('hero_title_line_1') ?:
+                    'Reliable, Unlimited Home Internet',
                 ],
-            );
+                'subtitle' =>
+                    get_field('hero_subtitle_2') ?:
+                    'Fast, stable fibre internet build for streaming, learning, working from home to help you stay connected to your work, your family, and your community.',
+                'button_text' =>
+                    get_field('hero_primary_button_text') ?: 'Get Connected',
+                'button_link' =>
+                    get_field('hero_primary_button_link') ?: '#get-connected',
+                'media' => [
+                    'src' => is_array($hero_image)
+                        ? $hero_image['url']
+                        : get_template_directory_uri() .
+                            '/src/imgs/home-internet/home-internet-hero-banner.png',
+                    'alt' => is_array($hero_image)
+                        ? $hero_image['alt']
+                        : 'Home internet',
+                ],
+            ]);
             ?>
 
-            <?php get_template_part('template-parts/home-internet/why-trac-overview'); ?>
+            <?php get_template_part(
+                'template-parts/home-internet/why-trac-overview',
+            ); ?>
             <?php get_template_part('template-parts/home-internet/plans'); ?>
-            <?php
-            get_template_part(
+            <?php get_template_part(
                 'template-parts/common/faqs',
                 null,
                 trac_get_faq_section_args([
@@ -104,22 +99,15 @@ if (have_posts()) {
                         ],
                     ],
                 ]),
-            );
-            ?>
-            <?php
-            get_template_part(
-                'template-parts/front-page/cta',
-                null,
-                [
-                    'title' => 'Ready to Get Connected?',
-                    'subtitle' =>
-                        "Fast, reliable home internet is just a few steps away.\nGet on TrAC today.",
-                    'button_text' => 'Get Connected',
-                    'button_link' => '#get-connected',
-                    'pattern_top_class' => 'top-[-15%]',
-                ],
-            );
-            ?>
+            ); ?>
+            <?php get_template_part('template-parts/common/cta', null, [
+                'title' => 'Ready to Get Connected?',
+                'subtitle' =>
+                    "Fast, reliable home internet is just a few steps away.\nGet on TrAC today.",
+                'button_text' => 'Get Connected',
+                'button_link' => '#get-connected',
+                'pattern_top_class' => 'top-[-15%]',
+            ]); ?>
         </main>
 
         <?php

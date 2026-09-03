@@ -7,7 +7,7 @@ $vision_mission_cards = [
     [
         'title' => __('Our Vision', 'trac'),
         'description' => __(
-            "To ‘Light Africa’ by bringing premium internet to cities, towns, and communities alike.",
+            'To ‘Light Africa’ by bringing premium internet to cities, towns, and communities alike.',
             'trac',
         ),
         'image' => get_template_directory_uri() . '/src/imgs/about/vision.png',
@@ -16,7 +16,7 @@ $vision_mission_cards = [
     [
         'title' => __('Our Mission', 'trac'),
         'description' => __(
-            "To enable access through reliable connectivity, delivering internet, infrastructure, and digital solutions that help businesses, communities, and service providers grow with confidence.",
+            'To enable access through reliable connectivity, delivering internet, infrastructure, and digital solutions that help businesses, communities, and service providers grow with confidence.',
             'trac',
         ),
         'image' => get_template_directory_uri() . '/src/imgs/about/mission.png',
@@ -33,7 +33,10 @@ $vision_mission_cards = [
             >
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
-                    <?php echo esc_html(get_field('testimonials_label') ? : 'Our Vision & Mission',); ?>
+                    <?php echo esc_html(
+                        get_field('testimonials_label') ?:
+                        'Our Vision & Mission',
+                    ); ?>
                 </span>
             </div>
     
