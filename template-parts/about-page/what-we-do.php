@@ -84,9 +84,9 @@ $what_we_do_cards = [
 
         <div class="overflow-x-auto overflow-y-hidden [scroll-snap-type:x_mandatory] [-webkit-overflow-scrolling:touch] scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pl-[30vw] pr-[5vw] [scroll-padding-left:30vw] md:pl-0 md:pr-0" data-what-we-do-viewport>
 
-            <div class="fade-up flex gap-[1.667vw] w-max [will-change:transform] ml-0 md:flex-col md:gap-6 md:w-full" data-what-we-do-track>
+            <div class=" flex gap-[1.667vw] w-max [will-change:transform] ml-0 md:flex-col md:gap-6 md:w-full" data-what-we-do-track data-animate="fade-up">
                 <?php foreach ($what_we_do_cards as $card): ?>
-                    <article class="what-we-do-card flex h-[30vw] w-[25vw] flex-shrink-0 flex-col rounded-[1.563vw] bg-white px-[2vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] md:h-auto md:w-full md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6">
+                    <article class="what-we-do-card flex h-[30vw] w-[25vw] flex-shrink-0 flex-col rounded-[1.563vw] bg-white px-[2vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] md:h-auto md:w-full md:rounded-[28px] md:px-8 md:py-8 sm:rounded-[24px] sm:px-6 sm:py-6" >
                         <div class="mb-[5.208vw] text-brand-primary md:mb-10 sm:mb-8">
                             <img
                                 src="<?php echo esc_url(

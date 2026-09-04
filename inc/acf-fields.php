@@ -265,7 +265,7 @@ function trac_acf_layout_hero()
                 'name' => 'cta_secondary',
                 'type' => 'link',
                 'instructions' =>
-                    'Outline style button (e.g., "Explore Products")',
+                    'Outline style button (e.g., "Explore solutions")',
             ],
             [
                 'key' => 'field_hero_globe_image',

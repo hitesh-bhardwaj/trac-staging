@@ -104,9 +104,9 @@ function trac_get_page_by_slug($slug)
     return !empty($posts) && $posts[0] instanceof WP_Post ? $posts[0] : null;
 }
 
-function trac_ensure_products_parent_page()
+function trac_ensure_solutions_parent_page()
 {
-    $slug = 'products';
+    $slug = 'solutions';
     $existing = trac_get_page_by_slug($slug);
     if ($existing instanceof WP_Post) {
         return (int) $existing->ID;
@@ -119,7 +119,7 @@ function trac_ensure_products_parent_page()
     $page_id = wp_insert_post([
         'post_type' => 'page',
         'post_status' => 'publish',
-        'post_title' => 'Products',
+        'post_title' => 'solutions',
         'post_name' => $slug,
         'post_parent' => 0,
     ]);
@@ -133,8 +133,8 @@ function trac_ensure_enterprise_network_page()
         return;
     }
 
-    $products_id = trac_ensure_products_parent_page();
-    if (!$products_id) {
+    $solutions_id = trac_ensure_solutions_parent_page();
+    if (!$solutions_id) {
         return;
     }
 
@@ -143,10 +143,10 @@ function trac_ensure_enterprise_network_page()
     $did_change = false;
 
     if ($existing instanceof WP_Post) {
-        if ((int) $existing->post_parent !== (int) $products_id) {
+        if ((int) $existing->post_parent !== (int) $solutions_id) {
             wp_update_post([
                 'ID' => $existing->ID,
-                'post_parent' => $products_id,
+                'post_parent' => $solutions_id,
             ]);
             $did_change = true;
         }
@@ -156,7 +156,7 @@ function trac_ensure_enterprise_network_page()
             'post_status' => 'publish',
             'post_title' => 'Enterprise Network',
             'post_name' => $slug,
-            'post_parent' => $products_id,
+            'post_parent' => $solutions_id,
         ]);
 
         if (!is_wp_error($page_id) && $page_id) {
@@ -180,8 +180,8 @@ function trac_ensure_home_internet_page()
         return;
     }
 
-    $products_id = trac_ensure_products_parent_page();
-    if (!$products_id) {
+    $solutions_id = trac_ensure_solutions_parent_page();
+    if (!$solutions_id) {
         return;
     }
 
@@ -191,10 +191,10 @@ function trac_ensure_home_internet_page()
     $did_change = false;
 
     if ($existing instanceof WP_Post) {
-        if ((int) $existing->post_parent !== (int) $products_id) {
+        if ((int) $existing->post_parent !== (int) $solutions_id) {
             wp_update_post([
                 'ID' => $existing->ID,
-                'post_parent' => $products_id,
+                'post_parent' => $solutions_id,
             ]);
             $did_change = true;
         }
@@ -211,7 +211,7 @@ function trac_ensure_home_internet_page()
             'post_status' => 'publish',
             'post_title' => 'Home Internet',
             'post_name' => $slug,
-            'post_parent' => $products_id,
+            'post_parent' => $solutions_id,
         ]);
 
         if (!is_wp_error($page_id) && $page_id) {
@@ -239,8 +239,8 @@ function trac_ensure_carrier_services_page()
         return;
     }
 
-    $products_id = trac_ensure_products_parent_page();
-    if (!$products_id) {
+    $solutions_id = trac_ensure_solutions_parent_page();
+    if (!$solutions_id) {
         return;
     }
 
@@ -250,10 +250,10 @@ function trac_ensure_carrier_services_page()
     $did_change = false;
 
     if ($existing instanceof WP_Post) {
-        if ((int) $existing->post_parent !== (int) $products_id) {
+        if ((int) $existing->post_parent !== (int) $solutions_id) {
             wp_update_post([
                 'ID' => $existing->ID,
-                'post_parent' => $products_id,
+                'post_parent' => $solutions_id,
             ]);
             $did_change = true;
         }
@@ -269,7 +269,7 @@ function trac_ensure_carrier_services_page()
             'post_status' => 'publish',
             'post_title' => 'Carrier Services',
             'post_name' => $slug,
-            'post_parent' => $products_id,
+            'post_parent' => $solutions_id,
         ]);
 
         if (!is_wp_error($page_id) && $page_id) {
@@ -297,8 +297,8 @@ function trac_ensure_sme_internet_page()
         return;
     }
 
-    $products_id = trac_ensure_products_parent_page();
-    if (!$products_id) {
+    $solutions_id = trac_ensure_solutions_parent_page();
+    if (!$solutions_id) {
         return;
     }
 
@@ -308,10 +308,10 @@ function trac_ensure_sme_internet_page()
     $did_change = false;
 
     if ($existing instanceof WP_Post) {
-        if ((int) $existing->post_parent !== (int) $products_id) {
+        if ((int) $existing->post_parent !== (int) $solutions_id) {
             wp_update_post([
                 'ID' => $existing->ID,
-                'post_parent' => $products_id,
+                'post_parent' => $solutions_id,
             ]);
             $did_change = true;
         }
@@ -327,7 +327,7 @@ function trac_ensure_sme_internet_page()
             'post_status' => 'publish',
             'post_title' => 'SME Internet',
             'post_name' => $slug,
-            'post_parent' => $products_id,
+            'post_parent' => $solutions_id,
         ]);
 
         if (!is_wp_error($page_id) && $page_id) {
@@ -424,7 +424,7 @@ add_action('init', 'trac_ensure_contact_us_page');
 
 /**
  * Redirect legacy product URLs to the new /solutions/* routes.
- * Keeps old bookmarks working after we nest pages under Products.
+ * Keeps old bookmarks working after we nest pages under solutions.
  */
 function trac_redirect_legacy_product_routes()
 {

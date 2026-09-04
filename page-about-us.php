@@ -25,14 +25,10 @@ get_header();
             get_field('hero_primary_button_link') ?: home_url('/contact-us');
         $primary_text =
             get_field('hero_primary_button_text') ?: 'Get Connected';
-        // $secondary_link =
-            get_field('hero_secondary_button_link') ?: '#products';
-        // $secondary_text =
-            get_field('hero_secondary_button_text') ?: 'Explore Solutions';
 
         get_template_part('template-parts/common/hero', null, [
             'grid_classes' =>
-                'hero-grid flex items-start justify-between gap-[10vw] md:flex-col md:gap-8 ',
+                'hero-grid flex items-start justify-between gap-[10vw] md:flex-col md:gap-8  ',
             'text_classes' =>
                 'hero-text w-[45%] md:w-full md:max-w-full relative z-[10]',
             'title_classes' =>
@@ -44,10 +40,6 @@ get_header();
             'primary' => [
                 'text' => $primary_text,
                 'link' => $primary_link,
-            ],
-            'secondary' => [
-                'text' => $secondary_text,
-                // 'link' => $secondary_link,
             ],
             'media' => [
                 'src' =>

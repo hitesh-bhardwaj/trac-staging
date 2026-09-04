@@ -793,14 +793,14 @@ html.js [data-hero-reveal].is-hero-revealed {
     transition: background-size 0.3s ease-out;
 }
 
-[data-products-overlay] {
+[data-solutions-overlay] {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     will-change: opacity;
 }
 
-[data-products-dropdown] {
+[data-solutions-dropdown] {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -2399,7 +2399,7 @@ html.js [data-hero-reveal].is-hero-revealed {
    Hero Section
    ======================================== */
 .hero {
-    @apply relative min-h-screen flex pt-[8vw] overflow-hidden bg-[#0B1F3A] text-white;
+    @apply relative min-h-screen flex pt-[10vw] overflow-hidden bg-[#0B1F3A] text-white;
 }
 
 .hero-bg {

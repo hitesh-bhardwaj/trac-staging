@@ -11,7 +11,7 @@ $services = [
             'Secure, high-capacity infrastructure built for large-scale operations, complex network environments, and mission-critical systems. Designed to support heavier workloads, multi-site connectivity, and evolving business demands.',
         'link' =>
             get_field('service_1_link') ?:
-            home_url('/solutions/enterprise-networks'),
+            home_url('/solutions/enterprise-network'),
         'image' =>
             get_field('service_1_image') ?:
             get_template_directory_uri() .
@@ -57,7 +57,7 @@ $services = [
 ];
 ?>
 
-<section class="relative overflow-hidden bg-white py-[7vw] sm:pb-[25%] min-h-auto" data-section="services" id="products">
+<section class="relative overflow-hidden bg-white py-[7vw] sm:pb-[25%] min-h-auto" data-section="services" id="solutions">
     <style>
         [data-service-slider] .services-slider-viewport {
             position: relative;

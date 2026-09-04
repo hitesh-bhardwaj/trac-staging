@@ -68,7 +68,7 @@
             "label": "Secondary Button Link",
             "name": "hero_secondary_button_link",
             "type": "url",
-            "default_value": "#products",
+            "default_value": "#solutions",
             "required": 1
         }
     ],

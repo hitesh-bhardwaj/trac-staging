@@ -63,8 +63,8 @@
    );
 
    /**
-    * @param string $path Route to check, e.g. 'about-us' or 'products'.
-    * @param bool $prefix When true, also matches sub-paths (e.g. 'products/sme-internet').
+    * @param string $path Route to check, e.g. 'about-us' or 'solutions'.
+    * @param bool $prefix When true, also matches sub-paths (e.g. 'solutions/sme-internet').
     */
    $trac_nav_is_active = function (string $path, bool $prefix = false) use (
        $trac_current_path,
@@ -111,21 +111,21 @@
                             About Us
                         </a>
                     </li>
-                    <?php // Checked against 'products' (the real URL prefix, e.g.
+                    <?php // Checked against 'solutions' (the real URL prefix, e.g.
 
-// /products/sme-internet/) rather than the "Solutions" label -
+// /solutions/sme-internet/) rather than the "Solutions" label -
                     // the link itself is just a dropdown trigger (href="#").
                     $is_solutions_active = $trac_nav_is_active(
-                        'products',
+                        'solutions',
                         true,
                     ); ?>
-                    <li class="menu-item menu-item-has-children relative group under-multi-parent" data-products-menu-item>
+                    <li class="menu-item menu-item-has-children relative group under-multi-parent" data-solutions-menu-item>
     <a
         href="<?php echo esc_url(home_url('#')); ?>"
         class="nav-link inline-flex items-center gap-[0.26vw] under-multi text-white hover:text-white<?php echo $is_solutions_active
             ? ' is-active-link'
             : ''; ?>"
-        data-products-trigger
+        data-solutions-trigger
         <?php echo $is_solutions_active ? ' aria-current="page"' : ''; ?>
     >
         Solutions
@@ -272,7 +272,7 @@
    ]; ?>
    <nav
     class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] p-[1.5vw] py-[1.5vw] flex justify-between z-[999] bg-white"
-    data-products-dropdown
+    data-solutions-dropdown
       >
     <?php foreach ($solutions_menu_items as $solution_item): ?>
         <a href="<?php echo esc_url(
@@ -306,7 +306,7 @@
         </a>
     <?php endforeach; ?>
    </nav>
-   <div data-products-overlay class=" bg-black/20 backdrop-blur-md fixed inset-0 w-screen h-screen z-[998]">
+   <div data-solutions-overlay class=" bg-black/20 backdrop-blur-md fixed inset-0 w-screen h-screen z-[998]">
     </div>
 
 <style>

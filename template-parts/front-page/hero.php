@@ -7,9 +7,6 @@ $hero_connectors_svg_path =
     get_template_directory() . '/src/imgs/connectors.svg';
 ?>
 
-?>
-
-
 <section class="hero relative min-h-screen !bg-brand-primary overflow-hidden" data-section="hero" data-hero-static>
     <div class="hero-container w-full px-[5vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]">
         <div class="hero-grid flex justify-between gap-[2.604vw] items-start md:flex-col md:gap-8">
@@ -75,12 +72,12 @@ $hero_connectors_svg_path =
                     </a>
 
                     <a href="<?php echo esc_url(
-                        get_field('hero_secondary_button_link') ?: '#products',
+                        get_field('hero_secondary_button_link') ?: '#solutions',
                     ); ?>" class="btn btn-outline group magnetic">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
                             get_field('hero_secondary_button_text') ?:
-                            'Explore Products',
+                            'Explore solutions',
                         ); ?></span>
                         <span class="btn-icon">
                              <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">

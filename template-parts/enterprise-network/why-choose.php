@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit();
 } ?>
 
-<section class="enterprise-why relative overflow-hidden bg-brand-tint py-[7vw] md:py-20 px-[9vw] sm:py-16" data-section="enterprise-why">
+<section class="enterprise-why relative overflow-hidden bg-brand-tint py-[7vw] md:py-20 px-[7vw] sm:py-16" data-section="enterprise-why">
                                <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F1A"></canvas>
 
 
@@ -18,11 +18,11 @@ if (!defined('ABSPATH')) {
                 Why Enterprises Partner with TrAC.
             </h2>
 
-            <p class="w-[75%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left" data-para-anim data-delay="0.2">
+            <p class="w-[85%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left" data-para-anim data-delay="0.2">
                 With over 14 years of experience in Rwanda, TrAC combines deep local expertise with infrastructure built for reliability and performance, supporting organisations across Rwanda and East Africa.
             </p>
 
-			<p class="w-[75%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left" data-para-anim data-delay="0.2">
+			<p class="w-[85%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left" data-para-anim data-delay="0.2">
                 Our fibre-first network is designed to deliver consistent performance across demanding environments. Backed by dedicated support teams and local engineering expertise, we partner with organisations as they grow and expand across the region.
             </p>
 

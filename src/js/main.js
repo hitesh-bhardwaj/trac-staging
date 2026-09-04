@@ -259,7 +259,7 @@ function initializePageComponents() {
     initPartnerNetworkTabs();
     initCollaborationsAccordion();
     initClientLogos();
-    initProductsMegaMenu();
+    initsolutionsMegaMenu();
     initServicesSlider();
     initActiveNavLink();
     initMouseFollower();
@@ -957,11 +957,11 @@ function initActiveNavLink() {
         const activeLink = links.find((link) => {
             // "Solutions" is just a dropdown trigger (href="#"), so its own href isn't
             // a real path to compare against - check it against the actual product URL
-            // prefix instead, matching every /products/* sub-page.
-            if (link.hasAttribute('data-products-trigger')) {
+            // prefix instead, matching every /solutions/* sub-page.
+            if (link.hasAttribute('data-solutions-trigger')) {
                 return (
-                    currentPath === '/products' ||
-                    currentPath.startsWith('/products/')
+                    currentPath === '/solutions' ||
+                    currentPath.startsWith('/solutions/')
                 );
             }
 
@@ -991,15 +991,15 @@ function initActiveNavLink() {
     nav.dataset.activeNavClickInit = 'true';
 
     links.forEach((link) => {
-        if (link.hasAttribute('data-products-trigger')) return; // opens the dropdown, doesn't navigate
+        if (link.hasAttribute('data-solutions-trigger')) return; // opens the dropdown, doesn't navigate
         link.addEventListener('click', () => setActive(link));
     });
 
     const dropdownLinks = Array.from(
-        document.querySelectorAll('[data-products-dropdown] a[href]'),
+        document.querySelectorAll('[data-solutions-dropdown] a[href]'),
     );
     const solutionsTrigger = links.find((link) =>
-        link.hasAttribute('data-products-trigger'),
+        link.hasAttribute('data-solutions-trigger'),
     );
     if (solutionsTrigger) {
         dropdownLinks.forEach((link) => {
@@ -1008,18 +1008,18 @@ function initActiveNavLink() {
     }
 }
 
-function initProductsMegaMenu() {
+function initsolutionsMegaMenu() {
     const header = document.getElementById('site-header');
-    const trigger = document.querySelector('[data-products-trigger]');
-    const menuItem = document.querySelector('[data-products-menu-item]');
-    const dropdown = document.querySelector('[data-products-dropdown]');
-    const overlay = document.querySelector('[data-products-overlay]');
+    const trigger = document.querySelector('[data-solutions-trigger]');
+    const menuItem = document.querySelector('[data-solutions-menu-item]');
+    const dropdown = document.querySelector('[data-solutions-dropdown]');
+    const overlay = document.querySelector('[data-solutions-overlay]');
 
     if (!header || !trigger || !menuItem || !dropdown || !overlay) return;
     if (window.innerWidth <= 1024) return;
 
-    if (dropdown._productsMenuCleanup) {
-        dropdown._productsMenuCleanup();
+    if (dropdown._solutionsMenuCleanup) {
+        dropdown._solutionsMenuCleanup();
     }
 
     let isOpen = false;
@@ -1028,7 +1028,7 @@ function initProductsMegaMenu() {
     const dropdownLinks = Array.from(dropdown.querySelectorAll('a[href]'));
 
     const bridge = document.createElement('div');
-    bridge.setAttribute('data-products-bridge-runtime', 'true');
+    bridge.setAttribute('data-solutions-bridge-runtime', 'true');
     bridge.style.position = 'fixed';
     bridge.style.left = '0px';
     bridge.style.top = '0px';
@@ -1315,7 +1315,7 @@ function initProductsMegaMenu() {
 
     document.addEventListener('keydown', onKeydown);
 
-    dropdown._productsMenuCleanup = () => {
+    dropdown._solutionsMenuCleanup = () => {
         clearCloseTimer();
 
         trigger.removeEventListener('mouseenter', onTriggerEnter);
