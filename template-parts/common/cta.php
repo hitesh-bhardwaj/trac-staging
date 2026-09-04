@@ -35,8 +35,8 @@ $cta_logo_svg_path = get_template_directory() . '/src/imgs/logo-trac.svg';
     <div class="cta-container relative z-[10] w-full px-[5vw] py-[9vw] md:px-[4vw] md:py-20 sm:px-[6vw] sm:py-16 <?php echo esc_attr(
         $cta_container_class,
     ); ?>">
-        <div class="flex items-center justify-center gap-[4vw] md:flex-col md:gap-10">
-            <div class="cta-logo shrink-0 w-[30vw] absolute left-[-4%] md:w-[42vw] md:max-w-[220px] [--stroke-0:#fff] [--fill-0:#fff] <?php echo esc_attr(
+        <div class="flex items-center justify-center gap-[4vw] md:flex-col-reverse md:gap-10">
+            <div class="cta-logo shrink-0 w-[30vw] absolute left-[-4%] md:w-[42vw] sm:w-[75vw] sm:left-[-45%] md:relative [--stroke-0:#fff] [--fill-0:#fff] <?php echo esc_attr(
                 $cta_logo_class,
             ); ?>" data-animate="fade-right" aria-hidden="true">
                 <?php if (file_exists($cta_logo_svg_path)) {
@@ -47,7 +47,7 @@ $cta_logo_svg_path = get_template_directory() . '/src/imgs/logo-trac.svg';
             <div class="text-center w-[70%] md:max-w-full <?php echo esc_attr(
                 $cta_content_class,
             ); ?>">
-                <h2 class="w-full font-heading font-normal text-66 leading-[1.12] tracking-[0.01em] text-white mb-[2.5vw] md:text-4xl md:mb-8 sm:text-3xl sm:mb-6 <?php echo esc_attr(
+                <h2 class="w-full font-heading font-normal text-66 leading-[1.2] tracking-[0.01em] text-white mb-[2.5vw] md:text-4xl md:mb-8 sm:text-3xl sm:mb-6 <?php echo esc_attr(
                     $cta_title_class,
                 ); ?>" data-heading-anim>
                     <?php echo esc_html($cta_title); ?>

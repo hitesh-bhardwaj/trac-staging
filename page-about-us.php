@@ -32,9 +32,9 @@ get_header();
             'text_classes' =>
                 'hero-text w-[45%] md:w-full md:max-w-full relative z-[10]',
             'title_classes' =>
-                'hero-title font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 md:text-center',
+                'hero-title font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4',
             'subtitle_classes' =>
-                'hero-subtitle font-body text-24 font-medium text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center',
+                'hero-subtitle font-body text-24 font-medium text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6',
             'title' => $title,
             'subtitle' => $subtitle,
             'primary' => [

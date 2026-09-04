@@ -22,7 +22,7 @@ if (!$items) {
 <section class="relative bg-white overflow-hidden min-h-auto" data-section="faqs">
     <div class="px-[9vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[7vw] sm:py-12">
 
-        <div class="faqs-header mb-[4.844vw] md:mb-12 sm:mb-10">
+        <div class="faqs-header mb-[4.844vw] md:mb-12 sm:mb-6">
             <?php if ($section_label): ?>
                 <div class="faqs-label flex items-center gap-[0.729vw] mb-10 md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
                     <span class="label-line w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1 sm:w-5"></span>
@@ -33,7 +33,7 @@ if (!$items) {
             <?php endif; ?>
 
             <?php if ($section_title): ?>
-                <h2 class="faqs-title font-heading text-66 leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-[8vw]" data-heading-anim>
+                <h2 class="faqs-title font-heading text-66 leading-[1.27] tracking-[0.01em] text-text-primary md:w-[80%] " data-heading-anim>
                     <?php echo esc_html($section_title); ?>
                 </h2>
             <?php endif; ?>
@@ -58,16 +58,16 @@ if (!$items) {
                     <?php echo $is_first ? 'data-open' : ''; ?>
                 >
                     <button
-                        class="faq-question w-full flex items-center justify-between text-left py-[1.667vw] md:py-5 sm:py-4"
+                        class="faq-question w-full flex items-center justify-between text-left py-[1.667vw] md:py-5 sm:py-4 md:items-start"
                         aria-expanded="<?php echo $is_first
                             ? 'true'
                             : 'false'; ?>"
                         aria-controls="<?php echo esc_attr($answer_id); ?>"
                         id="<?php echo esc_attr($button_id); ?>"
                     >
-                        <span class="faq-question-text font-body text-[1.458vw] text-text-primary md:text-xl sm:text-lg">
+                        <h3 class="faq-question-text font-heading text-[1.458vw] text-text-primary md:text-xl sm:text-lg">
                             <?php echo esc_html($question); ?>
-                        </span>
+                        </h3>
 
                         <span class="faq-icon-wrap" aria-hidden="true">
                             <span class="faq-bar faq-bar-h"></span>

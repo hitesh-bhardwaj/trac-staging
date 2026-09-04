@@ -88,7 +88,7 @@ if (have_posts()) {
                 'section_classes' =>
                     'hero relative min-h-screen overflow-hidden !bg-brand-primary',
                 'container_classes' =>
-                    'hero-container relative z-[10] w-full px-[5vw]  pb-[5.21vw] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]',
+                    'hero-container relative z-[10] w-full px-[5vw]  pb-[5.21vw] md:px-[4vw] sm:px-[7vw] sm:pt-[14vw]',
                 'grid_classes' =>
                     'hero-grid flex justify-between gap-[6vw] md:flex-col md:items-start md:gap-10',
                 'text_classes' =>
@@ -101,7 +101,7 @@ if (have_posts()) {
                     get_field('hero_description') ?:
                     'Tell us what your business needs, and our team will guide you to the right connectivity solution quickly and without complexity',
                 'subtitle_classes' =>
-                    'hero-subtitle font-body text-24 font-medium w-[78%] text-white mb-0 md:w-full md:max-w-full md:text-center',
+                    'hero-subtitle font-body text-24 font-medium w-[78%] text-white mb-0 md:w-full md:max-w-full',
                 'text_footer' => $contact_text_footer,
                 'right_content' => $contact_form_card,
             ]);

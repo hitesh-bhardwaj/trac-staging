@@ -11,20 +11,20 @@
             <!-- Footer Top -->
             <div class="footer-top grid grid-cols-[1fr_auto_auto]  mb-[5vw] md:grid-cols-1 md:gap-12 md:mb-16 sm:mb-12">
                 <!-- Brand Column -->
-                <div class="footer-brand max-w-[33.854vw] md:max-w-full">
+                <div class="footer-brand max-w-[33.854vw] md:max-w-full ">
                     <!-- Logo -->
-                       <div class="site-logo flex flex-col  gap-3">
+                       <div class="site-logo flex flex-col md:flex-row  gap-3 md:mb-8">
 
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[7vw] brightness-50" alt="Trac Logo">
-                        <span class=" h-[1px] w-[5vw] ml-[1vw] bg-brand-navy "></span>
-                     <span class="font-subheading text-[3.333vw] text-brand-navy md:text-5xl sm:text-4xl">TrAC</span>
+                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[7vw] brightness-50 md:w-[15vw] sm:w-[25vw]" alt="Trac Logo">
+                        <span class=" h-[1px] w-[5vw] ml-[1vw] bg-brand-navy md:hidden"></span>
+                     <span class=" font-heading text-[3.333vw] text-brand-navy md:text-5xl sm:text-4xl">TrAC</span>
             </div>
 
                     
 
                     <!-- Contact Details -->
                     <div class="footer-contact">
-                        <h4 class="font-body !font-normal text-24 text-text-primary md:text-xl mb-2">Connect with us</h4>
+                        <h4 class="font-body !font-normal text-24 text-text-primary md:text-[3vw] sm:text-[5vw] mb-2">Connect with us</h4>
                         <div class="contact-links flex flex-col gap-[0.521vw] md:gap-2">
                             <div class="under-multi-parent w-fit">
                                 <a href="mailto:info@trac.africa" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
@@ -44,8 +44,8 @@
                 <div class="footer-nav-columns flex gap-[8vw] md:gap-16 sm:gap-12 sm:flex-wrap">
                     <!-- Company Column -->
                     <div class="footer-column">
-                        <h4 class="font-body text-24 !font-normal text-text-primary mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6">Company</h4>
-                        <ul class="footer-links flex flex-col gap-3 md:gap-5 sm:gap-4">
+                        <h4 class="font-body text-24 !font-normal text-text-primary mb-[1vw] md:text-[3vw] md:mb-8 sm:text-[5vw] sm:mb-3">Company</h4>
+                        <ul class="footer-links flex flex-col gap-3">
                             <li class="under-multi-parent">
                                 <a href="/about-us" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">About Us</a>
                             </li>
@@ -64,8 +64,8 @@
 
                     <!-- Product Column -->
                     <div class="footer-column">
-                        <h4 class="font-body text-24 text-text-primary mb-[1vw] md:text-xl md:mb-8 sm:text-lg sm:mb-6 !font-normal">Solutions</h4>
-                        <ul class="footer-links flex flex-col gap-3 md:gap-5 sm:gap-4">
+                        <h4 class="font-body text-24 text-text-primary mb-[1vw] md:text-[3vw] md:mb-8 sm:text-[5vw] sm:mb-3 !font-normal">Solutions</h4>
+                        <ul class="footer-links flex flex-col gap-3">
                             <li class="under-multi-parent">
                                 <a href="/solutions/enterprise-network" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Enterprise Network</a>
                             </li>
@@ -84,7 +84,7 @@
             </div>
 
             <!-- Footer Bottom -->
-            <div class="footer-bottom flex items-center justify-between md:flex-col md:gap-8 sm:gap-6">
+            <div class="footer-bottom flex items-center justify-between md:flex-col md:gap-8 sm:gap-6 md:items-start">
                 <!-- Copyright -->
                 <p class="footer-copyright font-body text-[1.042vw] text-text-body md:text-base sm:text-sm md:order-2">
                     &copy; <?php echo date('Y'); ?> All Rights Reserved

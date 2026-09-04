@@ -774,6 +774,29 @@ function initServicesSlider() {
         }
 
         function calculateStackedTransforms() {
+            // On mobile/tablet, skip the desktop "stack" illusion (peeking, scaled-down
+            // neighbour cards) entirely - just one card, centered, crossfading in/out.
+            const isSimpleSlider = window.innerWidth <= 1024;
+
+            if (isSimpleSlider) {
+                originalSlides.forEach(function (slide, index) {
+                    const isActive = index === currentIndex;
+                    const link = slide.querySelector('a');
+
+                    slide.classList.toggle('is-active', isActive);
+                    slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+                    slide.style.opacity = isActive ? '1' : '0';
+                    slide.style.zIndex = isActive ? String(total * 5) : '0';
+                    slide.style.pointerEvents = isActive ? 'auto' : 'none';
+                    slide.style.transform = 'translate3d(-50%, 0, 0) scale(1)';
+
+                    if (link) {
+                        link.tabIndex = isActive ? 0 : -1;
+                    }
+                });
+                return;
+            }
+
             const styles = window.getComputedStyle(viewport);
             const stackSpread =
                 parseFloat(styles.getPropertyValue('--service-stack-spread')) ||
@@ -1367,12 +1390,50 @@ function initMouseFollower() {
     let mouseY = window.innerHeight / 2;
     let currentX = mouseX;
     let currentY = mouseY;
+    let pendingColorTarget = null;
 
     const lerp = (start, end, factor) => start + (end - start) * factor;
+
+    const parseRgb = (value) => {
+        const match = value && value.match(/rgba?\(([^)]+)\)/);
+        if (!match) return null;
+        const [r, g, b, a = 1] = match[1]
+            .split(',')
+            .map((part) => parseFloat(part.trim()));
+        if (a === 0 || Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b)) {
+            return null;
+        }
+        return { r, g, b };
+    };
+
+    const relativeLuminance = ({ r, g, b }) => {
+        const channel = (c) => {
+            const v = c / 255;
+            return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        };
+        return 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
+    };
+
+    // Threshold anchored to --color-brand-primary (#0B1F3A): that color and
+    // anything darker flips the follower's border to white so it stays visible.
+    const DARK_LUMINANCE_THRESHOLD = relativeLuminance({ r: 0x0b, g: 0x1f, b: 0x3a });
+
+    const updateFollowerColor = (target) => {
+        let el = target;
+        let rgb = null;
+        while (el && el !== document.documentElement) {
+            rgb = parseRgb(getComputedStyle(el).backgroundColor);
+            if (rgb) break;
+            el = el.parentElement;
+        }
+        const isDark = rgb ? relativeLuminance(rgb) <= DARK_LUMINANCE_THRESHOLD : false;
+        follower.classList.toggle('is-on-dark', isDark);
+    };
 
     const onMouseMove = (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        pendingColorTarget = e.target;
     };
 
     const render = () => {
@@ -1380,6 +1441,11 @@ function initMouseFollower() {
         currentY = lerp(currentY, mouseY, 0.12);
 
         follower.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+
+        if (pendingColorTarget) {
+            updateFollowerColor(pendingColorTarget);
+            pendingColorTarget = null;
+        }
 
         follower._raf = requestAnimationFrame(render);
     };

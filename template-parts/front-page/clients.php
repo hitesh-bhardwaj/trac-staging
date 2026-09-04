@@ -56,7 +56,7 @@ $client_logos = [
 ?>
 
 <section class="relative bg-white overflow-hidden min-h-auto" data-section="clients">
-    <div class="clients-container w-full  py-[3.5vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+    <div class="clients-container w-full  py-[3.5vw] md:py-0">
         <div
             class="clients-marquee"
             data-animate="fade-up"
@@ -75,7 +75,7 @@ $client_logos = [
                                     alt="<?php echo $set === 0
                                         ? esc_attr($logo['alt'])
                                         : ''; ?>"
-                                    class="[filter:grayscale(0)] w-auto h-auto object-contain md:max-w-32 md:max-h-14 sm:max-w-24 sm:max-h-10"
+                                    class="[filter:grayscale(0)] w-auto h-auto object-contain md:w-[20vw] sm:w-[30vw]"
                                 >
                             </div>
                         <?php endforeach; ?>

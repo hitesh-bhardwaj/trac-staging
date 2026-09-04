@@ -28,7 +28,7 @@ $vision_mission_cards = [
         
 <section class="vision-mission-section  relative px-[5vw] py-[7vw] pb-[11vw] w-screen h-fit bg-brand-tint" data-section="vision-mission">
         <div
-                class="testimonials-label mb-[1.563vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10"
+                class="testimonials-label mb-[1.563vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-6"
                 data-animate="fade-up"
             >
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>

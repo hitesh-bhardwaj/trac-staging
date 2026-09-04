@@ -4,8 +4,8 @@ if (!defined('ABSPATH')) {
 } ?>
 
 <section class="relative bg-white overflow-hidden min-h-auto" data-section="about">
-    <div class="about-container w-full px-[5vw] pt-[10vw] pb-[4vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-[20%] sm:pb-[30%]">
-        <div class="about-label flex items-center gap-[1.042vw] mb-14 md:gap-4 md:mb-8 sm:mb-14 md:justify-center" data-animate="fade-up">
+    <div class="about-container w-full px-[5vw] pt-[10vw] pb-[4vw] md:px-[7vw] md:py-16  sm:py-[20%] sm:pb-[30%]">
+        <div class="about-label flex items-center gap-[1.042vw] mb-14 md:gap-4 md:mb-8 sm:mb-14 " data-animate="fade-up">
             <span class="label-line w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1 sm:w-5"></span>
             <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg"><?php echo esc_html(
                 get_field('about_label') ?: 'Why TrAC',
@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
         </div>
 
         <div class="about-grid flex justify-between gap-[5.208vw] items-center md:grid-cols-1 md:gap-10 sm:gap-[25vw] md:flex-col-reverse ">
-            <div class="about-visual w-[36%] md:w-full" data-animate="fade-right">
+            <div class="about-visual w-[36%] md:w-[70%]" data-animate="fade-right">
                 <?php $about_image =
                     get_field('about_image') ?:
                     get_template_directory_uri() .
@@ -26,16 +26,16 @@ if (!defined('ABSPATH')) {
                 >
             </div>
 
-            <div class="about-content w-[50%] mt-[-7vw] md:w-full md:text-center">
-	                <h2 data-para-anim  class="font-heading font-normal text-66 leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw] md:text-[1.75rem] md:leading-[1.3] md:mb-8 sm:text-[8vw] sm:mb-10">
+            <div class="about-content w-[50%] mt-[-7vw] md:w-full">
+	                <h2 data-para-anim  class="font-heading font-normal text-66 leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw]  md:leading-[1.3] md:mb-8  sm:mb-6">
 	                    <?php echo esc_html(
                          get_field('about_title') ?:
                          "TrAC is Rwanda and East Africa's homegrown internet service provider, built on long-term commitment and technical excellence.",
                      ); ?>
 	                </h2>
-                <div class="w-full flex gap-[7vw] mb-[3vw]">
+                <div class="w-full flex gap-[7vw] mb-[3vw] sm:flex-col sm:gap-[2vw] sm:mb-6">
 
-                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[1rem] md:leading-[1.6] md:space-y-2 md:mb-8  sm:text-base sm:space-y-[2vw] sm:mb-[10vw] sm:w-[80%] sm:mx-auto  ">
+                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[1rem] md:leading-[1.6] md:space-y-2   sm:text-base sm:space-y-[2vw]  ">
                     <?php
                     $list_items = [
                         get_field('about_list_item_1') ?: 'Zero Contention',
@@ -50,7 +50,7 @@ if (!defined('ABSPATH')) {
                     <?php endforeach;
                     ?>
                 </ul>
-                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[1rem] md:leading-[1.6] md:space-y-2 md:mb-8  sm:text-base sm:space-y-[2vw] sm:mb-[10vw] sm:w-[80%] sm:mx-auto  ">
+                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[1rem] md:leading-[1.6] md:space-y-2 sm:text-base sm:space-y-[2vw]  ">
                     <?php
                     $list_items = [
                         get_field('about_list_item_1') ?:

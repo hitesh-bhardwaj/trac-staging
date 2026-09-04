@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 
 
             <!-- Heading -->
-            <h2 class="font-heading w-fit text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[4vw] md:text-5xl md:mb-12 sm:text-4xl sm:mb-10" data-heading-anim>
+            <h2 class="font-heading w-fit text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[4vw] md:text-5xl md:mb-12 sm:text-4xl sm:mb-6" data-heading-anim>
                 Our Head Office
             </h2>
 

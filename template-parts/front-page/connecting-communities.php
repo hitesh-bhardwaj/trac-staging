@@ -32,7 +32,7 @@ $section_image_alt =
 ?>
 
 <section
-    class="connecting-communities-section relative w-full bg-brand-quaternary px-[5vw] py-[7vw] text-white md:py-[10vw] sm:px-[6vw] sm:py-[16vw]"
+    class="connecting-communities-section relative w-full bg-brand-quaternary px-[5vw] py-[7vw] text-white md:py-[10vw] md:px-[7vw] sm:py-[15%]"
     data-section="connecting-communities"
 >
     <div class="grid w-full grid-cols-[0.9fr_1fr] items-center gap-[6vw] md:grid-cols-1 md:gap-[8vw]">
@@ -49,15 +49,26 @@ $section_image_alt =
             </div>
 
             <h2
-                class="font-heading flex w-full flex-col text-66 leading-[1.12] tracking-[0.01em] text-white md:text-4xl sm:text-3xl"
-            >
+                class="font-heading flex w-full flex-col text-66 leading-[1.12] tracking-[0.01em] text-white"
+             >
                 <span data-heading-anim>
 
                 <?php echo esc_html($section_title); ?>
                  </span>
             </h2>
+             <div
+            class="relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:mt-8 hidden md:block"
+            data-animate="fade-up"
+        >
+            <img
+                src="<?php echo esc_url($section_image); ?>"
+                alt="<?php echo esc_attr($section_image_alt); ?>"
+                class="h-full w-full object-cover"
+                loading="lazy"
+            >
+        </div>
 
-            <div class="mt-[2.8vw] max-w-[46vw] space-y-[2.2vw] font-body text-24">
+            <div class="mt-[2.8vw] w-[46vw] space-y-[2.2vw] font-body text-24 md:w-full sm:mt-8">
                 <p data-para-anim>
                     <?php echo esc_html($section_content_1); ?>
                 </p>
@@ -70,7 +81,7 @@ $section_image_alt =
 
              <a  href="<?php echo esc_url(
                  get_field('hero_primary_button_link') ?: '/connecting-communities',
-             ); ?>" class="btn btn-primary group magnetic mt-[3vw]">
+             ); ?>" class="btn btn-primary group magnetic mt-[3vw] sm:mt-8">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo esc_html(
                             'Read More',
@@ -87,7 +98,7 @@ $section_image_alt =
         </div>
 
         <div
-            class="relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw]"
+            class="relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:hidden"
             data-animate="fade-up"
         >
             <img

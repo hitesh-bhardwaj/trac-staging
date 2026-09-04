@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
         <div class="max-w-[92rem] mx-auto">
             <!-- Section Label -->
-            <div class="flex items-center gap-[0.729vw] mb-[4.167vw] justify-center md:gap-3 md:mb-12 sm:mb-10" data-animate="fade-up">
+            <div class="flex items-center gap-[0.729vw] mb-[4.167vw] justify-center md:gap-3 md:mb-12 sm:mb-6" data-animate="fade-up">
                 <span class="w-[1.5vw] h-[0.2vw] bg-brand-primary md:w-6 md:h-1"></span>
                 <span class="font-body text-24 text-text-primary md:text-xl">Why TrAC</span>
             </div>

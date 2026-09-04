@@ -17,11 +17,11 @@ $network_circle_lines_svg_path_line =
     class="our-network-section is-position-debug relative h-fit bg-brand-tint"
     data-section="our-network"
 >
-    <div class=" pt-[7vw] md:py-12 sm:py-8">
-        <div class="space-y-[3vw] px-[5vw]">
+    <div class=" pt-[7vw] md:py-12 sm:pt-[15%] sm:pb-[5%]">
+        <div class="space-y-[3vw] px-[5vw] md:px-[7vw]">
             <div
                 data-animate="fade-up"
-                class="flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-4"
+                class="flex items-center justify-start gap-[0.833vw] md:mb-6 md:gap-3 "
             >
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
 
@@ -30,13 +30,13 @@ $network_circle_lines_svg_path_line =
                 </span>
             </div>
 
-            <h2 class="services-title font-heading flex w-[65%] flex-col text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl">
+            <h2 class="services-title font-heading flex w-[65%] flex-col text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:w-full">
                 <span data-heading-anim>
                    Every part of the TrAC network is engineered for reliability and speed.
                 </span>
             </h2>
 
-            <div class="w-[53%] space-y-[1vw] text-24">
+            <div class="w-[53%] space-y-[1vw] text-24 md:w-full md:space-y-3 ">
                 <p data-para-anim>
                     Internet enters through multiple international routes. Backbones operate on fully redundant rings. Systems are monitored around the clock
                 </p>
@@ -47,7 +47,7 @@ $network_circle_lines_svg_path_line =
             </div>
         </div>
 
-        <div class="relative mt-[7vw] h-[55vw] w-screen overflow-hidden md:mt-8 md:h-[60vw] sm:mt-6 sm:h-[80vw]">
+        <div class="relative mt-[7vw] h-[55vw] w-screen overflow-hidden md:mt-8 md:h-[60vw] sm:mt-6 sm:h-[80vw] md:hidden">
             <img
                 src="<?php echo esc_url(
                     get_template_directory_uri() . '/src/imgs/network-img.png',
@@ -70,25 +70,25 @@ $network_circle_lines_svg_path_line =
 
             <div
                 data-animate="fade-up"
-                class="absolute inset-0 left-[10%] top-[20%] z-[50] h-fit w-[10vw] text-start font-medium uppercase"
+                class="absolute inset-0 left-[10%] top-[20%] z-[50] h-fit w-[10vw] text-start font-medium uppercase md:hidden"
             >
                 democratic republic of the congo
             </div>
 
             <div
                 data-animate="fade-up"
-                class="absolute inset-0 left-[50%] top-[10%] z-[50] h-fit w-[10vw] text-start font-medium uppercase"
+                class="absolute inset-0 left-[50%] top-[10%] z-[50] h-fit w-[10vw] text-start font-medium uppercase md:hidden"
             >
                 UGANDA
             </div>
 
-            <div class="absolute inset-0 left-[50%] top-[90%] z-[50] h-fit w-[10vw] text-start font-medium uppercase">
+            <div class="absolute inset-0 left-[50%] top-[90%] z-[50] h-fit w-[10vw] text-start font-medium uppercase md:hidden">
                 BURUNDI
             </div>
 
             <div
                 data-animate="fade-up"
-                class="absolute inset-0 left-[80%] top-[85%] z-[50] flex h-fit w-[20vw] flex-col gap-[1vw] text-start font-medium uppercase"
+                class="absolute inset-0 left-[80%] top-[85%] z-[50] flex h-fit w-[20vw] flex-col gap-[1vw] text-start font-medium uppercase md:hidden"
             >
                 <div class="flex items-center gap-[0.5vw]">
                     <div class="h-auto w-[3vw]">
@@ -109,14 +109,14 @@ $network_circle_lines_svg_path_line =
 
             <div
                 data-animate="fade-up"
-                class="absolute inset-0 left-[75%] top-[70%] z-[50] h-fit w-[10vw] text-start font-medium uppercase"
+                class="absolute inset-0 left-[75%] top-[70%] z-[50] h-fit w-[10vw] text-start font-medium uppercase md:hidden"
             >
                 tanzania
             </div>
 
             <div
                 data-animate="fade-up"
-                class="absolute inset-0 left-[37%] top-[47%] z-[50] h-fit w-fit text-start font-medium uppercase"
+                class="absolute inset-0 left-[37%] top-[47%] z-[50] h-fit w-fit text-start font-medium uppercase md:hidden"
             >
                 RWANDA
             </div>
@@ -442,6 +442,16 @@ $network_circle_lines_svg_path_line =
                 </h3>
                 <p>Tanzania PoP</p>
             </div>
+        </div>
+        <div class="hidden md:block w-full sm:h-[85vw] md:h-[50vw]">
+            <img
+                src="<?php echo esc_url(
+                    get_template_directory_uri() . '/src/imgs/home/mobile-map-hq.png',
+                ); ?>"
+                alt="TrAC network map"
+                class="h-full w-full object-contain"
+                loading="lazy"
+            >
         </div>
     </div>
 </section>

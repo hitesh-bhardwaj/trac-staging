@@ -187,9 +187,9 @@
                     aria-controls="mobile-menu"
                     aria-label="<?php esc_attr_e('Toggle menu', 'trac'); ?>"
                 >
-                    <span class="menu-line w-7 h-0.5 bg-text-primary transition-all origin-center"></span>
-                    <span class="menu-line w-7 h-0.5 bg-text-primary transition-all"></span>
-                    <span class="menu-line w-7 h-0.5 bg-text-primary transition-all origin-center"></span>
+                    <span class="menu-line w-7 h-0.5 bg-white transition-all origin-center"></span>
+                    <span class="menu-line w-7 h-0.5 bg-white transition-all"></span>
+                    <span class="menu-line w-7 h-0.5 bg-white transition-all origin-center"></span>
                 </button>
             </div>
         </div>

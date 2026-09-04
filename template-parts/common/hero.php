@@ -22,7 +22,7 @@ $container_classes = isset($args['container_classes'])
 $container_classes =
     $container_classes !== ''
         ? $container_classes
-        : 'hero-container w-full px-[5vw]  pb-[5.21vw] relative z-[10] md:px-[4vw] md:pt-[120px] sm:px-[8vw] sm:pt-[100px]';
+        : 'hero-container w-full px-[5vw]  pb-[5.21vw] relative z-[10] md:px-[4vw] sm:px-[7vw] sm:pt-[14vw]';
 $grid_classes = isset($args['grid_classes'])
     ? (string) $args['grid_classes']
     : 'hero-grid flex items-start justify-between gap-[5vw] md:flex-col md:gap-8';
@@ -39,7 +39,7 @@ $title_tag = isset($args['title_tag']) ? (string) $args['title_tag'] : 'h1';
 
 $title_classes = isset($args['title_classes'])
     ? (string) $args['title_classes']
-    : 'hero-title text-[4vw] font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 md:text-center';
+    : 'hero-title text-[4vw] font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4';
 $subtitle_1 = isset($args['subtitle_1']) ? (string) $args['subtitle_1'] : '';
 $subtitle_1_classes = isset($args['subtitle_1_classes'])
     ? (string) $args['subtitle_1_classes']
@@ -57,7 +57,7 @@ $subtitle_paragraphs = is_array($subtitle)
         : []);
 $subtitle_classes = isset($args['subtitle_classes'])
     ? (string) $args['subtitle_classes']
-    : 'hero-subtitle font-body font-medium w-[80%] text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6 md:text-center';
+    : 'hero-subtitle font-body font-medium w-[80%] text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6';
 
 $primary =
     isset($args['primary']) && is_array($args['primary'])
@@ -100,7 +100,7 @@ $right_content = isset($args['right_content'])
 
 $cta_wrapper_classes = isset($args['cta_wrapper_classes'])
     ? (string) $args['cta_wrapper_classes']
-    : 'hero-cta flex flex-wrap gap-[1.042vw] md:gap-4 sm:flex-col sm:gap-3 md:items-center';
+    : 'hero-cta flex flex-wrap gap-[1.042vw] md:gap-4 sm:flex-col sm:gap-3';
 
 $center_wrap_classes = isset($args['center_wrap_classes'])
     ? (string) $args['center_wrap_classes']

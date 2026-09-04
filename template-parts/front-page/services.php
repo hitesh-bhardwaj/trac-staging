@@ -57,7 +57,7 @@ $services = [
 ];
 ?>
 
-<section class="relative overflow-hidden bg-white py-[7vw] sm:pb-[25%] min-h-auto" data-section="services" id="solutions">
+<section class="relative overflow-hidden bg-white py-[7vw] md:pb-[15%] min-h-auto md:pt-0" data-section="services" id="solutions">
     <style>
         [data-service-slider] .services-slider-viewport {
             position: relative;
@@ -120,8 +120,8 @@ $services = [
 
         @media (max-width: 640px) {
             [data-service-slider] .services-slider-viewport {
-                height: 132vw;
-                min-height: 540px;
+                height: 145vw !important;
+                /* min-height: 540px; */
                 --service-stack-spread: 6vw;
                 --service-stack-scale-range: 0.045;
             }
@@ -133,8 +133,8 @@ $services = [
     </style>
 
     <div class="services-container w-full">
-        <div class="services-heading px-[5vw] md:px-[5vw] md:py-12 sm:px-[10vw] sm:py-8">
-            <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-10" data-animate="fade-up">
+        <div class="services-heading px-[5vw] md:px-[7vw] md:py-12 sm:py-8">
+            <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-6" data-animate="fade-up">
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
 
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
@@ -144,7 +144,7 @@ $services = [
                 </span>
             </div>
 
-            <h2 data-heading-anim class="services-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:text-4xl sm:text-center sm:text-[8vw]">
+            <h2 data-heading-anim class="services-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-text-primary ">
                 <?php echo esc_html(
                     get_field('services_title') ?:
                     'Get Connected. Stay Connected',
@@ -158,11 +158,11 @@ $services = [
                 <div class="services-cards">
                     <?php foreach ($services as $index => $service): ?>
                         <article
-                            class="service-card !bg-brand-tertiary overflow-hidden rounded-[1.2vw] border border-brand-dark md:rounded-3xl"
+                            class="service-card !bg-brand-tertiary overflow-hidden rounded-[1.2vw] border border-brand-dark md:border-none md:rounded-3xl"
                             data-service-card
                             data-card-index="<?php echo esc_attr($index); ?>"
                         >
-                            <div class="card-inner grid h-full grid-cols-[1fr_auto] items-center md:grid-cols-1">
+                            <div class="card-inner grid h-full grid-cols-[1fr_auto] items-center md:flex md:flex-col md:items-start">
                                 <div class="card-content flex h-full flex-col justify-between p-[3.073vw] pr-[2vw] md:p-8 sm:p-6">
                                     <div>
                                         <h3 class="card-title font-subheading mb-[1.25vw] text-36 font-normal text-white md:mb-4 md:text-2xl sm:mb-3 sm:text-[6vw]">
@@ -180,7 +180,7 @@ $services = [
 
                                     <a href="<?php echo esc_url(
                                         $service['link'],
-                                    ); ?>" class="btn btn-primary group w-fit">
+                                    ); ?>" class="btn btn-primary group w-fit sm:w-[80%]!">
                                         <span class="btn-line"></span>
                                         <span class="btn-text">Learn More</span>
                                         <span class="btn-icon">
@@ -192,7 +192,7 @@ $services = [
                                     </a>
                                 </div>
 
-                                <div class="card-image relative mr-[0.938vw] h-[calc(100%-2vw)] w-[34.375vw] overflow-hidden rounded-[1vw] md:mx-8 md:mb-8 md:h-[45vw] md:w-[calc(100%-4rem)] md:rounded-2xl sm:mx-6 sm:mb-6 sm:h-[52vw] sm:w-[calc(100%-3rem)]">
+                                <div class="card-image relative mr-[0.938vw] h-[calc(100%-2vw)] w-[34.375vw] overflow-hidden rounded-[1vw] md:mx-8 md:mb-8 md:h-[45vw] md:w-[calc(100%-4rem)] md:rounded-2xl sm:mx-6 sm:mb-6 sm:h-[52vw] sm:w-[calc(100%-1.5rem)]">
                                     <img
                                         src="<?php echo esc_url(
                                             $service['image'],
@@ -201,9 +201,7 @@ $services = [
                                             $service['alt'],
                                         ); ?>"
                                         class="absolute inset-0 h-full w-full object-cover"
-                                    >
-
-                                    
+                                    >                          
                                 </div>
                             </div>
                         </article>
