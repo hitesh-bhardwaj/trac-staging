@@ -5,6 +5,7 @@
 import barba from '@barba/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { trac_log, trac_warn } from './debug.js';
 
 export function initBarba(app) {
     if (window.barbaInitialized) return;
@@ -151,7 +152,7 @@ export function initBarba(app) {
                         'is-barba-page-enter',
                     );
 
-                    console.log('[Barba] Transition complete');
+                    trac_log('[Barba] Transition complete');
                 },
             },
         ],
@@ -160,14 +161,14 @@ export function initBarba(app) {
             {
                 namespace: 'home',
                 beforeEnter() {
-                    console.log('[Barba] Entering homepage');
+                    trac_log('[Barba] Entering homepage');
                 },
             },
         ],
     });
 
     barba.hooks.once(() => {
-        console.log('[Barba] Initialized');
+        trac_log('[Barba] Initialized');
     });
 
     barba.hooks.afterLeave(() => {
@@ -187,7 +188,7 @@ export function initPageLoader() {
     const loaderDotEls = loader?.querySelectorAll('.loader-dot');
 
     if (!pageLoader || !loader || !overlayLogo) {
-        console.warn('[Loader] Missing loader elements');
+        trac_warn('[Loader] Missing loader elements');
         document.dispatchEvent(new CustomEvent('trac:loaded'));
         return;
     }
@@ -238,7 +239,7 @@ export function initPageLoader() {
             onStart: () => {
                 gsap.delayedCall(0.55, () => {
                     document.dispatchEvent(new CustomEvent('trac:loaded'));
-                    console.log('[Loader] trac:loaded event dispatched');
+                    trac_log('[Loader] trac:loaded event dispatched');
                 });
             },
             onComplete: () => {

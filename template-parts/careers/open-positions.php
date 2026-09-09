@@ -3,40 +3,37 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$enterprise_services = [
-    [
-        'title' => 'Lorem Ipsum is simply dummy text',
-        'location' => '(Location - Nairobi, Kenya)',
-        'para' =>
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
-        'link' => '#get-connected',
-        'btn_text' => 'Apply',
-    ],
-    [
-        'title' => 'Lorem Ipsum is simply dummy text',
-        'location' => '(Location - Johannesburg, South Africa)',
-        'para' =>
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
-        'link' => '#get-connected',
-        'btn_text' => 'Apply',
-    ],
-    [
-        'title' => 'Lorem Ipsum is simply dummy text',
-        'location' => '(Location - Nairobi, Kenya)',
-        'para' =>
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
-        'link' => '#get-connected',
-        'btn_text' => 'Apply',
-    ],
-    [
-        'title' => 'Lorem Ipsum is simply dummy text',
-        'location' => '(Location - Johannesburg, South Africa)',
-        'para' =>
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text",
-        'link' => '#get-connected',
-        'btn_text' => 'Apply',
-    ],
-];
+$jobs = [];
+$jobs_query = new WP_Query([
+    'post_type' => 'job',
+    'post_status' => 'publish',
+    'posts_per_page' => -1,
+    'orderby' => 'date',
+    'order' => 'DESC',
+]);
+
+if ($jobs_query->have_posts()) {
+    while ($jobs_query->have_posts()) {
+        $jobs_query->the_post();
+        $jobs[] = [
+            'title' => get_the_title(),
+            'location' => get_field('job_location'),
+            'department' => get_field('job_department'),
+            'para' => get_field('job_excerpt'),
+            'apply_text' => get_field('job_apply_button_text'),
+            'apply_link' => get_field('job_apply_link'),
+        ];
+    }
+    wp_reset_postdata();
+}
+
+if (!$jobs) {
+    return;
+}
+
+$positions_label = get_field('careers_positions_label');
+$positions_title = get_field('careers_positions_title');
+$apply_button_text = get_field('careers_positions_button_text');
 ?>
 
 <section class="open-positions py-[7vw] md:py-20 sm:py-16" data-section="open-positions" id="open-positions">
@@ -44,44 +41,51 @@ $enterprise_services = [
         <div class="text-left">
             <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body  text-brand-secondary text-30">Careers</span>
+                <span class="font-body  text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
+                    $positions_label,
+                ); ?></span>
             </div>
 
-            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6 text-left">
-                Open Positions
+            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw]  md:mb-8  sm:mb-6 text-left">
+                <?php echo trac_esc_html($positions_title); ?>
             </h2>
 
             <div class="grid grid-cols-2 gap-10 mt-[5vw] md:grid-cols-1 md:gap-8 text-left">
-                <?php foreach ($enterprise_services as $index => $card): ?>
+                <?php foreach ($jobs as $index => $card): ?>
                     <div
-                        class="bg-brand-tertiary rounded-[1.2vw] p-9 flex flex-col h-fit md:min-h-0 md:p-8 text-left"
+                        class="bg-brand-tertiary rounded-[1.2vw] p-9 flex flex-col h-fit md:min-h-0 md:p-8 text-left sm:rounded-[4vw]"
                         data-animate="fade-up"
                         <?php if ($index > 0): ?>
                             data-delay="<?php echo esc_attr($index * 0.1); ?>"
                         <?php endif; ?>
                     >
                         <div>
-                           
                             <h3 class="font-heading text-white text-36 md:text-2xl font-normal">
-                                <?php echo $card['title']; ?>
+                                <?php echo trac_esc_html($card['title']); ?>
                             </h3>
-                             <p class="font-body text-white leading-[1.7] mb-6 text-24">
-                                <?php echo esc_html($card['location']); ?>
+                            <p class="font-body text-white leading-[1.7] mb-6 text-24">
+                                <?php echo trac_esc_html(
+                                    trim(
+                                        $card['location'] .
+                                            ($card['department']
+                                                ? ' · ' . $card['department']
+                                                : ''),
+                                    ),
+                                ); ?>
                             </p>
 
-                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw]">
-                                <?php echo esc_html($card['para']); ?>
+                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw] sm:!text-[4vw]">
+                                <?php echo trac_esc_html($card['para']); ?>
                             </p>
                         </div>
 
                         <div class="mt-auto pt-10">
                             <a href="<?php echo esc_url(
-                                get_field('hero_primary_button_link') ?:
-                                '#job-application',
-                            ); ?>" class="btn btn-primary group magnetic">
+                                $card['apply_link'] ?: '#job-application',
+                            ); ?>" class="btn btn-primary group magnetic sm:!w-fit">
                         <span class="btn-line"></span>
-                        <span class="btn-text"><?php echo esc_html(
-                            get_field('hero_primary_button_text') ?: 'Apply',
+                        <span class="btn-text"><?php echo trac_esc_html(
+                            $card['apply_text'] ?: $apply_button_text,
                         ); ?></span>
                         <span class="btn-icon">
                           <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">

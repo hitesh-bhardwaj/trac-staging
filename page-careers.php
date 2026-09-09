@@ -27,30 +27,15 @@ if (have_posts()) {
             <?php
             $hero_image = get_field('hero_image');
             get_template_part('template-parts/common/hero', null, [
-                'title_lines' => [
-                    get_field('hero_title_line_1') ?: 'Work With Us',
-                ],
-                'subtitle' => get_field('hero_subtitle') ?: [
-                    "We're always looking for people who want to do meaningful work, solve real problems, and grow with a team that is shaping connectivity across Rwanda and beyond. ",
-                    "If you're interested in working with us, get in touch!",
-                ],
-                'button_text' =>
-                    get_field('hero_primary_button_text') ?: 'Apply',
-                'button_link' =>
-                    get_field('hero_primary_button_link') ?: '#job-application',
+                'title_lines' => [get_field('hero_title_line_1')],
+                'subtitle' => trac_split_lines(get_field('hero_subtitle')),
+                'button_text' => get_field('hero_primary_button_text'),
+                'button_link' => get_field('hero_primary_button_link'),
                 'media' => [
-                    'src' => is_array($hero_image)
-                        ? $hero_image['url']
-                        : get_template_directory_uri() .
-                            '/src/imgs/careers/careers-hero.png',
-                    'alt' => is_array($hero_image)
-                        ? $hero_image['alt']
-                        : 'TrAC team member in modern office workspace',
+                    'src' => is_array($hero_image) ? $hero_image['url'] : '',
+                    'alt' => is_array($hero_image) ? $hero_image['alt'] : '',
                 ],
             ]);
-
-            // Why Work With Us Section
-            // get_template_part('template-parts/careers/why-work');
 
             // Open Positions Section
             get_template_part('template-parts/careers/open-positions');

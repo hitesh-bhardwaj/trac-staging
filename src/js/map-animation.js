@@ -5,12 +5,13 @@
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { trac_warn } from './debug.js';
 
 export function initMapAnimation() {
     const mapSection = document.querySelector('[data-section="map"]');
 
     if (!mapSection) {
-        console.warn('[Map Animation] Map section not found!');
+        trac_warn('[Map Animation] Map section not found!');
         return;
     }
 
@@ -136,7 +137,7 @@ export function initMapAnimation() {
                 '-=0.35',
             );
     } else {
-        console.warn('[Map Animation] Missing dependencies:', {
+        trac_warn('[Map Animation] Missing dependencies:', {
             gsap: !!gsap,
             ScrollTrigger: !!ScrollTrigger,
             overlay: !!mapOverlay,

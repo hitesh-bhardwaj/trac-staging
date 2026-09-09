@@ -58,7 +58,7 @@ get_header();
                     if ($faq_query->have_posts()): ?>
                         <div class="faq-category-group mb-[3.125vw] md:mb-10 sm:mb-8" data-animate="fade-up">
                             <h2 class="category-title font-heading text-[2vw] text-brand-primary mb-[2vw] md:text-2xl md:mb-6 sm:text-xl sm:mb-5">
-                                <?php echo esc_html($category->name); ?>
+                                <?php echo trac_esc_html($category->name); ?>
                             </h2>
 
                             <div class="faqs-accordion w-full max-w-[89.583vw] mx-auto md:max-w-full">
@@ -84,7 +84,7 @@ get_header();
                                             id="faq-btn-<?php echo $unique_id; ?>"
                                         >
                                             <span class="faq-question-text font-body text-[1.458vw] text-text-primary md:text-xl sm:text-lg">
-                                                <?php echo esc_html(
+                                                <?php echo trac_esc_html(
                                                     $question,
                                                 ); ?>
                                             </span>
@@ -155,7 +155,7 @@ get_header();
                                     id="faq-btn-<?php echo $index; ?>"
                                 >
                                     <span class="faq-question-text font-body text-[1.458vw] text-text-primary md:text-xl sm:text-lg">
-                                        <?php echo esc_html($question); ?>
+                                        <?php echo trac_esc_html($question); ?>
                                     </span>
 
                                     <span class="faq-icon-wrap" aria-hidden="true">

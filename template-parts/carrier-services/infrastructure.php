@@ -3,13 +3,16 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$label = get_field('cs_infra_label') ?: 'Infrastructure';
-$title = get_field('cs_infra_title') ?: "Let's Design Your Network";
-$subtitle =
-    get_field('cs_infra_subtitle') ?:
-    'Tell us what your network requires, and our team will design a solution that fits.';
-$button_text = get_field('cs_infra_button_text') ?: 'Request a Consultation';
-$button_link = get_field('cs_infra_button_link') ?: '#get-in-touch';
+$label = get_field('cs_infra_label');
+$title = get_field('cs_infra_title');
+$subtitle = get_field('cs_infra_subtitle');
+$button_text = get_field('cs_infra_button_text');
+$button_link = get_field('cs_infra_button_link');
+
+$infra_image_1 = get_field('cs_infra_image_1');
+$infra_image_1_alt = get_field('cs_infra_image_1_alt');
+$infra_image_2 = get_field('cs_infra_image_2');
+$infra_image_2_alt = get_field('cs_infra_image_2_alt');
 ?>
 
 <section class="carrier-infrastructure relative overflow-hidden bg-brand-quaternary px-[5vw] py-[6vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="infrastructure">
@@ -17,33 +20,30 @@ $button_link = get_field('cs_infra_button_link') ?: '#get-in-touch';
         <div class="max-w-[46vw] md:max-w-full">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">
                 <span class="w-6 h-1 bg-white"></span>
-                <span class="font-body text-white text-30 md:text-lg sm:text-base">
-                    <?php echo esc_html($label); ?>
+                <span class="font-body text-white text-30 md:text-lg sm:!text-[4vw]">
+                    <?php echo trac_esc_html($label); ?>
                 </span>
             </div>
 
             <h2 class="font-heading text-[3.5vw] font-normal leading-[1.15] tracking-[0.01em] text-white mb-[1.6vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
-                <?php echo esc_html($title); ?>
+                <?php echo trac_esc_html($title); ?>
             </h2>
 
             <p class="font-body text-24 leading-[1.5] text-white/90 md:text-lg sm:text-base" data-para-anim>
-                <?php echo esc_html($subtitle); ?>
+                <?php echo trac_esc_html($subtitle); ?>
             </p>
         </div>
 
         <div class="mt-[5vw] md:mt-12 sm:mt-10">
-            <div class="grid grid-cols-2 gap-[3vw] md:gap-5 sm:grid-cols-1 sm:gap-4">
+            <div class="grid grid-cols-2 gap-[3vw] md:gap-5 sm:grid-cols-1 sm:gap-7">
                 <figure
                     class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[28px] sm:rounded-[22px] group"
                     data-animate="fade-up"
                     data-delay="0.1"
                 >
                     <img
-                        src="<?php echo esc_url(
-                            get_template_directory_uri() .
-                                '/src/imgs/carrier-services/infra-img-1.png',
-                        ); ?>"
-                        alt="Fibre installation team working on infrastructure"
+                        src="<?php echo esc_url($infra_image_1); ?>"
+                        alt="<?php echo esc_attr($infra_image_1_alt); ?>"
                         class="block h-[32vw] w-full md:h-[420px] sm:h-[280px] scale-105 object-cover transition-transform duration-600 ease-out group-hover:scale-100"
                         loading="lazy"
                     >
@@ -55,11 +55,8 @@ $button_link = get_field('cs_infra_button_link') ?: '#get-in-touch';
                     data-delay="0.15"
                 >
                     <img
-                        src="<?php echo esc_url(
-                            get_template_directory_uri() .
-                                '/src/imgs/carrier-services/infra-img-2.png',
-                        ); ?>"
-                        alt="Data centre environment supporting network operations"
+                        src="<?php echo esc_url($infra_image_2); ?>"
+                        alt="<?php echo esc_attr($infra_image_2_alt); ?>"
                         class="block h-[32vw] w-full md:h-[420px] sm:h-[280px] scale-105 object-cover transition-transform duration-600 ease-out group-hover:scale-100"
                         loading="lazy"
                     >
@@ -72,7 +69,7 @@ $button_link = get_field('cs_infra_button_link') ?: '#get-in-touch';
                 $button_link,
             ); ?>" class="btn btn-primary group magnetic">
                 <span class="btn-line"></span>
-                <span class="btn-text"><?php echo esc_html(
+                <span class="btn-text"><?php echo trac_esc_html(
                     $button_text,
                 ); ?></span>
                 <span class="btn-icon">

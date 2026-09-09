@@ -1,0 +1,363 @@
+{
+    "key": "group_enterprise_network_page",
+    "title": "Enterprise Network Page",
+    "fields": [
+        {
+            "key": "field_en_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_en_hero_title",
+            "label": "Hero Title",
+            "name": "hero_title",
+            "type": "textarea",
+            "instructions": "Each line becomes a separate line in the hero heading. Leave a blank line between lines.",
+            "rows": 4,
+            "required": 1
+        },
+        {
+            "key": "field_en_hero_subtitle_2",
+            "label": "Hero Subtitle",
+            "name": "hero_subtitle_2",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_en_hero_primary_button_text",
+            "label": "Hero Button Text",
+            "name": "hero_primary_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_hero_primary_button_link",
+            "label": "Hero Button Link",
+            "name": "hero_primary_button_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #anchor, or https://example.com"
+        },
+        {
+            "key": "field_en_hero_image",
+            "label": "Hero Image",
+            "name": "hero_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_en_services_tab",
+            "label": "Services",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_en_services_label",
+            "label": "Services Section Label",
+            "name": "enterprise_services_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_services_title",
+            "label": "Services Section Title",
+            "name": "enterprise_services_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_services_description",
+            "label": "Services Section Description",
+            "name": "enterprise_services_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_en_service_1_image",
+            "label": "Service 1 - Icon",
+            "name": "enterprise_service_1_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_1_title",
+            "label": "Service 1 - Title",
+            "name": "enterprise_service_1_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_1_description",
+            "label": "Service 1 - Description",
+            "name": "enterprise_service_1_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_en_service_1_button_text",
+            "label": "Service 1 - Button Text",
+            "name": "enterprise_service_1_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_1_button_link",
+            "label": "Service 1 - Button Link",
+            "name": "enterprise_service_1_button_link",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_2_image",
+            "label": "Service 2 - Icon",
+            "name": "enterprise_service_2_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_2_title",
+            "label": "Service 2 - Title",
+            "name": "enterprise_service_2_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_2_description",
+            "label": "Service 2 - Description",
+            "name": "enterprise_service_2_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_en_service_2_button_text",
+            "label": "Service 2 - Button Text",
+            "name": "enterprise_service_2_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_2_button_link",
+            "label": "Service 2 - Button Link",
+            "name": "enterprise_service_2_button_link",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_3_image",
+            "label": "Service 3 - Icon",
+            "name": "enterprise_service_3_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_3_title",
+            "label": "Service 3 - Title",
+            "name": "enterprise_service_3_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_3_description",
+            "label": "Service 3 - Description",
+            "name": "enterprise_service_3_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_en_service_3_button_text",
+            "label": "Service 3 - Button Text",
+            "name": "enterprise_service_3_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_3_button_link",
+            "label": "Service 3 - Button Link",
+            "name": "enterprise_service_3_button_link",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_4_image",
+            "label": "Service 4 - Icon",
+            "name": "enterprise_service_4_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_4_title",
+            "label": "Service 4 - Title",
+            "name": "enterprise_service_4_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_4_description",
+            "label": "Service 4 - Description",
+            "name": "enterprise_service_4_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_en_service_4_button_text",
+            "label": "Service 4 - Button Text",
+            "name": "enterprise_service_4_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_service_4_button_link",
+            "label": "Service 4 - Button Link",
+            "name": "enterprise_service_4_button_link",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_why_tab",
+            "label": "Why Choose",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_en_why_label",
+            "label": "Section Label",
+            "name": "enterprise_why_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_why_title",
+            "label": "Section Title",
+            "name": "enterprise_why_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_why_description",
+            "label": "Description",
+            "name": "enterprise_why_description",
+            "type": "textarea",
+            "instructions": "Leave a blank line between paragraphs.",
+            "rows": 4,
+            "required": 1
+        },
+        {
+            "key": "field_en_stat_1_number",
+            "label": "Stat 1 - Number",
+            "name": "enterprise_stat_1_number",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. 14+"
+        },
+        {
+            "key": "field_en_stat_1_label",
+            "label": "Stat 1 - Label",
+            "name": "enterprise_stat_1_label",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. years of operations"
+        },
+        {
+            "key": "field_en_stat_2_number",
+            "label": "Stat 2 - Number",
+            "name": "enterprise_stat_2_number",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_stat_2_label",
+            "label": "Stat 2 - Label",
+            "name": "enterprise_stat_2_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_stat_3_number",
+            "label": "Stat 3 - Number",
+            "name": "enterprise_stat_3_number",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_stat_3_label",
+            "label": "Stat 3 - Label",
+            "name": "enterprise_stat_3_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_contact_tab",
+            "label": "Contact",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_en_contact_label",
+            "label": "Section Label",
+            "name": "enterprise_contact_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_en_contact_title",
+            "label": "Title",
+            "name": "enterprise_contact_title",
+            "type": "textarea",
+            "instructions": "Each line becomes a separate line. Leave a blank line between lines.",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_en_contact_description",
+            "label": "Description",
+            "name": "enterprise_contact_description",
+            "type": "textarea",
+            "rows": 3,
+            "required": 1
+        },
+        {
+            "key": "field_en_contact_prompt_text",
+            "label": "Prompt Text (above email)",
+            "name": "enterprise_contact_prompt_text",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. Or contact our enterprise team at:"
+        },
+        {
+            "key": "field_en_contact_email",
+            "label": "Contact Email",
+            "name": "enterprise_contact_email",
+            "type": "email",
+            "required": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-enterprise-network.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

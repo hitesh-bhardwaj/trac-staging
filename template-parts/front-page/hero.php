@@ -3,37 +3,37 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$hero_connectors_svg_path =
-    get_template_directory() . '/src/imgs/connectors.svg';
+$hero_connectors_svg = get_field('hero_connectors_svg');
+$hero_connectors_svg_path = $hero_connectors_svg
+    ? get_attached_file(
+        is_array($hero_connectors_svg)
+            ? $hero_connectors_svg['ID']
+            : $hero_connectors_svg,
+    )
+    : '';
+
+$hero_title_lines = trac_split_lines(get_field('hero_title'));
+
+$hero_image = get_field('hero_image');
+$hero_image_url = is_array($hero_image) ? $hero_image['url'] : '';
+$hero_image_alt = is_array($hero_image) ? $hero_image['alt'] : '';
 ?>
 
 <section class="hero relative min-h-screen !bg-brand-primary overflow-hidden sm:min-h-[125vh]" data-section="hero" data-hero-static>
     <div class="hero-container w-full px-[5vw] relative z-[10] md:px-[4vw] sm:px-[7vw] sm:pt-[10vw]">
         <div class="hero-grid flex justify-between gap-[2.604vw] items-start md:flex-col md:gap-8">
-            <div class="hero-text w-[70%] md:w-full md:max-w-full md:pt-8 sm:pt-4  relative z-[10]">
+            <div class="hero-text w-[60%] md:w-full md:max-w-full md:pt-8 sm:pt-4  relative z-[10]">
                 <h1
                     class="hero-title font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 "
                     data-hero-reveal
                     data-heading-anim
                     data-base-delay="0.05"
                  >
-                    <span class="block hero-title-line">
-                        <?php echo esc_html(
-                            get_field('hero_title_line_1') ?:
-                            "Rwanda's Connectivity",
-                        ); ?>
-                    </span>
-                    <span class="block hero-title-line">
-                        <?php echo esc_html(
-                            get_field('hero_title_line_2') ?:
-                            "Backbone. East Africa's",
-                        ); ?>
-                    </span>
-                     <span class="block hero-title-line">
-                        <?php echo esc_html(
-                            get_field('hero_title_line_3') ?: 'Growth Partner.',
-                        ); ?>
-                    </span>
+                    <?php foreach ($hero_title_lines as $line): ?>
+                        <span class="block hero-title-line">
+                            <?php echo trac_esc_html($line); ?>
+                        </span>
+                    <?php endforeach; ?>
 </h1>
 
                 <p
@@ -42,10 +42,7 @@ $hero_connectors_svg_path =
                     data-hero-delay="0.14"
                     data-para-anim
                  >
-                    <?php echo esc_html(
-                        get_field('hero_subtitle_2') ?:
-                        'Rooted in Rwanda, TrAC delivers reliable internet for enterprises, small businesses, homes, and the communities shaping the future of Rwanda and East Africa.',
-                    ); ?>
+                    <?php echo trac_esc_html(get_field('hero_subtitle_2')); ?>
                 </p>
 
                 <div
@@ -54,13 +51,11 @@ $hero_connectors_svg_path =
                     data-hero-delay="0.22"
                  >
                     <a href="<?php echo esc_url(
-                        get_field('hero_primary_button_link') ?:
-                        home_url('/contact-us'),
+                        get_field('hero_primary_button_link'),
                     ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
-                        <span class="btn-text"><?php echo esc_html(
-                            get_field('hero_primary_button_text') ?:
-                            'Get on TrAC',
+                        <span class="btn-text"><?php echo trac_esc_html(
+                            get_field('hero_primary_button_text'),
                         ); ?></span>
                         <span class="btn-icon">
                           <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,12 +67,11 @@ $hero_connectors_svg_path =
                     </a>
 
                     <a href="<?php echo esc_url(
-                        get_field('hero_secondary_button_link') ?: '#solutions',
+                        get_field('hero_secondary_button_link'),
                     ); ?>" class="btn btn-outline group magnetic">
                         <span class="btn-line"></span>
-                        <span class="btn-text"><?php echo esc_html(
-                            get_field('hero_secondary_button_text') ?:
-                            'Explore solutions',
+                        <span class="btn-text"><?php echo trac_esc_html(
+                            get_field('hero_secondary_button_text'),
                         ); ?></span>
                         <span class="btn-icon">
                              <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,14 +85,14 @@ $hero_connectors_svg_path =
 
             
             <div
-                class=" sm:block md:bottom-0 sm:w-[150%] sm:left-[5%] sm:bottom-[-25%] w-full h-screen absolute flex justify-end overflow-hidden -mt-4"
+                class=" sm:block md:bottom-0 sm:w-[200%] sm:left-[3%] sm:bottom-[-25%] w-full h-screen absolute flex justify-end overflow-hidden -mt-4"
                 data-hero-reveal
                 data-hero-delay="0.2"
             >
               <div class="w-[60%] h-full flex items-center justify-center relative">
                 <img
-                   src="<?php echo get_template_directory_uri(); ?>/src/imgs/hero-earth.webp"
-                   alt="Mobile globe visual"
+                   src="<?php echo esc_url($hero_image_url); ?>"
+                   alt="<?php echo esc_attr($hero_image_alt); ?>"
                    class="w-full h-full object-contain"
                    loading="lazy"
                   >

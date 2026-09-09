@@ -1,13 +1,12 @@
 {
     "key": "group_testimonials_section",
-    "title": "Testimonials Section Settings",
+    "title": "Testimonials Section",
     "fields": [
         {
             "key": "field_testimonials_label",
             "label": "Section Label",
             "name": "testimonials_label",
             "type": "text",
-            "default_value": "Testimonials",
             "required": 1,
             "instructions": "Small label text above the title"
         },
@@ -16,20 +15,62 @@
             "label": "Section Title",
             "name": "testimonials_title",
             "type": "text",
-            "default_value": "What Our Clients Say",
             "required": 1,
             "instructions": "Main section heading"
         },
         {
-            "key": "field_testimonials_limit",
-            "label": "Number to Display",
-            "name": "testimonials_limit",
-            "type": "number",
-            "default_value": 3,
-            "min": 1,
-            "max": 10,
-            "required": 1,
-            "instructions": "How many testimonials to show in the slider (max 10)"
+            "key": "field_testimonial_1_quote",
+            "label": "Testimonial 1 - Quote",
+            "name": "testimonial_1_quote",
+            "type": "textarea",
+            "rows": 4,
+            "required": 1
+        },
+        {
+            "key": "field_testimonial_1_logo",
+            "label": "Testimonial 1 - Company Logo",
+            "name": "testimonial_1_logo",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_testimonial_2_quote",
+            "label": "Testimonial 2 - Quote",
+            "name": "testimonial_2_quote",
+            "type": "textarea",
+            "rows": 4,
+            "required": 1
+        },
+        {
+            "key": "field_testimonial_2_logo",
+            "label": "Testimonial 2 - Company Logo",
+            "name": "testimonial_2_logo",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_testimonial_3_quote",
+            "label": "Testimonial 3 - Quote",
+            "name": "testimonial_3_quote",
+            "type": "textarea",
+            "rows": 4,
+            "required": 1
+        },
+        {
+            "key": "field_testimonial_3_logo",
+            "label": "Testimonial 3 - Company Logo",
+            "name": "testimonial_3_logo",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
         }
     ],
     "location": [

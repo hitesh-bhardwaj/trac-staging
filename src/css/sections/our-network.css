@@ -1,0 +1,63 @@
+/* Front page network map pointer and SVG interaction states. */
+.our-network-section .pointer-card {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(30%);
+    will-change: opacity, transform;
+    transition:
+        opacity 0.7s ease,
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.7s ease;
+}
+
+.our-network-section .pointer-card.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.our-network-section .network-node {
+    cursor: pointer;
+    outline: none;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.our-network-section .network-node circle {
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.our-network-section .network-node:hover circle,
+.our-network-section .network-node:focus circle {
+    transform: scale(1.08);
+    filter: brightness(1.08);
+}
+
+.our-network-section
+    [data-network-draw]
+    svg
+    circle[r='11.5'][fill='#EFF4FC'][stroke='#001837'],
+.our-network-section [data-network-draw] svg circle[r='7'][fill='#F0741C'] {
+    cursor: pointer;
+}
+
+.our-network-section.is-position-debug .pointer-card {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(30%);
+}
+
+.our-network-section.is-position-debug .pointer-card.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}

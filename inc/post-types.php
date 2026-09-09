@@ -88,37 +88,70 @@ function trac_register_faqs_cpt()
 add_action('init', 'trac_register_faqs_cpt');
 
 /**
- * Register FAQ Category Taxonomy
+ * Register FAQ Page Taxonomy
+ * Used to sort FAQs by which page they belong to (Homepage, Enterprise Network, etc.)
  */
 function trac_register_faq_taxonomy()
 {
     $labels = [
-        'name' => __('FAQ Categories', 'trac'),
-        'singular_name' => __('FAQ Category', 'trac'),
-        'menu_name' => __('Categories', 'trac'),
-        'all_items' => __('All Categories', 'trac'),
-        'edit_item' => __('Edit Category', 'trac'),
-        'view_item' => __('View Category', 'trac'),
-        'update_item' => __('Update Category', 'trac'),
-        'add_new_item' => __('Add New Category', 'trac'),
-        'new_item_name' => __('New Category Name', 'trac'),
-        'search_items' => __('Search Categories', 'trac'),
-        'not_found' => __('No categories found', 'trac'),
+        'name' => __('Pages', 'trac'),
+        'singular_name' => __('Page', 'trac'),
+        'menu_name' => __('Pages', 'trac'),
+        'all_items' => __('All Pages', 'trac'),
+        'edit_item' => __('Edit Page', 'trac'),
+        'view_item' => __('View Page', 'trac'),
+        'update_item' => __('Update Page', 'trac'),
+        'add_new_item' => __('Add New Page', 'trac'),
+        'new_item_name' => __('New Page Name', 'trac'),
+        'search_items' => __('Search Pages', 'trac'),
+        'not_found' => __('No pages found', 'trac'),
     ];
 
     $args = [
         'labels' => $labels,
         'public' => true,
-        'hierarchical' => true, // Like categories
+        'hierarchical' => true, // Behaves like folders
         'show_ui' => true,
         'show_admin_column' => true,
         'show_in_rest' => true,
-        'rewrite' => ['slug' => 'faq-category'],
+        'rewrite' => ['slug' => 'faq-page'],
+        // Managed via the "Page" field in FAQ Details instead of the default sidebar box.
+        'meta_box_cb' => false,
     ];
 
     register_taxonomy('faq_category', ['faq'], $args);
 }
 add_action('init', 'trac_register_faq_taxonomy');
+
+/**
+ * Add a "Page" filter dropdown to the FAQs list screen so entries can be
+ * browsed folder-by-folder.
+ */
+function trac_faq_page_filter_dropdown()
+{
+    global $typenow;
+
+    if ($typenow !== 'faq') {
+        return;
+    }
+
+    $selected = isset($_GET['faq_category'])
+        ? sanitize_text_field(wp_unslash($_GET['faq_category']))
+        : '';
+
+    wp_dropdown_categories([
+        'show_option_all' => __('All Pages', 'trac'),
+        'taxonomy' => 'faq_category',
+        'name' => 'faq_category',
+        'orderby' => 'name',
+        'selected' => $selected,
+        'hierarchical' => true,
+        'depth' => 3,
+        'show_count' => true,
+        'hide_empty' => false,
+    ]);
+}
+add_action('restrict_manage_posts', 'trac_faq_page_filter_dropdown');
 
 /**
  * Register Jobs Custom Post Type

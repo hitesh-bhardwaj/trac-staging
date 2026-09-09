@@ -1,0 +1,120 @@
+/* Shared FAQ accordion state and icon rules. */
+.faq-question,
+.faq-question-text,
+.faq-answer-text {
+    font-weight: 400;
+}
+
+.faq-item {
+    position: relative;
+    background: transparent;
+    color: #111111;
+    padding-left: 4.5vw;
+    padding-right: 4.5vw;
+    border-radius: 1.25vw;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        padding 0.3s ease,
+        margin 0.3s ease,
+        border-radius 0.3s ease;
+}
+
+.faq-item[data-open] {
+    background: #389fd8;
+    color: #ffffff;
+    border-radius: 1.25vw;
+    border: none;
+    margin: 1.2vw 0;
+}
+
+.faq-question {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+}
+
+.faq-question-text {
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.faq-answer-text {
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.faq-icon-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    color: inherit;
+}
+
+.faq-bar {
+    position: absolute;
+    background: currentColor;
+    transition:
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.25s ease,
+        background-color 0.3s ease;
+}
+
+.faq-bar-h {
+    width: 20px;
+    height: 2.5px;
+}
+
+.faq-bar-v {
+    width: 2.5px;
+    height: 20px;
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.faq-item[data-open] .faq-bar-v {
+    opacity: 0;
+    transform: rotate(90deg) scaleY(0);
+}
+
+.faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 541px) {
+    .faq-item {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .faq-item[data-open] {
+        border-radius: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 16px 0;
+    }
+
+    .faq-icon-wrap {
+        width: 25px;
+        height: 25px;
+    }
+
+    .faq-bar-h {
+        width: 15px;
+        height: 2px;
+    }
+
+    .faq-bar-v {
+        width: 2px;
+        height: 15px;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}

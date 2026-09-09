@@ -1,0 +1,178 @@
+{
+    "key": "group_header_settings",
+    "title": "Header Settings",
+    "fields": [
+        {
+            "key": "field_header_logo_image",
+            "label": "Logo Image",
+            "name": "header_logo_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1,
+            "instructions": "Shown in the site header. Used only if no Site Icon/Custom Logo is set under Appearance → Customize."
+        },
+        {
+            "key": "field_header_nav_tab",
+            "label": "Main Navigation Links",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_header_nav_1_label",
+            "label": "Nav Link 1 - Label",
+            "name": "header_nav_1_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_header_nav_1_link",
+            "label": "Nav Link 1 - URL",
+            "name": "header_nav_1_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /about-us, #anchor, or https://example.com"
+        },
+        {
+            "key": "field_header_nav_2_label",
+            "label": "Nav Link 2 - Label",
+            "name": "header_nav_2_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_header_nav_2_link",
+            "label": "Nav Link 2 - URL",
+            "name": "header_nav_2_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /about-us, #anchor, or https://example.com"
+        },
+        {
+            "key": "field_header_nav_3_label",
+            "label": "Nav Link 3 - Label",
+            "name": "header_nav_3_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_header_nav_3_link",
+            "label": "Nav Link 3 - URL",
+            "name": "header_nav_3_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /about-us, #anchor, or https://example.com"
+        },
+        {
+            "key": "field_header_solutions_tab",
+            "label": "Solutions Dropdown Links",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_header_solutions_label",
+            "label": "Solutions Trigger Label",
+            "name": "header_solutions_label",
+            "type": "text",
+            "required": 1,
+            "instructions": "Text shown on the dropdown trigger itself (e.g. \"Solutions\")"
+        },
+        {
+            "key": "field_header_solutions_1_label",
+            "label": "Solutions Link 1 - Label",
+            "name": "header_solutions_1_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_header_solutions_1_link",
+            "label": "Solutions Link 1 - URL",
+            "name": "header_solutions_1_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /solutions/enterprise-network"
+        },
+        {
+            "key": "field_header_solutions_2_label",
+            "label": "Solutions Link 2 - Label",
+            "name": "header_solutions_2_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_header_solutions_2_link",
+            "label": "Solutions Link 2 - URL",
+            "name": "header_solutions_2_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /solutions/sme-internet"
+        },
+        {
+            "key": "field_header_solutions_3_label",
+            "label": "Solutions Link 3 - Label",
+            "name": "header_solutions_3_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_header_solutions_3_link",
+            "label": "Solutions Link 3 - URL",
+            "name": "header_solutions_3_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /solutions/home-internet"
+        },
+        {
+            "key": "field_header_solutions_4_label",
+            "label": "Solutions Link 4 - Label",
+            "name": "header_solutions_4_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_header_solutions_4_link",
+            "label": "Solutions Link 4 - URL",
+            "name": "header_solutions_4_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /solutions/carrier-services"
+        },
+        {
+            "key": "field_header_cta_tab",
+            "label": "CTA Button",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_header_cta_text",
+            "label": "Button Text",
+            "name": "header_cta_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_header_cta_link",
+            "label": "Button Link",
+            "name": "header_cta_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #anchor, or https://example.com"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "header-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

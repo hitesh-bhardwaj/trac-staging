@@ -3,73 +3,36 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$client_logos = [
-    [
-        'src' =>
-            get_template_directory_uri() . '/src/imgs/home/clients/pccw.png',
-        'alt' => 'PCCW',
-    ],
-    [
-        'src' =>
-            get_template_directory_uri() .
-            '/src/imgs/home/clients/us-embassy.png',
-        'alt' => 'US Embassy',
-    ],
-    [
-        'src' =>
-            get_template_directory_uri() .
-            '/src/imgs/home/clients/goodlife.png',
-        'alt' => 'GoodLife',
-    ],
-    [
-        'src' =>
-            get_template_directory_uri() . '/src/imgs/home/clients/vodacom.png',
-        'alt' => 'Vodacom',
-    ],
-    [
-        'src' =>
-            get_template_directory_uri() . '/src/imgs/home/clients/nttdata.png',
-        'alt' => 'NTT Data',
-    ],
-    [
-        'src' =>
-            get_template_directory_uri() .
-            '/src/imgs/home/clients/total-energies.png',
-        'alt' => 'Total Energies',
-    ],
-    [
-        'src' =>
-            get_template_directory_uri() . '/src/imgs/home/clients/pwc.png',
-        'alt' => 'PWC',
-    ],
-    [
-        'src' =>
-            get_template_directory_uri() . '/src/imgs/home/clients/serena.png',
-        'alt' => 'Serena Hotels',
-    ],
-    [
-        'src' =>
-            get_template_directory_uri() . '/src/imgs/home/clients/rca.png',
-        'alt' => 'RCA',
-    ],
-];
+$client_logos = [];
+
+for ($i = 1; $i <= 9; $i++) {
+    $image = get_field("client_{$i}_image");
+    $alt = get_field("client_{$i}_alt");
+
+    if ($image) {
+        $client_logos[] = [
+            'src' => is_array($image) ? $image['url'] : $image,
+            'alt' => $alt,
+        ];
+    }
+}
 ?>
 
-<section class="relative bg-white overflow-hidden min-h-auto" data-section="clients">
+<section class="relative bg-white overflow-hidden min-h-auto" data-section="clients" id="clients">
     <div class="clients-container w-full  py-[3.5vw] md:py-0">
         <div
-            class="clients-marquee"
+            class="clients-marquee w-full overflow-hidden [--clients-logo-gap:3vw] md:[--clients-logo-gap:40px] sm:[--clients-logo-gap:28px]"
             data-animate="fade-up"
             data-delay="0.2"
         >
-            <div class="clients-marquee-track">
+            <div class="clients-marquee-track flex w-max [animation:clients-marquee_28s_linear_infinite] [will-change:transform] hover:[animation-play-state:paused] motion-reduce:w-auto motion-reduce:flex-wrap motion-reduce:animate-none">
                 <?php for ($set = 0; $set < 2; $set++): ?>
-                    <div class="clients-marquee-group" aria-hidden="<?php echo $set ===
+                    <div class="clients-marquee-group flex flex-[0_0_auto] gap-[var(--clients-logo-gap)] pr-[var(--clients-logo-gap)] motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:[&[aria-hidden='true']]:hidden [&[aria-hidden='true']]:sm:hidden" aria-hidden="<?php echo $set ===
                     0
                         ? 'false'
                         : 'true'; ?>">
                         <?php foreach ($client_logos as $logo): ?>
-                            <div class="client-logo-card flex items-center justify-center p-[2vw] aspect-[327/239] md:p-6 sm:p-4">
+                            <div class="client-logo-card flex w-[17.031vw] flex-[0_0_17.031vw] items-center justify-center p-[2vw] aspect-[327/239] md:w-[220px] md:flex-[0_0_220px] md:p-6 sm:aspect-square sm:w-[170px] sm:flex-[0_0_170px] sm:p-4">
                                 <img
                                     src="<?php echo esc_url($logo['src']); ?>"
                                     alt="<?php echo $set === 0

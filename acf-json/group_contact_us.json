@@ -1,0 +1,169 @@
+{
+    "key": "group_contact_us_page",
+    "title": "Contact Us Page",
+    "fields": [
+        {
+            "key": "field_contact_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_contact_hero_title_line_1",
+            "label": "Hero Title",
+            "name": "hero_title_line_1",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_contact_hero_description",
+            "label": "Hero Description",
+            "name": "hero_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 2
+        },
+        {
+            "key": "field_contact_email",
+            "label": "Contact Email",
+            "name": "contact_email",
+            "type": "email",
+            "required": 1
+        },
+        {
+            "key": "field_contact_phone",
+            "label": "Contact Phone",
+            "name": "contact_phone",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_contact_social_facebook",
+            "label": "Facebook URL",
+            "name": "contact_social_facebook",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_contact_social_facebook_icon",
+            "label": "Facebook Icon",
+            "name": "contact_social_facebook_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_contact_social_twitter",
+            "label": "X (Twitter) URL",
+            "name": "contact_social_twitter",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_contact_social_twitter_icon",
+            "label": "X (Twitter) Icon",
+            "name": "contact_social_twitter_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_contact_social_instagram",
+            "label": "Instagram URL",
+            "name": "contact_social_instagram",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_contact_social_instagram_icon",
+            "label": "Instagram Icon",
+            "name": "contact_social_instagram_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_contact_social_linkedin",
+            "label": "LinkedIn URL",
+            "name": "contact_social_linkedin",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_contact_social_linkedin_icon",
+            "label": "LinkedIn Icon",
+            "name": "contact_social_linkedin_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_contact_map_tab",
+            "label": "Map",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_contact_map_label",
+            "label": "Section Label",
+            "name": "contact_map_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_contact_map_title",
+            "label": "Section Title",
+            "name": "contact_map_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_contact_map_image",
+            "label": "Map Image (SVG)",
+            "name": "contact_map_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_contact_office_1_name",
+            "label": "Office Name",
+            "name": "contact_office_1_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_contact_office_1_address",
+            "label": "Office Address",
+            "name": "contact_office_1_address",
+            "type": "textarea",
+            "required": 1,
+            "rows": 2
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-contact-us.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

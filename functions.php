@@ -16,6 +16,20 @@ define('TRAC_DIR', get_template_directory());
 define('TRAC_URI', get_template_directory_uri());
 
 /**
+ * Escape a text field value for output while still allowing editors to
+ * force a line break by typing <br/> (or <br>) inside an ACF text field.
+ * Everything else is escaped exactly like esc_html().
+ */
+function trac_esc_html($text)
+{
+    $text = (string) $text;
+    $placeholder = '%%TRAC_BR%%';
+    $text = preg_replace('#<br\s*/?>#i', $placeholder, $text);
+    $text = esc_html($text);
+    return str_replace(esc_html($placeholder), '<br />', $text);
+}
+
+/**
  * Only auto-create/move pages in non-production environments.
  * This avoids unexpected writes for real visitors on production.
  */
@@ -127,39 +141,76 @@ function trac_ensure_solutions_parent_page()
     return !is_wp_error($page_id) && $page_id ? (int) $page_id : 0;
 }
 
-function trac_ensure_enterprise_network_page()
+function trac_normalize_solution_url($url)
+{
+    if (!is_string($url) || $url === '') {
+        return $url;
+    }
+
+    $solution_slugs = [
+        'enterprise-network',
+        'sme-internet',
+        'home-internet',
+        'carrier-services',
+    ];
+
+    $path = wp_parse_url($url, PHP_URL_PATH);
+    $path = trim(is_string($path) ? $path : $url, '/');
+
+    foreach ($solution_slugs as $slug) {
+        if ($path === "products/{$slug}") {
+            return '/solutions/' . $slug;
+        }
+    }
+
+    return $url;
+}
+
+/**
+ * Ensure a page exists at $slug (creating it if missing), optionally nested
+ * under $parent_id and/or forced onto a specific page template. Shared by
+ * every `trac_ensure_*_page()` below so each one only has to state what's
+ * different about its page rather than repeat the lookup/create/flush dance.
+ *
+ * @param string $slug
+ * @param string $title
+ * @param string|null $template Page template file to force, or null to leave it alone.
+ * @param int $parent_id Parent page ID, or 0 for a top-level page.
+ */
+function trac_ensure_page($slug, $title, $template = null, $parent_id = 0)
 {
     if (!trac_can_autocreate_pages()) {
         return;
     }
 
-    $solutions_id = trac_ensure_solutions_parent_page();
-    if (!$solutions_id) {
-        return;
-    }
-
-    $slug = 'enterprise-network';
     $existing = trac_get_page_by_slug($slug);
     $did_change = false;
 
     if ($existing instanceof WP_Post) {
-        if ((int) $existing->post_parent !== (int) $solutions_id) {
+        if ($parent_id && (int) $existing->post_parent !== (int) $parent_id) {
             wp_update_post([
                 'ID' => $existing->ID,
-                'post_parent' => $solutions_id,
+                'post_parent' => $parent_id,
             ]);
             $did_change = true;
+        }
+
+        if ($template) {
+            update_post_meta($existing->ID, '_wp_page_template', $template);
         }
     } else {
         $page_id = wp_insert_post([
             'post_type' => 'page',
             'post_status' => 'publish',
-            'post_title' => 'Enterprise Network',
+            'post_title' => $title,
             'post_name' => $slug,
-            'post_parent' => $solutions_id,
+            'post_parent' => $parent_id,
         ]);
 
         if (!is_wp_error($page_id) && $page_id) {
+            if ($template) {
+                update_post_meta($page_id, '_wp_page_template', $template);
+            }
             $did_change = true;
         }
     }
@@ -168,6 +219,21 @@ function trac_ensure_enterprise_network_page()
         // Needed when permalinks are enabled and this slug hasn't existed before.
         flush_rewrite_rules(false);
     }
+}
+
+function trac_ensure_enterprise_network_page()
+{
+    $solutions_id = trac_ensure_solutions_parent_page();
+    if (!$solutions_id) {
+        return;
+    }
+
+    trac_ensure_page(
+        'enterprise-network',
+        'Enterprise Network',
+        null,
+        $solutions_id,
+    );
 }
 add_action('init', 'trac_ensure_enterprise_network_page');
 
@@ -176,57 +242,18 @@ add_action('init', 'trac_ensure_enterprise_network_page');
  */
 function trac_ensure_home_internet_page()
 {
-    if (!trac_can_autocreate_pages()) {
-        return;
-    }
-
     $solutions_id = trac_ensure_solutions_parent_page();
     if (!$solutions_id) {
         return;
     }
 
-    $slug = 'home-internet';
-    $existing = trac_get_page_by_slug($slug);
-
-    $did_change = false;
-
-    if ($existing instanceof WP_Post) {
-        if ((int) $existing->post_parent !== (int) $solutions_id) {
-            wp_update_post([
-                'ID' => $existing->ID,
-                'post_parent' => $solutions_id,
-            ]);
-            $did_change = true;
-        }
-
-        // Force the Home Internet template for clarity (slug-based template also works).
-        update_post_meta(
-            $existing->ID,
-            '_wp_page_template',
-            'page-home-internet.php',
-        );
-    } else {
-        $page_id = wp_insert_post([
-            'post_type' => 'page',
-            'post_status' => 'publish',
-            'post_title' => 'Home Internet',
-            'post_name' => $slug,
-            'post_parent' => $solutions_id,
-        ]);
-
-        if (!is_wp_error($page_id) && $page_id) {
-            update_post_meta(
-                $page_id,
-                '_wp_page_template',
-                'page-home-internet.php',
-            );
-            $did_change = true;
-        }
-    }
-
-    if ($did_change) {
-        flush_rewrite_rules(false);
-    }
+    // Force the Home Internet template for clarity (slug-based template also works).
+    trac_ensure_page(
+        'home-internet',
+        'Home Internet',
+        'page-home-internet.php',
+        $solutions_id,
+    );
 }
 add_action('init', 'trac_ensure_home_internet_page');
 
@@ -235,56 +262,17 @@ add_action('init', 'trac_ensure_home_internet_page');
  */
 function trac_ensure_carrier_services_page()
 {
-    if (!trac_can_autocreate_pages()) {
-        return;
-    }
-
     $solutions_id = trac_ensure_solutions_parent_page();
     if (!$solutions_id) {
         return;
     }
 
-    $slug = 'carrier-services';
-    $existing = trac_get_page_by_slug($slug);
-
-    $did_change = false;
-
-    if ($existing instanceof WP_Post) {
-        if ((int) $existing->post_parent !== (int) $solutions_id) {
-            wp_update_post([
-                'ID' => $existing->ID,
-                'post_parent' => $solutions_id,
-            ]);
-            $did_change = true;
-        }
-
-        update_post_meta(
-            $existing->ID,
-            '_wp_page_template',
-            'page-carrier-services.php',
-        );
-    } else {
-        $page_id = wp_insert_post([
-            'post_type' => 'page',
-            'post_status' => 'publish',
-            'post_title' => 'Carrier Services',
-            'post_name' => $slug,
-            'post_parent' => $solutions_id,
-        ]);
-
-        if (!is_wp_error($page_id) && $page_id) {
-            update_post_meta(
-                $page_id,
-                '_wp_page_template',
-                'page-carrier-services.php',
-            );
-            $did_change = true;
-        }
-    }
-
-    if ($did_change) {
-        flush_rewrite_rules(false);
-    }
+    trac_ensure_page(
+        'carrier-services',
+        'Carrier Services',
+        'page-carrier-services.php',
+        $solutions_id,
+    );
 }
 add_action('init', 'trac_ensure_carrier_services_page');
 
@@ -293,132 +281,26 @@ add_action('init', 'trac_ensure_carrier_services_page');
  */
 function trac_ensure_sme_internet_page()
 {
-    if (!trac_can_autocreate_pages()) {
-        return;
-    }
-
     $solutions_id = trac_ensure_solutions_parent_page();
     if (!$solutions_id) {
         return;
     }
 
-    $slug = 'sme-internet';
-    $existing = trac_get_page_by_slug($slug);
-
-    $did_change = false;
-
-    if ($existing instanceof WP_Post) {
-        if ((int) $existing->post_parent !== (int) $solutions_id) {
-            wp_update_post([
-                'ID' => $existing->ID,
-                'post_parent' => $solutions_id,
-            ]);
-            $did_change = true;
-        }
-
-        update_post_meta(
-            $existing->ID,
-            '_wp_page_template',
-            'page-sme-internet.php',
-        );
-    } else {
-        $page_id = wp_insert_post([
-            'post_type' => 'page',
-            'post_status' => 'publish',
-            'post_title' => 'SME Internet',
-            'post_name' => $slug,
-            'post_parent' => $solutions_id,
-        ]);
-
-        if (!is_wp_error($page_id) && $page_id) {
-            update_post_meta(
-                $page_id,
-                '_wp_page_template',
-                'page-sme-internet.php',
-            );
-            $did_change = true;
-        }
-    }
-
-    if ($did_change) {
-        flush_rewrite_rules(false);
-    }
+    trac_ensure_page(
+        'sme-internet',
+        'SME Internet',
+        'page-sme-internet.php',
+        $solutions_id,
+    );
 }
 add_action('init', 'trac_ensure_sme_internet_page');
-
-/**
- * Ensure Partners page exists (so /partners doesn't 404 on staging/local).
- */
-function trac_ensure_partners_page()
-{
-    if (!trac_can_autocreate_pages()) {
-        return;
-    }
-
-    $slug = 'partners';
-    $existing = trac_get_page_by_slug($slug);
-    if ($existing instanceof WP_Post) {
-        return;
-    }
-
-    $page_id = wp_insert_post([
-        'post_type' => 'page',
-        'post_status' => 'publish',
-        'post_title' => 'Partners',
-        'post_name' => $slug,
-    ]);
-
-    if (!is_wp_error($page_id) && $page_id) {
-        // Force the Partners template for clarity (slug-based template also works).
-        update_post_meta($page_id, '_wp_page_template', 'page-partners.php');
-
-        // Needed when permalinks are enabled and this slug hasn't existed before.
-        flush_rewrite_rules(false);
-    }
-}
-add_action('init', 'trac_ensure_partners_page');
 
 /**
  * Ensure Contact Us page exists (so /contact-us doesn't 404 on staging/local).
  */
 function trac_ensure_contact_us_page()
 {
-    if (!trac_can_autocreate_pages()) {
-        return;
-    }
-
-    $slug = 'contact-us';
-    $existing = trac_get_page_by_slug($slug);
-    $did_change = false;
-
-    if ($existing instanceof WP_Post) {
-        update_post_meta(
-            $existing->ID,
-            '_wp_page_template',
-            'page-contact-us.php',
-        );
-    } else {
-        $page_id = wp_insert_post([
-            'post_type' => 'page',
-            'post_status' => 'publish',
-            'post_title' => 'Contact Us',
-            'post_name' => $slug,
-            'post_parent' => 0,
-        ]);
-
-        if (!is_wp_error($page_id) && $page_id) {
-            update_post_meta(
-                $page_id,
-                '_wp_page_template',
-                'page-contact-us.php',
-            );
-            $did_change = true;
-        }
-    }
-
-    if ($did_change) {
-        flush_rewrite_rules(false);
-    }
+    trac_ensure_page('contact-us', 'Contact Us', 'page-contact-us.php');
 }
 add_action('init', 'trac_ensure_contact_us_page');
 
@@ -438,23 +320,18 @@ function trac_redirect_legacy_product_routes()
     }
     $path = trim((string) $path, '/');
 
-    if ($path === 'home-internet') {
-        wp_safe_redirect(home_url('/solutions/home-internet'), 301);
-        exit();
-    }
+    $legacy_routes = [
+        'home-internet',
+        'carrier-services',
+        'enterprise-network',
+        'sme-internet',
+    ];
 
-    if ($path === 'carrier-services') {
-        wp_safe_redirect(home_url('/solutions/carrier-services'), 301);
-        exit();
-    }
-    if ($path === 'enterprise-network') {
-        wp_safe_redirect(home_url('/solutions/enterprise-network'), 301);
-        exit();
-    }
-
-    if ($path === 'sme-internet') {
-        wp_safe_redirect(home_url('/solutions/sme-internet'), 301);
-        exit();
+    foreach ($legacy_routes as $slug) {
+        if ($path === $slug || $path === "products/{$slug}") {
+            wp_safe_redirect(home_url('/solutions/' . $slug), 301);
+            exit();
+        }
     }
 }
 add_action('template_redirect', 'trac_redirect_legacy_product_routes', 0);
@@ -654,12 +531,14 @@ function trac_acf_options_page()
         acf_add_options_sub_page([
             'page_title' => __('Header Settings', 'trac'),
             'menu_title' => __('Header', 'trac'),
+            'menu_slug' => 'header-settings',
             'parent_slug' => 'theme-settings',
         ]);
 
         acf_add_options_sub_page([
             'page_title' => __('Footer Settings', 'trac'),
             'menu_title' => __('Footer', 'trac'),
+            'menu_slug' => 'footer-settings',
             'parent_slug' => 'theme-settings',
         ]);
     }
@@ -676,6 +555,54 @@ function trac_image_sizes()
     add_image_size('card-lg', 800, 600, true);
 }
 add_action('after_setup_theme', 'trac_image_sizes');
+
+/**
+ * Allow SVG uploads (WordPress core blocks them by default).
+ * Restricted to users who can already upload files (e.g. editors/admins).
+ */
+function trac_allow_svg_upload($mimes)
+{
+    if (current_user_can('upload_files')) {
+        $mimes['svg'] = 'image/svg+xml';
+    }
+    return $mimes;
+}
+add_filter('upload_mimes', 'trac_allow_svg_upload');
+
+function trac_fix_svg_filetype_check($data, $file, $filename, $mimes)
+{
+    if (!$data['type']) {
+        $filetype = wp_check_filetype($filename, $mimes);
+        if ($filetype['ext'] === 'svg') {
+            $data['ext'] = 'svg';
+            $data['type'] = 'image/svg+xml';
+        }
+    }
+    return $data;
+}
+add_filter(
+    'wp_check_filetype_and_ext',
+    'trac_fix_svg_filetype_check',
+    10,
+    4,
+);
+
+/**
+ * Split a textarea value into separate lines/paragraphs on blank lines,
+ * trimming each and dropping empty ones. Lets a single ACF field replace
+ * what used to be several "Line 1" / "Line 2" fields.
+ *
+ * @return string[]
+ */
+function trac_split_lines($text)
+{
+    if (!$text) {
+        return [];
+    }
+    $parts = preg_split('/\R{2,}/', trim((string) $text));
+    $parts = array_map('trim', $parts);
+    return array_values(array_filter($parts, static fn($p) => $p !== ''));
+}
 
 /**
  * Helper: Get section template
@@ -700,11 +627,9 @@ function trac_get_section($section_name, $args = [])
 function trac_get_faq_section_args($overrides = [])
 {
     $section_label =
-        $overrides['section_label'] ??
-        (get_field('faq_section_label') ?? 'FAQs');
+        $overrides['section_label'] ?? get_field('faq_section_label');
     $section_title =
-        $overrides['section_title'] ??
-        (get_field('faq_section_title') ?? 'Any Questions? We Got You.');
+        $overrides['section_title'] ?? get_field('faq_section_title');
     $display_mode =
         $overrides['display_mode'] ??
         (get_field('faq_display_mode') ?? 'latest');
@@ -770,50 +695,8 @@ function trac_get_faq_section_args($overrides = [])
         wp_reset_postdata();
     }
 
-    if (!$items) {
-        $items = $overrides['fallback_faqs'] ?? [
-            [
-                'question' => 'Is TrAC just an ISP?',
-                'answer' =>
-                    'No, TrAC is more than an ISP. It provides internet, private networks, cloud, hosting, and carrier services, and is now connected in to the CC platform. TrAC is using its connectivity to enable access in opportunity across Rwanda and East Africa. ',
-            ],
-            [
-                'question' => 'How is TrAC different from other providers?',
-                'answer' =>
-                    'An uncontended service, resilient network design, business-grade support, and the ability to serve both end customers and carriers. TrAC guarantees you’re always get what you pay for – backed by a fully protected ring network and 24/7 support from Kigali.',
-            ],
-            [
-                'question' => 'What does uncontended mean in practice?',
-                'answer' =>
-                    'It means your connection is designed to deliver more consistent performance, even during busy periods. Rather than competing for bandwidth with large numbers of users, you can expect a more reliable online experience when it matters most.',
-            ],
-            [
-                'question' => 'Where does TrAC operate?',
-                'answer' =>
-                    'Headquartered in Kigali, Rwanda, TrAC delivers connectivity solutions across Rwanda and the wider East African region, including Uganda, Kenya, Tanzania, and Burundi.',
-            ],
-            [
-                'question' => 'What is Connecting Communities?',
-                'answer' =>
-                    'Connecting Communities (CC) is a platform. Enabled by connectivity, CC works to create access to essential services and tools in hard to reach communities. Bringing reliable Internet to more communities helps create opportunities to access services such as finance, clean water, agriculture, education, and healthcare.',
-            ],
-            [
-                'question' => 'What are Community Smart Hubs?',
-                'answer' =>
-                    'Community Smart Hubs are physical locations enabled by TrAC connectivity, designed to bring digital tools and essential services closer to the communities they serve.',
-            ],
-            [
-                'question' =>
-                    'How is TrAC supporting areas with limited access?',
-                'answer' =>
-                    'TrAC is expanding its network to bring reliable connectivity to more people and places. By improving access and strengthening infrastructure, we help communities stay connected to the opportunities and services that matter most.',
-            ],
-            [
-                'question' => 'What does long-term partnership mean at TrAC?',
-                'answer' =>
-                    'It means TrAC stays involved after installation or go-live, with support, visibility, and ongoing improvement as customer needs change over time.',
-            ],
-        ];
+    if (!$items && !empty($overrides['fallback_faqs'])) {
+        $items = $overrides['fallback_faqs'];
     }
 
     return array_merge($overrides, [
@@ -891,22 +774,41 @@ add_action('init', 'trac_maybe_create_core_pages');
  */
 function trac_disable_gutenberg($use_block_editor, $post)
 {
+    // All pages are fully ACF-driven, so use the classic editor everywhere
+    // for a consistent editing experience (ACF fields appear directly on
+    // the page, no Gutenberg block canvas above them).
     if ($post->post_type === 'page') {
-        $template = get_page_template_slug($post->ID);
-
-        // Disable for Connecting Communities template
-        if ($template === 'page-connecting-communities.php') {
-            return false;
-        }
-
-        // Check if page has flexible content layout
-        if (get_field('page_sections', $post->ID)) {
-            return false;
-        }
+        return false;
     }
     return $use_block_editor;
 }
 add_filter('use_block_editor_for_post', 'trac_disable_gutenberg', 10, 2);
+
+/**
+ * Hide the default (empty) "Content" editor box on pages that use one of
+ * our custom ACF-driven templates, or that are the static front page.
+ * None of these templates call the_content(), so the box is always empty.
+ */
+function trac_hide_empty_content_editor()
+{
+    $screen = get_current_screen();
+    if (!$screen || $screen->base !== 'post' || $screen->id !== 'page') {
+        return;
+    }
+
+    $post_id = isset($_GET['post']) ? (int) $_GET['post'] : 0;
+    if (!$post_id) {
+        return;
+    }
+
+    $template = get_page_template_slug($post_id);
+    $is_front_page = (int) get_option('page_on_front') === $post_id;
+
+    if ($template !== '' || $is_front_page) {
+        remove_post_type_support('page', 'editor');
+    }
+}
+add_action('current_screen', 'trac_hide_empty_content_editor');
 
 /**
  * Fix REST API 403 errors

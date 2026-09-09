@@ -4,81 +4,195 @@
  *
  * @package Trac
  */
+$trac_footer_logo = get_field('footer_logo_image', 'option');
+$trac_footer_logo_mobile = get_field('footer_logo_image_mobile', 'option');
+$trac_footer_brand_text = get_field('footer_brand_text', 'option');
+$trac_footer_contact_heading = get_field('footer_contact_heading', 'option');
+$trac_footer_email = get_field('footer_email', 'option');
+$trac_footer_phone = get_field('footer_phone', 'option');
+$trac_footer_company_heading = get_field('footer_company_heading', 'option');
+$trac_footer_solutions_heading = get_field(
+    'footer_solutions_heading',
+    'option',
+);
+$trac_footer_copyright_text = get_field('footer_copyright_text', 'option');
+
+$trac_footer_company_links = [];
+for ($i = 1; $i <= 4; $i++) {
+    $trac_footer_company_links[] = [
+        'label' => get_field("footer_company_{$i}_label", 'option'),
+        'link' => get_field("footer_company_{$i}_link", 'option'),
+    ];
+}
+
+$trac_footer_solutions_links = [];
+for ($i = 1; $i <= 4; $i++) {
+    $trac_footer_solutions_links[] = [
+        'label' => get_field("footer_solutions_{$i}_label", 'option'),
+        'link' => trac_normalize_solution_url(
+            get_field("footer_solutions_{$i}_link", 'option'),
+        ),
+    ];
+}
+
+$trac_footer_social = [
+    'facebook' => [
+        'url' => get_field('footer_social_facebook', 'option'),
+        'icon' => get_field('footer_social_facebook_icon', 'option'),
+        'label' => 'Facebook',
+    ],
+    'twitter' => [
+        'url' => get_field('footer_social_twitter', 'option'),
+        'icon' => get_field('footer_social_twitter_icon', 'option'),
+        'label' => 'X',
+    ],
+    'instagram' => [
+        'url' => get_field('footer_social_instagram', 'option'),
+        'icon' => get_field('footer_social_instagram_icon', 'option'),
+        'label' => 'Instagram',
+    ],
+    'linkedin' => [
+        'url' => get_field('footer_social_linkedin', 'option'),
+        'icon' => get_field('footer_social_linkedin_icon', 'option'),
+        'label' => 'LinkedIn',
+    ],
+];
 ?>
 
     <footer id="site-footer" class="site-footer relative " data-parallax-footer>
-        <div class="footer-container w-full px-[5vw] pt-[5.469vw] pb-[2vw] md:px-[4vw] md:pt-20 md:pb-16 sm:px-[6vw] sm:pt-16 sm:pb-12" data-footer-clippath>
+        <div class="footer-container w-full px-[5vw] pt-[3.6vw] pb-[1.6vw] md:px-[4vw] md:pt-20 md:pb-16 sm:px-[6vw] sm:pt-16 sm:pb-12" data-footer-clippath>
             <!-- Footer Top -->
-            <div class="footer-top grid grid-cols-[1fr_auto_auto]  mb-[5vw] md:grid-cols-1 md:gap-12 md:mb-16 sm:mb-12">
+            <div class="footer-top grid grid-cols-[1fr_auto_auto]  mb-[3.2vw] md:grid-cols-1 md:gap-12 md:mb-16 sm:mb-12">
                 <!-- Brand Column -->
                 <div class="footer-brand max-w-[33.854vw] md:max-w-full ">
                     <!-- Logo -->
                        <div class="site-logo flex flex-col md:flex-row  gap-3 md:mb-8">
 
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[7vw] brightness-50 md:w-[15vw] sm:w-[25vw]" alt="Trac Logo">
-                        <span class=" h-[1px] w-[5vw] ml-[1vw] bg-brand-navy md:hidden"></span>
-                     <span class=" font-heading text-[3.333vw] text-brand-navy md:text-5xl sm:text-4xl">TrAC</span>
+                        <?php if ($trac_footer_logo): ?>
+                            <img src="<?php echo esc_url(
+                                $trac_footer_logo,
+                            ); ?>" class="w-[8vw] md:hidden" alt="<?php bloginfo(
+                                'name',
+                            ); ?>">
+                        <?php endif; ?>
+                        <?php if ($trac_footer_logo_mobile): ?>
+                            <img src="<?php echo esc_url(
+                                $trac_footer_logo_mobile,
+                            ); ?>" class="hidden md:block md:w-24 sm:w-[50vw] sm:h-auto" alt="<?php bloginfo(
+                                'name',
+                            ); ?>">
+                        <?php endif; ?>
+                        <span class=" h-[1px] w-[5.4vw] ml-[1vw] bg-brand-navy sm:hidden"></span>
+                     <span class="font-subheading text-[3.65vw] text-brand-navy md:text-5xl sm:text-4xl sm:hidden"><?php echo trac_esc_html(
+                         $trac_footer_brand_text,
+                     ); ?></span>
             </div>
 
-                    
+
 
                     <!-- Contact Details -->
-                    <div class="footer-contact">
-                        <h4 class="font-body !font-normal text-24 text-text-primary md:text-[3vw] sm:text-[5vw] mb-2">Connect with us</h4>
+                    <div class="footer-contact md:hidden">
+                        <h4 class="font-body !font-normal text-24 text-text-primary md:text-[3vw] sm:text-[5vw] mb-2"><?php echo trac_esc_html(
+                            $trac_footer_contact_heading,
+                        ); ?></h4>
                         <div class="contact-links flex flex-col gap-[0.521vw] md:gap-2">
-                            <div class="under-multi-parent w-fit">
-                                <a href="mailto:info@trac.africa" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
-                                    info@trac.africa
-                                </a>
-                            </div>
-                            <div class="under-multi-parent w-fit">
-                                <a href="tel:+250733000190" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
-                                    +250 733 000 190
-                                </a>
-                            </div>
+                            <?php if ($trac_footer_email): ?>
+                                <div class="under-multi-parent w-fit">
+                                    <a href="mailto:<?php echo esc_attr(
+                                        $trac_footer_email,
+                                    ); ?>" class="font-body text-[1.15vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
+                                        <?php echo trac_esc_html(
+                                            $trac_footer_email,
+                                        ); ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($trac_footer_phone): ?>
+                                <div class="under-multi-parent w-fit">
+                                    <a href="tel:<?php echo esc_attr(
+                                        preg_replace(
+                                            '/[^0-9+]/',
+                                            '',
+                                            $trac_footer_phone,
+                                        ),
+                                    ); ?>" class="font-body text-[1.15vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
+                                        <?php echo trac_esc_html(
+                                            $trac_footer_phone,
+                                        ); ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
 
                 <!-- Navigation Columns -->
-                <div class="footer-nav-columns flex gap-[8vw] md:gap-16 sm:gap-12 sm:flex-wrap">
+                <div class="footer-nav-columns flex gap-[8vw] md:gap-16 sm:gap-[30vw] sm:flex-wrap">
                     <!-- Company Column -->
                     <div class="footer-column">
-                        <h4 class="font-body text-24 !font-normal text-text-primary mb-[1vw] md:text-[3vw] md:mb-8 sm:text-[5vw] sm:mb-3">Company</h4>
+                        <h4 class="font-body text-24 !font-normal text-text-primary mb-[1vw] md:text-[3vw] md:mb-8 sm:text-[5vw] sm:mb-3"><?php echo trac_esc_html(
+                            $trac_footer_company_heading,
+                        ); ?></h4>
                         <ul class="footer-links flex flex-col gap-3">
-                            <li class="under-multi-parent">
-                                <a href="/about-us" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">About Us</a>
-                            </li>
-                            <li class="under-multi-parent">
-                                <a href="/connecting-communities/" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Communities</a>
-                            </li>
-                            
-                            <li class="under-multi-parent">
-                                <a href="/careers" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Careers</a>
-                            </li>
-                            <li class="under-multi-parent">
-                                <a href="/contact-us" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Contact Us</a>
-                            </li>
+                            <?php foreach ($trac_footer_company_links as $link): ?>
+                                <li class="under-multi-parent">
+                                    <a href="<?php echo esc_url(
+                                        $link['link'],
+                                    ); ?>" class="font-body text-[1.15vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi"><?php echo trac_esc_html(
+    $link['label'],
+); ?></a>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
 
                     <!-- Product Column -->
                     <div class="footer-column">
-                        <h4 class="font-body text-24 text-text-primary mb-[1vw] md:text-[3vw] md:mb-8 sm:text-[5vw] sm:mb-3 !font-normal">Solutions</h4>
+                        <h4 class="font-body text-24 text-text-primary mb-[1vw] md:text-[3vw] md:mb-8 sm:text-[5vw] sm:mb-3 !font-normal"><?php echo trac_esc_html(
+                            $trac_footer_solutions_heading,
+                        ); ?></h4>
                         <ul class="footer-links flex flex-col gap-3">
-                            <li class="under-multi-parent">
-                                <a href="/solutions/enterprise-network" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Enterprise Network</a>
-                            </li>
-                            <li class="under-multi-parent">
-                                <a href="/solutions/sme-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">SME Internet</a>
-                            </li>
-                            <li class="under-multi-parent">
-                                <a href="/solutions/home-internet" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Home Internet</a>
-                            </li>
-                            <li class="under-multi-parent">
-                                <a href="/solutions/carrier-services/" class="font-body text-[1.042vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">Wholesale & Carrier</a>
-                            </li>
+                            <?php foreach ($trac_footer_solutions_links as $link): ?>
+                                <li class="under-multi-parent">
+                                    <a href="<?php echo esc_url(
+                                        $link['link'],
+                                    ); ?>" class="font-body text-[1.15vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi"><?php echo trac_esc_html(
+    $link['label'],
+); ?></a>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
+                    </div>
+                </div>
+
+                <!-- Contact Details (Mobile) -->
+                <div class="footer-contact hidden md:block">
+                    <h4 class="font-body !font-normal text-24 text-text-primary md:text-[3vw] sm:text-[5vw] mb-2"><?php echo trac_esc_html(
+                        $trac_footer_contact_heading,
+                    ); ?></h4>
+                    <div class="contact-links flex flex-col gap-[0.521vw] md:gap-2">
+                        <?php if ($trac_footer_email): ?>
+                            <div class="under-multi-parent w-fit">
+                                <a href="mailto:<?php echo esc_attr(
+                                    $trac_footer_email,
+                                ); ?>" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
+                                    <?php echo trac_esc_html($trac_footer_email); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($trac_footer_phone): ?>
+                            <div class="under-multi-parent w-fit">
+                                <a href="tel:<?php echo esc_attr(
+                                    preg_replace(
+                                        '/[^0-9+]/',
+                                        '',
+                                        $trac_footer_phone,
+                                    ),
+                                ); ?>" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
+                                    <?php echo trac_esc_html($trac_footer_phone); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -86,33 +200,27 @@
             <!-- Footer Bottom -->
             <div class="footer-bottom flex items-center justify-between md:flex-col md:gap-8 sm:gap-6 md:items-start">
                 <!-- Copyright -->
-                <p class="footer-copyright font-body text-[1.042vw] text-text-body md:text-base sm:text-sm md:order-2">
-                    &copy; <?php echo date('Y'); ?> All Rights Reserved
+                <p class="footer-copyright font-body text-[1.15vw] text-text-body md:text-base sm:text-sm md:order-2">
+                    <?php echo trac_esc_html($trac_footer_copyright_text); ?>
                 </p>
 
                 <!-- Social Links -->
                 <div class="footer-social flex items-center gap-[1.302vw] md:gap-4 md:order-1">
-                    <!-- Facebook -->
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-10 sm:h-10" aria-label="Facebook">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/facebook.svg" alt="Facebook" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
-                    </a>
-
-                    <!-- X (Twitter) -->
-                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-10 sm:h-10" aria-label="X">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/twitter.svg" alt="X" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
-                    </a>
-
-                    <!-- Instagram -->
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-10 sm:h-10" aria-label="Instagram">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/instagram.svg" alt="Instagram" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
-                    </a>
-
-                    <!-- LinkedIn -->
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.125vw] h-[3.125vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-10 sm:h-10" aria-label="LinkedIn">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/assets/icons/linkedin.svg" alt="LinkedIn" class="w-[2vw] h-[2vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
-                    </a>
-
-                    
+                    <?php foreach ($trac_footer_social as $social): ?>
+                        <?php if ($social['url']): ?>
+                            <a href="<?php echo esc_url(
+                                $social['url'],
+                            ); ?>" target="_blank" rel="noopener noreferrer" class="social-icon w-[3.4vw] h-[3.4vw] flex items-center justify-center rounded-full border border-text-primary md:w-12 md:h-12 sm:w-10 sm:h-10" aria-label="<?php echo esc_attr(
+                                $social['label'],
+                            ); ?>">
+                                <img src="<?php echo esc_url(
+                                    $social['icon'],
+                                ); ?>" alt="<?php echo esc_attr(
+                                    $social['label'],
+                                ); ?>" class="w-[2.15vw] h-[2.15vw] md:w-8 md:h-8 sm:w-6 sm:h-6">
+                            </a>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

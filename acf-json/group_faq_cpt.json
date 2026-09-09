@@ -24,6 +24,22 @@
             "default_value": 0,
             "min": 0,
             "step": 1
+        },
+        {
+            "key": "field_faq_page",
+            "label": "Page",
+            "name": "faq_page",
+            "type": "taxonomy",
+            "instructions": "Which page(s) this FAQ belongs to. Check existing pages, or use \"+ Add New Page\" below the list to create one.",
+            "required": 0,
+            "taxonomy": "faq_category",
+            "field_type": "checkbox",
+            "allow_null": 1,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
         }
     ],
     "location": [

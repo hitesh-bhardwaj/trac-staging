@@ -6,6 +6,7 @@
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { trac_log } from './debug.js';
 // import { initTeamSlider } from './team-slider';
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,39 +29,31 @@ export function initAnimations() {
     initHeroAnimations();
     initSectionAnimations();
     initParallaxAnimations();
-    initHiInstallationScroll();
     initTextAnimations();
     initParagraphLineReveal();
     initHeadingLineReveal();
-    initPartnersProgramCards();
     initHomeInternetWhyTrac();
     initSmeProblemStatement();
-    initPartnerVoicesSlider();
     initTeamSlider();
     initStackingCards();
     initTestimonialsSlider();
-    initWhoWeAreSlider();
     initWhoWeAreCounters();
     initWhatWeDoSlider();
-    initTracStoryTimeline();
     initOurNetworkAnimation();
     initOurNetworkPointers();
     initWhyTracCircles();
     initWhyTracScrollStory();
     initCtaLineAnimation();
     initCommunityHubCards();
-    initImpactGallery();
     initParallaxImgSlider();
     initFooterOverlayFade();
-    initOurOfferingAccordion();
     initWhyChooseTracCards();
-    initSolutionOverviewStack();
     initConnectorSvgAnimation();
 
     // Refresh ScrollTrigger after all animations are set up
     ScrollTrigger.refresh();
 
-    console.log('[Trac] Animations initialized');
+    trac_log('[Trac] Animations initialized');
 }
 
 // Lightweight helper for reduced-motion (or when you want to just "show" the hero instantly).
@@ -442,265 +435,7 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
         );
     });
 
-    console.log('[Trac] Hero reveal initialized');
-}
-
-function initImpactGallery() {
-    const section = document.querySelector('.impact-gallery-section');
-    if (!section || window.innerWidth <= 1024) return;
-
-    const images = Array.from(section.querySelectorAll('[data-impact-image]'));
-    if (images.length !== 6) return;
-
-    const titleSecondary = section.querySelector(
-        '.impact-gallery-title__secondary',
-    );
-
-    const prefersReducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)',
-    ).matches;
-
-    const stripStates = [
-        {
-            left: '42%',
-            top: '105%',
-            width: '8.6%',
-            height: '11.2%',
-            rotation: -7,
-        },
-        {
-            left: '46%',
-            top: '104.5%',
-            width: '7.9%',
-            height: '10.4%',
-            rotation: -4,
-        },
-        {
-            left: '50%',
-            top: '105%',
-            width: '7.2%',
-            height: '9.8%',
-            rotation: 6,
-        },
-        {
-            left: '54%',
-            top: '104.5%',
-            width: '7.9%',
-            height: '10.4%',
-            rotation: -6,
-        },
-        {
-            left: '58%',
-            top: '105%',
-            width: '8.8%',
-            height: '11.8%',
-            rotation: 8,
-        },
-        {
-            left: '62%',
-            top: '105%',
-            width: '8.8%',
-            height: '11.8%',
-            rotation: 5,
-        },
-    ];
-
-    const finalStates = [
-        {
-            left: '5.5%',
-            top: '3%',
-            width: '24.5%',
-            height: '28.1%',
-            rotation: -3.4,
-        },
-        {
-            left: '6.2%',
-            top: '22.8%',
-            width: '16.6%',
-            height: '24.1%',
-            rotation: -3.4,
-        },
-        {
-            left: '76.8%',
-            top: '5.2%',
-            width: '13.2%',
-            height: '28.3%',
-            rotation: 7.5,
-        },
-        {
-            left: '75.1%',
-            top: '33.4%',
-            width: '16.8%',
-            height: '23.2%',
-            rotation: -5.8,
-        },
-        {
-            left: '9.1%',
-            top: '61.7%',
-            width: '23.1%',
-            height: '33.7%',
-            rotation: 8.3,
-        },
-        {
-            left: '67.4%',
-            top: '68.6%',
-            width: '23.1%',
-            height: '33.7%',
-            rotation: 8.3,
-        },
-    ];
-
-    if (prefersReducedMotion) {
-        images.forEach((image, index) => {
-            const state = finalStates[index];
-            gsap.set(image, {
-                left: state.left,
-                top: state.top,
-                width: state.width,
-                height: state.height,
-                rotation: state.rotation,
-                xPercent: 0,
-                yPercent: 0,
-            });
-        });
-        if (titleSecondary) {
-            gsap.set(titleSecondary, { '--impact-fill': '100%' });
-        }
-        return;
-    }
-
-    images.forEach((image, index) => {
-        const stripState = stripStates[index];
-        gsap.set(image, {
-            left: stripState.left,
-            top: stripState.top,
-            width: stripState.width,
-            height: stripState.height,
-            rotation: stripState.rotation,
-            xPercent: -50,
-            yPercent: -100,
-        });
-    });
-
-    const timeline = gsap.timeline({
-        scrollTrigger: {
-            trigger: section,
-            start: '5% top',
-            end: 'bottom bottom',
-            scrub: 0.25,
-        },
-    });
-
-    if (titleSecondary) {
-        timeline.to(
-            titleSecondary,
-            {
-                '--impact-fill': '100%',
-                duration: 1,
-                ease: 'none',
-            },
-            0,
-        );
-    }
-
-    timeline.to(
-        [images[0], images[2]],
-        {
-            left: (index) => finalStates[index === 0 ? 0 : 2].left,
-            top: (index) => finalStates[index === 0 ? 0 : 2].top,
-            width: (index) => finalStates[index === 0 ? 0 : 2].width,
-            height: (index) => finalStates[index === 0 ? 0 : 2].height,
-            rotation: (index) => finalStates[index === 0 ? 0 : 2].rotation,
-            xPercent: 0,
-            yPercent: 0,
-            duration: 0.34,
-            ease: 'none',
-            stagger: 0.06,
-        },
-        0,
-    );
-
-    timeline.to(
-        [images[1], images[3]],
-        {
-            left: (index) => finalStates[index === 0 ? 1 : 3].left,
-            top: (index) => finalStates[index === 0 ? 1 : 3].top,
-            width: (index) => finalStates[index === 0 ? 1 : 3].width,
-            height: (index) => finalStates[index === 0 ? 1 : 3].height,
-            rotation: (index) => finalStates[index === 0 ? 1 : 3].rotation,
-            xPercent: 0,
-            yPercent: 0,
-            duration: 0.34,
-            ease: 'none',
-            stagger: 0.06,
-        },
-        0.33,
-    );
-
-    timeline.to(
-        [images[4], images[5]],
-        {
-            left: (index) => finalStates[index === 0 ? 4 : 5].left,
-            top: (index) => finalStates[index === 0 ? 4 : 5].top,
-            width: (index) => finalStates[index === 0 ? 4 : 5].width,
-            height: (index) => finalStates[index === 0 ? 4 : 5].height,
-            rotation: (index) => finalStates[index === 0 ? 4 : 5].rotation,
-            xPercent: 0,
-            yPercent: 0,
-            duration: 0.34,
-            ease: 'none',
-            stagger: 0.06,
-        },
-        0.66,
-    );
-}
-
-/**
- * Partners page: Partner Program card slide-in (right -> center), staggered.
- * Uses ScrollTrigger directly (not the generic [data-animate] system).
- */
-function initPartnersProgramCards() {
-    const section = document.querySelector('.partners-program');
-    if (!section) return;
-
-    const wrappers = Array.from(section.querySelectorAll('.program-cards'));
-    if (!wrappers.length) return;
-
-    const setInitialWidths = () => {
-        wrappers.forEach((wrapper) => {
-            gsap.set(wrapper, { clearProps: 'width' });
-
-            const currentWidth = wrapper.offsetWidth;
-
-            gsap.set(wrapper, {
-                width: currentWidth,
-            });
-        });
-    };
-
-    setInitialWidths();
-
-    wrappers.forEach((wrapper, index) => {
-        gsap.to(wrapper, {
-            width: () => {
-                const parent = wrapper.parentElement;
-                return parent ? parent.clientWidth : section.clientWidth;
-            },
-            ease: 'power1.out',
-            scrollTrigger: {
-                trigger: wrapper,
-                start: `top bottom`,
-                end: `bottom top`,
-                scrub: true,
-                // markers:true,
-                invalidateOnRefresh: true,
-            },
-        });
-    });
-
-    ScrollTrigger.addEventListener('refreshInit', setInitialWidths);
-
-    console.log('[Trac] Partners program cards initialized');
+    trac_log('[Trac] Hero reveal initialized');
 }
 
 /**
@@ -1252,156 +987,6 @@ function initHeadingLineReveal(scope = null) {
             });
         });
     })();
-}
-
-/**
- * Partners page: "Partner Voices" looping slider (7 slides).
- * Custom logic (no external slider lib), transitions powered by GSAP.
- */
-function initPartnerVoicesSlider() {
-    const section = document.querySelector('[data-partner-voices]');
-    if (!section) return;
-    if (section.dataset.partnerVoicesInit === 'true') return;
-
-    const track = section.querySelector('[data-partner-voices-track]');
-    const prevBtn = section.querySelector('[data-partner-voices-prev]');
-    const nextBtn = section.querySelector('[data-partner-voices-next]');
-    if (!track || !prevBtn || !nextBtn) return;
-
-    const viewport =
-        section.querySelector('[data-partner-voices-viewport]') ||
-        section.querySelector('.partner-voices-viewport') ||
-        track.parentElement;
-
-    const getGapPx = () => {
-        const styles = window.getComputedStyle(track);
-        const gap =
-            parseFloat(styles.columnGap || styles.gap || '0') ||
-            parseFloat(styles.gap || '0') ||
-            0;
-        return Number.isFinite(gap) ? gap : 0;
-    };
-
-    const slides = Array.from(
-        track.querySelectorAll('[data-partner-voices-slide]'),
-    );
-    if (slides.length < 2) return;
-
-    let stepPx = 0;
-    let currentIndex = 0;
-    let isAnimating = false;
-
-    const computeStep = () => {
-        const any = slides[0];
-        if (!any) return 0;
-        const w = any.getBoundingClientRect().width;
-        return w + getGapPx();
-    };
-
-    const computeBaseOffset = () => {
-        if (!viewport) return 0;
-        const any = slides[0];
-        if (!any) return 0;
-
-        const vw = viewport.getBoundingClientRect().width;
-        const sw = any.getBoundingClientRect().width;
-        return Math.max(0, (vw - sw) / 2);
-    };
-
-    const updateButtons = () => {
-        prevBtn.disabled = currentIndex <= 0;
-        nextBtn.disabled = currentIndex >= slides.length - 1;
-    };
-
-    const setActiveVisual = () => {
-        if (!slides.length) return;
-
-        slides.forEach((slide, idx) => {
-            const isActive = idx === currentIndex;
-            slide.classList.toggle('is-active', isActive);
-
-            // Keep border consistent, but emphasize active slightly.
-            slide.classList.toggle('border-brand-primary', isActive);
-            slide.classList.toggle('border-brand-primary/40', !isActive);
-
-            gsap.to(slide, {
-                scale: isActive ? 1 : 0.96,
-                opacity: isActive ? 1 : 0.72,
-                duration: 0.35,
-                ease: 'power2.out',
-                overwrite: true,
-            });
-        });
-
-        updateButtons();
-    };
-
-    const jumpTo = (index) => {
-        const baseOffset = computeBaseOffset();
-        gsap.set(track, { x: baseOffset - index * stepPx });
-        currentIndex = index;
-        setActiveVisual();
-    };
-
-    const goTo = (index) => {
-        if (isAnimating) return;
-        const maxIndex = slides.length - 1;
-        const nextIndex = Math.max(0, Math.min(maxIndex, index));
-        if (nextIndex === currentIndex) return;
-
-        isAnimating = true;
-        const baseOffset = computeBaseOffset();
-
-        gsap.to(track, {
-            x: baseOffset - nextIndex * stepPx,
-            duration: 0.6,
-            ease: 'power2.inOut',
-            onComplete: () => {
-                currentIndex = nextIndex;
-
-                setActiveVisual();
-                isAnimating = false;
-            },
-        });
-    };
-
-    const refreshLayout = () => {
-        stepPx = computeStep();
-        if (!stepPx) return;
-        const baseOffset = computeBaseOffset();
-        gsap.set(track, { x: baseOffset - currentIndex * stepPx });
-        setActiveVisual();
-    };
-
-    // Initial setup
-    section.dataset.partnerVoicesInit = 'true';
-    gsap.set(track, { x: 0, willChange: 'transform' });
-
-    // Start hidden and reveal on scroll (animation.js requirement).
-    gsap.set(track, { opacity: 0, y: 12 });
-
-    ScrollTrigger.create({
-        trigger: section,
-        start: 'top 80%',
-        once: true,
-        onEnter: () => {
-            refreshLayout();
-            jumpTo(0);
-            gsap.to(track, {
-                opacity: 1,
-                y: 0,
-                duration: 0.55,
-                ease: 'power2.out',
-            });
-        },
-    });
-
-    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
-    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-
-    window.addEventListener('resize', () => {
-        gsap.delayedCall(0.05, refreshLayout);
-    });
 }
 
 /**
@@ -2315,6 +1900,7 @@ function initFadeAnimations() {
             duration,
             delay,
             ease: defaults.ease,
+            clearProps: 'transform',
             scrollTrigger: {
                 trigger: el,
                 start: 'top 85%',
@@ -2601,7 +2187,7 @@ function initTeamSlider() {
         !rail ||
         !initialThumbs.length
     ) {
-        console.log('[Trac] Team slider missing elements');
+        trac_log('[Trac] Team slider missing elements');
         return;
     }
 
@@ -2634,6 +2220,7 @@ function initTeamSlider() {
                     src="${escapeAttr(member.image)}"
                     alt="${escapeAttr(member.name)}"
                     draggable="false"
+                    class="team-slider-active-image-element"
                 />
             </div>
         `;
@@ -3030,7 +2617,7 @@ function initTeamSlider() {
         window.removeEventListener('resize', handleResize);
     };
 
-    console.log('[Trac] Team slider initialized');
+    trac_log('[Trac] Team slider initialized');
 }
 
 /**
@@ -3134,7 +2721,7 @@ function initStackingCards() {
         });
     });
 
-    console.log('[Trac] Stacking cards animation initialized');
+    trac_log('[Trac] Stacking cards animation initialized');
 }
 
 /**
@@ -3300,143 +2887,7 @@ function initTestimonialsSlider() {
     updateCounter();
     updateButtons();
 
-    console.log('[Trac] Testimonials full-width slider initialized');
-}
-
-/**
- * About page "Who We Are" slider
- */
-function initWhoWeAreSlider() {
-    const section = document.querySelector('.who-we-are-section');
-    if (!section) return;
-
-    const slides = Array.from(section.querySelectorAll('.who-we-are-slide'));
-    const dots = Array.from(section.querySelectorAll('[data-who-we-are-dot]'));
-
-    if (slides.length === 0) return;
-
-    let currentIndex = 0;
-    let isAnimating = false;
-    let autoPlay = null;
-
-    const updateDots = () => {
-        dots.forEach((dot, index) => {
-            const isActive = index === currentIndex;
-            dot.classList.toggle('is-active', isActive);
-            dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-        });
-    };
-
-    const setInitialState = () => {
-        slides.forEach((slide, index) => {
-            const isActive = index === 0;
-
-            slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-
-            gsap.set(slide, {
-                autoAlpha: isActive ? 1 : 0,
-                zIndex: isActive ? 2 : 1,
-            });
-        });
-
-        updateDots();
-    };
-
-    const goToSlide = (nextIndex) => {
-        if (isAnimating || nextIndex === currentIndex) return;
-
-        if (nextIndex < 0) {
-            nextIndex = slides.length - 1;
-        }
-
-        if (nextIndex >= slides.length) {
-            nextIndex = 0;
-        }
-
-        const currentSlide = slides[currentIndex];
-        const nextSlide = slides[nextIndex];
-
-        isAnimating = true;
-
-        slides.forEach((slide, index) => {
-            slide.setAttribute(
-                'aria-hidden',
-                index === nextIndex ? 'false' : 'true',
-            );
-        });
-
-        gsap.set(nextSlide, {
-            autoAlpha: 0,
-            zIndex: 3,
-        });
-
-        const tl = gsap.timeline({
-            defaults: {
-                duration: 0.7,
-                ease: 'power2.out',
-            },
-            onComplete: () => {
-                gsap.set(currentSlide, {
-                    autoAlpha: 0,
-                    zIndex: 1,
-                });
-
-                gsap.set(nextSlide, {
-                    autoAlpha: 1,
-                    zIndex: 2,
-                });
-
-                currentIndex = nextIndex;
-                updateDots();
-                isAnimating = false;
-            },
-        });
-
-        tl.to(currentSlide, { autoAlpha: 0 }, 0).to(
-            nextSlide,
-            { autoAlpha: 1 },
-            0,
-        );
-    };
-
-    const startAutoplay = () => {
-        if (autoPlay) return;
-
-        autoPlay = window.setInterval(() => {
-            goToSlide(currentIndex + 1);
-        }, 5000);
-    };
-
-    const stopAutoplay = () => {
-        if (!autoPlay) return;
-        window.clearInterval(autoPlay);
-        autoPlay = null;
-    };
-
-    dots.forEach((dot) => {
-        dot.addEventListener('click', () => {
-            const nextIndex = Number(dot.dataset.whoWeAreDot);
-            stopAutoplay();
-            goToSlide(nextIndex);
-            startAutoplay();
-        });
-    });
-
-    section.addEventListener('mouseenter', stopAutoplay);
-    section.addEventListener('mouseleave', startAutoplay);
-
-    setInitialState();
-
-    ScrollTrigger.create({
-        trigger: section,
-        start: 'top 75%',
-        once: true,
-        onEnter: () => {
-            startAutoplay();
-        },
-    });
-
-    console.log('[Trac] Who we are slider initialized');
+    trac_log('[Trac] Testimonials full-width slider initialized');
 }
 
 function initWhoWeAreCounters() {
@@ -3506,7 +2957,7 @@ function initWhoWeAreCounters() {
         },
     });
 
-    console.log('[Trac] Who we are counters initialized');
+    trac_log('[Trac] Who we are counters initialized');
 }
 
 function initWhatWeDoSlider() {
@@ -3517,16 +2968,23 @@ function initWhatWeDoSlider() {
 
     const viewport = section.querySelector('[data-what-we-do-viewport]');
     const track = section.querySelector('[data-what-we-do-track]');
-    const prevBtn = section.querySelector('[data-what-we-do-prev]');
-    const nextBtn = section.querySelector('[data-what-we-do-next]');
+    const prevBtns = Array.from(
+        section.querySelectorAll('[data-what-we-do-prev]'),
+    );
+    const nextBtns = Array.from(
+        section.querySelectorAll('[data-what-we-do-next]'),
+    );
     const cards = Array.from(section.querySelectorAll('.what-we-do-card'));
 
-    if (!viewport || !track || !prevBtn || !nextBtn || cards.length === 0) {
+    if (
+        !viewport ||
+        !track ||
+        !prevBtns.length ||
+        !nextBtns.length ||
+        cards.length === 0
+    ) {
         return;
     }
-
-    // Mobile stacks cards vertically; no slider needed.
-    if (window.innerWidth <= 768) return;
 
     // If the old scroll version ever ran (or a transition left transforms behind),
     // ensure we start from a clean, non-transformed layout so padding/scroll works.
@@ -3547,17 +3005,41 @@ function initWhatWeDoSlider() {
 
     function updateButtons() {
         const maxScrollLeft = viewport.scrollWidth - viewport.clientWidth;
-        prevBtn.disabled = viewport.scrollLeft <= 1;
-        nextBtn.disabled = viewport.scrollLeft >= maxScrollLeft - 1;
+        const atStart = viewport.scrollLeft <= 1;
+        const atEnd = viewport.scrollLeft >= maxScrollLeft - 1;
+        prevBtns.forEach((btn) => (btn.disabled = atStart));
+        nextBtns.forEach((btn) => (btn.disabled = atEnd));
     }
+
+    function scrollToCard(index) {
+        const card = cards[index];
+        if (!card) return;
+
+        const isMobile = window.matchMedia('(max-width: 541px)').matches;
+        const target = isMobile
+            ? card.offsetLeft + card.offsetWidth / 2 - viewport.clientWidth / 2
+            : card.offsetLeft - cards[0].offsetLeft;
+        viewport.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+    }
+
+    let currentIndex = 0;
 
     function scrollByStep(direction) {
         if (!scrollStep) computeScrollStep();
-        viewport.scrollBy({ left: scrollStep * direction, behavior: 'smooth' });
+        const nextIndex = Math.max(
+            0,
+            Math.min(cards.length - 1, currentIndex + direction),
+        );
+        currentIndex = nextIndex;
+        scrollToCard(nextIndex);
     }
 
-    prevBtn.addEventListener('click', () => scrollByStep(-1));
-    nextBtn.addEventListener('click', () => scrollByStep(1));
+    prevBtns.forEach((btn) =>
+        btn.addEventListener('click', () => scrollByStep(-1)),
+    );
+    nextBtns.forEach((btn) =>
+        btn.addEventListener('click', () => scrollByStep(1)),
+    );
 
     let raf = null;
     viewport.addEventListener(
@@ -3579,98 +3061,9 @@ function initWhatWeDoSlider() {
 
     computeScrollStep();
     updateButtons();
+    scrollToCard(0);
 
-    console.log('[Trac] What we do slider initialized');
-}
-
-function initTracStoryTimeline() {
-    const section = document.querySelector('.trac-story-section');
-    if (!section) return;
-
-    const reels = Array.from(
-        section.querySelectorAll('[data-story-year-reel]'),
-    );
-    if (!reels.length) return;
-
-    if (window.innerWidth <= 768) {
-        reels.forEach((reel) => {
-            gsap.set(reel, { y: 0 });
-        });
-        return;
-    }
-
-    const storyYears = ['2026', '2025', '2024', '2023', '2020'];
-    const yearCount = storyYears.length;
-
-    ScrollTrigger.getAll().forEach((trigger) => {
-        if (
-            trigger.vars?.id === 'trac-story-main' ||
-            String(trigger.vars?.id || '').startsWith('trac-story-year-')
-        ) {
-            trigger.kill();
-        }
-    });
-
-    reels.forEach((reel) => {
-        gsap.set(reel, { y: 0 });
-    });
-
-    const digitHeights = reels.map((reel) => {
-        const digit = reel.querySelector('.trac-story-year-digit');
-        return digit ? digit.getBoundingClientRect().height : 0;
-    });
-
-    const totalScroll = window.innerHeight * yearCount;
-    const segmentDuration = 1; // 1 timeline unit = 1 year block
-
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            id: 'trac-story-main',
-            trigger: section,
-            start: 'top 80%',
-            end: `+=${totalScroll}`,
-            scrub: true,
-            invalidateOnRefresh: true,
-        },
-        defaults: {
-            ease: 'none',
-        },
-    });
-
-    // Year 1 stays for first 100vh
-    tl.set(reels, { y: 0 }, 0);
-
-    // Each next year gets exactly one segment
-    for (let stage = 1; stage < yearCount; stage += 1) {
-        tl.to(
-            reels,
-            {
-                y: (index) => -(digitHeights[index] * stage),
-                duration: segmentDuration,
-                ease: 'power1.inOut',
-                stagger: {
-                    each: 0.1,
-                },
-            },
-            stage,
-        );
-    }
-
-    // Create markers for each 100vh block
-    storyYears.forEach((year, index) => {
-        ScrollTrigger.create({
-            id: `trac-story-year-${year}`,
-            trigger: section,
-            start: () => `top+=${window.innerHeight * index} bottom`,
-            end: () => `top+=${window.innerHeight * (index + 1)} top`,
-            onEnter: () => console.log(`[Trac Story] Enter ${year}`),
-            onEnterBack: () => console.log(`[Trac Story] Enter back ${year}`),
-        });
-    });
-
-    ScrollTrigger.refresh();
-
-    console.log('[Trac] TrAC story timeline initialized');
+    trac_log('[Trac] What we do slider initialized');
 }
 
 /**
@@ -3718,7 +3111,7 @@ function initOurNetworkAnimation() {
             index === 0 ? 0 : '>-0.3',
         );
     });
-    console.log('[Trac] Our Network line animation initialized');
+    trac_log('[Trac] Our Network line animation initialized');
 }
 
 function initOurNetworkPointers() {
@@ -3964,7 +3357,7 @@ function initOurNetworkPointers() {
         }
     });
 
-    console.log('[Trac] Our Network pointers initialized', {
+    trac_log('[Trac] Our Network pointers initialized', {
         groupedNodes: nodeGroups.length,
         cards: pointerCards.length,
     });
@@ -4062,7 +3455,7 @@ function initParallaxImgSlider() {
         window.removeEventListener('resize', updateHeight);
     };
 
-    console.log('[Trac] Parallax image slider initialized');
+    trac_log('[Trac] Parallax image slider initialized');
 }
 
 // footer overlay
@@ -4074,7 +3467,7 @@ function initFooterOverlayFade() {
     if (!footer || !footerContainer) return;
 
     gsap.set(footerContainer, {
-        yPercent: 50,
+        yPercent: window.matchMedia('(min-width: 1025px)').matches ? 100 : 50,
         willChange: 'transform',
     });
 
@@ -4089,237 +3482,7 @@ function initFooterOverlayFade() {
         },
     });
 
-    console.log('[Trac] Footer container parallax initialized');
-}
-
-// our offering animation
-
-function initOurOfferingAccordion() {
-    const section = document.querySelector('.our-offering-section');
-    if (!section) return;
-
-    const items = Array.from(section.querySelectorAll('[data-offering-item]'));
-    if (!items.length) return;
-
-    const setInitial = () => {
-        items.forEach((item, index) => {
-            const body = item.querySelector('.our-offering-item__body');
-            const inner = item.querySelector('.our-offering-item__body-inner');
-            if (!body || !inner) return;
-
-            if (index === 0) {
-                item.classList.add('is-active');
-                gsap.set(item, {
-                    backgroundColor: '#EEF3FC',
-                    borderColor: '#10417f',
-                    scale: 1,
-                });
-                gsap.set(body, {
-                    height: inner.offsetHeight,
-                    opacity: 1,
-                });
-            } else {
-                item.classList.remove('is-active');
-                gsap.set(item, {
-                    backgroundColor: '#ffffff',
-                    borderColor: 'transparent',
-                    scale: 0.985,
-                });
-                gsap.set(body, {
-                    height: 0,
-                    opacity: 0,
-                });
-            }
-        });
-    };
-
-    const activateItem = (activeIndex) => {
-        items.forEach((item, index) => {
-            const body = item.querySelector('.our-offering-item__body');
-            const inner = item.querySelector('.our-offering-item__body-inner');
-            if (!body || !inner) return;
-
-            const isActive = index === activeIndex;
-            item.classList.toggle('is-active', isActive);
-
-            gsap.killTweensOf(item);
-            gsap.killTweensOf(body);
-
-            if (isActive) {
-                gsap.to(item, {
-                    backgroundColor: '#EEF3FC',
-                    borderColor: '#10417f',
-                    scale: 1,
-                    duration: 0.45,
-                    ease: 'power3.out',
-                    overwrite: true,
-                });
-
-                gsap.to(body, {
-                    height: inner.offsetHeight,
-                    opacity: 1,
-                    duration: 0.45,
-                    ease: 'power3.out',
-                    overwrite: true,
-                });
-            } else {
-                gsap.to(item, {
-                    backgroundColor: '#ffffff',
-                    borderColor: 'transparent',
-                    scale: 0.985,
-                    duration: 0.4,
-                    ease: 'power3.out',
-                    overwrite: true,
-                });
-
-                gsap.to(body, {
-                    height: 0,
-                    opacity: 0,
-                    duration: 0.35,
-                    ease: 'power3.out',
-                    overwrite: true,
-                });
-            }
-        });
-    };
-
-    setInitial();
-
-    const total = items.length;
-
-    ScrollTrigger.create({
-        trigger: section,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 0.6,
-        onUpdate: (self) => {
-            const index = Math.min(
-                total - 1,
-                Math.floor(self.progress * total),
-            );
-            activateItem(index);
-        },
-    });
-}
-
-// carrier overview
-function initSolutionOverviewStack() {
-    const section = document.querySelector('.solution-overview-section');
-    if (!section) return;
-
-    const stack = section.querySelector('[data-solution-stack]');
-    const cards = Array.from(section.querySelectorAll('[data-solution-card]'));
-
-    if (!stack || !cards.length) return;
-
-    if (window.innerWidth <= 768) {
-        cards.forEach((card, index) => {
-            gsap.set(card, {
-                clearProps: 'all',
-                position: 'relative',
-                zIndex: index + 1,
-            });
-        });
-        return;
-    }
-
-    const CARD_GAP = 14;
-    const STACK_LIFT = 30;
-    const SCALE_STEP = 0.04;
-    const ENTRY_Y = 540;
-    const SEGMENT = 1;
-
-    const setInitialLayout = () => {
-        let maxHeight = 0;
-
-        cards.forEach((card, index) => {
-            const h = card.offsetHeight;
-            if (h > maxHeight) maxHeight = h;
-
-            if (index === 0) {
-                gsap.set(card, {
-                    position: 'absolute',
-                    left: 0,
-                    top: 0,
-                    y: 0,
-                    scale: 1,
-                    zIndex: index + 1,
-                });
-            } else {
-                gsap.set(card, {
-                    position: 'absolute',
-                    left: 0,
-                    top: 0,
-                    y: ENTRY_Y,
-                    scale: 1,
-                    zIndex: index + 1,
-                });
-            }
-        });
-
-        stack.style.minHeight = `${maxHeight + cards.length * CARD_GAP + 60}px`;
-    };
-
-    setInitialLayout();
-
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: () => 'bottom 60%',
-            // markers: true,
-            scrub: true,
-            invalidateOnRefresh: true,
-            onRefresh: setInitialLayout,
-        },
-    });
-
-    for (let activeIndex = 1; activeIndex < cards.length; activeIndex += 1) {
-        const incomingCard = cards[activeIndex];
-        const previousCards = cards.slice(0, activeIndex);
-
-        tl.to(
-            incomingCard,
-            {
-                y: activeIndex * CARD_GAP,
-                duration: SEGMENT,
-                ease: 'none',
-            },
-            activeIndex - 1,
-        );
-
-        previousCards.forEach((card, prevIndex) => {
-            tl.to(
-                card,
-                {
-                    y: prevIndex * CARD_GAP - activeIndex * STACK_LIFT,
-                    scale: Math.max(
-                        0.82,
-                        1 - (activeIndex - prevIndex) * SCALE_STEP,
-                    ),
-                    duration: SEGMENT,
-                    ease: 'none',
-                },
-                activeIndex - 1,
-            );
-        });
-    }
-
-    // final lift after the last card has stacked
-    tl.to(
-        cards,
-        {
-            y: (index) => index * CARD_GAP - cards.length * STACK_LIFT,
-            scale: (index) =>
-                Math.max(0.82, 1 - (cards.length - 1 - index) * SCALE_STEP),
-            duration: SEGMENT,
-            ease: 'none',
-            stagger: 0,
-        },
-        cards.length - 1,
-    );
-
-    console.log('[Trac] Solution overview stack initialized');
+    trac_log('[Trac] Footer container parallax initialized');
 }
 
 // why choose trac
@@ -4328,85 +3491,70 @@ function initWhyChooseTracCards() {
     const section = document.querySelector('.why-choose-trac-section');
     if (!section) return;
 
-    const container = section.querySelector('.why-choose-container');
-    const cards = Array.from(section.querySelectorAll('[data-why-card]'));
+    const cards = Array.from(section.querySelectorAll('.carrier-why-card'));
 
-    if (!container || !cards.length) return;
+    if (cards.length < 2) return;
 
-    if (window.innerWidth <= 768) {
-        gsap.set(cards, { clearProps: 'all' });
-        gsap.set(container, { clearProps: 'all' });
+    if (window.innerWidth <= 540) {
+        gsap.set(cards, { clearProps: 'transform' });
         return;
     }
 
-    const randomBetween = (min, max) => gsap.utils.random(min, max, 0.1);
+    const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+    ).matches;
 
-    const startStates = [
-        { x: -80, y: 40, rotation: -6 },
-        { x: -20, y: 8, rotation: 4 },
-        { x: 30, y: 32, rotation: -5 },
-        { x: 70, y: 12, rotation: 6 },
-        { x: 120, y: 48, rotation: -4 },
-        { x: 170, y: 22, rotation: 5 },
-    ];
+    if (prefersReducedMotion) {
+        gsap.set(cards, { clearProps: 'transform' });
+        return;
+    }
 
-    const endStates = cards.map((_, i) => ({
-        x: randomBetween(-80, 120) + i * 8,
-        y: randomBetween(-30, 70),
-        rotation: randomBetween(-14, 14),
-    }));
+    ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars?.id === 'carrier-why-cards') {
+            trigger.kill();
+        }
+    });
+
+    gsap.killTweensOf(cards);
+
+    const offsetMultiplier = window.innerWidth <= 1024 ? 24 : 3.4;
 
     cards.forEach((card, index) => {
-        const start = startStates[index] || {
-            x: randomBetween(-80, 120),
-            y: randomBetween(-20, 60),
-            rotation: randomBetween(-8, 8),
-        };
-
         gsap.set(card, {
-            x: start.x,
-            y: start.y,
-            rotation: start.rotation,
+            autoAlpha: 1,
+            x: 0,
+            y: () =>
+                window.innerWidth <= 1024
+                    ? index * offsetMultiplier
+                    : `${index * offsetMultiplier}vw`,
+            rotation: 0,
             transformOrigin: '50% 50%',
         });
     });
 
     const tl = gsap.timeline({
         scrollTrigger: {
+            id: 'carrier-why-cards',
             trigger: section,
-            start: 'top 50%',
-            end: 'bottom 30%',
-            // markers:true,
-            scrub: true,
+            start: 'top 80%',
+            end: 'bottom 50%',
+            scrub: 0.35,
             invalidateOnRefresh: true,
         },
     });
 
     tl.to(
-        container,
+        cards,
         {
-            translateX: '-75%',
+            y: 0,
+            duration: 1,
             ease: 'none',
+            stagger: 0,
         },
         0,
     );
 
-    cards.forEach((card, index) => {
-        const target = endStates[index];
-
-        tl.to(
-            card,
-            {
-                x: target.x,
-                y: target.y,
-                rotation: target.rotation,
-                ease: 'none',
-            },
-            0,
-        );
-    });
-
-    console.log('[Trac] Why Choose TrAC cards initialized');
+    trac_log('[Trac] Carrier why choose scroll cards initialized');
 }
 
 /**
@@ -4448,82 +3596,6 @@ export function createHorizontalScroll(container, items) {
             // Prefer CSS `position: sticky` sections instead of ScrollTrigger pinning.
         },
     });
-}
-
-function initHiInstallationScroll() {
-    const section = document.querySelector('[data-hi-installation]');
-    if (!section) return;
-
-    const trackArea = section.querySelector('.hi-installation-track-area');
-    const track = section.querySelector('[data-hi-installation-track]');
-    const cards = Array.from(
-        section.querySelectorAll('[data-hi-installation-step]'),
-    );
-    const progressLine = section.querySelector('.progress-line');
-
-    if (!trackArea || !track || !cards.length || !progressLine) return;
-
-    if (window.innerWidth <= 768) {
-        gsap.set(trackArea, { xPercent: 0 });
-        gsap.set(progressLine, { scaleX: 1, transformOrigin: 'left center' });
-        cards.forEach((card, index) => {
-            card.classList.toggle('is-active', index === 0);
-        });
-        return;
-    }
-
-    gsap.set(trackArea, { xPercent: 15, force3D: true });
-    gsap.set(progressLine, {
-        scaleX: 0,
-        transformOrigin: 'left center',
-        force3D: true,
-    });
-
-    const setActiveCard = (activeIndex) => {
-        cards.forEach((card, index) => {
-            card.classList.toggle('is-active', index === activeIndex);
-        });
-    };
-
-    setActiveCard(0);
-
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: true,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-                const progress = self.progress;
-                const maxIndex = cards.length - 1;
-                const activeIndex = Math.min(
-                    maxIndex,
-                    Math.floor(progress * cards.length),
-                );
-
-                setActiveCard(activeIndex);
-            },
-        },
-    });
-
-    tl.to(
-        trackArea,
-        {
-            xPercent: -70,
-            ease: 'none',
-        },
-        0,
-    ).to(
-        progressLine,
-        {
-            scaleX: 1,
-            ease: 'none',
-        },
-        0,
-    );
-
-    console.log('[Trac] Hi installation scroll initialized');
 }
 
 /**

@@ -3,45 +3,30 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$label = get_field('cs_overview_label') ?: 'Solution Overview';
-$title = get_field('cs_overview_title') ?: 'Built for Network Operators';
-$subtitle =
-    get_field('cs_overview_subtitle') ?:
-    'Running a network requires more than connectivity. It requires infrastructure that is stable, scalable, and built to perform over time.';
-$subtitle_2 =
-    get_field('cs_overview_subtitle_2') ?:
-    'TrAC supports operators at every stage - from new ISPs launching services to established carriers expanding capacity across Rwanda and East Africa. We provide the backbone, facilities, and technical support needed to build, operate, and grow with confidence.';
+$label = get_field('cs_overview_label');
+$title = get_field('cs_overview_title');
+$description_paragraphs = trac_split_lines(
+    get_field('cs_overview_description'),
+);
 
 $solution_image = get_field('cs_overview_image');
 $solution_image_src = is_array($solution_image)
     ? $solution_image['url']
-    : get_template_directory_uri() .
-        '/src/imgs/carrier-services/solutions-new-img.png';
-$solution_title = get_field('cs_overview_card_title') ?: 'Wholesale & Carrier';
-$solution_desc =
-    get_field('cs_overview_card_desc') ?:
-    'Reliable national and cross-border connectivity for operators, providers, and enterprises, supported by carrier-grade Internet, data transport, and scalable network infrastructure.';
+    : $solution_image;
+$solution_title = get_field('cs_overview_card_title');
+$solution_desc = get_field('cs_overview_card_desc');
 
-$icon_base = get_template_directory_uri() . '/src/imgs/';
+$offerings = [];
+for ($i = 1; $i <= 2; $i++) {
+    $offerings[] = [
+        'title' => get_field("cs_offering_{$i}_title"),
+        'description' => get_field("cs_offering_{$i}_description"),
+        'icon' => get_field("cs_offering_{$i}_icon"),
+    ];
+}
 
-$offerings = [
-    [
-        'title' => 'Cloud Hosting',
-        'description' =>
-            'Flexible Cloud solutions for hosting applications, managing workloads, and scaling digital services with secure, reliable performance.',
-        'icon' => $icon_base . 'sme-internet/product-icon-2.svg',
-    ],
-    [
-        'title' => 'Data Centre Hosting',
-        'description' =>
-            'Secure Tier III hosting for applications, systems, and data, designed to support reliability, continuity, and future growth.',
-        'icon' => $icon_base . 'carrier-services/data-center-icon.svg',
-    ],
-];
-
-$button_text = get_field('cs_overview_button_text') ?: 'Get on TrAC';
-$button_link =
-    get_field('cs_overview_button_link') ?: home_url('/contact-us');
+$button_text = get_field('cs_overview_button_text');
+$button_link = get_field('cs_overview_button_link');
 ?>
 
 <section class="carrier-overview relative bg-white px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="solution-overview">
@@ -49,41 +34,42 @@ $button_link =
         <div class="max-w-[60rem]">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body text-brand-secondary text-30"><?php echo esc_html(
+                <span class="font-body text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
                     $label,
                 ); ?></span>
             </div>
 
             <h2 class="font-heading text-[3.5vw] font-normal leading-[1.15] tracking-[0.01em] text-text-primary mb-[1.6vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
-                <?php echo esc_html($title); ?>
+                <?php echo trac_esc_html($title); ?>
             </h2>
 
             <div class="space-y-[1.4vw] md:space-y-5">
-                <p class="font-body text-24 leading-[1.5] text-primary md:text-lg sm:text-base" data-para-anim>
-                    <?php echo esc_html($subtitle); ?>
-                </p>
-                <p class="font-body text-24 leading-[1.5] text-primary md:text-lg sm:text-base" data-para-anim data-delay="0.1">
-                    <?php echo esc_html($subtitle_2); ?>
-                </p>
+                <?php foreach ($description_paragraphs as $index => $paragraph): ?>
+                    <p class="font-body text-24 leading-[1.5] text-primary md:text-lg sm:text-base" data-para-anim data-delay="<?php echo esc_attr(
+                        $index * 0.1,
+                    ); ?>">
+                        <?php echo trac_esc_html($paragraph); ?>
+                    </p>
+                <?php endforeach; ?>
             </div>
         </div>
 
         <div class="mt-[5vw] md:mt-12 sm:mt-10" data-animate="fade-up" data-delay="0.15">
-            <article class="flex w-full  md:grid-cols-1 bg-brand-quaternary rounded-[1.6vw] md:rounded-3xl overflow-hidden">
-                <div class="h-[30vw] w-[25vw] rounded-[1.6vw] md:rounded-3xl md:h-72 sm:h-64 overflow-hidden">
+            <article class="flex w-full  bg-brand-quaternary rounded-[1.6vw]  overflow-hidden sm:flex-col sm:rounded-[3vw]">
+                <div class="h-[30vw] w-[25vw] rounded-[1.6vw] md:h-72 sm:h-64 overflow-hidden sm:w-full group">
                     <img
                         src="<?php echo esc_url($solution_image_src); ?>"
                         alt="<?php echo esc_attr($solution_title); ?>"
-                        class="h-full w-full object-cover"
+                        class="h-full w-full object-cover scale-105 transition-transform duration-[600ms] ease-out group-hover:scale-100"
                         loading="lazy"
                     >
                 </div>
-                <div class=" p-[2.6vw] py-[3vw] md:p-10 sm:p-7 flex flex-col w-[70%] ">
+                <div class=" p-[2.6vw] py-[3vw] md:p-10 sm:p-7 flex flex-col w-[70%] sm:w-full">
                     <h3 class="font-heading text-white text-[1.8vw] md:text-3xl font-normal mb-[1.4vw] md:mb-5">
-                        <?php echo esc_html($solution_title); ?>
+                        <?php echo trac_esc_html($solution_title); ?>
                     </h3>
-                    <p class="font-body text-white text-24 md:text-lg leading-[1.6] w-[70%]">
-                        <?php echo esc_html($solution_desc); ?>
+                    <p class="font-body text-white text-24 md:text-lg leading-[1.6] w-[70%] sm:w-full">
+                        <?php echo trac_esc_html($solution_desc); ?>
                     </p>
                 </div>
             </article>
@@ -96,16 +82,16 @@ $button_link =
                 ); ?>">
                     <img
                         src="<?php echo esc_url($o['icon']); ?>"
-                        alt=""
-                        class="size-[4vw] md:w-12 md:h-12 object-contain"
+                        alt="offerings icon"
+                        class="size-[4vw] md:w-12 md:h-12 object-contain" 
                         loading="lazy"
                     >
                     <div>
                         <h3 class="font-heading text-white text-36 md:text-2xl font-normal mb-[0.8vw] md:mb-3">
-                            <?php echo esc_html($o['title']); ?>
+                            <?php echo trac_esc_html($o['title']); ?>
                         </h3>
                         <p class="font-body text-white text-24 md:text-base leading-[1.55] w-[88%]">
-                            <?php echo esc_html($o['description']); ?>
+                            <?php echo trac_esc_html($o['description']); ?>
                         </p>
                     </div>
                 </div>
@@ -117,7 +103,7 @@ $button_link =
                 $button_link,
             ); ?>" class="btn btn-primary group magnetic border border-brand-secondary">
                 <span class="btn-line"></span>
-                <span class="btn-text"><?php echo esc_html(
+                <span class="btn-text"><?php echo trac_esc_html(
                     $button_text,
                 ); ?></span>
                 <span class="btn-icon">

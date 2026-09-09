@@ -7,8 +7,8 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
 ?>
 
 
-<section class="testimonials-section relative overflow-hidden" data-section="testimonials">
-    <div class="testimonials-container w-full flex flex-col items-end px-[5vw] pb-[6.25vw] md:py-16 sm:px-[7vw] sm:py-12  sm:gap-[7vw]">
+<section class="testimonials-section relative overflow-hidden py-[5vw] px-[5vw]" data-section="testimonials" id="testimonials">
+    <div class="testimonials-container w-full flex flex-col items-end ">
         <div class="testimonials-header mb-[2.604vw] md:mb-6 w-full md:flex md:flex-col ">
             <div
                 class="testimonials-label mb-[2.563vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-6"
@@ -16,9 +16,7 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
             >
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
-                    <?php echo esc_html(
-                        get_field('testimonials_label') ?: 'Testimonials',
-                    ); ?>
+                    <?php echo trac_esc_html(get_field('testimonials_label')); ?>
                 </span>
             </div>
 
@@ -26,14 +24,12 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
                 class="font-heading font-normal text-66 leading-[1.12] tracking-[0.01em] text-text-primary md:w-[55%] "
                 data-heading-anim
              >
-                <?php echo esc_html(
-                    get_field('testimonials_title') ?: 'What Our Clients Say',
-                ); ?>
+                <?php echo trac_esc_html(get_field('testimonials_title')); ?>
             </h2>
         </div>
 
-        <div class="testimonials-controls mb-[2vw] flex items-center justify-between md:mb-4 w-full relative z-[10] ">
-            <div
+        <div class="testimonials-controls mb-[2vw] flex items-end justify-end md:mb-4 w-full relative z-[10] ">
+            <!-- <div
                 class="font-normal flex items-center gap-[0.833vw] md:gap-3"
                 data-animate="fade-up"
                 data-delay="0.2"
@@ -45,7 +41,7 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
                 <span class="total-slides font-body text-30 text-brand-primary md:text-2xl sm:text-xl">
                     03
                 </span>
-            </div>
+            </div> -->
 
             <div class=" flex items-center justify-center gap-[0.625vw] md:hidden relative z-[10]">
                 <button
@@ -79,155 +75,37 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
             data-animate="fade-up"
             data-delay="0.3"
          >
-            <div class="testimonials-viewport">
-                <div class="testimonials-track">
+            <div class="testimonials-viewport relative left-1/2 h-[28vw] min-h-[400px] w-screen -translate-x-1/2 overflow-hidden md:h-[78vw] md:min-h-[560px] sm:h-[100vw] sm:min-h-[250px]">
+                <div class="testimonials-track flex h-full items-stretch gap-[3.125vw] pl-[5vw] [will-change:transform] md:gap-[3vw] md:pl-[4vw] sm:gap-[4vw] sm:pl-[7vw]">
                 <?php
-                // Get testimonials limit from ACF
-                $limit = get_field('testimonials_limit') ?: 3;
+                for ($i = 1; $i <= 3; $i++):
+                    $quote = get_field("testimonial_{$i}_quote");
+                    $logo = get_field("testimonial_{$i}_logo");
+                    ?>
+                    <div class="testimonial-card relative flex h-[25vw] w-[40vw] flex-[0_0_40vw] flex-col justify-between rounded-[1.5vw] bg-brand-primary p-[3vw] text-text-secondary [backface-visibility:hidden] [transform-origin:center_center] [transform:translate3d(0,0,0)] [will-change:transform,opacity,filter] md:h-full md:w-[72vw] md:flex-[0_0_72vw] md:rounded-3xl md:p-8 sm:w-[86vw] sm:flex-[0_0_86vw] sm:rounded-[4vw] sm:p-6">
+                        <?php if ($quote): ?>
+                            <p class="font-body font-normal mb-[2vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
+                                <?php echo trac_esc_html($quote); ?>
+                            </p>
+                        <?php endif; ?>
 
-                // Query testimonial posts
-                $testimonials_query = new WP_Query([
-                    'post_type' => 'testimonial',
-                    'posts_per_page' => $limit,
-                    'post_status' => 'publish',
-                    'orderby' => 'date',
-                    'order' => 'DESC',
-                    'meta_query' => [
-                        'relation' => 'OR',
-                        [
-                            'key' => 'testimonial_featured',
-                            'value' => '1',
-                            'compare' => '=',
-                        ],
-                        [
-                            'key' => 'testimonial_featured',
-                            'compare' => 'NOT EXISTS',
-                        ],
-                    ],
-                ]);
-
-                if ($testimonials_query->have_posts()):
-                    while ($testimonials_query->have_posts()):
-
-                        $testimonials_query->the_post();
-
-                        $quote = get_field('testimonial_quote');
-                        $author = get_field('testimonial_author');
-                        $role = get_field('testimonial_role');
-                        $company = get_field('testimonial_company');
-                        $logo = get_field('testimonial_company_logo');
-
-                        // Fallback logo if none provided
-                        if (!$logo) {
-                            $logo =
-                                get_template_directory_uri() .
-                                '/src/imgs/testimonial-logo-1.png';
-                        }
-                        ?>
-                        <div class="testimonial-card rounded-[1.5vw] bg-brand-primary p-[3vw] md:rounded-3xl md:p-8 sm:rounded-[4vw] sm:p-6">
-                            <?php if ($quote): ?>
-                                <p class="font-body font-normal mb-[2vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                                    <?php echo esc_html($quote); ?>
-                                </p>
+                        <div class="testimonial-author mt-auto">
+                            <?php if ($logo): ?>
+                                <img
+                                    src="<?php echo esc_url($logo); ?>"
+                                    alt="Client logo"
+                                    class="h-[2.552vw] w-auto md:h-12 "
+                                >
                             <?php endif; ?>
-
-                            <div class="testimonial-author">
-                                <?php if ($logo): ?>
-                                    <img
-                                        src="<?php echo esc_url($logo); ?>"
-                                        alt="<?php echo esc_attr(
-                                            $company ?: 'Client logo',
-                                        ); ?>"
-                                        class="h-[2.552vw] w-auto md:h-12 "
-                                    >
-                                <?php endif; ?>
-
-                                <?php if ($author || $role): ?>
-                                    <div class="author-details mt-4">
-                                        <?php if ($author): ?>
-                                            <p class="author-name font-heading text-[1.042vw] font-semibold text-white md:text-base">
-                                                <?php echo esc_html($author); ?>
-                                            </p>
-                                        <?php endif; ?>
-
-                                        <?php if ($role || $company): ?>
-                                            <p class="author-role font-body text-[0.938vw] text-text-muted md:text-sm">
-                                                <?php if ($role && $company) {
-                                                    echo esc_html(
-                                                        $role . ', ' . $company,
-                                                    );
-                                                } elseif ($role) {
-                                                    echo esc_html($role);
-                                                } elseif ($company) {
-                                                    echo esc_html($company);
-                                                } ?>
-                                            </p>
-                                        <?php endif; ?>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    <?php
-                    endwhile;
-                    wp_reset_postdata();
-                else:
-                     ?>
-                    <!-- Fallback: Show default testimonial if no posts exist -->
-                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[4vw] sm:p-6">
-                        <p class="font-body font-normal mb-[2vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                            Throughout the course of working together since 2017, we have been constantly impressed by TrAC ability to provide requested services in a timely manner and ensure that any bumps along the way are sorted out with the at most priority in the shortest time possible.
-                        </p>
-                        <div class="testimonial-author">
-                            <img
-                                src="<?php echo esc_url(
-                                    get_template_directory_uri() .
-                                        '/src/imgs/home/testimonials/partners-in-health.png',
-                                ); ?>"
-                                alt="Client logo"
-                                class="h-[2.552vw] w-auto md:h-10 sm:h-8 brightness-[16]"
-                            >
                         </div>
                     </div>
-                   
-                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[4vw] sm:p-6">
-                        <p class="font-body font-normal mb-[2vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                            We have been working with TrAC  since 2017 and they have proven to be undoubtedly a reliable Internet Service Provider. Through their strong network, we have managed to get first-rate internet quality for all of our 15 branches throughout the country and this has greatly facilitated our business activities.
-                        </p>
-                        <div class="testimonial-author">
-                            <img
-                                src="<?php echo esc_url(
-                                    get_template_directory_uri() .
-                                        '/src/imgs/home/testimonials/urwego-bank.png',
-                                ); ?>"
-                                alt="Client logo"
-                                class="h-[2.552vw] w-auto md:h-10 sm:h-8 brightness-[16]"
-                            >
-                        </div>
-                    </div>
-                   
-                    <div class="testimonial-card rounded-[1.563vw] p-[3.125vw] md:rounded-3xl md:p-8 sm:rounded-[4vw] sm:p-6">
-                        <p class="font-body font-normal mb-[2vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
-                            TrAC has  been providing to us Multiprotocol Label Switching (MPLS private network) and Internet services which are highly efficient, scalable and secure. In our interactions, we have found TrAC staff to be highly professional and rich with experience in project implementation skills and the ability to handle diverse environments while providing exceptional customer service and support in a timely manner.
-                        </p>
-                        <div class="testimonial-author">
-                            <img
-                                src="<?php echo esc_url(
-                                    get_template_directory_uri() .
-                                        '/src/imgs/home/testimonials/smart-access.png',
-                                ); ?>"
-                                alt="Client logo"
-                                class="h-[2.552vw] w-auto md:h-10 sm:h-8 brightness-[16]"
-                            >
-                        </div>
-                    </div>
-                   
                 <?php
-                endif;
+                endfor;
                 ?>
                 </div>
             </div>
         </div>
-         <div class=" items-center justify-center gap-4 hidden md:flex w-full relative z-[10]">
+         <div class=" items-center justify-center gap-4 hidden md:flex w-full relative z-[10] sm:mt-8">
                 <button
                     type="button"
                      class=" arrow-prev flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"

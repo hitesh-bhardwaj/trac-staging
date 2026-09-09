@@ -20,11 +20,11 @@
 <?php wp_body_open(); ?>
 <div class="page-loader">
     <div class="w-screen h-screen fixed inset-0 bg-white z-[99999] flex flex-col justify-center items-center loader [clip-path:inset(0%_0%_0%_0%)]">
-        <div class="size-[15vw] min-w-[72px] min-h-[72px]">
+        <div class="size-[15vw] min-w-[72px] min-h-[72px] sm:size-[50vw]">
             <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon-light.svg" class="w-full h-full" alt="Trac Logo">
         </div>
 
-        <p class="whitespace-nowrap w-[8.5em] flex items-center justify-center gap-[0.02em] text-brand-primary text-[1.85vw] absolute top-[65%] left-[51%] -translate-x-1/2">
+        <p class="whitespace-nowrap w-[8.5em] flex items-center justify-center gap-[0.02em] text-brand-primary text-[1.85vw] absolute top-[65%] left-[51%] -translate-x-1/2 sm:text-[7vw]">
              <span class="inline-block">Loading</span>
              <span class="inline-flex items-center justify-start w-[1.6em]" aria-hidden="true">
              <span class="loader-dot">.</span>
@@ -76,6 +76,55 @@
        }
        return $trac_current_path === $path;
    };
+
+   $trac_header_logo = get_field('header_logo_image', 'option');
+   $trac_header_cta_text = get_field('header_cta_text', 'option');
+   $trac_header_cta_link = get_field('header_cta_link', 'option');
+   $trac_header_solutions_label = get_field(
+       'header_solutions_label',
+       'option',
+   );
+
+   $trac_header_nav_links = [];
+   for ($i = 1; $i <= 3; $i++) {
+       $trac_header_nav_links[] = [
+           'label' => get_field("header_nav_{$i}_label", 'option'),
+           'link' => get_field("header_nav_{$i}_link", 'option'),
+       ];
+   }
+
+   $trac_solutions_menu_items = [];
+   for ($i = 1; $i <= 4; $i++) {
+       $trac_solutions_menu_items[] = [
+           'label' => get_field("header_solutions_{$i}_label", 'option'),
+           'url' => trac_normalize_solution_url(
+               get_field("header_solutions_{$i}_link", 'option'),
+           ),
+       ];
+   }
+
+   $trac_mobile_social = [
+       'facebook' => [
+           'url' => get_field('footer_social_facebook', 'option'),
+           'icon' => get_field('footer_social_facebook_icon', 'option'),
+           'label' => 'Facebook',
+       ],
+       'twitter' => [
+           'url' => get_field('footer_social_twitter', 'option'),
+           'icon' => get_field('footer_social_twitter_icon', 'option'),
+           'label' => 'X',
+       ],
+       'instagram' => [
+           'url' => get_field('footer_social_instagram', 'option'),
+           'icon' => get_field('footer_social_instagram_icon', 'option'),
+           'label' => 'Instagram',
+       ],
+       'linkedin' => [
+           'url' => get_field('footer_social_linkedin', 'option'),
+           'icon' => get_field('footer_social_linkedin_icon', 'option'),
+           'label' => 'LinkedIn',
+       ],
+   ];
    ?>
    <header
     id="site-header"
@@ -86,29 +135,40 @@
             <div class="site-logo flex-shrink-0">
                 <?php if (has_custom_logo()): ?>
                     <?php the_custom_logo(); ?>
-                <?php else: ?>
+                <?php elseif ($trac_header_logo): ?>
                     <a href="<?php echo esc_url(
                         home_url('/'),
                     ); ?>" class="flex items-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg" class="w-[8vw] sm:w-[20vw] brightness-[16]" alt="Trac Logo">
+                        <img src="<?php echo esc_url(
+                            $trac_header_logo,
+                        ); ?>" class="w-[8vw] sm:w-[20vw]" alt="<?php bloginfo(
+                            'name',
+                        ); ?>">
                     </a>
                 <?php endif; ?>
             </div>
 
             <!-- Primary Navigation - Desktop -->
-            <nav id="primary-nav" class="primary-navigation flex items-center justify-center flex-1 mx-[2vw] md:hidden" aria-label="<?php esc_attr_e(
+            <nav id="primary-nav" class="primary-navigation flex items-center justify-center flex-1 mx-[2vw] lg:hidden" aria-label="<?php esc_attr_e(
                 'Primary Navigation',
                 'trac',
             ); ?>">
                 <ul class="list-none flex items-center gap-[3.125vw]">
-                    <?php $is_about_active = $trac_nav_is_active('about-us'); ?>
+                    <?php
+                    // First nav link (About Us position)
+                    $nav_link_0 = $trac_header_nav_links[0];
+                    $is_nav_0_active = $trac_nav_is_active(
+                        wp_parse_url($nav_link_0['link'], PHP_URL_PATH) ?:
+                            $nav_link_0['link'],
+                    );
+                    ?>
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
-                            home_url('/about-us'),
-                        ); ?>" class="nav-link nav-underline-offset text-white hover:text-white under-multi<?php echo $is_about_active
+                            $nav_link_0['link'],
+                        ); ?>" class="nav-link text-[1.146vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out pb-[0.35vw] lg:pb-[10px] text-white hover:text-white under-multi<?php echo $is_nav_0_active
     ? ' is-active-link'
-    : ''; ?>"<?php echo $is_about_active ? ' aria-current="page"' : ''; ?>>
-                            About Us
+    : ''; ?>"<?php echo $is_nav_0_active ? ' aria-current="page"' : ''; ?>>
+                            <?php echo trac_esc_html($nav_link_0['label']); ?>
                         </a>
                     </li>
                     <?php // Checked against 'solutions' (the real URL prefix, e.g.
@@ -122,13 +182,13 @@
                     <li class="menu-item menu-item-has-children relative group under-multi-parent" data-solutions-menu-item>
     <a
         href="<?php echo esc_url(home_url('#')); ?>"
-        class="nav-link inline-flex items-center gap-[0.26vw] under-multi text-white hover:text-white<?php echo $is_solutions_active
+        class="nav-link text-[1.146vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out inline-flex items-center gap-[0.26vw] under-multi text-white hover:text-white<?php echo $is_solutions_active
             ? ' is-active-link'
             : ''; ?>"
         data-solutions-trigger
         <?php echo $is_solutions_active ? ' aria-current="page"' : ''; ?>
     >
-        Solutions
+        <?php echo trac_esc_html($trac_header_solutions_label); ?>
         <div class="size-[1.5vw] group-hover:translate-y-[10%] duration-300 ease-out">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.708 22.122L23.416 14.416L22.002 13L15.708 19.294L9.416 13L8 14.416L15.708 22.122Z" fill="white"/>
@@ -136,31 +196,39 @@
         </div>
     </a>
                  </li>
-                    <?php $is_communities_active = $trac_nav_is_active(
-                        'connecting-communities',
-                    ); ?>
+                    <?php
+                    $nav_link_1 = $trac_header_nav_links[1];
+                    $is_nav_1_active = $trac_nav_is_active(
+                        wp_parse_url($nav_link_1['link'], PHP_URL_PATH) ?:
+                            $nav_link_1['link'],
+                    );
+                    ?>
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
-                            home_url('/connecting-communities'),
-                        ); ?>" class="nav-link nav-underline-offset under-multi text-white hover:text-white<?php echo $is_communities_active
+                            $nav_link_1['link'],
+                        ); ?>" class="nav-link text-[1.146vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out pb-[0.35vw] lg:pb-[10px] under-multi text-white hover:text-white<?php echo $is_nav_1_active
     ? ' is-active-link'
-    : ''; ?>"<?php echo $is_communities_active
+    : ''; ?>"<?php echo $is_nav_1_active
     ? ' aria-current="page"'
     : ''; ?>>
-                            Connecting Communities
+                            <?php echo trac_esc_html($nav_link_1['label']); ?>
                         </a>
                     </li>
 
-                    <?php $is_careers_active = $trac_nav_is_active(
-                        'careers',
-                    ); ?>
+                    <?php
+                    $nav_link_2 = $trac_header_nav_links[2];
+                    $is_nav_2_active = $trac_nav_is_active(
+                        wp_parse_url($nav_link_2['link'], PHP_URL_PATH) ?:
+                            $nav_link_2['link'],
+                    );
+                    ?>
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
-                            home_url('/careers'),
-                        ); ?>" class="nav-link nav-underline-offset under-multi text-white hover:text-white<?php echo $is_careers_active
+                            $nav_link_2['link'],
+                        ); ?>" class="nav-link text-[1.146vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out pb-[0.35vw] lg:pb-[10px] under-multi text-white hover:text-white<?php echo $is_nav_2_active
     ? ' is-active-link'
-    : ''; ?>"<?php echo $is_careers_active ? ' aria-current="page"' : ''; ?>>
-                            Careers
+    : ''; ?>"<?php echo $is_nav_2_active ? ' aria-current="page"' : ''; ?>>
+                            <?php echo trac_esc_html($nav_link_2['label']); ?>
                         </a>
                     </li>
 
@@ -171,18 +239,18 @@
             <div class="header-actions flex items-center gap-[0.833vw] md:gap-3">
                 <!-- Cloud Login CTA Button - Desktop -->
                 <a href="<?php echo esc_url(
-                    get_field('header_cta_link', 'option') ?: '/contact-us',
-                ); ?>" class="btn btn-primary md:hidden hover:bg-white hover:text-brand-secondary transition-colors durtaion-700 ease-in-out border border-brand-secondary">
+                    $trac_header_cta_link,
+                ); ?>" class="btn btn-primary lg:hidden hover:bg-white hover:text-brand-secondary transition-colors durtaion-700 ease-in-out border border-brand-secondary">
                     <!-- <span class="btn-line"></span> -->
                      <span>
-                         Contact Us
+                         <?php echo trac_esc_html($trac_header_cta_text); ?>
                      </span>
                 </a>
 
                 <!-- Mobile Menu Toggle -->
                 <button
                     id="mobile-menu-toggle"
-                    class="mobile-toggle hidden md:flex flex-col justify-center items-center w-12 h-12 gap-1.5"
+                    class="mobile-toggle hidden lg:flex flex-col justify-center items-center w-12 h-12 gap-1.5"
                     aria-expanded="false"
                     aria-controls="mobile-menu"
                     aria-label="<?php esc_attr_e('Toggle menu', 'trac'); ?>"
@@ -195,91 +263,106 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu hidden fixed inset-0 top-[80px] bg-white z-[40] overflow-y-auto">
-            <nav class="w-full px-[4vw] py-8 sm:px-[6vw]" aria-label="<?php esc_attr_e(
+        <div id="mobile-menu" class="mobile-menu hidden fixed inset-0 bg-white z-[10000] overflow-y-auto text-[#111111]">
+            <nav class="flex min-h-[100dvh] w-full flex-col px-[4vw] pb-8 pt-10 sm:px-[8vw] sm:pb-3 sm:pt-9" aria-label="<?php esc_attr_e(
                 'Mobile Navigation',
                 'trac',
             ); ?>">
-                <ul class="flex flex-col gap-6">
+                <div class="mb-8 flex justify-end">
+                    <button class="mobile-menu-close flex h-[8.889vw] w-[8.889vw] items-center justify-center text-brand-primary" type="button" aria-label="<?php esc_attr_e(
+                        'Close menu',
+                        'trac',
+                    ); ?>">
+                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M7 7L27 27M27 7L7 27" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <ul class="flex flex-col gap-3 m-0 p-0 list-none">
                     <li><a href="<?php echo esc_url(
-                        home_url('/about-us'),
-                    ); ?>" class="mobile-nav-link block py-2 text-xl text-neutral-900 hover:text-brand-primary">About Us</a></li>
-                    <li>
-                        <a href="<?php echo esc_url(
-                            home_url('/solutions'),
-                        ); ?>" class="mobile-nav-link block py-2 text-xl text-neutral-900 hover:text-brand-primary">Solutions</a>
-                        <ul class="mt-2 flex flex-col gap-2 pl-4">
-                            <li><a href="<?php echo esc_url(
-                                home_url('/solutions/enterprise-network/'),
-                            ); ?>" class="mobile-nav-link text-lg sm:text-base">Enterprise Network</a></li>
-                            <li><a href="<?php echo esc_url(
-                                home_url('/solutions/sme-internet/'),
-                            ); ?>" class="mobile-nav-link text-lg sm:text-base">SME Internet</a></li>
-                            <li><a href="<?php echo esc_url(
-                                home_url('/solutions/home-internet/'),
-                            ); ?>" class="mobile-nav-link text-lg sm:text-base">Home Internet</a></li>
-                            <li><a href="<?php echo esc_url(
-                                home_url('/solutions/carrier-services/'),
-                            ); ?>" class="mobile-nav-link text-lg sm:text-base">Wholesale &amp; Carrier</a></li>
+                        $nav_link_0['link'],
+                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4.074vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_0_active
+    ? ' is-active-link'
+    : ''; ?>"<?php echo $is_nav_0_active ? ' aria-current="page"' : ''; ?>><?php echo trac_esc_html(
+    $nav_link_0['label'],
+); ?></a></li>
+                    <li class="mobile-nav-solutions rounded-xl bg-brand-tint text-[#111111] overflow-hidden p-[5.185vw] sm:p-[5.185vw]<?php echo $is_solutions_active
+    ? ' is-active-link'
+    : ''; ?>">
+                        <button class="mobile-nav-solutions-trigger flex w-full items-center justify-between border-0 bg-transparent p-0 font-body text-[4.074vw] leading-[1.15] text-inherit text-left sm:text-[4.074vw]" type="button" aria-expanded="false" aria-controls="mobile-solutions-list">
+                            <span><?php echo trac_esc_html(
+                            $trac_header_solutions_label,
+                        ); ?></span>
+                            <svg class="mobile-nav-solutions-arrow transition-transform duration-300" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M5 9L12 16L19 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <ul id="mobile-solutions-list" class="mobile-nav-solutions-list flex flex-col p-0 list-none">
+                            <?php foreach ($trac_solutions_menu_items as $solution_item): ?>
+                                <li><a href="<?php echo esc_url(
+                                    $solution_item['url'],
+                                ); ?>" class="mobile-nav-solutions-link block border-b py-4 pb-5 font-body text-[3.519vw] leading-[1.2] no-underline last:border-b-0 last:pb-[0.370vw] sm:text-[3.519vw]"><?php echo trac_esc_html(
+    $solution_item['label'],
+); ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </li>
                     <li><a href="<?php echo esc_url(
-                        home_url('/communities'),
-                    ); ?>" class="mobile-nav-link block py-2 text-xl text-neutral-900 hover:text-brand-primary">Connecting Communities</a></li>
+                        $nav_link_1['link'],
+                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4.074vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_1_active
+    ? ' is-active-link'
+    : ''; ?>"<?php echo $is_nav_1_active
+    ? ' aria-current="page"'
+    : ''; ?>><?php echo trac_esc_html(
+    $nav_link_1['label'],
+); ?></a></li>
                     <li><a href="<?php echo esc_url(
-                        home_url('/partners'),
-                    ); ?>" class="mobile-nav-link block py-2 text-xl text-neutral-900 hover:text-brand-primary">Partners</a></li>
-                    <li><a href="<?php echo esc_url(
-                        home_url('/careers'),
-                    ); ?>" class="mobile-nav-link block py-2 text-xl text-neutral-900 hover:text-brand-primary">Careers</a></li>
+                        $nav_link_2['link'],
+                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4.074vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_2_active
+    ? ' is-active-link'
+    : ''; ?>"<?php echo $is_nav_2_active ? ' aria-current="page"' : ''; ?>><?php echo trac_esc_html(
+    $nav_link_2['label'],
+); ?></a></li>
 
                 </ul>
 
-                <a href="#" class="btn btn-primary mt-10 w-full justify-center">
-                    <span class="btn-line"></span>
-                    <span class="btn-text">Contact Us</span>
-                    <span class="btn-icon" aria-hidden="true">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="1.71429" cy="1.71429" r="1.71429" fill="currentColor"/>
-                            <circle cx="11.9994" cy="1.71429" r="1.71429" fill="currentColor"/>
-                            <circle cx="11.9994" cy="12" r="1.71429" fill="currentColor"/>
-                            <circle cx="22.2866" cy="12" r="1.71429" fill="currentColor"/>
-                            <circle cx="1.71429" cy="22.2857" r="1.71429" fill="currentColor"/>
-                            <circle cx="11.9994" cy="22.2857" r="1.71429" fill="currentColor"/>
-                        </svg>
-                    </span>
+                <a href="<?php echo esc_url(
+                    $trac_header_cta_link,
+                ); ?>" class="mt-auto flex min-h-[11.852vw] items-center justify-center rounded-full bg-brand-secondary px-[3.704vw] font-body text-[3.519vw] leading-none text-white text-center no-underline">
+                    <?php echo trac_esc_html(
+                        $trac_header_cta_text,
+                    ); ?>
                 </a>
+
+                <div class="flex justify-center gap-[4.074vw] pt-[5.926vw] sm:gap-[3.333vw]">
+                    <?php foreach ($trac_mobile_social as $social): ?>
+                        <?php if ($social['url'] && $social['icon']): ?>
+                            <a href="<?php echo esc_url(
+                                $social['url'],
+                            ); ?>" target="_blank" rel="noopener noreferrer" class="flex h-[8.148vw] w-[8.148vw] items-center justify-center rounded-full border-[0.278vw] border-[#111111] bg-white first:border-brand-primary" aria-label="<?php echo esc_attr(
+                                $social['label'],
+                            ); ?>">
+                                <img src="<?php echo esc_url(
+                                    $social['icon'],
+                                ); ?>" alt="social icon" aria-hidden="true" class="h-[4.815vw] w-[4.815vw] object-contain [filter:brightness(0)_saturate(100%)]">
+                            </a>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
             </nav>
         </div>
     </header>
-   <?php $solutions_menu_items = [
-       [
-           'label' => 'Enterprise Network',
-           'url' => home_url('/solutions/enterprise-network/'),
-       ],
-       [
-           'label' => 'SME Internet',
-           'url' => home_url('/solutions/sme-internet/'),
-       ],
-       [
-           'label' => 'Home Internet',
-           'url' => home_url('/solutions/home-internet/'),
-       ],
-       [
-           'label' => 'Wholesale & Carrier',
-           'url' => home_url('/solutions/carrier-services/'),
-       ],
-   ]; ?>
    <nav
     class="fixed w-[90%] top-[12vw] left-1/2 -translate-x-1/2 rounded-[0.9vw] p-[1.5vw] py-[1.5vw] flex justify-between z-[999] bg-white"
     data-solutions-dropdown
       >
-    <?php foreach ($solutions_menu_items as $solution_item): ?>
+    <?php foreach ($trac_solutions_menu_items as $solution_item): ?>
         <a href="<?php echo esc_url(
             $solution_item['url'],
         ); ?>" class="group w-[24%] h-[12vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[0.8vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
             <div class="w-full flex flex-col gap-[1vw] h-full justify-center">
-                <h4 class="text-[1.8vw] font-body"><?php echo esc_html(
+                <h4 class="text-[1.8vw] font-body"><?php echo trac_esc_html(
                     $solution_item['label'],
                 ); ?></h4>
             </div>
@@ -309,134 +392,3 @@
    <div data-solutions-overlay class=" bg-black/20 backdrop-blur-md fixed inset-0 w-screen h-screen z-[998]">
     </div>
 
-<style>
-/* ==========================================
-   Header - Desktop First (1920px base)
-   ========================================== */
-
-/* Logo sizing - 150x74 at 1920px */
-.logo-svg {
-    width: 7.813vw;   /* 150px at 1920 */
-    height: 3.854vw;  /* 74px at 1920 */
-}
-
-@media (max-width: 1024px) {
-    .logo-svg {
-        width: 120px;
-        height: 59px;
-    }
-}
-
-@media (max-width: 540px) {
-    .logo-svg {
-        width: 100px;
-        height: 49px;
-    }
-}
-
-/* Nav link - 22px at 1920px */
-.nav-link {
-    /* font-family: var(--font-heading); */
-    font-size: var(--text-body);  /* 1.146vw = 22px at 1920 */
-    color: var(--color-text-secondary);
-    transition: color 0.3s ease;
-    white-space: nowrap;
-}
-
-/* If a nav-link also uses the under-multi underline, preserve background-size transition too. */
-.nav-link.under-multi {
-    transition: color 0.3s ease, background-size 0.3s ease-out;
-}
-
-.nav-link:hover {
-    color: var(--color-text-secondary);
-}
-
-/* Active route: keep the hover underline permanently on. Specificity matches
-   `.under-multi-parent:hover .under-multi` (3 classes) so it isn't overridden by the
-   `.menu-item .under-multi` resting-state rule (2 classes) in main.css. */
-.menu-item .under-multi.is-active-link {
-    background-size:
-        100% 0px,
-        100% 1px;
-}
-
-/* "Solutions" is an inline-flex box (text + dropdown chevron), which makes it taller
-   than the plain-text links, so its bottom-anchored underline (`background-position:
-   ... 100%`) naturally sits lower. Push the plain-text links' underline down to match. */
-.nav-underline-offset {
-    padding-bottom: 0.35vw;
-}
-
-@media (max-width: 1024px) {
-    .nav-underline-offset {
-        padding-bottom: 10px;
-    }
-}
-
-/* Nav dropdown icon */
-.nav-dropdown-icon {
-    width: 1.667vw;   /* 32px at 1920 */
-    height: 1.667vw;
-}
-
-@media (max-width: 1024px) {
-    .nav-dropdown-icon {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-/* Mobile nav link */
-.mobile-nav-link {
-    /* font-family: var(--font-heading); */
-    font-size: 24px;
-    color: var(--color-text-secondary);
-    display: block;
-    padding: 8px 0;
-    transition: color 0.3s ease;
-}
-
-.mobile-nav-link:hover {
-    color: var(--color-brand-primary);
-}
-
-@media (max-width: 540px) {
-    .mobile-nav-link {
-        font-size: 20px;
-    }
-}
-
-/* Mobile menu toggle animation */
-#mobile-menu-toggle[aria-expanded="true"] .menu-line:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-#mobile-menu-toggle[aria-expanded="true"] .menu-line:nth-child(2) {
-    opacity: 0;
-}
-
-#mobile-menu-toggle[aria-expanded="true"] .menu-line:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Header scroll state */
-.site-header.is-scrolled {
-    box-shadow: 0 0.26vw 1.042vw rgba(0, 0, 0, 0.05);
-}
-
-@media (max-width: 1024px) {
-    .site-header.is-scrolled {
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    }
-}
-
-.site-header.is-hidden {
-    transform: translateY(-100%);
-}
-
-/* Mobile menu open state */
-.mobile-menu.is-open {
-    display: block;
-}
-</style>

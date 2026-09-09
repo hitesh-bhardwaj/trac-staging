@@ -1,0 +1,27 @@
+/* Connecting Communities gallery modal state hooks. */
+.impact-gallery-modal.is-open {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.impact-gallery-modal__close span:first-child {
+    transform: rotate(45deg);
+}
+
+.impact-gallery-modal__close span:last-child {
+    transform: rotate(-45deg);
+}
+
+.impact-gallery-modal__close:hover span:first-child {
+    transform: rotate(135deg);
+}
+
+.impact-gallery-modal__close:hover span:last-child {
+    transform: rotate(45deg);
+}
+
+.impact-gallery-modal__thumb.is-active {
+    border-color: var(--color-brand-secondary);
+    opacity: 1;
+    transform: translateY(-2px);
+}

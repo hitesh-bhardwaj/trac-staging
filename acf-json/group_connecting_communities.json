@@ -1,95 +1,365 @@
 {
     "key": "group_connecting_communities",
-    "title": "Connecting Communities Page Settings",
+    "title": "Connecting Communities Page",
     "fields": [
+        {
+            "key": "field_cc_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
         {
             "key": "field_cc_hero_title",
             "label": "Hero Title",
             "name": "cc_hero_title",
             "type": "text",
-            "default_value": "Connectivity is where access begins",
-            "required": 0,
-            "instructions": "Main heading for the hero section"
+            "required": 1
         },
         {
             "key": "field_cc_hero_subtitle",
             "label": "Hero Subtitle",
             "name": "cc_hero_subtitle",
-            "type": "text",
-            "default_value": "Connecting Communities brings reliable Internet and essential services together, making them easier for communities to access in one connected local platform.",
-            "required": 0,
-            "instructions": "Subheading below the main title"
+            "type": "textarea",
+            "required": 1,
+            "rows": 2
         },
         {
             "key": "field_cc_hero_description",
             "label": "Hero Description",
             "name": "cc_hero_description",
             "type": "textarea",
-            "default_value": "Enabled by TrAC, the model starts with strong connectivity, creating the foundation for financial tools, education, clean water, agriculture, nutrition, and other services that support everyday life.",
-            "required": 0,
-            "rows": 4,
-            "instructions": "Description text below the subtitle"
+            "required": 1,
+            "rows": 3
         },
         {
             "key": "field_cc_hero_image",
             "label": "Hero Image",
             "name": "cc_hero_image",
             "type": "image",
-            "required": 0,
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
-            "instructions": "Large hero image showing connectivity network"
+            "required": 1
+        },
+        {
+            "key": "field_cc_hero_icons_image",
+            "label": "Hero Icons Image",
+            "name": "cc_hero_icons_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_overview_tab",
+            "label": "Overview",
+            "name": "",
+            "type": "tab"
         },
         {
             "key": "field_cc_overview_label",
-            "label": "Overview Label",
+            "label": "Section Label",
             "name": "cc_overview_label",
             "type": "text",
-            "default_value": "Overview",
-            "required": 0,
-            "instructions": "Small eyebrow label above the overview heading"
+            "required": 1
         },
         {
             "key": "field_cc_overview_title",
-            "label": "Overview Title",
+            "label": "Section Title",
             "name": "cc_overview_title",
             "type": "text",
-            "default_value": "What is Connecting Communities?",
-            "required": 0,
-            "instructions": "Main heading for the overview section"
+            "required": 1
         },
         {
             "key": "field_cc_overview_description",
-            "label": "Overview Description",
+            "label": "Description (blank line = new paragraph)",
             "name": "cc_overview_description",
             "type": "textarea",
-            "default_value": "Connecting Communities (CC) is a platform that connects infrastructure, services, and communities.\n\nThe idea is simple: start with reliable Internet, then bring useful services closer to the people who need them. By connecting technology, local access points, and specialised services, CC helps turn connectivity into practical opportunities for everyday life.",
-            "required": 0,
-            "rows": 6,
-            "instructions": "Body copy for the overview section. Separate paragraphs with a blank line."
+            "required": 1,
+            "rows": 5
         },
         {
             "key": "field_cc_overview_image_left",
-            "label": "Overview Left Image",
+            "label": "Left Image",
             "name": "cc_overview_image_left",
             "type": "image",
-            "required": 0,
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
-            "instructions": "Left image in the overview section"
+            "required": 1
         },
         {
             "key": "field_cc_overview_image_right",
-            "label": "Overview Right Image",
+            "label": "Right Image",
             "name": "cc_overview_image_right",
             "type": "image",
-            "required": 0,
             "return_format": "array",
             "preview_size": "medium",
             "library": "all",
-            "instructions": "Right image in the overview section"
+            "required": 1
+        },
+        {
+            "key": "field_cc_collab_tab",
+            "label": "Collaborations",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_cc_collab_label",
+            "label": "Section Label",
+            "name": "cc_collab_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_collab_title",
+            "label": "Section Title",
+            "name": "cc_collab_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_collab_description",
+            "label": "Description",
+            "name": "cc_collab_description",
+            "type": "textarea",
+            "instructions": "Leave a blank line between paragraphs.",
+            "rows": 4,
+            "required": 1
+        },
+        {
+            "key": "field_cc_collab_image",
+            "label": "Image",
+            "name": "cc_collab_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_tab",
+            "label": "Community Hub",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_cc_hub_label",
+            "label": "Section Label",
+            "name": "cc_hub_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_title",
+            "label": "Section Title",
+            "name": "cc_hub_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_description",
+            "label": "Description",
+            "name": "cc_hub_description",
+            "type": "textarea",
+            "instructions": "Leave a blank line between paragraphs.",
+            "rows": 5,
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_1_icon",
+            "label": "Card 1 - Icon",
+            "name": "cc_hub_card_1_icon",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_1_title",
+            "label": "Card 1 - Title",
+            "name": "cc_hub_card_1_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_2_icon",
+            "label": "Card 2 - Icon",
+            "name": "cc_hub_card_2_icon",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_2_title",
+            "label": "Card 2 - Title",
+            "name": "cc_hub_card_2_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_3_icon",
+            "label": "Card 3 - Icon",
+            "name": "cc_hub_card_3_icon",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_3_title",
+            "label": "Card 3 - Title",
+            "name": "cc_hub_card_3_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_4_icon",
+            "label": "Card 4 - Icon",
+            "name": "cc_hub_card_4_icon",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_4_title",
+            "label": "Card 4 - Title",
+            "name": "cc_hub_card_4_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_5_icon",
+            "label": "Card 5 - Icon",
+            "name": "cc_hub_card_5_icon",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_hub_card_5_title",
+            "label": "Card 5 - Title",
+            "name": "cc_hub_card_5_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_tab",
+            "label": "Impact Gallery",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_cc_gallery_label",
+            "label": "Section Label",
+            "name": "cc_gallery_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_title",
+            "label": "Section Title",
+            "name": "cc_gallery_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_description",
+            "label": "Description",
+            "name": "cc_gallery_description",
+            "type": "textarea",
+            "instructions": "Leave a blank line between paragraphs.",
+            "rows": 4,
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_image_1",
+            "label": "Image 1",
+            "name": "cc_gallery_image_1",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_image_2",
+            "label": "Image 2",
+            "name": "cc_gallery_image_2",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_image_3",
+            "label": "Image 3",
+            "name": "cc_gallery_image_3",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_image_4",
+            "label": "Image 4",
+            "name": "cc_gallery_image_4",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_image_5",
+            "label": "Image 5",
+            "name": "cc_gallery_image_5",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_image_6",
+            "label": "Image 6",
+            "name": "cc_gallery_image_6",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_image_7",
+            "label": "Image 7",
+            "name": "cc_gallery_image_7",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_cc_gallery_image_8",
+            "label": "Image 8",
+            "name": "cc_gallery_image_8",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
         }
     ],
     "location": [

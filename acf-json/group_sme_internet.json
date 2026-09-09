@@ -1,0 +1,410 @@
+{
+    "key": "group_sme_internet_page",
+    "title": "SME Internet Page",
+    "fields": [
+        {
+            "key": "field_sme_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_sme_hero_title",
+            "label": "Hero Title",
+            "name": "hero_title",
+            "type": "textarea",
+            "instructions": "Each line becomes a separate line in the hero heading. Leave a blank line between lines.",
+            "rows": 4,
+            "required": 1
+        },
+        {
+            "key": "field_sme_hero_subtitle_2",
+            "label": "Hero Subtitle",
+            "name": "hero_subtitle_2",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_sme_hero_primary_button_text",
+            "label": "Hero Button Text",
+            "name": "hero_primary_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_hero_primary_button_link",
+            "label": "Hero Button Link",
+            "name": "hero_primary_button_link",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_hero_image",
+            "label": "Hero Image",
+            "name": "hero_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_tab",
+            "label": "Product Overview",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_sme_overview_label",
+            "label": "Section Label",
+            "name": "sme_overview_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_title",
+            "label": "Section Title",
+            "name": "sme_overview_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_description",
+            "label": "Description",
+            "name": "sme_overview_description",
+            "type": "textarea",
+            "instructions": "Leave a blank line between paragraphs.",
+            "rows": 4,
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_1_icon",
+            "label": "Card 1 - Icon",
+            "name": "sme_overview_card_1_icon",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_1_text",
+            "label": "Card 1 - Text",
+            "name": "sme_overview_card_1_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_2_icon",
+            "label": "Card 2 - Icon",
+            "name": "sme_overview_card_2_icon",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_2_text",
+            "label": "Card 2 - Text",
+            "name": "sme_overview_card_2_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_3_icon",
+            "label": "Card 3 - Icon",
+            "name": "sme_overview_card_3_icon",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_3_text",
+            "label": "Card 3 - Text",
+            "name": "sme_overview_card_3_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_4_icon",
+            "label": "Card 4 - Icon",
+            "name": "sme_overview_card_4_icon",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_4_text",
+            "label": "Card 4 - Text",
+            "name": "sme_overview_card_4_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_5_icon",
+            "label": "Card 5 - Icon",
+            "name": "sme_overview_card_5_icon",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_5_text",
+            "label": "Card 5 - Text",
+            "name": "sme_overview_card_5_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_6_icon",
+            "label": "Card 6 - Icon",
+            "name": "sme_overview_card_6_icon",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_overview_card_6_text",
+            "label": "Card 6 - Text",
+            "name": "sme_overview_card_6_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plans_tab",
+            "label": "Plans & Pricing",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_sme_plans_label",
+            "label": "Section Label",
+            "name": "sme_plans_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plans_title",
+            "label": "Section Title",
+            "name": "sme_plans_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plans_button_text",
+            "label": "Button Text",
+            "name": "sme_plans_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plans_button_link",
+            "label": "Button Link",
+            "name": "sme_plans_button_link",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_1_name",
+            "label": "Plan 1 - Name",
+            "name": "sme_plan_1_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_1_speed",
+            "label": "Plan 1 - Speed",
+            "name": "sme_plan_1_speed",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_1_price",
+            "label": "Plan 1 - Price",
+            "name": "sme_plan_1_price",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_1_period",
+            "label": "Plan 1 - Period",
+            "name": "sme_plan_1_period",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_1_description",
+            "label": "Plan 1 - Description",
+            "name": "sme_plan_1_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 2
+        },
+        {
+            "key": "field_sme_plan_1_image",
+            "label": "Plan 1 - Image",
+            "name": "sme_plan_1_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_2_name",
+            "label": "Plan 2 - Name",
+            "name": "sme_plan_2_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_2_speed",
+            "label": "Plan 2 - Speed",
+            "name": "sme_plan_2_speed",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_2_price",
+            "label": "Plan 2 - Price",
+            "name": "sme_plan_2_price",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_2_period",
+            "label": "Plan 2 - Period",
+            "name": "sme_plan_2_period",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_plan_2_description",
+            "label": "Plan 2 - Description",
+            "name": "sme_plan_2_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 2
+        },
+        {
+            "key": "field_sme_plan_2_image",
+            "label": "Plan 2 - Image",
+            "name": "sme_plan_2_image",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solutions_tab",
+            "label": "Solutions Overview",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_sme_solutions_label",
+            "label": "Section Label",
+            "name": "sme_solutions_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solutions_title",
+            "label": "Section Title",
+            "name": "sme_solutions_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solutions_button_text",
+            "label": "Button Text",
+            "name": "sme_solutions_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solutions_button_link",
+            "label": "Button Link",
+            "name": "sme_solutions_button_link",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solution_1_icon",
+            "label": "Solution 1 - Icon",
+            "name": "sme_solution_1_icon",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solution_1_title",
+            "label": "Solution 1 - Title",
+            "name": "sme_solution_1_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solution_1_description",
+            "label": "Solution 1 - Description",
+            "name": "sme_solution_1_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_sme_solution_2_icon",
+            "label": "Solution 2 - Icon",
+            "name": "sme_solution_2_icon",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solution_2_title",
+            "label": "Solution 2 - Title",
+            "name": "sme_solution_2_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solution_2_description",
+            "label": "Solution 2 - Description",
+            "name": "sme_solution_2_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_sme_solution_3_icon",
+            "label": "Solution 3 - Icon",
+            "name": "sme_solution_3_icon",
+            "type": "image",
+            "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solution_3_title",
+            "label": "Solution 3 - Title",
+            "name": "sme_solution_3_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_sme_solution_3_description",
+            "label": "Solution 3 - Description",
+            "name": "sme_solution_3_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-sme-internet.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

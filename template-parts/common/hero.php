@@ -28,7 +28,7 @@ $grid_classes = isset($args['grid_classes'])
     : 'hero-grid flex items-start justify-between gap-[5vw] md:flex-col md:gap-8';
 $text_classes = isset($args['text_classes'])
     ? (string) $args['text_classes']
-    : 'hero-text w-[50%] md:w-full md:max-w-full relative z-[10]';
+    : 'hero-text w-[60%] md:w-full md:max-w-full relative z-[10]';
 $media_classes = isset($args['media_classes'])
     ? (string) $args['media_classes']
     : 'hero-media w-[55%] md:w-full';
@@ -94,6 +94,9 @@ $media_alt = isset($media['alt']) ? (string) $media['alt'] : '';
 
 $after_section = $args['after_section'] ?? '';
 $text_footer = isset($args['text_footer']) ? (string) $args['text_footer'] : '';
+$text_footer_wrapper_classes = isset($args['text_footer_wrapper_classes'])
+    ? (string) $args['text_footer_wrapper_classes']
+    : '';
 $right_content = isset($args['right_content'])
     ? (string) $args['right_content']
     : '';
@@ -135,7 +138,7 @@ $images =
                     <?php if ($line === ''): ?>
                         <?php continue; ?>
                     <?php endif; ?>
-                    <span class="block hero-title-line"><?php echo esc_html(
+                    <span class="block hero-title-line"><?php echo trac_esc_html(
                         $line,
                     ); ?></span>
                 <?php endforeach; ?>
@@ -148,7 +151,7 @@ $images =
                     data-hero-delay="0.14"
                     data-para-anim
                 >
-                    <?php echo esc_html($subtitle_1); ?>
+                    <?php echo trac_esc_html($subtitle_1); ?>
                 </p>
             <?php endif; ?>
 
@@ -178,7 +181,7 @@ $images =
                         $primary_link,
                     ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
-                        <span class="btn-text"><?php echo esc_html(
+                        <span class="btn-text"><?php echo trac_esc_html(
                             $primary_text,
                         ); ?></span>
                         <span class="btn-icon">
@@ -247,7 +250,7 @@ $images =
                             <?php if ($line === ''): ?>
                                 <?php continue; ?>
                             <?php endif; ?>
-                            <span class="block hero-title-line"><?php echo esc_html(
+                            <span class="block hero-title-line"><?php echo trac_esc_html(
                                 $line,
                             ); ?></span>
                         <?php endforeach; ?>
@@ -260,7 +263,7 @@ $images =
                             data-hero-delay="0.14"
                             data-para-anim
                         >
-                            <?php echo esc_html($subtitle_1); ?>
+                            <?php echo trac_esc_html($subtitle_1); ?>
                         </p>
                     <?php endif; ?>
 
@@ -302,7 +305,7 @@ $images =
                                     $primary_link,
                                 ); ?>" class="btn btn-primary group magnetic">
                                     <span class="btn-line"></span>
-                                    <span class="btn-text"><?php echo esc_html(
+                                    <span class="btn-text"><?php echo trac_esc_html(
                                         $primary_text,
                                     ); ?></span>
                                     <span class="btn-icon">
@@ -322,7 +325,7 @@ $images =
                                     $secondary_link,
                                 ); ?>" class="btn btn-outline group magnetic">
                                     <span class="btn-line"></span>
-                                    <span class="btn-text"><?php echo esc_html(
+                                    <span class="btn-text"><?php echo trac_esc_html(
                                         $secondary_text,
                                     ); ?></span>
                                     <span class="btn-icon">
@@ -338,6 +341,9 @@ $images =
 
                     <?php if ($text_footer !== ''): ?>
                         <div
+                            class="<?php echo esc_attr(
+                                $text_footer_wrapper_classes,
+                            ); ?>"
                             data-hero-reveal
                             data-hero-delay="0.3"
                         >

@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { trac_log } from './debug.js';
 
 export function initTeamSlider() {
     const sections = Array.from(
@@ -164,5 +165,5 @@ export function initTeamSlider() {
         };
     });
 
-    console.log('[Trac] Team slider initialized');
+    trac_log('[Trac] Team slider initialized');
 }

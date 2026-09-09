@@ -29,7 +29,7 @@
             "aria-label": "",
             "type": "text",
             "instructions": "Enter the department (e.g., Operations, Engineering, Data & Analytics)",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -61,6 +61,24 @@
             "rows": 3,
             "placeholder": "This role involves...",
             "new_lines": ""
+        },
+        {
+            "key": "field_job_apply_button_text",
+            "label": "Apply Button Text",
+            "name": "job_apply_button_text",
+            "type": "text",
+            "instructions": "Leave empty to use the default Apply button text set on the Careers page",
+            "required": 0,
+            "placeholder": "e.g., Apply Now"
+        },
+        {
+            "key": "field_job_apply_link",
+            "label": "Apply Button Link",
+            "name": "job_apply_link",
+            "type": "text",
+            "instructions": "Leave empty to scroll to the shared Application Form on this page. Or enter an external URL (e.g. a job board link) or an internal path.",
+            "required": 0,
+            "placeholder": "e.g. #job-application, or https://example.com/apply"
         }
     ],
     "location": [

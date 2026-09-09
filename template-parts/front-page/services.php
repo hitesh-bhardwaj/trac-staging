@@ -3,152 +3,33 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$services = [
-    [
-        'title' => get_field('service_1_title') ?: 'Enterprise Networks',
-        'description' =>
-            get_field('service_1_description') ?:
-            'Secure, high-capacity infrastructure built for large-scale operations, complex network environments, and mission-critical systems. Designed to support heavier workloads, multi-site connectivity, and evolving business demands.',
-        'link' =>
-            get_field('service_1_link') ?:
-            home_url('/solutions/enterprise-network'),
-        'image' =>
-            get_field('service_1_image') ?:
-            get_template_directory_uri() .
-                '/src/imgs/home/service-enterprise-network.png',
-        'alt' => get_field('service_1_title') ?: 'Enterprise Networks Service',
-    ],
-    [
-        'title' => get_field('service_2_title') ?: 'SME Internet',
-        'description' =>
-            get_field('service_2_description') ?:
-            "Reliable business internet built to support your growth, whether you're a small team or a growing company. Designed for daily operations, cloud tools, payments, and seamless collaboration.",
-        'link' => get_field('service_2_link') ?: home_url('/sme-internet'),
-        'image' =>
-            get_field('service_2_image') ?:
-            get_template_directory_uri() .
-                '/src/imgs/home/service-sme-internet.png',
-        'alt' => get_field('service_2_title') ?: 'SME Internet Service',
-    ],
-    [
-        'title' => get_field('service_3_title') ?: 'Home Internet',
-        'description' =>
-            get_field('service_3_description') ?:
-            'Fast, stable fibre or wireless internet with clear pricing and local support you can rely on.',
-        'link' => get_field('service_3_link') ?: home_url('/home-internet'),
-        'image' =>
-            get_field('service_3_image') ?:
-            get_template_directory_uri() .
-                '/src/imgs/home/service-home-internet.png',
-        'alt' => get_field('service_3_title') ?: 'Home Internet Service',
-    ],
-    [
-        'title' => get_field('service_4_title') ?: 'Wholesale & Carrier',
-        'description' =>
-            get_field('service_4_description') ?:
-            'Flexible, scalable infrastructure designed for network operators at every stage, from new ISPs to established carriers expanding capacity across Rwanda and East Africa.',
-        'link' => get_field('service_4_link') ?: home_url('/carrier-services'),
-        'image' =>
-            get_field('service_4_image') ?:
-            get_template_directory_uri() .
-                '/src/imgs/home/service-wholesale-carrier.png',
-        'alt' => get_field('service_4_title') ?: 'Wholesale & Carrier Services',
-    ],
-];
+$services = [];
+
+for ($i = 1; $i <= 4; $i++) {
+    $services[] = [
+        'title' => get_field("service_{$i}_title"),
+        'description' => get_field("service_{$i}_description"),
+        'link' => get_field("service_{$i}_link"),
+        'image' => get_field("service_{$i}_image"),
+        'alt' => get_field("service_{$i}_title"),
+        'button_text' => get_field("service_{$i}_button_text"),
+    ];
+}
 ?>
 
-<section class="relative overflow-hidden bg-white py-[7vw] md:pb-[15%] min-h-auto md:pt-0" data-section="services" id="solutions">
-    <style>
-        [data-service-slider] .services-slider-viewport {
-            position: relative;
-            left: 50%;
-            width: 100vw;
-            height: 25vw;
-            min-height: 360px;
-            overflow: hidden;
-            transform: translateX(-50%);
-            --service-stack-spread: 7.5vw;
-            --service-stack-scale-range: 0.06;
-        }
-
-        [data-service-slider] .services-cards {
-            position: relative;
-            height: 100%;
-        }
-
-        [data-service-slider] .service-card {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 80vw;
-            height: 100%;
-            opacity: 0;
-            pointer-events: none;
-            cursor: pointer;
-            transform: translate3d(-50%, 0, 0) scale(0.94);
-            transform-origin: center center;
-            transition:
-                opacity 350ms ease,
-                transform 500ms ease;
-            will-change: transform, opacity;
-        }
-
-        [data-service-slider] .services-cards.is-jumping .service-card {
-            transition: none !important;
-        }
-
-        [data-service-slider] .service-card.is-active {
-            pointer-events: auto;
-            cursor: default;
-        }
-
-        [data-service-slider] .services-nav-btn {
-            cursor: pointer;
-        }
-
-        @media (max-width: 1024px) {
-            [data-service-slider] .services-slider-viewport {
-                height: 78vw;
-                min-height: 560px;
-                --service-stack-spread: 7.5vw;
-            }
-
-            [data-service-slider] .service-card {
-                width: 86vw;
-            }
-        }
-
-        @media (max-width: 640px) {
-            [data-service-slider] .services-slider-viewport {
-                height: 145vw !important;
-                /* min-height: 540px; */
-                --service-stack-spread: 6vw;
-                --service-stack-scale-range: 0.045;
-            }
-
-            [data-service-slider] .service-card {
-                width: 88vw;
-            }
-        }
-    </style>
-
+<section class="relative overflow-hidden bg-white py-[5vw] sm:pb-[25%] min-h-auto" data-section="services" id="solutions">
     <div class="services-container w-full">
         <div class="services-heading px-[5vw] md:px-[7vw] md:py-12 sm:py-8">
             <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-6" data-animate="fade-up">
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
 
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
-                    <?php echo esc_html(
-                        get_field('services_label') ?: 'What We Offer',
-                    ); ?>
+                    <?php echo trac_esc_html(get_field('services_label')); ?>
                 </span>
             </div>
 
             <h2 data-heading-anim class="services-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-text-primary ">
-                <?php echo esc_html(
-                    get_field('services_title') ?:
-                    'Get Connected. Stay Connected',
-                ); ?>
+                <?php echo trac_esc_html(get_field('services_title')); ?>
             </h2>
         </div>
 <div data-animate="fade-up">
@@ -166,13 +47,13 @@ $services = [
                                 <div class="card-content flex h-full flex-col justify-between p-[3.073vw] pr-[2vw] md:p-8 sm:p-6">
                                     <div>
                                         <h3 class="card-title font-subheading mb-[1.25vw] text-36 font-normal text-white md:mb-4 md:text-2xl sm:mb-3 sm:text-[6vw]">
-                                            <?php echo esc_html(
+                                            <?php echo trac_esc_html(
                                                 $service['title'],
                                             ); ?>
                                         </h3>
 
                                         <p class="font-body max-w-[35vw] text-24 leading-[1.5] text-white md:max-w-full md:text-lg sm:text-base">
-                                            <?php echo esc_html(
+                                            <?php echo trac_esc_html(
                                                 $service['description'],
                                             ); ?>
                                         </p>
@@ -182,7 +63,9 @@ $services = [
                                         $service['link'],
                                     ); ?>" class="btn btn-primary group w-fit sm:w-[80%]!">
                                         <span class="btn-line"></span>
-                                        <span class="btn-text">Learn More</span>
+                                        <span class="btn-text"><?php echo trac_esc_html(
+                                            $service['button_text'],
+                                        ); ?></span>
                                         <span class="btn-icon">
                                             <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                                 <path d="M9.45369 8.66578C9.45369 8.86726 9.37668 9.06894 9.22286 9.22276L1.34483 17.1008C1.03699 17.4086 0.538513 17.4086 0.230876 17.1008C-0.0767616 16.793 -0.0769585 16.2945 0.230875 15.9868L7.55193 8.66578L0.230875 1.34473C-0.0769592 1.03689 -0.0769592 0.538408 0.230875 0.230772C0.538709 -0.0768662 1.03719 -0.0770627 1.34483 0.230772L9.22286 8.1088C9.37668 8.26262 9.45369 8.4643 9.45369 8.66578Z" fill="currentColor" />

@@ -3,48 +3,22 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$enterprise_services = [
-    [
-        'img' =>
-            get_template_directory_uri() .
-            '/src/imgs/enterprise-network/business.svg',
-        'title' => 'Enterprise Fibre Connectivity',
-        'para' =>
-            'Dedicated, high-performance fibre built for demanding business operations, with resilient infrastructure designed to support critical applications and maintain continuity.',
-        'link' => home_url('/contact-us'),
-        'btn_text' => 'Get on TrAC',
-    ],
-    [
-        'img' =>
-            get_template_directory_uri() .
-            '/src/imgs/enterprise-network/private-network.svg',
-        'title' => 'VPN',
-        'para' =>
-            'Secure private networks that connect multiple locations, teams, and systems, providing reliable communication and consistent performance across your operations.',
-        'link' => home_url('/contact-us'),
-        'btn_text' => 'Get on TrAC',
-    ],
-    [
-        'img' =>
-            get_template_directory_uri() .
-            '/src/imgs/enterprise-network/data-centre.svg',
-        'title' => 'Data Centre & Colocation',
-        'para' =>
-            'Enterprise-grade hosting in Rwanda, with controlled access and continuous monitoring to provide a secure, reliable environment for critical infrastructure.',
-        'link' => home_url('/contact-us'),
-        'btn_text' => 'Get on TrAC',
-    ],
-    [
-        'img' =>
-            get_template_directory_uri() .
-            '/src/imgs/enterprise-network/cloud-infrastructure.svg',
-        'title' => 'Cloud & Virtual Infrastructure',
-        'para' =>
-            'Flexible Cloud environments that support virtual infrastructure, data protection, and scalable operations, adapting as your business needs evolve.',
-        'link' => home_url('/contact-us'),
-        'btn_text' => 'Get on TrAC',
-    ],
-];
+$enterprise_services_label = get_field('enterprise_services_label');
+$enterprise_services_title = get_field('enterprise_services_title');
+$enterprise_services_description = get_field(
+    'enterprise_services_description',
+);
+
+$enterprise_services = [];
+for ($i = 1; $i <= 4; $i++) {
+    $enterprise_services[] = [
+        'img' => get_field("enterprise_service_{$i}_image"),
+        'title' => get_field("enterprise_service_{$i}_title"),
+        'para' => get_field("enterprise_service_{$i}_description"),
+        'link' => get_field("enterprise_service_{$i}_button_link"),
+        'btn_text' => get_field("enterprise_service_{$i}_button_text"),
+    ];
+}
 ?>
 
 <section class="enterprise-services py-[7vw] md:py-20 sm:py-16" data-section="enterprise-services">
@@ -52,16 +26,17 @@ $enterprise_services = [
         <div class="text-left">
             <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body  text-brand-secondary text-30">Our Services</span>
+                <span class="font-body  text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
+                    $enterprise_services_label,
+                ); ?></span>
             </div>
 
-            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw] md:text-4xl md:mb-8 sm:text-[1.823vw] sm:mb-6 text-left">
-                Built for Organisations That Cannot Afford Downtime.
+            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw] text-left sm:mb-[8vw]">
+                <?php echo trac_esc_html($enterprise_services_title); ?>
             </h2>
 
-            <p class="w-[70%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left" data-para-anim data-delay="0.2">
-                TrAC designs and deploys enterprise-grade networks that support complex organisations with an infrastructure built to perform under pressure to ensure systems remain stable when it matters most.
-
+            <p class="w-[70%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 text-left sm:w-full sm:mb-[8vw]" data-para-anim data-delay="0.2">
+                <?php echo trac_esc_html($enterprise_services_description); ?>
             </p>
 
             <div class="grid grid-cols-2 gap-10 mt-[5vw] md:grid-cols-1 md:gap-8 text-left">
@@ -74,30 +49,28 @@ $enterprise_services = [
                         <?php endif; ?>
                     >
                         <div>
-                            <div class="h-[4.5vw] w-[4.5vw] mb-10">
+                            <div class="h-[4.5vw] w-[4.5vw] mb-10 sm:h-[10vw] sm:w-[10vw]">
                                 <img src="<?php echo esc_url(
                                     $card['img'],
-                                ); ?>" alt="" class="w-full h-full" loading="lazy">
+                                ); ?>" alt="services" class="w-full h-full" loading="lazy">
                             </div>
 
-                            <h3 class="font-heading text-white text-36 md:text-2xl mb-6 font-normal">
-                                <?php echo $card['title']; ?>
+                            <h3 class="font-heading text-white text-36  mb-6 font-normal sm:!text-[7vw]">
+                                <?php echo trac_esc_html($card['title']); ?>
                             </h3>
 
-                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw]">
-                                <?php echo esc_html($card['para']); ?>
+                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw] sm:text-[4vw]">
+                                <?php echo trac_esc_html($card['para']); ?>
                             </p>
                         </div>
 
                         <div class="mt-auto pt-10">
                             <a href="<?php echo esc_url(
-                                get_field('hero_primary_button_link') ?:
-                                home_url('/contact-us'),
+                                $card['link'],
                             ); ?>" class="btn btn-primary group magnetic">
                         <span class="btn-line"></span>
-                        <span class="btn-text"><?php echo esc_html(
-                            get_field('hero_primary_button_text') ?:
-                            'Get on TrAC',
+                        <span class="btn-text"><?php echo trac_esc_html(
+                            $card['btn_text'],
                         ); ?></span>
                         <span class="btn-icon">
                           <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">

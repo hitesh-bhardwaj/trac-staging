@@ -3,34 +3,19 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$label = get_field('sme_solutions_label') ?: 'Solutions Overview';
-$title = get_field('sme_solutions_title') ?: 'Solutions to Support Your Growth';
-$button_text =
-    get_field('sme_solutions_button_text') ?: 'Request a Consultation';
-$button_link = get_field('sme_solutions_button_link') ?: '/contact-us';
+$label = get_field('sme_solutions_label');
+$title = get_field('sme_solutions_title');
+$button_text = get_field('sme_solutions_button_text');
+$button_link = get_field('sme_solutions_button_link');
 
-$solutions_icon_base = get_template_directory_uri() . '/src/imgs/sme-internet/';
-
-$solutions = [
-    [
-        'title' => 'Secure Connectivity',
-        'description' =>
-            'Connect offices, sites, and teams through a dedicated VPN designed for secure, reliable communication.',
-        'icon' => $solutions_icon_base . 'security-icon.svg',
-    ],
-    [
-        'title' => 'Reliable Infrastructure',
-        'description' =>
-            'Host applications, systems, and data within our Tier III Data Centre, built for performance, resilience, and business continuity.',
-        'icon' => $solutions_icon_base . 'reliable-icon.svg',
-    ],
-    [
-        'title' => 'Flexible Cloud Solutions',
-        'description' =>
-            'Deploy, manage, and scale digital services through secure cloud environments designed to grow with your business.',
-        'icon' => $solutions_icon_base . 'cloud-icon.svg',
-    ],
-];
+$solutions = [];
+for ($i = 1; $i <= 3; $i++) {
+    $solutions[] = [
+        'title' => get_field("sme_solution_{$i}_title"),
+        'description' => get_field("sme_solution_{$i}_description"),
+        'icon' => get_field("sme_solution_{$i}_icon"),
+    ];
+}
 ?>
 
 <section class="sme-solutions relative overflow-hidden bg-brand-primary py-[7vw] md:py-20 sm:py-16" data-section="sme-solutions">
@@ -38,32 +23,32 @@ $solutions = [
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
                 <span class="w-6 h-1 bg-white"></span>
-                <span class="font-body text-white/90 text-30"><?php echo esc_html(
+                <span class="font-body text-white/90 text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
                     $label,
                 ); ?></span>
             </div>
 
             <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-white mb-[5vw] md:text-5xl md:mb-10 sm:text-4xl text-left" data-heading-anim>
-                <?php echo esc_html($title); ?>
+                <?php echo trac_esc_html($title); ?>
             </h2>
 
             <div class="grid grid-cols-3 gap-[1.8vw] md:grid-cols-1 md:gap-6 items-stretch">
                 <?php foreach ($solutions as $i => $s): ?>
-                    <div class="card bg-white rounded-[1.4vw] md:rounded-3xl p-[2vw] py-[5vw] md:p-8 sm:p-7 flex flex-col items-start gap-[1.6vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                    <div class="card bg-white rounded-[1.4vw] sm:rounded-[4.5vw] p-[2vw] py-[5vw] md:p-8 sm:p-7 sm:pt-[15vw] sm:pb-[20vw] flex flex-col items-start gap-[1.6vw] sm:gap-20" data-animate="fade-up" data-delay="<?php echo esc_attr(
                         0.08 * $i,
                     ); ?>">
                         <img
                             src="<?php echo esc_url($s['icon']); ?>"
-                            alt=""
-                            class="size-[4vw] mb-[3.5vw] md:w-10 md:h-10 object-contain"
+                            alt="solutions icon"
+                            class="size-[4vw] mb-[3.5vw] sm:size-[15vw] object-contain"
                             loading="lazy"
                         >
                         <div>
                             <h3 class="font-heading text-text-primary text-[1.6vw] md:text-2xl font-normal mb-[0.8vw] md:mb-3">
-                                <?php echo esc_html($s['title']); ?>
+                                <?php echo trac_esc_html($s['title']); ?>
                             </h3>
                             <p class="font-body text-text-body text-24 md:text-base leading-[1.55]">
-                                <?php echo esc_html($s['description']); ?>
+                                <?php echo trac_esc_html($s['description']); ?>
                             </p>
                         </div>
                     </div>
@@ -75,7 +60,7 @@ $solutions = [
                     $button_link,
                 ); ?>" class="btn btn-primary group magnetic">
                     <span class="btn-line"></span>
-                    <span class="btn-text"><?php echo esc_html(
+                    <span class="btn-text"><?php echo trac_esc_html(
                         $button_text,
                     ); ?></span>
                     <span class="btn-icon">

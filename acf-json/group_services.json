@@ -7,7 +7,6 @@
             "label": "Section Label",
             "name": "services_label",
             "type": "text",
-            "default_value": "What We Offer",
             "required": 1
         },
         {
@@ -15,7 +14,6 @@
             "label": "Section Title",
             "name": "services_title",
             "type": "text",
-            "default_value": "Get Connected. Glitch Free",
             "required": 1
         },
         {
@@ -23,7 +21,6 @@
             "label": "Service 1 - Title",
             "name": "service_1_title",
             "type": "text",
-            "default_value": "Home",
             "required": 1
         },
         {
@@ -38,9 +35,9 @@
             "key": "field_service_1_link",
             "label": "Service 1 - Link URL",
             "name": "service_1_link",
-            "type": "url",
-            "default_value": "/solutions/home-internet",
-            "required": 1
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #solutions, or https://example.com"
         },
         {
             "key": "field_service_1_image",
@@ -51,11 +48,18 @@
             "required": 1
         },
         {
+            "key": "field_service_1_button_text",
+            "label": "Service 1 - Button Text",
+            "name": "service_1_button_text",
+            "type": "text",
+            "placeholder": "e.g. Learn More",
+            "required": 1
+        },
+        {
             "key": "field_service_2_title",
             "label": "Service 2 - Title",
             "name": "service_2_title",
             "type": "text",
-            "default_value": "Business",
             "required": 1
         },
         {
@@ -70,9 +74,9 @@
             "key": "field_service_2_link",
             "label": "Service 2 - Link URL",
             "name": "service_2_link",
-            "type": "url",
-            "default_value": "/business-internet",
-            "required": 1
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #solutions, or https://example.com"
         },
         {
             "key": "field_service_2_image",
@@ -83,11 +87,18 @@
             "required": 1
         },
         {
+            "key": "field_service_2_button_text",
+            "label": "Service 2 - Button Text",
+            "name": "service_2_button_text",
+            "type": "text",
+            "placeholder": "e.g. Learn More",
+            "required": 1
+        },
+        {
             "key": "field_service_3_title",
             "label": "Service 3 - Title",
             "name": "service_3_title",
             "type": "text",
-            "default_value": "Enterprise",
             "required": 1
         },
         {
@@ -102,9 +113,9 @@
             "key": "field_service_3_link",
             "label": "Service 3 - Link URL",
             "name": "service_3_link",
-            "type": "url",
-            "default_value": "/enterprise-connectivity",
-            "required": 1
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #solutions, or https://example.com"
         },
         {
             "key": "field_service_3_image",
@@ -115,11 +126,18 @@
             "required": 1
         },
         {
+            "key": "field_service_3_button_text",
+            "label": "Service 3 - Button Text",
+            "name": "service_3_button_text",
+            "type": "text",
+            "placeholder": "e.g. Learn More",
+            "required": 1
+        },
+        {
             "key": "field_service_4_title",
             "label": "Service 4 - Title",
             "name": "service_4_title",
             "type": "text",
-            "default_value": "Hosting & Data Centre",
             "required": 1
         },
         {
@@ -134,9 +152,9 @@
             "key": "field_service_4_link",
             "label": "Service 4 - Link URL",
             "name": "service_4_link",
-            "type": "url",
-            "default_value": "/data-centre",
-            "required": 1
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #solutions, or https://example.com"
         },
         {
             "key": "field_service_4_image",
@@ -144,6 +162,14 @@
             "name": "service_4_image",
             "type": "image",
             "return_format": "url",
+            "required": 1
+        },
+        {
+            "key": "field_service_4_button_text",
+            "label": "Service 4 - Button Text",
+            "name": "service_4_button_text",
+            "type": "text",
+            "placeholder": "e.g. Learn More",
             "required": 1
         }
     ],

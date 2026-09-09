@@ -3,31 +3,20 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$label = get_field('hi_plans_label') ?: 'Plans & Pricing';
-$title = get_field('hi_plans_title') ?: 'Home Internet Packages';
+$label = get_field('hi_plans_label');
+$title = get_field('hi_plans_title');
 
-$plans = [
-    [
-        'name' => 'Home Plus',
-        'speed' => '75Mbps',
-        'price' => 'RWF 55,000',
-        'period' => '/month',
-        'description' =>
-            'Ideal for families, online learning, and HD streaming.',
-        'image' =>
-            get_template_directory_uri() . '/src/imgs/home-internet/plan-1.png',
-    ],
-    [
-        'name' => 'Home Max',
-        'speed' => '100Mbps',
-        'price' => 'RWF 85,000',
-        'period' => '/month',
-        'description' =>
-            'Perfect for smart homes, heavy streaming, and professionals working from home.',
-        'image' =>
-            get_template_directory_uri() . '/src/imgs/home-internet/plan-2.png',
-    ],
-];
+$plans = [];
+for ($i = 1; $i <= 2; $i++) {
+    $plans[] = [
+        'name' => get_field("hi_plan_{$i}_name"),
+        'speed' => get_field("hi_plan_{$i}_speed"),
+        'price' => get_field("hi_plan_{$i}_price"),
+        'period' => get_field("hi_plan_{$i}_period"),
+        'description' => get_field("hi_plan_{$i}_description"),
+        'image' => get_field("hi_plan_{$i}_image"),
+    ];
+}
 ?>
 
 <section class="home-internet-plans relative bg-white py-[7vw] md:py-20 sm:py-16 overflow-hidden" data-section="home-internet-plans">
@@ -35,29 +24,29 @@ $plans = [
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body text-brand-secondary text-30"><?php echo esc_html(
+                <span class="font-body text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
                     $label,
                 ); ?></span>
             </div>
 
             <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[5vw] md:text-5xl md:mb-10 sm:text-4xl text-left" data-heading-anim>
-                <?php echo esc_html($title); ?>
+                <?php echo trac_esc_html($title); ?>
             </h2>
 
             <div class="grid grid-cols-2 gap-[7vw] md:grid-cols-1 md:gap-8  w-full items-stretch">
                 <?php foreach ($plans as $i => $p): ?>
-                    <article class="rounded-[1.6vw] md:rounded-3xl overflow-hidden border border-brand-quaternary flex flex-col" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                    <article class="rounded-[1.6vw] md:rounded-3xl overflow-hidden border border-brand-quaternary bg-brand-quaternary flex flex-col" data-animate="fade-up" data-delay="<?php echo esc_attr(
                         0.1 * $i,
                     ); ?>">
-                        <div class="relative h-[16vw] md:h-64 sm:h-56 w-full overflow-hidden bg-brand-quaternary ">
+                        <div class="relative h-[16vw] md:h-64 sm:h-56 w-full overflow-hidden group bg-brand-quaternary rounded-[1.2vw] md:rounded-3xl ">
                             <img
                                 src="<?php echo esc_url($p['image']); ?>"
                                 alt="<?php echo esc_attr($p['name']); ?>"
-                                class="h-full w-full object-cover rounded-[1.2vw] md:rounded-3xl"
+                                class="h-full w-full  scale-105 object-cover transition-transform duration-[600ms] ease-out group-hover:scale-100"
                                 loading="lazy"
                             >
-                            <span class="absolute left-[1.4vw] top-[1.4vw] md:left-5 md:bottom-5 inline-flex items-center rounded-full bg-white/60 border border-brand-quaternary backdrop-blur-lg px-[1.2vw] py-[0.3vw] md:px-5 md:py-2 font-heading text-30 md:text-sm text-brand-quaternary">
-                                Unlimited - <span class="font-bold ml-1"><?php echo esc_html(
+                            <span class="absolute left-[1.4vw] top-[1.4vw]  inline-flex items-center rounded-full bg-white/60 border border-brand-quaternary backdrop-blur-lg px-[1.2vw] py-[0.3vw] md:px-5 md:py-2 font-heading text-30 md:text-sm text-brand-quaternary sm:px-4 sm:py-1 sm:top-[2vw] sm:left-[2vw]">
+                                Unlimited - <span class="font-bold ml-1"><?php echo trac_esc_html(
                                     $p['speed'],
                                 ); ?></span>
                             </span>
@@ -65,30 +54,28 @@ $plans = [
 
                         <div class="flex-1 flex flex-col bg-brand-quaternary p-[2vw] py-[3vw] md:p-8 sm:p-6">
                             <h3 class="font-heading text-white text-36 md:text-3xl font-normal mb-[1vw] md:mb-3">
-                                <?php echo esc_html($p['name']); ?>
+                                <?php echo trac_esc_html($p['name']); ?>
                             </h3>
                             <p class="font-body text-white text-24 md:text-base leading-[1.5] mb-[2vw] md:mb-6 w-[70%]">
-                                <?php echo esc_html($p['description']); ?>
+                                <?php echo trac_esc_html($p['description']); ?>
                             </p>
 
                             <div class="mt-auto">
                                 <div class="mb-[1.6vw] md:mb-6">
                                     <span class="font-heading font-medium text-white text-36 md:text-3xl">
-                                        <?php echo esc_html($p['price']); ?>
+                                        <?php echo trac_esc_html($p['price']); ?>
                                     </span>
                                     <span class="font-body text-white/70 text-[1vw] md:text-sm">
-                                        <?php echo esc_html($p['period']); ?>
+                                        <?php echo trac_esc_html($p['period']); ?>
                                     </span>
                                 </div>
 
                                 <a href="<?php echo esc_url(
-                                    get_field('hi_plans_button_link') ?:
-                                    home_url('/contact-us'),
+                                    get_field('hi_plans_button_link'),
                                 ); ?>" class="btn btn-primary group magnetic">
                                     <span class="btn-line"></span>
-                                    <span class="btn-text"><?php echo esc_html(
-                                        get_field('hi_plans_button_text') ?:
-                                        'Get on TrAC',
+                                    <span class="btn-text"><?php echo trac_esc_html(
+                                        get_field('hi_plans_button_text'),
                                     ); ?></span>
                                     <span class="btn-icon">
                                         <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">

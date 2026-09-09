@@ -1,6 +1,7 @@
 <?php
 /**
- * About Us Page Template
+ * Template Name: About Us
+ * Description: About Us page (hero + who we are + what we do + vision & mission + team + socials).
  *
  * @package Trac
  */
@@ -16,15 +17,7 @@ get_header();
     <?php while (have_posts()):
         the_post(); ?>
         <?php
-        $title = get_field('hero_title_line_1') ?: 'About Us';
-        $subtitle =
-            get_field('hero_subtitle_2') ?:
-            'TrAC is a Rwanda-founded internet service provider with over 14 years of experience delivering reliable, high-performance connectivity. From our roots in Rwanda, we are helping businesses and communities across East Africa stay connected, grow with confidence, and build stronger futures.';
-        $primary_link =
-           
-            get_field('hero_primary_button_link') ?: home_url('/contact-us');
-        $primary_text =
-            get_field('hero_primary_button_text') ?: 'Get Connected';
+        $hero_image = get_field('hero_image');
 
         get_template_part('template-parts/common/hero', null, [
             'grid_classes' =>
@@ -35,17 +28,19 @@ get_header();
                 'hero-title font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4',
             'subtitle_classes' =>
                 'hero-subtitle font-body text-24 font-medium text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6',
-            'title' => $title,
-            'subtitle' => $subtitle,
+            'title' => get_field('hero_title'),
+            'subtitle' => get_field('hero_subtitle_2'),
             'primary' => [
-                'text' => $primary_text,
-                'link' => $primary_link,
+                'text' => get_field('hero_primary_button_text'),
+                'link' => get_field('hero_primary_button_link'),
+            ],
+            'secondary' => [
+                'text' => get_field('hero_secondary_button_text'),
+                'link' => get_field('hero_secondary_button_link'),
             ],
             'media' => [
-                'src' =>
-                    get_template_directory_uri() .
-                    '/src/imgs/about/about-hero.png',
-                'alt' => 'Mobile globe visual',
+                'src' => is_array($hero_image) ? $hero_image['url'] : '',
+                'alt' => is_array($hero_image) ? $hero_image['alt'] : '',
             ],
         ]);
 
@@ -63,11 +58,6 @@ get_header();
 
         // Shared CTA
         get_template_part('template-parts/common/cta', null, [
-            'title' => 'Ready to Get on TrAC?',
-            'subtitle' =>
-                "Stop paying for internet you're not getting. Join businesses across Africa that trust TrAC.",
-            'button_text' => 'Get Connected',
-            'button_link' => home_url('/contact-us'),
             'pattern_top_class' => 'top-[-12%] sm:top-0',
         ]);
         ?>

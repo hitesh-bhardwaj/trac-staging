@@ -1,7 +1,15 @@
 <?php
 if (!defined('ABSPATH')) {
     exit();
-} ?>
+}
+
+$application_label = get_field('careers_application_label');
+$application_title = get_field('careers_application_title');
+$contact_form_css =
+    get_template_directory_uri() . '/src/css/sections/contact-form.css';
+?>
+
+<link rel="stylesheet" href="<?php echo esc_url($contact_form_css); ?>">
 
 <section class="application-form-section relative overflow-hidden bg-brand-tint md:py-20 sm:py-16" data-section="application-form" id="job-application">
     <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw] py-[7vw]">
@@ -11,12 +19,14 @@ if (!defined('ABSPATH')) {
                 <!-- Section Label -->
                 <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body  text-brand-secondary text-30">Don't See Your Position?</span>
+                <span class="font-body  text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
+                    $application_label,
+                ); ?></span>
             </div>
 
                 <!-- Heading -->
                 <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
-                    Application Form
+                    <?php echo trac_esc_html($application_title); ?>
                 </h2>
 
                 

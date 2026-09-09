@@ -7,26 +7,23 @@
             "label": "CTA Title",
             "name": "cta_title",
             "type": "text",
-            "default_value": "Ready to Get on TrAC?",
             "required": 0,
             "instructions": "Main call-to-action heading"
         },
         {
-            "key": "field_cta_subtitle",
-            "label": "CTA Subtitle",
-            "name": "cta_subtitle",
+            "key": "field_cta_para",
+            "label": "CTA Paragraph",
+            "name": "cta_para",
             "type": "textarea",
-            "default_value": "Stop paying for internet you're not getting. Join businesses across Africa that trust TrAC.",
             "required": 0,
             "rows": 3,
-            "instructions": "Supporting text below the title"
+            "instructions": "Optional supporting text below the title"
         },
         {
             "key": "field_cta_button_text",
             "label": "Button Text",
             "name": "cta_button_text",
             "type": "text",
-            "default_value": "Get Connected",
             "required": 0,
             "instructions": "Text displayed on the CTA button"
         },
@@ -34,10 +31,21 @@
             "key": "field_cta_button_link",
             "label": "Button Link",
             "name": "cta_button_link",
-            "type": "url",
-            "default_value": "#get-connected",
+            "type": "text",
             "required": 0,
-            "instructions": "URL or anchor link for the button"
+            "instructions": "URL or anchor link for the button",
+            "placeholder": "e.g. /contact-us, #solutions, or https://example.com"
+        },
+        {
+            "key": "field_cta_image",
+            "label": "Image",
+            "name": "cta_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1,
+            "instructions": "Image/logo shown beside the CTA text."
         }
     ],
     "location": [
@@ -53,6 +61,62 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "default"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-sme-internet.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-home-internet.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-enterprise-network.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-carrier-services.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-connecting-communities.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-careers.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-contact-us.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-about-us.php"
             }
         ]
     ],

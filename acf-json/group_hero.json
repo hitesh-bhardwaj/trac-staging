@@ -3,38 +3,20 @@
     "title": "Hero Section",
     "fields": [
         {
-            "key": "field_hero_title_line_1",
-            "label": "Title Line 1",
-            "name": "hero_title_line_1",
-            "type": "text",
-            "default_value": "Rwanda's Connectivity",
-            "placeholder": "First line of the hero title",
-            "required": 1
-        },
-        {
-            "key": "field_hero_title_line_2",
-            "label": "Title Line 2",
-            "name": "hero_title_line_2",
-            "type": "text",
-            "default_value": "Backbone",
-            "placeholder": "Second line of the hero title",
-            "required": 1
-        },
-        {
-            "key": "field_hero_subtitle_1",
-            "label": "Subtitle 1 (Tagline)",
-            "name": "hero_subtitle_1",
-            "type": "text",
-            "default_value": "Built for Speed. Designed for Growth.",
-            "placeholder": "Short tagline",
+            "key": "field_hero_title",
+            "label": "Title",
+            "name": "hero_title",
+            "type": "textarea",
+            "instructions": "Each line becomes a separate line in the hero heading. Leave a blank line between lines.",
+            "placeholder": "Rwanda's Connectivity\n\nBackbone",
+            "rows": 4,
             "required": 1
         },
         {
             "key": "field_hero_subtitle_2",
-            "label": "Subtitle 2 (Description)",
+            "label": "Subtitle (Description)",
             "name": "hero_subtitle_2",
             "type": "textarea",
-            "default_value": "Rooted in Rwanda and expanding across East Africa, TrAC delivers reliable, fibre-first connectivity for homes, businesses, and the communities shaping the region's future.",
             "placeholder": "Longer description text",
             "rows": 3,
             "required": 1
@@ -44,32 +26,50 @@
             "label": "Primary Button Text",
             "name": "hero_primary_button_text",
             "type": "text",
-            "default_value": "Get on TrAC",
             "required": 1
         },
         {
             "key": "field_hero_primary_button_link",
             "label": "Primary Button Link",
             "name": "hero_primary_button_link",
-            "type": "url",
-            "default_value": "#get-connected",
-            "required": 1
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #solutions, or https://example.com"
         },
         {
             "key": "field_hero_secondary_button_text",
             "label": "Secondary Button Text",
             "name": "hero_secondary_button_text",
             "type": "text",
-            "default_value": "Explore Solutions",
             "required": 1
         },
         {
             "key": "field_hero_secondary_button_link",
             "label": "Secondary Button Link",
             "name": "hero_secondary_button_link",
-            "type": "url",
-            "default_value": "#solutions",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #solutions, or https://example.com"
+        },
+        {
+            "key": "field_hero_image",
+            "label": "Hero Image",
+            "name": "hero_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
             "required": 1
+        },
+        {
+            "key": "field_hero_connectors_svg",
+            "label": "Connectors Overlay (SVG)",
+            "name": "hero_connectors_svg",
+            "type": "file",
+            "return_format": "array",
+            "mime_types": "svg",
+            "required": 1,
+            "instructions": "Decorative connector-lines SVG overlaid on the hero image"
         }
     ],
     "location": [

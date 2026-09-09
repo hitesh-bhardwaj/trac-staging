@@ -12,6 +12,7 @@
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { trac_log, trac_warn } from './debug.js';
 
 // Import the GeoJSON data
 import countriesData from '../data/globe.json';
@@ -366,7 +367,7 @@ function getArcDashAnimateTime(arc) {
  */
 export function initGlobe(container, options = {}) {
     if (!container) {
-        console.warn('[Trac Globe] Container not found');
+        trac_warn('[Trac Globe] Container not found');
         return null;
     }
 
@@ -523,7 +524,7 @@ export function initGlobe(container, options = {}) {
     // Start animation loop
     animate();
 
-    console.log('[Trac Globe] Initialized');
+    trac_log('[Trac Globe] Initialized');
 
     return {
         globe,
@@ -649,7 +650,7 @@ function destroyGlobe(container) {
     targetRotationX = 0;
     targetRotationY = 0;
 
-    console.log('[Trac Globe] Destroyed');
+    trac_log('[Trac Globe] Destroyed');
 }
 
 /**

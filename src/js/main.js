@@ -11,6 +11,7 @@ import { initGlobe } from './globe.js';
 import { initNetworkCanvas } from './network-canvas.js';
 import { initBarba, initPageLoader } from './barba.js';
 import { initMapAnimation } from './map-animation.js';
+import { trac_log, trac_warn } from './debug.js';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -51,7 +52,7 @@ function initLenisSync() {
         // Disable GSAP's lag smoothing for better sync with Lenis
         gsap.ticker.lagSmoothing(0);
 
-        console.log('[Trac] Lenis + GSAP sync initialized');
+        trac_log('[Trac] Lenis + GSAP sync initialized');
     } else {
         // Listen for Lenis ready event if not yet available
         document.addEventListener(
@@ -66,12 +67,12 @@ function initLenisSync() {
                 });
                 gsap.ticker.lagSmoothing(0);
 
-                console.log('[Trac] Lenis + GSAP sync initialized (via event)');
+                trac_log('[Trac] Lenis + GSAP sync initialized (via event)');
             },
             { once: true },
         );
 
-        console.warn('[Trac] Waiting for Lenis...');
+        trac_warn('[Trac] Waiting for Lenis...');
     }
 }
 
@@ -82,6 +83,7 @@ function initHeader() {
     const header = document.getElementById('site-header');
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
 
     if (!header) return;
 
@@ -168,20 +170,61 @@ function initHeader() {
         }
     });
 
+    const solutionsTrigger = mobileMenu?.querySelector(
+        '.mobile-nav-solutions-trigger',
+    );
+    const solutionsList = mobileMenu?.querySelector(
+        '.mobile-nav-solutions-list',
+    );
+
+    const setSolutionsDropdownOpen = (shouldOpen) => {
+        if (!solutionsTrigger || !solutionsList) return;
+
+        solutionsTrigger.setAttribute('aria-expanded', String(shouldOpen));
+        solutionsList.classList.toggle('is-open', shouldOpen);
+        // Animate to the list's real height rather than a fixed guess, so it
+        // works regardless of how many solutions items there are.
+        solutionsList.style.maxHeight = shouldOpen
+            ? `${solutionsList.scrollHeight}px`
+            : '0px';
+    };
+
     if (mobileMenuToggle && mobileMenu) {
+        const setMobileMenuOpen = (shouldOpen) => {
+            mobileMenuToggle.setAttribute('aria-expanded', String(shouldOpen));
+
+            if (shouldOpen) {
+                // Drop `hidden` (display:none) first and force a reflow before adding
+                // `is-open` on the next frame - removing `hidden` and setting the open
+                // transform in the same tick gives the browser no chance to paint the
+                // translateX(100%) starting position, so the very first open would jump
+                // straight to translateX(0) instead of sliding in.
+                mobileMenu.classList.remove('hidden');
+                void mobileMenu.offsetWidth;
+                requestAnimationFrame(() => {
+                    mobileMenu.classList.add('is-open');
+                });
+            } else {
+                mobileMenu.classList.remove('is-open');
+            }
+
+            if (!shouldOpen) {
+                // Reset the solutions dropdown closed for next time the menu opens.
+                setSolutionsDropdownOpen(false);
+            }
+
+            if (app.lenis) {
+                shouldOpen ? app.lenis.stop() : app.lenis.start();
+            } else {
+                document.body.style.overflow = shouldOpen ? 'hidden' : '';
+            }
+        };
+
         mobileMenuToggle.addEventListener('click', () => {
             const isOpen =
                 mobileMenuToggle.getAttribute('aria-expanded') === 'true';
 
-            mobileMenuToggle.setAttribute('aria-expanded', !isOpen);
-            mobileMenu.classList.toggle('is-open');
-            mobileMenu.classList.toggle('hidden', isOpen);
-
-            if (app.lenis) {
-                isOpen ? app.lenis.start() : app.lenis.stop();
-            } else {
-                document.body.style.overflow = isOpen ? '' : 'hidden';
-            }
+            setMobileMenuOpen(!isOpen);
         });
 
         document.addEventListener('keydown', (e) => {
@@ -189,9 +232,32 @@ function initHeader() {
                 e.key === 'Escape' &&
                 mobileMenu.classList.contains('is-open')
             ) {
-                mobileMenuToggle.click();
+                setMobileMenuOpen(false);
             }
         });
+
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', () => {
+                setMobileMenuOpen(false);
+            });
+        }
+
+        // Close the mobile menu whenever any page link inside it is clicked
+        // (main nav rows, solutions sub-links, the CTA button, socials).
+        mobileMenu.querySelectorAll('a[href]').forEach((link) => {
+            link.addEventListener('click', () => {
+                setMobileMenuOpen(false);
+            });
+        });
+
+        // Solutions dropdown inside the mobile menu - closed by default, toggles open/closed.
+        if (solutionsTrigger && solutionsList) {
+            solutionsTrigger.addEventListener('click', () => {
+                const isExpanded =
+                    solutionsTrigger.getAttribute('aria-expanded') === 'true';
+                setSolutionsDropdownOpen(!isExpanded);
+            });
+        }
     }
 }
 
@@ -209,7 +275,7 @@ function destroyNetworkCanvases() {
     });
 
     app.networkInstances = [];
-    console.log('[Trac] Network canvases destroyed');
+    trac_log('[Trac] Network canvases destroyed');
 }
 
 function initNetworkCanvases() {
@@ -242,7 +308,7 @@ function initNetworkCanvases() {
         }
     });
 
-    console.log(
+    trac_log(
         '[Trac] Network canvases initialized',
         app.networkInstances.length,
     );
@@ -256,12 +322,14 @@ function initializePageComponents() {
     initFaqs();
     initPhoneNumberField();
     initSolutionPicker();
-    initPartnerNetworkTabs();
     initCollaborationsAccordion();
     initClientLogos();
     initsolutionsMegaMenu();
     initServicesSlider();
+    initCarrierWhyMobileCarousel();
+    initImpactGalleryModal();
     initActiveNavLink();
+    initMobileActiveNavLink();
     initMouseFollower();
 
     if (!app.prefersReducedMotion) {
@@ -291,7 +359,7 @@ function initializePageComponents() {
     initSmoothAnchors();
     initLazyImages();
 
-    console.log('[Trac] Page components initialized');
+    trac_log('[Trac] Page components initialized');
 }
 
 /**
@@ -310,6 +378,328 @@ function initPhoneNumberField() {
             const digitsOnly = input.value.replace(/\D/g, '');
             if (digitsOnly !== input.value) {
                 input.value = digitsOnly;
+            }
+        });
+    });
+}
+
+function initCarrierWhyMobileCarousel() {
+    const sections = document.querySelectorAll('.why-choose-trac-section');
+    if (!sections.length) return;
+
+    sections.forEach((section) => {
+        if (section.dataset.carrierWhyCarouselInit === 'true') return;
+
+        const track = section.querySelector('.carrier-why-cards');
+        const prev = section.querySelector('.carrier-why-mobile-nav__button--prev');
+        const next = section.querySelector('.carrier-why-mobile-nav__button--next');
+        const firstCard = section.querySelector('.carrier-why-card');
+
+        if (!track || !prev || !next || !firstCard) return;
+
+        section.dataset.carrierWhyCarouselInit = 'true';
+
+        const activeClasses = [
+            'border-brand-secondary',
+            'bg-brand-secondary',
+            'text-white',
+        ];
+        const setActiveState = (button, isActive) => {
+            button.classList.toggle('is-active', isActive);
+            activeClasses.forEach((className) => {
+                button.classList.toggle(className, isActive);
+            });
+        };
+
+        const updateButtons = () => {
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            const canGoPrev = track.scrollLeft > 4;
+            const canGoNext = track.scrollLeft < maxScroll - 4;
+
+            prev.disabled = !canGoPrev;
+            next.disabled = !canGoNext;
+            setActiveState(prev, canGoPrev);
+            setActiveState(next, canGoNext);
+        };
+
+        const scrollByCard = (direction) => {
+            const gap = parseFloat(getComputedStyle(track).gap) || 0;
+            const amount = firstCard.getBoundingClientRect().width + gap;
+            track.scrollBy({ left: direction * amount, behavior: 'smooth' });
+        };
+
+        prev.addEventListener('click', () => scrollByCard(-1));
+        next.addEventListener('click', () => scrollByCard(1));
+        track.addEventListener('scroll', updateButtons, { passive: true });
+        window.addEventListener('resize', updateButtons);
+        updateButtons();
+    });
+}
+
+function initImpactGalleryModal() {
+    const sections = document.querySelectorAll('[data-section="impact-gallery"]');
+    if (!sections.length) return;
+
+    sections.forEach((section) => {
+        if (section.dataset.impactGalleryModalInit === 'true') return;
+
+        const modal = section.querySelector('[data-impact-gallery-modal]');
+        const backdrop = section.querySelector(
+            '.impact-gallery-modal__backdrop',
+        );
+        const dialog = section.querySelector('.impact-gallery-modal__dialog');
+        const mediaWrap = section.querySelector(
+            '.impact-gallery-modal__media-wrap',
+        );
+        const track = section.querySelector('[data-impact-gallery-track]');
+        const slides = Array.from(
+            section.querySelectorAll('.impact-gallery-modal__slide'),
+        );
+        const triggers = Array.from(
+            section.querySelectorAll('[data-impact-gallery-trigger]'),
+        );
+        const thumbs = Array.from(
+            section.querySelectorAll('[data-impact-gallery-thumb]'),
+        );
+        const closeBtns = Array.from(
+            section.querySelectorAll('[data-impact-gallery-close]'),
+        );
+        const closeControls = Array.from(
+            section.querySelectorAll('.impact-gallery-modal__close'),
+        );
+        const prevBtn = section.querySelector('[data-impact-gallery-prev]');
+        const nextBtn = section.querySelector('[data-impact-gallery-next]');
+
+        if (
+            !modal ||
+            !backdrop ||
+            !dialog ||
+            !mediaWrap ||
+            !track ||
+            !slides.length ||
+            !triggers.length ||
+            !thumbs.length ||
+            !prevBtn ||
+            !nextBtn
+        ) {
+            return;
+        }
+
+        section.dataset.impactGalleryModalInit = 'true';
+
+        let currentIndex = 0;
+        let lastFocusedEl = null;
+        let isAnimating = false;
+        const prefersReducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+        ).matches;
+
+        const lockScroll = (locked) => {
+            if (app.lenis) {
+                locked ? app.lenis.stop() : app.lenis.start();
+                return;
+            }
+
+            document.body.style.overflow = locked ? 'hidden' : '';
+        };
+
+        const setActiveThumb = () => {
+            thumbs.forEach((thumb, index) => {
+                const isActive = index === currentIndex;
+                thumb.classList.toggle('is-active', isActive);
+                thumb.setAttribute('aria-current', isActive ? 'true' : 'false');
+            });
+
+            thumbs[currentIndex]?.scrollIntoView({
+                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                block: 'nearest',
+                inline: 'center',
+            });
+        };
+
+        const updateNavButtons = () => {
+            const atStart = currentIndex === 0;
+            const atEnd = currentIndex === slides.length - 1;
+
+            prevBtn.disabled = atStart;
+            nextBtn.disabled = atEnd;
+            prevBtn.setAttribute('aria-disabled', atStart ? 'true' : 'false');
+            nextBtn.setAttribute('aria-disabled', atEnd ? 'true' : 'false');
+        };
+
+        const setSlide = (index, animate = true) => {
+            currentIndex = index;
+            setActiveThumb();
+            updateNavButtons();
+
+            if (!animate || prefersReducedMotion) {
+                gsap.set(track, { xPercent: -100 * currentIndex });
+                return;
+            }
+
+            gsap.timeline({ defaults: { ease: 'power2.inOut' } })
+                .to(track, {
+                    autoAlpha: 0,
+                    duration: 0.24,
+                    overwrite: true,
+                })
+                .set(track, { xPercent: -100 * currentIndex })
+                .to(track, {
+                    autoAlpha: 1,
+                    duration: 0.42,
+                });
+        };
+
+        const openModal = (index) => {
+            if (isAnimating) return;
+
+            lastFocusedEl = document.activeElement;
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            lockScroll(true);
+            setSlide(index, false);
+
+            if (prefersReducedMotion) {
+                gsap.set(
+                    [dialog, slides, thumbs, prevBtn, nextBtn, ...closeControls],
+                    {
+                        clearProps: 'opacity,visibility,transform',
+                    },
+                );
+                gsap.set(backdrop, {
+                    clearProps: 'opacity,visibility,transform',
+                });
+                dialog.focus({ preventScroll: true });
+                return;
+            }
+
+            isAnimating = true;
+            gsap.killTweensOf([
+                modal,
+                backdrop,
+                dialog,
+                track,
+                slides,
+                thumbs,
+                prevBtn,
+                nextBtn,
+                ...closeControls,
+            ]);
+            gsap.set(modal, { autoAlpha: 1 });
+            gsap.set(backdrop, { autoAlpha: 0 });
+            gsap.set(dialog, { scale: 0.94, autoAlpha: 0 });
+            gsap.set([slides, thumbs, prevBtn, nextBtn, ...closeControls], {
+                autoAlpha: 0,
+            });
+
+            gsap.timeline({
+                defaults: { ease: 'power3.out' },
+                onComplete: () => {
+                    isAnimating = false;
+                    dialog.focus({ preventScroll: true });
+                },
+            })
+                .to(dialog, {
+                    scale: 1,
+                    autoAlpha: 1,
+                    duration: 0.52,
+                })
+                .to(
+                    [slides, thumbs, prevBtn, nextBtn, ...closeControls],
+                    {
+                        autoAlpha: 1,
+                        duration: 0.52,
+                    },
+                    0,
+                )
+                .to(
+                    backdrop,
+                    {
+                        autoAlpha: 1,
+                        duration: 0.46,
+                    },
+                    0.08,
+                );
+        };
+
+        const closeModal = () => {
+            if (!modal.classList.contains('is-open') || isAnimating) return;
+
+            const finish = () => {
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+                lockScroll(false);
+
+                if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
+                    lastFocusedEl.focus({ preventScroll: true });
+                }
+            };
+
+            if (prefersReducedMotion) {
+                finish();
+                return;
+            }
+
+            isAnimating = true;
+            gsap.to(dialog, {
+                scale: 0.94,
+                autoAlpha: 0,
+                duration: 0.42,
+                ease: 'power2.in',
+                overwrite: true,
+                onComplete: () => {
+                    isAnimating = false;
+                    gsap.set(modal, { autoAlpha: 0 });
+                    finish();
+                },
+            });
+            gsap.to(backdrop, {
+                autoAlpha: 0,
+                duration: 0.36,
+                ease: 'power2.in',
+                overwrite: true,
+            });
+        };
+
+        const showRelative = (direction) => {
+            const nextIndex = Math.max(
+                0,
+                Math.min(slides.length - 1, currentIndex + direction),
+            );
+            if (nextIndex === currentIndex) return;
+            setSlide(nextIndex);
+        };
+
+        triggers.forEach((trigger) => {
+            trigger.addEventListener('click', () => {
+                const index = Number(trigger.dataset.galleryIndex);
+                openModal(Number.isNaN(index) ? 0 : index);
+            });
+        });
+
+        thumbs.forEach((thumb) => {
+            thumb.addEventListener('click', () => {
+                const index = Number(thumb.dataset.galleryIndex);
+                setSlide(Number.isNaN(index) ? 0 : index);
+            });
+        });
+
+        closeBtns.forEach((btn) => btn.addEventListener('click', closeModal));
+        mediaWrap.addEventListener('click', (event) => {
+            if (event.target === mediaWrap) closeModal();
+        });
+        prevBtn.addEventListener('click', () => showRelative(-1));
+        nextBtn.addEventListener('click', () => showRelative(1));
+
+        document.addEventListener('keydown', (event) => {
+            if (!modal.classList.contains('is-open')) return;
+
+            if (event.key === 'Escape') {
+                closeModal();
+            } else if (event.key === 'ArrowLeft') {
+                showRelative(-1);
+            } else if (event.key === 'ArrowRight') {
+                showRelative(1);
             }
         });
     });
@@ -363,56 +753,6 @@ function initSolutionPicker() {
             if (!picker.contains(e.target)) {
                 closePanel();
             }
-        });
-    });
-}
-
-/**
- * Partners: partner-network tab filtering
- */
-function initPartnerNetworkTabs() {
-    const sections = Array.from(
-        document.querySelectorAll('[data-partner-network]'),
-    );
-    if (!sections.length) return;
-
-    sections.forEach((section) => {
-        const tabs = Array.from(section.querySelectorAll('[data-partner-tab]'));
-        const cards = Array.from(
-            section.querySelectorAll('[data-partner-logo]'),
-        );
-        if (!tabs.length || !cards.length) return;
-
-        const setActive = (value) => {
-            tabs.forEach((tab) => {
-                const isActive = tab.dataset.partnerTab === value;
-                tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-
-                // Active pill styling
-                tab.classList.toggle('bg-brand-primary', isActive);
-                tab.classList.toggle('text-white', isActive);
-                tab.classList.toggle('border-brand-primary', isActive);
-
-                // Inactive pill styling
-                tab.classList.toggle('bg-transparent', !isActive);
-                tab.classList.toggle('text-text-primary', !isActive);
-                tab.classList.toggle('border-brand-primary/50', !isActive);
-            });
-
-            cards.forEach((card) => {
-                const category = card.dataset.partnerCategory || '';
-                const visible = value === 'all' || category === value;
-                card.classList.toggle('hidden', !visible);
-            });
-        };
-
-        // Default to "all"
-        setActive('all');
-
-        tabs.forEach((tab) => {
-            tab.addEventListener('click', () => {
-                setActive(tab.dataset.partnerTab || 'all');
-            });
         });
     });
 }
@@ -1031,6 +1371,48 @@ function initActiveNavLink() {
     }
 }
 
+/**
+ * Mobile menu: same route-matching as `initActiveNavLink()`, applied to the
+ * mobile nav rows so the current page shows the blue active state there too.
+ */
+function initMobileActiveNavLink() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!mobileMenu) return;
+
+    const links = Array.from(
+        mobileMenu.querySelectorAll('a.mobile-nav-link[href]'),
+    );
+    const solutionsBox = mobileMenu.querySelector('.mobile-nav-solutions');
+
+    const currentPath = window.location.pathname
+        .replace(/\/+$/, '')
+        .toLowerCase();
+
+    links.forEach((link) => {
+        let linkPath;
+        try {
+            linkPath = new URL(link.href).pathname
+                .replace(/\/+$/, '')
+                .toLowerCase();
+        } catch (_) {
+            linkPath = null;
+        }
+        const isActive = linkPath !== null && currentPath === linkPath;
+        link.classList.toggle('is-active-link', isActive);
+        if (isActive) {
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.removeAttribute('aria-current');
+        }
+    });
+
+    if (solutionsBox) {
+        const isActive =
+            currentPath === '/solutions' || currentPath.startsWith('/solutions/');
+        solutionsBox.classList.toggle('is-active-link', isActive);
+    }
+}
+
 function initsolutionsMegaMenu() {
     const header = document.getElementById('site-header');
     const trigger = document.querySelector('[data-solutions-trigger]');
@@ -1464,7 +1846,7 @@ function initMouseFollower() {
  * Main initialization
  */
 function init() {
-    console.log('[Trac] Initializing...');
+    trac_log('[Trac] Initializing...');
 
     // Initialize Lenis sync first
     initLenisSync();
@@ -1482,7 +1864,7 @@ function init() {
     // Initialize on page load
     document.addEventListener('trac:loaded', () => {
         initializePageComponents();
-        console.log('[Trac] All systems initialized');
+        trac_log('[Trac] All systems initialized');
     });
 }
 

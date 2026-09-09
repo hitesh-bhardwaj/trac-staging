@@ -3,86 +3,54 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
+$team_slider_css =
+    get_template_directory_uri() . '/src/css/sections/team-slider.css';
+
 $team_right_arrow_svg =
     get_template_directory_uri() . '/src/assets/icons/right-arrow.svg';
 $team_cross_svg = get_template_directory_uri() . '/src/assets/icons/cross.svg';
-$team_linkedin_icon =
-    get_template_directory_uri() . '/src/imgs/about/linkedin.png';
+$team_linkedin_icon = get_field('au_team_linkedin_icon');
 
-$team_members = [
-    [
-        'name' => 'Johnny Kayihura',
-        'role' => 'Managing Director and CCO',
-        'image' =>
-            get_template_directory_uri() .
-            '/src/imgs/about/johnny-kayihura.png',
-        'linkedin' => 'https://www.linkedin.com/',
-        'bio' =>
-            'With more than 25 years of experience in ICT and telecommunications across East Africa, Johnny has built and scaled multiple technology businesses, including Rock Global Consulting and TrAC. As CCO, he leads commercial strategy, business development, and regional growth, drawing on decades of experience transforming startups into market-leading organisations.',
-    ],
-    [
-        'name' => 'Noorissa Khoja',
-        'role' => 'Chief Operating Officer (COO)',
-        'image' =>
-            get_template_directory_uri() . '/src/imgs/about/noorissa-khoja.png',
-        'linkedin' => 'https://www.linkedin.com/',
-        'bio' =>
-            "Drawing on experience across high-growth technology companies and startups, Noorissa brings expertise in product strategy, operational transformation, and business growth. She attained an MBA from Stanford and held leadership roles at Careem, Mastercard, and Munch:On. She now oversees TrAC's operations and market development, helping drive sustainable growth while ensuring the company remains focused on delivering reliable, customer-centered solutions.",
-    ],
-    [
-        'name' => 'Andre Mutambuka',
-        'role' => 'Chief Technology Officer (CTO)',
-        'image' =>
-            get_template_directory_uri() .
-            '/src/imgs/about/andre-mutambuka.png',
-        'linkedin' => 'https://www.linkedin.com/',
-        'bio' =>
-            "With more than 15 years of experience in telecommunications infrastructure, network planning, and project delivery, Andre has led some of Rwanda’s most significant connectivity initiatives, including FTTH, 4G LTE, and national education connectivity programmes. As CTO, he leads TrAC’s technology strategy, network development, and innovation agenda, ensuring the reliability and scalability of the company's infrastructure.",
-    ],
-    [
-        'name' => 'Aimé Bizimana',
-        'role' => 'Chief Innovation Officer (CIO)',
-        'image' =>
-            get_template_directory_uri() . '/src/imgs/about/aime-bizimana.png',
-        'linkedin' => 'https://www.linkedin.com/',
-        'bio' =>
-            'A co-founder of TrAC, Aimé brings over a decade of experience in ICT, operations, and systems design. He has played a central role in building TrAC’s operational foundations, internal systems, and technical capabilities. Today, he leads the company’s technology operations, driving efficiency, innovation, and the continued development of the systems that support TrAC’s growth.',
-    ],
-    [
-        'name' => 'Karim Khoja',
-        'role' => 'Executive Chairman',
-        'image' =>
-            get_template_directory_uri() . '/src/imgs/about/karim-khoja.png',
-        'linkedin' => 'https://www.linkedin.com/',
-        'bio' =>
-            'Karim has spent more than three decades building telecommunications businesses across Europe, South Asia, and Africa. As Executive Chairman, he provides strategic leadership and long-term vision, helping expand connectivity, strengthen partnerships, and guide TrAC’s growth as a leading provider of digital infrastructure and connectivity solutions.',
-    ],
-];
+$team_label = get_field('au_team_label');
+$team_title = get_field('au_team_title');
+$team_description = get_field('au_team_description');
+
+$team_members = [];
+for ($i = 1; $i <= 5; $i++) {
+    $team_members[] = [
+        'name' => get_field("au_team_{$i}_name"),
+        'role' => get_field("au_team_{$i}_role"),
+        'image' => get_field("au_team_{$i}_photo"),
+        'linkedin' => get_field("au_team_{$i}_linkedin"),
+        'bio' => get_field("au_team_{$i}_bio"),
+    ];
+}
 ?>
 
-<section class="team-slider-section relative py-[7%]" data-team-slider>
-    <div class="pl-[5.2vw]  md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
-        <div class="flex items-start justify-between gap-[3vw] max-md:flex-col h-full">
-            <div class="w-[30%] max-md:w-full flex flex-col h-full justify-between">
+<link rel="stylesheet" href="<?php echo esc_url($team_slider_css); ?>">
+
+<section class="team-slider-section relative overflow-hidden py-[7%]" data-team-slider>
+    <div class="pl-[5.2vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+        <div class="team-slider-layout flex items-start justify-between gap-[3vw] md:flex-col h-full">
+            <div class="team-slider-copy w-[28%] md:w-full flex flex-col h-full justify-between">
                 <div>
                    <div class="mb-[1.8vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3" data-animate="fade-up">
                      <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
                      <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
-                        <?php esc_html_e('Team', 'trac'); ?>
+                        <?php echo trac_esc_html($team_label); ?>
                       </span>
                      </div>
 
-                     <h2 data-heading-anim class="w-[25vw] font-heading text-66 font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:max-w-full md:text-[52px] sm:text-[38px]">
-                    Meet our talented team
+                     <h2 data-heading-anim class="w-[25vw] font-heading text-66 font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:max-w-full sm:w-full">
+                    <?php echo trac_esc_html($team_title); ?>
                      </h2>
 
                       <p data-para-anim class="mt-[2.2vw] max-w-[22vw] font-body text-24 leading-[1.45] text-text-body md:mt-6 md:max-w-[360px] md:text-[22px] sm:text-[18px]">
-                    Our team brings together technical expertise and a strong commitment to the people we serve, delivering solutions that are built to last.
+                    <?php echo trac_esc_html($team_description); ?>
                       </p>
                  </div>
 
-                <div data-animate="fade-up" class="mt-[15vw] w-fit rounded-full flex items-center md:mt-10 sm:mt-8 px-[1vw] gap-[1vw] text-brand-secondary">
+                <div data-animate="fade-up" class="team-slider-card-navigation mt-[15vw] w-fit rounded-full flex items-center md:mt-10 sm:mt-8 px-[1vw] gap-[1vw] text-brand-secondary">
                      <button
                     type="button"
                         class="team-slider-nav team-slider-prev flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
@@ -109,17 +77,18 @@ $team_members = [
                 </div>
             </div>
 
-            <div class="w-[64%] max-md:w-full overflow-visible">
+            <div class="team-slider-main w-[68%] md:w-full overflow-visible sm:mt-20">
                 <div data-animate="fade-up" class="team-slider-stage relative flex items-end gap-[1.6vw]">
                     <div class="team-slider-active-card group" data-team-slider-active-card tabindex="0" role="button" aria-pressed="false">
                         <div class="team-slider-flip-inner">
                             <div class="team-slider-card-front absolute inset-0 overflow-hidden rounded-[1.5vw] border border-brand-quaternary [backface-visibility:hidden] lg:rounded-[20px]">
-                                <div class="team-slider-active-image">
+                                <div class="team-slider-active-image group overflow-hidden">
                                     <img
                                         src=""
-                                        alt=""
+                                        alt="team"
                                         data-team-slider-active-image
                                         draggable="false"
+                                        class="h-full w-full  scale-105 object-cover transition-transform duration-[600ms] ease-out group-hover:scale-100"
                                     >
                                 </div>
 
@@ -129,7 +98,7 @@ $team_members = [
                                     <span class="flex justify-center mt-[1.5vw] leading-none lg:mt-[14px]" aria-hidden="true">
                                         <img class="block w-[1.8vw] h-auto object-contain lg:w-[40px]" src="<?php echo esc_url(
                                             $team_right_arrow_svg,
-                                        ); ?>" alt="">
+                                        ); ?>" alt="right-arrow">
                                     </span>
                                 </div>
                             </div>
@@ -159,13 +128,13 @@ $team_members = [
                         >
                             <img class="block h-full w-full object-contain" src="<?php echo esc_url(
                                 $team_linkedin_icon,
-                            ); ?>" alt="" aria-hidden="true">
+                            ); ?>" alt="linkedin icon" aria-hidden="true">
                         </a>
 
                         <button type="button" class="team-slider-card-close pointer-events-none absolute right-[2.2vw] top-[2.2vw] z-10 flex h-[3vw] w-[3vw] cursor-pointer items-center justify-center rounded-full border-2 border-current bg-transparent text-white opacity-0 transition-opacity duration-200 touch-manipulation group-[.is-flip-complete]:pointer-events-auto group-[.is-flip-complete]:opacity-100 md:right-[30px] md:top-[34px] md:h-[48px] md:w-[48px] sm:right-[22px] sm:top-[26px] sm:h-[40px] sm:w-[40px]" data-team-slider-close aria-label="Close team bio" aria-hidden="true" tabindex="-1">
                             <img class="block h-[1.05vw] w-[1.05vw] object-contain md:h-[17px] md:w-[17px] sm:h-[14px] sm:w-[14px]" src="<?php echo esc_url(
                                 $team_cross_svg,
-                            ); ?>" alt="" aria-hidden="true">
+                            ); ?>" alt="cross icon" aria-hidden="true">
                         </button>
                     </div>
 

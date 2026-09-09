@@ -29,7 +29,7 @@
             "required": 1,
             "choices": {
                 "all": "Show All FAQs",
-                "category": "Show by Category",
+                "category": "Show by Page",
                 "specific": "Select Specific FAQs",
                 "latest": "Show Latest FAQs"
             },
@@ -40,10 +40,10 @@
         },
         {
             "key": "field_faq_categories",
-            "label": "FAQ Categories",
+            "label": "Pages",
             "name": "faq_categories",
             "type": "taxonomy",
-            "instructions": "Select which categories to display",
+            "instructions": "Select which page(s) worth of FAQs to display",
             "required": 0,
             "taxonomy": "faq_category",
             "field_type": "multi_select",
@@ -131,6 +131,34 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "default"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-enterprise-network.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-carrier-services.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-home-internet.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-sme-internet.php"
             }
         ]
     ],

@@ -1,0 +1,701 @@
+{
+    "key": "group_about_us_page",
+    "title": "About Us Page",
+    "fields": [
+        {
+            "key": "field_au_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_au_hero_title",
+            "label": "Hero Title",
+            "name": "hero_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "hero_subtitle_2",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_au_hero_button_text",
+            "label": "Primary Button Text",
+            "name": "hero_primary_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_hero_button_link",
+            "label": "Primary Button Link",
+            "name": "hero_primary_button_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #anchor, or https://example.com"
+        },
+        {
+            "key": "field_au_hero_secondary_button_text",
+            "label": "Secondary Button Text",
+            "name": "hero_secondary_button_text",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_hero_secondary_button_link",
+            "label": "Secondary Button Link",
+            "name": "hero_secondary_button_link",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. /contact-us, #anchor, or https://example.com"
+        },
+        {
+            "key": "field_au_hero_image",
+            "label": "Hero Image",
+            "name": "hero_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_who_tab",
+            "label": "Overview (Who We Are)",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_au_who_label",
+            "label": "Section Label",
+            "name": "au_who_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_who_heading",
+            "label": "Heading",
+            "name": "au_who_heading",
+            "type": "textarea",
+            "required": 1,
+            "rows": 2
+        },
+        {
+            "key": "field_au_stat_1_value",
+            "label": "Stat 1 - Number",
+            "name": "au_stat_1_value",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. 14, 400, 99.9"
+        },
+        {
+            "key": "field_au_stat_1_suffix",
+            "label": "Stat 1 - Suffix",
+            "name": "au_stat_1_suffix",
+            "type": "text",
+            "required": 0,
+            "placeholder": "e.g. +, %"
+        },
+        {
+            "key": "field_au_stat_1_label",
+            "label": "Stat 1 - Label",
+            "name": "au_stat_1_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_stat_2_value",
+            "label": "Stat 2 - Number",
+            "name": "au_stat_2_value",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. 14, 400, 99.9"
+        },
+        {
+            "key": "field_au_stat_2_suffix",
+            "label": "Stat 2 - Suffix",
+            "name": "au_stat_2_suffix",
+            "type": "text",
+            "required": 0,
+            "placeholder": "e.g. +, %"
+        },
+        {
+            "key": "field_au_stat_2_label",
+            "label": "Stat 2 - Label",
+            "name": "au_stat_2_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_stat_3_value",
+            "label": "Stat 3 - Number",
+            "name": "au_stat_3_value",
+            "type": "text",
+            "required": 1,
+            "placeholder": "e.g. 14, 400, 99.9"
+        },
+        {
+            "key": "field_au_stat_3_suffix",
+            "label": "Stat 3 - Suffix",
+            "name": "au_stat_3_suffix",
+            "type": "text",
+            "required": 0,
+            "placeholder": "e.g. +, %"
+        },
+        {
+            "key": "field_au_stat_3_label",
+            "label": "Stat 3 - Label",
+            "name": "au_stat_3_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_what_tab",
+            "label": "Services (What We Do)",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_au_what_label",
+            "label": "Section Label",
+            "name": "au_what_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_1_icon",
+            "label": "Service 1 - Icon",
+            "name": "au_service_1_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_1_title",
+            "label": "Service 1 - Title",
+            "name": "au_service_1_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_1_description",
+            "label": "Service 1 - Description",
+            "name": "au_service_1_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_au_service_2_icon",
+            "label": "Service 2 - Icon",
+            "name": "au_service_2_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_2_title",
+            "label": "Service 2 - Title",
+            "name": "au_service_2_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_2_description",
+            "label": "Service 2 - Description",
+            "name": "au_service_2_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_au_service_3_icon",
+            "label": "Service 3 - Icon",
+            "name": "au_service_3_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_3_title",
+            "label": "Service 3 - Title",
+            "name": "au_service_3_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_3_description",
+            "label": "Service 3 - Description",
+            "name": "au_service_3_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_au_service_4_icon",
+            "label": "Service 4 - Icon",
+            "name": "au_service_4_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_4_title",
+            "label": "Service 4 - Title",
+            "name": "au_service_4_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_4_description",
+            "label": "Service 4 - Description",
+            "name": "au_service_4_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_au_service_5_icon",
+            "label": "Service 5 - Icon",
+            "name": "au_service_5_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_5_title",
+            "label": "Service 5 - Title",
+            "name": "au_service_5_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_service_5_description",
+            "label": "Service 5 - Description",
+            "name": "au_service_5_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_au_vm_tab",
+            "label": "Vision & Mission",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_au_vm_label",
+            "label": "Section Label",
+            "name": "au_vm_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_vision_image",
+            "label": "Vision - Image",
+            "name": "au_vision_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_vision_title",
+            "label": "Vision - Title",
+            "name": "au_vision_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_vision_description",
+            "label": "Vision - Description",
+            "name": "au_vision_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_au_mission_image",
+            "label": "Mission - Image",
+            "name": "au_mission_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_mission_title",
+            "label": "Mission - Title",
+            "name": "au_mission_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_mission_description",
+            "label": "Mission - Description",
+            "name": "au_mission_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 3
+        },
+        {
+            "key": "field_au_team_tab",
+            "label": "Team",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_au_team_label",
+            "label": "Section Label",
+            "name": "au_team_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_title",
+            "label": "Section Title",
+            "name": "au_team_title",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_description",
+            "label": "Section Description",
+            "name": "au_team_description",
+            "type": "textarea",
+            "required": 1,
+            "rows": 2
+        },
+        {
+            "key": "field_au_team_linkedin_icon",
+            "label": "LinkedIn Icon (badge shown on team cards)",
+            "name": "au_team_linkedin_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_1_photo",
+            "label": "Member 1 - Photo",
+            "name": "au_team_1_photo",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_1_name",
+            "label": "Member 1 - Name",
+            "name": "au_team_1_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_1_role",
+            "label": "Member 1 - Role",
+            "name": "au_team_1_role",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_1_linkedin",
+            "label": "Member 1 - LinkedIn URL",
+            "name": "au_team_1_linkedin",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_au_team_1_bio",
+            "label": "Member 1 - Bio",
+            "name": "au_team_1_bio",
+            "type": "textarea",
+            "required": 1,
+            "rows": 4
+        },
+        {
+            "key": "field_au_team_2_photo",
+            "label": "Member 2 - Photo",
+            "name": "au_team_2_photo",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_2_name",
+            "label": "Member 2 - Name",
+            "name": "au_team_2_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_2_role",
+            "label": "Member 2 - Role",
+            "name": "au_team_2_role",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_2_linkedin",
+            "label": "Member 2 - LinkedIn URL",
+            "name": "au_team_2_linkedin",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_au_team_2_bio",
+            "label": "Member 2 - Bio",
+            "name": "au_team_2_bio",
+            "type": "textarea",
+            "required": 1,
+            "rows": 4
+        },
+        {
+            "key": "field_au_team_3_photo",
+            "label": "Member 3 - Photo",
+            "name": "au_team_3_photo",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_3_name",
+            "label": "Member 3 - Name",
+            "name": "au_team_3_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_3_role",
+            "label": "Member 3 - Role",
+            "name": "au_team_3_role",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_3_linkedin",
+            "label": "Member 3 - LinkedIn URL",
+            "name": "au_team_3_linkedin",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_au_team_3_bio",
+            "label": "Member 3 - Bio",
+            "name": "au_team_3_bio",
+            "type": "textarea",
+            "required": 1,
+            "rows": 4
+        },
+        {
+            "key": "field_au_team_4_photo",
+            "label": "Member 4 - Photo",
+            "name": "au_team_4_photo",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_4_name",
+            "label": "Member 4 - Name",
+            "name": "au_team_4_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_4_role",
+            "label": "Member 4 - Role",
+            "name": "au_team_4_role",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_4_linkedin",
+            "label": "Member 4 - LinkedIn URL",
+            "name": "au_team_4_linkedin",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_au_team_4_bio",
+            "label": "Member 4 - Bio",
+            "name": "au_team_4_bio",
+            "type": "textarea",
+            "required": 1,
+            "rows": 4
+        },
+        {
+            "key": "field_au_team_5_photo",
+            "label": "Member 5 - Photo",
+            "name": "au_team_5_photo",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_5_name",
+            "label": "Member 5 - Name",
+            "name": "au_team_5_name",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_5_role",
+            "label": "Member 5 - Role",
+            "name": "au_team_5_role",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_team_5_linkedin",
+            "label": "Member 5 - LinkedIn URL",
+            "name": "au_team_5_linkedin",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_au_team_5_bio",
+            "label": "Member 5 - Bio",
+            "name": "au_team_5_bio",
+            "type": "textarea",
+            "required": 1,
+            "rows": 4
+        },
+        {
+            "key": "field_au_socials_tab",
+            "label": "Socials",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_au_socials_label",
+            "label": "Section Label",
+            "name": "au_socials_label",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_socials_instagram_icon",
+            "label": "Instagram Badge Icon",
+            "name": "au_socials_instagram_icon",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_social_1_image",
+            "label": "Post 1 - Image",
+            "name": "au_social_1_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_social_1_alt",
+            "label": "Post 1 - Alt Text",
+            "name": "au_social_1_alt",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_social_1_link",
+            "label": "Post 1 - Link",
+            "name": "au_social_1_link",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_au_social_2_image",
+            "label": "Post 2 - Image",
+            "name": "au_social_2_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_social_2_alt",
+            "label": "Post 2 - Alt Text",
+            "name": "au_social_2_alt",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_social_2_link",
+            "label": "Post 2 - Link",
+            "name": "au_social_2_link",
+            "type": "url",
+            "required": 0
+        },
+        {
+            "key": "field_au_social_3_image",
+            "label": "Post 3 - Image",
+            "name": "au_social_3_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "required": 1
+        },
+        {
+            "key": "field_au_social_3_alt",
+            "label": "Post 3 - Alt Text",
+            "name": "au_social_3_alt",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_au_social_3_link",
+            "label": "Post 3 - Link",
+            "name": "au_social_3_link",
+            "type": "url",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-about-us.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}

@@ -3,39 +3,22 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-$section_label =
-    get_field('communities_section_label') ?: 'Connecting Communities';
-
-$section_title =
-    get_field('communities_section_title') ?:
-    'Building the Foundation for Rural Digitisation';
-
-$section_content_1 =
-    get_field('communities_section_content_1') ?:
-    'Beyond delivering reliable internet and strong customer support, we continuously invest in infrastructure that enables wider access. Through long-term partnerships and ongoing optimisation, we ensure our networks evolve alongside the needs of people and organisations across Rwanda and East Africa.';
-
-$section_content_2 =
-    get_field('communities_section_content_2') ?:
-    'The Connecting Communities (CC) platform builds on this connectivity, with TrAC enabling the rollout of Community Smart Hubs across Rwanda and across East Africa. CC and TrAC are bringing access to financial services, education, clean water, and digital tools.';
-
-$button_text = get_field('communities_button_text') ?: 'Read More';
-$button_text = get_field('communities_button_text') ?: 'Read More';
-
-$button_link = get_field('communities_button_link') ?: '#';
-
-$section_image =
-    get_field('communities_section_image') ?:
-    get_template_directory_uri() . '/src/imgs/home/connecting-communities.png';
-
-$section_image_alt =
-    get_field('communities_section_image_alt') ?: 'Connecting communities';
+$section_label = get_field('communities_section_label');
+$section_title = get_field('communities_section_title');
+$section_content_1 = get_field('communities_section_content_1');
+$section_content_2 = get_field('communities_section_content_2');
+$button_text = get_field('communities_button_text');
+$button_link = get_field('communities_button_link');
+$section_image = get_field('communities_section_image');
+$section_image_alt = get_field('communities_section_image_alt');
 ?>
 
 <section
     class="connecting-communities-section relative w-full bg-brand-quaternary px-[5vw] py-[7vw] text-white md:py-[10vw] md:px-[7vw] sm:py-[15%]"
     data-section="connecting-communities"
+    id="connecting-communities"
 >
-    <div class="grid w-full grid-cols-[0.9fr_1fr] items-center gap-[6vw] md:grid-cols-1 md:gap-[8vw]">
+    <div class="grid w-full grid-cols-[0.7fr_1.3fr] items-center md:grid-cols-1 md:gap-[8vw] gap-[6vw]">
         <div class="flex flex-col items-start">
             <div
                 class="mb-[4vw] flex items-center justify-start gap-[1.2vw] md:mb-[5vw] md:gap-3 sm:mb-[8vw]"
@@ -44,7 +27,7 @@ $section_image_alt =
                 <span class="h-[0.2vw] w-[1.5vw] bg-white md:h-[3px] md:w-6 sm:w-5"></span>
 
                 <span class="font-body text-30 leading-none text-white md:text-xl sm:text-[4.5vw]">
-                    <?php echo esc_html($section_label); ?>
+                    <?php echo trac_esc_html($section_label); ?>
                 </span>
             </div>
 
@@ -53,38 +36,38 @@ $section_image_alt =
              >
                 <span data-heading-anim>
 
-                <?php echo esc_html($section_title); ?>
+                <?php echo trac_esc_html($section_title); ?>
                  </span>
             </h2>
              <div
-            class="relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:mt-8 hidden md:block"
+            class="group relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:mt-8 hidden md:block"
             data-animate="fade-up"
         >
             <img
                 src="<?php echo esc_url($section_image); ?>"
                 alt="<?php echo esc_attr($section_image_alt); ?>"
-                class="h-full w-full object-cover"
+                class="h-full w-full object-cover scale-105 transition-transform duration-[600ms] ease-out group-hover:scale-100"
                 loading="lazy"
             >
         </div>
 
-            <div class="mt-[2.8vw] w-[46vw] space-y-[2.2vw] font-body text-24 md:w-full sm:mt-8">
+            <div class="mt-[2.8vw] w-[38vw] space-y-[2.2vw] font-body text-24 md:w-full sm:mt-8">
                 <p data-para-anim>
-                    <?php echo esc_html($section_content_1); ?>
+                    <?php echo trac_esc_html($section_content_1); ?>
                 </p>
 
                 <p data-para-anim>
-                    <?php echo esc_html($section_content_2); ?>
+                    <?php echo trac_esc_html($section_content_2); ?>
                 </p>
             </div>
 <div data-animate="fade-up">
 
              <a  href="<?php echo esc_url(
-                 get_field('hero_primary_button_link') ?: '/connecting-communities',
+                 $button_link,
              ); ?>" class="btn btn-primary group magnetic mt-[3vw] sm:mt-8">
                         <span class="btn-line"></span>
-                        <span class="btn-text"><?php echo esc_html(
-                            'Read More',
+                        <span class="btn-text"><?php echo trac_esc_html(
+                            $button_text,
                         ); ?></span>
                         <span class="btn-icon">
                           <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,13 +81,13 @@ $section_image_alt =
         </div>
 
         <div
-            class="relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:hidden"
+            class="group relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:hidden"
             data-animate="fade-up"
         >
             <img
                 src="<?php echo esc_url($section_image); ?>"
                 alt="<?php echo esc_attr($section_image_alt); ?>"
-                class="h-full w-full object-cover"
+                class="h-full w-full scale-105 object-cover transition-transform duration-[600ms] ease-out group-hover:scale-100"
                 loading="lazy"
             >
         </div>

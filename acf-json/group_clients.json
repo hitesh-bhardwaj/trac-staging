@@ -1,0 +1,165 @@
+{
+    "key": "group_clients_section",
+    "title": "Clients Section",
+    "fields": [
+        {
+            "key": "field_client_1_image",
+            "label": "Client 1 - Logo",
+            "name": "client_1_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_client_1_alt",
+            "label": "Client 1 - Name / Alt Text",
+            "name": "client_1_alt",
+            "type": "text",
+            "default_value": "PCCW",
+            "required": 1
+        },
+        {
+            "key": "field_client_2_image",
+            "label": "Client 2 - Logo",
+            "name": "client_2_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_client_2_alt",
+            "label": "Client 2 - Name / Alt Text",
+            "name": "client_2_alt",
+            "type": "text",
+            "default_value": "US Embassy",
+            "required": 1
+        },
+        {
+            "key": "field_client_3_image",
+            "label": "Client 3 - Logo",
+            "name": "client_3_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_client_3_alt",
+            "label": "Client 3 - Name / Alt Text",
+            "name": "client_3_alt",
+            "type": "text",
+            "default_value": "GoodLife",
+            "required": 1
+        },
+        {
+            "key": "field_client_4_image",
+            "label": "Client 4 - Logo",
+            "name": "client_4_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_client_4_alt",
+            "label": "Client 4 - Name / Alt Text",
+            "name": "client_4_alt",
+            "type": "text",
+            "default_value": "Vodacom",
+            "required": 1
+        },
+        {
+            "key": "field_client_5_image",
+            "label": "Client 5 - Logo",
+            "name": "client_5_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_client_5_alt",
+            "label": "Client 5 - Name / Alt Text",
+            "name": "client_5_alt",
+            "type": "text",
+            "default_value": "NTT Data",
+            "required": 1
+        },
+        {
+            "key": "field_client_6_image",
+            "label": "Client 6 - Logo",
+            "name": "client_6_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_client_6_alt",
+            "label": "Client 6 - Name / Alt Text",
+            "name": "client_6_alt",
+            "type": "text",
+            "default_value": "Total Energies",
+            "required": 1
+        },
+        {
+            "key": "field_client_7_image",
+            "label": "Client 7 - Logo",
+            "name": "client_7_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_client_7_alt",
+            "label": "Client 7 - Name / Alt Text",
+            "name": "client_7_alt",
+            "type": "text",
+            "default_value": "PWC",
+            "required": 1
+        },
+        {
+            "key": "field_client_8_image",
+            "label": "Client 8 - Logo",
+            "name": "client_8_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_client_8_alt",
+            "label": "Client 8 - Name / Alt Text",
+            "name": "client_8_alt",
+            "type": "text",
+            "default_value": "Serena Hotels",
+            "required": 1
+        },
+        {
+            "key": "field_client_9_image",
+            "label": "Client 9 - Logo",
+            "name": "client_9_image",
+            "type": "image",
+            "return_format": "array",
+            "required": 1
+        },
+        {
+            "key": "field_client_9_alt",
+            "label": "Client 9 - Name / Alt Text",
+            "name": "client_9_alt",
+            "type": "text",
+            "default_value": "RCA",
+            "required": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 4,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true
+}
