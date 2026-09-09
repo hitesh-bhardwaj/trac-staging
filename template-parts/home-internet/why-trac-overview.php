@@ -55,7 +55,7 @@ for ($i = 1; $i <= 6; $i++) {
                             class="size-[3.5vw] md:w-10 md:h-10 sm:w-12 sm:h-12 object-contain"
                             loading="lazy"
                         >
-                        <p class="font-body text-white text-24 md:text-lg sm:text-base leading-[1.35] w-[55%] sm:w-full">
+                        <p class="font-body text-white text-24 md:text-lg sm:text-base leading-[1.35] w-full">
                             <?php echo trac_esc_html($c['text']); ?>
                         </p>
                     </div>

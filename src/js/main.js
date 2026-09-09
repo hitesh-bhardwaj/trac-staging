@@ -25,8 +25,6 @@ const app = {
     globe: null,
     networkCanvas: null,
     networkCanvases: [],
-    prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)')
-        .matches,
 };
 
 document.documentElement.classList.add('js');
@@ -281,8 +279,6 @@ function destroyNetworkCanvases() {
 function initNetworkCanvases() {
     destroyNetworkCanvases();
 
-    if (app.prefersReducedMotion) return;
-
     const networkCanvases = document.querySelectorAll('.network-canvas-el');
     if (!networkCanvases.length) return;
 
@@ -332,15 +328,10 @@ function initializePageComponents() {
     initMobileActiveNavLink();
     initMouseFollower();
 
-    if (!app.prefersReducedMotion) {
-        initAnimations();
-    } else {
-        // Ensure hero content is visible (CSS masks/hides hero copy until revealed).
-        revealHeroContent(document, { skipAnimation: true });
-    }
+    initAnimations();
 
     const globeContainer = document.getElementById('globe-container');
-    if (globeContainer && !app.prefersReducedMotion) {
+    if (globeContainer) {
         if (app.globe && app.globe.destroy) {
             app.globe.destroy();
             app.globe = null;
@@ -490,9 +481,6 @@ function initImpactGalleryModal() {
         let currentIndex = 0;
         let lastFocusedEl = null;
         let isAnimating = false;
-        const prefersReducedMotion = window.matchMedia(
-            '(prefers-reduced-motion: reduce)',
-        ).matches;
 
         const lockScroll = (locked) => {
             if (app.lenis) {
@@ -511,7 +499,7 @@ function initImpactGalleryModal() {
             });
 
             thumbs[currentIndex]?.scrollIntoView({
-                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                behavior: 'smooth',
                 block: 'nearest',
                 inline: 'center',
             });
@@ -532,7 +520,7 @@ function initImpactGalleryModal() {
             setActiveThumb();
             updateNavButtons();
 
-            if (!animate || prefersReducedMotion) {
+            if (!animate) {
                 gsap.set(track, { xPercent: -100 * currentIndex });
                 return;
             }
@@ -558,20 +546,6 @@ function initImpactGalleryModal() {
             modal.setAttribute('aria-hidden', 'false');
             lockScroll(true);
             setSlide(index, false);
-
-            if (prefersReducedMotion) {
-                gsap.set(
-                    [dialog, slides, thumbs, prevBtn, nextBtn, ...closeControls],
-                    {
-                        clearProps: 'opacity,visibility,transform',
-                    },
-                );
-                gsap.set(backdrop, {
-                    clearProps: 'opacity,visibility,transform',
-                });
-                dialog.focus({ preventScroll: true });
-                return;
-            }
 
             isAnimating = true;
             gsap.killTweensOf([
@@ -634,11 +608,6 @@ function initImpactGalleryModal() {
                     lastFocusedEl.focus({ preventScroll: true });
                 }
             };
-
-            if (prefersReducedMotion) {
-                finish();
-                return;
-            }
 
             isAnimating = true;
             gsap.to(dialog, {

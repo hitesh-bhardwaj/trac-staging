@@ -56,7 +56,7 @@ export function initAnimations() {
     trac_log('[Trac] Animations initialized');
 }
 
-// Lightweight helper for reduced-motion (or when you want to just "show" the hero instantly).
+// Lightweight helper to just "show" the hero instantly.
 export function revealHeroContent(scope = document, options = {}) {
     initBarbaSyncedHeroReveal(scope, options);
 }
@@ -70,15 +70,6 @@ function initCommunityHubCards() {
     );
 
     if (cards.length < 5) return;
-
-    const prefersReducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)',
-    ).matches;
-
-    if (prefersReducedMotion) {
-        gsap.set(cards, { clearProps: 'transform' });
-        return;
-    }
 
     const [outerLeft, innerLeft, center, innerRight, outerRight] = cards;
 
@@ -217,17 +208,13 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
             // on nav (same issue as the `data-para-anim` branch further down).
             gsap.set(el, { y: 0, clearProps: 'willChange' });
 
-            const prefersReducedMotion = window.matchMedia(
-                '(prefers-reduced-motion: reduce)',
-            ).matches;
-
             // Subtle defaults (same as non-hero `data-heading-anim`)
             const duration = parseFloat(el.dataset.duration || '1.6') || 1.6;
             const stagger = parseFloat(el.dataset.stagger || '0.14') || 0.14;
             const baseDelay =
                 parseFloat(el.dataset.baseDelay || '0.05') || 0.05;
 
-            if (!prefersReducedMotion && lines.length) {
+            if (lines.length) {
                 gsap.set(lines, {
                     WebkitMaskPosition: '100% 100%',
                     maskPosition: '100% 100%',
@@ -389,11 +376,7 @@ function initBarbaSyncedHeroReveal(scope = document, options = {}) {
             // barba's own per-item tween isn't the one owning this element.
             gsap.set(el, { opacity: 1, y: 0, clearProps: 'willChange' });
 
-            const prefersReducedMotion = window.matchMedia(
-                '(prefers-reduced-motion: reduce)',
-            ).matches;
-
-            if (!prefersReducedMotion && paraLine.length) {
+            if (paraLine.length) {
                 gsap.set(paraLine, { yPercent: 100, willChange: 'transform' });
                 gsap.to(paraLine, {
                     yPercent: 0,
@@ -830,10 +813,6 @@ function initHeadingLineReveal(scope = null) {
     if (root.dataset && root.dataset.headingAnimInit === 'true') return;
     if (root.dataset) root.dataset.headingAnimInit = 'true';
 
-    const prefersReducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)',
-    ).matches;
-
     const waitForFonts = async () => {
         if (document.fonts && document.fonts.ready) {
             try {
@@ -945,15 +924,6 @@ function initHeadingLineReveal(scope = null) {
             el.style.visibility = 'visible';
 
             if (!lines.length) return;
-
-            if (prefersReducedMotion) {
-                gsap.set(lines, {
-                    WebkitMaskPosition: '0% 100%',
-                    maskPosition: '0% 100%',
-                    clearProps: 'willChange',
-                });
-                return;
-            }
 
             const delay = parseFloat(el.dataset.delay || '0') || 0;
             // Subtle defaults (same as hero `data-heading-anim`, but without blur).
@@ -3496,15 +3466,6 @@ function initWhyChooseTracCards() {
     if (cards.length < 2) return;
 
     if (window.innerWidth <= 540) {
-        gsap.set(cards, { clearProps: 'transform' });
-        return;
-    }
-
-    const prefersReducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)',
-    ).matches;
-
-    if (prefersReducedMotion) {
         gsap.set(cards, { clearProps: 'transform' });
         return;
     }

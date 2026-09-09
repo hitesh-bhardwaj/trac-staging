@@ -34,10 +34,10 @@ get_header();
                 'text' => get_field('hero_primary_button_text'),
                 'link' => get_field('hero_primary_button_link'),
             ],
-            'secondary' => [
+            /* 'secondary' => [
                 'text' => get_field('hero_secondary_button_text'),
                 'link' => get_field('hero_secondary_button_link'),
-            ],
+            ], */
             'media' => [
                 'src' => is_array($hero_image) ? $hero_image['url'] : '',
                 'alt' => is_array($hero_image) ? $hero_image['alt'] : '',

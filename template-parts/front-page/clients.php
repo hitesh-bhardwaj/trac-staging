@@ -25,9 +25,9 @@ for ($i = 1; $i <= 9; $i++) {
             data-animate="fade-up"
             data-delay="0.2"
         >
-            <div class="clients-marquee-track flex w-max [animation:clients-marquee_28s_linear_infinite] [will-change:transform] hover:[animation-play-state:paused] motion-reduce:w-auto motion-reduce:flex-wrap motion-reduce:animate-none">
+            <div class="clients-marquee-track flex w-max [animation:clients-marquee_28s_linear_infinite] [will-change:transform] hover:[animation-play-state:paused]">
                 <?php for ($set = 0; $set < 2; $set++): ?>
-                    <div class="clients-marquee-group flex flex-[0_0_auto] gap-[var(--clients-logo-gap)] pr-[var(--clients-logo-gap)] motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:[&[aria-hidden='true']]:hidden [&[aria-hidden='true']]:sm:hidden" aria-hidden="<?php echo $set ===
+                    <div class="clients-marquee-group flex flex-[0_0_auto] gap-[var(--clients-logo-gap)] pr-[var(--clients-logo-gap)] [&[aria-hidden='true']]:sm:hidden" aria-hidden="<?php echo $set ===
                     0
                         ? 'false'
                         : 'true'; ?>">

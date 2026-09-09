@@ -1084,22 +1084,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     @apply relative min-h-screen flex pt-[10vw] overflow-hidden bg-[#0B1F3A] text-white;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-
-    [data-animate] {
-        opacity: 1;
-        transform: none;
-    }
-}
-
 @media print {
     .site-header,
     .site-footer {

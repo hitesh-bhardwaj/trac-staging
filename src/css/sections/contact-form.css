@@ -117,12 +117,30 @@
     font-size: 0.938vw;
 }
 
+.contact-form-wrapper .wpcf7-response-output {
+    border: 0;
+    color: #dc2626;
+    text-align: left;
+}
+
+.contact-form-wrapper .wpcf7 form.invalid .wpcf7-response-output,
+.contact-form-wrapper .wpcf7 form.unaccepted .wpcf7-response-output,
+.contact-form-wrapper .wpcf7 form.payment-required .wpcf7-response-output {
+    border: 0;
+    color: #dc2626;
+    text-align: left;
+}
+
 /* Loading Spinner */
 .contact-form-wrapper .wpcf7-spinner {
     position: absolute;
     right: 1vw;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.contact-form-wrapper .wpcf7-spinner::before {
+    background-color: #111111;
 }
 
 /* File Upload Container - Target the wrapper span with specific class names */
