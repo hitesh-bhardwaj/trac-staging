@@ -282,7 +282,7 @@
                 <ul class="flex flex-col gap-3 m-0 p-0 list-none">
                     <li><a href="<?php echo esc_url(
                         $nav_link_0['link'],
-                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4.074vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_0_active
+                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4vw] sm:text-[4.5vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_0_active
     ? ' is-active-link'
     : ''; ?>"<?php echo $is_nav_0_active ? ' aria-current="page"' : ''; ?>><?php echo trac_esc_html(
     $nav_link_0['label'],
@@ -290,7 +290,7 @@
                     <li class="mobile-nav-solutions rounded-xl bg-brand-tint text-[#111111] overflow-hidden p-[5.185vw] sm:p-[5.185vw]<?php echo $is_solutions_active
     ? ' is-active-link'
     : ''; ?>">
-                        <button class="mobile-nav-solutions-trigger flex w-full items-center justify-between border-0 bg-transparent p-0 font-body text-[4.074vw] leading-[1.15] text-inherit text-left sm:text-[4.074vw]" type="button" aria-expanded="false" aria-controls="mobile-solutions-list">
+                        <button class="mobile-nav-solutions-trigger flex w-full items-center justify-between border-0 bg-transparent p-0 font-body text-[4vw] leading-[1.15] text-inherit text-left sm:text-[4.5vw]" type="button" aria-expanded="false" aria-controls="mobile-solutions-list">
                             <span><?php echo trac_esc_html(
                             $trac_header_solutions_label,
                         ); ?></span>
@@ -299,10 +299,16 @@
                             </svg>
                         </button>
                         <ul id="mobile-solutions-list" class="mobile-nav-solutions-list flex flex-col p-0 list-none">
-                            <?php foreach ($trac_solutions_menu_items as $solution_item): ?>
+                            <?php $trac_solutions_menu_items_count = count(
+                                $trac_solutions_menu_items,
+                            ); ?>
+                            <?php foreach ($trac_solutions_menu_items as $solution_index => $solution_item): ?>
                                 <li><a href="<?php echo esc_url(
                                     $solution_item['url'],
-                                ); ?>" class="mobile-nav-solutions-link block border-b py-4 pb-5 font-body text-[3.519vw] leading-[1.2] no-underline last:border-b-0 last:pb-[0.370vw] sm:text-[3.519vw]"><?php echo trac_esc_html(
+                                ); ?>" class="mobile-nav-solutions-link block py-4 border-white font-body  leading-[1.2] sm:text-24 md:text-30<?php echo $solution_index <
+                                $trac_solutions_menu_items_count - 1
+                                    ? ' border-b'
+                                    : ''; ?>"><?php echo trac_esc_html(
     $solution_item['label'],
 ); ?></a></li>
                             <?php endforeach; ?>
@@ -310,7 +316,7 @@
                     </li>
                     <li><a href="<?php echo esc_url(
                         $nav_link_1['link'],
-                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4.074vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_1_active
+                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4vw] sm:text-[4.5vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_1_active
     ? ' is-active-link'
     : ''; ?>"<?php echo $is_nav_1_active
     ? ' aria-current="page"'
@@ -319,7 +325,7 @@
 ); ?></a></li>
                     <li><a href="<?php echo esc_url(
                         $nav_link_2['link'],
-                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4.074vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_2_active
+                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4vw] sm:text-[4.5vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_2_active
     ? ' is-active-link'
     : ''; ?>"<?php echo $is_nav_2_active ? ' aria-current="page"' : ''; ?>><?php echo trac_esc_html(
     $nav_link_2['label'],
