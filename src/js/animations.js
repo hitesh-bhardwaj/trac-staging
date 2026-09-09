@@ -3465,7 +3465,7 @@ function initWhyChooseTracCards() {
 
     if (cards.length < 2) return;
 
-    if (window.innerWidth <= 540) {
+    if (window.innerWidth <= 1024) {
         gsap.set(cards, { clearProps: 'transform' });
         return;
     }
@@ -3478,16 +3478,13 @@ function initWhyChooseTracCards() {
 
     gsap.killTweensOf(cards);
 
-    const offsetMultiplier = window.innerWidth <= 1024 ? 24 : 3.4;
+    const offsetMultiplier = 3.4;
 
     cards.forEach((card, index) => {
         gsap.set(card, {
             autoAlpha: 1,
             x: 0,
-            y: () =>
-                window.innerWidth <= 1024
-                    ? index * offsetMultiplier
-                    : `${index * offsetMultiplier}vw`,
+            y: `${index * offsetMultiplier}vw`,
             rotation: 0,
             transformOrigin: '50% 50%',
         });

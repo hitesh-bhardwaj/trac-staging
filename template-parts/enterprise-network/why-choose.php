@@ -22,7 +22,7 @@ for ($i = 1; $i <= 3; $i++) {
                                <canvas class="network-canvas-el absolute inset-0 h-full w-full" data-star-color="#FFBFA2" data-line-color="#10417F1A"></canvas>
 
 
-    <div class="relative z-[1] w-full px-[4vw]">
+    <div class="relative z-[1] w-full px-[4vw] md:px-0">
         <div class="">
             <div class="flex items-center justify-start gap-3 mb-8 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
@@ -36,12 +36,12 @@ for ($i = 1; $i <= 3; $i++) {
             </h2>
 
             <?php foreach ($enterprise_why_paragraphs as $paragraph): ?>
-                <p class="w-[75%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left sm:w-full" data-para-anim data-delay="0.2">
+                <p class="w-[75%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left md:w-full" data-para-anim data-delay="0.2">
                     <?php echo trac_esc_html($paragraph); ?>
                 </p>
             <?php endforeach; ?>
 
-	            <div class="grid grid-cols-3 gap-10 md:grid-cols-1 mt-[5vw] md:gap-8 text-left items-stretch">
+	            <div class="grid grid-cols-3 gap-10 md:grid-cols-3 mt-[5vw] md:gap-8 text-left items-stretch">
                     <?php foreach ($enterprise_stats as $index => $stat): ?>
                         <div
                             class="bg-brand-quaternary rounded-[1.5vw] border border-transparent hover:border-brand-primary transition-colors duration-300 px-8 py-8 h-full flex flex-col gap-3 items-start sm:py-5 sm:rounded-[3.5vw] sm:gap-2"
@@ -52,7 +52,7 @@ for ($i = 1; $i <= 3; $i++) {
                                 ); ?>"
                             <?php endif; ?>
                         >
-                            <div class="font-heading text-white font-bold text-[2.9vw]  flex items-end sm:!font-medium sm:text-[8vw]"><?php echo trac_esc_html(
+                            <div class="font-heading text-white font-bold text-[2.9vw]  flex items-end sm:!font-medium md:text-[5.5vw] sm:text-[8vw]"><?php echo trac_esc_html(
                                 $stat['number'],
                             ); ?></div>
                             <p class="font-body text-white text-24 md:text-lg leading-snug">

@@ -16,7 +16,7 @@ for ($i = 1; $i <= 5; $i++) {
 }
 ?>
 
-<section class="why-choose-trac-section relative overflow-hidden bg-brand-tint px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="why-choose-trac">
+<section class="why-choose-trac-section relative overflow-hidden bg-brand-tint px-[5vw] py-[6.25vw] md:py-16 md:px-[6vw] sm:py-12" data-section="why-choose-trac">
     <div class="relative z-[2] mx-auto max-w-[92rem]">
         <div class="flex items-center justify-start gap-3 mb-8 md:mb-6" data-animate="fade-up">
             <span class="w-6 h-1 bg-brand-secondary"></span>
@@ -33,23 +33,23 @@ for ($i = 1; $i <= 5; $i++) {
             <?php echo trac_esc_html($subtitle); ?>
         </p>
 
-        <div class="carrier-why-cards mt-[4.5vw] flex items-start gap-[1.6vw] md:mt-12 md:flex-col md:gap-5 sm:!flex-row sm:items-stretch sm:gap-5 sm:-mx-[6vw] sm:overflow-x-auto sm:overflow-y-visible sm:px-[6vw] sm:pb-2 sm:[scroll-padding-left:6vw] sm:[scroll-snap-type:x_proximity] sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden">
+        <div class="carrier-why-cards mt-[4.5vw] flex items-start gap-[1.6vw] md:mt-12 md:!flex-row md:items-stretch md:gap-5 md:-mx-[6vw] md:overflow-x-auto md:overflow-y-visible md:px-[6vw] md:pb-2 md:[scroll-padding-left:6vw] md:[scroll-snap-type:x_proximity] md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden sm:!flex-row sm:items-stretch sm:gap-5 sm:-mx-[6vw] sm:overflow-x-auto sm:overflow-y-visible sm:px-[6vw] sm:pb-2 sm:[scroll-padding-left:6vw] sm:[scroll-snap-type:x_proximity] sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden">
             <?php foreach ($why_cards as $i => $card): ?>
                 <article
-                    class="carrier-why-card mt-[var(--card-mt)] flex w-[16.5vw] flex-col justify-between gap-[3.2vw] rounded-xl bg-brand-tertiary p-[1.6vw] py-[2.2vw] md:mt-0 md:w-full md:gap-10 md:rounded-2xl md:p-8 sm:!mt-0 sm:h-[200px] sm:w-[66vw] sm:min-w-[66vw] sm:flex-[0_0_66vw] sm:gap-0 sm:rounded-xl sm:p-[18px_16px_28px] sm:[scroll-snap-align:start]"
+                    class="carrier-why-card mt-[var(--card-mt)] flex w-[16.5vw] flex-col justify-between gap-[3.2vw] rounded-xl bg-brand-tertiary p-[1.6vw] py-[2.2vw] md:!mt-0 md:h-auto md:!w-[30vw] md:min-w-[10vw] md:flex-[0_0_50vw] md:gap-8 md:rounded-2xl md:p-8 sm:!mt-0 sm:h-[200px] sm:w-[66vw] sm:min-w-[66vw] sm:flex-[0_0_66vw] sm:gap-0 sm:rounded-xl sm:p-[18px_16px_28px] sm:[scroll-snap-align:start] md:[scroll-snap-align:start]"
                     style="--card-mt: <?php echo esc_attr($i * 2.4); ?>vw;"
                 >
-                    <span class="font-heading text-white text-36 font-normal md:text-3xl sm:text-2xl sm:leading-none">
+                    <span class="font-heading text-white text-36 font-normal sm:leading-none">
                         <?php echo trac_esc_html($card['number']); ?>
                     </span>
-                    <p class="font-body text-white text-24 leading-[1.35] md:text-lg sm:max-w-[92%] sm:text-base">
+                    <p class="font-body text-white text-24 leading-[1.35] sm:max-w-[92%]">
                         <?php echo trac_esc_html($card['text']); ?>
                     </p>
                 </article>
             <?php endforeach; ?>
         </div>
 
-        <div class="carrier-why-mobile-nav mt-7 hidden justify-center gap-3 sm:flex" aria-hidden="true">
+        <div class="carrier-why-mobile-nav mt-7 hidden justify-center gap-3 md:flex sm:flex" aria-hidden="true">
             <button class="carrier-why-mobile-nav__button carrier-why-mobile-nav__button--prev flex h-[38px] w-16 items-center justify-center rounded-full border border-brand-primary/10 bg-white/55 text-brand-primary/20 transition-colors duration-300 disabled:cursor-default disabled:opacity-100" type="button" aria-label="<?php esc_attr_e(
                 'Previous card',
                 'trac',

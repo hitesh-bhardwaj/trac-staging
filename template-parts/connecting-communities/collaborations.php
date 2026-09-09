@@ -12,7 +12,7 @@ $collab_image_url = is_array($collab_image) ? $collab_image['url'] : '';
 $collab_image_alt = is_array($collab_image) ? $collab_image['alt'] : '';
 ?>
 
-<section class="bg-brand-quaternary px-[5vw] py-[7vw] text-white md:px-[4vw] md:py-[82px] sm:px-[6vw] sm:py-16" data-section="communities-collaborations">
+<section class="bg-brand-quaternary px-[5vw] py-[7vw] text-white md:py-12 md:px-[7vw] sm:py-16" data-section="communities-collaborations">
     <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-center gap-[5vw] md:grid-cols-1 md:gap-11 sm:gap-8">
         <div class="max-w-[43.75vw] text-left md:max-w-[720px]">
             <div class="mb-[3.333vw] inline-flex items-center gap-[1.302vw] md:mb-8 md:gap-4 sm:mb-6 sm:gap-3" data-animate="fade-up">
@@ -26,7 +26,7 @@ $collab_image_alt = is_array($collab_image) ? $collab_image['alt'] : '';
                 <?php echo trac_esc_html($collab_title); ?>
             </h2>
 
-            <div class="flex max-w-[40.417vw] flex-col gap-[2.083vw] font-body text-24 leading-[1.5] text-white md:max-w-[720px] md:gap-7 md:text-xl sm:gap-5 sm:text-base sm:leading-[1.55]">
+            <div class="flex max-w-[40.417vw] flex-col gap-[2.083vw] font-body text-24 leading-[1.5] text-white md:max-w-full md:gap-7 md:text-xl sm:gap-5 sm:text-base sm:leading-[1.55]">
                 <?php foreach ($collab_paragraphs as $index => $paragraph): ?>
                     <p data-para-anim data-delay="<?php echo esc_attr(
                         0.2 + $index * 0.08,

@@ -24,7 +24,7 @@ $overview_image_right_alt = is_array($overview_image_right)
     : '';
 ?>
 
-<section class="communities-overview relative bg-white px-[5vw] py-[7vw] md:px-[4vw] md:pb-24 sm:py-[15vw] sm:pb-16 sm:px-[7vw]" data-section="communities-overview">
+<section class="communities-overview relative bg-white px-[5vw] py-[7vw] md:pb-24 sm:py-[15vw] sm:pb-16 md:px-[7vw]" data-section="communities-overview">
     <div class="communities-overview__header max-w-[91.25vw] text-left">
         <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
             <span class="w-6 h-1 bg-brand-secondary"></span>

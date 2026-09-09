@@ -20,7 +20,7 @@ for ($i = 1; $i <= 6; $i++) {
 ?>
 
 <section class="sme-overview relative overflow-hidden bg-brand-tint py-[7vw] md:py-20 sm:py-16" data-section="sme-overview">
-    <div class="relative z-[1] w-full px-[9vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="relative z-[1] w-full px-[9vw] md:px-[7vw]">
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
@@ -33,7 +33,7 @@ for ($i = 1; $i <= 6; $i++) {
                 <?php echo trac_esc_html($title); ?>
             </h2>
 
-            <div class="w-[46%] mb-[5vw] md:mb-10 sm:mb-8 sm:w-full">
+            <div class="w-[46%] mb-[5vw] md:mb-10 sm:mb-8 md:w-full">
                 <?php foreach ($description_paragraphs as $index => $paragraph): ?>
                     <p class="font-body text-24 leading-[1.58] text-text-body <?php echo $index >
                     0
@@ -48,13 +48,13 @@ for ($i = 1; $i <= 6; $i++) {
 
             <div class="grid grid-cols-3 gap-[3.5vw] md:grid-cols-2 md:gap-6 sm:grid-cols-2 sm:gap-4 items-stretch">
                 <?php foreach ($cards as $i => $c): ?>
-                    <div class="rounded-[1.042vw] md:rounded-2xl bg-brand-tertiary p-[1.8vw] md:p-8 sm:p-6 flex flex-col items-start justify-between h-[12vw] gap-[1.4vw] md:gap-6 sm:h-[45vw]" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                    <div class="rounded-[1.042vw] md:rounded-2xl bg-brand-tertiary p-[1.8vw] md:p-8 sm:p-6 flex flex-col items-start justify-between h-[12vw] gap-[1.4vw] md:gap-6  md:h-[30vw] sm:h-[45vw]" data-animate="fade-up" data-delay="<?php echo esc_attr(
                         0.06 * $i,
                     ); ?>">
                         <img
                             src="<?php echo esc_url($c['icon']); ?>"
                             alt="icons"
-                            class="size-[3.5vw] md:w-10 md:h-10 sm:w-11 sm:h-11 object-contain"
+                            class="size-[3.5vw] md:size-[6vw] sm:w-11 sm:h-11 object-contain"
                             loading="lazy"
                         >
                         <p class="font-body text-white text-24  leading-[1.35] w-[70%] sm:w-full">

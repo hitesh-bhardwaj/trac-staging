@@ -18,7 +18,7 @@ for ($i = 1; $i <= 6; $i++) {
 ?>
 
 <section class="home-internet-why relative overflow-hidden bg-brand-tint py-[8vw] md:py-20 sm:py-16" data-section="home-internet-why">
-    <div class="relative z-[1] w-full px-[9vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="relative z-[1] w-full px-[9vw] md:px-[7vw]">
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
@@ -46,13 +46,13 @@ for ($i = 1; $i <= 6; $i++) {
 
             <div class="grid grid-cols-3 gap-[3.5vw] md:grid-cols-2 md:gap-6 sm:grid-cols-2 sm:gap-4 items-stretch">
                 <?php foreach ($cards as $i => $c): ?>
-                    <div class="rounded-[1.042vw] md:rounded-2xl bg-brand-tertiary p-[1.8vw] md:p-8 sm:p-4 sm:py-6 flex flex-col items-start justify-between h-[12vw] gap-[1.4vw] md:gap-6 sm:h-[43vw]" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                    <div class="rounded-[1.042vw] md:rounded-2xl bg-brand-tertiary p-[1.8vw] md:p-8 sm:p-4 sm:py-6 flex flex-col items-start justify-between h-[12vw] gap-[1.4vw] md:gap-6 md:h-[25vw] sm:h-[43vw] " data-animate="fade-up" data-delay="<?php echo esc_attr(
                         0.06 * $i,
                     ); ?>">
                         <img
                             src="<?php echo esc_url($c['icon']); ?>"
                             alt="solutions icon"
-                            class="size-[3.5vw] md:w-10 md:h-10 sm:w-12 sm:h-12 object-contain"
+                            class="size-[3.5vw] md:size-[6vw] sm:w-12 sm:h-12 object-contain"
                             loading="lazy"
                         >
                         <p class="font-body text-white text-24  leading-[1.35] w-full">

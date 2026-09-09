@@ -19,7 +19,7 @@ for ($i = 1; $i <= 3; $i++) {
 ?>
 
 <section class="sme-solutions relative overflow-hidden bg-brand-primary py-[7vw] md:py-20 sm:py-16" data-section="sme-solutions">
-    <div class="relative z-[1] w-full px-[9vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="relative z-[1] w-full px-[9vw] md:px-[7vw]">
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
                 <span class="w-6 h-1 bg-white"></span>
@@ -40,7 +40,7 @@ for ($i = 1; $i <= 3; $i++) {
                         <img
                             src="<?php echo esc_url($s['icon']); ?>"
                             alt="solutions icon"
-                            class="size-[4vw] mb-[3.5vw] sm:size-[15vw] object-contain"
+                            class="size-[4vw] mb-[3.5vw] md:size-[8vw] sm:size-[15vw] object-contain"
                             loading="lazy"
                         >
                         <div>

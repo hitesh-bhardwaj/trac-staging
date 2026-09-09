@@ -22,7 +22,7 @@ for ($i = 1; $i <= 4; $i++) {
 ?>
 
 <section class="enterprise-services py-[7vw] md:py-20 sm:py-16" data-section="enterprise-services">
-    <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="w-full px-[5vw] md:px-[7vw]">
         <div class="text-left">
             <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
@@ -35,7 +35,7 @@ for ($i = 1; $i <= 4; $i++) {
                 <?php echo trac_esc_html($enterprise_services_title); ?>
             </h2>
 
-            <p class="w-[70%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 text-left sm:w-full sm:mb-[8vw]" data-para-anim data-delay="0.2">
+            <p class="w-[70%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 text-left md:w-full sm:mb-[8vw]" data-para-anim data-delay="0.2">
                 <?php echo trac_esc_html($enterprise_services_description); ?>
             </p>
 
@@ -49,7 +49,7 @@ for ($i = 1; $i <= 4; $i++) {
                         <?php endif; ?>
                     >
                         <div>
-                            <div class="h-[4.5vw] w-[4.5vw] mb-10 sm:h-[10vw] sm:w-[10vw]">
+                            <div class="size-[4.5vw] md:size-[7vw] sm:size-[10vw] mb-10">
                                 <img src="<?php echo esc_url(
                                     $card['img'],
                                 ); ?>" alt="services" class="w-full h-full" loading="lazy">
@@ -59,7 +59,7 @@ for ($i = 1; $i <= 4; $i++) {
                                 <?php echo trac_esc_html($card['title']); ?>
                             </h3>
 
-                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw] sm:text-[4vw]">
+                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw] md:text-[2.5vw] sm:text-[4vw]">
                                 <?php echo trac_esc_html($card['para']); ?>
                             </p>
                         </div>

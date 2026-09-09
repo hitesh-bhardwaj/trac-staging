@@ -29,7 +29,7 @@ $button_text = get_field('cs_overview_button_text');
 $button_link = get_field('cs_overview_button_link');
 ?>
 
-<section class="carrier-overview relative bg-white px-[5vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="solution-overview">
+<section class="carrier-overview relative bg-white px-[5vw] py-[6.25vw] md:py-16 md:px-[7vw] sm:py-12" data-section="solution-overview">
     <div class="mx-auto max-w-[92rem]">
         <div class="max-w-[60rem]">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">
@@ -68,14 +68,14 @@ $button_link = get_field('cs_overview_button_link');
                     <h3 class="font-heading text-white text-[1.8vw] md:text-3xl font-normal mb-[1.4vw] md:mb-5">
                         <?php echo trac_esc_html($solution_title); ?>
                     </h3>
-                    <p class="font-body text-white text-24 md:text-lg leading-[1.6] w-[70%] sm:w-full">
+                    <p class="font-body text-white text-24 md:text-lg leading-[1.6] w-[70%] md:w-full">
                         <?php echo trac_esc_html($solution_desc); ?>
                     </p>
                 </div>
             </article>
         </div>
 
-        <div class="grid grid-cols-2 gap-[2.5vw] md:grid-cols-1 md:gap-6 mt-[2.5vw] md:mt-6 items-stretch">
+        <div class="grid grid-cols-2 gap-[2.5vw] md:grid-cols-2 sm:grid-cols-1 md:gap-6 mt-[2.5vw] md:mt-6 items-stretch">
             <?php foreach ($offerings as $i => $o): ?>
                 <div class="rounded-[1.4vw] md:rounded-3xl bg-brand-tertiary p-[2.5vw] md:p-10 sm:p-7 flex flex-col items-start gap-[2vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
                     0.1 * $i,

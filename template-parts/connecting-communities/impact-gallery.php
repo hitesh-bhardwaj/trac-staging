@@ -27,7 +27,7 @@ for ($i = 1; $i <= 8; $i++) {
     $impact_gallery_modal_css,
 ); ?>">
 
-<section class="bg-white px-[5.208vw] py-[6.25vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12" data-section="impact-gallery">
+<section class="bg-white px-[5.208vw] py-[6.25vw] md:py-16 md:px-[7vw] sm:py-12" data-section="impact-gallery">
     <div class="text-left">
         <div class="mb-[2.865vw] flex items-center justify-start gap-3 md:mb-8" data-animate="fade-up">
             <span class="h-1 w-6 bg-brand-secondary"></span>
@@ -36,11 +36,11 @@ for ($i = 1; $i <= 8; $i++) {
             ); ?></span>
         </div>
 
-        <h2 class="mb-[2.604vw] max-w-[70vw] font-heading text-66 font-normal leading-[1.18] tracking-normal text-text-primary md:mb-8 md:max-w-full md:text-[44px] sm:text-[34px] sm:leading-[1.18]" data-heading-anim>
+        <h2 class="mb-[2.604vw] max-w-[70vw] font-heading text-66 font-normal leading-[1.18] tracking-normal text-text-primary md:mb-8 md:max-w-full sm:leading-[1.18]" data-heading-anim>
             <?php echo trac_esc_html($gallery_title); ?>
         </h2>
 
-        <div class="w-[62vw] space-y-[1vw] font-body text-24 leading-[1.55] text-text-body md:max-w-full md:text-xl sm:text-base sm:leading-[1.6] [&_p+p]:mt-[1.563vw] md:[&_p+p]:mt-5 sm:w-full" >
+        <div class="w-[62vw] space-y-[1vw] font-body text-24 leading-[1.55] text-text-body md:w-full sm:leading-[1.6] [&_p+p]:mt-[1.563vw] md:[&_p+p]:mt-5" >
             <?php foreach ($gallery_paragraphs as $paragraph): ?>
                 <p data-para-anim ><?php echo trac_esc_html($paragraph); ?></p>
             <?php endforeach; ?>
@@ -85,11 +85,11 @@ for ($i = 1; $i <= 8; $i++) {
                     <span class="absolute h-0.5 w-[42%] bg-current transition-transform duration-300"></span>
                 </button>
 
-                <div class="impact-gallery-modal__media-wrap relative flex h-[calc(100%_-_102px)] min-h-0 w-full items-center justify-center overflow-hidden rounded-[0.75vw] bg-transparent lg:h-[calc(100%_-_96px)] lg:rounded-2xl sm:h-[calc(100%_-_86px)]" data-impact-gallery-media>
+                <div class="impact-gallery-modal__media-wrap relative flex h-[calc(100%_-_172px)] min-h-0 w-full items-center justify-center overflow-hidden bg-transparent md:h-[calc(100%_-_156px)] sm:h-[calc(100%_-_131px)]" data-impact-gallery-media>
                     <div class="impact-gallery-modal__track flex h-full w-full translate-x-0 [will-change:transform]" data-impact-gallery-track>
                         <?php foreach ($gallery_images as $image): ?>
-                            <div class="impact-gallery-modal__slide h-full w-full flex-[0_0_100%] overflow-hidden rounded-[inherit]">
-                                <img class="impact-gallery-modal__image block h-full w-full bg-transparent object-cover" src="<?php echo esc_url(
+                            <div class="impact-gallery-modal__slide flex h-full w-full flex-[0_0_100%] items-center justify-center overflow-hidden">
+                                <img class="impact-gallery-modal__image block h-full w-auto bg-transparent object-contain rounded-[0.75vw] lg:rounded-2xl" src="<?php echo esc_url(
                                     $image['src'],
                                 ); ?>" alt="<?php echo esc_attr(
     $image['alt'],
@@ -99,21 +99,23 @@ for ($i = 1; $i <= 8; $i++) {
                     </div>
                 </div>
 
-                <button type="button" class="impact-gallery-modal__nav impact-gallery-modal__nav--prev absolute left-[-5vw] top-[calc((100%_-_102px)/2)] z-[2] flex h-[2.05vw] min-h-[34px] w-[3.6vw] min-w-[58px] -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-transparent px-[1vw] text-white transition-colors duration-300 hover:border-brand-secondary hover:bg-brand-secondary disabled:pointer-events-none disabled:cursor-default disabled:border-white/35 disabled:bg-transparent disabled:text-white/30 lg:left-[-58px] lg:top-[calc((100%_-_96px)/2)] lg:h-8 lg:min-h-8 lg:w-12 lg:min-w-12 sm:left-2.5 sm:top-[calc((100%_-_86px)/2)] sm:h-[30px] sm:min-h-[30px] sm:w-9 sm:min-w-9" data-impact-gallery-prev aria-label="Previous image">
-                    <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M9.3 1.2L2 8.5L9.3 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M3 8.5H26" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                </button>
+                <div class="impact-gallery-modal__nav-row relative z-[2] mt-[1.5vw] flex w-full items-center justify-center gap-[1vw] lg:mt-4 lg:gap-4 sm:mt-3 sm:gap-3">
+                    <button type="button" class="impact-gallery-modal__nav impact-gallery-modal__nav--prev flex h-[2.05vw] min-h-[34px] w-[3.6vw] min-w-[58px] items-center justify-center rounded-full border border-white/70 bg-transparent px-[1vw] text-white transition-colors duration-300 hover:border-brand-secondary hover:bg-brand-secondary disabled:pointer-events-none disabled:cursor-default disabled:border-white/35 disabled:bg-transparent disabled:text-white/30 md:h-10 md:w-20 sm:h-[30px] sm:min-h-[30px] sm:w-9 sm:min-w-9" data-impact-gallery-prev aria-label="Previous image">
+                        <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M9.3 1.2L2 8.5L9.3 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M3 8.5H26" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button>
 
-                <button type="button" class="impact-gallery-modal__nav impact-gallery-modal__nav--next absolute right-[-5vw] top-[calc((100%_-_102px)/2)] z-[2] flex h-[2.05vw] min-h-[34px] w-[3.6vw] min-w-[58px] -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-transparent px-[1vw] text-white transition-colors duration-300 hover:border-brand-secondary hover:bg-brand-secondary disabled:pointer-events-none disabled:cursor-default disabled:border-white/35 disabled:bg-transparent disabled:text-white/30 lg:right-[-58px] lg:top-[calc((100%_-_96px)/2)] lg:h-8 lg:min-h-8 lg:w-12 lg:min-w-12 sm:right-2.5 sm:top-[calc((100%_-_86px)/2)] sm:h-[30px] sm:min-h-[30px] sm:w-9 sm:min-w-9" data-impact-gallery-next aria-label="Next image">
-                    <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M18.7 1.2L26 8.5L18.7 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M25 8.5H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                </button>
+                    <button type="button" class="impact-gallery-modal__nav impact-gallery-modal__nav--next flex h-[2.05vw] min-h-[34px] w-[3.6vw] min-w-[58px] items-center justify-center rounded-full border border-white/70 bg-transparent px-[1vw] text-white transition-colors duration-300 hover:border-brand-secondary hover:bg-brand-secondary disabled:pointer-events-none disabled:cursor-default disabled:border-white/35 disabled:bg-transparent disabled:text-white/30 md:h-10 md:w-20 sm:h-[30px] sm:min-h-[30px] sm:w-9 sm:min-w-9" data-impact-gallery-next aria-label="Next image">
+                        <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M18.7 1.2L26 8.5L18.7 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M25 8.5H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
 
-                <div class="impact-gallery-modal__thumbs mt-[2vw] flex w-full gap-[0.75vw] overflow-x-auto overflow-y-hidden pb-[0.4vw] [scroll-snap-type:x_proximity] [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:mt-[18px] lg:gap-2.5 sm:w-full" data-impact-gallery-thumbs>
+                <div class="impact-gallery-modal__thumbs mt-[1.5vw] flex w-full gap-[0.75vw] overflow-x-auto overflow-y-hidden pb-[0.4vw] [scroll-snap-type:x_proximity] [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:mt-4 lg:gap-2.5 sm:mt-3 sm:w-full" data-impact-gallery-thumbs>
                     <?php foreach ($gallery_images as $index => $image): ?>
                         <button
                             type="button"

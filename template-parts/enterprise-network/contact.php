@@ -17,8 +17,8 @@ $contact_form_css =
 <link rel="stylesheet" href="<?php echo esc_url($contact_form_css); ?>">
 
 <section id="get-in-touch" class="enterprise-contact relative overflow-hidden bg-white pt-[10vw] pb-[5vw] md:py-20 sm:py-16" data-section="enterprise-contact">
-    <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw] flex items-start justify-between ">
-        <div class=" max-w-[104rem] mx-auto grid grid-cols-[1fr_1fr] gap-[6vw] items-start md:grid-cols-1 md:gap-12">
+    <div class="w-full px-[5vw] md:px-[7vw] flex items-start justify-between ">
+        <div class=" max-w-[104rem] mx-auto grid grid-cols-[1fr_1fr] gap-[6vw] items-start md:grid-cols-1 md:gap-12 md:max-w-full">
             <div class="pt-[0.5vw] md:pt-0">
                 <div class="flex items-center gap-[0.729vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">
                     <span class="w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1"></span>
@@ -35,7 +35,7 @@ $contact_form_css =
                     <?php endforeach; ?>
                 </h2>
 
-                <p class="font-body text-24 leading-[1.58] text-text-body mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-para-anim data-delay="0.2">
+                <p class="font-body text-24 leading-[1.58] text-text-body mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-[80vw]" data-para-anim data-delay="0.2">
                     <?php echo trac_esc_html($enterprise_contact_description); ?>
                 </p>
 
