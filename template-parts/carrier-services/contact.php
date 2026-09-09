@@ -32,11 +32,11 @@ $contact_form_css =
                     <?php echo trac_esc_html($cs_contact_description); ?>
                 </p>
 
-                <div class="font-body text-24 leading-[1.7] text-text-primary md:text-base sm:text-sm">
+                <div class="font-body text-24 leading-[1.7] text-text-primary ">
                             <div data-para-anim class="under-multi-parent w-fit leading-[1.2]">
                                 <a href="mailto:<?php echo esc_attr(
                                     $cs_contact_email,
-                                ); ?>" class="font-body text-24 tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors md:text-base sm:text-sm under-multi">
+                                ); ?>" class="font-body text-24 tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors  under-multi">
                                     <?php echo trac_esc_html($cs_contact_email); ?>
                                 </a>
                         </div>

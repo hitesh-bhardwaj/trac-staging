@@ -29,7 +29,7 @@ $infra_image_2_alt = get_field('cs_infra_image_2_alt');
                 <?php echo trac_esc_html($title); ?>
             </h2>
 
-            <p class="font-body text-24 leading-[1.5] text-white/90 md:text-lg sm:text-base" data-para-anim>
+            <p class="font-body text-24 leading-[1.5] text-white/90 " data-para-anim>
                 <?php echo trac_esc_html($subtitle); ?>
             </p>
         </div>

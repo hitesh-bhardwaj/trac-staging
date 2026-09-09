@@ -45,7 +45,7 @@ $button_link = get_field('cs_overview_button_link');
 
             <div class="space-y-[1.4vw] md:space-y-5">
                 <?php foreach ($description_paragraphs as $index => $paragraph): ?>
-                    <p class="font-body text-24 leading-[1.5] text-primary md:text-lg sm:text-base" data-para-anim data-delay="<?php echo esc_attr(
+                    <p class="font-body text-24 leading-[1.5] text-primary " data-para-anim data-delay="<?php echo esc_attr(
                         $index * 0.1,
                     ); ?>">
                         <?php echo trac_esc_html($paragraph); ?>

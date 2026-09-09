@@ -103,7 +103,7 @@ $right_content = isset($args['right_content'])
 
 $cta_wrapper_classes = isset($args['cta_wrapper_classes'])
     ? (string) $args['cta_wrapper_classes']
-    : 'hero-cta flex flex-wrap gap-[1.042vw] md:gap-4 sm:flex-col sm:gap-3';
+    : 'hero-cta flex flex-wrap gap-[1vw] md:gap-4 sm:flex-col sm:gap-3';
 
 $center_wrap_classes = isset($args['center_wrap_classes'])
     ? (string) $args['center_wrap_classes']

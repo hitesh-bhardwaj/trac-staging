@@ -29,8 +29,8 @@ $network_description_paragraphs = trac_split_lines(
     data-section="our-network"
     id="our-network"
 >
-    <div class=" pt-[7vw] md:py-12 sm:py-8">
-        <div class="space-y-[3vw] px-[5vw]">
+    <div class=" pt-[7vw] md:py-[10%] sm:py-8">
+        <div class="space-y-[3vw] px-[5vw] md:px-[7vw]">
             <div
                 data-animate="fade-up"
                 class="flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-4"
@@ -48,7 +48,7 @@ $network_description_paragraphs = trac_split_lines(
                 </span>
             </h2>
 
-            <div class="w-[53%] space-y-[1vw] text-24 sm:w-full">
+            <div class="w-[53%] space-y-[1vw] text-24 sm:w-full md:w-[80%]">
                 <?php foreach ($network_description_paragraphs as $paragraph): ?>
                     <p data-para-anim>
                         <?php echo trac_esc_html($paragraph); ?>
@@ -241,7 +241,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="488"
                 data-node-cy="241"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Muhanga
                 </h3>
                 <p class="text-white/80">Rwanda PoP</p>
@@ -253,7 +253,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="423"
                 data-node-cy="48"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Musanze
                 </h3>
                 <p class="text-white/80">Rwanda PoP</p>
@@ -265,7 +265,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="476"
                 data-node-cy="369"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Ruhango
                 </h3>
                 <p class="text-white/80">Rwanda PoP</p>
@@ -277,7 +277,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="610"
                 data-node-cy="29"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Gatuna
                 </h3>
                 <p class="text-white/80">Uganda PoP</p>
@@ -289,7 +289,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="708"
                 data-node-cy="257"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Kigali
                 </h3>
                 <p class="text-white/80">Data Center Presence</p>
@@ -301,7 +301,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="243"
                 data-node-cy="167"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Rubavu
                 </h3>
                 <p class="text-white/80">Rwanda PoP</p>
@@ -313,7 +313,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="74"
                 data-node-cy="539"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                    Rusizi
                 </h3>
                 <p class="text-white/80">DRC PoP</p>
@@ -325,7 +325,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="27"
                 data-node-cy="563"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                 Bukavu
                 </h3>
                 <p class="text-white/80">Rwanda / DRC Route</p>
@@ -337,7 +337,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="223"
                 data-node-cy="303"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Karongi
                 </h3>
                 <p class="text-white/80">Rwanda PoP</p>
@@ -349,7 +349,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="188"
                 data-node-cy="101"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Goma
                 </h3>
                 <p class="text-white/80">Rwanda PoP</p>
@@ -362,7 +362,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="138"
                 data-node-cy="58"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                 Kagitumba
                 </h3>
                 <p class="text-white/80">DRC PoP</p>
@@ -374,7 +374,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="226"
                 data-node-cy="602"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Rusumo
                 </h3>
                 <p class="text-white/80">DRC PoP</p>
@@ -386,7 +386,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="353"
                 data-node-cy="12"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                    Kampala
                 </h3>
                 <p class="text-white/80">Rwanda PoP</p>
@@ -398,7 +398,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="533"
                 data-node-cy="114"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                 Nairobi
                 </h3>
                 <p class="text-white/80">Kenya PoP</p>
@@ -410,7 +410,7 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="605.609"
                 data-node-cy="320.61"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                 Mombasa
                 </h3>
                 <p class="text-white/80">Kenya PoP</p>
@@ -422,13 +422,13 @@ $network_description_paragraphs = trac_split_lines(
                 data-node-cx="484.609"
                 data-node-cy="552.61"
             >
-                <h3 class="font-subheading text-24 text-white md:text-lg sm:text-base">
+                <h3 class="font-subheading text-24 text-white ">
                     Dar Es Salaam
                 </h3>
                 <p class="text-white/80">Tanzania PoP</p>
             </div>
         </div>
-        <div class="hidden md:block w-full sm:h-[85vw] md:h-[50vw]">
+        <div class="hidden md:block w-full sm:h-[85vw] md:h-[50vw] md:mt-10">
             <img
                 src="<?php echo esc_url(
                     get_template_directory_uri() . '/src/imgs/home/mobile-map-hq.png',

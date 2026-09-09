@@ -20,9 +20,9 @@ $hero_image_alt = is_array($hero_image) ? $hero_image['alt'] : '';
 ?>
 
 <section class="hero relative min-h-screen !bg-brand-primary overflow-hidden sm:min-h-[125vh]" data-section="hero" data-hero-static>
-    <div class="hero-container w-full px-[5vw] relative z-[10] md:px-[4vw] sm:px-[7vw] sm:pt-[10vw]">
+    <div class="hero-container w-full px-[5vw] relative z-[10] md:px-[7vw] sm:pt-[10vw]">
         <div class="hero-grid flex justify-between gap-[2.604vw] items-start md:flex-col md:gap-8">
-            <div class="hero-text w-[60%] md:w-full md:max-w-full md:pt-8 sm:pt-4  relative z-[10]">
+            <div class="hero-text w-[60%] md:w-full md:max-w-full md:pt-16 sm:pt-4  relative z-[10]">
                 <h1
                     class="hero-title font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 "
                     data-hero-reveal
@@ -46,7 +46,7 @@ $hero_image_alt = is_array($hero_image) ? $hero_image['alt'] : '';
                 </p>
 
                 <div
-                    class="hero-cta flex flex-wrap gap-[1.042vw] md:gap-4 sm:flex-col sm:gap-3"
+                    class="hero-cta flex flex-wrap gap-[1vw] md:gap-4 sm:flex-col sm:gap-3"
                     data-hero-reveal
                     data-hero-delay="0.22"
                  >
@@ -85,7 +85,7 @@ $hero_image_alt = is_array($hero_image) ? $hero_image['alt'] : '';
 
             
             <div
-                class=" sm:block md:bottom-0 sm:w-[200%] sm:left-[3%] sm:bottom-[-25%] w-full h-screen absolute flex justify-end overflow-hidden -mt-4"
+                class=" md:block sm:w-[200%] sm:left-[3%] md:bottom-[-25%] md:w-[150%] w-full h-screen absolute flex justify-end overflow-hidden -mt-4"
                 data-hero-reveal
                 data-hero-delay="0.2"
             >

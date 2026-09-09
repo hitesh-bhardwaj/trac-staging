@@ -20,7 +20,7 @@
 <?php wp_body_open(); ?>
 <div class="page-loader">
     <div class="w-screen h-screen fixed inset-0 bg-white z-[99999] flex flex-col justify-center items-center loader [clip-path:inset(0%_0%_0%_0%)]">
-        <div class="size-[15vw] min-w-[72px] min-h-[72px] sm:size-[50vw]">
+        <div class="size-[15vw] min-w-[72px] min-h-[72px] sm:size-[50vw] md:size-[25vw]">
             <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon-light.svg" class="w-full h-full" alt="Trac Logo">
         </div>
 
@@ -130,7 +130,7 @@
     id="site-header"
     class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[9999] bg-brand-primary"
  >
-        <div class="header-inner w-full px-[4vw] py-[1.15vw] flex items-center justify-between md:px-[4vw] md:py-5 sm:px-[6vw] sm:py-4">
+        <div class="header-inner w-full px-[4vw] py-[1.15vw] flex items-center justify-between md:px-[7vw] md:py-5 sm:py-4">
             <!-- Logo -->
             <div class="site-logo flex-shrink-0">
                 <?php if (has_custom_logo()): ?>
@@ -141,7 +141,7 @@
                     ); ?>" class="flex items-center">
                         <img src="<?php echo esc_url(
                             $trac_header_logo,
-                        ); ?>" class="w-[8vw] md:w-[15vw] sm:w-[20vw] " alt="<?php bloginfo(
+                        ); ?>" class="w-[8vw] md:w-[20vw] sm:w-[25vw] " alt="<?php bloginfo(
                             'name',
                         ); ?>">
                     </a>
@@ -255,9 +255,9 @@
                     aria-controls="mobile-menu"
                     aria-label="<?php esc_attr_e('Toggle menu', 'trac'); ?>"
                 >
-                    <span class="menu-line w-7 h-0.5 bg-white transition-all origin-center"></span>
-                    <span class="menu-line w-7 h-0.5 bg-white transition-all"></span>
-                    <span class="menu-line w-7 h-0.5 bg-white transition-all origin-center"></span>
+                    <span class="menu-line w-7 md:w-10 sm:w-8 h-0.5 bg-white transition-all origin-center"></span>
+                    <span class="menu-line w-7 md:w-10 sm:w-8 h-0.5 bg-white transition-all"></span>
+                    <span class="menu-line w-7 md:w-10 sm:w-8 h-0.5 bg-white transition-all origin-center"></span>
                 </button>
             </div>
         </div>

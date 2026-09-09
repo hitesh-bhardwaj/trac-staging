@@ -62,28 +62,28 @@ $trac_footer_social = [
     <footer id="site-footer" class="site-footer relative " data-parallax-footer>
         <div class="footer-container w-full px-[5vw] pt-[3.6vw] pb-[1.6vw] md:px-[4vw] md:pt-20 md:pb-16 sm:px-[6vw] sm:pt-16 sm:pb-12" data-footer-clippath>
             <!-- Footer Top -->
-            <div class="footer-top grid grid-cols-[1fr_auto_auto]  mb-[3.2vw] md:grid-cols-1 md:gap-12 md:mb-16 sm:mb-12">
+            <div class="footer-top grid grid-cols-[1fr_auto_auto]  mb-[3.2vw] md:grid-cols-1 md:gap-12 sm:gap-8 md:mb-16 sm:mb-12">
                 <!-- Brand Column -->
                 <div class="footer-brand max-w-[33.854vw] md:max-w-full ">
                     <!-- Logo -->
-                       <div class="site-logo flex flex-col md:flex-row  gap-3 md:mb-8">
+                       <div class="site-logo flex flex-col md:flex-row  gap-3 md:mb-8 md:gap-6">
 
                         <?php if ($trac_footer_logo): ?>
                             <img src="<?php echo esc_url(
                                 $trac_footer_logo,
-                            ); ?>" class="w-[8vw] md:hidden" alt="<?php bloginfo(
+                            ); ?>" class="w-[8vw] md:w-[25vw] sm:w-[30vw]" alt="<?php bloginfo(
                                 'name',
                             ); ?>">
                         <?php endif; ?>
-                        <?php if ($trac_footer_logo_mobile): ?>
+                        <!-- <?php if ($trac_footer_logo_mobile): ?>
                             <img src="<?php echo esc_url(
                                 $trac_footer_logo_mobile,
-                            ); ?>" class="hidden md:block md:w-24 sm:w-[50vw] sm:h-auto" alt="<?php bloginfo(
+                            ); ?>" class="hidden md:block md:w-[35vw] sm:w-[50vw] sm:h-auto" alt="<?php bloginfo(
                                 'name',
                             ); ?>">
-                        <?php endif; ?>
-                        <span class=" h-[1px] w-[5.4vw] ml-[1vw] bg-brand-navy sm:hidden"></span>
-                     <span class="font-subheading text-[3.65vw] text-brand-navy md:text-5xl sm:text-4xl sm:hidden"><?php echo trac_esc_html(
+                        <?php endif; ?> -->
+                        <span class=" h-[1px] w-[5.4vw] ml-[1vw] bg-brand-navy md:hidden"></span>
+                     <span class="font-heading text-[3.65vw] text-brand-navy md:text-[6vw] sm:text-[10vw] "><?php echo trac_esc_html(
                          $trac_footer_brand_text,
                      ); ?></span>
             </div>
@@ -100,7 +100,7 @@ $trac_footer_social = [
                                 <div class="under-multi-parent w-fit">
                                     <a href="mailto:<?php echo esc_attr(
                                         $trac_footer_email,
-                                    ); ?>" class="font-body text-[1.15vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
+                                    ); ?>" class="font-body text-[1.15vw]  md:text-[2.5vw] sm:text-[4vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300  under-multi">
                                         <?php echo trac_esc_html(
                                             $trac_footer_email,
                                         ); ?>
@@ -115,7 +115,7 @@ $trac_footer_social = [
                                             '',
                                             $trac_footer_phone,
                                         ),
-                                    ); ?>" class="font-body text-[1.15vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
+                                    ); ?>" class="font-body text-[1.15vw]  md:text-[2.5vw] sm:text-[4vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300  under-multi">
                                         <?php echo trac_esc_html(
                                             $trac_footer_phone,
                                         ); ?>
@@ -127,7 +127,7 @@ $trac_footer_social = [
                 </div>
 
                 <!-- Navigation Columns -->
-                <div class="footer-nav-columns flex gap-[8vw] md:gap-16 sm:gap-[30vw] sm:flex-wrap">
+                <div class="footer-nav-columns flex gap-[8vw] sm:gap-16 md:gap-[20vw]  sm:flex-wrap">
                     <!-- Company Column -->
                     <div class="footer-column">
                         <h4 class="font-body text-24 !font-normal text-text-primary mb-[1vw] md:text-[3vw] md:mb-8 sm:text-[5vw] sm:mb-3"><?php echo trac_esc_html(
@@ -138,7 +138,7 @@ $trac_footer_social = [
                                 <li class="under-multi-parent">
                                     <a href="<?php echo esc_url(
                                         $link['link'],
-                                    ); ?>" class="font-body text-[1.15vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi"><?php echo trac_esc_html(
+                                    ); ?>" class="font-body text-[1.15vw]  md:text-[2.5vw] sm:text-[4vw] text-text-body hover:text-brand-quaternary transition-colors duration-300  under-multi"><?php echo trac_esc_html(
     $link['label'],
 ); ?></a>
                                 </li>
@@ -156,7 +156,7 @@ $trac_footer_social = [
                                 <li class="under-multi-parent">
                                     <a href="<?php echo esc_url(
                                         $link['link'],
-                                    ); ?>" class="font-body text-[1.15vw] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi"><?php echo trac_esc_html(
+                                    ); ?>" class="font-body text-[1.15vw]  md:text-[2.5vw] sm:text-[4vw] text-text-body hover:text-brand-quaternary transition-colors duration-300  under-multi"><?php echo trac_esc_html(
     $link['label'],
 ); ?></a>
                                 </li>
@@ -175,7 +175,7 @@ $trac_footer_social = [
                             <div class="under-multi-parent w-fit">
                                 <a href="mailto:<?php echo esc_attr(
                                     $trac_footer_email,
-                                ); ?>" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
+                                ); ?>" class="font-body text-[1vw] md:text-[2.5vw] sm:text-[4vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300  under-multi">
                                     <?php echo trac_esc_html($trac_footer_email); ?>
                                 </a>
                             </div>
@@ -188,7 +188,7 @@ $trac_footer_social = [
                                         '',
                                         $trac_footer_phone,
                                     ),
-                                ); ?>" class="font-body text-[1.042vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300 md:text-base sm:text-sm under-multi">
+                                ); ?>" class="font-body text-[1vw] md:text-[2.5vw] sm:text-[4vw] leading-[1.5] tracking-[0.03em] text-text-body hover:text-brand-quaternary transition-colors duration-300  under-multi">
                                     <?php echo trac_esc_html($trac_footer_phone); ?>
                                 </a>
                             </div>
@@ -200,7 +200,7 @@ $trac_footer_social = [
             <!-- Footer Bottom -->
             <div class="footer-bottom flex items-center justify-between md:flex-col md:gap-8 sm:gap-6 md:items-start">
                 <!-- Copyright -->
-                <p class="footer-copyright font-body text-[1.15vw] text-text-body md:text-base sm:text-sm md:order-2">
+                <p class="footer-copyright font-body text-[1.15vw]  md:text-[2.5vw] sm:text-[4vw] text-text-body  md:order-2">
                     <?php echo trac_esc_html($trac_footer_copyright_text); ?>
                 </p>
 

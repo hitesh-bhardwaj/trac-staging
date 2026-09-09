@@ -7,7 +7,7 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
 ?>
 
 
-<section class="testimonials-section relative overflow-hidden py-[5vw] px-[5vw]" data-section="testimonials" id="testimonials">
+<section class="testimonials-section relative overflow-hidden py-[5vw] px-[5vw] md:px-[7vw]" data-section="testimonials" id="testimonials">
     <div class="testimonials-container w-full flex flex-col items-end ">
         <div class="testimonials-header mb-[2.604vw] md:mb-6 w-full md:flex md:flex-col ">
             <div
@@ -75,7 +75,7 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
             data-animate="fade-up"
             data-delay="0.3"
          >
-            <div class="testimonials-viewport relative left-1/2 h-[28vw] min-h-[400px] w-screen -translate-x-1/2 overflow-hidden md:h-[78vw] md:min-h-[560px] sm:h-[100vw] sm:min-h-[250px]">
+            <div class="testimonials-viewport relative left-1/2 h-[28vw] min-h-[400px] w-screen -translate-x-1/2 overflow-hidden md:h-[45vw] md:min-h-[560px] sm:h-[100vw] sm:min-h-[250px]">
                 <div class="testimonials-track flex h-full items-stretch gap-[3.125vw] pl-[5vw] [will-change:transform] md:gap-[3vw] md:pl-[4vw] sm:gap-[4vw] sm:pl-[7vw]">
                 <?php
                 for ($i = 1; $i <= 3; $i++):
@@ -84,7 +84,7 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
                     ?>
                     <div class="testimonial-card relative flex h-[25vw] w-[40vw] flex-[0_0_40vw] flex-col justify-between rounded-[1.5vw] bg-brand-primary p-[3vw] text-text-secondary [backface-visibility:hidden] [transform-origin:center_center] [transform:translate3d(0,0,0)] [will-change:transform,opacity,filter] md:h-full md:w-[72vw] md:flex-[0_0_72vw] md:rounded-3xl md:p-8 sm:w-[86vw] sm:flex-[0_0_86vw] sm:rounded-[4vw] sm:p-6">
                         <?php if ($quote): ?>
-                            <p class="font-body font-normal mb-[2vw] text-24 leading-[1.6] text-white md:mb-6 md:text-lg sm:mb-5 sm:text-base">
+                            <p class="font-body font-normal mb-[2vw] text-24 leading-[1.6] text-white md:mb-6  sm:mb-5">
                                 <?php echo trac_esc_html($quote); ?>
                             </p>
                         <?php endif; ?>
@@ -105,7 +105,7 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
                 </div>
             </div>
         </div>
-         <div class=" items-center justify-center gap-4 hidden md:flex w-full relative z-[10] sm:mt-8">
+         <div class=" items-center justify-center gap-4 hidden md:flex w-full relative z-[10] md:mt-8">
                 <button
                     type="button"
                      class=" arrow-prev flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"

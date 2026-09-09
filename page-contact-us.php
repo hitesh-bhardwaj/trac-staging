@@ -79,7 +79,7 @@ if (have_posts()) {
             ob_start();
             ?>
             <div class="contact-hero-details mt-[12vw] md:mt-10 sm:mt-8 lg:order-4 lg:mt-0 lg:w-full lg:pb-[22px] lg:pt-1">
-                <div class="mb-[2vw] flex flex-wrap items-center gap-x-3 gap-y-2 font-body text-24 text-white md:mb-6 md:text-lg sm:text-base">
+                <div class="mb-[2vw] flex flex-wrap items-center gap-x-3 gap-y-2 font-body text-24 text-white md:mb-6 ">
                     <?php if ($contact_email): ?>
                         <a href="mailto:<?php echo esc_attr(
                             $contact_email,

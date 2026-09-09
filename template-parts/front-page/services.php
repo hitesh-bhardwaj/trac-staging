@@ -17,11 +17,11 @@ for ($i = 1; $i <= 4; $i++) {
 }
 ?>
 
-<section class="relative overflow-hidden bg-white py-[5vw] sm:pb-[25%] min-h-auto" data-section="services" id="solutions">
+<section class="relative overflow-hidden bg-white py-[5vw] md:pb-[13%] sm:pb-[20%] sm:pt-0 md:pt-[10%] min-h-auto" data-section="services" id="solutions">
     <div class="services-container w-full">
-        <div class="services-heading px-[5vw] md:px-[7vw] md:py-12 sm:py-8">
-            <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-6" data-animate="fade-up">
-                <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+        <div class="services-heading px-[5vw] md:px-[7vw] md:py-8">
+            <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-6 md:gap-3" data-animate="fade-up">
+                <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-5"></span>
 
                 <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                     <?php echo trac_esc_html(get_field('services_label')); ?>
@@ -34,7 +34,7 @@ for ($i = 1; $i <= 4; $i++) {
         </div>
 <div data-animate="fade-up">
 
-        <div class="services-cards-wrapper mt-[7vw] relative w-full sm:mt-[8vw]" data-service-slider>
+        <div class="services-cards-wrapper mt-[7vw] relative w-full md:mt-[8vw]" data-service-slider>
             <div class="services-slider-viewport">
                 <div class="services-cards">
                     <?php foreach ($services as $index => $service): ?>
@@ -43,16 +43,16 @@ for ($i = 1; $i <= 4; $i++) {
                             data-service-card
                             data-card-index="<?php echo esc_attr($index); ?>"
                         >
-                            <div class="card-inner grid h-full grid-cols-[1fr_auto] items-center md:flex md:flex-col md:items-start">
-                                <div class="card-content flex h-full flex-col justify-between p-[3.073vw] pr-[2vw] md:p-8 sm:p-6">
+                            <div class="card-inner grid h-full grid-cols-[1fr_auto] items-center md:flex md:flex-col-reverse md:items-start">
+                                <div class="card-content flex h-full flex-col justify-between p-[3.073vw] pr-[2vw] md:p-6">
                                     <div>
-                                        <h3 class="card-title font-subheading mb-[1.25vw] text-36 font-normal text-white md:mb-4 md:text-2xl sm:mb-3 sm:text-[6vw]">
+                                        <h3 class="card-title font-subheading mb-[1.25vw] text-36 font-normal text-white md:mb-3 sm:text-[6vw]">
                                             <?php echo trac_esc_html(
                                                 $service['title'],
                                             ); ?>
                                         </h3>
 
-                                        <p class="font-body max-w-[35vw] text-24 leading-[1.5] text-white md:max-w-full md:text-lg sm:text-base">
+                                        <p class="font-body max-w-[35vw] text-24 leading-[1.5] text-white md:max-w-full ">
                                             <?php echo trac_esc_html(
                                                 $service['description'],
                                             ); ?>
@@ -61,7 +61,7 @@ for ($i = 1; $i <= 4; $i++) {
 
                                     <a href="<?php echo esc_url(
                                         $service['link'],
-                                    ); ?>" class="btn btn-primary group w-fit sm:w-[80%]!">
+                                    ); ?>" class="btn btn-primary group w-fit md:w-[80%]!">
                                         <span class="btn-line"></span>
                                         <span class="btn-text"><?php echo trac_esc_html(
                                             $service['button_text'],
@@ -75,7 +75,7 @@ for ($i = 1; $i <= 4; $i++) {
                                     </a>
                                 </div>
 
-                                <div class="card-image relative mr-[0.938vw] h-[calc(100%-2vw)] w-[34.375vw] overflow-hidden rounded-[1vw] md:mx-8 md:mb-8 md:h-[45vw] md:w-[calc(100%-4rem)] md:rounded-2xl sm:mx-6 sm:mb-6 sm:h-[52vw] sm:w-[calc(100%-1.5rem)]">
+                                <div class="card-image relative mr-[0.938vw] h-[calc(100%-2vw)] w-[34.375vw] overflow-hidden rounded-[1vw] md:mx-6 md:mb-6 md:h-[52vw] md:w-[calc(100%-1.3rem)] md:rounded-2xl">
                                     <img
                                         src="<?php echo esc_url(
                                             $service['image'],
@@ -92,7 +92,7 @@ for ($i = 1; $i <= 4; $i++) {
                 </div>
             </div>
 
-            <div class="services-slider-controls mt-[4.688vw] flex items-center justify-center gap-[0.625vw] md:mt-10 md:gap-3 sm:mt-8">
+            <div class="services-slider-controls mt-[4.688vw] flex items-center justify-center gap-[0.625vw] md:mt-8 md:gap-3">
                 <button
                     type="button"
                     class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"

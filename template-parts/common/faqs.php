@@ -24,7 +24,7 @@ $faqs_css = get_template_directory_uri() . '/src/css/sections/faqs.css';
 <link rel="stylesheet" href="<?php echo esc_url($faqs_css); ?>">
 
 <section class="relative bg-white overflow-hidden min-h-auto" data-section="faqs">
-    <div class="px-[9vw] py-[7.031vw] md:px-[4vw] md:py-16 sm:px-[7vw] sm:py-12">
+    <div class="px-[9vw] py-[7.031vw] md:py-16 md:px-[7vw] sm:py-12">
 
         <div class="faqs-header mb-[4.844vw] md:mb-12 sm:mb-6">
             <?php if ($section_label): ?>

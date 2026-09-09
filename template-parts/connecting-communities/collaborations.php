@@ -13,7 +13,7 @@ $collab_image_alt = is_array($collab_image) ? $collab_image['alt'] : '';
 ?>
 
 <section class="bg-brand-quaternary px-[5vw] py-[7vw] text-white md:px-[4vw] md:py-[82px] sm:px-[6vw] sm:py-16" data-section="communities-collaborations">
-    <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-center gap-[5.208vw] md:grid-cols-1 md:gap-11 sm:gap-8">
+    <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-center gap-[5vw] md:grid-cols-1 md:gap-11 sm:gap-8">
         <div class="max-w-[43.75vw] text-left md:max-w-[720px]">
             <div class="mb-[3.333vw] inline-flex items-center gap-[1.302vw] md:mb-8 md:gap-4 sm:mb-6 sm:gap-3" data-animate="fade-up">
                 <span class="h-[2px] min-h-[2px] w-[1.354vw] min-w-5 bg-current" aria-hidden="true"></span>

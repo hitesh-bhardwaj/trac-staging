@@ -31,8 +31,8 @@ $cta_logo_class = $cta_args['logo_class'] ?? '';
     <div class="cta-container relative z-[10] w-full px-[5vw] py-[9vw] md:px-[4vw] md:py-20 sm:px-[6vw] sm:py-16 <?php echo esc_attr(
         $cta_container_class,
     ); ?>">
-        <div class="flex items-center justify-center gap-[4vw] md:flex-col-reverse md:gap-10">
-            <div class="cta-logo shrink-0 w-[30vw] absolute left-[-4%] md:w-[42vw] sm:w-[75vw] sm:left-[-45%] md:relative [--stroke-0:#fff] [--fill-0:#fff] <?php echo esc_attr(
+        <div class="flex items-center justify-center gap-[4vw] md:flex-col-reverse md:gap-0 sm:gap-10">
+            <div class="cta-logo shrink-0 w-[30vw] absolute left-[-4%] md:w-[42vw] sm:w-[75vw] md:left-[-45%] md:relative [--stroke-0:#fff] [--fill-0:#fff] <?php echo esc_attr(
                 $cta_logo_class,
             ); ?>" data-animate="fade-right" aria-hidden="true">
                 <?php if ($cta_image): ?>

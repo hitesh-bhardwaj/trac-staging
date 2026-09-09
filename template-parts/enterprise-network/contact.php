@@ -39,14 +39,14 @@ $contact_form_css =
                     <?php echo trac_esc_html($enterprise_contact_description); ?>
                 </p>
 
-                <div class="font-body text-24 leading-[1.7] text-text-primary md:text-base sm:text-sm">
+                <div class="font-body text-24 leading-[1.7] text-text-primary ">
                     <p data-para-anim class="mb-3 md:mb-2"><?php echo trac_esc_html(
                         $enterprise_contact_prompt_text,
                     ); ?></p>
                     <div data-animate="fade-up" class="under-multi-parent w-fit leading-[1.2]">
                         <a href="mailto:<?php echo esc_attr(
                             $enterprise_contact_email,
-                        ); ?>" class="under-multi font-body text-24 tracking-[0.03em] text-text-body transition-colors hover:text-brand-primary focus-visible:text-brand-primary md:text-base sm:text-sm ">
+                        ); ?>" class="under-multi font-body text-24 tracking-[0.03em] text-text-body transition-colors hover:text-brand-primary focus-visible:text-brand-primary  ">
                             <?php echo trac_esc_html($enterprise_contact_email); ?>
                         </a>
                     </div>

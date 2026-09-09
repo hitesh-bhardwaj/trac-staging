@@ -36,7 +36,7 @@ for ($i = 1; $i <= 6; $i++) {
                     <p class="font-body text-24 leading-[1.58] text-text-body <?php echo $index >
                     0
                         ? 'mt-[1.4vw] md:mt-4 '
-                        : ''; ?>md:text-lg sm:text-base" data-para-anim data-delay="<?php echo esc_attr(
+                        : ''; ?>" data-para-anim data-delay="<?php echo esc_attr(
     $index * 0.1,
 ); ?>">
                         <?php echo trac_esc_html($paragraph); ?>
@@ -55,7 +55,7 @@ for ($i = 1; $i <= 6; $i++) {
                             class="size-[3.5vw] md:w-10 md:h-10 sm:w-12 sm:h-12 object-contain"
                             loading="lazy"
                         >
-                        <p class="font-body text-white text-24 md:text-lg sm:text-base leading-[1.35] w-full">
+                        <p class="font-body text-white text-24  leading-[1.35] w-full">
                             <?php echo trac_esc_html($c['text']); ?>
                         </p>
                     </div>

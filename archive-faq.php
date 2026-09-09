@@ -186,7 +186,7 @@ get_header();
                     </div>
                     <?php else: ?>
                     <div class="no-faqs text-center py-[5.208vw] md:py-16 sm:py-12">
-                        <p class="font-body text-24 text-text-muted md:text-lg sm:text-base">
+                        <p class="font-body text-24 text-text-muted ">
                             No FAQs available yet. Please check back soon!
                         </p>
                     </div>

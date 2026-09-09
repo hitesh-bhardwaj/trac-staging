@@ -29,7 +29,7 @@ for ($i = 1; $i <= 5; $i++) {
             <?php echo trac_esc_html($title); ?>
         </h2>
 
-        <p class="font-body text-24 leading-[1.5] text-text-body md:text-lg sm:text-base" data-para-anim>
+        <p class="font-body text-24 leading-[1.5] text-text-body " data-para-anim>
             <?php echo trac_esc_html($subtitle); ?>
         </p>
 
