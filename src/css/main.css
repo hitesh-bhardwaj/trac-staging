@@ -577,7 +577,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .mobile-nav-link.is-active-link {
-    background-color: var(--color-brand-primary-alt);
+    background-color: #389fd8;
     color: #ffffff;
 }
 
@@ -586,17 +586,17 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .mobile-nav-solutions-link {
-    border-color: rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 1);
     color: #111111;
 }
 
 .mobile-nav-solutions.is-active-link {
-    background-color: var(--color-brand-primary-alt);
+    background-color: #389fd8;
     color: #ffffff;
 }
 
 .mobile-nav-solutions.is-active-link .mobile-nav-solutions-link {
-    border-color: rgba(255, 255, 255, 0.55);
+    border-color: rgba(255, 255, 255, 1);
     color: #ffffff;
 }
 
@@ -618,7 +618,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .mobile-nav-solutions-list.is-open {
-    margin-top: 20px;
+    margin-top: 10px;
     opacity: 1;
     transform: translateY(0);
 }
