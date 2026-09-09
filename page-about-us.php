@@ -21,7 +21,7 @@ get_header();
 
         get_template_part('template-parts/common/hero', null, [
             'grid_classes' =>
-                'hero-grid flex items-start justify-between gap-[10vw] md:flex-col md:gap-8  ',
+                'hero-grid flex items-start justify-between gap-[10vw] md:flex-col md:gap-20 sm:gap-8  ',
             'text_classes' =>
                 'hero-text w-[45%] md:w-full md:max-w-full relative z-[10]',
             'title_classes' =>

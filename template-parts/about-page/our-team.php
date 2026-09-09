@@ -30,54 +30,26 @@ for ($i = 1; $i <= 5; $i++) {
 <link rel="stylesheet" href="<?php echo esc_url($team_slider_css); ?>">
 
 <section class="team-slider-section relative overflow-hidden py-[7%]" data-team-slider>
-    <div class="pl-[5.2vw] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
-        <div class="team-slider-layout flex items-start justify-between gap-[3vw] md:flex-col h-full">
-            <div class="team-slider-copy w-[28%] md:w-full flex flex-col h-full justify-between">
-                <div>
+    <div class="pl-[5.2vw] md:px-[7vw] md:py-12">
+        <div class="team-slider-layout">
+            <div class="team-slider-copy w-full">
                    <div class="mb-[1.8vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3" data-animate="fade-up">
-                     <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
+                     <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-5"></span>
                      <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
                         <?php echo trac_esc_html($team_label); ?>
                       </span>
                      </div>
 
-                     <h2 data-heading-anim class="w-[25vw] font-heading text-66 font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:max-w-full sm:w-full">
+                     <h2 data-heading-anim class="w-[25vw] font-heading text-66 font-normal leading-[1.2] tracking-[-0.03em] text-text-primary md:w-full">
                     <?php echo trac_esc_html($team_title); ?>
                      </h2>
 
-                      <p data-para-anim class="mt-[2.2vw] max-w-[22vw] font-body text-24 leading-[1.45] text-text-body md:mt-6 md:max-w-[360px] md:text-[22px] sm:text-[18px]">
+                      <p data-para-anim class="mt-[2.2vw] w-[90%] font-body text-24 leading-[1.45] text-text-body md:mt-6 md:w-[70%] md:text-[22px] sm:text-[18px]">
                     <?php echo trac_esc_html($team_description); ?>
                       </p>
-                 </div>
-
-                <div data-animate="fade-up" class="team-slider-card-navigation mt-[15vw] w-fit rounded-full flex items-center md:mt-10 sm:mt-8 px-[1vw] gap-[1vw] text-brand-secondary">
-                     <button
-                    type="button"
-                        class="team-slider-nav team-slider-prev flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
-                        data-team-slider-prev
-                        aria-label="Previous team member"
-                >
-                    <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M9.3 1.2L2 8.5L9.3 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M3 8.5H26" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                </button>
-
-                    <button
-                   type="button"
-                        class="team-slider-nav team-slider-next flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
-                        data-team-slider-next
-                        aria-label="Next team member"
-                >
-                    <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M18.7 1.2L26 8.5L18.7 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M25 8.5H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                </button>
-                </div>
             </div>
 
-            <div class="team-slider-main w-[68%] md:w-full overflow-visible sm:mt-20">
+            <div class="team-slider-main w-full md:mt-10 overflow-visible">
                 <div data-animate="fade-up" class="team-slider-stage relative flex items-end gap-[1.6vw]">
                     <div class="team-slider-active-card group" data-team-slider-active-card tabindex="0" role="button" aria-pressed="false">
                         <div class="team-slider-flip-inner">
@@ -118,7 +90,7 @@ for ($i = 1; $i <= 5; $i++) {
 
                         <a
                             href="https://www.linkedin.com/"
-                            class="team-slider-back-linkedin pointer-events-none absolute bottom-[2.6vw] left-[3vw] z-10 flex h-[2.8vw] w-[2.8vw] items-center justify-center rounded-full bg-transparent opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:pointer-events-auto group-[.is-flip-complete]:opacity-100 md:bottom-[34px] md:left-[34px] md:h-[46px] md:w-[46px] sm:bottom-[28px] sm:left-[26px] sm:h-[38px] sm:w-[38px]"
+                            class="team-slider-back-linkedin pointer-events-none absolute bottom-[2.6vw] left-[3vw] z-10 flex h-[2.8vw] w-[2.8vw] items-center justify-center rounded-full bg-transparent opacity-0 transition-opacity duration-200 group-[.is-flip-complete]:pointer-events-auto group-[.is-flip-complete]:opacity-100 md:bottom-[28px] md:left-[26px] md:h-[38px] md:w-[38px]"
                             target="_blank"
                             rel="noopener noreferrer"
                             data-team-slider-back-linkedin
@@ -131,8 +103,8 @@ for ($i = 1; $i <= 5; $i++) {
                             ); ?>" alt="linkedin icon" aria-hidden="true">
                         </a>
 
-                        <button type="button" class="team-slider-card-close pointer-events-none absolute right-[2.2vw] top-[2.2vw] z-10 flex h-[3vw] w-[3vw] cursor-pointer items-center justify-center rounded-full border-2 border-current bg-transparent text-white opacity-0 transition-opacity duration-200 touch-manipulation group-[.is-flip-complete]:pointer-events-auto group-[.is-flip-complete]:opacity-100 md:right-[30px] md:top-[34px] md:h-[48px] md:w-[48px] sm:right-[22px] sm:top-[26px] sm:h-[40px] sm:w-[40px]" data-team-slider-close aria-label="Close team bio" aria-hidden="true" tabindex="-1">
-                            <img class="block h-[1.05vw] w-[1.05vw] object-contain md:h-[17px] md:w-[17px] sm:h-[14px] sm:w-[14px]" src="<?php echo esc_url(
+                        <button type="button" class="team-slider-card-close pointer-events-none absolute right-[2.2vw] top-[2.2vw] z-10 flex h-[3vw] w-[3vw] cursor-pointer items-center justify-center rounded-full border-2 border-current bg-transparent text-white opacity-0 transition-opacity duration-200 touch-manipulation group-[.is-flip-complete]:pointer-events-auto group-[.is-flip-complete]:opacity-100 md:right-[22px] md:top-[26px] md:h-[40px] md:w-[40px]" data-team-slider-close aria-label="Close team bio" aria-hidden="true" tabindex="-1">
+                            <img class="block h-[1.05vw] w-[1.05vw] object-contain md:h-[14px] md:w-[14px]" src="<?php echo esc_url(
                                 $team_cross_svg,
                             ); ?>" alt="cross icon" aria-hidden="true">
                         </button>
@@ -184,6 +156,32 @@ for ($i = 1; $i <= 5; $i++) {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div data-animate="fade-up" class="team-slider-card-navigation w-fit rounded-full flex items-center px-[1vw] gap-[1vw] text-brand-secondary">
+                 <button
+                type="button"
+                    class="team-slider-nav team-slider-prev flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
+                    data-team-slider-prev
+                    aria-label="Previous team member"
+            >
+                <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M9.3 1.2L2 8.5L9.3 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 8.5H26" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+
+                <button
+               type="button"
+                    class="team-slider-nav team-slider-next flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
+                    data-team-slider-next
+                    aria-label="Next team member"
+            >
+                <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M18.7 1.2L26 8.5L18.7 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M25 8.5H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
             </div>
         </div>
     </div>

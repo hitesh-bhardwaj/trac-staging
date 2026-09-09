@@ -15,7 +15,7 @@ for ($i = 1; $i <= 5; $i++) {
 }
 ?>
 
-<section class="relative py-[9vw] bg-brand-tertiary h-auto overflow-visible lg:h-[260vh] md:h-auto" data-section="what-we-do" data-what-we-do-slider>
+<section class="relative py-[9vw] bg-brand-tertiary h-auto overflow-visible lg:h-[260vh] md:h-auto md:py-[15%]" data-section="what-we-do" data-what-we-do-slider>
     <div class="what-we-do-shell w-full ">
         <div class="mb-[3.438vw]  px-[5vw] flex items-center justify-between md:mb-10 sm:px-[6vw]">
             <div data-animate="fade-up" class="what-we-do-header flex items-center gap-[0.833vw] md:gap-3">
@@ -54,12 +54,12 @@ for ($i = 1; $i <= 5; $i++) {
 
             <div class=" flex gap-[1.667vw] w-max [will-change:transform] ml-0 sm:ml-10 md:gap-6 sm:gap-4" data-what-we-do-track data-animate="fade-up">
                 <?php foreach ($what_we_do_cards as $card): ?>
-                    <article class="what-we-do-card flex h-[30vw] w-[25vw] flex-shrink-0 flex-col rounded-[1.563vw] border border-white/60 bg-white px-[2vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] [scroll-snap-align:center] [will-change:transform,opacity] md:h-auto md:w-[78vw] md:rounded-[28px] md:px-8 md:py-8 sm:w-[78vw] sm:rounded-[24px] sm:px-6 sm:py-10 sm:h-auto" >
+                    <article class="what-we-do-card flex h-[30vw] w-[25vw] flex-shrink-0 flex-col rounded-[1.563vw] border border-white/60 bg-white px-[2vw] py-[2.292vw] shadow-[0_24px_80px_rgba(16,65,127,0.08)] [scroll-snap-align:center] [will-change:transform,opacity] md:h-[55vw] md:w-[78vw] md:rounded-[28px] md:px-8 md:py-8 sm:w-[78vw] sm:rounded-[24px] sm:px-6 sm:py-10 sm:h-auto" >
                         <div class="mb-[5.208vw] text-brand-primary md:mb-10 sm:mb-[14vw]">
                             <img
                                 src="<?php echo esc_url($card['icon']); ?>"
                                 alt="icons"
-                                class="h-[5vw] w-[5vw] md:h-8 md:w-8 sm:h-20 sm:w-20"
+                                class="h-[5vw] w-[5vw] md:h-24 md:w-24 sm:h-20 sm:w-20"
                                 loading="lazy"
                             >
 

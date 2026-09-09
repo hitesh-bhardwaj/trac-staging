@@ -128,7 +128,7 @@
    ?>
    <header
     id="site-header"
-    class="site-header fixed top-0 left-1/2 -translate-x-1/2 w-full rounded-none z-[9999] bg-brand-primary"
+    class="site-header fixed top-0 left-0 right-0 mx-auto w-full rounded-none z-[9999] bg-brand-primary"
  >
         <div class="header-inner w-full px-[4vw] py-[1.15vw] flex items-center justify-between md:px-[7vw] md:py-5 sm:py-4">
             <!-- Logo -->
@@ -346,12 +346,12 @@
                         <?php if ($social['url'] && $social['icon']): ?>
                             <a href="<?php echo esc_url(
                                 $social['url'],
-                            ); ?>" target="_blank" rel="noopener noreferrer" class="flex h-[8.148vw] w-[8.148vw] items-center justify-center rounded-full border-[0.278vw] border-[#111111] bg-white first:border-brand-primary" aria-label="<?php echo esc_attr(
+                            ); ?>" target="_blank" rel="noopener noreferrer" class="flex h-[8vw] w-[8vw] items-center justify-center rounded-full border-[1px] border-[#111111] bg-white first:border-brand-primary" aria-label="<?php echo esc_attr(
                                 $social['label'],
                             ); ?>">
                                 <img src="<?php echo esc_url(
                                     $social['icon'],
-                                ); ?>" alt="social icon" aria-hidden="true" class="h-[4.815vw] w-[4.815vw] object-contain [filter:brightness(0)_saturate(100%)]">
+                                ); ?>" alt="social icon" aria-hidden="true" class="h-[4.5vw] w-[4.5vw] object-contain [filter:brightness(0)_saturate(100%)]">
                             </a>
                         <?php endif; ?>
                     <?php endforeach; ?>

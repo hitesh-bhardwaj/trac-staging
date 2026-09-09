@@ -21,7 +21,7 @@ for ($i = 1; $i <= 3; $i++) {
 ?>
 
 <?php if ($instagram_posts): ?>
-<section class="about-socials-section px-[5vw] py-[7%] md:px-[4vw] md:py-16 sm:px-[6vw] sm:py-12">
+<section class="about-socials-section px-[5vw] py-[7%] md:px-[7vw] md:py-16  sm:py-12">
     <div class="mb-[3.5vw] flex items-center gap-[0.833vw] md:mb-8 md:gap-3 sm:mb-12" data-animate="fade-up">
         <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
         <span class="font-body text-30 text-brand-secondary md:text-xl sm:!text-[4vw]">
@@ -29,12 +29,12 @@ for ($i = 1; $i <= 3; $i++) {
         </span>
     </div>
 
-    <div class="rounded-[2vw] bg-brand-tint p-[4vw] md:rounded-3xl md:p-7 sm:rounded-[24px] sm:p-10" data-animate="fade-up">
+    <div class="rounded-[2vw] bg-brand-tint p-[4vw] md:rounded-3xl md:p-10 sm:rounded-xl" data-animate="fade-up">
         <div class="grid grid-cols-3 gap-[1.25vw] md:grid-cols-1 md:gap-5 sm:gap-8">
             <?php foreach ($instagram_posts as $index => $post): ?>
                 <a
                     href="<?php echo esc_url($post['link']); ?>"
-                    class="group relative block h-[33vw] w-[26vw] overflow-hidden rounded-[1.5vw] bg-white md:h-[90vw] md:w-full md:rounded-2xl sm:h-[110vw] sm:rounded-[16px]<?php echo $index ===
+                    class="group relative block h-[33vw] w-[26vw] overflow-hidden rounded-[1.5vw] bg-white md:h-[80vw] md:w-full md:rounded-2xl sm:rounded-[16px]<?php echo $index ===
                     2
                         ? ' border border-brand-primary-alt'
                         : ''; ?>"
