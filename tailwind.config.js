@@ -12,7 +12,7 @@ export default {
             '2xl': { max: '1535px' }, // max-2xl: applies below 1536px
             xl: { max: '1279px' }, // max-xl: applies below 1280px
             lg: { max: '1024px' }, // max-lg: applies below 1024px (tablet landscape)
-            md: { max: '768px' }, // max-md: applies below 768px (tablet portrait)
+            md: { max: '1025px' }, // max-md: applies below 1024px (tablet)
             sm: { max: '540px' }, // max-sm: applies below 540px (mobile)
         },
         extend: {

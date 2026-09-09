@@ -141,7 +141,7 @@
                     ); ?>" class="flex items-center">
                         <img src="<?php echo esc_url(
                             $trac_header_logo,
-                        ); ?>" class="w-[8vw] sm:w-[20vw]" alt="<?php bloginfo(
+                        ); ?>" class="w-[8vw] md:w-[15vw] sm:w-[20vw] " alt="<?php bloginfo(
                             'name',
                         ); ?>">
                     </a>

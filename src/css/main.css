@@ -1,47 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
-
-/* Helvetica Neue */
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('../assets/fonts/HelveticaNeueLight.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('../assets/fonts/HelveticaNeueRegular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('../assets/fonts/HelveticaNeueMedium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Helvetica Neue';
-    src: url('../assets/fonts/HelveticaNeueBold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
+@import './font.css';
 
 /* Tailwind Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ========================================
-   CSS Custom Properties (Design Tokens)
-   Base viewport: 1920px (Desktop First)
-   ======================================== */
 :root {
     /* Brand Colors from Figma - Trac/Enigma */
     --color-brand-primary: #0b1f3a;
@@ -70,8 +33,7 @@
    * Formula: px / 1920 * 100 = vw
    * 96px = 5vw, 24px = 1.25vw, 22px = 1.146vw
    */
-    --text-hero: 4.3vw; /* 96px at 1920 */
-    --text-hero: 4vw; /* 96px at 1920 */
+    --text-hero: 4vw; /* 77px at 1920 */
     --text-h1: 3.646vw; /* 70px at 1920 */
     --text-h2: 2.604vw; /* 50px at 1920 */
     --text-h3: 1.875vw; /* 35px at 1920 */
@@ -103,10 +65,6 @@
     --header-height: 4.948vw; /* 95px at 1920 */
 }
 
-/* Tablet adjustments (below 1024px) */
-
-
-/* Mobile adjustments (below 540px) */
 .mouse-follower {
     position: fixed;
     top: 0;
@@ -123,8 +81,6 @@
     transition: border-color 0.2s ease;
 }
 
-/* Over a dark section (bg color at or darker than brand-primary #0B1F3A),
-   flip the border to white so the ring stays visible. */
 .mouse-follower.is-on-dark {
     border-color: #fff;
 }
@@ -169,16 +125,13 @@ html.js [data-hero-reveal].is-hero-revealed {
     will-change: auto;
 }
 
-/* Paragraph line reveal (used by SME Internet `data-para-anim`) */
 .para-line {
     display: block;
     overflow: hidden;
-    /* Prevent descenders getting clipped when a paragraph has a tight line-height (e.g. leading-[1]). */
     padding-bottom: 0.14em;
     margin-bottom: -0.14em;
 }
 
-/* Extra gap before a line that starts right after a manual <br> in the source text */
 .para-line-break {
     margin-top: 1.5vw;
 }
@@ -187,15 +140,12 @@ html.js [data-hero-reveal].is-hero-revealed {
     display: inline-block;
     will-change: transform;
 }
-
-/* Heading line mask reveal (used by `data-heading-anim`) */
 .heading-line-wrap {
     display: block;
 }
 
 .heading-line {
     display: block;
-    /* Mask wipe with a slanted leading edge. We animate mask-position from 100% -> 0%. */
     -webkit-mask-image: linear-gradient(
         150deg,
         #000 0%,
@@ -203,7 +153,6 @@ html.js [data-hero-reveal].is-hero-revealed {
         transparent 88%,
         transparent 100%
     );
-    /* Bigger/wider mask so the wipe feels softer/subtler. */
     -webkit-mask-size: 1000% 100%;
     -webkit-mask-position: 100% 100%;
     mask-image: linear-gradient(
@@ -217,7 +166,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     mask-position: 100% 100%;
 }
 
-/* Ensure hero heading lines are masked from first paint (before JS adds classes) */
 [data-heading-anim] .hero-title-line {
     display: block;
     -webkit-mask-image: linear-gradient(
@@ -240,15 +188,10 @@ html.js [data-hero-reveal].is-hero-revealed {
     mask-position: 100% 100%;
 }
 
-/* Prevent first-paint flashes for hero copy that is animated via JS line-splits.
-   Once `initBarbaSyncedHeroReveal` runs it adds `.is-hero-revealed`, so we unhide. */
 [data-hero-static] [data-hero-reveal][data-para-anim]:not(.is-hero-revealed) {
     visibility: hidden;
 }
 
-/* ========================================
-   Base Styles
-   ======================================== */
 @layer base {
     html {
         scroll-behavior: auto; /* Lenis handles smooth scrolling */
@@ -320,9 +263,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 }
 
-/* ========================================
-   Component Styles
-   ======================================== */
 @layer components {
     /* Container */
     .container {
@@ -512,9 +452,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 }
 
-/* ========================================
-   Header Styles
-   ======================================== */
 .site-header {
     /* @apply bg-white/95 backdrop-blur-sm; */
     transition:
@@ -527,7 +464,6 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .site-header {
-    /* will-change: width, top, border-radius, background-color, backdrop-filter; */
     transform: translateX(-50%);
 }
 
@@ -556,9 +492,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     /* box-shadow: 0 0.26vw 1.042vw rgba(0, 0, 0, 0.05); */
 }
 
-/* These two override the `.is-scrolled`/`.is-hidden` rules above (moved here,
-   unchanged, from header.php's old inline <style> block - kept last so the
-   cascade result is identical to before the move). */
 .site-header.is-scrolled {
     box-shadow: 0 0.26vw 1.042vw rgba(0, 0, 0, 0.05);
 }
@@ -588,9 +521,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     transition: background-size 0.3s ease-out;
 }
 
-/* Active route: keep the hover underline permanently on. Specificity matches
-   `.under-multi-parent:hover .under-multi` (3 classes) so it isn't overridden by the
-   `.menu-item .under-multi` resting-state rule (2 classes) above. */
 .menu-item .under-multi.is-active-link {
     background-size:
         100% 0px,
@@ -612,7 +542,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     will-change: transform, opacity;
 }
 
-/* Mobile Menu - slides in from the right */
 .mobile-menu {
     @apply opacity-0 pointer-events-none;
     position: fixed !important;
@@ -635,7 +564,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     transform: translateX(0) !important;
 }
 
-/* Mobile Menu Toggle Animation */
 #mobile-menu-toggle[aria-expanded='true'] .menu-line:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -648,7 +576,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Mobile menu: active page link */
 .mobile-nav-link.is-active-link {
     background-color: var(--color-brand-primary-alt);
     color: #ffffff;
@@ -658,8 +585,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     color: #ffffff;
 }
 
-/* Mobile menu: solutions dropdown - closed by default, its box only takes the
-   active (blue) color when a solutions page is the current route. */
 .mobile-nav-solutions-link {
     border-color: rgba(0, 0, 0, 0.12);
     color: #111111;
@@ -679,8 +604,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     transform: rotate(180deg);
 }
 
-/* Mobile menu: solutions dropdown open/close - smooth height + slide/fade,
-   animated by JS setting max-height to the list's real (scrollHeight) height. */
 .mobile-nav-solutions-list {
     max-height: 0;
     margin-top: 0;
@@ -700,9 +623,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     transform: translateY(0);
 }
 
-/* ========================================
-   Animation Utilities
-   ======================================== */
 @layer utilities {
     /* Initial states for GSAP animations */
     [data-animate] {
@@ -786,10 +706,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 }
 
-/* ==========================================
-   Front Page Section Styles
-   ========================================== */
-
 .hero-title {
     font-style: normal;
     font-weight: 400;
@@ -865,7 +781,6 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .why-trac-slide {
-    /* min-width: 100vw; */
     height: 100vh;
 }
 
@@ -877,7 +792,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     opacity: 0.6;
 }
 
-/* Why TrAC connector (title slide) */
 .why-lines [data-why-connect] path,
 .why-lines [data-why-connect] line,
 .why-lines [data-why-connect] polyline {
@@ -910,7 +824,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     transform-origin: center;
 }
 
-/* Why TrAC connector (title slide) */
 .why-lines [data-why-connect] path,
 .why-lines [data-why-connect] line,
 .why-lines [data-why-connect] polyline {
@@ -922,7 +835,6 @@ html.js [data-hero-reveal].is-hero-revealed {
 .why-lines [data-why-connect] path:not([data-why-draw]),
 .why-lines [data-why-connect] line:not([data-why-draw]),
 .why-lines [data-why-connect] polyline:not([data-why-draw]) {
-    /* Keep connector base invisible so the draw feels like it fills on transparency */
     stroke: rgba(17, 17, 17, 0);
     stroke-width: 1.25;
 }
@@ -957,10 +869,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     transform: scale(1.05);
 }
 
-/* Front-page services stacked-card slider - the stack geometry (spread/scale
-   range custom properties) and jump-without-transition state are read/toggled
-   by JS in main.js's `initServicesSlider()`, so this stays real CSS rather
-   than Tailwind utility classes. */
 [data-service-slider] .services-slider-viewport {
     position: relative;
     left: 50%;
@@ -1040,8 +948,6 @@ html.js [data-hero-reveal].is-hero-revealed {
         box-shadow 0.4s ease;
 }
 
-
-
 .card:hover {
     transform: translateY(-0.26vw);
     box-shadow: 0 1.042vw 2.604vw rgba(16, 65, 127, 0.1);
@@ -1051,7 +957,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     padding-top: 0;
 }
 
-/* Parallax footer (CTA passes over a fixed footer) */
 #page {
     position: relative;
     z-index: 2;
@@ -1076,13 +981,11 @@ html.js [data-hero-reveal].is-hero-revealed {
     z-index: 1;
 }
 
-/* Parallax footer (CTA passes over a fixed footer) */
 #page {
     position: relative;
     z-index: 2;
     margin-bottom: var(--parallax-footer-height, 0px);
 }
-
 
 [data-footer-clippath] {
     position: fixed;
@@ -1106,7 +1009,6 @@ html.js [data-hero-reveal].is-hero-revealed {
 .testimonials-section {
     min-height: 70vh;
 }
-
 .arrow-prev,
 .arrow-next {
     cursor: pointer;
@@ -1126,7 +1028,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 }
 
-/* Social Icons - Shared styles for footer and contact page */
 .social-icon {
     border-color: #111;
     transition:
@@ -1148,7 +1049,6 @@ html.js [data-hero-reveal].is-hero-revealed {
         hue-rotate(195deg) brightness(96%) contrast(92%);
 }
 
-/* Underline Multi */
 .under-multi {
     text-decoration: none;
     background-image:
@@ -1170,28 +1070,20 @@ html.js [data-hero-reveal].is-hero-revealed {
     background-size: 100% 1px;
 }
 
-/* White underline variant for use on dark backgrounds */
 .under-multi-white {
     background-image:
         linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0, 0)),
         linear-gradient(#fff, #fff);
 }
 
-/* CTA Section */
 .cta-section {
     min-height: 20vw;
 }
 
-/* ========================================
-   Hero Section
-   ======================================== */
 .hero {
     @apply relative min-h-screen flex pt-[10vw] overflow-hidden bg-[#0B1F3A] text-white;
 }
 
-/* ========================================
-   Reduced Motion
-   ======================================== */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -1208,9 +1100,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 }
 
-/* ========================================
-   Print Styles
-   ======================================== */
 @media print {
     .site-header,
     .site-footer {
@@ -1222,101 +1111,93 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 }
 
-/* ========================================
-   Tablet breakpoint
-   ======================================== */
 @media (max-width: 1025px) {
-    /* was: max-width: 1024px */
     :root {
         --text-hero: 7vw;
-        --text-h1: 5vw;
-        --text-h2: 4vw;
+        --text-h1: 5.5vw;
+        --text-h2: 4.3vw;
         --text-h3: 3vw;
-        --text-body-lg: 2.2vw;
+        --text-body-lg: 2.25vw;
         --text-body: 2vw;
-        --text-body-sm: 1.6vw;
+        --text-body-sm: 1.65vw;
         --space-container: 4vw;
         --header-height: 80px;
-        --text-30: 1.57vw;
-        --text-24: 2.2vw;
-        --text-36: 4vw;
-        --text-66: 5vw;
+        --text-30: 2.35vw;
+        --text-24: 2.25vw;
+        --text-36: 3.5vw;
+        --text-66: 5.15vw;
     }
 
-    /* was: max-width: 1024px */
     .mouse-follower {
         display: none;
     }
 
-    /* was: max-width: 1024px */
-        .btn {
-            font-size: 18px;
-            padding: 14px 24px;
-            gap: 12px;
-            border-radius: 45px;
-            min-height: 58px;
-            --btn-line-w: 24px;
-            --btn-line-gap: 12px;
-        }
+    .btn {
+        font-size: 18px;
+        padding: 14px 24px;
+        gap: 12px;
+        border-radius: 45px;
+        min-height: 58px;
+        --btn-line-w: 24px;
+        --btn-line-gap: 12px;
+    }
 
-        .btn-line {
-            left: 18px;
-        }
+    .btn-line {
+        left: 18px;
+    }
+}
 
+@media (max-width: 540px) {
     :root {
         --text-hero: 10vw;
         --text-h1: 8vw;
         --text-h2: 6vw;
         --text-h3: 5vw;
         --text-body-lg: 4.5vw;
-        --text-24: 4.2vw;
-        --text-66: 9vw;
         --text-body: 4.2vw;
         --text-body-sm: 3.2vw;
         --space-container: 6vw;
         --header-height: 70px;
+        --text-30: 5.2vw;
+        --text-24: 4.2vw;
+        --text-36: 6vw;
+        --text-66: 9vw;
     }
 
-    /* was: max-width: 540px */
-        .btn {
-            display: flex;
-            justify-content: space-between;
-            font-size: 4.5vw;
-            padding: 4vw 10vw;
-            width: 75vw;
-            border-radius: 40px;
-            min-height: 52px;
-            --btn-line-w: 20px;
-            --btn-line-gap: 10px;
-        }
+    .btn {
+        display: flex;
+        justify-content: space-between;
+        font-size: 4.5vw;
+        padding: 4vw 10vw;
+        width: 75vw;
+        border-radius: 40px;
+        min-height: 52px;
+        --btn-line-w: 20px;
+        --btn-line-gap: 10px;
+    }
 
-        .btn-line {
-            left: 16px;
-        }
+    .btn-line {
+        left: 16px;
+    }
 
-    /* was: max-width: 540px */
-        .btn-icon .dot {
-            width: 5px;
-            height: 5px;
-        }
+    .btn-icon .dot {
+        width: 5px;
+        height: 5px;
+    }
 
-    /* was: max-width: 540px */
     .btn-icon {
         grid-template-columns: repeat(2, 5px);
         gap: 3px;
     }
 
-    /* was: max-width: 640px */
     .who-we-are-copy br {
         display: none;
     }
 
-    /* was: max-width: 640px */
     .who-we-are-copy br {
         display: none;
     }
 
-    /* was: max-width: 639px */
     .service-card .card-inner {
         grid-template-columns: 1fr;
     }
@@ -1327,8 +1208,6 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 
     [data-parallax-footer] {
-   
-    height: 160vw;
-    
-}
+        height: 160vw;
+    }
 }
