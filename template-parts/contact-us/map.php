@@ -57,11 +57,11 @@ $office_1_address = get_field('contact_office_1_address');
                 <!-- Connector Lines (positioned/rotated via JS to link marker -> card) -->
                
                 <div class="pointer-events-none absolute left-0 top-0 z-[5] origin-left rotate-[140deg] sm:rotate-[110deg]" data-map-connector="rwanda" aria-hidden="true">
-                    <span class="block h-[2px] w-[305px] origin-left scale-x-0 rounded-full bg-brand-secondary will-change-transform sm:w-[125px] sm:h-[1px]" data-map-line></span>
+                    <span class="block h-[2px] w-[305px] origin-left scale-x-0 rounded-full bg-brand-secondary will-change-transform md:w-[300px] sm:w-[125px] sm:h-[1px]" data-map-line></span>
                 </div>
 
                 <!-- Address Cards -->
-                <div class="address-card w-[19vw] absolute bg-brand-tertiary rounded-2xl shadow-md space-y-[1vw] p-[2vw] py-[1vw] md:p-6 sm:p-4 opacity-0 left-[30%] top-[80%] sm:w-full sm:left-0"  data-address="rwanda" data-connector-anchor="top-right">
+                <div class="address-card w-[19vw] absolute bg-brand-tertiary rounded-2xl shadow-md space-y-[1vw] p-[2vw] py-[1vw] md:p-6 sm:p-4 opacity-0 left-[30%] top-[80%] md:w-[30vw] sm:w-full md:left-[10%] sm:left-0"  data-address="rwanda" data-connector-anchor="top-right">
                     <h3 class="font-body text-24 font-medium text-white md:text-lg md:mb-2 sm:mb-[1vw] sm:text-[4vw]"><?php echo trac_esc_html(
                         $office_1_name,
                     ); ?></h3>

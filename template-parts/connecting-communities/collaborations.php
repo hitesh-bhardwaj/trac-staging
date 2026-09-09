@@ -22,7 +22,7 @@ $collab_image_alt = is_array($collab_image) ? $collab_image['alt'] : '';
                 ); ?></span>
             </div>
 
-            <h2 class="mb-[2.344vw] w-[45vw] font-heading text-66 font-normal leading-[1.22] tracking-normal text-white md:mb-6  sm:mb-5 sm:leading-[1.18] sm:w-full" data-heading-anim>
+            <h2 class="mb-[2.344vw] w-[45vw] font-heading text-66 font-normal leading-[1.22] tracking-normal text-white md:mb-6  sm:mb-5 sm:leading-[1.18] md:w-full" data-heading-anim>
                 <?php echo trac_esc_html($collab_title); ?>
             </h2>
 

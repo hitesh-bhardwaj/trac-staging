@@ -27,11 +27,11 @@ for ($i = 1; $i <= 5; $i++) {
                 ); ?></span>
             </div>
 
-            <h2 class="mb-[2.292vw] font-heading text-66 font-normal leading-[1.2425] tracking-normal text-text-primary md:mb-6 md:max-w-full md:text-[44px] md:leading-[1.16] sm:mb-5 sm:text-[34px] sm:leading-[1.18]" data-heading-anim>
+            <h2 class="mb-[2.292vw] font-heading text-66 font-normal leading-[1.2425] tracking-normal text-text-primary md:mb-6 md:max-w-full  sm:mb-5 " data-heading-anim>
                 <?php echo trac_esc_html($hub_title); ?>
             </h2>
 
-            <div class="w-[59.948vw] font-body text-24 leading-[1.5] text-text-body md:text-xl sm:text-base sm:leading-[1.6] space-y-[2vw] sm:!w-full">
+            <div class="w-[59.948vw] font-body text-24 leading-[1.5] text-text-body space-y-[2vw] md:!w-full">
                 <?php foreach ($hub_paragraphs as $paragraph): ?>
                     <p data-para-anim><?php echo trac_esc_html($paragraph); ?></p>
                 <?php endforeach; ?>
@@ -39,10 +39,10 @@ for ($i = 1; $i <= 5; $i++) {
         </div>
 
         <div class="relative mx-auto mt-[10vw] min-h-[35vw] max-w-[94.792vw] md:mt-12 md:min-h-0 md:max-w-full sm:mt-10">
-            <div class="relative z-[1] flex min-h-[35vw] justify-between gap-[2vw] md:grid md:min-h-0 md:grid-cols-2 md:gap-5 sm:!flex sm:!grid-cols-none sm:justify-start sm:gap-4 sm:-mx-[6vw] sm:overflow-x-auto sm:overflow-y-visible sm:px-[6vw] sm:pb-3 sm:[scroll-padding-left:6vw] sm:[scroll-snap-type:x_proximity] sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden" data-community-hub-cards>
+            <div class="relative z-[1] flex min-h-[35vw] justify-between gap-[2vw] lg:!flex lg:!grid-cols-none lg:justify-start lg:gap-4 lg:-mx-[5.208vw] lg:overflow-x-auto lg:overflow-y-visible lg:px-[5.208vw] lg:pb-3 lg:[scroll-padding-left:5.208vw] lg:[scroll-snap-type:x_proximity] lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden md:!flex md:!grid-cols-none md:justify-start md:-mx-[4vw] md:px-[4vw] md:[scroll-padding-left:4vw] sm:gap-4 sm:-mx-[6vw] md:overflow-x-auto md:overflow-y-visible sm:px-[6vw] sm:pb-3 sm:[scroll-padding-left:6vw] md:[scroll-snap-type:x_proximity] sm:[scrollbar-width:none] sm:[&::-webkit-scrollbar]:hidden" data-community-hub-cards>
                 <?php foreach ($community_hub_cards as $index => $card): ?>
                     <article
-                        class="flex h-[21.198vw] w-[16vw] flex-col justify-between rounded-[1.25vw] border-[1.5px] border-brand-tertiary bg-brand-tertiary px-[1.458vw] pb-[1.823vw] pt-[2.865vw] shadow-[0_0_0_1px_rgba(16,65,127,0.02)] md:h-80 md:min-h-80 md:w-full md:min-w-0 md:!transform-none md:rounded-3xl md:px-6 md:pb-6 md:pt-8 md:[&:nth-child(3)]:col-span-2 md:[&:nth-child(3)]:mx-auto md:[&:nth-child(3)]:max-w-[360px] sm:h-[252px] sm:min-h-[252px] sm:w-[min(58vw,240px)] sm:min-w-[min(58vw,240px)] sm:flex-[0_0_min(58vw,240px)] sm:px-[18px] sm:pb-[18px] sm:pt-[22px] sm:[scroll-snap-align:start] sm:[&:nth-child(3)]:col-span-1 sm:[&:nth-child(3)]:max-w-none"
+                        class="flex h-[21.198vw] w-[16vw] flex-col justify-between rounded-[1.25vw] border-[1.5px] border-brand-tertiary bg-brand-tertiary px-[1.458vw] pb-[1.823vw] pt-[2.865vw] shadow-[0_0_0_1px_rgba(16,65,127,0.02)] lg:h-80 lg:min-h-80 lg:w-[min(38vw,300px)] lg:min-w-[min(38vw,300px)] lg:flex-[0_0_min(38vw,300px)] lg:!transform-none lg:rounded-3xl lg:px-6 lg:pb-6 lg:pt-8 lg:[scroll-snap-align:start] md:h-80 md:min-h-80 md:w-[min(60vw,260px)] md:min-w-[min(60vw,260px)] md:flex-[0_0_min(60vw,260px)] md:!transform-none md:rounded-3xl md:px-6 md:pb-6 md:pt-8 md:[&:nth-child(3)]:col-span-2 md:[&:nth-child(3)]:mx-auto  sm:h-[252px] sm:min-h-[252px] sm:w-[min(58vw,240px)] sm:min-w-[min(58vw,240px)] sm:flex-[0_0_min(58vw,240px)] sm:px-[18px] sm:pb-[18px] sm:pt-[22px] md:[scroll-snap-align:start] sm:[&:nth-child(3)]:col-span-1 md:[&:nth-child(3)]:max-w-none"
                         data-community-hub-card
                         data-card-index="<?php echo esc_attr($index); ?>"
                     >

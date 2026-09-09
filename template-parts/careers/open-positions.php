@@ -53,7 +53,7 @@ $apply_button_text = get_field('careers_positions_button_text');
             <div class="grid grid-cols-2 gap-10 mt-[5vw] md:grid-cols-1 md:gap-8 text-left">
                 <?php foreach ($jobs as $index => $card): ?>
                     <div
-                        class="bg-brand-tertiary rounded-[1.2vw] p-9 flex flex-col h-fit md:min-h-0 md:p-8 text-left sm:rounded-[4vw]"
+                        class="bg-brand-tertiary rounded-[1.2vw] p-9 flex flex-col h-fit md:min-h-0 md:p-8 text-left md:rounded-[2.5vw] sm:rounded-[4vw]"
                         data-animate="fade-up"
                         <?php if ($index > 0): ?>
                             data-delay="<?php echo esc_attr($index * 0.1); ?>"
@@ -74,7 +74,7 @@ $apply_button_text = get_field('careers_positions_button_text');
                                 ); ?>
                             </p>
 
-                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw] sm:!text-[4vw]">
+                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw] md:text-[2.5vw] sm:!text-[4vw]">
                                 <?php echo trac_esc_html($card['para']); ?>
                             </p>
                         </div>

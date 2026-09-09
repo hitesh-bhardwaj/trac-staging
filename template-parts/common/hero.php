@@ -22,7 +22,7 @@ $container_classes = isset($args['container_classes'])
 $container_classes =
     $container_classes !== ''
         ? $container_classes
-        : 'hero-container w-full px-[5vw]  pb-[5.21vw] relative z-[10] md:px-[4vw] sm:px-[7vw] sm:pt-[14vw]';
+        : 'hero-container w-full px-[5vw]  pb-[5.21vw] relative z-[10] md:px-[7vw] md:pt-[14vw]';
 $grid_classes = isset($args['grid_classes'])
     ? (string) $args['grid_classes']
     : 'hero-grid flex items-start justify-between gap-[5vw] md:flex-col md:gap-8';
@@ -362,7 +362,7 @@ $images =
                         data-hero-reveal
                         data-hero-delay="0.2"
                     >
-                        <div class="h-[40vw] w-full overflow-hidden rounded-[1.3vw] md:h-[360px] md:rounded-[28px] sm:h-[70vw] sm:rounded-[24px]">
+                        <div class="h-[40vw] w-full overflow-hidden rounded-[1.3vw] md:h-[65vw] sm:h-[70vw] md:rounded-[2.5vw]">
                             <img
                                 src="<?php echo esc_url($media_src); ?>"
                                 alt="<?php echo esc_attr($media_alt); ?>"

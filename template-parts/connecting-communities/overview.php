@@ -37,7 +37,7 @@ $overview_image_right_alt = is_array($overview_image_right)
             <?php echo trac_esc_html($overview_title); ?>
         </h2>
 
-        <div class="font-body text-[1.25vw] leading-[1.8333] text-text-body w-[60vw] lg:text-[20px] lg:leading-[1.7] sm:text-[16px] sm:leading-[1.7] sm:w-full">
+        <div class="font-body text-[1.25vw] leading-[1.8333] text-text-body w-[60vw] lg:text-[20px] lg:leading-[1.7] sm:text-[16px] sm:leading-[1.7] md:w-full">
             <?php foreach (
                 preg_split('/\R{2,}/', trim((string) $overview_description))
                 as $index => $paragraph

@@ -122,7 +122,7 @@ if (have_posts()) {
                 'section_classes' =>
                     'hero relative min-h-screen overflow-hidden !bg-brand-primary',
                 'container_classes' =>
-                    'hero-container relative z-[10] w-full px-[5vw] pb-[5.21vw] lg:px-[4vw] lg:pb-[72px] sm:px-[7vw] sm:pt-[14vw]',
+                    'hero-container relative z-[10] w-full px-[5vw] pb-[5.21vw]  md:px-[7vw] md:pt-[14vw]',
                 'grid_classes' =>
                     'contact-hero-grid hero-grid flex justify-between gap-[6vw] lg:flex-col lg:items-start lg:gap-7',
                 'text_classes' =>

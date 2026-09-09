@@ -257,18 +257,6 @@
     display: block;
 }
 
-/* Tablet Styles (max-width: 1024px) */
-
-
-/* Mobile Styles (max-width: 540px) */
-
-
-/* ========================================
-   Solutions Picker
-   Collapsible "Solutions" field that opens a
-   radio-button panel instead of a native <select>
-   ======================================== */
-
 .contact-form-wrapper .solution-picker {
     position: relative;
     width: 100%;
@@ -425,6 +413,116 @@
 }
 
 /* Tablet Styles (max-width: 1024px) */
+
+@media (max-width: 1024px) {
+    .contact-form-wrapper .wpcf7-form {
+        gap: 24px;
+    }
+
+    .contact-form-wrapper input[type='text'],
+    .contact-form-wrapper input[type='email'],
+    .contact-form-wrapper input[type='tel'],
+    .contact-form-wrapper textarea {
+        font-size: 18px;
+        padding: 8px 0;
+    }
+
+    .contact-form-wrapper input[type='text']::placeholder,
+    .contact-form-wrapper input[type='email']::placeholder,
+    .contact-form-wrapper input[type='tel']::placeholder,
+    .contact-form-wrapper textarea::placeholder {
+        font-size: 18px;
+    }
+
+    .contact-form-wrapper label {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .contact-form-wrapper .wpcf7-not-valid-tip {
+        font-size: 14px;
+    }
+
+    .contact-form-wrapper .wpcf7-validation-errors,
+    .contact-form-wrapper .wpcf7-mail-sent-ok {
+        font-size: 16px;
+        padding: 16px;
+    }
+
+    .contact-form-wrapper input[type='file'],
+    .contact-form-wrapper input[type='file'].wpcf7-file {
+        height: 100px;
+    }
+
+    .contact-form-wrapper
+        .wpcf7-form-control-wrap:has(input[type='file'])::before,
+    .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::before,
+    .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::before {
+        height: 100px;
+        border-radius: 20px;
+    }
+
+    .contact-form-wrapper
+        .wpcf7-form-control-wrap:has(input[type='file'])::after,
+    .contact-form-wrapper .wpcf7-form-control-wrap.cv-upload::after,
+    .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::after {
+        width: 36px;
+        height: 30px;
+        top: 44px;
+    }
+
+    .contact-form-wrapper .file-upload-hint {
+        bottom: 20px;
+        font-size: 14px;
+    }
+
+    .contact-form-wrapper .wpcf7-file-name {
+        font-size: 15px;
+        margin-top: 8px;
+    }
+
+    .contact-form-wrapper .solution-picker-label {
+        font-size: 18px;
+    }
+
+    .contact-form-wrapper .solution-picker-toggle {
+        font-size: 18px;
+        padding: 4px 0;
+    }
+
+    .contact-form-wrapper .solution-picker-panel {
+        top: calc(100% + 8px);
+        height: 300px;
+        padding: 20px 22px;
+        border-radius: 20px;
+    }
+
+    .contact-form-wrapper .solution-options {
+        column-gap: 20px;
+        row-gap: 14px;
+    }
+
+    .contact-form-wrapper .service-options {
+        row-gap: 14px;
+    }
+
+    .contact-form-wrapper .solution-picker-title {
+        font-size: 18px;
+        margin-bottom: 14px;
+    }
+
+    .contact-form-wrapper .solution-options .wpcf7-list-item-label,
+    .contact-form-wrapper .service-options .wpcf7-list-item-label {
+        font-size: 18px;
+        padding-left: 28px;
+    }
+
+    .contact-form-wrapper .solution-options .wpcf7-list-item-label::before,
+    .contact-form-wrapper .service-options .wpcf7-list-item-label::before {
+        width: 18px;
+        height: 18px;
+    }
+}
 
 @media (max-width: 540px) {
     .contact-form-wrapper .wpcf7-form {
