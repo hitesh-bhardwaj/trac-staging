@@ -316,6 +316,7 @@ function initializePageComponents() {
     initFaqs();
     initPhoneNumberField();
     initSolutionPicker();
+    initFileUploadDisplay();
     initCollaborationsAccordion();
     initClientLogos();
     initsolutionsMegaMenu();
@@ -707,6 +708,57 @@ function initSolutionPicker() {
                 closePanel();
             }
         });
+
+        const form = picker.closest('form.wpcf7-form');
+        if (form) {
+            form.addEventListener('wpcf7mailsent', () => {
+                panel.querySelectorAll('input[type="radio"]').forEach((radio) => {
+                    radio.checked = false;
+                });
+                if (valueDisplay) {
+                    valueDisplay.textContent = '';
+                }
+                closePanel();
+            });
+        }
+    });
+}
+
+/**
+ * Contact form: custom file-upload UI (filename display + upload box state)
+ */
+function initFileUploadDisplay() {
+    const wrappers = document.querySelectorAll(
+        '.contact-form-wrapper .wpcf7-form-control-wrap:has(input[type="file"])',
+    );
+    if (!wrappers.length) return;
+
+    wrappers.forEach((wrap) => {
+        const input = wrap.querySelector('input[type="file"]');
+        const output = wrap.parentElement?.querySelector(
+            '.wpcf7-file-name',
+        );
+        if (!input || !output) return;
+
+        const defaultText =
+            output.dataset.default || 'No file selected';
+
+        const updateDisplay = () => {
+            const file = input.files && input.files[0];
+            output.textContent = file ? file.name : defaultText;
+            wrap.classList.toggle('has-file', Boolean(file));
+        };
+
+        input.addEventListener('change', updateDisplay);
+        updateDisplay();
+
+        const form = input.closest('form.wpcf7-form');
+        if (form) {
+            form.addEventListener('wpcf7mailsent', () => {
+                input.value = '';
+                updateDisplay();
+            });
+        }
     });
 }
 

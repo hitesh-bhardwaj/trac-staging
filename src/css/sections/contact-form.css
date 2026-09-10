@@ -213,6 +213,12 @@
     background-color: #274f87;
 }
 
+/* File Selected State (set by JS after a file is chosen) */
+.contact-form-wrapper .wpcf7-form-control-wrap.cv-upload.has-file::before,
+.contact-form-wrapper .wpcf7-form-control-wrap.file-upload.has-file::before {
+    background-color: #1f3f6b;
+}
+
 /* "Max. 2MB" hint text, overlaid on the file upload box */
 .contact-form-wrapper .file-upload-box {
     position: relative;
