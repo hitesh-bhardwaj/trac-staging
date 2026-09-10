@@ -21,10 +21,10 @@ $hero_image_alt = is_array($hero_image) ? $hero_image['alt'] : '';
 
 <section class="hero relative min-h-screen !bg-brand-primary overflow-hidden sm:min-h-[125vh]" data-section="hero" data-hero-static>
     <div class="hero-container w-full px-[5vw] relative z-[10] md:px-[7vw] sm:pt-[10vw]">
-        <div class="hero-grid flex justify-between gap-[2.604vw] items-start md:flex-col md:gap-8">
+        <div class="hero-grid flex justify-between gap-[2.6vw] items-start md:flex-col md:gap-8">
             <div class="hero-text w-[60%] md:w-full md:max-w-full md:pt-16 sm:pt-4  relative z-[10]">
                 <h1
-                    class="hero-title font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 "
+                    class="hero-title font-heading text-white tracking-[0vw] mb-6 md:mb-6 sm:mb-4 "
                     data-hero-reveal
                     data-heading-anim
                     data-base-delay="0.05"
@@ -37,7 +37,7 @@ $hero_image_alt = is_array($hero_image) ? $hero_image['alt'] : '';
 </h1>
 
                 <p
-                    class="text-24 font-body text-white w-[36vw] mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6"
+                    class="text-24 font-body text-white w-[36vw] mb-[3.1vw] md:w-full md:max-w-full md:mb-8 sm:mb-6"
                     data-hero-reveal
                     data-hero-delay="0.14"
                     data-para-anim

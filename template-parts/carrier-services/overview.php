@@ -29,23 +29,23 @@ $button_text = get_field('cs_overview_button_text');
 $button_link = get_field('cs_overview_button_link');
 ?>
 
-<section class="carrier-overview relative bg-white px-[5vw] py-[6.25vw] md:py-16 md:px-[7vw] sm:py-12" data-section="solution-overview">
+<section class="carrier-overview relative bg-white px-[5vw] py-[6.2vw] md:py-16 md:px-[7vw] sm:py-12" data-section="solution-overview">
     <div class="mx-auto max-w-[92rem]">
         <div class="max-w-[60rem]">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
+                <span class="font-body text-brand-secondary text-30 sm:text-[4vw]"><?php echo trac_esc_html(
                     $label,
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-66 font-normal leading-[1.15] tracking-[0.01em] text-text-primary mb-[1.6vw] md:mb-6" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.3] tracking-[0.01em] text-text-primary mb-[1.6vw] md:mb-6" data-heading-anim>
                 <?php echo trac_esc_html($title); ?>
             </h2>
 
             <div class="space-y-[1.4vw] md:space-y-5">
                 <?php foreach ($description_paragraphs as $index => $paragraph): ?>
-                    <p class="font-body text-24 leading-[1.5] text-primary " data-para-anim data-delay="<?php echo esc_attr(
+                    <p class="font-body text-24 leading-[1.45] text-primary" data-para-anim data-delay="<?php echo esc_attr(
                         $index * 0.1,
                     ); ?>">
                         <?php echo trac_esc_html($paragraph); ?>
@@ -68,7 +68,7 @@ $button_link = get_field('cs_overview_button_link');
                     <h3 class="font-heading text-white text-66 font-normal mb-[1.4vw] md:mb-5">
                         <?php echo trac_esc_html($solution_title); ?>
                     </h3>
-                    <p class="font-body text-white text-24 leading-[1.6] w-[70%] md:w-full">
+                    <p class="font-body text-white text-24 leading-[1.45] w-[70%] md:w-full">
                         <?php echo trac_esc_html($solution_desc); ?>
                     </p>
                 </div>
@@ -77,7 +77,7 @@ $button_link = get_field('cs_overview_button_link');
 
         <div class="grid grid-cols-2 gap-[2.5vw] md:grid-cols-2 sm:grid-cols-1 md:gap-6 mt-[2.5vw] md:mt-6 items-stretch">
             <?php foreach ($offerings as $i => $o): ?>
-                <div class="rounded-[1.4vw] md:rounded-3xl bg-brand-tertiary p-[2.5vw] md:p-10 sm:p-7 flex flex-col items-start gap-[2vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
+                <div class="rounded-[1.4vw] md:rounded-[3vw] bg-brand-tertiary p-[2.5vw] md:p-10 sm:p-7 flex flex-col items-start gap-[2vw] md:gap-6" data-animate="fade-up" data-delay="<?php echo esc_attr(
                     0.1 * $i,
                 ); ?>">
                     <img
@@ -90,7 +90,7 @@ $button_link = get_field('cs_overview_button_link');
                         <h3 class="font-heading text-white text-36 font-normal mb-[0.8vw] md:mb-3">
                             <?php echo trac_esc_html($o['title']); ?>
                         </h3>
-                        <p class="font-body text-white text-24 leading-[1.55] w-[88%]">
+                        <p class="font-body text-white text-24 leading-[1.45] w-[88%]">
                             <?php echo trac_esc_html($o['description']); ?>
                         </p>
                     </div>

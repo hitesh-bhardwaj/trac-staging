@@ -375,18 +375,6 @@ function initCarrierWhyMobileCarousel() {
 
         section.dataset.carrierWhyCarouselInit = 'true';
 
-        const activeClasses = [
-            'border-brand-secondary',
-            'bg-brand-secondary',
-            'text-white',
-        ];
-        const setActiveState = (button, isActive) => {
-            button.classList.toggle('is-active', isActive);
-            activeClasses.forEach((className) => {
-                button.classList.toggle(className, isActive);
-            });
-        };
-
         const updateButtons = () => {
             const maxScroll = track.scrollWidth - track.clientWidth;
             const canGoPrev = track.scrollLeft > 4;
@@ -394,8 +382,6 @@ function initCarrierWhyMobileCarousel() {
 
             prev.disabled = !canGoPrev;
             next.disabled = !canGoNext;
-            setActiveState(prev, canGoPrev);
-            setActiveState(next, canGoNext);
         };
 
         const scrollByCard = (direction) => {

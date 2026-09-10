@@ -20,11 +20,11 @@
 <?php wp_body_open(); ?>
 <div class="page-loader">
     <div class="w-screen h-screen fixed inset-0 bg-white z-[99999] flex flex-col justify-center items-center loader [clip-path:inset(0%_0%_0%_0%)]">
-        <div class="size-[15vw] min-w-[72px] min-h-[72px] sm:size-[50vw] md:size-[25vw]">
+        <div class="size-[15vw] min-w-[3.7vw] min-h-[3.7vw] sm:size-[50vw] md:size-[25vw]">
             <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon-light.svg" class="w-full h-full" alt="Trac Logo">
         </div>
 
-        <p class="whitespace-nowrap w-[8.5em] flex items-center justify-center gap-[0.02em] text-brand-primary text-[1.85vw] absolute top-[65%] left-[51%] -translate-x-1/2 md:text-[5vw] sm:text-[7vw]">
+        <p class="whitespace-nowrap w-[8.5em] flex items-center justify-center gap-[0.02em] text-brand-primary text-[1.8vw] absolute top-[65%] left-[51%] -translate-x-1/2 md:text-[5vw] sm:text-[7vw]">
              <span class="inline-block">Loading</span>
              <span class="inline-flex items-center justify-start w-[1.6em]" aria-hidden="true">
              <span class="loader-dot">.</span>
@@ -34,7 +34,7 @@
              </span>
         </p>
 
-        <div class="size-[15vw] min-w-[72px] min-h-[72px] absolute [clip-path:inset(0%_100%_0%_0%)] overflow-hidden overlay-logo">
+        <div class="size-[15vw] min-w-[3.7vw] min-h-[3.7vw] absolute [clip-path:inset(0%_100%_0%_0%)] overflow-hidden overlay-logo">
             <img
                 src="<?php echo get_template_directory_uri(); ?>/src/imgs/trac-icon.svg"
                 class="w-full h-full object-contain"
@@ -130,7 +130,7 @@
     id="site-header"
     class="site-header fixed top-0 left-0 right-0 mx-auto w-full rounded-none z-[9999] bg-brand-primary"
  >
-        <div class="header-inner w-full px-[4vw] py-[1.15vw] flex items-center justify-between md:px-[7vw] md:py-5 sm:py-4">
+        <div class="header-inner w-full px-[4vw] py-[1.1vw] flex items-center justify-between md:px-[7vw] md:py-5 sm:py-4">
             <!-- Logo -->
             <div class="site-logo flex-shrink-0">
                 <?php if (has_custom_logo()): ?>
@@ -153,7 +153,7 @@
                 'Primary Navigation',
                 'trac',
             ); ?>">
-                <ul class="list-none flex items-center gap-[3.125vw]">
+                <ul class="list-none flex items-center gap-[3.1vw]">
                     <?php
                     // First nav link (About Us position)
                     $nav_link_0 = $trac_header_nav_links[0];
@@ -165,7 +165,7 @@
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             $nav_link_0['link'],
-                        ); ?>" class="nav-link text-[1.146vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out pb-[0.35vw] lg:pb-[10px] text-white hover:text-white under-multi<?php echo $is_nav_0_active
+                        ); ?>" class="nav-link text-[1.1vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out pb-[0.3vw] lg:pb-[10px] text-white hover:text-white under-multi<?php echo $is_nav_0_active
     ? ' is-active-link'
     : ''; ?>"<?php echo $is_nav_0_active ? ' aria-current="page"' : ''; ?>>
                             <?php echo trac_esc_html($nav_link_0['label']); ?>
@@ -182,7 +182,7 @@
                     <li class="menu-item menu-item-has-children relative group under-multi-parent" data-solutions-menu-item>
     <a
         href="<?php echo esc_url(home_url('#')); ?>"
-        class="nav-link text-[1.146vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out inline-flex items-center gap-[0.26vw] under-multi text-white hover:text-white<?php echo $is_solutions_active
+        class="nav-link text-[1.1vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out inline-flex items-center gap-[0.2vw] under-multi text-white hover:text-white<?php echo $is_solutions_active
             ? ' is-active-link'
             : ''; ?>"
         data-solutions-trigger
@@ -206,7 +206,7 @@
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             $nav_link_1['link'],
-                        ); ?>" class="nav-link text-[1.146vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out pb-[0.35vw] lg:pb-[10px] under-multi text-white hover:text-white<?php echo $is_nav_1_active
+                        ); ?>" class="nav-link text-[1.1vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out pb-[0.3vw] lg:pb-[10px] under-multi text-white hover:text-white<?php echo $is_nav_1_active
     ? ' is-active-link'
     : ''; ?>"<?php echo $is_nav_1_active
     ? ' aria-current="page"'
@@ -225,7 +225,7 @@
                     <li class="menu-item under-multi-parent">
                         <a href="<?php echo esc_url(
                             $nav_link_2['link'],
-                        ); ?>" class="nav-link text-[1.146vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out pb-[0.35vw] lg:pb-[10px] under-multi text-white hover:text-white<?php echo $is_nav_2_active
+                        ); ?>" class="nav-link text-[1.1vw] whitespace-nowrap transition-[color,background-size] duration-300 ease-out pb-[0.3vw] lg:pb-[10px] under-multi text-white hover:text-white<?php echo $is_nav_2_active
     ? ' is-active-link'
     : ''; ?>"<?php echo $is_nav_2_active ? ' aria-current="page"' : ''; ?>>
                             <?php echo trac_esc_html($nav_link_2['label']); ?>
@@ -236,7 +236,7 @@
             </nav>
 
             <!-- Header Actions -->
-            <div class="header-actions flex items-center gap-[0.833vw] md:gap-3">
+            <div class="header-actions flex items-center gap-[0.8vw] md:gap-3">
                 <!-- Cloud Login CTA Button - Desktop -->
                 <a href="<?php echo esc_url(
                     $trac_header_cta_link,
@@ -269,7 +269,7 @@
                 'trac',
             ); ?>">
                 <div class="mb-8 flex justify-end">
-                    <button class="mobile-menu-close flex h-[8.889vw] w-[8.889vw] items-center justify-center text-brand-primary" type="button" aria-label="<?php esc_attr_e(
+                    <button class="mobile-menu-close flex h-[8.8vw] w-[8.8vw] items-center justify-center text-brand-primary" type="button" aria-label="<?php esc_attr_e(
                         'Close menu',
                         'trac',
                     ); ?>">
@@ -282,15 +282,15 @@
                 <ul class="flex flex-col gap-3 m-0 p-0 list-none">
                     <li><a href="<?php echo esc_url(
                         $nav_link_0['link'],
-                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4vw] sm:text-[4.5vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_0_active
-    ? ' is-active-link'
-    : ''; ?>"<?php echo $is_nav_0_active ? ' aria-current="page"' : ''; ?>><?php echo trac_esc_html(
+                    ); ?>" class="mobile-nav-link flex min-h-[16.2vw] sm:min-h-[16.4vw] items-center rounded-[1.8vw] bg-brand-tint px-[5.1vw] sm:px-[5.3vw] font-body text-[4vw] sm:text-[4.5vw] leading-[1.45] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_0_active
+ ? ' is-active-link'
+ : ''; ?>"<?php echo $is_nav_0_active ? ' aria-current="page"' : ''; ?>><?php echo trac_esc_html(
     $nav_link_0['label'],
 ); ?></a></li>
-                    <li class="mobile-nav-solutions rounded-xl bg-brand-tint text-[#111111] overflow-hidden p-[5.185vw] sm:p-[5.185vw]<?php echo $is_solutions_active
+                    <li class="mobile-nav-solutions rounded-xl bg-brand-tint text-[#111111] overflow-hidden p-[5.1vw] sm:p-[5.1vw]<?php echo $is_solutions_active
     ? ' is-active-link'
     : ''; ?>">
-                        <button class="mobile-nav-solutions-trigger flex w-full items-center justify-between border-0 bg-transparent p-0 font-body text-[4vw] leading-[1.15] text-inherit text-left sm:text-[4.5vw]" type="button" aria-expanded="false" aria-controls="mobile-solutions-list">
+                        <button class="mobile-nav-solutions-trigger flex w-full items-center justify-between border-0 bg-transparent p-0 font-body text-[4vw] leading-[1.45] text-inherit text-left sm:text-[4.5vw]" type="button" aria-expanded="false" aria-controls="mobile-solutions-list">
                             <span><?php echo trac_esc_html(
                             $trac_header_solutions_label,
                         ); ?></span>
@@ -305,10 +305,10 @@
                             <?php foreach ($trac_solutions_menu_items as $solution_index => $solution_item): ?>
                                 <li><a href="<?php echo esc_url(
                                     $solution_item['url'],
-                                ); ?>" class="mobile-nav-solutions-link block py-4 border-white font-body  leading-[1.2] sm:text-24 md:text-30<?php echo $solution_index <
-                                $trac_solutions_menu_items_count - 1
-                                    ? ' border-b'
-                                    : ''; ?>"><?php echo trac_esc_html(
+                                ); ?>" class="mobile-nav-solutions-link block py-4 border-white font-body leading-[1.45] sm:text-24 md:text-30<?php echo $solution_index <
+ $trac_solutions_menu_items_count - 1
+ ? ' border-b'
+ : ''; ?>"><?php echo trac_esc_html(
     $solution_item['label'],
 ); ?></a></li>
                             <?php endforeach; ?>
@@ -316,18 +316,18 @@
                     </li>
                     <li><a href="<?php echo esc_url(
                         $nav_link_1['link'],
-                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4vw] sm:text-[4.5vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_1_active
-    ? ' is-active-link'
-    : ''; ?>"<?php echo $is_nav_1_active
+                    ); ?>" class="mobile-nav-link flex min-h-[16.2vw] sm:min-h-[16.4vw] items-center rounded-[1.8vw] bg-brand-tint px-[5.1vw] sm:px-[5.3vw] font-body text-[4vw] sm:text-[4.5vw] leading-[1.45] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_1_active
+ ? ' is-active-link'
+ : ''; ?>"<?php echo $is_nav_1_active
     ? ' aria-current="page"'
     : ''; ?>><?php echo trac_esc_html(
     $nav_link_1['label'],
 ); ?></a></li>
                     <li><a href="<?php echo esc_url(
                         $nav_link_2['link'],
-                    ); ?>" class="mobile-nav-link flex min-h-[16.296vw] sm:min-h-[16.481vw] items-center rounded-[1.852vw] bg-brand-tint px-[5.185vw] sm:px-[5.370vw] font-body text-[4vw] sm:text-[4.5vw] leading-[1.15] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_2_active
-    ? ' is-active-link'
-    : ''; ?>"<?php echo $is_nav_2_active ? ' aria-current="page"' : ''; ?>><?php echo trac_esc_html(
+                    ); ?>" class="mobile-nav-link flex min-h-[16.2vw] sm:min-h-[16.4vw] items-center rounded-[1.8vw] bg-brand-tint px-[5.1vw] sm:px-[5.3vw] font-body text-[4vw] sm:text-[4.5vw] leading-[1.45] text-[#111111] no-underline hover:text-[#111111]<?php echo $is_nav_2_active
+ ? ' is-active-link'
+ : ''; ?>"<?php echo $is_nav_2_active ? ' aria-current="page"' : ''; ?>><?php echo trac_esc_html(
     $nav_link_2['label'],
 ); ?></a></li>
 
@@ -335,13 +335,13 @@
 
                 <a href="<?php echo esc_url(
                     $trac_header_cta_link,
-                ); ?>" class="mt-auto flex min-h-[11.852vw] items-center justify-center rounded-full bg-brand-secondary px-[3.704vw] font-body text-[3.519vw] leading-none text-white text-center no-underline">
+                ); ?>" class="mt-auto flex min-h-[11.8vw] items-center justify-center rounded-full bg-brand-secondary px-[3.7vw] font-body text-[3.5vw] leading-none text-white text-center no-underline">
                     <?php echo trac_esc_html(
                         $trac_header_cta_text,
                     ); ?>
                 </a>
 
-                <div class="flex justify-center gap-[4.074vw] pt-[5.926vw] sm:gap-[3.333vw]">
+                <div class="flex justify-center gap-[4vw] pt-[5.9vw] sm:gap-[3.3vw]">
                     <?php foreach ($trac_mobile_social as $social): ?>
                         <?php if ($social['url'] && $social['icon']): ?>
                             <a href="<?php echo esc_url(
@@ -368,9 +368,9 @@
             $solution_item['url'],
         ); ?>" class="group w-[24%] h-[12vw] rounded-[0.8vw] bg-white border border-brand-primary pl-[1.5vw] p-[0.8vw] flex flex-col justify-center text-black hover:bg-brand-tertiary hover:border-brand-tertiary hover:text-white duration-300 ease-in-out">
             <div class="w-full flex flex-col gap-[1vw] h-full justify-center">
-                <h4 class="text-[1.8vw] font-body"><?php echo trac_esc_html(
+                <p class="text-[1.8vw] font-body"><?php echo trac_esc_html(
                     $solution_item['label'],
-                ); ?></h4>
+                ); ?></p>
             </div>
 
             <div class="w-full flex justify-end">

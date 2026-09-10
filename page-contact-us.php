@@ -61,7 +61,7 @@ if (have_posts()) {
             ?>
             <?php ob_start(); ?>
             <div class="contact-hero-form flex justify-end md:justify-start lg:order-3 lg:mb-[22px] lg:mt-[18px]" data-hero-reveal data-hero-delay="0.22">
-                <div class="contact-form-card w-full max-w-[42.708vw] rounded-[2vw] bg-white p-[3.5vw_2.5vw] md:max-w-full md:rounded-3xl md:p-12 sm:p-6">
+                <div class="contact-form-card w-full max-w-[42.7vw] rounded-[2vw] bg-white p-[3.5vw_2.5vw] md:max-w-full md:rounded-3xl md:p-12 sm:p-6">
                     <div class="contact-form-wrapper">
                         <?php if (function_exists('wpcf7_contact_form')) {
                             echo do_shortcode(
@@ -99,12 +99,12 @@ if (have_posts()) {
                     <?php endif; ?>
                 </div>
 
-                <div class="flex items-center gap-[1.302vw] md:gap-4 lg:gap-[18px] sm:gap-3">
+                <div class="flex items-center gap-[1.3vw] md:gap-4 lg:gap-[18px] sm:gap-3">
                     <?php foreach ($contact_social as $key => $url): ?>
                         <?php if ($url): ?>
                             <a href="<?php echo esc_url(
                                 $url,
-                            ); ?>" target="_blank" rel="noopener noreferrer" class="social-icon-orange flex h-[3.125vw] w-[3.125vw] items-center justify-center rounded-full border border-white transition-colors  lg:h-14 lg:w-14 md:h-12 md:w-12 sm:h-10 sm:w-10 group" aria-label="<?php echo esc_attr(
+                            ); ?>" target="_blank" rel="noopener noreferrer" class="social-icon-orange flex h-[3.1vw] w-[3.1vw] items-center justify-center rounded-full border border-white transition-colors  lg:h-14 lg:w-14 md:h-12 md:w-12 sm:h-10 sm:w-10 group" aria-label="<?php echo esc_attr(
                                 $contact_social_icons[$key]['label'],
                             ); ?>">
                                 <img src="<?php echo esc_url(
@@ -122,7 +122,7 @@ if (have_posts()) {
                 'section_classes' =>
                     'hero relative min-h-screen overflow-hidden !bg-brand-primary',
                 'container_classes' =>
-                    'hero-container relative z-[10] w-full px-[5vw] pb-[5.21vw]  md:px-[7vw] md:pt-[14vw]',
+                    'hero-container relative z-[10] w-full px-[5vw] pb-[5.2vw]  md:px-[7vw] md:pt-[14vw]',
                 'grid_classes' =>
                     'contact-hero-grid hero-grid flex justify-between gap-[6vw] lg:flex-col lg:items-start lg:gap-7',
                 'text_classes' =>
@@ -131,7 +131,7 @@ if (have_posts()) {
                 'text_footer_wrapper_classes' => 'lg:order-4 lg:w-full',
                 'title_lines' => [get_field('hero_title_line_1')],
                 'title_classes' =>
-                    'hero-title text-[4vw] font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4 lg:order-1 lg:w-full',
+                    'hero-title text-[4vw] font-heading text-white tracking-[0vw] mb-6 md:mb-6 sm:mb-4 lg:order-1 lg:w-full',
                 'subtitle' => get_field('hero_description'),
                 'subtitle_classes' =>
                     'hero-subtitle font-body text-24 font-medium w-[78%] text-white mb-0 lg:order-2 lg:w-full lg:max-w-full',

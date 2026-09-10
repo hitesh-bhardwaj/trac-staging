@@ -21,18 +21,18 @@ $section_image_alt = get_field('communities_section_image_alt');
     <div class="grid w-full grid-cols-[0.7fr_1.3fr] items-center md:grid-cols-1 md:gap-[8vw] gap-[6vw]">
         <div class="flex flex-col items-start">
             <div
-                class="mb-[4vw] flex items-center justify-start gap-[1.2vw] md:mb-[5vw] md:gap-3 sm:mb-[8vw]"
+                class="mb-[3vw] flex items-center justify-start gap-[1.2vw] md:mb-[5vw] md:gap-3 sm:mb-[8vw]"
                 data-animate="fade-up"
             >
                 <span class="h-[0.2vw] w-[1.5vw] bg-white md:h-[3px] md:w-6 sm:w-5"></span>
 
-                <span class="font-body text-30 leading-none text-white sm:text-[4.5vw]">
+                <span class="font-body text-30 leading-none text-white sm:text-[4vw]">
                     <?php echo trac_esc_html($section_label); ?>
                 </span>
             </div>
 
             <h2
-                class="font-heading flex w-full flex-col text-66 leading-[1.12] tracking-[0.01em] text-white"
+                class="font-heading flex w-full flex-col text-66 leading-[1.3] tracking-[0.01em] text-white"
              >
                 <span data-heading-anim>
 
@@ -40,7 +40,7 @@ $section_image_alt = get_field('communities_section_image_alt');
                  </span>
             </h2>
              <div
-            class="group relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:mt-8 hidden md:block"
+            class="group relative h-[44vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:mt-8 hidden md:block"
             data-animate="fade-up"
         >
             <img
@@ -81,7 +81,7 @@ $section_image_alt = get_field('communities_section_image_alt');
         </div>
 
         <div
-            class="group relative h-[50vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:hidden"
+            class="group relative h-[44vw] w-full overflow-hidden rounded-[0.9vw] md:h-[58vw] md:rounded-[2vw] sm:h-[68vw] sm:rounded-[4vw] md:hidden"
             data-animate="fade-up"
         >
             <img

@@ -2046,26 +2046,6 @@ function initSectionAnimations() {
         );
     });
 
-    // Card reveal animations
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach((card, index) => {
-        gsap.fromTo(
-            card,
-            { opacity: 0, y: 40 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                delay: (index % 3) * 0.1, // Stagger within row
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 85%',
-                    once: true,
-                },
-            },
-        );
-    });
 }
 
 /**

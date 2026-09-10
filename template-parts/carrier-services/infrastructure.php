@@ -20,16 +20,16 @@ $infra_image_2_alt = get_field('cs_infra_image_2_alt');
         <div class="max-w-[46vw] md:max-w-full">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">
                 <span class="w-6 h-1 bg-white"></span>
-                <span class="font-body text-white text-30 sm:!text-[4vw]">
+                <span class="font-body text-white text-30 sm:text-[4vw]">
                     <?php echo trac_esc_html($label); ?>
                 </span>
             </div>
 
-            <h2 class="font-heading text-66 font-normal leading-[1.15] tracking-[0.01em] text-white mb-[1.6vw] md:mb-6" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.3] tracking-[0.01em] text-white mb-[1.6vw] md:mb-6" data-heading-anim>
                 <?php echo trac_esc_html($title); ?>
             </h2>
 
-            <p class="font-body text-24 leading-[1.5] text-white/90 " data-para-anim>
+            <p class="font-body text-24 leading-[1.45] text-white/90" data-para-anim>
                 <?php echo trac_esc_html($subtitle); ?>
             </p>
         </div>
@@ -37,7 +37,7 @@ $infra_image_2_alt = get_field('cs_infra_image_2_alt');
         <div class="mt-[5vw] md:mt-12 sm:mt-10">
             <div class="grid grid-cols-2 gap-[3vw] md:gap-5 sm:grid-cols-1 sm:gap-7">
                 <figure
-                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[28px] sm:rounded-[22px] group"
+                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[3vw] group"
                     data-animate="fade-up"
                     data-delay="0.1"
                 >
@@ -50,7 +50,7 @@ $infra_image_2_alt = get_field('cs_infra_image_2_alt');
                 </figure>
 
                 <figure
-                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[28px] sm:rounded-[22px] group"
+                    class="overflow-hidden rounded-[1.6vw] bg-white md:rounded-[3vw] group"
                     data-animate="fade-up"
                     data-delay="0.15"
                 >

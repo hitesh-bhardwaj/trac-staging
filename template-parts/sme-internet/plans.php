@@ -24,12 +24,12 @@ for ($i = 1; $i <= 2; $i++) {
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
+                <span class="font-body text-brand-secondary text-30 sm:text-[4vw]"><?php echo trac_esc_html(
                     $label,
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[5vw] md:mb-10 text-left" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.3] tracking-[0.01em] text-text-primary mb-[5vw] md:mb-10 text-left" data-heading-anim>
                 <?php echo trac_esc_html($title); ?>
             </h2>
 
@@ -45,7 +45,7 @@ for ($i = 1; $i <= 2; $i++) {
                                 class="h-full w-full  scale-105 object-cover transition-transform duration-[600ms] ease-out group-hover:scale-100"
                                 loading="lazy"
                             >
-                            <span class="sme-plan-speed-pill absolute left-[1.4vw] top-[1.4vw] inline-flex items-center rounded-full bg-white/60 border border-[#2F5FA0] backdrop-blur-lg px-[1.2vw] py-[0.5vw] font-body text-30 text-brand-quaternary sm:left-3 sm:top-3 sm:w-fit sm:justify-center sm:p-0 sm:text-[28px] sm:leading-[1.2]">
+                            <span class="sme-plan-speed-pill absolute left-[1.4vw] top-[1.4vw] inline-flex items-center rounded-full bg-white/60 border border-[#2F5FA0] backdrop-blur-lg px-[1.2vw] py-[0.5vw] font-body text-30 text-brand-quaternary sm:left-3 sm:top-3 sm:w-fit sm:justify-center sm:px-7 sm:py-2  leading-[1.45]">
                                 Unlimited - <span class="font-bold ml-1"><?php echo trac_esc_html(
                                     $p['speed'],
                                 ); ?></span>
@@ -56,7 +56,7 @@ for ($i = 1; $i <= 2; $i++) {
                             <h3 class="font-heading text-white text-36 font-normal mb-[1vw] md:mb-3">
                                 <?php echo trac_esc_html($p['name']); ?>
                             </h3>
-                            <p class="font-body text-white text-24  leading-[1.5] mb-[2vw] md:mb-6 w-[70%]">
+                            <p class="font-body text-white text-24 leading-[1.45] mb-[2vw] md:mb-6 w-[70%]">
                                 <?php echo trac_esc_html($p['description']); ?>
                             </p>
 
@@ -65,7 +65,7 @@ for ($i = 1; $i <= 2; $i++) {
                                     <span class="font-heading font-medium text-white text-36">
                                         <?php echo trac_esc_html($p['price']); ?>
                                     </span>
-                                    <span class="font-body text-white/70 text-[1vw] md:text-[2.5vw]">
+                                    <span class="font-body text-white/70 text-[1vw] sm:text-[4vw] md:text-[2.5vw]">
                                         <?php echo trac_esc_html($p['period']); ?>
                                     </span>
                                 </div>

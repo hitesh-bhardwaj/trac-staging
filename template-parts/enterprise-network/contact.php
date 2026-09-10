@@ -16,18 +16,18 @@ $contact_form_css =
 
 <link rel="stylesheet" href="<?php echo esc_url($contact_form_css); ?>">
 
-<section id="get-in-touch" class="enterprise-contact relative overflow-hidden bg-white pt-[10vw] pb-[5vw] md:py-20 sm:py-16" data-section="enterprise-contact">
+<section id="get-in-touch" class="enterprise-contact relative bg-white pt-[10vw] pb-[5vw] md:py-20 sm:py-16" data-section="enterprise-contact">
     <div class="w-full px-[5vw] md:px-[7vw] flex items-start justify-between ">
-        <div class=" max-w-[104rem] mx-auto grid grid-cols-[1fr_1fr] gap-[6vw] items-start md:grid-cols-1 md:gap-12 md:max-w-full">
+        <div class=" grid grid-cols-[1fr_1fr] gap-[10vw] items-start md:grid-cols-1 md:gap-12 md:max-w-full">
             <div class="pt-[0.5vw] md:pt-0">
-                <div class="flex items-center gap-[0.729vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">
+                <div class="flex items-center gap-[0.7vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">
                     <span class="w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1"></span>
-                    <span class="font-body text-30 text-brand-secondary"><?php echo trac_esc_html(
+                    <span class="font-body text-30 text-brand-secondary sm:text-[4vw]"><?php echo trac_esc_html(
                         $enterprise_contact_label,
                     ); ?></span>
                 </div>
 
-                <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:mb-6" >
+                <h2 class="font-heading text-66 font-normal leading-[1.3] tracking-[0.01em] text-text-primary mb-[1.8vw] md:mb-6" >
                     <?php foreach ($enterprise_contact_title_lines as $line): ?>
                         <span data-heading-anim class="block"><?php echo trac_esc_html(
                             $line,
@@ -35,18 +35,18 @@ $contact_form_css =
                     <?php endforeach; ?>
                 </h2>
 
-                <p class="font-body text-24 leading-[1.58] text-text-body mb-[3.5vw] md:mb-10 sm:mb-8 max-w-[30vw] md:max-w-[80vw]" data-para-anim data-delay="0.2">
+                <p class="font-body text-24 leading-[1.45] text-text-body mb-[3.5vw] md:mb-10 sm:mb-8 max-w-[30vw] md:max-w-[80vw]" data-para-anim data-delay="0.2">
                     <?php echo trac_esc_html($enterprise_contact_description); ?>
                 </p>
 
-                <div class="font-body text-24 leading-[1.7] text-text-primary ">
+                <div class="font-body text-24 leading-[1.45] text-text-primary">
                     <p data-para-anim class="mb-3 md:mb-2"><?php echo trac_esc_html(
                         $enterprise_contact_prompt_text,
                     ); ?></p>
-                    <div data-animate="fade-up" class="under-multi-parent w-fit leading-[1.2]">
+                    <div data-animate="fade-up" class="under-multi-parent w-fit leading-[1.45]">
                         <a href="mailto:<?php echo esc_attr(
                             $enterprise_contact_email,
-                        ); ?>" class="under-multi font-body text-24 tracking-[0.03em] text-text-body transition-colors hover:text-brand-primary focus-visible:text-brand-primary  ">
+                        ); ?>" class="under-multi font-body text-24 tracking-[0.03em] text-text-body transition-colors block hover:text-brand-quaternary  duration-700 focus-visible:text-brand-primary  ">
                             <?php echo trac_esc_html($enterprise_contact_email); ?>
                         </a>
                     </div>
@@ -54,7 +54,7 @@ $contact_form_css =
             </div>
 
             <div class="flex justify-end md:justify-start" data-animate="fade-up" data-delay="0.25">
-                <div class="contact-form-card w-full max-w-[42.708vw] md:max-w-full bg-white rounded-[2vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.167vw_2.604vw] md:p-12 sm:p-6">
+                <div class="contact-form-card w-full max-w-[42.7vw] md:max-w-full bg-white rounded-[2vw] md:rounded-3xl border-[1.5px] border-brand-primary p-[4.1vw_2.6vw] md:p-12 sm:p-6">
                     <div class="contact-form-wrapper">
                         <?php if (function_exists('wpcf7_contact_form')) {
                             echo do_shortcode(

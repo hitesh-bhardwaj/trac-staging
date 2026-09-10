@@ -31,19 +31,19 @@
     /*
    * Typography Scale (1920px = 100vw)
    * Formula: px / 1920 * 100 = vw
-   * 96px = 5vw, 24px = 1.25vw, 22px = 1.146vw
+   * 96px = 5vw, 24px = 1.2vw, 22px = 1.1vw
    */
-    --text-hero: 4vw; /* 77px at 1920 */
-    --text-h1: 3.646vw; /* 70px at 1920 */
-    --text-h2: 2.604vw; /* 50px at 1920 */
-    --text-h3: 1.875vw; /* 35px at 1920 */
-    --text-body-lg: 1.25vw; /* 24px at 1920 */
-    --text-body: 1.146vw; /* 22px at 1920 */
-    --text-body-sm: 0.833vw; /* 16px at 1920 */
-    --text-30: 1.57vw; /* 30px at 1920 */
-    --text-24: 1.25vw; /* 24px at 1920 */
-    --text-36: 1.875vw; /* 36px at 1920 */
-    --text-66: 3.438vw; /* 66px at 1920 */
+    --text-hero: 4.25vw; /* 77px at 1920 */
+    --text-h1: 3.6vw; /* 70px at 1920 */
+    --text-h2: 2.6vw; /* 50px at 1920 */
+    --text-h3: 1.8vw; /* 35px at 1920 */
+    --text-body-lg: 1.2vw; /* 24px at 1920 */
+    --text-body: 1.1vw; /* 22px at 1920 */
+    --text-body-sm: 0.8vw; /* 16px at 1920 */
+    --text-30: 1.5vw; /* 30px at 1920 */
+    --text-24: 1.2vw; /* 24px at 1920 */
+    --text-36: 1.8vw; /* 36px at 1920 */
+    --text-66: 3.4vw; /* 66px at 1920 */
 
     /* Line Heights */
     --leading-hero: 1.29; /* 124px / 96px */
@@ -52,9 +52,9 @@
     --leading-relaxed: 1.83; /* 44px / 24px */
 
     /* Spacing (1920px base) */
-    --space-section: 5.21vw; /* 100px at 1920 */
-    --space-container: 5.21vw; /* 100px padding */
-    --space-gap: 1.042vw; /* 20px at 1920 */
+    --space-section: 5.2vw; /* 100px at 1920 */
+    --space-container: 5.2vw; /* 100px padding */
+    --space-gap: 1vw; /* 20px at 1920 */
 
     /* Transitions */
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -62,7 +62,7 @@
     --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
     /* Header */
-    --header-height: 4.948vw; /* 95px at 1920 */
+    --header-height: 4.9vw; /* 95px at 1920 */
 }
 
 .mouse-follower {
@@ -267,7 +267,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     /* Container */
     .container {
         @apply w-full mx-auto;
-        max-width: 1400px;
+        max-width: 72.9vw;
     }
 
     /* Buttons - Pill style from Figma (1920px base) */
@@ -277,8 +277,8 @@ html.js [data-hero-reveal].is-hero-revealed {
         font-size: var(--text-body); /* 22px at 1920 */
         padding: 0.5vw 2vw; /* 16px 24px at 1920 */
         gap: 2vw; /* 15px at 1920 */
-        border-radius: 2.344vw; /* 45px at 1920 */
-        min-height: 3.385vw; /* 65px at 1920 */
+        border-radius: 2.3vw; /* 45px at 1920 */
+        min-height: 3.3vw; /* 65px at 1920 */
         position: relative;
         overflow: visible;
         /* Shared button animation tuning (line + text gap + dots move/fade) */
@@ -290,7 +290,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     .btn-primary {
         @apply bg-[#E86224] text-white relative;
         /* @apply focus:ring-[#E86224]; */
-        /* border: 0.057vw solid #E86224; */
+        /* border: 0vw solid #E86224; */
     }
     .btn-primary:hover {
         @apply bg-white text-[#E86224];
@@ -342,15 +342,15 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 
     .btn-lg {
-        font-size: 1.25vw; /* 24px at 1920 */
+        font-size: 1.2vw; /* 24px at 1920 */
         padding: 1.5vw 1.5vw; /* 20px 30px at 1920 */
         min-height: 4vw; /* 75px at 1920 */
     }
 
     .btn-sm {
-        font-size: 0.833vw; /* 16px at 1920 */
-        padding: 0.625vw 1.042vw; /* 12px 20px at 1920 */
-        min-height: 2.604vw; /* 50px at 1920 */
+        font-size: 0.8vw; /* 16px at 1920 */
+        padding: 0.6vw 1vw; /* 12px 20px at 1920 */
+        min-height: 2.6vw; /* 50px at 1920 */
     }
 
     /* Tablet button adjustments */
@@ -383,8 +383,8 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 
     .btn-icon .dot {
-        width: 0.313vw; /* 6px at 1920 */
-        height: 0.313vw;
+        width: 0.3vw; /* 6px at 1920 */
+        height: 0.3vw;
         @apply rounded-full;
     }
 
@@ -485,11 +485,11 @@ html.js [data-hero-reveal].is-hero-revealed {
     /* background: rgba(255, 255, 255, 1); */
     /* backdrop-filter: blur(0px); */
     /* -webkit-backdrop-filter: blur(0px); */
-    /* box-shadow: 0 0.26vw 1.042vw rgba(0, 0, 0, 0.05); */
+    /* box-shadow: 0 0.2vw 1vw rgba(0, 0, 0, 0.05); */
 }
 
 .site-header.is-scrolled {
-    box-shadow: 0 0.26vw 1.042vw rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0.2vw 1vw rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 1024px) {
@@ -738,7 +738,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 
 .btn-icon {
     display: grid;
-    grid-template-columns: repeat(2, 0.313vw);
+    grid-template-columns: repeat(2, 0.3vw);
     gap: 0.2vw;
 }
 
@@ -870,7 +870,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     left: 50%;
     width: 100vw;
     height: 25vw;
-    min-height: 360px;
+    min-height: 18.7vw;
     overflow: hidden;
     transform: translateX(-50%);
     --service-stack-spread: 7.5vw;
@@ -939,14 +939,20 @@ html.js [data-hero-reveal].is-hero-revealed {
 
 .card {
     border-radius: 1.2vw;
+}
+
+/* Only enable the hover-lift transition after the GSAP scroll-reveal (which
+   also animates `transform`) has finished, so the two don't fight over the
+   same property and cause jitter during the reveal. */
+.card.is-animated {
     transition:
         transform 0.4s ease,
         box-shadow 0.4s ease;
 }
 
 .card:hover {
-    transform: translateY(-0.26vw);
-    box-shadow: 0 1.042vw 2.604vw rgba(16, 65, 127, 0.1);
+    transform: translateY(-0.2vw);
+    box-shadow: 0 1vw 2.6vw rgba(16, 65, 127, 0.1);
 }
 
 .site-main {
@@ -998,7 +1004,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 }
 
 .service-card .card-image {
-    margin: 1.042vw;
+    margin: 1vw;
     flex-shrink: 0;
     overflow: hidden;
 }
@@ -1125,27 +1131,33 @@ html.js [data-hero-reveal].is-hero-revealed {
         --text-h1: 5.5vw;
         --text-h2: 4.5vw;
         --text-h3: 4vw;
-        --text-body-lg: 2.25vw;
+        --text-body-lg: 2.2vw;
         --text-body: 2vw;
-        --text-body-sm: 1.65vw;
+        --text-body-sm: 1.6vw;
         --space-container: 4vw;
         --header-height: 80px;
         --text-30: 3vw;
         --text-24: 2.5vw;
         --text-36: 4.5vw;
-        --text-66: 5.15vw;
+        --text-66: 5.1vw;
     }
+     .service-card .card-image {
+        margin: 3vw 3vw 0;
+    }
+
 
     .mouse-follower {
         display: none;
     }
 
     .btn {
-        font-size: 18px;
-        padding: 14px 24px;
+        min-width: 40vw;
+        font-size: 2.5vw;
+        justify-content: space-between;
+        padding: 2vw 5vw;
         gap: 12px;
         border-radius: 45px;
-        min-height: 58px;
+        min-height: 70px;
         --btn-line-w: 24px;
         --btn-line-gap: 12px;
     }
@@ -1180,7 +1192,8 @@ html.js [data-hero-reveal].is-hero-revealed {
         justify-content: space-between;
         font-size: 4.5vw;
         padding: 4vw 10vw;
-        width: 75vw;
+        min-width: 70vw;
+        width: fit-content;
         border-radius: 40px;
         min-height: 52px;
         --btn-line-w: 20px;
@@ -1210,7 +1223,7 @@ html.js [data-hero-reveal].is-hero-revealed {
     }
 
     .service-card .card-image {
-        margin: 12px 12px 0;
+        margin: 5vw 5vw 0;
     }
 
     [data-parallax-footer] {

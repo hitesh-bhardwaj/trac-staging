@@ -11,7 +11,7 @@
     color: #111111;
     padding-left: 4.5vw;
     padding-right: 4.5vw;
-    border-radius: 1.25vw;
+    border-radius: 1.2vw;
     transition:
         background-color 0.3s ease,
         color 0.3s ease,
@@ -23,7 +23,7 @@
 .faq-item[data-open] {
     background: #389fd8;
     color: #ffffff;
-    border-radius: 1.25vw;
+    border-radius: 1.2vw;
     border: none;
     margin: 1.2vw 0;
 }
@@ -51,8 +51,8 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 35px;
-    height: 35px;
+    width: 1.8vw;
+    height: 1.8vw;
     color: inherit;
 }
 
@@ -91,19 +91,20 @@
 @media (max-width: 541px) {
     .faq-item {
         padding-left: 16px;
-        padding-right: 16px;
+        padding-right: 20px;
     }
 
     .faq-item[data-open] {
-        border-radius: 16px;
+        border-radius: 3vw;
         padding-left: 16px;
-        padding-right: 16px;
+        padding-right: 20px;
         margin: 16px 0;
     }
 
     .faq-icon-wrap {
         width: 25px;
         height: 25px;
+        padding-top: 10px;
     }
 
     .faq-bar-h {

@@ -21,53 +21,53 @@ for ($i = 1; $i <= 4; $i++) {
 }
 ?>
 
-<section class="enterprise-services py-[7vw] md:py-20 sm:py-16" data-section="enterprise-services">
+<section class="enterprise-services pt-[7%] pb-[10%] md:py-20 sm:py-16" data-section="enterprise-services">
     <div class="w-full px-[5vw] md:px-[7vw]">
         <div class="text-left">
             <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body  text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
+                <span class="font-body  text-brand-secondary text-30 sm:text-[4vw]"><?php echo trac_esc_html(
                     $enterprise_services_label,
                 ); ?></span>
             </div>
 
-            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw] text-left sm:mb-[8vw]">
+            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.3] tracking-[0.01em] text-text-primary mb-[2vw] text-left sm:mb-[6vw]">
                 <?php echo trac_esc_html($enterprise_services_title); ?>
             </h2>
 
-            <p class="w-[70%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:space-y-2 md:mb-8 text-left md:w-full sm:mb-[8vw]" data-para-anim data-delay="0.2">
+            <p class="w-[70%] font-body text-24 leading-[1.45] text-text-body  mb-[2.6vw]  md:mb-8 text-left md:w-full sm:mb-[10vw]" data-para-anim data-delay="0.2">
                 <?php echo trac_esc_html($enterprise_services_description); ?>
             </p>
 
             <div class="grid grid-cols-2 gap-10 mt-[5vw] md:grid-cols-1 md:gap-8 text-left">
                 <?php foreach ($enterprise_services as $index => $card): ?>
                     <div
-                        class="bg-brand-tertiary rounded-[32px] p-10 flex flex-col min-h-[440px] md:min-h-0 md:p-8 text-left"
+                        class="bg-brand-tertiary rounded-[32px] p-10 flex flex-col min-h-[22.9vw] md:min-h-0 md:p-8 text-left md:rounded-[4vw]"
                         data-animate="fade-up"
                         <?php if ($index > 0): ?>
                             data-delay="<?php echo esc_attr($index * 0.1); ?>"
                         <?php endif; ?>
                     >
                         <div>
-                            <div class="size-[4.5vw] md:size-[7vw] sm:size-[10vw] mb-10">
+                            <div class="size-[4.5vw] md:size-[7vw] sm:size-[10vw] mb-10 sm:mb-6">
                                 <img src="<?php echo esc_url(
                                     $card['img'],
                                 ); ?>" alt="services" class="w-full h-full" loading="lazy">
                             </div>
 
-                            <h3 class="font-heading text-white text-36  mb-6 font-normal sm:!text-[7vw]">
+                            <h3 class="font-heading text-white text-36  mb-6 font-normal sm:!text-[7vw] sm:mb-4 leading-[1.3]">
                                 <?php echo trac_esc_html($card['title']); ?>
                             </h3>
 
-                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw] md:text-[2.5vw] sm:text-[4vw]">
+                            <p class="font-body text-white leading-[1.45] mb-3 text-[1.1vw] md:text-[2.5vw] sm:text-[4vw]">
                                 <?php echo trac_esc_html($card['para']); ?>
                             </p>
                         </div>
 
-                        <div class="mt-auto pt-10">
+                        <div class="mt-auto pt-10 w-full">
                             <a href="<?php echo esc_url(
                                 $card['link'],
-                            ); ?>" class="btn btn-primary group magnetic">
+                            ); ?>" class="btn btn-primary group magnetic w-full!">
                         <span class="btn-line"></span>
                         <span class="btn-text"><?php echo trac_esc_html(
                             $card['btn_text'],

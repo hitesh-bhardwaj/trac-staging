@@ -47,16 +47,16 @@ $cta_logo_class = $cta_args['logo_class'] ?? '';
             <div class="text-center w-[70%] md:max-w-full <?php echo esc_attr(
                 $cta_content_class,
             ); ?>">
-                <h2 class="w-full font-heading font-normal text-66 leading-[1.2] tracking-[0.01em] text-white mb-[2.5vw] md:mb-8 sm:mb-6 <?php echo esc_attr(
-                    $cta_title_class,
-                ); ?>" data-heading-anim>
+                <h2 class="w-full font-heading font-normal text-66 leading-[1.3] tracking-[0.01em] text-white mb-[2.5vw] md:mb-8 sm:mb-6 <?php echo esc_attr(
+ $cta_title_class,
+ ); ?>" data-heading-anim>
                     <?php echo trac_esc_html($cta_title); ?>
                 </h2>
 
                 <?php if (!empty($cta_para)): ?>
-                    <p class="mx-auto w-[70%] font-body font-normal text-24 leading-[1.5] text-white/85 mb-[2.5vw] md:mb-8 sm:mb-6 <?php echo esc_attr(
-                        $cta_para_class,
-                    ); ?>" data-para-anim data-delay="0.15">
+                    <p class="mx-auto w-[70%] font-body font-normal text-24 leading-[1.45] text-white/85 mb-[2.5vw] md:mb-8 sm:mb-6 <?php echo esc_attr(
+ $cta_para_class,
+ ); ?>" data-para-anim data-delay="0.15">
                         <?php echo trac_esc_html($cta_para); ?>
                     </p>
                 <?php endif; ?>

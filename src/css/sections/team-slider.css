@@ -139,8 +139,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.95vw;
-    height: 2.95vw;
+    width: 2.9vw;
+    height: 2.9vw;
     background: transparent;
     line-height: 1;
     transition:
@@ -211,8 +211,8 @@
 
     .team-slider-active-card {
         width: 100%;
-        max-width: 450px;
-        height: 590px;
+        max-width: 525px;
+        height: 680px;
         border-radius: 20px;
     }
 

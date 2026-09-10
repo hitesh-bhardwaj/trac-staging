@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     <div class="about-container w-full px-[5vw] py-[7vw] md:px-[7vw] md:py-20  sm:py-[20%] sm:pb-[30%]">
         <div class="about-label flex items-center gap-[1vw] mb-14 md:gap-4 md:mb-24 sm:mb-14" data-animate="fade-up">
             <span class="label-line w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1 sm:w-5"></span>
-            <span class="label-text font-body text-30 text-brand-secondary"><?php echo trac_esc_html(
+            <span class="label-text font-body text-30 text-brand-secondary sm:text-[4vw]"><?php echo trac_esc_html(
                 get_field('about_label'),
             ); ?></span>
         </div>
@@ -24,12 +24,12 @@ if (!defined('ABSPATH')) {
             </div>
 
             <div class="about-content w-[50%] mt-[-7vw] md:w-full">
-	                <h2 data-para-anim  class="font-heading font-normal text-66 leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw]  md:leading-[1.3] md:mb-8  sm:mb-6">
+	                <h2 data-para-anim  class="font-heading font-normal text-66 leading-[1.3] tracking-[0.01em] text-text-primary mb-[2vw] md:mb-8 sm:mb-6">
 	                    <?php echo trac_esc_html(get_field('about_title')); ?>
 	                </h2>
-                <div class="w-full flex gap-[7vw] mb-[3vw] sm:flex-col sm:gap-[2vw] sm:mb-6">
+                <div class="w-full flex gap-[7vw] mb-[3vw] ml-[1vw] sm:flex-col sm:gap-[2vw] sm:mb-6">
 
-                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[2.5vw] md:leading-[1.6] md:space-y-2 sm:space-y-[2vw]  ">
+                <ul class="font-body text-24 leading-[1.45] text-text-body space-y-4 md:text-[2.5vw] md:space-y-2 sm:space-y-[2vw]">
                     <?php
                     $list_items = [
                         get_field('about_list_item_1'),
@@ -37,14 +37,14 @@ if (!defined('ABSPATH')) {
                         get_field('about_list_item_5'),
                     ];
                     foreach ($list_items as $item): ?>
-                        <li data-animate="fade-up" data-delay="0.08" class="list-none flex items-center gap-[0.625vw] md:gap-2 sm:text-[4vw]">
-                            <span class="list-dot w-[0.375vw] h-[0.375vw] bg-text-primary rounded-full flex-shrink-0 md:w-1.5 md:h-1.5"></span>
+                        <li data-animate="fade-up" data-delay="0.08" class="list-none flex items-center gap-3 md:gap-2 sm:text-[4vw]">
+                            <span class="list-dot w-[0.3vw] h-[0.3vw] bg-text-primary rounded-full flex-shrink-0 md:w-1.5 md:h-1.5"></span>
                             <span><?php echo trac_esc_html($item); ?></span>
                         </li>
                     <?php endforeach;
                     ?>
                 </ul>
-                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[2.5vw] md:leading-[1.6] md:space-y-2  sm:space-y-[2vw]  ">
+                <ul class="font-body text-24 leading-[1.45] text-text-body space-y-4 md:text-[2.5vw] md:space-y-2 sm:space-y-[2vw]">
                     <?php
                     $list_items = [
                         get_field('about_list_item_2'),
@@ -52,8 +52,8 @@ if (!defined('ABSPATH')) {
                         get_field('about_list_item_6'),
                     ];
                     foreach ($list_items as $item): ?>
-                        <li data-animate="fade-up" data-delay="0.08" class="list-none flex items-center gap-[0.625vw] md:gap-2 sm:text-[4vw]">
-                            <span class="list-dot w-[0.375vw] h-[0.375vw] bg-text-primary rounded-full flex-shrink-0 md:w-1.5 md:h-1.5"></span>
+                        <li data-animate="fade-up" data-delay="0.08" class="list-none flex items-center gap-3 md:gap-2 sm:text-[4vw]">
+                            <span class="list-dot w-[0.3vw] h-[0.3vw] bg-text-primary rounded-full flex-shrink-0 md:w-1.5 md:h-1.5"></span>
                             <span><?php echo trac_esc_html($item); ?></span>
                         </li>
                     <?php endforeach;
@@ -62,7 +62,7 @@ if (!defined('ABSPATH')) {
 </div>
                 
 
-                <p data-para-anim data-delay="0.16" class="font-subheading font-normal w-[90%] text-36 leading-[1.33] tracking-[0.01em] text-text-primary md:text-[1.25rem] md:leading-[1.4]">
+                <p data-para-anim data-delay="0.16" class="font-subheading font-normal w-[90%] text-36 leading-[1.45] tracking-[0.01em] text-text-primary md:text-[1.25rem]">
                     <?php echo trac_esc_html(get_field('about_subtitle')); ?>
                 </p>
             </div>

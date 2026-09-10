@@ -37,16 +37,16 @@ $apply_button_text = get_field('careers_positions_button_text');
 ?>
 
 <section class="open-positions py-[7vw] md:py-20 sm:py-16" data-section="open-positions" id="open-positions">
-    <div class="w-full px-[5vw] md:px-[4vw] sm:px-[6vw]">
+    <div class="w-full px-[5vw] md:px-[7vw]">
         <div class="text-left">
             <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body  text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
+                <span class="font-body  text-brand-secondary text-30 sm:text-[4vw]"><?php echo trac_esc_html(
                     $positions_label,
                 ); ?></span>
             </div>
 
-            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.24] tracking-[0.01em] text-text-primary mb-[2vw]  md:mb-8  sm:mb-6 text-left">
+            <h2 data-heading-anim class="font-heading text-66 font-normal leading-[1.3] tracking-[0.01em] text-text-primary mb-[2vw] md:mb-8 sm:mb-6 text-left">
                 <?php echo trac_esc_html($positions_title); ?>
             </h2>
 
@@ -63,7 +63,7 @@ $apply_button_text = get_field('careers_positions_button_text');
                             <h3 class="font-heading text-white text-36 font-normal">
                                 <?php echo trac_esc_html($card['title']); ?>
                             </h3>
-                            <p class="font-body text-white leading-[1.7] mb-6 text-24">
+                            <p class="font-body text-white leading-[1.45] mb-6 text-24">
                                 <?php echo trac_esc_html(
                                     trim(
                                         $card['location'] .
@@ -74,7 +74,7 @@ $apply_button_text = get_field('careers_positions_button_text');
                                 ); ?>
                             </p>
 
-                            <p class="font-body text-white leading-[1.7] mb-3 text-[1.15vw] md:text-[2.5vw] sm:!text-[4vw]">
+                            <p class="font-body text-white leading-[1.45] mb-3 text-[1.1vw] md:text-[2.5vw] sm:text-[4vw]">
                                 <?php echo trac_esc_html($card['para']); ?>
                             </p>
                         </div>

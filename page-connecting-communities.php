@@ -38,7 +38,7 @@ if (have_posts()) {
             <?php get_template_part('template-parts/common/cta', null, [
                 'pattern_top_class' => 'top-[-15%]',
                 'button_wrapper_class' => '',
-                'logo_class' => 'bottom-[1.25vw] md:bottom-4',
+                'logo_class' => 'bottom-[1.2vw] md:bottom-4',
                 'container_class' => '!py-[5vw] md:!py-12 sm:!py-10',
                 'content_class' => '!w-full',
                 'title_class' => '!w-full',

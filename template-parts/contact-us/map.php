@@ -16,14 +16,14 @@ $office_1_address = get_field('contact_office_1_address');
             <!-- Section Label -->
            <div class="flex items-center justify-start gap-3 mb-12 md:mb-10" data-animate="fade-up">
                 <span class="w-6 h-1 bg-brand-secondary"></span>
-                <span class="font-body  text-brand-secondary text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
+                <span class="font-body  text-brand-secondary text-30 sm:text-[4vw]"><?php echo trac_esc_html(
                     $map_label,
                 ); ?></span>
             </div>
 
 
             <!-- Heading -->
-            <h2 class="font-heading w-fit text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[4vw] md:mb-12 sm:mb-0" data-heading-anim>
+            <h2 class="font-heading w-fit text-66 font-normal leading-[1.3] tracking-[0.01em] text-text-primary mb-[4vw] md:mb-12 sm:mb-0" data-heading-anim>
                 <?php echo trac_esc_html($map_title); ?>
             </h2>
 
@@ -41,7 +41,7 @@ $office_1_address = get_field('contact_office_1_address');
 
                 <!-- Location Markers -->
                 <!-- Rwanda Location -->
-                <div class="location-marker absolute opacity-0" style="left: 59.5%; top: 42%;" data-location="rwanda">
+                <div class="location-marker absolute opacity-0" style="left: 54.5%; top: 55%;" data-location="rwanda">
                     <!-- Pulsing Circle -->
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <div class="w-[1.6vw] h-[1.6vw] md:w-12 md:h-12 sm:w-8 sm:h-8 rounded-full border border-brand-secondary animate-ping opacity-75"></div>
@@ -57,7 +57,7 @@ $office_1_address = get_field('contact_office_1_address');
                 <!-- Connector Lines (positioned/rotated via JS to link marker -> card) -->
                
                 <div class="pointer-events-none absolute left-0 top-0 z-[5] origin-left rotate-[140deg] sm:rotate-[110deg]" data-map-connector="rwanda" aria-hidden="true">
-                    <span class="block h-[2px] w-[305px] origin-left scale-x-0 rounded-full bg-brand-secondary will-change-transform md:w-[300px] sm:w-[125px] sm:h-[1px]" data-map-line></span>
+                    <span class="block h-[2px] w-[13.5vw] origin-left scale-x-0 rounded-full bg-brand-secondary will-change-transform md:w-[23vw] sm:w-[20vw] sm:h-[1px]" data-map-line></span>
                 </div>
 
                 <!-- Address Cards -->
@@ -65,7 +65,7 @@ $office_1_address = get_field('contact_office_1_address');
                     <h3 class="font-body text-24 font-medium text-white md:mb-2 sm:mb-[1vw] sm:text-[4vw]"><?php echo trac_esc_html(
                         $office_1_name,
                     ); ?></h3>
-                    <p class="font-body text-24 leading-[1.25] text-white sm:text-[4vw]">
+                    <p class="font-body text-24 leading-[1.45] text-white sm:text-[4vw]">
                         <?php echo nl2br(trac_esc_html($office_1_address)); ?>
                     </p>
                 </div>

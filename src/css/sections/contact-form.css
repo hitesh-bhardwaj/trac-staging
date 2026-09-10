@@ -27,9 +27,9 @@
     border: none;
     border-bottom: 1.5px solid #10417f;
     background: transparent;
-    padding: 0.25vw 0;
+    padding: 0.2vw 0;
     font-family: var(--font-body);
-    font-size: 1.146vw;
+    font-size: 1.1vw;
     color: #333333;
     outline: none;
     transition: border-color 0.3s ease;
@@ -42,7 +42,7 @@
     color: #333333;
     opacity: 1;
     font-family: var(--font-body);
-    font-size: 1.146vw;
+    font-size: 1.1vw;
 }
 
 .contact-form-wrapper input[type='text']:focus,
@@ -55,26 +55,17 @@
 /* Textarea Specific */
 .contact-form-wrapper textarea {
     resize: vertical;
-    min-height: 60px;
-    height: 80px;
+    min-height: 3.1vw;
+    height: 4.1vw;
 }
 
 /* Labels */
 .contact-form-wrapper label {
     display: block;
     font-family: var(--font-body);
-    font-size: 1.146vw;
+    font-size: 1.1vw;
     color: #333333;
-    margin-bottom: 0.521vw;
-}
-
-/* Required Asterisk */
-.contact-form-wrapper
-    .wpcf7-form-control.wpcf7-validates-as-required
-    + span.wpcf7-not-valid-tip {
-    font-size: 0.833vw;
-    color: #dc2626;
-    margin-top: 0.3vw;
+    margin-bottom: 0.5vw;
 }
 
 /* Submit Button - now rendered as the shared .btn .btn-primary hero button
@@ -91,7 +82,7 @@
 
 /* Validation Messages */
 .contact-form-wrapper .wpcf7-not-valid-tip {
-    font-size: 0.833vw;
+    font-size: 0.8vw;
     color: #dc2626;
     margin-top: 0.3vw;
     display: block;
@@ -104,7 +95,7 @@
     padding: 1vw;
     margin-top: 1vw;
     border-radius: 0.5vw;
-    font-size: 0.938vw;
+    font-size: 0.9vw;
 }
 
 .contact-form-wrapper .wpcf7-mail-sent-ok {
@@ -114,7 +105,7 @@
     padding: 1vw;
     margin-top: 1vw;
     border-radius: 0.5vw;
-    font-size: 0.938vw;
+    font-size: 0.9vw;
 }
 
 .contact-form-wrapper .wpcf7-response-output {
@@ -157,7 +148,7 @@
 .contact-form-wrapper input[type='file'].wpcf7-file {
     position: absolute;
     width: 100%;
-    height: 6.719vw;
+    height: 6.7vw;
     opacity: 0;
     cursor: pointer;
     z-index: 2;
@@ -172,9 +163,9 @@
     content: '';
     display: block;
     width: 100%;
-    height: 6.719vw;
+    height: 6.7vw;
     background-color: #2f5fa0;
-    border-radius: 1.302vw;
+    border-radius: 1.3vw;
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
@@ -186,8 +177,8 @@
 .contact-form-wrapper .wpcf7-form-control-wrap.file-upload::after {
     content: '';
     display: block;
-    width: 2.135vw;
-    height: 1.771vw;
+    width: 2.1vw;
+    height: 1.7vw;
     background-color: white;
     -webkit-mask-image: url('../../assets/icons/upload-icon.svg');
     mask-image: url('../../assets/icons/upload-icon.svg');
@@ -231,11 +222,11 @@
 
 .contact-form-wrapper .file-upload-hint {
     position: absolute;
-    bottom: 1.35vw;
+    bottom: 1.3vw;
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-body);
-    font-size: 0.833vw;
+    font-size: 0.8vw;
     color: white;
     z-index: 1;
     pointer-events: none;
@@ -256,9 +247,9 @@
 /* File Name Display - populated by CF7's DOM reflection via [data-reflection-of] */
 .contact-form-wrapper .wpcf7-file-name {
     font-family: var(--font-body);
-    font-size: 0.938vw;
+    font-size: 0.9vw;
     color: #10417f;
-    margin-top: 0.521vw;
+    margin-top: 0.5vw;
     text-align: center;
     display: block;
 }
@@ -271,9 +262,9 @@
 .contact-form-wrapper .solution-picker-label {
     display: block;
     font-family: var(--font-body);
-    font-size: 1.146vw;
+    font-size: 1.1vw;
     color: #333333;
-    /* margin-bottom: 0.521vw; */
+    margin-bottom: 0.5vw;
 }
 
 .contact-form-wrapper .solution-picker-toggle {
@@ -286,13 +277,14 @@
     background: transparent;
     padding: 0.2vw 0;
     font-family: var(--font-body);
-    font-size: 1.146vw;
+    font-size: 1.1vw;
     color: #10417f;
     cursor: pointer;
     text-align: left;
 }
 
 .contact-form-wrapper .solution-picker-value {
+    color: #333333;
     text-align: left;
     min-height: 1.4em;
     color:#333333;
@@ -318,10 +310,10 @@
     display: block;
     height: 18vw;
     overflow-y: auto;
-    padding: 1.25vw 1.458vw;
+    padding: 1.2vw 1.4vw;
     background-color: #2f5fa0;
-    border-radius: 1.302vw;
-    box-shadow: 0 0.729vw 1.667vw rgba(11, 31, 58, 0.25);
+    border-radius: 1.3vw;
+    box-shadow: 0 0.7vw 1.6vw rgba(11, 31, 58, 0.25);
 }
 
 .contact-form-wrapper .solution-picker-panel[hidden] {
@@ -330,9 +322,9 @@
 
 .contact-form-wrapper .solution-picker-title {
     font-family: var(--font-body);
-    font-size: 1.042vw;
+    font-size: 1vw;
     color: white;
-    margin-bottom: 0.938vw;
+    margin-bottom: 0.9vw;
 }
 
 .contact-form-wrapper .solution-options {
@@ -360,7 +352,7 @@
 .contact-form-wrapper .service-options label {
     display: flex;
     align-items: center;
-    gap: 0.625vw;
+    gap: 0.6vw;
     margin: 0;
     cursor: pointer;
 }
@@ -378,7 +370,7 @@
     position: relative;
     padding-left: 1.6vw;
     font-family: var(--font-body);
-    font-size: 1.042vw;
+    font-size: 1vw;
     color: white;
 }
 
@@ -389,8 +381,8 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 1.146vw;
-    height: 1.146vw;
+    width: 1.1vw;
+    height: 1.1vw;
     border: 1.5px solid white;
     border-radius: 50%;
     background: transparent;
@@ -434,6 +426,11 @@
         padding: 8px 0;
     }
 
+    .contact-form-wrapper textarea {
+        min-height: 80px;
+        height: 100px;
+    }
+
     .contact-form-wrapper input[type='text']::placeholder,
     .contact-form-wrapper input[type='email']::placeholder,
     .contact-form-wrapper input[type='tel']::placeholder,
@@ -447,7 +444,7 @@
     }
 
     .contact-form-wrapper .wpcf7-not-valid-tip {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .contact-form-wrapper .wpcf7-validation-errors,
@@ -494,6 +491,7 @@
 
     .contact-form-wrapper .solution-picker-label {
         font-size: 18px;
+        margin-bottom: 6px;
     }
 
     .contact-form-wrapper .solution-picker-toggle {
@@ -548,6 +546,11 @@
         padding: 6px 0;
     }
 
+    .contact-form-wrapper textarea {
+        min-height: 60px;
+        height: 80px;
+    }
+
     .contact-form-wrapper input[type='text']::placeholder,
     .contact-form-wrapper input[type='email']::placeholder,
     .contact-form-wrapper input[type='tel']::placeholder,
@@ -561,7 +564,7 @@
     }
 
     .contact-form-wrapper .wpcf7-not-valid-tip {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .contact-form-wrapper .wpcf7-validation-errors,
@@ -608,18 +611,13 @@
 
     .contact-form-wrapper .solution-picker-label {
         font-size: 16px;
-        position: absolute;
-        top: 30%;
-        left: 0;
-        z-index: 1;
-        margin: 0;
-        transform: translateY(-50%);
+        margin-bottom: 4px;
     }
 
     .contact-form-wrapper .solution-picker-toggle {
         align-items: center;
         font-size: 16px;
-        min-height: 56px;
+        min-height: 35px;
         padding: 0;
     }
 

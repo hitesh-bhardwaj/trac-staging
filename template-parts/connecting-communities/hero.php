@@ -22,7 +22,7 @@ $hero_icons_image_alt = is_array($hero_icons_image)
 ob_start();
 if ($hero_icons_image_url):
     ?>
-<div class="mt-[2.604vw] md:mt-8" data-hero-reveal data-hero-delay="0.28">
+<div class="mt-[2.6vw] md:mt-8" data-hero-reveal data-hero-delay="0.28">
     <img
         src="<?php echo esc_url($hero_icons_image_url); ?>"
         alt="<?php echo esc_attr($hero_icons_image_alt); ?>"
@@ -45,10 +45,10 @@ get_template_part('template-parts/common/hero', null, [
     'media_classes' => 'hero-media w-[55%] md:w-full sm:pb-10',
     'title_lines' => [$hero_title],
     'title_classes' =>
-        'hero-title text-[4vw] font-heading text-white tracking-[0.05vw] mb-6 md:mb-8 sm:mb-7',
+        'hero-title text-[4vw] font-heading text-white tracking-[0vw] mb-6 md:mb-8 sm:mb-7',
     'subtitle_1' => $hero_subtitle,
     'subtitle_1_classes' =>
-        'hero-subtitle-1 font-heading pr-0.2 text-36 font-normal leading-[1.35] text-white mb-[1vw] md:mb-7 md:text-[34px] sm:mb-6 sm:text-[6vw]',
+        'hero-subtitle-1 font-heading pr-0.2 text-36 font-normal leading-[1.3] text-white mb-[1vw] md:mb-7 md:text-[34px] sm:mb-6 sm:text-[6vw]',
     'subtitle' => $hero_description,
     'subtitle_classes' =>
         'hero-subtitle font-body text-24 font-medium  text-white mb-0 md:w-full md:max-w-full md:text-left',

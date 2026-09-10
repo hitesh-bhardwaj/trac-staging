@@ -20,39 +20,39 @@ for ($i = 1; $i <= 4; $i++) {
 <section class="relative overflow-hidden bg-white py-[5vw] md:pb-[13%] sm:pb-[20%] sm:pt-0 md:pt-[10%] min-h-auto" data-section="services" id="solutions">
     <div class="services-container w-full">
         <div class="services-heading px-[5vw] md:px-[7vw] md:py-8">
-            <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-6 md:gap-3" data-animate="fade-up">
+            <div class="services-label mb-[2.5vw] flex items-center justify-start gap-[0.8vw] md:mb-6 md:gap-3" data-animate="fade-up">
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-5"></span>
 
-                <span class="label-text font-body text-30 text-brand-secondary">
+                <span class="label-text font-body text-30 text-brand-secondary sm:text-[4vw]">
                     <?php echo trac_esc_html(get_field('services_label')); ?>
                 </span>
             </div>
 
-            <h2 data-heading-anim class="services-title font-heading text-66 leading-[1.12] tracking-[0.01em] text-text-primary ">
+            <h2 data-heading-anim class="services-title font-heading text-66 leading-[1.3] tracking-[0.01em] text-text-primary">
                 <?php echo trac_esc_html(get_field('services_title')); ?>
             </h2>
         </div>
 <div data-animate="fade-up">
 
-        <div class="services-cards-wrapper mt-[7vw] relative w-full md:mt-[8vw]" data-service-slider>
+        <div class="services-cards-wrapper mt-[7vw] relative w-full md:mt-[3vw]" data-service-slider>
             <div class="services-slider-viewport">
                 <div class="services-cards">
                     <?php foreach ($services as $index => $service): ?>
                         <article
-                            class="service-card !bg-brand-tertiary overflow-hidden rounded-[1.2vw] border border-brand-dark md:border-none md:rounded-3xl"
+                            class="service-card !bg-brand-tertiary overflow-hidden rounded-[1.2vw] border border-brand-dark md:border-none md:rounded-2xl"
                             data-service-card
                             data-card-index="<?php echo esc_attr($index); ?>"
                         >
                             <div class="card-inner grid h-full grid-cols-[1fr_auto] items-center md:flex md:flex-col-reverse md:items-start">
-                                <div class="card-content flex h-full flex-col justify-between p-[3.073vw] pr-[2vw] md:p-6">
+                                <div class="card-content flex h-full flex-col justify-between p-[3vw] pt-[4vw] pr-[2vw] md:p-5 md:pb-8">
                                     <div>
-                                        <h3 class="card-title font-subheading mb-[1.25vw] text-36 font-normal text-white md:mb-3 sm:text-[6vw]">
+                                        <h3 class="card-title font-subheading mb-[1.2vw] text-36 font-normal text-white md:mb-3 sm:text-[6vw]">
                                             <?php echo trac_esc_html(
                                                 $service['title'],
                                             ); ?>
                                         </h3>
 
-                                        <p class="font-body max-w-[35vw] text-24 leading-[1.5] text-white md:max-w-full ">
+                                        <p class="font-body max-w-[33vw] text-24 leading-[1.45] text-white md:max-w-full">
                                             <?php echo trac_esc_html(
                                                 $service['description'],
                                             ); ?>
@@ -75,7 +75,7 @@ for ($i = 1; $i <= 4; $i++) {
                                     </a>
                                 </div>
 
-                                <div class="card-image relative mr-[0.938vw] h-[calc(100%-2vw)] w-[34.375vw] overflow-hidden rounded-[1vw] md:mx-6 md:mb-6 md:h-[52vw] md:w-[calc(100%-1.3rem)] md:rounded-2xl">
+                                <div class="card-image relative mr-[0.9vw] h-[calc(100%-2vw)] w-[34.3vw] overflow-hidden rounded-[1vw]  md:h-[52vw] md:w-[calc(100%-3rem)] sm:w-[calc(100%-2.4rem)] md:rounded-xl">
                                     <img
                                         src="<?php echo esc_url(
                                             $service['image'],
@@ -92,10 +92,10 @@ for ($i = 1; $i <= 4; $i++) {
                 </div>
             </div>
 
-            <div class="services-slider-controls mt-[4.688vw] flex items-center justify-center gap-[0.625vw] md:mt-8 md:gap-3">
+            <div class="services-slider-controls mt-[4.6vw] flex items-center justify-center gap-[0.6vw] md:mt-8 md:gap-3" data-animate="fade-up">
                 <button
                     type="button"
-                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
+                    class="services-nav-btn flex h-[2.7vw] min-h-11 w-[4.6vw] min-w-[3.9vw] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
                     data-service-prev
                     aria-label="Previous service"
                 >
@@ -107,7 +107,7 @@ for ($i = 1; $i <= 4; $i++) {
 
                 <button
                     type="button"
-                    class="services-nav-btn flex h-[2.708vw] min-h-11 w-[4.688vw] min-w-[76px] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
+                    class="services-nav-btn flex h-[2.7vw] min-h-11 w-[4.6vw] min-w-[3.9vw] items-center justify-center rounded-full border border-brand-secondary bg-white text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white md:h-12 md:w-20"
                     data-service-next
                     aria-label="Next service"
                 >

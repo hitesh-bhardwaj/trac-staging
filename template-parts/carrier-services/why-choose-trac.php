@@ -16,20 +16,20 @@ for ($i = 1; $i <= 5; $i++) {
 }
 ?>
 
-<section class="why-choose-trac-section relative overflow-hidden bg-brand-tint px-[5vw] py-[6.25vw] md:py-16 md:px-[6vw] sm:py-12" data-section="why-choose-trac">
+<section class="why-choose-trac-section relative overflow-hidden bg-brand-tint px-[5vw] py-[6.2vw] md:py-16 md:px-[6vw] sm:py-12" data-section="why-choose-trac">
     <div class="relative z-[2] mx-auto max-w-[92rem]">
         <div class="flex items-center justify-start gap-3 mb-8 md:mb-6" data-animate="fade-up">
             <span class="w-6 h-1 bg-brand-secondary"></span>
-            <span class="font-body text-brand-secondary text-24 sm:!text-[4vw]"><?php echo trac_esc_html(
+            <span class="font-body text-brand-secondary text-24 sm:text-[4vw]"><?php echo trac_esc_html(
                 $label,
             ); ?></span>
         </div>
 
-        <h2 class="font-heading text-66 font-normal leading-[1.15] tracking-[0.01em] text-text-primary mb-[1.4vw] md:mb-6" data-heading-anim>
+        <h2 class="font-heading text-66 font-normal leading-[1.3] tracking-[0.01em] text-text-primary mb-[1.4vw] md:mb-6" data-heading-anim>
             <?php echo trac_esc_html($title); ?>
         </h2>
 
-        <p class="font-body text-24 leading-[1.5] text-text-body " data-para-anim>
+        <p class="font-body text-24 leading-[1.45] text-text-body" data-para-anim>
             <?php echo trac_esc_html($subtitle); ?>
         </p>
 
@@ -42,7 +42,7 @@ for ($i = 1; $i <= 5; $i++) {
                     <span class="font-heading text-white text-36 font-normal sm:leading-none">
                         <?php echo trac_esc_html($card['number']); ?>
                     </span>
-                    <p class="font-body text-white text-24 leading-[1.35] sm:max-w-[92%]">
+                    <p class="font-body text-white text-24 leading-[1.45] sm:max-w-[92%]">
                         <?php echo trac_esc_html($card['text']); ?>
                     </p>
                 </article>
@@ -50,20 +50,22 @@ for ($i = 1; $i <= 5; $i++) {
         </div>
 
         <div class="carrier-why-mobile-nav mt-7 hidden justify-center gap-3 md:flex sm:flex" aria-hidden="true">
-            <button class="carrier-why-mobile-nav__button carrier-why-mobile-nav__button--prev flex h-[38px] w-16 items-center justify-center rounded-full border border-brand-primary/10 bg-white/55 text-brand-primary/20 transition-colors duration-300 disabled:cursor-default disabled:opacity-100" type="button" aria-label="<?php esc_attr_e(
+            <button class="carrier-why-mobile-nav__button carrier-why-mobile-nav__button--prev flex h-12 w-20 items-center justify-center rounded-full border border-brand-secondary  text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white disabled:cursor-default disabled:opacity-100" type="button" aria-label="<?php esc_attr_e(
                 'Previous card',
                 'trac',
             ); ?>">
-                <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
-                    <path d="M8.2 1L1.2 8L8.2 15M2.2 8H21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M9.3 1.2L2 8.5L9.3 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 8.5H26" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </button>
-            <button class="carrier-why-mobile-nav__button carrier-why-mobile-nav__button--next flex h-[38px] w-16 items-center justify-center rounded-full border border-brand-primary/10 bg-white/55 text-brand-primary/20 transition-colors duration-300 disabled:cursor-default disabled:opacity-100" type="button" aria-label="<?php esc_attr_e(
+            <button class="carrier-why-mobile-nav__button carrier-why-mobile-nav__button--next flex h-12 w-20 items-center justify-center rounded-full border border-brand-secondary  text-brand-secondary transition-all duration-300 hover:bg-brand-secondary hover:text-white disabled:cursor-default disabled:opacity-100" type="button" aria-label="<?php esc_attr_e(
                 'Next card',
                 'trac',
             ); ?>">
-                <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
-                    <path d="M13.8 1L20.8 8L13.8 15M1 8H19.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M18.7 1.2L26 8.5L18.7 15.8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M25 8.5H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </button>
         </div>

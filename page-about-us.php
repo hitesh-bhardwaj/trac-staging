@@ -25,9 +25,9 @@ get_header();
             'text_classes' =>
                 'hero-text w-[45%] md:w-full md:max-w-full relative z-[10]',
             'title_classes' =>
-                'hero-title font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4',
+                'hero-title font-heading text-white tracking-[0vw] mb-6 md:mb-6 sm:mb-4',
             'subtitle_classes' =>
-                'hero-subtitle font-body text-24 font-medium text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6',
+                'hero-subtitle font-body text-24 font-medium text-white mb-[3.1vw] md:w-full md:max-w-full md:mb-8 sm:mb-6',
             'title' => get_field('hero_title'),
             'subtitle' => get_field('hero_subtitle_2'),
             'primary' => [

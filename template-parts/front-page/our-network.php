@@ -29,26 +29,26 @@ $network_description_paragraphs = trac_split_lines(
     data-section="our-network"
     id="our-network"
 >
-    <div class=" pt-[7vw] md:py-[10%] sm:py-8">
+    <div class=" pt-[8%] md:py-[10%] sm:py-[15%]">
         <div class="space-y-[3vw] px-[5vw] md:px-[7vw]">
             <div
                 data-animate="fade-up"
-                class="flex items-center justify-start gap-[0.833vw] md:mb-5 md:gap-3 sm:mb-4"
-            >
+                class="flex items-center justify-start gap-[0.8vw] md:mb-6 md:gap-3 "
+             >
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
 
-                <span class="label-text font-body text-30 text-brand-secondary">
+                <span class="label-text font-body text-30 text-brand-secondary sm:text-[4vw]">
                     <?php echo trac_esc_html($network_label); ?>
                 </span>
             </div>
 
-            <h2 class="services-title font-heading flex w-[65%] flex-col text-66 leading-[1.12] tracking-[0.01em] text-text-primary sm:w-full">
+            <h2 class="services-title font-heading flex w-[65%] flex-col text-66 leading-[1.3] tracking-[0.01em] text-text-primary sm:w-full">
                 <span data-heading-anim>
                    <?php echo trac_esc_html($network_title); ?>
                 </span>
             </h2>
 
-            <div class="w-[53%] space-y-[1vw] text-24 sm:w-full md:w-[80%]">
+            <div class="w-[53%] space-y-[1vw] text-24 sm:w-full sm:space-y-4 md:w-[80%] sm:pt-4">
                 <?php foreach ($network_description_paragraphs as $paragraph): ?>
                     <p data-para-anim>
                         <?php echo trac_esc_html($paragraph); ?>
@@ -57,7 +57,7 @@ $network_description_paragraphs = trac_split_lines(
             </div>
         </div>
 
-        <div class="relative mt-[7vw] h-[55vw] w-screen overflow-hidden md:mt-8 md:h-[60vw] sm:hidden md:hidden">
+        <div class="relative mt-[4vw] h-[55vw] w-screen overflow-hidden md:mt-8 md:h-[60vw] sm:hidden md:hidden">
             <img
                 src="<?php echo esc_url(
                     get_template_directory_uri() . '/src/imgs/network-img.png',
@@ -224,11 +224,11 @@ $network_description_paragraphs = trac_split_lines(
                     Rusumo
                 </span>
 
-                <span class="absolute left-[22.2%] top-[47%] whitespace-nowrap text-[1.05vw] font-bold leading-none text-text-primary/40 md:text-[2vw] sm:text-[3.2vw]">
+                <span class="absolute left-[22.2%] top-[47%] whitespace-nowrap text-[1vw] font-bold leading-none text-text-primary/40 md:text-[2vw] sm:text-[3.2vw]">
                     DRC
                 </span>
 
-                <span class="absolute left-[76.8%] top-[34.5%] whitespace-nowrap text-[1.05vw] font-bold leading-[1.1] text-text-primary/40 md:text-[2vw] sm:text-[3.2vw]">
+                <span class="absolute left-[76.8%] top-[34.5%] whitespace-nowrap text-[1vw] font-bold leading-[1.45] text-text-primary/40 md:text-[2vw] sm:text-[3.2vw]">
                     EAST<br>
                     AFRICA
                 </span>

@@ -39,11 +39,11 @@ $title_tag = isset($args['title_tag']) ? (string) $args['title_tag'] : 'h1';
 
 $title_classes = isset($args['title_classes'])
     ? (string) $args['title_classes']
-    : 'hero-title text-[4vw] font-heading text-white tracking-[0.05vw] mb-6 md:mb-6 sm:mb-4';
+    : 'hero-title text-[4vw] font-heading text-white tracking-[0vw] mb-6 md:mb-6 sm:mb-4';
 $subtitle_1 = isset($args['subtitle_1']) ? (string) $args['subtitle_1'] : '';
 $subtitle_1_classes = isset($args['subtitle_1_classes'])
     ? (string) $args['subtitle_1_classes']
-    : 'hero-subtitle-1 font-heading pr-0.2 text-36 font-normal leading-[1.35] text-white mb-[1vw] md:text-[28px] sm:text-[20px]';
+    : 'hero-subtitle-1 font-heading pr-0.2 text-36 font-normal leading-[1.3] text-white mb-[1vw] md:text-[28px] sm:text-[20px]';
 $subtitle = $args['subtitle'] ?? '';
 $subtitle_paragraphs = is_array($subtitle)
     ? array_values(
@@ -57,7 +57,7 @@ $subtitle_paragraphs = is_array($subtitle)
         : []);
 $subtitle_classes = isset($args['subtitle_classes'])
     ? (string) $args['subtitle_classes']
-    : 'hero-subtitle font-body font-medium w-[80%] text-white mb-[3.125vw] md:w-full md:max-w-full md:mb-8 sm:mb-6';
+    : 'hero-subtitle font-body font-medium w-[80%] text-white mb-[3.1vw] md:w-full md:max-w-full md:mb-8 sm:mb-6';
 
 $primary =
     isset($args['primary']) && is_array($args['primary'])

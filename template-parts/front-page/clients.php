@@ -32,7 +32,7 @@ for ($i = 1; $i <= 9; $i++) {
                         ? 'false'
                         : 'true'; ?>">
                         <?php foreach ($client_logos as $logo): ?>
-                            <div class="client-logo-card flex w-[17.031vw] flex-[0_0_17.031vw] items-center justify-center p-[2vw] aspect-[327/239] md:w-[220px] md:flex-[0_0_220px] md:p-6 sm:aspect-square sm:w-[170px] sm:flex-[0_0_170px] sm:p-4">
+                            <div class="client-logo-card flex w-[17vw] flex-[0_0_17vw] items-center justify-center p-[2vw] aspect-[327/239] md:w-[220px] md:flex-[0_0_220px] md:p-6 sm:aspect-square sm:w-[170px] sm:flex-[0_0_170px] sm:p-4">
                                 <img
                                     src="<?php echo esc_url($logo['src']); ?>"
                                     alt="<?php echo $set === 0

@@ -23,20 +23,18 @@ for ($i = 1; $i <= 3; $i++) {
         <div class="max-w-[92rem] mx-auto">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-5" data-animate="fade-up">
                 <span class="w-6 h-1 bg-white"></span>
-                <span class="font-body text-white/90 text-30 sm:!text-[4vw]"><?php echo trac_esc_html(
+                <span class="font-body text-white/90 text-30 sm:text-[4vw]"><?php echo trac_esc_html(
                     $label,
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-white mb-[5vw] md:mb-10 text-left" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.3] tracking-[0.01em] text-white mb-[5vw] md:mb-10 text-left" data-heading-anim>
                 <?php echo trac_esc_html($title); ?>
             </h2>
 
-            <div class="grid grid-cols-3 gap-[1.8vw] md:grid-cols-1 md:gap-6 items-stretch">
+            <div class="grid grid-cols-3 gap-[1.8vw] md:grid-cols-1 md:gap-6 items-stretch" >
                 <?php foreach ($solutions as $i => $s): ?>
-                    <div class="card bg-white rounded-[1.4vw] sm:rounded-[4.5vw] p-[2vw] py-[5vw] md:p-8 sm:p-7 sm:pt-[15vw] sm:pb-[20vw] flex flex-col items-start gap-[1.6vw] sm:gap-20" data-animate="fade-up" data-delay="<?php echo esc_attr(
-                        0.08 * $i,
-                    ); ?>">
+                    <div class="card bg-white rounded-[1.4vw] sm:rounded-[4.5vw] p-[2vw] py-[5vw] md:p-8 sm:p-7 sm:pt-[15vw] sm:pb-[20vw] flex flex-col items-start gap-[1.6vw] sm:gap-10"  data-animate="fade-up">
                         <img
                             src="<?php echo esc_url($s['icon']); ?>"
                             alt="solutions icon"
@@ -44,10 +42,10 @@ for ($i = 1; $i <= 3; $i++) {
                             loading="lazy"
                         >
                         <div>
-                            <h3 class="font-heading text-text-primary text-[1.6vw] font-normal mb-[0.8vw] md:mb-3">
+                            <h3 class="font-heading text-text-primary text-[1.6vw] sm:text-[6.5vw] md:text-[4vw] font-normal mb-[0.8vw] md:mb-3">
                                 <?php echo trac_esc_html($s['title']); ?>
                             </h3>
-                            <p class="font-body text-text-body text-24 leading-[1.55]">
+                            <p class="font-body text-text-body text-24 leading-[1.45]">
                                 <?php echo trac_esc_html($s['description']); ?>
                             </p>
                         </div>
