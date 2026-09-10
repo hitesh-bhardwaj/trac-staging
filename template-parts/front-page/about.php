@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     <div class="about-container w-full px-[5vw] py-[7vw] md:px-[7vw] md:py-20  sm:py-[20%] sm:pb-[30%]">
         <div class="about-label flex items-center gap-[1vw] mb-14 md:gap-4 md:mb-24 sm:mb-14" data-animate="fade-up">
             <span class="label-line w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1 sm:w-5"></span>
-            <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg"><?php echo trac_esc_html(
+            <span class="label-text font-body text-30 text-brand-secondary"><?php echo trac_esc_html(
                 get_field('about_label'),
             ); ?></span>
         </div>
@@ -29,7 +29,7 @@ if (!defined('ABSPATH')) {
 	                </h2>
                 <div class="w-full flex gap-[7vw] mb-[3vw] sm:flex-col sm:gap-[2vw] sm:mb-6">
 
-                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[2.5vw] md:leading-[1.6] md:space-y-2   sm:text-base sm:space-y-[2vw]  ">
+                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[2.5vw] md:leading-[1.6] md:space-y-2 sm:space-y-[2vw]  ">
                     <?php
                     $list_items = [
                         get_field('about_list_item_1'),
@@ -44,7 +44,7 @@ if (!defined('ABSPATH')) {
                     <?php endforeach;
                     ?>
                 </ul>
-                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[2.5vw] md:leading-[1.6] md:space-y-2 sm:text-base sm:space-y-[2vw]  ">
+                <ul class="font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] md:text-[2.5vw] md:leading-[1.6] md:space-y-2  sm:space-y-[2vw]  ">
                     <?php
                     $list_items = [
                         get_field('about_list_item_2'),
@@ -62,7 +62,7 @@ if (!defined('ABSPATH')) {
 </div>
                 
 
-                <p data-para-anim data-delay="0.16" class="font-subheading font-normal w-[90%] text-36 leading-[1.33] tracking-[0.01em] text-text-primary md:text-[1.25rem] md:leading-[1.4] sm:text-xl">
+                <p data-para-anim data-delay="0.16" class="font-subheading font-normal w-[90%] text-36 leading-[1.33] tracking-[0.01em] text-text-primary md:text-[1.25rem] md:leading-[1.4]">
                     <?php echo trac_esc_html(get_field('about_subtitle')); ?>
                 </p>
             </div>

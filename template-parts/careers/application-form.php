@@ -25,7 +25,7 @@ $contact_form_css =
             </div>
 
                 <!-- Heading -->
-                <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
+                <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:mb-6" data-heading-anim>
                     <?php echo trac_esc_html($application_title); ?>
                 </h2>
 

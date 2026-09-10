@@ -60,7 +60,7 @@ $apply_button_text = get_field('careers_positions_button_text');
                         <?php endif; ?>
                     >
                         <div>
-                            <h3 class="font-heading text-white text-36 md:text-2xl font-normal">
+                            <h3 class="font-heading text-white text-36 font-normal">
                                 <?php echo trac_esc_html($card['title']); ?>
                             </h3>
                             <p class="font-body text-white leading-[1.7] mb-6 text-24">

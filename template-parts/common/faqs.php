@@ -30,7 +30,7 @@ $faqs_css = get_template_directory_uri() . '/src/css/sections/faqs.css';
             <?php if ($section_label): ?>
                 <div class="faqs-label flex items-center gap-[0.729vw] mb-10 md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
                     <span class="label-line w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1 sm:w-5"></span>
-                    <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
+                    <span class="label-text font-body text-30 text-brand-secondary ">
                         <?php echo trac_esc_html($section_label); ?>
                     </span>
                 </div>
@@ -69,7 +69,7 @@ $faqs_css = get_template_directory_uri() . '/src/css/sections/faqs.css';
                         aria-controls="<?php echo esc_attr($answer_id); ?>"
                         id="<?php echo esc_attr($button_id); ?>"
                     >
-                        <h3 class="faq-question-text font-heading text-[1.458vw] text-text-primary md:text-xl sm:text-lg">
+                        <h3 class="faq-question-text font-heading text-[1.458vw] text-text-primary md:text-[2.5vw] sm:text-[4.2vw]">
                             <?php echo trac_esc_html($question); ?>
                         </h3>
 
@@ -88,7 +88,7 @@ $faqs_css = get_template_directory_uri() . '/src/css/sections/faqs.css';
                             ? 'false'
                             : 'true'; ?>"
                     >
-                        <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-primary pb-[2.135vw] w-[85%] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
+                        <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-primary pb-[2.135vw] w-[85%] md:max-w-full md:pb-6 sm:pb-4">
                             <?php echo wp_kses_post($answer); ?>
                         </div>
                     </div>

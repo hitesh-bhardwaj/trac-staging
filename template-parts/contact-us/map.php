@@ -62,10 +62,10 @@ $office_1_address = get_field('contact_office_1_address');
 
                 <!-- Address Cards -->
                 <div class="address-card w-[19vw] absolute bg-brand-tertiary rounded-2xl shadow-md space-y-[1vw] p-[2vw] py-[1vw] md:p-6 sm:p-4 opacity-0 left-[30%] top-[80%] md:w-[30vw] sm:w-full md:left-[10%] sm:left-0"  data-address="rwanda" data-connector-anchor="top-right">
-                    <h3 class="font-body text-24 font-medium text-white md:text-lg md:mb-2 sm:mb-[1vw] sm:text-[4vw]"><?php echo trac_esc_html(
+                    <h3 class="font-body text-24 font-medium text-white md:mb-2 sm:mb-[1vw] sm:text-[4vw]"><?php echo trac_esc_html(
                         $office_1_name,
                     ); ?></h3>
-                    <p class="font-body text-24 leading-[1.25] text-white md:text-base sm:text-[4vw]">
+                    <p class="font-body text-24 leading-[1.25] text-white sm:text-[4vw]">
                         <?php echo nl2br(trac_esc_html($office_1_address)); ?>
                     </p>
                 </div>

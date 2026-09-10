@@ -29,7 +29,7 @@ for ($i = 1; $i <= 2; $i++) {
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[5vw] md:text-5xl md:mb-10 sm:text-4xl text-left" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[5vw] md:mb-10 text-left" data-heading-anim>
                 <?php echo trac_esc_html($title); ?>
             </h2>
 
@@ -45,7 +45,7 @@ for ($i = 1; $i <= 2; $i++) {
                                 class="h-full w-full  scale-105 object-cover transition-transform duration-[600ms] ease-out group-hover:scale-100"
                                 loading="lazy"
                             >
-                            <span class="sme-plan-speed-pill absolute left-[1.4vw] top-[1.4vw] inline-flex items-center rounded-full bg-white/60 border border-[#2F5FA0] backdrop-blur-lg px-[1.2vw] py-[0.5vw] font-body text-30 md:text-sm text-brand-quaternary sm:left-3 sm:top-3 sm:w-fit sm:justify-center sm:p-0 sm:text-[28px] sm:leading-[1.2]">
+                            <span class="sme-plan-speed-pill absolute left-[1.4vw] top-[1.4vw] inline-flex items-center rounded-full bg-white/60 border border-[#2F5FA0] backdrop-blur-lg px-[1.2vw] py-[0.5vw] font-body text-30 text-brand-quaternary sm:left-3 sm:top-3 sm:w-fit sm:justify-center sm:p-0 sm:text-[28px] sm:leading-[1.2]">
                                 Unlimited - <span class="font-bold ml-1"><?php echo trac_esc_html(
                                     $p['speed'],
                                 ); ?></span>
@@ -53,19 +53,19 @@ for ($i = 1; $i <= 2; $i++) {
                         </div>
 
                         <div class="flex-1 flex flex-col bg-brand-quaternary p-[2vw] py-[3vw] md:p-8 sm:p-6">
-                            <h3 class="font-heading text-white text-36 md:text-3xl font-normal mb-[1vw] md:mb-3">
+                            <h3 class="font-heading text-white text-36 font-normal mb-[1vw] md:mb-3">
                                 <?php echo trac_esc_html($p['name']); ?>
                             </h3>
-                            <p class="font-body text-white text-24 md:text-base leading-[1.5] mb-[2vw] md:mb-6 w-[70%]">
+                            <p class="font-body text-white text-24  leading-[1.5] mb-[2vw] md:mb-6 w-[70%]">
                                 <?php echo trac_esc_html($p['description']); ?>
                             </p>
 
                             <div class="mt-auto">
                                 <div class="mb-[1.6vw] md:mb-6">
-                                    <span class="font-heading font-medium text-white text-36 md:text-3xl">
+                                    <span class="font-heading font-medium text-white text-36">
                                         <?php echo trac_esc_html($p['price']); ?>
                                     </span>
-                                    <span class="font-body text-white/70 text-[1vw] md:text-sm">
+                                    <span class="font-body text-white/70 text-[1vw] md:text-[2.5vw]">
                                         <?php echo trac_esc_html($p['period']); ?>
                                     </span>
                                 </div>

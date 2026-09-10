@@ -22,12 +22,12 @@ $contact_form_css =
             <div class="pt-[0.5vw] md:pt-0">
                 <div class="flex items-center gap-[0.729vw] mb-[2vw] md:gap-3 md:mb-8" data-animate="fade-up">
                     <span class="w-[1.5vw] h-[0.2vw] bg-brand-secondary md:w-6 md:h-1"></span>
-                    <span class="font-body text-30 text-brand-secondary md:text-xl"><?php echo trac_esc_html(
+                    <span class="font-body text-30 text-brand-secondary"><?php echo trac_esc_html(
                         $enterprise_contact_label,
                     ); ?></span>
                 </div>
 
-                <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" >
+                <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:mb-6" >
                     <?php foreach ($enterprise_contact_title_lines as $line): ?>
                         <span data-heading-anim class="block"><?php echo trac_esc_html(
                             $line,
@@ -35,7 +35,7 @@ $contact_form_css =
                     <?php endforeach; ?>
                 </h2>
 
-                <p class="font-body text-24 leading-[1.58] text-text-body mb-[3.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-[80vw]" data-para-anim data-delay="0.2">
+                <p class="font-body text-24 leading-[1.58] text-text-body mb-[3.5vw] md:mb-10 sm:mb-8 max-w-[30vw] md:max-w-[80vw]" data-para-anim data-delay="0.2">
                     <?php echo trac_esc_html($enterprise_contact_description); ?>
                 </p>
 

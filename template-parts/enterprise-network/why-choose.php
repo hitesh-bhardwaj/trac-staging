@@ -36,7 +36,7 @@ for ($i = 1; $i <= 3; $i++) {
             </h2>
 
             <?php foreach ($enterprise_why_paragraphs as $paragraph): ?>
-                <p class="w-[75%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 sm:text-base sm:space-y-2 sm:mb-6 text-left md:w-full" data-para-anim data-delay="0.2">
+                <p class="w-[75%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:space-y-2 md:mb-8  sm:space-y-2 sm:mb-6 text-left md:w-full" data-para-anim data-delay="0.2">
                     <?php echo trac_esc_html($paragraph); ?>
                 </p>
             <?php endforeach; ?>
@@ -55,7 +55,7 @@ for ($i = 1; $i <= 3; $i++) {
                             <div class="font-heading text-white font-bold text-[2.9vw]  flex items-end sm:!font-medium md:text-[5.5vw] sm:text-[8vw]"><?php echo trac_esc_html(
                                 $stat['number'],
                             ); ?></div>
-                            <p class="font-body text-white text-24 md:text-lg leading-snug">
+                            <p class="font-body text-white text-24 leading-snug">
                                <?php echo trac_esc_html($stat['label']); ?>
                             </p>
                         </div>

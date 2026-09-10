@@ -21,7 +21,7 @@ for ($i = 1; $i <= 3; $i++) {
         <div class="who-we-are-intro w-full flex justify-start gap-[10vw] items-start md:flex-col md:gap-8">
             <div class="who-we-are-label flex shrink-0 items-center gap-[0.833vw] whitespace-nowrap md:gap-3" data-animate="fade-up">
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-5"></span>
-                <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
+                <span class="font-body text-30 text-brand-secondary">
                     <?php echo trac_esc_html($who_we_are_label); ?>
                 </span>
             </div>

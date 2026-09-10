@@ -17,7 +17,7 @@ $collab_image_alt = is_array($collab_image) ? $collab_image['alt'] : '';
         <div class="max-w-[43.75vw] text-left md:max-w-[720px]">
             <div class="mb-[3.333vw] inline-flex items-center gap-[1.302vw] md:mb-8 md:gap-4 sm:mb-6 sm:gap-3" data-animate="fade-up">
                 <span class="h-[2px] min-h-[2px] w-[1.354vw] min-w-5 bg-current" aria-hidden="true"></span>
-                <span class="font-body text-30 leading-none text-white md:text-xl sm:text-[4vw]"><?php echo trac_esc_html(
+                <span class="font-body text-30 leading-none text-white sm:text-[4vw]"><?php echo trac_esc_html(
                     $collab_label,
                 ); ?></span>
             </div>
@@ -26,7 +26,7 @@ $collab_image_alt = is_array($collab_image) ? $collab_image['alt'] : '';
                 <?php echo trac_esc_html($collab_title); ?>
             </h2>
 
-            <div class="flex max-w-[40.417vw] flex-col gap-[2.083vw] font-body text-24 leading-[1.5] text-white md:max-w-full md:gap-7 md:text-xl sm:gap-5 sm:text-base sm:leading-[1.55]">
+            <div class="flex max-w-[40.417vw] flex-col gap-[2.083vw] font-body text-24 leading-[1.5] text-white md:max-w-full md:gap-7 sm:gap-5 sm:leading-[1.55]">
                 <?php foreach ($collab_paragraphs as $index => $paragraph): ?>
                     <p data-para-anim data-delay="<?php echo esc_attr(
                         0.2 + $index * 0.08,

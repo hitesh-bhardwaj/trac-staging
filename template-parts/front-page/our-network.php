@@ -37,7 +37,7 @@ $network_description_paragraphs = trac_split_lines(
             >
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
 
-                <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
+                <span class="label-text font-body text-30 text-brand-secondary">
                     <?php echo trac_esc_html($network_label); ?>
                 </span>
             </div>

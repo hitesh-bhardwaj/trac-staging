@@ -35,7 +35,7 @@ for ($i = 1; $i <= 4; $i++) {
                 <?php echo trac_esc_html($enterprise_services_title); ?>
             </h2>
 
-            <p class="w-[70%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:text-lg md:space-y-2 md:mb-8 text-left md:w-full sm:mb-[8vw]" data-para-anim data-delay="0.2">
+            <p class="w-[70%] font-body text-24 leading-[1.58] text-text-body space-y-[0.521vw] mb-[2.604vw] md:space-y-2 md:mb-8 text-left md:w-full sm:mb-[8vw]" data-para-anim data-delay="0.2">
                 <?php echo trac_esc_html($enterprise_services_description); ?>
             </p>
 

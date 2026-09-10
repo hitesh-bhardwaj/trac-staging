@@ -27,7 +27,7 @@ for ($i = 1; $i <= 6; $i++) {
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-[3.75vw] font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.6vw] md:text-5xl md:mb-6 sm:text-4xl text-left" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.6vw] md:mb-6 text-left" data-heading-anim>
                 <?php echo trac_esc_html($title); ?>
             </h2>
 

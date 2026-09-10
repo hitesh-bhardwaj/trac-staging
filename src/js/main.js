@@ -7,7 +7,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initAnimations, revealHeroContent } from './animations.js';
-import { initGlobe } from './globe.js';
 import { initNetworkCanvas } from './network-canvas.js';
 import { initBarba, initPageLoader } from './barba.js';
 import { initMapAnimation } from './map-animation.js';
@@ -22,7 +21,6 @@ gsap.registerPlugin(ScrollTrigger);
 const app = {
     lenis: null,
     isLoaded: false,
-    globe: null,
     networkCanvas: null,
     networkCanvases: [],
 };
@@ -329,20 +327,6 @@ function initializePageComponents() {
     initMouseFollower();
 
     initAnimations();
-
-    const globeContainer = document.getElementById('globe-container');
-    if (globeContainer) {
-        if (app.globe && app.globe.destroy) {
-            app.globe.destroy();
-            app.globe = null;
-        }
-
-        while (globeContainer.firstChild) {
-            globeContainer.removeChild(globeContainer.firstChild);
-        }
-
-        app.globe = initGlobe(globeContainer);
-    }
 
     initNetworkCanvases();
     initMapAnimation();

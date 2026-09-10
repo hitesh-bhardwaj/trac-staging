@@ -35,7 +35,7 @@ for ($i = 1; $i <= 5; $i++) {
             <div class="team-slider-copy w-full">
                    <div class="mb-[1.8vw] flex items-center gap-[0.833vw] md:mb-5 md:gap-3" data-animate="fade-up">
                      <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-5"></span>
-                     <span class="font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
+                     <span class="font-body text-30 text-brand-secondary ">
                         <?php echo trac_esc_html($team_label); ?>
                       </span>
                      </div>

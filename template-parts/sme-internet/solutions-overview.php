@@ -28,7 +28,7 @@ for ($i = 1; $i <= 3; $i++) {
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-white mb-[5vw] md:text-5xl md:mb-10 sm:text-4xl text-left" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-white mb-[5vw] md:mb-10 text-left" data-heading-anim>
                 <?php echo trac_esc_html($title); ?>
             </h2>
 
@@ -44,10 +44,10 @@ for ($i = 1; $i <= 3; $i++) {
                             loading="lazy"
                         >
                         <div>
-                            <h3 class="font-heading text-text-primary text-[1.6vw] md:text-2xl font-normal mb-[0.8vw] md:mb-3">
+                            <h3 class="font-heading text-text-primary text-[1.6vw] font-normal mb-[0.8vw] md:mb-3">
                                 <?php echo trac_esc_html($s['title']); ?>
                             </h3>
-                            <p class="font-body text-text-body text-24 md:text-base leading-[1.55]">
+                            <p class="font-body text-text-body text-24 leading-[1.55]">
                                 <?php echo trac_esc_html($s['description']); ?>
                             </p>
                         </div>

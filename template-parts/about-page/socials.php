@@ -24,7 +24,7 @@ for ($i = 1; $i <= 3; $i++) {
 <section class="about-socials-section px-[5vw] py-[7%] md:px-[7vw] md:py-16  sm:py-12">
     <div class="mb-[3.5vw] flex items-center gap-[0.833vw] md:mb-8 md:gap-3 sm:mb-12" data-animate="fade-up">
         <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
-        <span class="font-body text-30 text-brand-secondary md:text-xl sm:!text-[4vw]">
+        <span class="font-body text-30 text-brand-secondary sm:!text-[4vw]">
             <?php echo trac_esc_html($socials_label); ?>
         </span>
     </div>

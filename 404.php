@@ -23,7 +23,6 @@ get_header();
             <h1 class="font-heading text-[15vw] leading-none text-brand-secondary md:text-[28px] sm:text-[24px]" data-animate="fade-up">
                 404
 </h1>
-
             <h1 class="mt-[0.5vw] font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] md:mt-6 sm:mt-4" data-animate="fade-up" data-delay="0.1">
                 This page does not exist
             </h1>

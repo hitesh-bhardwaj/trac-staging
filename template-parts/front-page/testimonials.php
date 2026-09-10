@@ -15,7 +15,7 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
                 data-animate="fade-up"
             >
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-6 sm:w-5"></span>
-                <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
+                <span class="label-text font-body text-30 text-brand-secondary">
                     <?php echo trac_esc_html(get_field('testimonials_label')); ?>
                 </span>
             </div>
@@ -34,11 +34,11 @@ $team_arrow_svg = get_template_directory_uri() . '/src/assets/icons/arrow.svg';
                 data-animate="fade-up"
                 data-delay="0.2"
             >
-                <span class="current-slide font-body text-30 text-brand-primary md:text-2xl sm:text-xl">
+                <span class="current-slide font-body text-30 text-brand-primary">
                     01
                 </span>
                 <span class="counter-line h-[1px] w-[8.073vw] bg-brand-primary md:w-24 sm:w-16"></span>
-                <span class="total-slides font-body text-30 text-brand-primary md:text-2xl sm:text-xl">
+                <span class="total-slides font-body text-30 text-brand-primary">
                     03
                 </span>
             </div> -->

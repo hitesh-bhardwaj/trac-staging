@@ -20,12 +20,12 @@ $infra_image_2_alt = get_field('cs_infra_image_2_alt');
         <div class="max-w-[46vw] md:max-w-full">
             <div class="flex items-center justify-start gap-3 mb-10 md:mb-6" data-animate="fade-up">
                 <span class="w-6 h-1 bg-white"></span>
-                <span class="font-body text-white text-30 md:text-lg sm:!text-[4vw]">
+                <span class="font-body text-white text-30 sm:!text-[4vw]">
                     <?php echo trac_esc_html($label); ?>
                 </span>
             </div>
 
-            <h2 class="font-heading text-[3.5vw] font-normal leading-[1.15] tracking-[0.01em] text-white mb-[1.6vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.15] tracking-[0.01em] text-white mb-[1.6vw] md:mb-6" data-heading-anim>
                 <?php echo trac_esc_html($title); ?>
             </h2>
 

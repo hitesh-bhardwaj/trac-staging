@@ -39,7 +39,7 @@ $button_link = get_field('cs_overview_button_link');
                 ); ?></span>
             </div>
 
-            <h2 class="font-heading text-[3.5vw] font-normal leading-[1.15] tracking-[0.01em] text-text-primary mb-[1.6vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
+            <h2 class="font-heading text-66 font-normal leading-[1.15] tracking-[0.01em] text-text-primary mb-[1.6vw] md:mb-6" data-heading-anim>
                 <?php echo trac_esc_html($title); ?>
             </h2>
 
@@ -65,10 +65,10 @@ $button_link = get_field('cs_overview_button_link');
                     >
                 </div>
                 <div class=" p-[2.6vw] py-[3vw] md:p-10 sm:p-7 flex flex-col w-[70%] sm:w-full">
-                    <h3 class="font-heading text-white text-[1.8vw] md:text-3xl font-normal mb-[1.4vw] md:mb-5">
+                    <h3 class="font-heading text-white text-66 font-normal mb-[1.4vw] md:mb-5">
                         <?php echo trac_esc_html($solution_title); ?>
                     </h3>
-                    <p class="font-body text-white text-24 md:text-lg leading-[1.6] w-[70%] md:w-full">
+                    <p class="font-body text-white text-24 leading-[1.6] w-[70%] md:w-full">
                         <?php echo trac_esc_html($solution_desc); ?>
                     </p>
                 </div>
@@ -87,10 +87,10 @@ $button_link = get_field('cs_overview_button_link');
                         loading="lazy"
                     >
                     <div>
-                        <h3 class="font-heading text-white text-36 md:text-2xl font-normal mb-[0.8vw] md:mb-3">
+                        <h3 class="font-heading text-white text-36 font-normal mb-[0.8vw] md:mb-3">
                             <?php echo trac_esc_html($o['title']); ?>
                         </h3>
-                        <p class="font-body text-white text-24 md:text-base leading-[1.55] w-[88%]">
+                        <p class="font-body text-white text-24 leading-[1.55] w-[88%]">
                             <?php echo trac_esc_html($o['description']); ?>
                         </p>
                     </div>

@@ -26,7 +26,7 @@ $section_image_alt = get_field('communities_section_image_alt');
             >
                 <span class="h-[0.2vw] w-[1.5vw] bg-white md:h-[3px] md:w-6 sm:w-5"></span>
 
-                <span class="font-body text-30 leading-none text-white md:text-xl sm:text-[4.5vw]">
+                <span class="font-body text-30 leading-none text-white sm:text-[4.5vw]">
                     <?php echo trac_esc_html($section_label); ?>
                 </span>
             </div>

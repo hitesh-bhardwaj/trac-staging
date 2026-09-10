@@ -20,7 +20,7 @@ for ($i = 1; $i <= 5; $i++) {
         <div class="mb-[3.438vw]  px-[5vw] flex items-center justify-between md:mb-10 sm:px-[6vw]">
             <div data-animate="fade-up" class="what-we-do-header flex items-center gap-[0.833vw] md:gap-3">
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-white md:h-1 md:w-6 sm:w-5"></span>
-                <span class="font-body text-30 text-white md:text-xl sm:!text-[4vw]">
+                <span class="font-body text-30 text-white sm:!text-[4vw]">
                     <?php echo trac_esc_html($what_we_do_label); ?>
                 </span>
             </div>

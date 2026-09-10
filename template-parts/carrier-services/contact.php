@@ -24,11 +24,11 @@ $contact_form_css =
                 ); ?></span>
             </div>
 
-                <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:text-5xl md:mb-6 sm:text-4xl" data-heading-anim>
+                <h2 class="font-heading text-66 font-normal leading-[1.12] tracking-[0.01em] text-text-primary mb-[1.875vw] md:mb-6" data-heading-anim>
                     <?php echo trac_esc_html($cs_contact_title); ?>
                 </h2>
 
-                <p class="font-body text-24 leading-[1.58] text-text-body mb-[0.5vw] md:text-lg md:mb-10 sm:text-base sm:mb-8 max-w-[30vw] md:max-w-full" data-para-anim data-delay="0.2">
+                <p class="font-body text-24 leading-[1.58] text-text-body mb-[0.5vw] md:mb-10 sm:mb-8 max-w-[30vw] md:max-w-full" data-para-anim data-delay="0.2">
                     <?php echo trac_esc_html($cs_contact_description); ?>
                 </p>
 

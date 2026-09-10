@@ -21,12 +21,12 @@ get_header();
             <div class="faqs-header text-center mb-[4.844vw] md:mb-12 sm:mb-8">
                 <div class="faqs-label flex items-center justify-center gap-[0.729vw] mb-[1.563vw] md:gap-3 md:mb-5 sm:mb-4" data-animate="fade-up">
                     <span class="label-line w-[1.5vw] h-[0.2vw] bg-brand-primary md:w-6 md:h-1 sm:w-5"></span>
-                    <span class="label-text font-body text-24 text-text-primary md:text-xl sm:text-lg">FAQs</span>
+                    <span class="label-text font-body text-24 text-text-primary">FAQs</span>
                 </div>
-                <h1 class="faqs-title font-heading text-[3.438vw] leading-[1.27] tracking-[0.01em] text-text-primary md:text-4xl sm:text-3xl" data-animate="fade-up" data-delay="0.1">
+                <h1 class="faqs-title font-heading text-66 leading-[1.27] tracking-[0.01em] text-text-primary" data-animate="fade-up" data-delay="0.1">
                     Frequently Asked Questions
                 </h1>
-                <p class="faqs-description font-body text-24 text-text-body max-w-[52vw] mx-auto mt-[1.563vw] md:text-lg md:max-w-full md:mt-5 sm:text-base sm:mt-4" data-para-anim data-delay="0.2">
+                <p class="faqs-description font-body text-24 text-text-body max-w-[52vw] mx-auto mt-[1.563vw] md:max-w-full md:mt-5 sm:mt-4" data-para-anim data-delay="0.2">
                     Find answers to common questions about our services, connectivity, and support.
                 </p>
             </div>
@@ -57,7 +57,7 @@ get_header();
 
                     if ($faq_query->have_posts()): ?>
                         <div class="faq-category-group mb-[3.125vw] md:mb-10 sm:mb-8" data-animate="fade-up">
-                            <h2 class="category-title font-heading text-[2vw] text-brand-primary mb-[2vw] md:text-2xl md:mb-6 sm:text-xl sm:mb-5">
+                            <h2 class="category-title font-heading text-36 text-brand-primary mb-[2vw] md:mb-6 sm:mb-5">
                                 <?php echo trac_esc_html($category->name); ?>
                             </h2>
 
@@ -83,7 +83,7 @@ get_header();
                                             aria-controls="faq-answer-<?php echo $unique_id; ?>"
                                             id="faq-btn-<?php echo $unique_id; ?>"
                                         >
-                                            <span class="faq-question-text font-body text-[1.458vw] text-text-primary md:text-xl sm:text-lg">
+                                            <span class="faq-question-text font-body text-[1.458vw] text-text-primary md:text-[3vw]">
                                                 <?php echo trac_esc_html(
                                                     $question,
                                                 ); ?>
@@ -102,7 +102,7 @@ get_header();
                                             aria-labelledby="faq-btn-<?php echo $unique_id; ?>"
                                             aria-hidden="true"
                                         >
-                                            <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
+                                            <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:max-w-full md:pb-6 sm:pb-4">
                                                 <?php echo wp_kses_post(
                                                     $answer,
                                                 ); ?>
@@ -154,7 +154,7 @@ get_header();
                                     aria-controls="faq-answer-<?php echo $index; ?>"
                                     id="faq-btn-<?php echo $index; ?>"
                                 >
-                                    <span class="faq-question-text font-body text-[1.458vw] text-text-primary md:text-xl sm:text-lg">
+                                    <span class="faq-question-text font-body text-[1.458vw] text-text-primary md:text-[2.5vw] sm:text-[4.2vw]">
                                         <?php echo trac_esc_html($question); ?>
                                     </span>
 
@@ -173,7 +173,7 @@ get_header();
                                         ? 'false'
                                         : 'true'; ?>"
                                 >
-                                    <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:text-lg md:max-w-full md:pb-6 sm:text-base sm:pb-4">
+                                    <div class="faq-answer-text font-body text-24 leading-[1.5] text-text-body pb-[2.135vw] max-w-[67.5vw] md:max-w-full md:pb-6 sm:pb-4">
                                         <?php echo wp_kses_post($answer); ?>
                                     </div>
                                 </div>

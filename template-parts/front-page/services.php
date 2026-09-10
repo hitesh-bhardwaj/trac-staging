@@ -23,7 +23,7 @@ for ($i = 1; $i <= 4; $i++) {
             <div class="services-label mb-[2.563vw] flex items-center justify-start gap-[0.833vw] md:mb-6 md:gap-3" data-animate="fade-up">
                 <span class="label-line h-[0.2vw] w-[1.5vw] bg-brand-secondary md:h-1 md:w-5"></span>
 
-                <span class="label-text font-body text-30 text-brand-secondary md:text-xl sm:text-lg">
+                <span class="label-text font-body text-30 text-brand-secondary">
                     <?php echo trac_esc_html(get_field('services_label')); ?>
                 </span>
             </div>

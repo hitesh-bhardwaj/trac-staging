@@ -27,7 +27,6 @@ For local development, create a `.vite-dev` file in theme root to enable Vite de
 
 ### Technology Stack
 - **GSAP** + ScrollTrigger for scroll-based animations
-- **Three.js** + three-globe for 3D globe visualization
 - **Lenis** smooth scroll (loaded via mu-plugin at `mu-plugins/lenis-smooth-scroll.php`)
 - **ACF Pro** for flexible content management
 
@@ -45,12 +44,9 @@ Lenis is initialized by the mu-plugin and exposed as `window.lenis`. The theme l
 src/
 ├── js/
 │   ├── main.js         # Entry point, initializes all modules
-│   ├── animations.js   # GSAP ScrollTrigger animations
-│   └── globe.js        # Three.js globe component (Aceternity style)
-├── css/
-│   └── main.css        # Tailwind + CSS custom properties
-└── data/
-    └── globe.json      # GeoJSON country data for globe
+│   └── animations.js   # GSAP ScrollTrigger animations
+└── css/
+    └── main.css         # Tailwind + CSS custom properties
 ```
 
 ### WordPress Integration
@@ -82,15 +78,6 @@ screens: {
 }
 ```
 Use `md:` prefix to target smaller screens (e.g., `md:text-xl` applies below 768px).
-
-## Globe Component (`globe.js`)
-
-Interactive 3D globe using three-globe library:
-- Uses `hexPolygonUseDots(true)` for dotted land texture
-- African cities marked with orange (`#E85D24`)
-- Global cities marked with brand blue (`#10417f`)
-- Arc connections with cyan/indigo colors
-- Configuration constants: `GLOBE_CONFIG`, `ARC_DATA`, `POINTS_DATA`
 
 ## Animation System (`animations.js`)
 
