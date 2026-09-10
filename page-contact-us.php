@@ -104,7 +104,7 @@ if (have_posts()) {
                         <?php if ($url): ?>
                             <a href="<?php echo esc_url(
                                 $url,
-                            ); ?>" target="_blank" rel="noopener noreferrer" class="flex h-[3.125vw] w-[3.125vw] items-center justify-center rounded-full border border-white transition-colors hover:bg-white/10 lg:h-14 lg:w-14 md:h-12 md:w-12 sm:h-10 sm:w-10" aria-label="<?php echo esc_attr(
+                            ); ?>" target="_blank" rel="noopener noreferrer" class="social-icon-orange flex h-[3.125vw] w-[3.125vw] items-center justify-center rounded-full border border-white transition-colors  lg:h-14 lg:w-14 md:h-12 md:w-12 sm:h-10 sm:w-10 group" aria-label="<?php echo esc_attr(
                                 $contact_social_icons[$key]['label'],
                             ); ?>">
                                 <img src="<?php echo esc_url(

@@ -289,6 +289,7 @@
 .contact-form-wrapper .solution-picker-value {
     text-align: left;
     min-height: 1.4em;
+    color:#333333;
 }
 
 .contact-form-wrapper .solution-picker-chevron {
@@ -445,8 +446,12 @@
 
     .contact-form-wrapper .wpcf7-validation-errors,
     .contact-form-wrapper .wpcf7-mail-sent-ok {
-        font-size: 16px;
+        font-size: 14px;
         padding: 16px;
+    }
+
+    .contact-form-wrapper .wpcf7-response-output {
+        font-size: 14px;
     }
 
     .contact-form-wrapper input[type='file'],
@@ -550,13 +555,17 @@
     }
 
     .contact-form-wrapper .wpcf7-not-valid-tip {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .contact-form-wrapper .wpcf7-validation-errors,
     .contact-form-wrapper .wpcf7-mail-sent-ok {
-        font-size: 14px;
+        font-size: 13px;
         padding: 12px;
+    }
+
+    .contact-form-wrapper .wpcf7-response-output {
+        font-size: 13px;
     }
 
     .contact-form-wrapper input[type='file'],

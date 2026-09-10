@@ -33,13 +33,13 @@ $contact_form_css =
                 </p>
 
                 <div class="font-body text-24 leading-[1.7] text-text-primary ">
-                            <div data-para-anim class="under-multi-parent w-fit leading-[1.2]">
-                                <a href="mailto:<?php echo esc_attr(
+                     <div data-animate="fade-up" class="under-multi-parent w-fit leading-[1.2]">
+                        <a href="mailto:<?php echo esc_attr(
                                     $cs_contact_email,
-                                ); ?>" class="font-body text-24 tracking-[0.03em] text-text-body hover:text-brand-primary transition-colors  under-multi">
-                                    <?php echo trac_esc_html($cs_contact_email); ?>
-                                </a>
-                        </div>
+                                ); ?>" class="under-multi font-body text-24 tracking-[0.03em] text-text-body transition-colors hover:text-brand-primary focus-visible:text-brand-primary  ">
+                             <?php echo trac_esc_html($cs_contact_email); ?>
+                        </a>
+                    </div>
                 </div>
             </div>
 

@@ -28,6 +28,7 @@ if ($hero_icons_image_url):
         alt="<?php echo esc_attr($hero_icons_image_alt); ?>"
         class="h-auto w-[27vw] md:w-[260px] sm:w-[220px]"
         loading="lazy"
+        
     >
 </div>
 <?php

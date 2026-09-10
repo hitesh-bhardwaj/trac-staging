@@ -259,7 +259,7 @@ html.js [data-hero-reveal].is-hero-revealed {
 
     /* Selection */
     ::selection {
-        @apply bg-brand-primary text-white;
+        @apply bg-brand-secondary text-white;
     }
 }
 
@@ -1046,6 +1046,31 @@ html.js [data-hero-reveal].is-hero-revealed {
         hue-rotate(195deg) brightness(96%) contrast(92%);
 }
 
+.social-icon-orange {
+    border-color: #ffffff;
+    background-color: transparent;
+    transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.social-icon-orange img {
+    filter: brightness(0) saturate(100%) invert(1);
+    transition: filter 0.3s ease;
+}
+
+.social-icon-orange:hover {
+    border-color: var(--color-brand-secondary);
+    background-color: var(--color-brand-secondary);
+}
+
+.social-icon-orange:hover img {
+    filter: brightness(0) saturate(100%) invert(1);
+}
+
+
+
 .under-multi {
     text-decoration: none;
     background-image:
@@ -1058,7 +1083,9 @@ html.js [data-hero-reveal].is-hero-revealed {
         100% 100%,
         0 100%;
     background-repeat: no-repeat, no-repeat;
-    transition: background-size 0.3s ease-out;
+    transition:
+        background-size 0.3s ease-out,
+        color 0.3s ease;
 }
 
 .under-multi-parent:hover .under-multi,
